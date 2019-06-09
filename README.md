@@ -2,7 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
 
-##Vision
+## Vision
+
 * Eliminate App Fatigue
 * Familiar look and feel to process
 * Pro-active data analysis and suggestion
@@ -10,12 +11,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * Can’t get a clear picture of your business if email is separate from your e-commerce and your sales opportunities are separate from your calendar
 * Most systems you put information in and when you need the information, you go retrieve it, not with 16AHEAD, once you put information in, the AI goes to work analyzing information and sends you alerts on what you should be doing
 
-##Summary
+## Summary
+
 The goal is to make business run smoothly and efficiently. Consider how information is processed and used throughout an organization. Software should enhance a company, not weigh it down and make it react sluggishly or not at all.
 
 Business challenges are usually: lack of vision, infrastructure, and a transparent management system. Using the software presented here helps create a view, build the necessary infrastructure, and operate a management system that keeps a pulse of business activity.
 
-#Business Goals
+# Business Goals
 
 Automate as many processes as possible. An active organization does not waste time on non-essential tasks but instead places that energy on building the brand.
 
@@ -52,7 +54,8 @@ We attempt to offer a complete enterprise solution that can be set up in a few m
 - Disconnected Shopping Cart, Inventory Management, Contact Management and Lead Tracking
 
 
-##Features and Benefits
+## Features and Benefits
+
 * No double data entry
 * Collaborate on ANYTHING (just uncheck draft)
 * True workflow with Next button guide
