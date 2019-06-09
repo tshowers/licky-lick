@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { LickDataComponent } from './lick-data.component';
 
 @NgModule({
-  declarations: [LickDataComponent],
+  declarations: [ ],
   imports: [
   ],
-  exports: [LickDataComponent]
+  exports: [ ]
 })
 export class LickDataModule { }
