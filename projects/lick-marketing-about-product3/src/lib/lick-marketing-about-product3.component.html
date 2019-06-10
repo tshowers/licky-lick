@@ -1,0 +1,34 @@
+<section id="about---5" class="container-fluid section-block about-5">
+  <div class="container">
+    <div class="row">
+
+      <!-- Text block -->
+      <div class="col-md-6 col-sm-5 col-xs-12 about-text">
+        <h2>{{headingText}} <span class="badge badge-primary">{{badgeText}}</span></h2>
+        <p>{{descriptionText}}</p>
+        <ul>
+          <li>{{bulletText1}}</li>
+          <li>{{bulletText2}}</li>
+          <li>{{bulletText3}}</li>
+        </ul>
+        <a *ngIf="buttonLink" routerLink="{{buttonLink}}" class="button button-full" title="{{buttonText}}">{{buttonText}}</a>
+      </div>
+
+      <!-- Image block -->
+      <div class="col-md-6 col-sm-7 col-xs-12">
+        <div class="about-image-block">
+          <div class="about-image">
+
+            <img src="{{imageURL1}}" alt="{{headingText}}">
+
+            <div class="ui">
+              <img src="{{imageURL2}}" data-aos="fade-up" alt="{{headingText}}">
+            </div>
+
+          </div> <!-- .about-image -->
+        </div> <!-- .about-features -->
+      </div>
+
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+</section>

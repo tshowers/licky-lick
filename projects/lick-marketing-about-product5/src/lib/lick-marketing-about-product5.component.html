@@ -1,0 +1,32 @@
+<section id="about---4" class="container-fluid section-block about-4 color-block">
+  <div class="container">
+    <div class="row">
+
+      <!-- Image block -->
+      <div class="col-md-6 col-sm-7 col-xs-12">
+        <div class="about-image-block">
+          <div class="about-image">
+
+            <img src="{{imageURL}}" alt="{{headingText}}">
+
+            <!-- Feature block -->
+            <div class="feature-box feature-box-second feature-image">
+              <span *ngIf="badgeFeatureText" class="badge badge-second">{{badgeFeatureText}}</span>
+              <i [ngClass]="iconFeature"></i>
+              <p>{{featureText}}</p>
+            </div>
+
+          </div> <!-- .about-image -->
+        </div> <!-- .about-features -->
+      </div>
+
+      <!-- Text block -->
+      <div class="col-md-6 col-sm-5 col-xs-12 about-text">
+        <h2>{{headingText}} <span *ngIf="badgeText" class="badge badge-primary">{{badgeText}}</span></h2>
+        <p>{{descriptionText}}</p>
+        <a *ngIf="buttonLink" routerLink="{{buttonLink}}" class="button button-full" title="button">{{buttonText}}</a>
+      </div>
+
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+</section>

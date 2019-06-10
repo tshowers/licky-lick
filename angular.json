@@ -58,9 +58,24 @@
               "projects/licky-tester/src/assets"
             ],
             "styles": [
-              "projects/licky-tester/src/styles.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "projects/licky-tester/src/intro-style.css",
+              "projects/licky-tester/src/colors/color-1.css",
+              "projects/licky-tester/src/simple-line-icons.css",
+              "projects/licky-tester/src/styles.css",
+              "projects/licky-tester/src/ta-styles.css",
+              "projects/licky-tester/src/circle.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -115,9 +130,24 @@
             "tsConfig": "projects/licky-tester/tsconfig.spec.json",
             "karmaConfig": "projects/licky-tester/karma.conf.js",
             "styles": [
-              "projects/licky-tester/src/styles.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "projects/licky-tester/src/intro-style.css",
+              "projects/licky-tester/src/colors/color-1.css",
+              "projects/licky-tester/src/simple-line-icons.css",
+              "projects/licky-tester/src/styles.css",
+              "projects/licky-tester/src/ta-styles.css",
+              "projects/licky-tester/src/circle.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ],
             "assets": [
               "projects/licky-tester/src/favicon.ico",
               "projects/licky-tester/src/assets"
@@ -159,6 +189,251 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "projects/licky-tester-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-about-product1": {
+      "root": "projects/lick-marketing-about-product1",
+      "sourceRoot": "projects/lick-marketing-about-product1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-about-product1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-about-product1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-about-product1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-about-product1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-about-product1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-about-product1/tsconfig.lib.json",
+              "projects/lick-marketing-about-product1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-about-product2": {
+      "root": "projects/lick-marketing-about-product2",
+      "sourceRoot": "projects/lick-marketing-about-product2/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-about-product2/tsconfig.lib.json",
+            "project": "projects/lick-marketing-about-product2/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-about-product2/src/test.ts",
+            "tsConfig": "projects/lick-marketing-about-product2/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-about-product2/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-about-product2/tsconfig.lib.json",
+              "projects/lick-marketing-about-product2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-about-product3": {
+      "root": "projects/lick-marketing-about-product3",
+      "sourceRoot": "projects/lick-marketing-about-product3/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-about-product3/tsconfig.lib.json",
+            "project": "projects/lick-marketing-about-product3/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-about-product3/src/test.ts",
+            "tsConfig": "projects/lick-marketing-about-product3/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-about-product3/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-about-product3/tsconfig.lib.json",
+              "projects/lick-marketing-about-product3/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-about-product4": {
+      "root": "projects/lick-marketing-about-product4",
+      "sourceRoot": "projects/lick-marketing-about-product4/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-about-product4/tsconfig.lib.json",
+            "project": "projects/lick-marketing-about-product4/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-about-product4/src/test.ts",
+            "tsConfig": "projects/lick-marketing-about-product4/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-about-product4/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-about-product4/tsconfig.lib.json",
+              "projects/lick-marketing-about-product4/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-about-product5": {
+      "root": "projects/lick-marketing-about-product5",
+      "sourceRoot": "projects/lick-marketing-about-product5/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-about-product5/tsconfig.lib.json",
+            "project": "projects/lick-marketing-about-product5/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-about-product5/src/test.ts",
+            "tsConfig": "projects/lick-marketing-about-product5/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-about-product5/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-about-product5/tsconfig.lib.json",
+              "projects/lick-marketing-about-product5/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-about-product6": {
+      "root": "projects/lick-marketing-about-product6",
+      "sourceRoot": "projects/lick-marketing-about-product6/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-about-product6/tsconfig.lib.json",
+            "project": "projects/lick-marketing-about-product6/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-about-product6/src/test.ts",
+            "tsConfig": "projects/lick-marketing-about-product6/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-about-product6/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-about-product6/tsconfig.lib.json",
+              "projects/lick-marketing-about-product6/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-about-product7": {
+      "root": "projects/lick-marketing-about-product7",
+      "sourceRoot": "projects/lick-marketing-about-product7/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-about-product7/tsconfig.lib.json",
+            "project": "projects/lick-marketing-about-product7/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-about-product7/src/test.ts",
+            "tsConfig": "projects/lick-marketing-about-product7/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-about-product7/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-about-product7/tsconfig.lib.json",
+              "projects/lick-marketing-about-product7/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

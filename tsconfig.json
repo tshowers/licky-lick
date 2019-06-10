@@ -24,6 +24,48 @@
       ],
       "lick-data/*": [
         "dist/lick-data/*"
+      ],
+      "lick-marketing-about-product1": [
+        "dist/lick-marketing-about-product1"
+      ],
+      "lick-marketing-about-product1/*": [
+        "dist/lick-marketing-about-product1/*"
+      ],
+      "lick-marketing-about-product2": [
+        "dist/lick-marketing-about-product2"
+      ],
+      "lick-marketing-about-product2/*": [
+        "dist/lick-marketing-about-product2/*"
+      ],
+      "lick-marketing-about-product3": [
+        "dist/lick-marketing-about-product3"
+      ],
+      "lick-marketing-about-product3/*": [
+        "dist/lick-marketing-about-product3/*"
+      ],
+      "lick-marketing-about-product4": [
+        "dist/lick-marketing-about-product4"
+      ],
+      "lick-marketing-about-product4/*": [
+        "dist/lick-marketing-about-product4/*"
+      ],
+      "lick-marketing-about-product5": [
+        "dist/lick-marketing-about-product5"
+      ],
+      "lick-marketing-about-product5/*": [
+        "dist/lick-marketing-about-product5/*"
+      ],
+      "lick-marketing-about-product6": [
+        "dist/lick-marketing-about-product6"
+      ],
+      "lick-marketing-about-product6/*": [
+        "dist/lick-marketing-about-product6/*"
+      ],
+      "lick-marketing-about-product7": [
+        "dist/lick-marketing-about-product7"
+      ],
+      "lick-marketing-about-product7/*": [
+        "dist/lick-marketing-about-product7/*"
       ]
     }
   }

@@ -1,0 +1,45 @@
+<section id="about---1" class="container-fluid section-block about-1">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-6 col-sm-5 col-xs-12 about-text">
+        <h2>{{headerText}}</h2>
+        <p>{{descriptionText}}</p>
+        <a *ngIf="buttonLink" routerLink="{{buttonLink}}" class="button button-full" title="button">{{buttonText}}</a>
+      </div>
+
+      <div class="col-md-6 col-sm-7 col-xs-12">
+        <div class="about-features">
+
+          <!-- Feature block 1 -->
+          <div class="feature-box feature-box-primary">
+            <i *ngIf="featureBlockIcon1" class="{{featureBlockIcon1}}"></i> <!-- icon -->
+            <p>{{featureBlockText1}}</p>
+          </div>
+
+          <!-- Feature block 2 -->
+          <div class="feature-box feature-box-primary">
+            <i *ngIf="featureBlockIcon2" class="{{featureBlockIcon2}}"></i> <!-- icon -->
+            <p>{{featureBlockText2}}</p>
+          </div>
+
+          <!-- Feature block 3 -->
+          <div class="feature-box feature-box-primary">
+            <span  *ngIf="featureBlockBadgeText3"class="badge badge-primary">{{featureBlockBadgeText3}}</span>
+            <i *ngIf="featureBlockIcon3" class="{{featureBlockIcon3}}"></i> <!-- icon -->
+            <p>{{featureBlockText3}}</p>
+          </div>
+
+          <!-- Feature block 4 -->
+          <div class="feature-box feature-box-second">
+            <span *ngIf="featureBlockBadgeText4" class="badge badge-second">{{featureBlockBadgeText4}}</span>
+            <i *ngIf="featureBlockIcon4" class="{{featureBlockIcon4}}"></i> <!-- icon -->
+            <p>{{featureBlockText4}}</p>
+          </div>
+
+        </div> <!-- .about-features -->
+      </div>
+
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+</section>

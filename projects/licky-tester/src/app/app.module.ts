@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 
-import { LickDataModule } from 'lick-data';
+
 
 import { AppComponent } from './app.component';
 
@@ -11,7 +13,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    LickDataModule
+    RouterModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
