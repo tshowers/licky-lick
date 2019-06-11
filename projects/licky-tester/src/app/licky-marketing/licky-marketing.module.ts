@@ -42,20 +42,27 @@ import { LickMarketingIntegration2Module } from 'lick-marketing-integration2';
 import { LickMarketingLatestPost1Module } from 'lick-marketing-latest-post1';
 import { LickMarketingLatestPost2Module } from 'lick-marketing-latest-post2';
 
-import { LickMarketingNewsletter1Module} from 'lick-marketing-newsletter1';
+import { LickMarketingNewsletter1Module } from 'lick-marketing-newsletter1';
 
-import { LickMarketingParallax1Module} from 'lick-marketing-parallax1';
+import { LickMarketingParallax1Module } from 'lick-marketing-parallax1';
 
-import { LickMarketingPrices1Module} from 'lick-marketing-prices1';
-import { LickMarketingPrices2Module} from 'lick-marketing-prices2';
+import { LickMarketingPrices1Module } from 'lick-marketing-prices1';
+import { LickMarketingPrices2Module } from 'lick-marketing-prices2';
 
-import { LickMarketingReviews1Module} from 'lick-marketing-reviews1';
-import { LickMarketingReviews2Module} from 'lick-marketing-reviews2';
-import { LickMarketingReviews3Module} from 'lick-marketing-reviews3';
+import { LickMarketingReviews1Module } from 'lick-marketing-reviews1';
+import { LickMarketingReviews2Module } from 'lick-marketing-reviews2';
+import { LickMarketingReviews3Module } from 'lick-marketing-reviews3';
 
-import {LickMarketingTeam1Module} from 'lick-marketing-team1';
-import {LickMarketingTeam2Module} from 'lick-marketing-team2';
-import {LickMarketingTeam3Module} from 'lick-marketing-team3';
+import { LickMarketingTeam1Module } from 'lick-marketing-team1';
+import { LickMarketingTeam2Module } from 'lick-marketing-team2';
+import { LickMarketingTeam3Module } from 'lick-marketing-team3';
+
+import { LickMarketingTryIt1Module } from 'lick-marketing-try-it1';
+import { LickMarketingTryIt2Module } from 'lick-marketing-try-it2';
+import { LickMarketingTryIt3Module } from 'lick-marketing-try-it3';
+
+import { LickMarketingVideo1Module } from 'lick-marketing-video1';
+import { LickMarketingVideo2Module } from 'lick-marketing-video2';
 
 @NgModule({
   declarations: [HeaderWidgetsComponent, GeneralWidgetsComponent],
@@ -113,6 +120,13 @@ import {LickMarketingTeam3Module} from 'lick-marketing-team3';
     LickMarketingTeam1Module,
     LickMarketingTeam2Module,
     LickMarketingTeam3Module,
+
+    LickMarketingTryIt1Module,
+    LickMarketingTryIt2Module,
+    LickMarketingTryIt3Module,
+
+    LickMarketingVideo1Module,
+    LickMarketingVideo2Module
   ]
 })
 export class LickyMarketingModule { }
