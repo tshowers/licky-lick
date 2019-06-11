@@ -26,6 +26,9 @@ import { LickMarketingFeatures3Module} from 'lick-marketing-features3';
 import { LickMarketingFeatures4Module} from 'lick-marketing-features4';
 import { LickMarketingFeatures5Module} from 'lick-marketing-features5';
 
+import { LickMarketingFooter1Module} from 'lick-marketing-footer1';
+
+import { LickMarketingHowTo1Module} from 'lick-marketing-how-to1';
 
 @NgModule({
   declarations: [HeaderWidgetsComponent, GeneralWidgetsComponent],
@@ -53,6 +56,10 @@ import { LickMarketingFeatures5Module} from 'lick-marketing-features5';
     LickMarketingFeatures3Module,
     LickMarketingFeatures4Module,
     LickMarketingFeatures5Module,
+
+    LickMarketingFooter1Module,
+
+    LickMarketingHowTo1Module,
   ]
 })
 export class LickyMarketingModule { }
