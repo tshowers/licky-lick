@@ -1,0 +1,43 @@
+<section id="reviews---2" class="container-fluid section-block reviews reviews-2 color-block">
+  <div class="container">
+    <div class="row">
+
+      <h2>{{headingText}}</h2>
+      <div class="block-desc">
+        <p>{{descriptionText}}</p>
+      </div>
+
+      <!-- Review 1 -->
+      <div class="col-md-4 review" *ngFor="let item of reviews; let i = index">
+        <div class="no-border-box">
+
+          <div class="avatar">
+            <img src="{{item.icon}}" alt="{{item?.name}}">
+          </div>
+          <div>
+            <h3>{{item?.name}}</h3>
+            <p>{{item?.profession}}<span *ngIf="item.profession">, </span> {{item?.company.name}}</p>
+          </div>
+
+          <div class="review-text">
+            <p>
+              {{item?.description}}
+            </p>
+
+            <!-- Rating -->
+            <span class="stars">
+              <i class="fa fa-star" [ngClass]="{'no' : !item.stars[0]}" [attr.aria-hidden]="true"></i>
+              <i class="fa fa-star" [ngClass]="{'no' : !item.stars[1]}" [attr.aria-hidden]="true"></i>
+              <i class="fa fa-star" [ngClass]="{'no' : !item.stars[2]}" [attr.aria-hidden]="true"></i>
+              <i class="fa fa-star" [ngClass]="{'no' : !item.stars[3]}" [attr.aria-hidden]="true"></i>
+              <i class="fa fa-star" [ngClass]="{'no' : !item.stars[4]}" [attr.aria-hidden]="true"></i>
+            </span>
+          </div>
+
+        </div>
+      </div> <!-- .review -->
+
+
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+</section>

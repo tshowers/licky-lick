@@ -31,7 +31,7 @@ export class User {
   public address_id?: string;
   public addresses?: Address[];
   public phone_number_id?: string;
-  public phoneNumbers: PhoneNumber[];
+  public phoneNumbers?: PhoneNumber[];
   public fop_id?: string;
   public fop?: FOP[];
   public email_address_id?: string;

@@ -1,0 +1,49 @@
+  <div class="container-fluid header-content-1 header-content-white">
+    <div class="container header-container header-1">
+      <div class="row">
+
+        <div class="col-md-12 title-center-content wow slideInDown">
+          <h1>{{headingText}}</h1>
+
+          <div class="title-desc wow slideInUp">
+            <p>{{descriptionText}}</p>
+          </div>
+
+          <ul class="header-nav-buttons">
+            <li *ngIf="button1Link"><a routerLink="{{button1Link}}" class="button button-full" title="Sign Up">{{button1Text}}</a></li>
+            <li *ngIf="button2Link"><a routerLink="{{button2Link}}" class="button button-border" title="Read More">{{button2Text}}</a></li>
+          </ul>
+
+        </div> <!-- .title-center-content -->
+
+        <div class="col-md-12 title-center-image">
+          <div class="center-image">
+            <img src="{{imageSrc}}" alt="{{descriptionText}}">
+
+            <!-- Dots -->
+            <div class="dots">
+              <span class="figs header-fig1"></span>
+              <span class="figs header-fig2"></span>
+              <span class="figs header-fig3"></span>
+              <span class="figs header-fig4"></span>
+              <span class="figs header-fig5"></span>
+              <span class="figs header-fig6"></span>
+            </div>
+
+            <div class="feature-box feature-box-second left-feature" *ngIf="featureBox1">
+              <span class="badge badge-second" *ngIf="badgeFeature1">{{badgeFeature1}}</span>
+              <i class="{{featureIcon1}}"></i>
+              <p>{{featureBox1}}</p>
+            </div>
+
+            <div class="feature-box feature-box-second right-feature" *ngIf="featureBox2">
+              <i class="{{featureIcon2}}"></i>
+              <p>{{featureBox2}}</p>
+            </div>
+
+          </div>
+        </div> <!-- .title-center-image -->
+
+      </div> <!-- .row -->
+    </div> <!-- .container -->
+  </div> <!-- .container-fluid -->

@@ -440,6 +440,1231 @@
           }
         }
       }
+    },
+    "lick-marketing-contact-us1": {
+      "root": "projects/lick-marketing-contact-us1",
+      "sourceRoot": "projects/lick-marketing-contact-us1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-contact-us1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-contact-us1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-contact-us1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-contact-us1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-contact-us1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-contact-us1/tsconfig.lib.json",
+              "projects/lick-marketing-contact-us1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-faq1": {
+      "root": "projects/lick-marketing-faq1",
+      "sourceRoot": "projects/lick-marketing-faq1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-faq1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-faq1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-faq1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-faq1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-faq1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-faq1/tsconfig.lib.json",
+              "projects/lick-marketing-faq1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-faq2": {
+      "root": "projects/lick-marketing-faq2",
+      "sourceRoot": "projects/lick-marketing-faq2/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-faq2/tsconfig.lib.json",
+            "project": "projects/lick-marketing-faq2/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-faq2/src/test.ts",
+            "tsConfig": "projects/lick-marketing-faq2/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-faq2/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-faq2/tsconfig.lib.json",
+              "projects/lick-marketing-faq2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-faq3": {
+      "root": "projects/lick-marketing-faq3",
+      "sourceRoot": "projects/lick-marketing-faq3/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-faq3/tsconfig.lib.json",
+            "project": "projects/lick-marketing-faq3/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-faq3/src/test.ts",
+            "tsConfig": "projects/lick-marketing-faq3/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-faq3/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-faq3/tsconfig.lib.json",
+              "projects/lick-marketing-faq3/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-footer1": {
+      "root": "projects/lick-marketing-footer1",
+      "sourceRoot": "projects/lick-marketing-footer1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-footer1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-footer1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-footer1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-footer1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-footer1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-footer1/tsconfig.lib.json",
+              "projects/lick-marketing-footer1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-header1": {
+      "root": "projects/lick-marketing-header1",
+      "sourceRoot": "projects/lick-marketing-header1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-header1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-header1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-header1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-header1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-header1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-header1/tsconfig.lib.json",
+              "projects/lick-marketing-header1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-header2": {
+      "root": "projects/lick-marketing-header2",
+      "sourceRoot": "projects/lick-marketing-header2/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-header2/tsconfig.lib.json",
+            "project": "projects/lick-marketing-header2/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-header2/src/test.ts",
+            "tsConfig": "projects/lick-marketing-header2/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-header2/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-header2/tsconfig.lib.json",
+              "projects/lick-marketing-header2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-header3": {
+      "root": "projects/lick-marketing-header3",
+      "sourceRoot": "projects/lick-marketing-header3/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-header3/tsconfig.lib.json",
+            "project": "projects/lick-marketing-header3/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-header3/src/test.ts",
+            "tsConfig": "projects/lick-marketing-header3/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-header3/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-header3/tsconfig.lib.json",
+              "projects/lick-marketing-header3/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-header4": {
+      "root": "projects/lick-marketing-header4",
+      "sourceRoot": "projects/lick-marketing-header4/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-header4/tsconfig.lib.json",
+            "project": "projects/lick-marketing-header4/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-header4/src/test.ts",
+            "tsConfig": "projects/lick-marketing-header4/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-header4/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-header4/tsconfig.lib.json",
+              "projects/lick-marketing-header4/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-header5": {
+      "root": "projects/lick-marketing-header5",
+      "sourceRoot": "projects/lick-marketing-header5/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-header5/tsconfig.lib.json",
+            "project": "projects/lick-marketing-header5/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-header5/src/test.ts",
+            "tsConfig": "projects/lick-marketing-header5/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-header5/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-header5/tsconfig.lib.json",
+              "projects/lick-marketing-header5/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-how-to1": {
+      "root": "projects/lick-marketing-how-to1",
+      "sourceRoot": "projects/lick-marketing-how-to1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-how-to1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-how-to1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-how-to1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-how-to1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-how-to1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-how-to1/tsconfig.lib.json",
+              "projects/lick-marketing-how-to1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-integration1": {
+      "root": "projects/lick-marketing-integration1",
+      "sourceRoot": "projects/lick-marketing-integration1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-integration1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-integration1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-integration1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-integration1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-integration1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-integration1/tsconfig.lib.json",
+              "projects/lick-marketing-integration1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-integration2": {
+      "root": "projects/lick-marketing-integration2",
+      "sourceRoot": "projects/lick-marketing-integration2/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-integration2/tsconfig.lib.json",
+            "project": "projects/lick-marketing-integration2/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-integration2/src/test.ts",
+            "tsConfig": "projects/lick-marketing-integration2/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-integration2/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-integration2/tsconfig.lib.json",
+              "projects/lick-marketing-integration2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-latest-post1": {
+      "root": "projects/lick-marketing-latest-post1",
+      "sourceRoot": "projects/lick-marketing-latest-post1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-latest-post1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-latest-post1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-latest-post1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-latest-post1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-latest-post1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-latest-post1/tsconfig.lib.json",
+              "projects/lick-marketing-latest-post1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-latest-post2": {
+      "root": "projects/lick-marketing-latest-post2",
+      "sourceRoot": "projects/lick-marketing-latest-post2/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-latest-post2/tsconfig.lib.json",
+            "project": "projects/lick-marketing-latest-post2/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-latest-post2/src/test.ts",
+            "tsConfig": "projects/lick-marketing-latest-post2/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-latest-post2/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-latest-post2/tsconfig.lib.json",
+              "projects/lick-marketing-latest-post2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-newsletter1": {
+      "root": "projects/lick-marketing-newsletter1",
+      "sourceRoot": "projects/lick-marketing-newsletter1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-newsletter1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-newsletter1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-newsletter1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-newsletter1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-newsletter1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-newsletter1/tsconfig.lib.json",
+              "projects/lick-marketing-newsletter1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-parallax1": {
+      "root": "projects/lick-marketing-parallax1",
+      "sourceRoot": "projects/lick-marketing-parallax1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-parallax1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-parallax1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-parallax1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-parallax1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-parallax1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-parallax1/tsconfig.lib.json",
+              "projects/lick-marketing-parallax1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-prices1": {
+      "root": "projects/lick-marketing-prices1",
+      "sourceRoot": "projects/lick-marketing-prices1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-prices1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-prices1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-prices1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-prices1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-prices1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-prices1/tsconfig.lib.json",
+              "projects/lick-marketing-prices1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-prices2": {
+      "root": "projects/lick-marketing-prices2",
+      "sourceRoot": "projects/lick-marketing-prices2/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-prices2/tsconfig.lib.json",
+            "project": "projects/lick-marketing-prices2/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-prices2/src/test.ts",
+            "tsConfig": "projects/lick-marketing-prices2/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-prices2/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-prices2/tsconfig.lib.json",
+              "projects/lick-marketing-prices2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-features1": {
+      "root": "projects/lick-marketing-features1",
+      "sourceRoot": "projects/lick-marketing-features1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-features1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-features1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-features1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-features1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-features1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-features1/tsconfig.lib.json",
+              "projects/lick-marketing-features1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-features2": {
+      "root": "projects/lick-marketing-features2",
+      "sourceRoot": "projects/lick-marketing-features2/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-features2/tsconfig.lib.json",
+            "project": "projects/lick-marketing-features2/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-features2/src/test.ts",
+            "tsConfig": "projects/lick-marketing-features2/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-features2/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-features2/tsconfig.lib.json",
+              "projects/lick-marketing-features2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-features3": {
+      "root": "projects/lick-marketing-features3",
+      "sourceRoot": "projects/lick-marketing-features3/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-features3/tsconfig.lib.json",
+            "project": "projects/lick-marketing-features3/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-features3/src/test.ts",
+            "tsConfig": "projects/lick-marketing-features3/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-features3/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-features3/tsconfig.lib.json",
+              "projects/lick-marketing-features3/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-features4": {
+      "root": "projects/lick-marketing-features4",
+      "sourceRoot": "projects/lick-marketing-features4/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-features4/tsconfig.lib.json",
+            "project": "projects/lick-marketing-features4/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-features4/src/test.ts",
+            "tsConfig": "projects/lick-marketing-features4/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-features4/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-features4/tsconfig.lib.json",
+              "projects/lick-marketing-features4/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-features5": {
+      "root": "projects/lick-marketing-features5",
+      "sourceRoot": "projects/lick-marketing-features5/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-features5/tsconfig.lib.json",
+            "project": "projects/lick-marketing-features5/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-features5/src/test.ts",
+            "tsConfig": "projects/lick-marketing-features5/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-features5/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-features5/tsconfig.lib.json",
+              "projects/lick-marketing-features5/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-reviews1": {
+      "root": "projects/lick-marketing-reviews1",
+      "sourceRoot": "projects/lick-marketing-reviews1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-reviews1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-reviews1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-reviews1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-reviews1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-reviews1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-reviews1/tsconfig.lib.json",
+              "projects/lick-marketing-reviews1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-reviews2": {
+      "root": "projects/lick-marketing-reviews2",
+      "sourceRoot": "projects/lick-marketing-reviews2/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-reviews2/tsconfig.lib.json",
+            "project": "projects/lick-marketing-reviews2/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-reviews2/src/test.ts",
+            "tsConfig": "projects/lick-marketing-reviews2/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-reviews2/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-reviews2/tsconfig.lib.json",
+              "projects/lick-marketing-reviews2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-reviews3": {
+      "root": "projects/lick-marketing-reviews3",
+      "sourceRoot": "projects/lick-marketing-reviews3/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-reviews3/tsconfig.lib.json",
+            "project": "projects/lick-marketing-reviews3/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-reviews3/src/test.ts",
+            "tsConfig": "projects/lick-marketing-reviews3/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-reviews3/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-reviews3/tsconfig.lib.json",
+              "projects/lick-marketing-reviews3/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-team1": {
+      "root": "projects/lick-marketing-team1",
+      "sourceRoot": "projects/lick-marketing-team1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-team1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-team1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-team1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-team1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-team1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-team1/tsconfig.lib.json",
+              "projects/lick-marketing-team1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-team2": {
+      "root": "projects/lick-marketing-team2",
+      "sourceRoot": "projects/lick-marketing-team2/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-team2/tsconfig.lib.json",
+            "project": "projects/lick-marketing-team2/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-team2/src/test.ts",
+            "tsConfig": "projects/lick-marketing-team2/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-team2/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-team2/tsconfig.lib.json",
+              "projects/lick-marketing-team2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-team3": {
+      "root": "projects/lick-marketing-team3",
+      "sourceRoot": "projects/lick-marketing-team3/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-team3/tsconfig.lib.json",
+            "project": "projects/lick-marketing-team3/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-team3/src/test.ts",
+            "tsConfig": "projects/lick-marketing-team3/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-team3/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-team3/tsconfig.lib.json",
+              "projects/lick-marketing-team3/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-try-it1": {
+      "root": "projects/lick-marketing-try-it1",
+      "sourceRoot": "projects/lick-marketing-try-it1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-try-it1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-try-it1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-try-it1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-try-it1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-try-it1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-try-it1/tsconfig.lib.json",
+              "projects/lick-marketing-try-it1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-try-it2": {
+      "root": "projects/lick-marketing-try-it2",
+      "sourceRoot": "projects/lick-marketing-try-it2/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-try-it2/tsconfig.lib.json",
+            "project": "projects/lick-marketing-try-it2/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-try-it2/src/test.ts",
+            "tsConfig": "projects/lick-marketing-try-it2/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-try-it2/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-try-it2/tsconfig.lib.json",
+              "projects/lick-marketing-try-it2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-try-it3": {
+      "root": "projects/lick-marketing-try-it3",
+      "sourceRoot": "projects/lick-marketing-try-it3/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-try-it3/tsconfig.lib.json",
+            "project": "projects/lick-marketing-try-it3/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-try-it3/src/test.ts",
+            "tsConfig": "projects/lick-marketing-try-it3/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-try-it3/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-try-it3/tsconfig.lib.json",
+              "projects/lick-marketing-try-it3/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-video1": {
+      "root": "projects/lick-marketing-video1",
+      "sourceRoot": "projects/lick-marketing-video1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-video1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-video1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-video1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-video1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-video1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-video1/tsconfig.lib.json",
+              "projects/lick-marketing-video1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-video2": {
+      "root": "projects/lick-marketing-video2",
+      "sourceRoot": "projects/lick-marketing-video2/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-video2/tsconfig.lib.json",
+            "project": "projects/lick-marketing-video2/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-video2/src/test.ts",
+            "tsConfig": "projects/lick-marketing-video2/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-video2/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-video2/tsconfig.lib.json",
+              "projects/lick-marketing-video2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "lick-data"

@@ -1,0 +1,49 @@
+<section id="prices---1" class="container-fluid section-block prices price-1">
+  <div class="container">
+    <div class="row">
+
+      <h2>{{headingText}}</h2>
+      <div class="block-desc">
+        <p>{{descriptionText}}</p>
+      </div>
+
+      <!-- Price box 1 -->
+      <div class="col-md-4 price" *ngFor="let product of products; let i = index">
+        <div class="border-box">
+          <h3>{{product?.name}}</h3>
+          <p>{{product?.description}}</p>
+
+          <div class="row pricing-table">
+            <div class="col-lg-6 col-md-12 price-features">
+              <p>
+                {{product?.category}}
+              </p>
+            </div>
+            <div class="col-lg-6 col-md-12 price-features" *ngIf="product.manufacturer">
+              <p>
+                {{product?.manufacturer}}
+              </p>
+            </div>
+            <div class="col-lg-6 col-md-12 price-features" *ngIf="product.author">
+              <p>
+                {{product?.author}}
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-12 price-left-info">
+              <h4>{{product?.price | currency}} <br><span> per {{product?.orderQuantity}} {{product?.orderQuantityMeasure}}</span></h4>
+            </div>
+            <div class="col-lg-6 col-md-12 price-right-info">
+              <a href="{{product?.url}}" class="button button-full">{{actionText}}</a>
+            </div>
+          </div>
+
+        </div>
+      </div> <!-- .price -->
+
+
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+</section>

@@ -1,0 +1,23 @@
+<section id="newsletter---1" class="container-fluid section-block newsletter-form-section bg-primary-color">
+  <div class="container">
+    <div class="row">
+
+      <h2>{{headingText}}</h2>
+      <div class="block-desc">
+        <p>{{descriptionText}}</p>
+      </div>
+
+      <!-- Start Newsletter Form -->
+      <div class="col-md-12 newsletter-form-block">
+        <div class="col-md-6 center-form">
+          <form #dataForm="ngForm" id="newsletter-form" class="newsletter-form">
+            <input id="newsletter-email" class="newsletter-email newsletter-email" type="email" name="newsletter-email" placeholder="Enter your email">
+            <input id="newsletter-submit" class="button-form newsletter-submit" name="newsletter-submit" value="Submit" type="submit" (click)="onSubmit()" [disabled]="!dataForm.form.valid">
+          </form>
+        </div>
+      </div>
+      <!-- End Newsletter Form -->
+
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+</section>

@@ -1,0 +1,29 @@
+<section id="team---2" class="container-fluid section-block team-2">
+  <div class="container">
+    <div class="row">
+
+      <h2>{{headingText}}</h2>
+      <div class="block-desc">
+        <p>{{descriptionText}}</p>
+      </div>
+
+      <!-- Member 1 -->
+      <div class="col-md-4 col-sm-6 member-block" *ngFor="let member of users; let i = index">
+        <div class="border-box">
+
+          <div class="member-photo">
+            <img src="{{member?.url}}" alt="{{member?.name}}">
+
+          </div> <!-- .member-photo -->
+
+          <div class="member-content">
+            <h2>{{member?.name}}</h2>
+            <span>{{member?.contact.profession}}</span>
+          </div>
+
+        </div> <!-- .border-box -->
+      </div> <!-- .member-block -->
+
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+</section>

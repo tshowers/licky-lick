@@ -1,7 +1,7 @@
 import { Section } from './section.model';
 
 export class Contact {
-  public $key: string;
+  public $key?: string;
   public id?;
 
   public name: string;
@@ -15,7 +15,7 @@ export class Contact {
   public middleName?: string;
   public lastName: string;
 
-  public isCompany: boolean = false;
+  public isCompany?: boolean = false;
 
   public ssn?: string;
   public company?: Company = new Company();
@@ -52,8 +52,8 @@ export class Contact {
   public loginID?: string;
 
   public sections?: Array<Section> = [];
-  public lastUpdated;
-  public timeStamp;
+  public lastUpdated?;
+  public timeStamp?;
   public lastUpdatedBy?;
   public views?: number;
   public lastViewed?;
@@ -62,9 +62,9 @@ export class Contact {
   public deleted?: boolean = false;
   public keywords?;
 
-  public user_id;
-  public userName;
-  public userImage;
+  public user_id?;
+  public userName?;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -92,7 +92,7 @@ export class Company {
   public icon?;
   public badge?;
   public link?: string;
-  public shared: boolean = true;
+  public shared?: boolean = true;
 
 
   public numberOfEmployees?: string;
@@ -104,8 +104,8 @@ export class Company {
   public status?: string;
 
   public sections?: Array<Section> = [];
-  public lastUpdated;
-  public timeStamp;
+  public lastUpdated?;
+  public timeStamp?;
   public lastUpdatedBy?;
   public views?: number;
   public lastViewed?;
@@ -114,8 +114,8 @@ export class Company {
   public deleted?: boolean = false;
   public keywords?;
 
-  public user_id;
-  public userName;
+  public user_id?;
+  public userName?;
 
   public bookmarked?;
   public bookmarkedCount?;

@@ -1,0 +1,23 @@
+
+<section id="cta---3" class="container-fluid section-block cta-bg-image" [ngStyle]="{'position': 'relative', 'background-size': 'cover', 'color': '#fff', 'background': 'url(' + imageURL + ') center no-repeat'}">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+
+    <!-- <div class="cta-content-3"> -->
+        <div class="col-md-6 cta-block">
+          <h2>{{headingText}}</h2>
+        </div>
+
+        <div class="col-md-6 cta-button-block">
+          <div class="cta-button-img">
+            <a *ngIf="buttonLink" routerLink="{{buttonLink}}" class="button button-full">{{buttonText}}</a>
+          </div>
+        </div>
+
+
+    <!-- </div> -->
+
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+</section>

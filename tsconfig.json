@@ -66,6 +66,216 @@
       ],
       "lick-marketing-about-product7/*": [
         "dist/lick-marketing-about-product7/*"
+      ],
+      "lick-marketing-contact-us1": [
+        "dist/lick-marketing-contact-us1"
+      ],
+      "lick-marketing-contact-us1/*": [
+        "dist/lick-marketing-contact-us1/*"
+      ],
+      "lick-marketing-faq1": [
+        "dist/lick-marketing-faq1"
+      ],
+      "lick-marketing-faq1/*": [
+        "dist/lick-marketing-faq1/*"
+      ],
+      "lick-marketing-faq2": [
+        "dist/lick-marketing-faq2"
+      ],
+      "lick-marketing-faq2/*": [
+        "dist/lick-marketing-faq2/*"
+      ],
+      "lick-marketing-faq3": [
+        "dist/lick-marketing-faq3"
+      ],
+      "lick-marketing-faq3/*": [
+        "dist/lick-marketing-faq3/*"
+      ],
+      "lick-marketing-footer1": [
+        "dist/lick-marketing-footer1"
+      ],
+      "lick-marketing-footer1/*": [
+        "dist/lick-marketing-footer1/*"
+      ],
+      "lick-marketing-header1": [
+        "dist/lick-marketing-header1"
+      ],
+      "lick-marketing-header1/*": [
+        "dist/lick-marketing-header1/*"
+      ],
+      "lick-marketing-header2": [
+        "dist/lick-marketing-header2"
+      ],
+      "lick-marketing-header2/*": [
+        "dist/lick-marketing-header2/*"
+      ],
+      "lick-marketing-header3": [
+        "dist/lick-marketing-header3"
+      ],
+      "lick-marketing-header3/*": [
+        "dist/lick-marketing-header3/*"
+      ],
+      "lick-marketing-header4": [
+        "dist/lick-marketing-header4"
+      ],
+      "lick-marketing-header4/*": [
+        "dist/lick-marketing-header4/*"
+      ],
+      "lick-marketing-header5": [
+        "dist/lick-marketing-header5"
+      ],
+      "lick-marketing-header5/*": [
+        "dist/lick-marketing-header5/*"
+      ],
+      "lick-marketing-how-to1": [
+        "dist/lick-marketing-how-to1"
+      ],
+      "lick-marketing-how-to1/*": [
+        "dist/lick-marketing-how-to1/*"
+      ],
+      "lick-marketing-integration1": [
+        "dist/lick-marketing-integration1"
+      ],
+      "lick-marketing-integration1/*": [
+        "dist/lick-marketing-integration1/*"
+      ],
+      "lick-marketing-integration2": [
+        "dist/lick-marketing-integration2"
+      ],
+      "lick-marketing-integration2/*": [
+        "dist/lick-marketing-integration2/*"
+      ],
+      "lick-marketing-latest-post1": [
+        "dist/lick-marketing-latest-post1"
+      ],
+      "lick-marketing-latest-post1/*": [
+        "dist/lick-marketing-latest-post1/*"
+      ],
+      "lick-marketing-latest-post2": [
+        "dist/lick-marketing-latest-post2"
+      ],
+      "lick-marketing-latest-post2/*": [
+        "dist/lick-marketing-latest-post2/*"
+      ],
+      "lick-marketing-newsletter1": [
+        "dist/lick-marketing-newsletter1"
+      ],
+      "lick-marketing-newsletter1/*": [
+        "dist/lick-marketing-newsletter1/*"
+      ],
+      "lick-marketing-parallax1": [
+        "dist/lick-marketing-parallax1"
+      ],
+      "lick-marketing-parallax1/*": [
+        "dist/lick-marketing-parallax1/*"
+      ],
+      "lick-marketing-prices1": [
+        "dist/lick-marketing-prices1"
+      ],
+      "lick-marketing-prices1/*": [
+        "dist/lick-marketing-prices1/*"
+      ],
+      "lick-marketing-prices2": [
+        "dist/lick-marketing-prices2"
+      ],
+      "lick-marketing-prices2/*": [
+        "dist/lick-marketing-prices2/*"
+      ],
+      "lick-marketing-features1": [
+        "dist/lick-marketing-features1"
+      ],
+      "lick-marketing-features1/*": [
+        "dist/lick-marketing-features1/*"
+      ],
+      "lick-marketing-features2": [
+        "dist/lick-marketing-features2"
+      ],
+      "lick-marketing-features2/*": [
+        "dist/lick-marketing-features2/*"
+      ],
+      "lick-marketing-features3": [
+        "dist/lick-marketing-features3"
+      ],
+      "lick-marketing-features3/*": [
+        "dist/lick-marketing-features3/*"
+      ],
+      "lick-marketing-features4": [
+        "dist/lick-marketing-features4"
+      ],
+      "lick-marketing-features4/*": [
+        "dist/lick-marketing-features4/*"
+      ],
+      "lick-marketing-features5": [
+        "dist/lick-marketing-features5"
+      ],
+      "lick-marketing-features5/*": [
+        "dist/lick-marketing-features5/*"
+      ],
+      "lick-marketing-reviews1": [
+        "dist/lick-marketing-reviews1"
+      ],
+      "lick-marketing-reviews1/*": [
+        "dist/lick-marketing-reviews1/*"
+      ],
+      "lick-marketing-reviews2": [
+        "dist/lick-marketing-reviews2"
+      ],
+      "lick-marketing-reviews2/*": [
+        "dist/lick-marketing-reviews2/*"
+      ],
+      "lick-marketing-reviews3": [
+        "dist/lick-marketing-reviews3"
+      ],
+      "lick-marketing-reviews3/*": [
+        "dist/lick-marketing-reviews3/*"
+      ],
+      "lick-marketing-team1": [
+        "dist/lick-marketing-team1"
+      ],
+      "lick-marketing-team1/*": [
+        "dist/lick-marketing-team1/*"
+      ],
+      "lick-marketing-team2": [
+        "dist/lick-marketing-team2"
+      ],
+      "lick-marketing-team2/*": [
+        "dist/lick-marketing-team2/*"
+      ],
+      "lick-marketing-team3": [
+        "dist/lick-marketing-team3"
+      ],
+      "lick-marketing-team3/*": [
+        "dist/lick-marketing-team3/*"
+      ],
+      "lick-marketing-try-it1": [
+        "dist/lick-marketing-try-it1"
+      ],
+      "lick-marketing-try-it1/*": [
+        "dist/lick-marketing-try-it1/*"
+      ],
+      "lick-marketing-try-it2": [
+        "dist/lick-marketing-try-it2"
+      ],
+      "lick-marketing-try-it2/*": [
+        "dist/lick-marketing-try-it2/*"
+      ],
+      "lick-marketing-try-it3": [
+        "dist/lick-marketing-try-it3"
+      ],
+      "lick-marketing-try-it3/*": [
+        "dist/lick-marketing-try-it3/*"
+      ],
+      "lick-marketing-video1": [
+        "dist/lick-marketing-video1"
+      ],
+      "lick-marketing-video1/*": [
+        "dist/lick-marketing-video1/*"
+      ],
+      "lick-marketing-video2": [
+        "dist/lick-marketing-video2"
+      ],
+      "lick-marketing-video2/*": [
+        "dist/lick-marketing-video2/*"
       ]
     }
   }

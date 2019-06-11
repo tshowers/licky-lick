@@ -1,0 +1,42 @@
+<section id="reviews---3" class="container-fluid section-block reviews reviews-3 color-block">
+  <div class="container">
+    <div class="row">
+
+      <h2>{{headingText}}</h2>
+      <div class="block-desc">
+        <p>{{descriptionText}}</p>
+      </div>
+
+      <!-- Review 1 -->
+      <div class="col-md-6 review" *ngFor="let item of reviews; let i = index">
+        <div class="border-box">
+
+          <div class="avatar">
+            <img src="{{item.icon}}" alt="{{item.name}}">
+          </div>
+
+          <!-- Rating -->
+          <span class="stars">
+            <i class="fa fa-star" [ngClass]="{'no' : !item.stars[0]}" [attr.aria-hidden]="true"></i>
+            <i class="fa fa-star" [ngClass]="{'no' : !item.stars[1]}" [attr.aria-hidden]="true"></i>
+            <i class="fa fa-star" [ngClass]="{'no' : !item.stars[2]}" [attr.aria-hidden]="true"></i>
+            <i class="fa fa-star" [ngClass]="{'no' : !item.stars[3]}" [attr.aria-hidden]="true"></i>
+            <i class="fa fa-star" [ngClass]="{'no' : !item.stars[4]}" [attr.aria-hidden]="true"></i>
+          </span>
+
+          <div class="review-text">
+            <p>
+              {{item?.description}}
+            </p>
+          </div> <!-- .review-text -->
+
+          <h3>{{item?.name}}</h3>
+          <p>{{item?.profession}}<span *ngIf="item.profession">, </span> {{item?.company.name}}</p>
+
+        </div>
+      </div> <!-- .review -->
+
+
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+</section>
