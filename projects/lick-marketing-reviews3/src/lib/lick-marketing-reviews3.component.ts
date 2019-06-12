@@ -8,7 +8,7 @@ import { Review } from 'lick-data';
 })
 export class LickMarketingReviews3Component implements OnInit {
 
-  @Input() headingText = 'lib-sixteen-customer-reviews3';
+  @Input() headingText = 'licky-lick-marketing-reviews3';
   @Input() descriptionText = 'Earum rerum necessitatibus saepe eveniet, ut labore. Dicta sunt, explicabo laborum et harum quidem rerum hic tenetur. Itaque earum rerum hic tenetur a sapiente delectus, ut et.';
   @Input() reviews: Review[] = [
     {

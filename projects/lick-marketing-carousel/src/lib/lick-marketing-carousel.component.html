@@ -14,7 +14,7 @@
                     'ta-right-top' : (c.textPosition == 'Right Top'),
                     'ta-right-middle' : (c.textPosition == 'Right'),
                     'ta-right-bottom' : (c.textPosition == 'Right Bottom') }">
-      <h1 [ngStyle]="{'color': c.headingTextColor ? c.headingTextColor : defaultColor, 'font-family': c.textFont ? c.textFont : defaultFont}">{{c.title}} </h1>
+      <h1 [ngStyle]="{'color': c.headingTextColor ? c.headingTextColor : defaultColor, 'font-family': c.textFont ? c.textFont : defaultFont}">{{c?.name}} </h1>
       <div *ngIf="c.description"
            [ngStyle]="{'color': c.textColor ? c.textColor : defaultColor, 'font-family': c.textFont ? c.textFont : defaultFont, 'background-color' : c.textBackgroundColor, 'max-width': defaultMaxWidth, 'font-weight': defaultFontWeight, 'padding': defaultPadding, 'border-radius': defaultBorderRadius}"
            innerHTML={{c?.description}}>
@@ -42,7 +42,7 @@
                     'ta-right-top' : (c.textPosition == 'Right Top'),
                     'ta-right-middle' : (c.textPosition == 'Right'),
                     'ta-right-bottom' : (c.textPosition == 'Right Bottom') }">
-      <h1 [ngStyle]="{'color': c.headingTextColor ? c.headingTextColor : defaultColor, 'font-family': c.textFont ? c.textFont : defaultFont}">{{c.title}} </h1>
+      <h1 [ngStyle]="{'color': c.headingTextColor ? c.headingTextColor : defaultColor, 'font-family': c.textFont ? c.textFont : defaultFont}">{{c?.name}} </h1>
       <div *ngIf="c.description"
            [ngStyle]="{'color': c.textColor ? c.textColor : defaultColor, 'font-family': c.textFont ? c.textFont : defaultFont, 'background-color' : c.textBackgroundColor, 'max-width': defaultMaxWidth, 'font-weight': defaultFontWeight, 'padding': defaultPadding, 'border-radius': defaultBorderRadius}"
            innerHTML={{c?.description}}>

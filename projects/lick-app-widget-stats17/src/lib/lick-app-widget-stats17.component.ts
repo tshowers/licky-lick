@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Event } from 'lick-data';
 
 @Component({
   selector: 'licky-lick-app-widget-stats17',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LickAppWidgetStats17Component implements OnInit {
 
+  @Input() event: Event;
+  @Input() headingText = "licky-lick-app-widget-stats17";
+
   constructor() { }
 
   ngOnInit() {
+    console.log(this.event);
+    console.log(this.event.attendees);
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'licky-lick-marketing-simple-header',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class LickMarketingSimpleHeaderComponent implements OnInit {
+
+  @Input() headingText = 'licky-lick-marketing-simple-header';
+  @Input() backgroundImage = 'http://via.placeholder.com/1920x1275';
 
   constructor() { }
 

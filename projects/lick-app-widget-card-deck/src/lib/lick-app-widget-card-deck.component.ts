@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'licky-lick-app-widget-card-deck',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class LickAppWidgetCardDeckComponent implements OnInit {
+
+  @Input() data : any = [];
 
   constructor() { }
 

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Task } from 'lick-data';
+
 
 @Component({
   selector: 'licky-lick-app-widget-list-task',
@@ -6,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class LickAppWidgetListTaskComponent implements OnInit {
+
+  @Input() tasks : Task[] = [];
+  @Input() headingText = "Task List";
+  @Input() taskCount;
 
   constructor() { }
 

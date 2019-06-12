@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'licky-lick-app-widget-stats4',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class LickAppWidgetStats4Component implements OnInit {
+
+  @Input() headingText : string = "licky-lick-app-widget-stats4";
+  @Input() subHeadingText = "In Design";
+  @Input() iconClass = "fa fa-folder-open-o";
 
   constructor() { }
 

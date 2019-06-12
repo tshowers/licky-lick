@@ -6,4 +6,9 @@ import { Injectable } from '@angular/core';
 export class LickAppWidgetMenuService {
 
   constructor() { }
+
+  public signOut() {
+    console.log("Sign Out clicked")
+  }
+
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'licky-lick-app-widget-stats2',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LickAppWidgetStats2Component implements OnInit {
 
+  @Input() headingText = "licky-lick-app-widget-stats2";
+  @Input() subHeadingText = "Sub Header";
+  @Input() showMoreLink;
+
+  @Input() iconClass = "fa fa-trophy";
+
+  @Input() data: any[] = [];
+  @Input() router: Router;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  showMore(): void {
+    this.router.navigate([this.showMoreLink]);
   }
 
 }

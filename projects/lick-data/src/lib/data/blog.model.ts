@@ -32,7 +32,7 @@ export class Blog {
 
   public user_id?;
   public userName?;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -88,7 +88,7 @@ export class Carousel  {
 
   public user_id?;
   public userName?;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -132,7 +132,7 @@ export class Featurette  {
 
   public user_id?;
   public userName?;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -176,7 +176,7 @@ export class Parallax {
 
   public user_id?;
   public userName?;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -221,7 +221,7 @@ export class ServiceBox {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -263,9 +263,9 @@ export class Quote  {
   public deleted?: boolean = false;
   public keywords?;
 
-  public user_id;
-  public userName;
-  public userImage;
+  public user_id?;
+  public userName?;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
