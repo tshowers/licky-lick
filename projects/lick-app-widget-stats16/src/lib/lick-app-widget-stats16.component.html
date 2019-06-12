@@ -1,0 +1,14 @@
+<div class="card card-accent-info projects-charts-widget">
+    <div class="card-body">
+        <div class="text-info h3">{{headingText}}
+            <br/>{{subHeadingText}}</div>
+        <div class="text-dark h2">
+            <span class="text-secondary" *ngIf="isCurrency">{{amount | currency}}</span>
+            <span class="text-secondary" *ngIf="!isCurrency">{{amount.toLocaleString()}}</span>
+        <div [ngClass]="{'text-success' : (chartData[chartData.length -1] > chartData[chartData.length -2]), 'text-danger' : (chartData[chartData.length -1] < chartData[chartData.length -2]) }">
+            <i class="fa" [ngClass]="{'fa-arrow-up' : (chartData[chartData.length -1] > chartData[chartData.length -2]), 'fa-arrow-down' : (chartData[chartData.length -1] < chartData[chartData.length -2]) }"></i> {{percentage}}%</div>
+        <canvas class="chart-canvas" id="chart-stat-widget16"></canvas>
+    </div>
+    <!-- end card-body -->
+</div>
+<!-- end card -->

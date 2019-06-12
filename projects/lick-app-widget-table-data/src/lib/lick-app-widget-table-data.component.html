@@ -1,0 +1,37 @@
+<div class="col-md-12">
+    <div class="card card-accent-theme">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Data Owner</th>
+                            <th>Last Updated</th>
+                            <th class="text-nowrap">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of data; let i = index">
+                            <td>{{item?.name}}</td>
+                            <td>
+                                {{item?.creatorName}}
+                            </td>
+                            <td>{{item?.lastUpdated | date : 'fullDate'}}</td>
+                            <td class="text-nowrap">
+                                <a (click)="onEdit(item?.id)" data-toggle="tooltip" data-original-title="Edit">
+                                    <i class="fa fa-pencil text-inverse m-r-10"></i>
+                                </a>
+                                <a (click)="onDelete(item)" data-toggle="tooltip" data-original-title="Close">
+                                    <i class="fa fa-close text-danger"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- end card-body -->
+    </div>
+    <!-- end card -->
+</div>

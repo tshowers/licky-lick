@@ -1,0 +1,13 @@
+<div class="card card-accent-theme">
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of data; let i = index">
+                {{item?.name}}
+                <span class="badge badge-primary badge-pill">{{item?.badge}}</span>
+            </li>
+        </ul>
+
+    </div>
+    <!-- end card body -->
+</div>
+<!-- end card -->

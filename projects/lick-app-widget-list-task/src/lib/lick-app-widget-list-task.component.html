@@ -1,0 +1,26 @@
+<div class="card card-accent-theme ">
+    <div class="todo-widget">
+        <h1> {{headingText}}
+            <i class="fa fa-pencil-square-o"></i>
+        </h1>
+        <input type="text" placeholder="Add a New Task" name="todoInput" id="input">
+        <ul id="scrollList">
+            <li [ngClass]="{'completed' : (task?.status == 'Completed')}" *ngFor="let task of tasks">
+                <span>
+                    <i class="fa fa-trash"></i>
+                </span>
+                <i *ngIf="task?.type" [ngClass]="task.type"></i> {{task?.name}}
+                <div *ngIf="((task?.status == 'Completed') || (task?.status == 'Past Due') || (task?.status == 'In Progress'))" class="badge badge-boxed" [ngClass]="{'badge-success' : (task?.status == 'Completed'), 'badge-danger' : (task?.status == 'Past Due'), 'badge-primary' : (task?.status == 'In Progress')}">{{task?.status}}</div>
+            </li>
+        </ul>
+    </div>
+    <!-- end card-body -->
+
+    <div class="card-footer text-center" *ngIf="taskCount">
+        <a href="" class="text-theme">
+            <strong> All Task ({{taskCount}}) </strong>
+        </a>
+
+    </div>
+</div>
+<!-- end card -->

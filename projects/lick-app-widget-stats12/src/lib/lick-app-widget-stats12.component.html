@@ -1,0 +1,97 @@
+<div class="card card-accent-theme">
+  <div class=" products-widget">
+    <div class="header">
+      <div class="heading">{{headingText}}</div>
+      <div class="pull-right header-tool">
+        <ul>
+          <li>
+            <a [ngClass]="{'active' : (currentDataDisplay === '')}"
+               (click)="showCurrentData()">{{currentButtonText}}</a>
+          </li>
+          <li>
+            <a [ngClass]="{'active' : (pastDataDisplay === '')}"
+               (click)="showPastData()">{{pastButtonText}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- end header -->
+    <div class="table-responsive"
+         [ngStyle]="{'display' : currentDataDisplay}">
+      <table class="table table-hover"
+             id="sixteenStatWidget12-1">
+        <tr *ngFor="let item of data1; let i = index">
+          <td class="doc-img">
+            <img src="{{item?.url}}"
+                 alt="{{item?.name}}" />
+          </td>
+          <td class="document">
+            <a routerLink="{{item?.link}}">
+              <div class="heading">{{item?.name}}</div>
+              <p class="description">{{item?.description}} </p>
+            </a>
+          </td>
+          <td class="date">{{item?.lastUpdated | date : 'short'}}</td>
+          <td class="status">
+            <span class="badge badge-boxed"
+                  [ngClass]="{'badge-danger' : (item?.status === 'Canceled'), 'badge-success' : (item?.status === 'Current'), 'badge-warning' : (item?.status === 'In-Active'), 'badge-info' : (item?.status === 'Open')}">{{item?.status}}</span>
+          </td>
+          <td class="user">
+            <div class="heading">{{item?.userName}}</div>
+            <br />
+            <small>{{item?.timeStamp | date : 'short'}} </small>
+          </td>
+          <td class="action">
+            <button class="btn btn-theme btn-sm"
+                    (click)="showMoreDetails(item)">
+              <i class="fa fa-ellipsis-h"
+                 aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+        <!-- end tr -->
+      </table>
+      <!-- end table -->
+    </div>
+    <div class="table-responsive"
+         [ngStyle]="{'display' : pastDataDisplay}">
+      <table class="table table-hover"
+             id="sixteenStatWidget12-2">
+        <tr *ngFor="let item of data2; let x = index">
+          <td class="doc-img">
+            <img src="{{item?.url}}"
+                 alt="{{item?.name}}" />
+          </td>
+          <td class="document">
+            <a routerLink="{{item?.link}}">
+              <div class="heading">{{item?.name}}</div>
+              <p class="description">{{item?.description}} </p>
+            </a>
+          </td>
+          <td class="date">{{item?.lastUpdated | date : 'full'}}</td>
+          <td class="status">
+            <span class="badge badge-boxed"
+                  [ngClass]="{'badge-danger' : (item?.status === 'Canceled'), 'badge-success' : (item?.status === 'Current'), 'badge-warning' : (item?.status === 'In-Active'), 'badge-info' : (item?.status === 'Open')}">{{item?.status}}</span>
+          </td>
+          <td class="user">
+            <div class="heading">{{item?.userName}}</div>
+            <br />
+            <small>{{item?.timeStamp | date : 'full'}} </small>
+          </td>
+          <td class="action">
+            <button class="btn btn-theme btn-sm"
+                    (click)="showMoreDetails(item)">
+              <i class="fa fa-ellipsis-h"
+                 aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+        <!-- end tr -->
+      </table>
+      <!-- end table -->
+    </div>
+    <!-- end table-responsive -->
+  </div>
+  <!-- end product-widget -->
+</div>
+<!-- end card -->

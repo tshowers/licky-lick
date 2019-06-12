@@ -1,0 +1,26 @@
+<div class="card card-accent-primary stats-widget-1">
+  <div class="widget-body clearfix">
+    <div class="pull-left">
+      <h3 class="widget-title text-primary">
+        <span class="numscroller"
+              data-min='1'
+              data-max='count'
+              data-delay='5'
+              data-increment='10'>{{count}}</span></h3>
+      <small class="text-color">{{label}}</small>
+    </div>
+    <span class="pull-right big-icon watermark">
+      <i class="text-primary"
+         [ngClass]="iconClass"></i>
+    </span>
+  </div>
+  <footer class="widget-footer bg-primary"
+          *ngIf="showMoreLink">
+    <small class="pull-right">
+      <a routerLink="{{showMoreLink}}">Show More</a>
+    </small>
+    <i class="fa fa-bar-chart"
+       aria-hidden="true"></i>
+  </footer>
+</div>
+<!-- end card -->

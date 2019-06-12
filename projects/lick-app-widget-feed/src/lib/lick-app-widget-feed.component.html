@@ -1,0 +1,43 @@
+<div class="card card-accent-theme feed-widget">
+    <div class="card-body">
+        <div class="clearfix">
+            <h5 class="text-theme float-left">{{headingText}}</h5>
+            <div class="h2">
+                <i class="float-right text-theme" [ngClass]="iconClass" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" placeholder="Enter text here ..." rows="3" maxlength="50"></textarea>
+        </div>
+        <a href="#" class="btn btn-theme float-right">{{buttonText}}</a>
+        <div class="clearfix"></div>
+        <hr />
+        <ul id="feedList">
+                <li class="clearfix" *ngFor="let message of messages" >
+                        <a routerLink="#" class="dropdown-item">
+                            <div class="message-box ">
+                                <div class="u-img float-left">
+                                    <img *ngIf="message?.photoURL" src="{{message?.photoURL}}" alt="{{message?.name}}" />
+                                    <img *ngIf="!message?.photoURL" src="{{defaultImage}}" alt="{{message?.name}}" />
+                                    <span *ngIf="message?.userStatus" [ngClass]="message?.userStatus"></span>
+                                </div>
+                                <div class="u-text float-left">
+                                    <div class="u-name">
+                                        <strong *ngIf="message.handle">{{message?.handle}}</strong>
+                                        <strong *ngIf="!message.handle">{{message?.name}}</strong>
+                                    </div>
+                                    <p class="text-muted">{{message?.text}} </p>
+
+                                </div>
+                            </div>
+                            <small class="float-right text-secondary">{{message?.timeStamp | date : 'medium'}}</small>
+                        </a>
+                    </li>
+
+        </ul>
+
+        <span class="text-info" *ngIf="activeUsers">{{activeUsers}} users active</span>
+    </div>
+    <!-- end card-body -->
+</div>
+<!-- end card -->

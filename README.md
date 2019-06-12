@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
 
+Examples of the libraries can be viewed through the following links.
+
+* [General Libraries](https://lick-test.firebaseapp.com/)
+* [Header Libraries](https://lick-test.firebaseapp.com/header-widgets)
+
 ## Vision
 
 * Eliminate App Fatigue

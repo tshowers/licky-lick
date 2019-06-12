@@ -1,0 +1,39 @@
+<div class="card service-widget">
+  <div class="card-header text-theme">
+    <div class="prefix header">
+      <div class="float-left header-icon">
+        <i [ngClass]="iconClass"
+           aria-hidden="true"></i>
+      </div>
+      <div class="float-right">
+        <div class="header-text  text-theme">
+          <h4 class=" text-theme">{{headingText}}</h4>
+          <h6 class=" text-theme">{{subHeadingText}}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end header -->
+  <div class="card-body">
+    <div class="row"
+         *ngFor="let item of data; let i = index; let even = even">
+      <ng-container *ngIf="even">
+        <div class="col-md-6 service-widget-items bg-theme text-center">
+          <i [ngClass]="item?.iconClass"
+             aria-hidden="true"></i>
+          <br><br>
+          <div class="service-text"><span [CountTo]="item?.count"></span></div>
+          <div class="service-small-text">{{item?.label}}</div>
+        </div>
+        <div class="col-md-6 service-widget-items bg-theme text-center">
+          <i [ngClass]="data[i+1]?.iconClass"
+             aria-hidden="true"></i>
+          <br><br>
+          <div class="service-text"><span [CountTo]="data[i+1]?.count"></span></div>
+          <div class="service-small-text">{{data[i+1]?.label}}</div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <!-- end card srvice-widget -->
+  <!-- end col -->

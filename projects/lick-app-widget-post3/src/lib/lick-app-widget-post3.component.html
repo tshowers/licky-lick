@@ -1,0 +1,38 @@
+<!-- Worldwide News -->
+<section class="section">
+  <div class="title-wrap title-wrap--line">
+    <h3 class="section-title">{{headingText}}</h3>
+    <a *ngIf="(viewAllLink && isExternal)" href="{{viewAllLink}}" class="all-posts-url">{{viewAllText}}</a>
+    <a *ngIf="(viewAllLink && !isExternal)" routerLink="{{viewAllLink}}" class="all-posts-url">{{viewAllText}}</a>
+  </div>
+
+  <article class="entry card post-list" *ngFor="let item of data; let i = index">
+    <div class="entry__img-holder post-list__img-holder card__img-holder" [ngStyle]="{'background-image': 'url(' + item?.url + ')'}">
+      <a *ngIf="item.isExternal" href="{{item?.link}}" class="thumb-url"></a>
+      <a *ngIf="!item.isExternal" routerLink="{{item?.link}}" class="thumb-url"></a>
+      <img src="{{item?.url}}" alt="{{item?.name}}" class="entry__img d-none">
+      <a href="{{item?.keyword.link}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
+    </div>
+
+    <div class="entry__body post-list__body card__body">
+      <div class="entry__header">
+        <h2 class="entry__title">
+          <a href="{{item?.link}}">{{item?.name}}</a>
+        </h2>
+        <ul class="entry__meta">
+          <li class="entry__meta-author">
+            <span>by </span>
+            {{item?.author}}
+          </li>
+          <li class="entry__meta-date">
+            {{item?.publishedAt | date : 'medium'}}
+          </li>
+        </ul>
+      </div>
+      <div class="entry__excerpt" innerHTML="{{item?.description}}">
+
+      </div>
+    </div>
+  </article>
+
+</section> <!-- end worldwide news -->

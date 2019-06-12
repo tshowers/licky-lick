@@ -1,0 +1,88 @@
+<header class="app-header navbar">
+  <div class="hamburger hamburger--arrowalt-r navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto"
+       (click)="toggleSidebarMinimized()">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+  </div> <a class="navbar-brand ta-darkcolor"
+     routerLink="/app/features"
+     title="Click here to always return to the list of modules available."><img
+         src="/assets/touch-icon-ipad.png"
+         width="28"
+         height="28"
+         class="d-inline-block"> AHEAD<small class="ta-small"> {{version}}</small></a>
+  <div class="hamburger hamburger--arrowalt-r navbar-toggler sidebar-toggler d-md-down-none mr-auto"
+       (click)="toggleSidebar()">
+    <div class="hamburger-box"
+         title="Click here to hide or reveal the sidebar navigation.">
+      <div class="hamburger-inner"></div>
+    </div>
+  </div>
+  <ul class="nav navbar-nav ">
+    <!-- <app-alert-notification [authService]="authService" [db]="db"></app-alert-notification>
+    <app-message-notification [authService]="authService"></app-message-notification>
+    <app-task-notication [authService]="authService" [db]="db"></app-task-notication> -->
+    <li class="nav-item dropdown"
+        title="Click here to get access to your bookmarks, favorites, settings and profile information. You can also logout from here.">
+      <a class="btn btn-round btn-theme btn-sm"
+         data-toggle="dropdown"
+         href="#"
+         role="button"
+         aria-haspopup="true"
+         aria-expanded="false">
+        <span class="d-none d-md-block">{{displayName}}
+          <i class="fa fa-arrow-down"></i>
+        </span>
+        <span class="d-md-none">
+          {{displayName}}
+        </span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right user-menu animated flipInY ">
+        <div class="wrap">
+          <div class="dw-user-box">
+            <div class="u-img"
+                 *ngIf="photoURL"> <img src="{{photoURL}}"
+                   alt="{{displayName}}" /> </div>
+            <div class="u-text">
+              <h5 class="text-capitalize">{{displayName}}</h5>
+              <!-- <p class="text-muted" *ngIf="COMPANY_NAME">{{COMPANY_NAME}}</p> -->
+              <p class="text-muted"
+                 *ngIf="role">Role: {{role}}</p>
+              <p class="text-muted">{{emailAddress}} <br> <small>Use this as
+                  your referral email address</small> </p>
+              <a (click)="onViewProfile()"
+                 style="cursor:pointer"
+                 class="btn btn-round btn-theme btn-sm"><span class="ta-whitecolor">View
+                  Profile</span> </a>
+            </div>
+          </div>
+          <a class="dropdown-item"
+             routerLink="/app/start">
+            <i class="fa fa-fast-backward"></i> Start</a> <a class="dropdown-item"
+             routerLink="/app/settings/bookmarks">
+            <i class="fa fa-bookmark"></i> Bookmarks</a> <a class="dropdown-item"
+             routerLink="/app/settings/favorites">
+            <i class="fa fa-heart"></i> Favorites</a> <a class="dropdown-item"
+             routerLink="/app/settings/settings">
+            <i class="fa fa-wrench"></i> Settings</a>
+          <div class="divider"></div> <a class="dropdown-item"
+             style="cursor:pointer"
+             (click)="logout()">
+            <i class="fa fa-sign-out"></i> Logout</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="hamburger hamburger--arrowalt-r navbar-toggler aside-menu-toggler"
+       (click)="toggleRightSidebar()">
+    <div class="ta-hamburger-box"
+         title="Click here to add information to 16AHEAD. Clicking here will show you a list of items that can be added. The list is dynamic and changes depending on what information you are viewing. For example if you're looking at a project the list will display, deliverables, requirements, etc. that can be added to the project.">
+      <i class="fa fa-plus-circle"
+         aria-hidden="true"
+         *ngIf="!rightSidebar"></i>
+      <i class="fa fa-minus-circle"
+         aria-hidden="true"
+         *ngIf="rightSidebar"></i>
+    </div>
+  </div>
+</header>

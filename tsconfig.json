@@ -276,6 +276,252 @@
       ],
       "lick-marketing-video2/*": [
         "dist/lick-marketing-video2/*"
+      ],
+      "lick-app-widget-card-deck": [
+        "dist/lick-app-widget-card-deck"
+      ],
+      "lick-app-widget-card-deck/*": [
+        "dist/lick-app-widget-card-deck/*"
+      ],
+      "lick-app-widget-card-group": [
+        "dist/lick-app-widget-card-group"
+      ],
+      "lick-app-widget-card-group/*": [
+        "dist/lick-app-widget-card-group/*"
+      ],
+      "lick-app-widget-chat": [
+        "dist/lick-app-widget-chat"
+      ],
+      "lick-app-widget-chat/*": [
+        "dist/lick-app-widget-chat/*"
+      ],
+      "lick-app-widget-feed": [
+        "dist/lick-app-widget-feed"
+      ],
+      "lick-app-widget-feed/*": [
+        "dist/lick-app-widget-feed/*"
+      ],
+      "lick-app-widget-footer": [
+        "dist/lick-app-widget-footer"
+      ],
+      "lick-app-widget-footer/*": [
+        "dist/lick-app-widget-footer/*"
+      ],
+      "lick-app-widget-list-content": [
+        "dist/lick-app-widget-list-content"
+      ],
+      "lick-app-widget-list-content/*": [
+        "dist/lick-app-widget-list-content/*"
+      ],
+      "lick-app-widget-list-order": [
+        "dist/lick-app-widget-list-order"
+      ],
+      "lick-app-widget-list-order/*": [
+        "dist/lick-app-widget-list-order/*"
+      ],
+      "lick-app-widget-list-task": [
+        "dist/lick-app-widget-list-task"
+      ],
+      "lick-app-widget-list-task/*": [
+        "dist/lick-app-widget-list-task/*"
+      ],
+      "lick-app-widget-list-badges": [
+        "dist/lick-app-widget-list-badges"
+      ],
+      "lick-app-widget-list-badges/*": [
+        "dist/lick-app-widget-list-badges/*"
+      ],
+      "lick-app-widget-list-icons": [
+        "dist/lick-app-widget-list-icons"
+      ],
+      "lick-app-widget-list-icons/*": [
+        "dist/lick-app-widget-list-icons/*"
+      ],
+      "lick-app-widget-list-links": [
+        "dist/lick-app-widget-list-links"
+      ],
+      "lick-app-widget-list-links/*": [
+        "dist/lick-app-widget-list-links/*"
+      ],
+      "lick-app-widget-messages": [
+        "dist/lick-app-widget-messages"
+      ],
+      "lick-app-widget-messages/*": [
+        "dist/lick-app-widget-messages/*"
+      ],
+      "lick-app-widget-post1": [
+        "dist/lick-app-widget-post1"
+      ],
+      "lick-app-widget-post1/*": [
+        "dist/lick-app-widget-post1/*"
+      ],
+      "lick-app-widget-post2": [
+        "dist/lick-app-widget-post2"
+      ],
+      "lick-app-widget-post2/*": [
+        "dist/lick-app-widget-post2/*"
+      ],
+      "lick-app-widget-post3": [
+        "dist/lick-app-widget-post3"
+      ],
+      "lick-app-widget-post3/*": [
+        "dist/lick-app-widget-post3/*"
+      ],
+      "lick-app-widget-post4": [
+        "dist/lick-app-widget-post4"
+      ],
+      "lick-app-widget-post4/*": [
+        "dist/lick-app-widget-post4/*"
+      ],
+      "lick-app-widget-stats1": [
+        "dist/lick-app-widget-stats1"
+      ],
+      "lick-app-widget-stats1/*": [
+        "dist/lick-app-widget-stats1/*"
+      ],
+      "lick-app-widget-stats2": [
+        "dist/lick-app-widget-stats2"
+      ],
+      "lick-app-widget-stats2/*": [
+        "dist/lick-app-widget-stats2/*"
+      ],
+      "lick-app-widget-stats3": [
+        "dist/lick-app-widget-stats3"
+      ],
+      "lick-app-widget-stats3/*": [
+        "dist/lick-app-widget-stats3/*"
+      ],
+      "lick-app-widget-stats4": [
+        "dist/lick-app-widget-stats4"
+      ],
+      "lick-app-widget-stats4/*": [
+        "dist/lick-app-widget-stats4/*"
+      ],
+      "lick-app-widget-stats5": [
+        "dist/lick-app-widget-stats5"
+      ],
+      "lick-app-widget-stats5/*": [
+        "dist/lick-app-widget-stats5/*"
+      ],
+      "lick-app-widget-stats6": [
+        "dist/lick-app-widget-stats6"
+      ],
+      "lick-app-widget-stats6/*": [
+        "dist/lick-app-widget-stats6/*"
+      ],
+      "lick-app-widget-stats7": [
+        "dist/lick-app-widget-stats7"
+      ],
+      "lick-app-widget-stats7/*": [
+        "dist/lick-app-widget-stats7/*"
+      ],
+      "lick-app-widget-stats8": [
+        "dist/lick-app-widget-stats8"
+      ],
+      "lick-app-widget-stats8/*": [
+        "dist/lick-app-widget-stats8/*"
+      ],
+      "lick-app-widget-stats9": [
+        "dist/lick-app-widget-stats9"
+      ],
+      "lick-app-widget-stats9/*": [
+        "dist/lick-app-widget-stats9/*"
+      ],
+      "lick-app-widget-stats10": [
+        "dist/lick-app-widget-stats10"
+      ],
+      "lick-app-widget-stats10/*": [
+        "dist/lick-app-widget-stats10/*"
+      ],
+      "lick-app-widget-stats11": [
+        "dist/lick-app-widget-stats11"
+      ],
+      "lick-app-widget-stats11/*": [
+        "dist/lick-app-widget-stats11/*"
+      ],
+      "lick-app-widget-stats12": [
+        "dist/lick-app-widget-stats12"
+      ],
+      "lick-app-widget-stats12/*": [
+        "dist/lick-app-widget-stats12/*"
+      ],
+      "lick-app-widget-stats13": [
+        "dist/lick-app-widget-stats13"
+      ],
+      "lick-app-widget-stats13/*": [
+        "dist/lick-app-widget-stats13/*"
+      ],
+      "lick-app-widget-stats14": [
+        "dist/lick-app-widget-stats14"
+      ],
+      "lick-app-widget-stats14/*": [
+        "dist/lick-app-widget-stats14/*"
+      ],
+      "lick-app-widget-stats15": [
+        "dist/lick-app-widget-stats15"
+      ],
+      "lick-app-widget-stats15/*": [
+        "dist/lick-app-widget-stats15/*"
+      ],
+      "lick-app-widget-stats16": [
+        "dist/lick-app-widget-stats16"
+      ],
+      "lick-app-widget-stats16/*": [
+        "dist/lick-app-widget-stats16/*"
+      ],
+      "lick-app-widget-stats17": [
+        "dist/lick-app-widget-stats17"
+      ],
+      "lick-app-widget-stats17/*": [
+        "dist/lick-app-widget-stats17/*"
+      ],
+      "lick-app-widget-table-data": [
+        "dist/lick-app-widget-table-data"
+      ],
+      "lick-app-widget-table-data/*": [
+        "dist/lick-app-widget-table-data/*"
+      ],
+      "lick-app-widget-totals": [
+        "dist/lick-app-widget-totals"
+      ],
+      "lick-app-widget-totals/*": [
+        "dist/lick-app-widget-totals/*"
+      ],
+      "lick-marketing-simple-page": [
+        "dist/lick-marketing-simple-page"
+      ],
+      "lick-marketing-simple-page/*": [
+        "dist/lick-marketing-simple-page/*"
+      ],
+      "lick-marketing-simple-header": [
+        "dist/lick-marketing-simple-header"
+      ],
+      "lick-marketing-simple-header/*": [
+        "dist/lick-marketing-simple-header/*"
+      ],
+      "lick-marketing-carousel": [
+        "dist/lick-marketing-carousel"
+      ],
+      "lick-marketing-carousel/*": [
+        "dist/lick-marketing-carousel/*"
+      ],
+      "lick-marketing-menu": [
+        "dist/lick-marketing-menu"
+      ],
+      "lick-marketing-menu/*": [
+        "dist/lick-marketing-menu/*"
+      ],
+      "lick-app-page": [
+        "dist/lick-app-page"
+      ],
+      "lick-app-page/*": [
+        "dist/lick-app-page/*"
+      ],
+      "lick-app-widget-menu": [
+        "dist/lick-app-widget-menu"
+      ],
+      "lick-app-widget-menu/*": [
+        "dist/lick-app-widget-menu/*"
       ]
     }
   }

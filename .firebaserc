@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "addiedev-5b40c"
+  },
+  "targets": {
+    "addiedev-5b40c": {
+      "hosting": {
+        "test": [
+          "lick-test"
+        ],
+        "crm": [
+          "crm-6a9ad"
+        ]
+      }
+    }
+  }
+}

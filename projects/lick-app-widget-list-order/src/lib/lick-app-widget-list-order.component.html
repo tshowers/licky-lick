@@ -1,0 +1,36 @@
+<div class="card card-accent-theme">
+    <div class="card-header">
+        <h4 class="text-theme">{{headingText}}</h4>
+    </div>
+    <div class="sales-list" id="orderList">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>{{columnHeading1}}</th>
+                    <th>{{columnHeading2}}</th>
+                    <th>{{columnHeading3}}</th>
+                    <th>{{columnHeading4}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                    <td>{{order?.id}}</td>
+                    <td>{{order?.orderDate | date : 'short'}}</td>
+                    <td>{{order?.amount | currency}}</td>
+                    <td>
+                        <span [ngClass]="{'badge-success' : (order?.status == 'Shipped'), 'badge-warning' : (order?.status == 'Pending'), 'badge-info' : (order?.status == 'Processing'), 'badge-danger' : (order?.status == 'Delivered')}" class="badge badge-boxed">{{order?.status}}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- end sales-list -->
+    <div class="card-footer text-center" *ngIf="showMoreLink">
+        <a routerLink="showMoreLink" class="text-theme">
+            <strong>Show More </strong>
+        </a>
+
+    </div>
+    <!-- end card-footer -->
+</div>
+<!-- end-card -->

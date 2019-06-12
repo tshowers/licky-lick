@@ -1,0 +1,16 @@
+<div class="card card-accent-left-danger widget-reminder">
+    <div class="card-body">
+        <h3>{{headingText}}</h3>
+        <ul>
+          <li *ngFor="let attendee of event.attendees"><img src="{{attendee.url}}" alt="{{attendee.name}}"></li>
+        </ul>
+
+        <div class="reminder-text">
+            <div class="time h3 text-danger">{{event?.startDate | date : 'medium'}}</div>
+            <div class="time h5 text-dark"><strong>{{event?.title}}</strong></div>
+            <small>{{event?.description}}<br>{{event?.location}} </small>
+        </div>
+
+    </div>
+</div>
+<!-- div.card -->

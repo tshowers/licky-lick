@@ -1,0 +1,44 @@
+<!-- Leader board widget -->
+<div class="col-md-4">
+    <div class="card leaderboard">
+        <div class="card-header bg-theme ">
+            <div class="prefix header">
+                <div class="float-left header-icon">
+                    <i [ngClass]="iconClass" aria-hidden="true"></i>
+                </div>
+                <div class="float-right">
+                    <div class="header-text">
+                        <h4 class="text-white">{{headingText}}</h4>
+                        <h6 class="text-white">{{subHeadingText}}</h6>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end header -->
+        <div class="card-bod">
+            <div class="user-list" *ngFor="let item of data; let i = index">
+                <ul>
+                    <li class="u-img">
+                        <img src="{{item?.url}}" alt="{{item?.name}}">
+                    </li>
+                    <li class="u-name">{{item?.name}}</li>
+                    <li class="u-points float-right">{{item?.amount}}
+                        <span class="u-points-symbol">{{item?.measure}}</span>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="card-footer" *ngIf="showMoreLink">
+                <div class="text-center">
+                    <button class="btn btn-theme btn-sm" (click)="showMore()">Show more</button>
+                </div>
+            </div>
+
+        </div>
+        <!-- end card-body -->
+    </div>
+    <!-- end card -->
+</div>
+<!-- end col -->

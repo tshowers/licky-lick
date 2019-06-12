@@ -1,0 +1,51 @@
+<div class="card history-transaction card-accent-theme">
+    <div class="card-body">
+        <div class="header">
+            <div class="heading">{{headingText}}</div>
+            <div class="pull-right header-tool">
+                <ul>
+                    <li>
+                        <a [ngClass]="{'active' : (currentDataDisplay === '')}" (click)="showCurrentData()">{{currentButtonText}}</a>
+                    </li>
+                    <li>
+                        <a [ngClass]="{'active' : (pastDataDisplay === '')}" (click)="showPastData()">{{pastButtonText}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="transaction-list" *ngFor="let item of data1; let i = index" [ngStyle]="{'display' : currentDataDisplay}">
+            <a routerLink="{{item?.link}}">
+                <div class="details">
+                    <div class="u-img">
+                        <img src="{{item?.url}}" alt="{{item?.userName}}" />
+
+                    </div>
+                    <i class="fa" [ngClass]="{'text-success fa-arrow-up' : (item?.amount > 0),'text-danger fa-arrow-down' : (item?.amount < 0) }"></i>
+                    <div class="heading">{{item?.amount | currency}}</div>
+                    <p class="description">{{item?.shortDescription}} </p>
+                </div>
+            </a>
+        </div>
+
+
+        <div class="transaction-list" *ngFor="let item of data2; let i = index" [ngStyle]="{'display' : pastDataDisplay}">
+            <a routerLink="{{item?.link}}">
+                <div class="details">
+                    <div class="u-img">
+                        <img src="{{item?.url}}" alt="{{item?.userName}}" />
+
+                    </div>
+                    <i class="fa" [ngClass]="{'text-success fa-arrow-up' : (item?.amount > 0),'text-danger fa-arrow-down' : (item?.amount < 0) }"></i>
+                    <div class="heading">{{item?.amount | currency}}</div>
+                    <p class="description">{{item?.shortDescription}} </p>
+                </div>
+            </a>
+        </div>
+
+        <div class="text-center" *ngIf="showMoreLink">
+            <button class="btn btn-theme btn-sm" (click)="showMore()">Show More</button>
+        </div>
+
+    </div>
+</div>

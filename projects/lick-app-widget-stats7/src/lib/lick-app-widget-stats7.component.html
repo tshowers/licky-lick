@@ -1,0 +1,22 @@
+<div class=" card ecom-widget-sales-dark bg-primary">
+  <div class="card-body">
+    <div class="ecom-sales-icon text-center">
+      <i class="{{iconClass}}"></i>
+    </div>
+    <h5 class="text-center text-white">{{headingText}}</h5>
+    <div class="orders-count text-center">{{subHeadingText}}</div>
+    <ul>
+      <li class="text-white"
+          *ngFor="let item of data">{{item?.label}}
+        <span>{{item?.value}}{{item?.measure}} </span>
+      </li>
+    </ul>
+    <div class="text-center btn-tool-bar"
+         *ngIf="showMoreLink">
+      <button class="btn btn-dark"
+              (click)="showMore()">More Details</button>
+    </div>
+  </div>
+  <!-- end card-body -->
+</div>
+<!-- end card -->

@@ -1,0 +1,49 @@
+<div class="card  card-accent-theme chat-widget">
+    <div class="card-body ">
+        <div class="clearfix">
+            <h5 class="text-theme float-left">{{headingText}}</h5>
+            <div class="h2">
+                <i class="fa fa-comments-o float-right text-theme"></i>
+            </div>
+        </div>
+
+        <div class="chat">
+            <ul id="chatList">
+                <li *ngFor="let message of messages" [ngClass]="{'other' : (currentUser.id != message.user_id), 'you' : (currentUser.id == message.user_id)}">
+                    <a class="user" routerLink="/users/{{message?.user_id}}">
+                        <img *ngIf="message.photoURL" alt="{{message?.name}}" src="{{message?.photoURL}}" />
+                        <img *ngIf="!message.photoURL" alt="{{message?.name}}" src="defaultImage" />
+                    </a>
+                    <div class="date">
+                        {{message?.timeStamp | date : 'medium'}}
+                    </div>
+                    <div class="message">
+                        <div class="hider">
+                            <span>Click to read</span>
+                        </div>
+                        <p class="text-white">
+                            {{message?.text}}
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- end card-body -->
+
+    <div class="card-footer">
+        <form class="form-row">
+            <div class="col-md-10 mb-3">
+                <input type="text" class="form-control" id="validationServer01" placeholder="Type Here">
+            </div>
+            <div class="col-md-2 mb-3">
+                <button class="btn btn-theme">
+                    <i class="fa fa-paper-plane"></i>
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
+<!-- end card -->

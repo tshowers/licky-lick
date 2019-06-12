@@ -1665,6 +1665,1569 @@
           }
         }
       }
+    },
+    "licky-crm": {
+      "root": "projects/licky-crm/",
+      "sourceRoot": "projects/licky-crm/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/licky-crm",
+            "index": "projects/licky-crm/src/index.html",
+            "main": "projects/licky-crm/src/main.ts",
+            "polyfills": "projects/licky-crm/src/polyfills.ts",
+            "tsConfig": "projects/licky-crm/tsconfig.app.json",
+            "assets": [
+              "projects/licky-crm/src/favicon.ico",
+              "projects/licky-crm/src/assets"
+            ],
+            "styles": [
+              "projects/licky-crm/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/licky-crm/src/environments/environment.ts",
+                  "with": "projects/licky-crm/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "licky-crm:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "licky-crm:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "licky-crm:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/licky-crm/src/test.ts",
+            "polyfills": "projects/licky-crm/src/polyfills.ts",
+            "tsConfig": "projects/licky-crm/tsconfig.spec.json",
+            "karmaConfig": "projects/licky-crm/karma.conf.js",
+            "styles": [
+              "projects/licky-crm/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/licky-crm/src/favicon.ico",
+              "projects/licky-crm/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/licky-crm/tsconfig.app.json",
+              "projects/licky-crm/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "licky-crm-e2e": {
+      "root": "projects/licky-crm-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/licky-crm-e2e/protractor.conf.js",
+            "devServerTarget": "licky-crm:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "licky-crm:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/licky-crm-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-card-deck": {
+      "root": "projects/lick-app-widget-card-deck",
+      "sourceRoot": "projects/lick-app-widget-card-deck/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-card-deck/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-card-deck/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-card-deck/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-card-deck/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-card-deck/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-card-deck/tsconfig.lib.json",
+              "projects/lick-app-widget-card-deck/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-card-group": {
+      "root": "projects/lick-app-widget-card-group",
+      "sourceRoot": "projects/lick-app-widget-card-group/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-card-group/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-card-group/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-card-group/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-card-group/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-card-group/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-card-group/tsconfig.lib.json",
+              "projects/lick-app-widget-card-group/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-chat": {
+      "root": "projects/lick-app-widget-chat",
+      "sourceRoot": "projects/lick-app-widget-chat/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-chat/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-chat/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-chat/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-chat/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-chat/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-chat/tsconfig.lib.json",
+              "projects/lick-app-widget-chat/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-feed": {
+      "root": "projects/lick-app-widget-feed",
+      "sourceRoot": "projects/lick-app-widget-feed/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-feed/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-feed/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-feed/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-feed/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-feed/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-feed/tsconfig.lib.json",
+              "projects/lick-app-widget-feed/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-footer": {
+      "root": "projects/lick-app-widget-footer",
+      "sourceRoot": "projects/lick-app-widget-footer/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-footer/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-footer/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-footer/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-footer/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-footer/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-footer/tsconfig.lib.json",
+              "projects/lick-app-widget-footer/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-list-content": {
+      "root": "projects/lick-app-widget-list-content",
+      "sourceRoot": "projects/lick-app-widget-list-content/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-list-content/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-list-content/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-list-content/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-list-content/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-list-content/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-list-content/tsconfig.lib.json",
+              "projects/lick-app-widget-list-content/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-list-order": {
+      "root": "projects/lick-app-widget-list-order",
+      "sourceRoot": "projects/lick-app-widget-list-order/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-list-order/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-list-order/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-list-order/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-list-order/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-list-order/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-list-order/tsconfig.lib.json",
+              "projects/lick-app-widget-list-order/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-list-task": {
+      "root": "projects/lick-app-widget-list-task",
+      "sourceRoot": "projects/lick-app-widget-list-task/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-list-task/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-list-task/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-list-task/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-list-task/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-list-task/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-list-task/tsconfig.lib.json",
+              "projects/lick-app-widget-list-task/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-list-badges": {
+      "root": "projects/lick-app-widget-list-badges",
+      "sourceRoot": "projects/lick-app-widget-list-badges/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-list-badges/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-list-badges/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-list-badges/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-list-badges/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-list-badges/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-list-badges/tsconfig.lib.json",
+              "projects/lick-app-widget-list-badges/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-list-icons": {
+      "root": "projects/lick-app-widget-list-icons",
+      "sourceRoot": "projects/lick-app-widget-list-icons/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-list-icons/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-list-icons/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-list-icons/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-list-icons/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-list-icons/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-list-icons/tsconfig.lib.json",
+              "projects/lick-app-widget-list-icons/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-list-links": {
+      "root": "projects/lick-app-widget-list-links",
+      "sourceRoot": "projects/lick-app-widget-list-links/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-list-links/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-list-links/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-list-links/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-list-links/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-list-links/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-list-links/tsconfig.lib.json",
+              "projects/lick-app-widget-list-links/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-messages": {
+      "root": "projects/lick-app-widget-messages",
+      "sourceRoot": "projects/lick-app-widget-messages/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-messages/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-messages/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-messages/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-messages/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-messages/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-messages/tsconfig.lib.json",
+              "projects/lick-app-widget-messages/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-post1": {
+      "root": "projects/lick-app-widget-post1",
+      "sourceRoot": "projects/lick-app-widget-post1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-post1/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-post1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-post1/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-post1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-post1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-post1/tsconfig.lib.json",
+              "projects/lick-app-widget-post1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-post2": {
+      "root": "projects/lick-app-widget-post2",
+      "sourceRoot": "projects/lick-app-widget-post2/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-post2/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-post2/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-post2/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-post2/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-post2/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-post2/tsconfig.lib.json",
+              "projects/lick-app-widget-post2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-post3": {
+      "root": "projects/lick-app-widget-post3",
+      "sourceRoot": "projects/lick-app-widget-post3/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-post3/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-post3/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-post3/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-post3/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-post3/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-post3/tsconfig.lib.json",
+              "projects/lick-app-widget-post3/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-post4": {
+      "root": "projects/lick-app-widget-post4",
+      "sourceRoot": "projects/lick-app-widget-post4/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-post4/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-post4/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-post4/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-post4/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-post4/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-post4/tsconfig.lib.json",
+              "projects/lick-app-widget-post4/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats1": {
+      "root": "projects/lick-app-widget-stats1",
+      "sourceRoot": "projects/lick-app-widget-stats1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats1/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats1/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats1/tsconfig.lib.json",
+              "projects/lick-app-widget-stats1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats2": {
+      "root": "projects/lick-app-widget-stats2",
+      "sourceRoot": "projects/lick-app-widget-stats2/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats2/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats2/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats2/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats2/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats2/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats2/tsconfig.lib.json",
+              "projects/lick-app-widget-stats2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats3": {
+      "root": "projects/lick-app-widget-stats3",
+      "sourceRoot": "projects/lick-app-widget-stats3/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats3/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats3/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats3/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats3/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats3/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats3/tsconfig.lib.json",
+              "projects/lick-app-widget-stats3/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats4": {
+      "root": "projects/lick-app-widget-stats4",
+      "sourceRoot": "projects/lick-app-widget-stats4/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats4/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats4/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats4/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats4/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats4/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats4/tsconfig.lib.json",
+              "projects/lick-app-widget-stats4/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats5": {
+      "root": "projects/lick-app-widget-stats5",
+      "sourceRoot": "projects/lick-app-widget-stats5/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats5/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats5/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats5/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats5/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats5/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats5/tsconfig.lib.json",
+              "projects/lick-app-widget-stats5/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats6": {
+      "root": "projects/lick-app-widget-stats6",
+      "sourceRoot": "projects/lick-app-widget-stats6/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats6/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats6/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats6/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats6/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats6/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats6/tsconfig.lib.json",
+              "projects/lick-app-widget-stats6/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats7": {
+      "root": "projects/lick-app-widget-stats7",
+      "sourceRoot": "projects/lick-app-widget-stats7/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats7/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats7/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats7/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats7/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats7/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats7/tsconfig.lib.json",
+              "projects/lick-app-widget-stats7/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats8": {
+      "root": "projects/lick-app-widget-stats8",
+      "sourceRoot": "projects/lick-app-widget-stats8/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats8/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats8/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats8/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats8/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats8/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats8/tsconfig.lib.json",
+              "projects/lick-app-widget-stats8/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats9": {
+      "root": "projects/lick-app-widget-stats9",
+      "sourceRoot": "projects/lick-app-widget-stats9/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats9/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats9/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats9/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats9/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats9/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats9/tsconfig.lib.json",
+              "projects/lick-app-widget-stats9/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats10": {
+      "root": "projects/lick-app-widget-stats10",
+      "sourceRoot": "projects/lick-app-widget-stats10/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats10/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats10/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats10/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats10/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats10/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats10/tsconfig.lib.json",
+              "projects/lick-app-widget-stats10/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats11": {
+      "root": "projects/lick-app-widget-stats11",
+      "sourceRoot": "projects/lick-app-widget-stats11/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats11/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats11/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats11/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats11/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats11/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats11/tsconfig.lib.json",
+              "projects/lick-app-widget-stats11/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats12": {
+      "root": "projects/lick-app-widget-stats12",
+      "sourceRoot": "projects/lick-app-widget-stats12/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats12/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats12/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats12/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats12/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats12/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats12/tsconfig.lib.json",
+              "projects/lick-app-widget-stats12/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats13": {
+      "root": "projects/lick-app-widget-stats13",
+      "sourceRoot": "projects/lick-app-widget-stats13/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats13/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats13/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats13/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats13/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats13/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats13/tsconfig.lib.json",
+              "projects/lick-app-widget-stats13/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats14": {
+      "root": "projects/lick-app-widget-stats14",
+      "sourceRoot": "projects/lick-app-widget-stats14/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats14/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats14/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats14/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats14/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats14/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats14/tsconfig.lib.json",
+              "projects/lick-app-widget-stats14/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats15": {
+      "root": "projects/lick-app-widget-stats15",
+      "sourceRoot": "projects/lick-app-widget-stats15/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats15/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats15/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats15/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats15/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats15/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats15/tsconfig.lib.json",
+              "projects/lick-app-widget-stats15/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats16": {
+      "root": "projects/lick-app-widget-stats16",
+      "sourceRoot": "projects/lick-app-widget-stats16/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats16/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats16/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats16/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats16/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats16/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats16/tsconfig.lib.json",
+              "projects/lick-app-widget-stats16/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-stats17": {
+      "root": "projects/lick-app-widget-stats17",
+      "sourceRoot": "projects/lick-app-widget-stats17/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-stats17/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-stats17/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-stats17/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-stats17/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-stats17/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-stats17/tsconfig.lib.json",
+              "projects/lick-app-widget-stats17/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-table-data": {
+      "root": "projects/lick-app-widget-table-data",
+      "sourceRoot": "projects/lick-app-widget-table-data/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-table-data/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-table-data/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-table-data/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-table-data/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-table-data/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-table-data/tsconfig.lib.json",
+              "projects/lick-app-widget-table-data/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-totals": {
+      "root": "projects/lick-app-widget-totals",
+      "sourceRoot": "projects/lick-app-widget-totals/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-totals/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-totals/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-totals/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-totals/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-totals/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-totals/tsconfig.lib.json",
+              "projects/lick-app-widget-totals/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-simple-page": {
+      "root": "projects/lick-marketing-simple-page",
+      "sourceRoot": "projects/lick-marketing-simple-page/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-simple-page/tsconfig.lib.json",
+            "project": "projects/lick-marketing-simple-page/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-simple-page/src/test.ts",
+            "tsConfig": "projects/lick-marketing-simple-page/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-simple-page/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-simple-page/tsconfig.lib.json",
+              "projects/lick-marketing-simple-page/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-simple-header": {
+      "root": "projects/lick-marketing-simple-header",
+      "sourceRoot": "projects/lick-marketing-simple-header/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-simple-header/tsconfig.lib.json",
+            "project": "projects/lick-marketing-simple-header/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-simple-header/src/test.ts",
+            "tsConfig": "projects/lick-marketing-simple-header/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-simple-header/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-simple-header/tsconfig.lib.json",
+              "projects/lick-marketing-simple-header/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-carousel": {
+      "root": "projects/lick-marketing-carousel",
+      "sourceRoot": "projects/lick-marketing-carousel/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-carousel/tsconfig.lib.json",
+            "project": "projects/lick-marketing-carousel/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-carousel/src/test.ts",
+            "tsConfig": "projects/lick-marketing-carousel/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-carousel/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-carousel/tsconfig.lib.json",
+              "projects/lick-marketing-carousel/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-menu": {
+      "root": "projects/lick-marketing-menu",
+      "sourceRoot": "projects/lick-marketing-menu/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-menu/tsconfig.lib.json",
+            "project": "projects/lick-marketing-menu/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-menu/src/test.ts",
+            "tsConfig": "projects/lick-marketing-menu/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-menu/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-menu/tsconfig.lib.json",
+              "projects/lick-marketing-menu/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-page": {
+      "root": "projects/lick-app-page",
+      "sourceRoot": "projects/lick-app-page/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-page/tsconfig.lib.json",
+            "project": "projects/lick-app-page/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-page/src/test.ts",
+            "tsConfig": "projects/lick-app-page/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-page/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-page/tsconfig.lib.json",
+              "projects/lick-app-page/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-menu": {
+      "root": "projects/lick-app-widget-menu",
+      "sourceRoot": "projects/lick-app-widget-menu/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-menu/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-menu/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-menu/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-menu/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-menu/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-menu/tsconfig.lib.json",
+              "projects/lick-app-widget-menu/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "lick-data"

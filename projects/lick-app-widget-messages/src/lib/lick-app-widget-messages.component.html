@@ -1,0 +1,42 @@
+<div class="card  card-accent-theme">
+    <div class="message-widget">
+        <h1> {{headingText}}
+            <i class="float-right" [ngClass]="iconClass"></i>
+        </h1>
+
+        <ul id="messageList">
+            <li class="clearfix" *ngFor="let message of messages">
+                <a routerLink="#" class="dropdown-item">
+                    <div class="message-box ">
+                        <div class="u-img float-left">
+                            <img src="{{message?.photoURL}}" alt="{{message?.name}}" />
+                            <span *ngIf="message?.userStatus" class="{{message.userStatus}}"></span>
+                        </div>
+                        <div class="u-text float-left">
+                            <div class="u-name">
+                                <strong>{{message?.name}}</strong>
+                            </div>
+                            <div class="text-muted" innerHTML="{{ message?.text}}"></div>
+
+                        </div>
+                    </div>
+                    <small class="float-right">{{message?.timeStamp | date : 'medium'}}</small>
+                </a>
+            </li>
+
+
+
+
+
+        </ul>
+    </div>
+    <!-- end card-body -->
+    <div class="card-footer text-center" *ngIf="messageCount">
+        <a href="" class="text-theme">
+            <strong>See all messages ({{messageCount}}) </strong>
+        </a>
+
+    </div>
+    <!-- end card-footer -->
+</div>
+<!-- end card -->

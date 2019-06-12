@@ -1,0 +1,158 @@
+<div class="card card-accent-theme sales-category-widget">
+    <div class="card-body">
+        <div class="header">
+            <div class="heading">{{headingText}}</div>
+            <div class="pull-right header-tool">
+                <ul>
+                    <li>
+                      <a [ngClass]="{'active' : (currentDataDisplay === '')}" (click)="showCurrentData()">{{currentButtonText}}</a>
+                    </li>
+                    <li>
+                      <a [ngClass]="{'active' : (pastDataDisplay === '')}" (click)="showPastData()">{{pastButtonText}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- header -->
+
+        <div class="text-center"  [ngStyle]="{'display' : currentDataDisplay}">
+          <canvas id="chart-widget11-1" height="100"></canvas>
+        </div>
+
+        <div class="text-center" [ngStyle]="{'display' : pastDataDisplay}">
+          <canvas id="chart-widget11-2" height="100"></canvas>
+        </div>
+
+        <div class="category-progress" [ngStyle]="{'display' : currentDataDisplay}">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="category-progress">
+                        <strong>{{chartData1[0]}}%</strong>
+                        <small class="pull-right">{{chartLabels1[0]}}</small>
+
+                        <div class="progress xs ">
+                            <div class="progress-bar bg-warning" [ngStyle]="{'width': chartData1[0] + '%' }" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end category-process -->
+                </div>
+                <!-- end inside col -->
+                <div class="col-md-6">
+                    <div class="category-progress">
+                        <strong>{{chartData1[1]}}%</strong>
+                        <small class="pull-right">{{chartLabels1[1]}}</small>
+
+                        <div class="progress xs ">
+                            <div class="progress-bar bg-success" [ngStyle]="{'width': chartData1[1] + '%' }" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end category-process -->
+                </div>
+                <!-- end inside col -->
+            </div>
+            <!-- end inside row -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="category-progress">
+                        <strong>{{chartData1[2]}}%</strong>
+                        <small class="pull-right">{{chartLabels1[2]}}</small>
+
+                        <div class="progress xs ">
+                            <div class="progress-bar bg-danger" [ngStyle]="{'width': chartData1[2] + '%' }" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="category-progress">
+                        <strong>{{chartData1[3]}}%</strong>
+                        <small class="pull-right">{{chartLabels1[3]}}</small>
+
+                        <div class="progress xs ">
+                            <div class="progress-bar bg-info" [ngStyle]="{'width': chartData1[3] + '%' }" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" *ngIf="showMoreLink">
+                <button class="btn btn-theme btn-sm" (click)="showMore()">{{showMoreText}}</button>
+            </div>
+
+        </div>
+        <!-- end category-process -->
+        <div class="category-progress" [ngStyle]="{'display' : pastDataDisplay}">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="category-progress">
+                        <strong>{{chartData2[0]}}%</strong>
+                        <small class="pull-right">{{chartLabels2[0]}}</small>
+
+                        <div class="progress xs ">
+                            <div class="progress-bar bg-warning" [ngStyle]="{'width': chartData2[0] + '%' }" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end category-process -->
+                </div>
+                <!-- end inside col -->
+                <div class="col-md-6">
+                    <div class="category-progress">
+                        <strong>{{chartData2[1]}}%</strong>
+                        <small class="pull-right">{{chartLabels2[1]}}</small>
+
+                        <div class="progress xs ">
+                            <div class="progress-bar bg-success" [ngStyle]="{'width': chartData2[1] + '%' }" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end category-process -->
+                </div>
+                <!-- end inside col -->
+            </div>
+            <!-- end inside row -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="category-progress">
+                        <strong>{{chartData2[2]}}%</strong>
+                        <small class="pull-right">{{chartLabels2[2]}}</small>
+
+                        <div class="progress xs ">
+                            <div class="progress-bar bg-danger" [ngStyle]="{'width': chartData2[2] + '%' }" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="category-progress">
+                        <strong>{{chartData2[3]}}%</strong>
+                        <small class="pull-right">{{chartLabels2[3]}}</small>
+
+                        <div class="progress xs ">
+                            <div class="progress-bar bg-info" [ngStyle]="{'width': chartData2[3] + '%' }" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" *ngIf="showMoreLink">
+                <button class="btn btn-theme btn-sm" (click)="showMore()">{{showMoreText}}</button>
+            </div>
+
+        </div>
+        <!-- end category-process -->
+    </div>
+    <!-- end card-body -->
+</div>

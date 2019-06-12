@@ -1,0 +1,17 @@
+<div class="card card-accent-theme">
+    <div class="card-body">
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" [ngClass]="{'active' : (i === 0)}" *ngFor="let item of data; let i = index">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1" [ngClass]="{'text-white' : (i === 0)}">{{item?.name}}</h5>
+                    <small>{{item?.lastUpdated | date : 'fullDate'}}</small>
+                </div>
+                <div class="mb-1" innerHTML={{item?.description}}></div>
+                <small>{{item?.lastUpdatedBy}}</small>
+            </a>
+        </div>
+
+    </div>
+    <!-- end card body -->
+</div>
+<!-- end card -->

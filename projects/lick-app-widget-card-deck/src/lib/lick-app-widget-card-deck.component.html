@@ -1,0 +1,12 @@
+<div class="card-deck">
+    <div class="card" *ngFor="let item of data; let i = index">
+        <img class="card-img-top" src="{{item?.url}}" alt="{{item?.name}}">
+        <div class="card-body">
+            <h5 class="card-title">{{item?.name}}</h5>
+            <div class="card-text" innerHTML={{item?.description}}></div>
+            <p class="card-text" *ngIf="item.lastUpdated">
+                <small class="text-muted">Last updated {{item?.lastUpdated | date : 'fullDate'}}</small>
+            </p>
+        </div>
+    </div>
+</div>
