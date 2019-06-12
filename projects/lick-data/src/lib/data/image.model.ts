@@ -1,7 +1,7 @@
 import { Section } from './section.model';
 
 export class Image {
-  public $key: string;
+  public $key?: string;
 
   public id?;
   public title?: string;
@@ -28,7 +28,7 @@ export class Image {
 
   public user_id?;
   public userName?;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

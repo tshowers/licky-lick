@@ -7,7 +7,7 @@ import { Address } from './address.model';
 import { FOP } from './fop.model';
 
 export class User {
-  public $key: string;
+  public $key?: string;
   public id?;
   public customer_id?: string;
   public status?: string;
@@ -76,7 +76,7 @@ export class User {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -117,7 +117,7 @@ export interface ModuleAccess {
 
 
 export class Favorite {
-  public $key: string;
+  public $key?: string;
   public id?;
 
   public name: string;
@@ -143,12 +143,12 @@ export class Favorite {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
 }
 
 export class Bookmark {
-  public $key: string;
+  public $key?: string;
   public id?: string;
 
   public name: string;
@@ -174,5 +174,5 @@ export class Bookmark {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 }

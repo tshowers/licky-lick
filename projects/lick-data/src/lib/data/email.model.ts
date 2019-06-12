@@ -3,7 +3,7 @@ import { Section } from './section.model';
 
 
 export class Email  {
-  public $key: string;
+  public $key?: string;
   public id?;
   public subject: string;
   public message: string
@@ -46,7 +46,7 @@ export class Email  {
 
   public user_id?;
   public userName?;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

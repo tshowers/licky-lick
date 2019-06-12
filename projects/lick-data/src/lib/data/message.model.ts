@@ -3,7 +3,7 @@ import { Section } from './section.model';
 
 
 export class Message  {
-  public $key: string;
+  public $key?: string;
   public id?;
   public title?;
   public text?;
@@ -34,7 +34,7 @@ export class Message  {
 
   public user_id?;
   public userName?;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

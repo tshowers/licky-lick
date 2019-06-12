@@ -38,7 +38,7 @@ export class Docuttach  {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

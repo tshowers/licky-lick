@@ -2,7 +2,7 @@ import { TaTime } from './ta-date.model';
 import { Section } from './section.model';
 
 export class Task  {
-  public $key: string;
+  public $key?: string;
   public id?;
 
   public name: string;
@@ -43,7 +43,7 @@ export class Task  {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

@@ -11,8 +11,8 @@
             <ul id="chatList">
                 <li *ngFor="let message of messages" [ngClass]="{'other' : (currentUser.id != message.user_id), 'you' : (currentUser.id == message.user_id)}">
                     <a class="user" routerLink="/users/{{message?.user_id}}">
-                        <img *ngIf="message.photoURL" alt="{{message?.name}}" src="{{message?.photoURL}}" />
-                        <img *ngIf="!message.photoURL" alt="{{message?.name}}" src="defaultImage" />
+                        <img *ngIf="message.icon" alt="{{message?.name}}" src="{{message?.icon}}" />
+                        <img *ngIf="!message.icon" alt="{{message?.name}}" src="defaultImage" />
                     </a>
                     <div class="date">
                         {{message?.timeStamp | date : 'medium'}}

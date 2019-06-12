@@ -1,7 +1,7 @@
 import { Section } from './section.model';
 
 export class Order {
-  public $key: string;
+  public $key?: string;
   public id?;
 
   public name: string;
@@ -40,7 +40,7 @@ export class Order {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

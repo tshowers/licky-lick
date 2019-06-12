@@ -2,7 +2,7 @@ import { Section } from './section.model';
 import { Company } from './contact.model';
 
 export class Review  {
-  public $key: string;
+  public $key?: string;
   public id?;
   public stars  = [];
   public description?;
@@ -32,7 +32,7 @@ export class Review  {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

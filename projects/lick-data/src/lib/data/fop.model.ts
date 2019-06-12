@@ -1,7 +1,7 @@
 import { Section } from './section.model';
 
 export class FOP  {
-  public $key: string;
+  public $key?: string;
   public id?;
 
   public name: string;
@@ -39,7 +39,7 @@ export class FOP  {
 
   public user_id?;
   public userName?;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

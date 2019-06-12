@@ -1,7 +1,7 @@
 import { Section } from './section.model';
 
 export class Blog {
-  public $key: string;
+  public $key?: string;
   public id?;
   public title?: string;
 

@@ -1,7 +1,7 @@
 import { Section } from './section.model';
 
 export class Address {
-  public $key: string;
+  public $key?: string;
   public id?: string;
 
   public name: string;
@@ -38,7 +38,7 @@ export class Address {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

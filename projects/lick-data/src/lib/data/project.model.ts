@@ -1,7 +1,7 @@
 import { Section } from './section.model';
 
 export class Project  {
-  public $key: string;
+  public $key?: string;
   public id?;
 
   public name: string;
@@ -51,7 +51,7 @@ export class Project  {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -62,7 +62,7 @@ export class Project  {
 }
 
 export class Milestone {
-  public $key: string;
+  public $key?: string;
   public id?;
   public title?: string;
   public date?;
@@ -90,7 +90,7 @@ export class Milestone {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -101,7 +101,7 @@ export class Milestone {
 }
 
 export class Requirement {
-  public $key: string;
+  public $key?: string;
   public id?;
   public project_id?;
 
@@ -131,7 +131,7 @@ export class Requirement {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -143,7 +143,7 @@ export class Requirement {
 }
 
 export class Deliverable {
-  public $key: string;
+  public $key?: string;
   public id?;
   public project_id?;
 
@@ -173,7 +173,7 @@ export class Deliverable {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -185,7 +185,7 @@ export class Deliverable {
 }
 
 export class AffectedParty {
-  public $key: string;
+  public $key?: string;
   public id?;
   public project_id?;
 
@@ -214,7 +214,7 @@ export class AffectedParty {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -225,7 +225,7 @@ export class AffectedParty {
 }
 
 export class AffectedSystem {
-  public $key: string;
+  public $key?: string;
   id?;
 
   public name: string;
@@ -254,7 +254,7 @@ export class AffectedSystem {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -266,7 +266,7 @@ export class AffectedSystem {
 }
 
 export class ImplementationPlan {
-  public $key: string;
+  public $key?: string;
   public id?;
   public project_id?;
 
@@ -294,7 +294,7 @@ export class ImplementationPlan {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -305,7 +305,7 @@ export class ImplementationPlan {
 
 }
 export class Bug {
-  public $key: string;
+  public $key?: string;
   public id?;
   public project_id?;
   public deliverable_id?;
@@ -338,7 +338,7 @@ export class Bug {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -351,7 +351,7 @@ export class Bug {
 
 
 export class ProjectReport {
-  public $key: string;
+  public $key?: string;
   public id?;
 
   public name: string;
@@ -382,7 +382,7 @@ export class ProjectReport {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -394,7 +394,7 @@ export class ProjectReport {
 }
 
 export class Approval  {
-  public $key: string;
+  public $key?: string;
   public id?;
   public project_id?;
 
@@ -417,7 +417,7 @@ export class Approval  {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

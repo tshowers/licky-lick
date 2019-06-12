@@ -1,5 +1,5 @@
 export class AppActivity {
-  public $key: string;
+  public $key?: string;
   public id?;
 
   public name: string;
@@ -26,7 +26,7 @@ export class AppActivity {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

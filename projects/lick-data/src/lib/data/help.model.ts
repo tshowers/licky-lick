@@ -1,7 +1,7 @@
 import { Section } from './section.model';
 
 export class Help {
-  public $key: string;
+  public $key?: string;
   public id?;
   public name: string;
   public url?: string;
@@ -27,7 +27,7 @@ export class Help {
 
   public user_id?;
   public userName?;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -39,7 +39,7 @@ export class Help {
 }
 
 export class HelpProgress {
-  public $key: string;
+  public $key?: string;
   public id?;
 
   public name: string;
@@ -68,7 +68,7 @@ export class HelpProgress {
 
   public user_id?;
   public userName?;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

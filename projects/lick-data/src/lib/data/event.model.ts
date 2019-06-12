@@ -1,7 +1,7 @@
 import { Section } from './section.model';
 
 export class Event {
-  public $key: string;
+  public $key?: string;
   public schedule_id?: string;
   public project_id?: string;
   public title?: string;
@@ -52,7 +52,7 @@ export class Event {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

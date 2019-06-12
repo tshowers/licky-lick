@@ -1,7 +1,7 @@
 import { Section } from './section.model';
 
 export class ProductBundle {
-  public $key: string;
+  public $key?: string;
   public id?;
 
   public name: string;
@@ -32,7 +32,7 @@ export class ProductBundle {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

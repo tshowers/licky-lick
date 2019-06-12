@@ -2,7 +2,7 @@ import { Section } from './section.model';
 import { Product } from './product.model';
 
 export class ShoppingCart {
-  public $key: string;
+  public $key?: string;
   id?;
 
   public name: string;
@@ -37,7 +37,7 @@ export class ShoppingCart {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

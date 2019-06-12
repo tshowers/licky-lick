@@ -1,7 +1,7 @@
 import { Section } from './section.model';
 
 export class Upload {
-  public $key: string;
+  public $key?: string;
   public id?;
 
   public name: string;
@@ -54,7 +54,7 @@ export class Upload {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

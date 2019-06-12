@@ -2,7 +2,7 @@ import {Address} from './address.model';
 import { Section } from './section.model';
 
 export class Property {
-  public $key: string;
+  public $key?: string;
   public id?;
 
   public name: string;
@@ -41,7 +41,7 @@ export class Property {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
@@ -52,7 +52,7 @@ export class Property {
 }
 
 export class Showing  {
-  public $key: string;
+  public $key?: string;
   public id?;
 
   public name: string;
@@ -81,7 +81,7 @@ export class Showing  {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;

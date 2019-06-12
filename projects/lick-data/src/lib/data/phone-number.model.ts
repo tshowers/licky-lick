@@ -1,7 +1,7 @@
 import { Section } from './section.model';
 
 export class PhoneNumber {
-  public $key: string;
+  public $key?: string;
   public id?;
 
   public name: string;
@@ -29,7 +29,7 @@ export class PhoneNumber {
 
   public user_id;
   public userName;
-  public userImage;
+  public userImage?;
 
   public bookmarked?;
   public bookmarkedCount?;
