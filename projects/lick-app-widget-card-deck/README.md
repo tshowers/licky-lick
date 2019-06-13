@@ -3,8 +3,8 @@
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
 
 ## Example Input
-
-`data : any = [{
+...
+data : any = [{
   "id": Math.floor(Math.random() * 1000).toString(),
   "title": "Title 1",
   "name": "Sed sit varius auctor maecenas.",
@@ -49,8 +49,8 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
   "creatorName": "System",
   "timeStamp": new Date(),
   "userName": "Barbara McNamara"
-}];`
-
+}];
+...
 ## Code scaffolding
 
 Run `ng generate component component-name --project lick-app-widget-card-deck` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project lick-app-widget-card-deck`.
