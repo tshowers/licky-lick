@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LickAppWidgetStats1Component implements OnInit {
 
   @Input() headingText = "licky-lick-app-widget-stats1";
-  @Input() amount : number = 1999.5;
+  @Input() amount : number = Math.floor(Math.random() * 1000);
   @Input() amountText = "Income";
   @Input() iconClass = "fa fa-cogs";
 

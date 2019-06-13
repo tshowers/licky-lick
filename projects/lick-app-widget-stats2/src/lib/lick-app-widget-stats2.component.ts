@@ -10,11 +10,36 @@ export class LickAppWidgetStats2Component implements OnInit {
 
   @Input() headingText = "licky-lick-app-widget-stats2";
   @Input() subHeadingText = "Sub Header";
-  @Input() showMoreLink;
+  @Input() showMoreLink = "/";
 
   @Input() iconClass = "fa fa-trophy";
 
-  @Input() data: any[] = [];
+  @Input() data: any[] = [
+    {
+      "name": "Laptops",
+      "amount": Math.floor(Math.random() * 1000),
+      "measure": "units",
+      "url": "https://via.placeholder.com/64x64.png"
+    },
+    {
+      "name": "Desktops",
+      "amount": Math.floor(Math.random() * 1000),
+      "measure": "units",
+      "url": "https://via.placeholder.com/64x64.png"
+    },
+    {
+      "name": "APIs",
+      "amount": Math.floor(Math.random() * 1000),
+      "measure": "units",
+      "url": "https://via.placeholder.com/64x64.png"
+    },
+    {
+      "name": "Routers",
+      "amount": Math.floor(Math.random() * 1000),
+      "measure": "units",
+      "url": "https://via.placeholder.com/64x64.png"
+    },
+  ];
   @Input() router: Router;
 
   constructor() { }

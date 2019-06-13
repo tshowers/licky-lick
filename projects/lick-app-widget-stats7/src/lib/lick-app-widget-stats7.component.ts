@@ -8,11 +8,24 @@ import { Router } from '@angular/router';
 })
 export class LickAppWidgetStats7Component implements OnInit {
 
-  @Input() data: LickAppWidgetStats7Data[] = [];
+  @Input() data: LickAppWidgetStats7Data[] = [{
+    "label": "alpha",
+    "value": 48
+  }, {
+    "label": "beta",
+    "value": 32
+  }, {
+    "label": "production",
+    "value": 29,
+    "measure": "%"
+  }, {
+    "label": "archive",
+    "value": 300
+  }];
   @Input() iconClass = "fa fa-cog";
   @Input() headingText = "licky-lick-app-widget-stats7";
   @Input() subHeadingText = Math.floor(Math.random() * 1000);
-  @Input() showMoreLink;
+  @Input() showMoreLink = "/";
   @Input() router: Router;
 
   constructor() { }

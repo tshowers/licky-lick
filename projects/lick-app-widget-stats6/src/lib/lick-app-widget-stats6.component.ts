@@ -12,7 +12,7 @@ export class LickAppWidgetStats6Component implements OnInit {
   @Input() count : Number = Math.floor(Math.random() * 1000);
   @Input() label = "Total Files";
   @Input() iconClass = "fa fa-paperclip";
-  @Input() showMoreLink;
+  @Input() showMoreLink = "/";
   @Input() router: Router;
 
   constructor() { }

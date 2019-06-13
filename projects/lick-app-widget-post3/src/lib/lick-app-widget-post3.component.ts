@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LickAppWidgetPost3Component implements OnInit {
 
   @Input() headingText = "licky-lick-app-widget-post3";
-  @Input() viewAllLink;
+  @Input() viewAllLink = "/";
   @Input() viewAllText = "View All";
   @Input() isExternal = false;
 

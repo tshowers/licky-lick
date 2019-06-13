@@ -12,9 +12,28 @@ export class LickAppWidgetStats5Component implements OnInit {
   @Input() subHeadingText = "Summery of Last (7 day)";
 
 
-  @Input() circleData : LickAppWidgetStats5CircleData[] = [];
-  @Input() barData : LickAppWidgetStats5BarData[] = [];
-  @Input() showMoreLink;
+  @Input() circleData : LickAppWidgetStats5CircleData[] = [{
+    "count": 250,
+    "label": "developers"
+  }, {
+    "count": 89,
+    "label": "managers"
+  }];
+  @Input() barData : LickAppWidgetStats5BarData[] = [{
+    "count": 14,
+    "label": "alpha"
+  }, {
+    "count": 75,
+    "label": "beta"
+  }, {
+    "count": 83,
+    "label": "prod"
+  }, {
+    "count": 6,
+    "label": "arhive"
+  }];
+
+  @Input() showMoreLink = "/";
   @Input() router: Router;
 
   constructor() { }

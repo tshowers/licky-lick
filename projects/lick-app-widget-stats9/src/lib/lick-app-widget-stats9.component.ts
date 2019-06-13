@@ -16,7 +16,7 @@ export class LickAppWidgetStats9Component implements OnInit {
   buttonActive2 = "";
   buttonActive3 = "none";
   @Input() totalCount: number = Math.floor(Math.random() * 1000);
-  @Input() subHeadingText = "Aug 2017-oct 2017";
+  @Input() subHeadingText = "Aug 2019-Oct 2019";
   private ctxa: any;
   private ctxb: any;
   private ctxc: any;

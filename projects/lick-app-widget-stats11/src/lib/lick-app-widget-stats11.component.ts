@@ -22,7 +22,7 @@ export class LickAppWidgetStats11Component implements OnInit {
 
   @Input() currentButtonText = "Today";
   @Input() pastButtonText = "Yesterday";
-  @Input() showMoreLink;
+  @Input() showMoreLink = "/";
   @Input() showMoreText = "More Details";
   @Input() router: Router;
 
