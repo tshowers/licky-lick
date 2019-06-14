@@ -4,8 +4,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Examples of the libraries can be viewed through the following links.
 
-* [General Libraries](https://lick-test.firebaseapp.com/)
-* [Header Libraries](https://lick-test.firebaseapp.com/header-widgets)
+* [General Marketing Libraries](https://lick-test.firebaseapp.com/marketing/general-widgets)
+* [Marketing Header Libraries](https://lick-test.firebaseapp.com/marketing/header-widgets)
+* [Miscellaneous Marketing Libraries](https://lick-test.firebaseapp.com/marketing/misc-widgets)
+* [Application Specific Libraries](https://lick-test.firebaseapp.com/application/gernal-widgets)
+* [Statistics Libraries](https://lick-test.firebaseapp.com/application/stat-widgets)
 
 ## Vision
 
