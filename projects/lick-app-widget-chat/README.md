@@ -90,7 +90,7 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Example Output
 
-[LickAppWidgetCardDeck](https://lick-test.firebaseapp.com/application/general-widgets#lick-app-widget-chat)
+[LickAppWidgetCardDeck](https://lick-test.firebaseapp.com/application/general-widgets)
 
 ## Code scaffolding
 

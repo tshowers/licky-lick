@@ -2,10 +2,39 @@
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
 
+## Example Input
+```ts
+        @Input() circleData : LickAppWidgetStats5CircleData[] = [{
+          "count": 250,
+          "label": "developers"
+        }, {
+          "count": 89,
+          "label": "managers"
+        }];
+        @Input() barData : LickAppWidgetStats5BarData[] = [{
+          "count": 14,
+          "label": "alpha"
+        }, {
+          "count": 75,
+          "label": "beta"
+        }, {
+          "count": 83,
+          "label": "prod"
+        }, {
+          "count": 6,
+          "label": "arhive"
+        }];
+
+```
+
+## Example Output
+
+[LickAppWidgetCardDeck](https://lick-test.firebaseapp.com/application/stat-widgets)
+
 ## Code scaffolding
 
 Run `ng generate component component-name --project lick-app-widget-stats5` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project lick-app-widget-stats5`.
-> Note: Don't forget to add `--project lick-app-widget-stats5` or else it will be added to the default project in your `angular.json` file. 
+> Note: Don't forget to add `--project lick-app-widget-stats5` or else it will be added to the default project in your `angular.json` file.
 
 ## Build
 

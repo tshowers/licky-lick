@@ -396,7 +396,7 @@ export class LickAppWidgetStats14Component implements OnInit {
   private initChart1(): void {
     this.ctx1 = document.getElementById("chart-stat-widget14-1");
 
-    console.log(this.data.period1.chartData)
+    // console.log(this.data.period1.chartData)
     try {
       if (this.ctx1) {
         let chart = new Chart(this.ctx1, {
@@ -438,7 +438,7 @@ export class LickAppWidgetStats14Component implements OnInit {
   }
   private initChart2(): void {
     this.ctx2 = document.getElementById("chart-stat-widget14-2");
-    console.log(this.data.period2.chartData)
+    // console.log(this.data.period2.chartData)
     try {
       if (this.ctx2) {
         let chart = new Chart(this.ctx2, {
@@ -480,7 +480,7 @@ export class LickAppWidgetStats14Component implements OnInit {
   }
   private initChart3(): void {
     this.ctx3 = document.getElementById("chart-stat-widget14-3");
-    console.log(this.data.period3.chartData)
+    // console.log(this.data.period3.chartData)
     try {
       if (this.ctx3) {
         let chart = new Chart(this.ctx3, {
@@ -522,7 +522,7 @@ export class LickAppWidgetStats14Component implements OnInit {
   }
   private initChart4(): void {
     this.ctx4 = document.getElementById("chart-stat-widget14-4");
-    console.log(this.data.period4.chartData)
+    // console.log(this.data.period4.chartData)
     try {
       if (this.ctx4) {
         let chart = new Chart(this.ctx4, {

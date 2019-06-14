@@ -41,10 +41,11 @@ import { LickAppWidgetStats16Module } from 'lick-app-widget-stats16';
 import { LickAppWidgetStats17Module } from 'lick-app-widget-stats17';
 import { LickAppWidgetTableDataModule } from 'lick-app-widget-table-data';
 import { LickAppWidgetTotalsModule } from 'lick-app-widget-totals';
+import { NewsWidgetsComponent } from './news-widgets/news-widgets.component';
 
 
 @NgModule({
-  declarations: [StatWidgetsComponent, GeneralWidgetsComponent],
+  declarations: [StatWidgetsComponent, GeneralWidgetsComponent, NewsWidgetsComponent],
   imports: [
     CommonModule,
     RouterModule,

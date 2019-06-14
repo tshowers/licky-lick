@@ -2,10 +2,24 @@
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
 
+## Example Input
+```ts
+        @Input() chartData1: number[] = [23, 16, 34, 27];
+        @Input() chartLabels1 = ['Active', 'In-active', 'Pending', 'Dormant'];
+        @Input() chartData2: number[] = [33, 42, 6, 19];
+        @Input() chartLabels2 = ['Active', 'In-active', 'Pending', 'Dormant'];
+        @Input() responsive: boolean = true;
+
+```
+
+## Example Output
+
+[LickAppWidgetCardDeck](https://lick-test.firebaseapp.com/application/stat-widgets)
+
 ## Code scaffolding
 
 Run `ng generate component component-name --project lick-app-widget-stats11` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project lick-app-widget-stats11`.
-> Note: Don't forget to add `--project lick-app-widget-stats11` or else it will be added to the default project in your `angular.json` file. 
+> Note: Don't forget to add `--project lick-app-widget-stats11` or else it will be added to the default project in your `angular.json` file.
 
 ## Build
 

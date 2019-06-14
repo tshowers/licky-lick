@@ -28,6 +28,10 @@ export class LickMarketingMenuComponent implements OnInit {
       "link" : "/application/stat-widgets",
       "name" : "Stats"
     },
+    {
+      "link" : "/application/news-widgets",
+      "name" : "News"
+    },
   ]
 
   constructor() { }

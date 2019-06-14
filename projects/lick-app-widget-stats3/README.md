@@ -2,10 +2,43 @@
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
 
+## Example Input
+```ts
+        data: LickAppWidgetStats3Data[] = [{
+          "count": 5,
+          "label": "users",
+          "iconClass": "fa fa-bath"
+        }, {
+          "count": 12,
+          "label": "files",
+          "iconClass": "fa fa-bath"
+        }, {
+          "count": 25,
+          "label": "laptops",
+          "iconClass": "fa fa-bath"
+        }, {
+          "count": 4,
+          "label": "routers",
+          "iconClass": "fa fa-bath"
+        }, {
+          "count": 16,
+          "label": "vendors",
+          "iconClass": "fa fa-bath"
+        }, {
+          "count": 23,
+          "label": "executives",
+          "iconClass": "fa fa-bath"
+        }];
+```
+
+## Example Output
+
+[LickAppWidgetCardDeck](https://lick-test.firebaseapp.com/application/stat-widgets)
+
 ## Code scaffolding
 
 Run `ng generate component component-name --project lick-app-widget-stats3` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project lick-app-widget-stats3`.
-> Note: Don't forget to add `--project lick-app-widget-stats3` or else it will be added to the default project in your `angular.json` file. 
+> Note: Don't forget to add `--project lick-app-widget-stats3` or else it will be added to the default project in your `angular.json` file.
 
 ## Build
 

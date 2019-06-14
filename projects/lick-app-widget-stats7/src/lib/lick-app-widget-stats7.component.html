@@ -4,7 +4,7 @@
       <i class="{{iconClass}}"></i>
     </div>
     <h5 class="text-center text-white">{{headingText}}</h5>
-    <div class="orders-count text-center">{{subHeadingText}}</div>
+    <div class="orders-count text-center"><span [CountTo]="subHeadingText"></span></div>
     <ul>
       <li class="text-white"
           *ngFor="let item of data">{{item?.label}}

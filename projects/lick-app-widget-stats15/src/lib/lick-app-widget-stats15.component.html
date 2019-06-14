@@ -6,7 +6,7 @@
                 <div class="h3 text-white">
                     <strong>{{headingText}}</strong>
                 </div>
-                <small class="text-white">{{total}} TOTAL</small>
+                <small class="text-white"><span [CountTo]="total"></span> TOTAL</small>
             </div>
 
             <div class="float-right">
@@ -21,7 +21,7 @@
                     <div class="widget-pm-summary">
                         <i class="{{iconClass1}}" aria-hidden="true"></i>
                         <div class="widget-text">
-                            <div class="h2 text-white">{{count1}}</div>
+                            <div class="h2 text-white"><span [CountTo]="count1"></span></div>
                             <small class="text-white">{{countText1}}</small>
                         </div>
                         <!-- end widget-text -->
@@ -37,7 +37,7 @@
                     <div class="widget-pm-summary">
                         <i class="{{iconClass2}}" aria-hidden="true"></i>
                         <div class="widget-text">
-                            <div class="h2 text-white">{{count2}}</div>
+                            <div class="h2 text-white"><span [CountTo]="count2"></span></div>
                             <small class="text-white">{{countText2}}</small>
                         </div>
                         <!-- end widget-text -->
@@ -53,7 +53,7 @@
                     <div class="widget-pm-summary">
                         <i class="{{iconClass3}}" aria-hidden="true"></i>
                         <div class="widget-text">
-                            <div class="h2 text-white">{{count3}}</div>
+                            <div class="h2 text-white"><span [CountTo]="count3"></span></div>
                             <small class="text-white">{{countText3}}</small>
                         </div>
                         <!-- end widget-text -->
@@ -69,7 +69,7 @@
                     <div class="widget-pm-summary">
                         <i class="{{iconClass4}}" aria-hidden="true"></i>
                         <div class="widget-text">
-                            <div class="h2 text-white">{{count4}}</div>
+                            <div class="h2 text-white"><span [CountTo]="count4"></span></div>
                             <small class="text-white">{{countText4}}</small>
                         </div>
                         <!-- end widget-text -->

@@ -1,24 +1,24 @@
 <div class="card card-accent-theme users-count">
     <div class="card-body">
         <i class="mdi mdi-account-circle"></i>
-        <div class="count">{{totalCount}}</div>
+        <div class="count" [CountTo]="totalCount"></div>
         <div class="heading">{{headingText}}</div>
         <div class="text-disabled" innerHTML="{{descriptionText}}">
             </div>
 
         <div class="row">
             <div class="col-md-4  online-users">
-                <div class="count-small">{{count1}}</div>
+                <div class="count-small"><span [CountTo]="count1"></span></div>
                 <div class="heading-small">{{count1Text}}</div>
             </div>
             <!-- online-users -->
             <div class="col-md-4 offline-users">
-                <div class="count-small">{{count2}}</div>
+                <div class="count-small"><span [CountTo]="count2"></span></div>
                 <div class="heading-small">{{count2Text}}</div>
             </div>
             <!-- end offline-users -->
             <div class="col-md-4 pending-users">
-                <div class="count-small">{{count3}}</div>
+                <div class="count-small"><span [CountTo]="count3"></span></div>
                 <div class="heading-small">{{count3Text}}</div>
             </div>
             <!-- end pending users -->

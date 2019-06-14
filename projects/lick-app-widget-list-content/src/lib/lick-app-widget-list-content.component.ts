@@ -53,7 +53,7 @@ export class LickAppWidgetListContentComponent implements OnInit {
     "timeStamp": new Date(),
     "userName": "Barbara McNamara"
   }];
-  
+
   constructor() { }
 
   ngOnInit() {

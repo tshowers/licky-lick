@@ -13,23 +13,23 @@ export class LickAppWidgetStats5Component implements OnInit {
 
 
   @Input() circleData : LickAppWidgetStats5CircleData[] = [{
-    "count": 250,
+    "count": Math.floor(Math.random() * 1000),
     "label": "developers"
   }, {
-    "count": 89,
+    "count": Math.floor(Math.random() * 1000),
     "label": "managers"
   }];
   @Input() barData : LickAppWidgetStats5BarData[] = [{
-    "count": 14,
+    "count": Math.floor(Math.random() * 100),
     "label": "alpha"
   }, {
-    "count": 75,
+    "count": Math.floor(Math.random() * 100),
     "label": "beta"
   }, {
-    "count": 83,
+    "count": Math.floor(Math.random() * 100),
     "label": "prod"
   }, {
-    "count": 6,
+    "count": Math.floor(Math.random() * 100),
     "label": "arhive"
   }];
 

@@ -2,10 +2,32 @@
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
 
+## Example Input
+```ts
+        @Input() headingText = "Test Header";
+
+        @Input() count1: number = Math.floor(Math.random() * 1000); // generates random number for demonstration only
+        @Input() countText1 = "Downloads";
+
+        @Input() count2: number = Math.floor(Math.random() * 1000);
+        @Input() countText2 = "Daily Views";
+
+        @Input() count3: number = Math.floor(Math.random() * 1000);
+        @Input() countText3 = "Active Users";
+
+        @Input() count4: number = Math.floor(Math.random() * 1000);
+        @Input() countText4 = "plugins";
+
+```
+
+## Example Output
+
+[LickAppWidgetCardDeck](https://lick-test.firebaseapp.com/application/general-widgets)
+
 ## Code scaffolding
 
 Run `ng generate component component-name --project lick-app-widget-totals` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project lick-app-widget-totals`.
-> Note: Don't forget to add `--project lick-app-widget-totals` or else it will be added to the default project in your `angular.json` file. 
+> Note: Don't forget to add `--project lick-app-widget-totals` or else it will be added to the default project in your `angular.json` file.
 
 ## Build
 

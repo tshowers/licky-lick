@@ -12,9 +12,9 @@ export class LickAppWidgetStats11Component implements OnInit {
   @Input() headingText = "licky-lick-app-widget-stats11";
   ctx1: any;
   ctx2: any;
-  @Input() chartData1: number[] = [23, 16, 34, 27];
+  @Input() chartData1: number[] = [Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000)];
   @Input() chartLabels1 = ['Active', 'In-active', 'Pending', 'Dormant'];
-  @Input() chartData2: number[] = [33, 42, 6, 19];
+  @Input() chartData2: number[] = [Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000)];
   @Input() chartLabels2 = ['Active', 'In-active', 'Pending', 'Dormant'];
   @Input() responsive: boolean = true;
   currentDataDisplay = '';

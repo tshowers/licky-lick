@@ -2,10 +2,28 @@
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
 
+## Example Input
+```ts
+        @Input() headingText = "Test Heading";
+        @Input() totalCount : number = 36;
+        @Input() descriptionText = "Number of all Online Users Who have<br/>Logged into the Website at the moment";
+        @Input() count1: number = 19;
+        @Input() count1Text: string = "Online";
+        @Input() count2: number = 22;
+        @Input() count2Text: string = "Offline";
+        @Input() count3: number = 12;
+        @Input() count3Text: string = "Pending";
+
+```
+
+## Example Output
+
+[LickAppWidgetCardDeck](https://lick-test.firebaseapp.com/application/stat-widgets)
+
 ## Code scaffolding
 
 Run `ng generate component component-name --project lick-app-widget-stats8` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project lick-app-widget-stats8`.
-> Note: Don't forget to add `--project lick-app-widget-stats8` or else it will be added to the default project in your `angular.json` file. 
+> Note: Don't forget to add `--project lick-app-widget-stats8` or else it will be added to the default project in your `angular.json` file.
 
 ## Build
 
