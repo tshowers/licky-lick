@@ -52,7 +52,7 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
         }];
 ```
 
-## View Example Output
+## Example Output
 
 [LickAppWidgetCardDeck](https://lick-test.firebaseapp.com/application/general-widgets#lick-app-widget-card-deck)
 
