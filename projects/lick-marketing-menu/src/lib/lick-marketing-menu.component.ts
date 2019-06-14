@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'licky-lick-marketing-menu',
@@ -6,6 +6,29 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class LickMarketingMenuComponent implements OnInit {
+
+  @Input() menuItems: any[] = [
+    {
+      "link" : "/marketing/general-widgets",
+      "name" : "Marketing",
+    },
+    {
+      "link" : "/marketing/header-widgets",
+      "name" : "Header"
+    },
+    {
+      "link" : "/marketing/misc-widgets",
+      "name" : "Miscellaneous"
+    },
+    {
+      "link" : "/application/gernal-widgets",
+      "name" : "App"
+    },
+    {
+      "link" : "/application/stat-widgets",
+      "name" : "Stats"
+    },
+  ]
 
   constructor() { }
 

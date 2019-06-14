@@ -51,6 +51,11 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
           "userName": "Barbara McNamara"
         }];
 ```
+
+## View Example Output
+
+[LickAppWidgetCardDeck](https://lick-test.firebaseapp.com/application/general-widgets#lick-app-widget-card-deck)
+
 ## Code scaffolding
 
 Run `ng generate component component-name --project lick-app-widget-card-deck` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project lick-app-widget-card-deck`.

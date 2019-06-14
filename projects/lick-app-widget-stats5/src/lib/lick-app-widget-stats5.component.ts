@@ -41,6 +41,10 @@ export class LickAppWidgetStats5Component implements OnInit {
   ngOnInit() {
   }
 
+  showMore() : void {
+    console.log("Show More Clicked")
+  }
+
 }
 
 export interface LickAppWidgetStats5CircleData {

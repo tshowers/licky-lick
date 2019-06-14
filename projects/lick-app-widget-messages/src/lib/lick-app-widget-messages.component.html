@@ -9,8 +9,8 @@
                 <a routerLink="#" class="dropdown-item">
                     <div class="message-box ">
                         <div class="u-img float-left">
-                            <img src="{{message?.photoURL}}" alt="{{message?.name}}" />
-                            <span *ngIf="message?.userStatus" class="{{message.userStatus}}"></span>
+                            <img src="{{message?.icon}}" alt="{{message?.name}}" />
+                            <span *ngIf="message?.status" class="{{message.status}}"></span>
                         </div>
                         <div class="u-text float-left">
                             <div class="u-name">

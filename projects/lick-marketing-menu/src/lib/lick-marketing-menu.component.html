@@ -1,0 +1,25 @@
+<!-- Start Navigation -->
+<nav id="site-navigation" class="navbar main-navigation nav-light navbar-top">
+  <div class="container-fluid container-nav nav-no-shadow">
+    <div class="container">
+
+    <!-- Top menu buttons -->
+      <div class="menu-buttons">
+        <ul>
+          <li *ngFor="let item of menuItems">
+            <a routerLink="{{item?.link}}" class="button" routerLinkActive="button-full"  title="{{item?.name}}">{{item?.name}}</a>
+          </li>
+          <!-- <li><a routerLink="/signup" class="button button-full" title="link">Sign Up</a></li> -->
+        </ul>
+      </div>
+
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand" routerLink="/"> <img src="assets/me.png" width="64" height="64" class="d-inline-block align-top" alt="Ty Showers"> </a>
+      </div>
+
+
+    </div> <!-- .container -->
+  </div> <!-- .container-fluid -->
+</nav>
+<!-- End Navigation -->

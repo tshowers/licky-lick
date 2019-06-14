@@ -64,8 +64,14 @@ import { LickMarketingTryIt3Module } from 'lick-marketing-try-it3';
 import { LickMarketingVideo1Module } from 'lick-marketing-video1';
 import { LickMarketingVideo2Module } from 'lick-marketing-video2';
 
+import { LickMarketingCarouselModule } from 'lick-marketing-carousel';
+import { LickMarketingSimpleHeaderModule } from 'lick-marketing-simple-header';
+import { LickMarketingSimplePageModule } from 'lick-marketing-simple-page';
+import { MiscellaneousWidgetsComponent } from './miscellaneous-widgets/miscellaneous-widgets.component';
+
+
 @NgModule({
-  declarations: [HeaderWidgetsComponent, GeneralWidgetsComponent],
+  declarations: [HeaderWidgetsComponent, GeneralWidgetsComponent, MiscellaneousWidgetsComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -126,7 +132,11 @@ import { LickMarketingVideo2Module } from 'lick-marketing-video2';
     LickMarketingTryIt3Module,
 
     LickMarketingVideo1Module,
-    LickMarketingVideo2Module
+    LickMarketingVideo2Module,
+
+    LickMarketingCarouselModule,
+    LickMarketingSimpleHeaderModule,
+    LickMarketingSimplePageModule
   ]
 })
 export class LickyMarketingModule { }
