@@ -1,25 +1,11 @@
-<!-- Start Navigation -->
-<nav id="site-navigation" class="navbar main-navigation nav-light navbar-top">
-  <div class="container-fluid container-nav nav-no-shadow">
-    <div class="container">
-
-    <!-- Top menu buttons -->
-      <div class="menu-buttons">
-        <ul>
-          <li *ngFor="let item of menuItems">
-            <a routerLink="{{item?.link}}" class="button" routerLinkActive="button-full"  title="{{item?.name}}">{{item?.name}}</a>
-          </li>
-          <!-- <li><a routerLink="/signup" class="button button-full" title="link">Sign Up</a></li> -->
-        </ul>
-      </div>
-
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <a class="navbar-brand" routerLink="/"> <img src="assets/me.png" width="64" height="64" class="d-inline-block align-top" alt="Ty Showers"> </a>
-      </div>
-
-
-    </div> <!-- .container -->
-  </div> <!-- .container-fluid -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: rgba(255,255,255,.9)">
+  <a class="navbar-brand d-none d-lg-block d-xl-none" routerLink="/"><img src="assets/me.png" width="64" height="64" class="d-inline-block align-top" alt="Ty Showers"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a *ngFor="let item of menuItems" class="nav-link text-primary" routerLinkActive="active" routerLink="{{item?.link}}">{{item?.name}}</a>
+    </div>
+  </div>
 </nav>
-<!-- End Navigation -->

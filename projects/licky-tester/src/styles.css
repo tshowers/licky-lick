@@ -2440,7 +2440,7 @@ tbody.collapse.show {
   .custom-file-control:lang(en)::before {
     content: "Browse"; }
 
-.nav {
+/* .nav {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
@@ -2487,7 +2487,7 @@ tbody.collapse.show {
 .nav-justified .nav-item {
   flex-basis: 0;
   flex-grow: 1;
-  text-align: center; }
+  text-align: center; } */
 
 .tab-content > .tab-pane {
   display: none; }
@@ -2495,7 +2495,7 @@ tbody.collapse.show {
 .tab-content > .active {
   display: block; }
 
-.navbar {
+/* .navbar {
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -2541,7 +2541,7 @@ tbody.collapse.show {
 .navbar-collapse {
   flex-basis: 100%;
   flex-grow: 1;
-  align-items: center; }
+  align-items: center; } */
 
 .navbar-toggler {
   padding: 0.25rem 0.75rem;
@@ -2561,7 +2561,7 @@ tbody.collapse.show {
   background: no-repeat center center;
   background-size: 100% 100%; }
 
-@media (max-width: 575px) {
+/* @media (max-width: 575px) {
   .navbar-expand-sm > .container,
   .navbar-expand-sm > .container-fluid {
     padding-right: 0;
@@ -2741,7 +2741,7 @@ tbody.collapse.show {
   border-color: rgba(0, 0, 0, 0.1); }
 
 .navbar-light .navbar-toggler-icon {
-  /* background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");  */
+
 }
 
 .navbar-light .navbar-text {
@@ -2774,7 +2774,7 @@ tbody.collapse.show {
   border-color: rgba(255, 255, 255, 0.1); }
 
 .navbar-dark .navbar-toggler-icon {
-  /* background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");  */
+
 }
 
 .navbar-dark .navbar-text {
@@ -2782,7 +2782,7 @@ tbody.collapse.show {
   .navbar-dark .navbar-text a {
     color: #fff; }
     .navbar-dark .navbar-text a:focus, .navbar-dark .navbar-text a:hover {
-      color: #fff; }
+      color: #fff; } */
 
 .card {
   position: relative;
@@ -6928,7 +6928,7 @@ body {
           .app-header.navbar .user-menu .wrap .dw-user-box .u-text p {
             margin-bottom: 3px; }
 
-.navbar-brand {
+/* .navbar-brand {
   color: #29363d;
   border: none !important; }
   .navbar-brand:focus, .navbar-brand:hover {
@@ -7020,7 +7020,7 @@ body {
     .navbar .login-tag-line {
       display: none !important; }
     .navbar .navbar-search {
-      display: none; } }
+      display: none; } } */
 
 /* End top navbar styles */
 /*******************
