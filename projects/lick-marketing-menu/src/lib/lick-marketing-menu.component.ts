@@ -7,6 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LickMarketingMenuComponent implements OnInit {
 
+  @Input() logo = "https://via.placeholder.com/64";
+  @Input() logoName = "Logo Name"
+
   @Input() menuItems: any[] = [
     {
       "link" : "/marketing/general-widgets",

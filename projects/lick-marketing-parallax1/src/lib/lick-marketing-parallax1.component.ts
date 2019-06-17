@@ -10,6 +10,7 @@ export class LickMarketingParallax1Component implements OnInit {
   @Input() headingText = "Download app for free";
   @Input() descriptionText = "Vero eos et dolorum fuga expedita distinctio. Cupiditate non provident, similique sunt in ea commodi autem. Aliquid ex ea voluptate velit esse, quam nihil molestiae consequatur, vel. Sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae.";
   @Input() imageURL = "http://via.placeholder.com/1920x1440";
+  @Input() textColor = "#000000";
 
   constructor() { }
 
