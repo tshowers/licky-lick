@@ -9,7 +9,7 @@ import { ApplicationModule } from './application/application.module';
 const routes: Routes = [
   { path: 'about', loadChildren: './marketing/marketing.module#MarketingModule' },
   { path: 'application', loadChildren: './application/application.module#ApplicationModule' },
-  { path: '',   redirectTo: '/about', pathMatch: 'full' },
+  { path: '',   redirectTo: 'about', pathMatch: 'full' },
 ];
 
 

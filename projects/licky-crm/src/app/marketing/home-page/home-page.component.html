@@ -32,6 +32,7 @@
         [descriptionText]="'A business should be able to run without its owners.  When owners are deeply involved in the business the business will eventually fail.  The goal is to implement as much automation as possible so the business functions without the owners.'" [bulletText1]="'No management system'" [bulletText2]="'No vision'" [bulletText3]="'No infrastructure'"
         [imageURL1]="'assets/crm4.jpg'"
         [imageURL2]="'assets/crm5.jpg'"
+        [buttonLink]="null"
         ></licky-lick-marketing-about-product3>
         <licky-lick-marketing-parallax1
         [headingText]="'Business is a brand'"
@@ -50,9 +51,36 @@
           [faqHeading4] = "'When is the software be available?'"
           [faqDescription4] = "'We want to make sure the product is as close to perfect as possible before release. Check back often or help us expedite the release by signing up for our alpha version.'"
         ></licky-lick-marketing-faq2>
-        <licky-lick-marketing-how-to1></licky-lick-marketing-how-to1>
+        <licky-lick-marketing-how-to1
+          [descriptionText]="'Implementing these steps puts your business on the path to being more predictable.  A business owner or department manager willing to give time and attention to these steps will flourish.'"
+          [header1]="'Sign Up'"
+          [header2]="'Verification'"
+          [header3]="'Login'"
+          [description1]="'Simply provide an name, email address password, and link to your avatar (image you would like to use to depict yourself).'"
+          [description2]="'After sign up you will receive an email to verify your email address.'"
+          [description3]="'Once your email address has been verified you will be able to login and use the application.'"
+        ></licky-lick-marketing-how-to1>
         <licky-lick-marketing-try-it2 [headingText]="'Coming Late Summer'" [descriptionText]="'Upon launch, 100% garaunteed satisfaction or your money back.'" [buttonLink]="null"></licky-lick-marketing-try-it2>
       </main>
     </div>
 </div>
-<licky-lick-marketing-footer1></licky-lick-marketing-footer1>
+<licky-lick-marketing-footer1
+  [headingText1]="'About'"
+  [descriptionText]="'We believe in harnassing the power of computers, by not only collecting information, but analyzing the information, and proactively providing answers and courses of action. We also do not believe in searching, but finding.'"
+  [column1Heading] = "'Projects'"
+  [column1Text1] = "'News'"
+  [column1Text2] = "'Project'"
+  [column1Text3] = "'E-Commerce'"
+  [column1Text4] = "'Task-Assistant'"
+  [column1Text5] = "'SFA'"
+  [column2Heading] = "'Support'"
+  [column2Text1] = "'Github'"
+  [column2Text2] = "'Privacy'"
+  [column2Button2Link] = "'/about/privacy'"
+  [column2Text3] = "'Contact'"
+  [column2Button3Link] = "'/about/contact'"
+  [column2Text4] = "null"
+  [column2Text5] = "null"
+  [column3Heading] ="null"
+  [footerText] = "'Copyright Taliferro. All rights reserved.'"
+></licky-lick-marketing-footer1>

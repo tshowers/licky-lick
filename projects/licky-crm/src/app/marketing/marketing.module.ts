@@ -12,9 +12,13 @@ import { LickMarketingHowTo1Module } from 'lick-marketing-how-to1';
 import { LickMarketingTryIt2Module } from 'lick-marketing-try-it2';
 import { LickMarketingMenuModule } from 'lick-marketing-menu';
 import { LickMarketingFooter1Module} from 'lick-marketing-footer1';
+import { LickMarketingSimplePageModule } from 'lick-marketing-simple-page';
+import { LickMarketingSimpleHeaderModule } from 'lick-marketing-simple-header';
+import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
+import { ContactPageComponent } from './contact-page/contact-page.component';
 
 @NgModule({
-  declarations: [HomePageComponent],
+  declarations: [HomePageComponent, PrivacyPageComponent, ContactPageComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -27,7 +31,9 @@ import { LickMarketingFooter1Module} from 'lick-marketing-footer1';
     LickMarketingHowTo1Module,
     LickMarketingTryIt2Module,
     LickMarketingMenuModule,
-    LickMarketingFooter1Module
+    LickMarketingFooter1Module,
+    LickMarketingSimplePageModule,
+    LickMarketingSimpleHeaderModule
   ]
 })
 export class MarketingModule { }
