@@ -3258,6 +3258,134 @@
           }
         }
       }
+    },
+    "licky-news": {
+      "root": "projects/licky-news/",
+      "sourceRoot": "projects/licky-news/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/licky-news",
+            "index": "projects/licky-news/src/index.html",
+            "main": "projects/licky-news/src/main.ts",
+            "polyfills": "projects/licky-news/src/polyfills.ts",
+            "tsConfig": "projects/licky-news/tsconfig.app.json",
+            "assets": [
+              "projects/licky-news/src/favicon.ico",
+              "projects/licky-news/src/assets"
+            ],
+            "styles": [
+              "projects/licky-news/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/licky-news/src/environments/environment.ts",
+                  "with": "projects/licky-news/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "licky-news:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "licky-news:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "licky-news:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/licky-news/src/test.ts",
+            "polyfills": "projects/licky-news/src/polyfills.ts",
+            "tsConfig": "projects/licky-news/tsconfig.spec.json",
+            "karmaConfig": "projects/licky-news/karma.conf.js",
+            "styles": [
+              "projects/licky-news/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/licky-news/src/favicon.ico",
+              "projects/licky-news/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/licky-news/tsconfig.app.json",
+              "projects/licky-news/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "licky-news-e2e": {
+      "root": "projects/licky-news-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/licky-news-e2e/protractor.conf.js",
+            "devServerTarget": "licky-news:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "licky-news:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/licky-news-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "lick-data"

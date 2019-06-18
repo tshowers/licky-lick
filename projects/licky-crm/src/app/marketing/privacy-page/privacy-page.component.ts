@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RemoteAssetService } from '../services/remote-asset.service';
 
 @Component({
   selector: 'app-privacy-page',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./privacy-page.component.css']
 })
 export class PrivacyPageComponent implements OnInit {
+
+  public bodyText;
 
   menuItems: any[] = [
     {
@@ -21,9 +24,15 @@ export class PrivacyPageComponent implements OnInit {
       "name" : "Login"
     },
   ]
-  constructor() { }
+  constructor(private _remoteAssetService: RemoteAssetService) { }
 
   ngOnInit() {
+    this._remoteAssetService.getFileContents('./assets/terms.txt', this._remoteAssetService.TEXT)
+    .subscribe({
+      next: data => {this.bodyText = data; },
+      error: err => console.error(err)
+    })
+
   }
 
 }
