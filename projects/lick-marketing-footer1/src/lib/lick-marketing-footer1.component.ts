@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'licky-lick-marketing-footer1',
@@ -44,10 +45,16 @@ export class LickMarketingFooter1Component implements OnInit {
   @Input() column3Button4Link = "/";
 
   @Input() footerText = "All rights reserved.";
+  @Input() router: Router;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onFootClick(link: string): void {
+    (link.indexOf("http") < 0) ?
+      this.router.navigate([link]) : window.location.href = link;
   }
 
 }

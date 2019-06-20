@@ -20,8 +20,8 @@ export class LickMarketingAboutProduct4Component implements OnInit {
   @Input() featureText3 = "Full UI Customization";
   @Input() featureText4 = "Unlimited Cloud Storage";
 
-  @Input() featureBadgeText3;
-  @Input() featureBadgeText4;
+  @Input() featureBadgeText3 = "pro";
+  @Input() featureBadgeText2 = "new";
 
 
   constructor() { }

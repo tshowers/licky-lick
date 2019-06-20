@@ -13,14 +13,14 @@
 
           <!-- Feature block 2 -->
           <div class="feature-box feature-box-second">
-            <span class="badge badge-second">new</span>
+            <span class="badge badge-second" *ngIf="featureBadgeText2">{{featureBadgeText2}}</span>
             <i class="{{iconFeature2}}"></i> <!-- icon -->
             <p>{{featureText2}}</p>
           </div>
 
           <!-- Feature block 3 -->
           <div class="feature-box feature-box-primary">
-            <span class="badge badge-primary">pro</span>
+            <span class="badge badge-primary" *ngIf="featureBadgeText3">{{featureBadgeText3}}</span>
             <i class="{{iconFeature3}}"></i> <!-- icon -->
             <p>{{featureText3}}</p>
           </div>

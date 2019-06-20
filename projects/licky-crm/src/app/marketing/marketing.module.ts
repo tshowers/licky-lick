@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MarketingRoutingModule } from './marketing-routing.module';
-import { HomePageComponent } from './home-page/home-page.component';
+
 import { LickMarketingHeader3Module } from 'lick-marketing-header3';
 import { LickMarketingFeatures2Module } from 'lick-marketing-features2';
 import { LickMarketingAboutProduct3Module } from 'lick-marketing-about-product3';
@@ -17,8 +17,11 @@ import { LickMarketingFooter1Module} from 'lick-marketing-footer1';
 import { LickMarketingSimplePageModule } from 'lick-marketing-simple-page';
 import { LickMarketingSimpleHeaderModule } from 'lick-marketing-simple-header';
 import { LickMarketingContactUs1Module} from 'lick-marketing-contact-us1';
+
+import { HomePageComponent } from './home-page/home-page.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
+
 import { RemoteAssetService } from './services/remote-asset.service';
 
 @NgModule({
