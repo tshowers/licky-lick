@@ -4,11 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { GeneralWidgetsComponent} from './general-widgets/general-widgets.component';
 import { StatWidgetsComponent} from './stat-widgets/stat-widgets.component';
 import { NewsWidgetsComponent } from './news-widgets/news-widgets.component';
+import { PageWidgetsComponent } from './page-widgets/page-widgets.component';
 
 const routes: Routes = [
   { path: 'gernal-widgets', component: GeneralWidgetsComponent, data:{ title: 'General Widgets'}},
   { path: 'stat-widgets', component: StatWidgetsComponent, data:{ title: 'Statistic Widgets'}},
   { path: 'news-widgets', component: NewsWidgetsComponent, data:{ title: 'News Widgets'}},
+  { path: 'page-widgets', component: PageWidgetsComponent, data:{ title: 'Page Widgets'}},
 ];
 
 @NgModule({

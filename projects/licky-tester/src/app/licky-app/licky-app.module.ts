@@ -41,16 +41,30 @@ import { LickAppWidgetStats16Module } from 'lick-app-widget-stats16';
 import { LickAppWidgetStats17Module } from 'lick-app-widget-stats17';
 import { LickAppWidgetTableDataModule } from 'lick-app-widget-table-data';
 import { LickAppWidgetTotalsModule } from 'lick-app-widget-totals';
+
+import { LickAppWidgetSignupModule} from 'lick-app-widget-signup';
+import { LickAppWidgetMaintenanceModule} from 'lick-app-widget-maintenance';
+import { LickAppWidgetLoginModule} from 'lick-app-widget-login';
+import { LickAppWidgetLockScreenModule } from 'lick-app-widget-lock-screen';
+import { LickAppWidgetLockForgotPasswordModule } from 'lick-app-widget-lock-forgot-password';
+
 import { NewsWidgetsComponent } from './news-widgets/news-widgets.component';
+import { PageWidgetsComponent } from './page-widgets/page-widgets.component';
 
 
 @NgModule({
-  declarations: [StatWidgetsComponent, GeneralWidgetsComponent, NewsWidgetsComponent],
+  declarations: [StatWidgetsComponent, GeneralWidgetsComponent, NewsWidgetsComponent, PageWidgetsComponent],
   imports: [
     CommonModule,
     RouterModule,
     LickyAppRoutingModule,
     LickDataModule,
+
+    LickAppWidgetSignupModule,
+    LickAppWidgetMaintenanceModule,
+    LickAppWidgetLoginModule,
+    LickAppWidgetLockScreenModule,
+    LickAppWidgetLockForgotPasswordModule,
 
     LickAppWidgetCardDeckModule,
     LickAppWidgetCardGroupModule,

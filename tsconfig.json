@@ -522,6 +522,42 @@
       ],
       "lick-app-widget-menu/*": [
         "dist/lick-app-widget-menu/*"
+      ],
+      "licky-services": [
+        "dist/licky-services"
+      ],
+      "licky-services/*": [
+        "dist/licky-services/*"
+      ],
+      "lick-app-widget-login": [
+        "dist/lick-app-widget-login"
+      ],
+      "lick-app-widget-login/*": [
+        "dist/lick-app-widget-login/*"
+      ],
+      "lick-app-widget-maintenance": [
+        "dist/lick-app-widget-maintenance"
+      ],
+      "lick-app-widget-maintenance/*": [
+        "dist/lick-app-widget-maintenance/*"
+      ],
+      "lick-app-widget-signup": [
+        "dist/lick-app-widget-signup"
+      ],
+      "lick-app-widget-signup/*": [
+        "dist/lick-app-widget-signup/*"
+      ],
+      "lick-app-widget-lock-screen": [
+        "dist/lick-app-widget-lock-screen"
+      ],
+      "lick-app-widget-lock-screen/*": [
+        "dist/lick-app-widget-lock-screen/*"
+      ],
+      "lick-app-widget-lock-forgot-password": [
+        "dist/lick-app-widget-lock-forgot-password"
+      ],
+      "lick-app-widget-lock-forgot-password/*": [
+        "dist/lick-app-widget-lock-forgot-password/*"
       ]
     }
   }

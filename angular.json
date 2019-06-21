@@ -3416,6 +3416,216 @@
           }
         }
       }
+    },
+    "licky-services": {
+      "root": "projects/licky-services",
+      "sourceRoot": "projects/licky-services/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/licky-services/tsconfig.lib.json",
+            "project": "projects/licky-services/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/licky-services/src/test.ts",
+            "tsConfig": "projects/licky-services/tsconfig.spec.json",
+            "karmaConfig": "projects/licky-services/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/licky-services/tsconfig.lib.json",
+              "projects/licky-services/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-login": {
+      "root": "projects/lick-app-widget-login",
+      "sourceRoot": "projects/lick-app-widget-login/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-login/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-login/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-login/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-login/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-login/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-login/tsconfig.lib.json",
+              "projects/lick-app-widget-login/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-maintenance": {
+      "root": "projects/lick-app-widget-maintenance",
+      "sourceRoot": "projects/lick-app-widget-maintenance/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-maintenance/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-maintenance/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-maintenance/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-maintenance/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-maintenance/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-maintenance/tsconfig.lib.json",
+              "projects/lick-app-widget-maintenance/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-signup": {
+      "root": "projects/lick-app-widget-signup",
+      "sourceRoot": "projects/lick-app-widget-signup/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-signup/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-signup/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-signup/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-signup/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-signup/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-signup/tsconfig.lib.json",
+              "projects/lick-app-widget-signup/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-lock-screen": {
+      "root": "projects/lick-app-widget-lock-screen",
+      "sourceRoot": "projects/lick-app-widget-lock-screen/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-lock-screen/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-lock-screen/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-lock-screen/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-lock-screen/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-lock-screen/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-lock-screen/tsconfig.lib.json",
+              "projects/lick-app-widget-lock-screen/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-lock-forgot-password": {
+      "root": "projects/lick-app-widget-lock-forgot-password",
+      "sourceRoot": "projects/lick-app-widget-lock-forgot-password/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-lock-forgot-password/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-lock-forgot-password/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-lock-forgot-password/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-lock-forgot-password/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-lock-forgot-password/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-lock-forgot-password/tsconfig.lib.json",
+              "projects/lick-app-widget-lock-forgot-password/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "lick-data"

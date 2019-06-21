@@ -1,0 +1,23 @@
+
+<licky-lick-app-widget-maintenance *ngIf="isWidget1"></licky-lick-app-widget-maintenance>
+<licky-lick-app-widget-lock-forgot-password *ngIf="isWidget2"></licky-lick-app-widget-lock-forgot-password>
+<licky-lick-app-widget-login *ngIf="isWidget3"></licky-lick-app-widget-login>
+<licky-lick-app-widget-lock-screen *ngIf="isWidget4"></licky-lick-app-widget-lock-screen>
+<licky-lick-app-widget-signup *ngIf="isWidget5"></licky-lick-app-widget-signup>
+<ul class="nav nav-tabs bg-light fixed-bottom">
+  <li class="nav-item" [ngClass]="{'active' : isWidget1}">
+    <a class="nav-link" (click)="onMaintenance()">Maintenance</a>
+  </li>
+  <li class="nav-item" [ngClass]="{'active' : isWidget2}">
+    <a class="nav-link" (click)="onForgot()">Forgot Password</a>
+  </li>
+  <li class="nav-item" [ngClass]="{'active' : isWidget3}">
+    <a class="nav-link" (click)="onLogin()">Login</a>
+  </li>
+  <li class="nav-item" [ngClass]="{'active' : isWidget4}">
+    <a class="nav-link" (click)="onLock()">Lock</a>
+  </li>
+  <li class="nav-item" [ngClass]="{'active' : isWidget5}">
+    <a class="nav-link" (click)="onSignUp()">Sign up</a>
+  </li>
+</ul>
