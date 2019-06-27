@@ -3,6 +3,7 @@
  */
 
 export * from './lib/licky-services.module';
+export * from './lib/licky-login.service';
 export * from './lib/weather.service';
 export * from './lib/news.service';
 export * from './lib/firebase-data.service';

@@ -41,13 +41,14 @@ import { LickAppWidgetStats16Module } from 'lick-app-widget-stats16';
 import { LickAppWidgetStats17Module } from 'lick-app-widget-stats17';
 import { LickAppWidgetTableDataModule } from 'lick-app-widget-table-data';
 import { LickAppWidgetTotalsModule } from 'lick-app-widget-totals';
+import { LickAppWidgetSpinnerModule} from 'lick-app-widget-spinner';
 
 import { LickAppWidgetSignupModule} from 'lick-app-widget-signup';
 import { LickAppWidgetMaintenanceModule} from 'lick-app-widget-maintenance';
 import { LickAppWidgetLoginModule} from 'lick-app-widget-login';
 import { LickAppWidgetLockScreenModule } from 'lick-app-widget-lock-screen';
 import { LickAppWidgetLockForgotPasswordModule } from 'lick-app-widget-lock-forgot-password';
-
+import { LickAppWidgetLogoutModule } from 'lick-app-widget-logout';
 import { NewsWidgetsComponent } from './news-widgets/news-widgets.component';
 import { PageWidgetsComponent } from './page-widgets/page-widgets.component';
 
@@ -65,7 +66,7 @@ import { PageWidgetsComponent } from './page-widgets/page-widgets.component';
     LickAppWidgetLoginModule,
     LickAppWidgetLockScreenModule,
     LickAppWidgetLockForgotPasswordModule,
-
+    LickAppWidgetLogoutModule,
     LickAppWidgetCardDeckModule,
     LickAppWidgetCardGroupModule,
     LickAppWidgetChatModule,
@@ -100,7 +101,8 @@ import { PageWidgetsComponent } from './page-widgets/page-widgets.component';
     LickAppWidgetStats16Module,
     LickAppWidgetStats17Module,
     LickAppWidgetTableDataModule,
-    LickAppWidgetTotalsModule
+    LickAppWidgetTotalsModule,
+    LickAppWidgetSpinnerModule
   ]
 })
 export class LickyAppModule { }

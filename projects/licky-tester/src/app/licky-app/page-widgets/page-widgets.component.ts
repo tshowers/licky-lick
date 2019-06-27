@@ -12,6 +12,7 @@ export class PageWidgetsComponent implements OnInit {
   isWidget3 : boolean = false;
   isWidget4 : boolean = false;
   isWidget5 : boolean = false;
+  isWidget6 : boolean = false;
 
   constructor() { }
 
@@ -24,6 +25,7 @@ export class PageWidgetsComponent implements OnInit {
     this.isWidget3 = false;
     this.isWidget4 = false;
     this.isWidget5 = false;
+    this.isWidget6 = false;
   }
 
   onForgot() : void {
@@ -32,6 +34,7 @@ export class PageWidgetsComponent implements OnInit {
     this.isWidget3 = false;
     this.isWidget4 = false;
     this.isWidget5 = false;
+    this.isWidget6 = false;
   }
 
   onLogin() : void {
@@ -40,6 +43,7 @@ export class PageWidgetsComponent implements OnInit {
     this.isWidget3 = true;
     this.isWidget4 = false;
     this.isWidget5 = false;
+    this.isWidget6 = false;
   }
 
   onLock() : void {
@@ -48,6 +52,7 @@ export class PageWidgetsComponent implements OnInit {
     this.isWidget3 = false;
     this.isWidget4 = true;
     this.isWidget5 = false;
+    this.isWidget6 = false;
   }
   onSignUp() : void {
     this.isWidget1 = false;
@@ -55,5 +60,20 @@ export class PageWidgetsComponent implements OnInit {
     this.isWidget3 = false;
     this.isWidget4 = false;
     this.isWidget5 = true;
+    this.isWidget6 = false;
   }
+
+  onLogout() : void {
+    this.isWidget1 = false;
+    this.isWidget2 = false;
+    this.isWidget3 = false;
+    this.isWidget4 = false;
+    this.isWidget5 = false;
+    this.isWidget6 = true;
+  }
+
+  onPageEvent(type) : void {
+    console.log("pageEvent = " + type)
+  }
+
 }

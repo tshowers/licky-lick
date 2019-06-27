@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { LickyLoginConfigService } from './licky-login-config.service';
+import { Router } from '@angular/router';
 
 import * as firebase from 'firebase';
 
@@ -22,7 +23,6 @@ export class LickyLoginService {
 
   private initFirebase() {
     firebase.initializeApp(this.config);
-
     this.userStateChange();
   }
 
@@ -34,25 +34,33 @@ export class LickyLoginService {
     })
   }
 
-  public signInWithUserNameAndPassword(emailAddress, password) {
-    firebase.auth().createUserWithEmailAndPassword(emailAddress, password).catch((error) => {
-      this.error.next(error.code);
-      this.errorMessage.next(error.message);
-    })
+  public signInWithUserNameAndPassword(emailAddress: string, password: string, router: Router, redirectURL: string) {
+    firebase.auth().signInWithEmailAndPassword(emailAddress, password)
+      .then((credential) => {
+        console.log("successful signin");
+      })
+      .catch((error) => {
+        // Route to error page
+        this.error.next(error.code);
+        this.errorMessage.next(error.message);
+      })
   }
 
-  public signInWithGoogle() {
+  public signInWithGoogle(router: Router, redirectURL: string) {
     var provider = new firebase.auth.GoogleAuthProvider();
 
     provider.addScope('https://www.googleapis.com/auth/plus.login');
 
     firebase.auth().signInWithRedirect(provider);
 
-    firebase.auth().getRedirectResult().then((authData) => {
-      console.log(authData);
-    }).catch(function(error) {
-      console.log(error);
-    });
+    firebase.auth().getRedirectResult()
+      .then((authData) => {
+        router.navigate([redirectURL]);
+        // console.log(authData);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 
   public signOut() {
@@ -63,14 +71,36 @@ export class LickyLoginService {
     });
   }
 
+  public signInWithTwitter() {
+    var provider = new firebase.auth.TwitterAuthProvider();
 
-  public sendEmailVerification() {
+    firebase.auth().signInWithPopup(provider).then(function(authData) {
+      console.log(authData);
+    }).catch(function(error) {
+      console.log(error);
+    });
+  }
+
+  public signInWithFacebook(router: Router, redirectURL: string) {
+    var provider = new firebase.auth.FacebookAuthProvider();
+
+    provider.addScope('user_birthday');
+
+    firebase.auth().signInWithPopup(provider).then(function(authData) {
+      console.log(authData);
+    }).catch(function(error) {
+      console.log(error);
+    });
+  }
+
+
+  public sendEmailVerification(router: Router, redirectURL: string) {
     firebase.auth().currentUser.sendEmailVerification().then(() => {
       this.processMessage.next('Email Verification Sent!')
     });
   }
 
-  public sendPasswordReset(emailAddress: string) {
+  public sendPasswordReset(emailAddress: string, router: Router, redirectURL: string) {
     firebase.auth().sendPasswordResetEmail(emailAddress).then(() => {
       this.processMessage.next('Password Reset Email Sent!');
     }).catch((error) => {
@@ -85,7 +115,7 @@ export class LickyLoginService {
     });
   }
 
-  public signUpUser(emailAddress: string, password: string, firstName: string, lastName: string, url: string, referral?: string) {
+  public signUpUser(emailAddress: string, password: string, firstName: string, lastName: string, url: string, router: Router, redirectURL: string, referral?: string, ) {
     firebase.auth().createUserWithEmailAndPassword(emailAddress, password)
       .catch(
         error => {

@@ -558,6 +558,18 @@
       ],
       "lick-app-widget-lock-forgot-password/*": [
         "dist/lick-app-widget-lock-forgot-password/*"
+      ],
+      "lick-app-widget-logout": [
+        "dist/lick-app-widget-logout"
+      ],
+      "lick-app-widget-logout/*": [
+        "dist/lick-app-widget-logout/*"
+      ],
+      "lick-app-widget-spinner": [
+        "dist/lick-app-widget-spinner"
+      ],
+      "lick-app-widget-spinner/*": [
+        "dist/lick-app-widget-spinner/*"
       ]
     }
   }

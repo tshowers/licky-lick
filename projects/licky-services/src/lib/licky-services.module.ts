@@ -22,7 +22,7 @@ import { SortHelperService } from './sort-helper.service';
 })
 export class LickyServicesModule {
   static forRoot(config: FirebaseConfig): ModuleWithProviders {
-    console.log("Environment passed=" + JSON.stringify(config));
+    console.log("Environment passed =" + JSON.stringify(config));
     return {
       ngModule: LickyServicesModule,
       providers: [

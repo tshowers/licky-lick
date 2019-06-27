@@ -1,0 +1,94 @@
+<!-- <div class="loader">
+  <div class="loader-inner">
+    <div class="spinner multicolor">
+      <div class="spinner-container container1">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container container2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!--animated border box-->
+<div class="loader"
+     *ngIf="isSpinner1"
+     (click)="onSpinner(2)">
+  <div class="loader-inner">
+    <div class="spinner-eff spinner-eff-4">
+      <div class="bar bar-top"></div>
+      <div class="bar bar-right"></div>
+      <div class="bar bar-bottom"></div>
+      <div class="bar bar-left"></div>
+    </div>
+  </div>
+</div>
+<!--Diamonds-->
+<div class="loader"
+     *ngIf="isSpinner2"
+     (click)="onSpinner(3)">
+  <div class="loader-inner">
+    <div class="diamond-wrap">
+      <div class="diamond"></div>
+      <div class="diamond"></div>
+      <div class="diamond"></div>
+    </div>
+  </div>
+</div>
+<!--Cubes -->
+<div class="loader"
+     *ngIf="isSpinner3"
+     (click)="onSpinner(4)">
+  <div class="loader-inner">
+    <div class="thecube">
+      <div class="cube c1"></div>
+      <div class="cube c2"></div>
+      <div class="cube c4"></div>
+      <div class="cube c3"></div>
+    </div>
+  </div>
+</div>
+<!--Box Spinners-->
+<div class="loader"
+     *ngIf="isSpinner4"
+     (click)="onSpinner(5)">
+  <div class="loader-inner">
+    <div class="boxSpin">
+    </div>
+  </div>
+</div>
+<!--Spinners Dark-->
+<div class="loader"
+     *ngIf="isSpinner5"
+     (click)="onSpinner(6)">
+  <div class="loader-inner">
+    <div class="spinner">
+      <div class="spinner-container container1">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container container2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Cross Loader-->
+<div class="loader"
+     *ngIf="isSpinner6"
+     (click)="onSpinner(1)">
+  <div class="loader-inner">
+    <div role="cssload-progressbar"></div>
+  </div>
+</div>

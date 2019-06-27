@@ -2,13 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>LickyNews</title>
+  <title>News</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <app-root></app-root>
+  <app-root>
+    <div class="loader">
+      <div class="loader-inner">
+        <div class="spinner-eff spinner-eff-4">
+          <div class="bar bar-top"></div>
+          <div class="bar bar-right"></div>
+          <div class="bar bar-bottom"></div>
+          <div class="bar bar-left"></div>
+        </div>
+      </div>
+    </div>
+  </app-root>
 </body>
 </html>

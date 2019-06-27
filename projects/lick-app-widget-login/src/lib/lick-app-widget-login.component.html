@@ -53,15 +53,25 @@
              class="text-theme">{{signUpButtonText}}</a>
         </small>
       </div>
+      <div class="text-center"
+           *ngIf="forgotPasswordLink">
+        <small>{{forgotPasswordText}} <a routerLink="{{forgotPasswordLink}}"
+             class="text-theme">{{forgotButtonText}}</a>
+        </small>
+      </div>
       <hr>
       <h4 class="text-center text-theme">{{socialMediaTitle}}</h4>
+      <div class="site-footer">
+      <div class="col-md-12 site-bottom-footer">
+
       <div class="col-md-12 social-links">
         <ul class="footer-social-icons">
-          <li *ngIf="isFacebookLoginButtonEnabled"><a (click)="loginWithFacebook()" title="Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a></li>
-          <li *ngIf="isTwitterLoginButtonEnabled"><a (click)="loginWithTwitter()" title="Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a></li>
-          <li *ngIf="isGoogleLoginButtonEnabled"><a (click)="loginWithGoogle()" title="Google"><i class="fa fa-fw fa-google" aria-hidden="true"></i></a></li>
+          <li *ngIf="isFacebookLoginButtonEnabled"><a (click)="onPageEvent('facebook')" title="Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a></li>
+          <li *ngIf="isTwitterLoginButtonEnabled"><a (click)="onPageEvent('twitter')" title="Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a></li>
+          <li *ngIf="isGoogleLoginButtonEnabled"><a (click)="onPageEvent('google')" title="Google"><i class="fa fa-fw fa-google" aria-hidden="true"></i></a></li>
         </ul>
       </div>
+      </div></div>
 
     </div>
     <!-- end card-body -->

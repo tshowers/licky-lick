@@ -14,11 +14,11 @@ export class HomePageComponent implements OnInit {
       "name" : "Home",
     },
     {
-      "link" : "/sign-up",
+      "link" : "/application/sign-up",
       "name" : "Sign Up"
     },
     {
-      "link" : "/sign-in",
+      "link" : "/application/login",
       "name" : "Login"
     },
   ]
