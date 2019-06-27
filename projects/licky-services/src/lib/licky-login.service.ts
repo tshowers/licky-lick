@@ -60,6 +60,8 @@ export class LickyLoginService {
       })
       .catch(function(error) {
         console.log(error);
+        this.error.next(error.code);
+        this.errorMessage.next(error.message);
       });
   }
 
@@ -68,16 +70,20 @@ export class LickyLoginService {
       // Sign-out successful.
     }, function(error) {
       console.log(error);
+      this.error.next(error.code);
+      this.errorMessage.next(error.message);
     });
   }
 
-  public signInWithTwitter() {
+  public signInWithTwitter(router: Router, redirectURL: string) {
     var provider = new firebase.auth.TwitterAuthProvider();
 
     firebase.auth().signInWithPopup(provider).then(function(authData) {
-      console.log(authData);
+      router.navigate([redirectURL]);
     }).catch(function(error) {
       console.log(error);
+      this.error.next(error.code);
+      this.errorMessage.next(error.message);
     });
   }
 
@@ -87,9 +93,11 @@ export class LickyLoginService {
     provider.addScope('user_birthday');
 
     firebase.auth().signInWithPopup(provider).then(function(authData) {
-      console.log(authData);
+      router.navigate([redirectURL]);
     }).catch(function(error) {
       console.log(error);
+      this.error.next(error.code);
+      this.errorMessage.next(error.message);
     });
   }
 
@@ -112,10 +120,11 @@ export class LickyLoginService {
         this.errorMessage.next(error.message);
       }
       console.log(error);
+      this.error.next(error.code);
     });
   }
 
-  public signUpUser(emailAddress: string, password: string, firstName: string, lastName: string, url: string, router: Router, redirectURL: string, referral?: string, ) {
+  public signUpUser(emailAddress: string, password: string, firstName: string, lastName: string, url: string, router: Router, redirectURL: string, referral?: string) {
     firebase.auth().createUserWithEmailAndPassword(emailAddress, password)
       .catch(
         error => {

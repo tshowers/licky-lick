@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'licky-lick-app-widget-signup',
@@ -19,8 +19,11 @@ export class LickAppWidgetSignupComponent implements OnInit {
   @Input() loginButtonText = "Login";
   @Input() loginLink = "/login";
 
-  public userName;
-  public email;
+  @Output() pageEvent = new EventEmitter();
+
+  public firstName;
+  public lastName;
+  public emailAddress;
   public password;
 
   constructor() { }
@@ -29,7 +32,18 @@ export class LickAppWidgetSignupComponent implements OnInit {
   }
 
   onSubmit() : void {
+    this.onPageEvent('submit');
+  }
 
+  onPageEvent(type: string) : void {
+    this.pageEvent.emit(
+      {
+        type: type,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        emailAddress: this.emailAddress,
+        password: this.password
+      });
   }
 
 }

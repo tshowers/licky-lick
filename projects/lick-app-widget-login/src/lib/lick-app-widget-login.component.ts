@@ -37,7 +37,7 @@ export class LickAppWidgetLoginComponent implements OnInit {
   }
 
   onSubmit() : void {
-    this.onPageEvent('submit')
+    this.onPageEvent('submit');
   }
 
   onPageEvent(type: string) : void {

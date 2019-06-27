@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { User } from 'lick-data';
 
 @Component({
@@ -28,6 +28,8 @@ export class LickAppWidgetLockScreenComponent implements OnInit {
   @Input() loginLink = "/login";
   @Input() loginButtonText = "Login";
 
+  @Output() pageEvent = new EventEmitter();
+
   public password;
 
   constructor() { }
@@ -36,7 +38,11 @@ export class LickAppWidgetLockScreenComponent implements OnInit {
   }
 
   onSubmit() : void {
+    this.onPageEvent('submit');
+  }
 
+  onPageEvent(type: string) : void {
+    this.pageEvent.emit(this.password);
   }
 
 }

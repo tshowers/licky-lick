@@ -6,26 +6,27 @@
 
       <!-- Start Contact Form -->
       <div class="col-md-6 center-form border-box">
-        <form #dataForm="ngForm" id="contact-form" class="contact-form" action="contact.php">
+        <form #userForm="ngForm"
+              (ngSubmit)="onSubmit();userForm.reset();" class="contact-form">
 
           <div class="col-md-12">
             <h2>{{headingText}}</h2>
           </div>
 
           <div class="col-md-6">
-            <input id="contact-f-name" class="contact-f-name" type="text" name="contact-f-name" placeholder="First Name">
+            <input [(ngModel)]="firstName" id="firstName" class="form-control" type="text" name="firstName" placeholder="First Name">
           </div>
 
           <div class="col-md-6">
-            <input id="contact-l-name" class="contact-l-name" type="text" name="contact-l-name" placeholder="Last Name">
+            <input [(ngModel)]="lastName" id="lastName" class="form-control" type="text" name="lastName" placeholder="Last Name">
           </div>
 
           <div class="col-md-12">
-            <input id="contact-email" class="contact-email" type="email" name="contact-email" placeholder="Email">
+            <input [(ngModel)]="emailAddress" type="email" id="emailAddress" class="form-control" name="emailAddress" placeholder="Email Address">
           </div>
 
           <div class="col-md-12">
-            <textarea id="contact-message" class="contact-message" name="contact-message" placeholder="Message"></textarea>
+            <textarea [(ngModel)]="message" id="message" class="form-control" name="message" placeholder="Message"></textarea>
           </div>
 
           <div class="col-md-12 form-text">
@@ -35,7 +36,7 @@
           <div class="clearfix"></div>
 
           <div class="col-md-12 form-btn-submit">
-            <input id="contact-button" class="button button-full contact-submit" name="contact-submit" value="Send Message" type="submit" [disabled]="!dataForm.form.valid" (click)="onSubmit()">
+            <input id="contact-button" class="button button-full contact-submit" name="contact-submit" value="Send Message" type="submit" [disabled]="!userForm.form.valid">
           </div>
 
         </form>

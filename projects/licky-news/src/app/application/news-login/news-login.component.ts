@@ -54,7 +54,7 @@ export class NewsLoginComponent implements OnInit, OnDestroy {
   }
 
   public onPageEvent(value) : void {
-    console.log(value);
+    // console.log(value);
     switch (value.type) {
       case 'submit':
         this.emailAddress = value.emailAddress;
@@ -88,11 +88,11 @@ export class NewsLoginComponent implements OnInit, OnDestroy {
   }
 
   private onTwitter() : void {
-
+    this._loginService.signInWithTwitter(this.router, "/application/news");
   }
 
   private onFacebook() : void {
-
+    this._loginService.signInWithFacebook(this.router, "/application/news");
   }
 
   private onGoogle() : void {

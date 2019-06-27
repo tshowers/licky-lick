@@ -21,7 +21,4 @@ export class LickAppWidgetMaintenanceComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() : void {
-
-  }
 }

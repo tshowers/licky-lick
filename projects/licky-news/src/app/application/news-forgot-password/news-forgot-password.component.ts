@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LickyLoginService} from 'licky-services';
 
 @Component({
   selector: 'app-news-forgot-password',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsForgotPasswordComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router, private _loginService: LickyLoginService) { }
 
   ngOnInit() {
+  }
+
+  public onPageEvent(value) : void {
+    this._loginService.sendPasswordReset(value, this.router, "/application/login");
   }
 
 }
