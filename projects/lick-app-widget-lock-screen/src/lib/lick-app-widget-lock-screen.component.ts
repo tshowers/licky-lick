@@ -24,7 +24,7 @@ export class LickAppWidgetLockScreenComponent implements OnInit {
     "user_id" : Math.floor(Math.random() * 1000),
     "userName" : "User Name"
   };
-  @Input() loginText = "This is not me ? Please";
+  @Input() loginText = "This is not me? Please";
   @Input() loginLink = "/login";
   @Input() loginButtonText = "Login";
 

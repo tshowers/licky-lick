@@ -16,7 +16,7 @@ export class NewsSignupComponent implements OnInit {
 
   public onPageEvent(value) : void {
     if(value.type == 'submit') {
-      console.log("isSubmit")
+      console.log("isSubmit=" + JSON.stringify(value))
       this._loginService.signUpUser(value.emailAddress, value.password, value.firstName, value.lastName, null, this.router, "/application/login")
     }
   }

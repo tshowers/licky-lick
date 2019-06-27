@@ -109,7 +109,8 @@ export class LickyLoginService {
   }
 
   public sendPasswordReset(emailAddress: string, router: Router, redirectURL: string) {
-    firebase.auth().sendPasswordResetEmail(emailAddress).then(() => {
+    firebase.auth().sendPasswordResetEmail(emailAddress)
+    .then(() => {
       this.processMessage.next('Password Reset Email Sent!');
     }).catch((error) => {
       var errorCode = error.code;
@@ -126,6 +127,9 @@ export class LickyLoginService {
 
   public signUpUser(emailAddress: string, password: string, firstName: string, lastName: string, url: string, router: Router, redirectURL: string, referral?: string) {
     firebase.auth().createUserWithEmailAndPassword(emailAddress, password)
+      .then(() => {
+        router.navigate([redirectURL])
+      })
       .catch(
         error => {
           this.errorMessage.next(error.message)

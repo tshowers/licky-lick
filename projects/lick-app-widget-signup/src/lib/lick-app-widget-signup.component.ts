@@ -15,7 +15,7 @@ export class LickAppWidgetSignupComponent implements OnInit {
   @Input() subTitleText = "Create an Account";
 
   @Input() submitButtonText = "Signup";
-  @Input() loginText = "already have an account ? Please";
+  @Input() loginText = "Already have an account? Please";
   @Input() loginButtonText = "Login";
   @Input() loginLink = "/login";
 
