@@ -1,48 +1,70 @@
-<section id="contact-us---1" class="container-fluid section-block contact-form-section">
+<section id="contact-us---1"
+         class="container-fluid section-block contact-form-section">
   <div class="form-bg"></div> <!-- Background image -->
-  <div class="overlay"></div>	<!-- Overlay -->
+  <div class="overlay"></div> <!-- Overlay -->
   <div class="container">
     <div class="row">
-
       <!-- Start Contact Form -->
       <div class="col-md-6 center-form border-box">
         <form #userForm="ngForm"
-              (ngSubmit)="onSubmit();userForm.reset();" class="contact-form">
-
+              (ngSubmit)="onSubmit();userForm.reset();"
+              class="contact-form">
           <div class="col-md-12">
             <h2>{{headingText}}</h2>
           </div>
-
           <div class="col-md-6">
-            <input [(ngModel)]="firstName" id="firstName" class="form-control" type="text" name="firstName" placeholder="First Name">
-          </div>
 
+            <input [(ngModel)]="firstName"
+                   id="firstName"
+                   class="form-control"
+                   type="text"
+                   name="firstName"
+                   autocomplete="off"
+                   placeholder="First Name">
+          </div>
           <div class="col-md-6">
-            <input [(ngModel)]="lastName" id="lastName" class="form-control" type="text" name="lastName" placeholder="Last Name">
-          </div>
 
+            <input [(ngModel)]="lastName"
+                   id="lastName"
+                   class="form-control"
+                   type="text"
+                   name="lastName"
+                   autocomplete="off"
+                   placeholder="Last Name">
+          </div>
           <div class="col-md-12">
-            <input [(ngModel)]="emailAddress" type="email" id="emailAddress" class="form-control" name="emailAddress" placeholder="Email Address">
-          </div>
 
+            <input [(ngModel)]="emailAddress"
+                   type="email"
+                   id="emailAddress"
+                   class="form-control"
+                   name="emailAddress"
+                   autocomplete="off"
+                   placeholder="Email Address">
+          </div>
           <div class="col-md-12">
-            <textarea [(ngModel)]="message" id="message" class="form-control" name="message" placeholder="Message"></textarea>
+            <textarea [(ngModel)]="message"
+                      id="message"
+                      class="form-control"
+                      name="message"
+                      placeholder="Message"></textarea>
           </div>
-
           <div class="col-md-12 form-text">
             <p>{{descriptionText}}</p>
           </div>
-
           <div class="clearfix"></div>
-
           <div class="col-md-12 form-btn-submit">
-            <input id="contact-button" class="button button-full contact-submit" name="contact-submit" value="Send Message" type="submit" [disabled]="!userForm.form.valid">
-          </div>
 
+            <input id="contact-button"
+                   class="button button-full contact-submit"
+                   name="contact-submit"
+                   value="Send Message"
+                   type="submit"
+                   [disabled]="!userForm.form.valid">
+          </div>
         </form>
       </div>
       <!-- End Contact Form -->
-
     </div> <!-- .row -->
   </div> <!-- .container -->
 </section>

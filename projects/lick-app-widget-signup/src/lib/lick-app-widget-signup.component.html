@@ -1,61 +1,84 @@
 <section class="container-pages ta-vertical-center">
+  <div class="brand-logo float-left"><a class=""
+       routerLink="{{homePageLink}}">{{logoName}}</a></div>
+  <div class="pages-tag-line text-white">
+    <div class="h4">{{headingText}}</div>
+    <small>{{subText}}</small>
+  </div>
+  <div class="card pages-card col-lg-4 col-md-6 col-sm-6">
+    <div class="card-body ">
+      <div class="h4 text-center text-theme"><strong>{{titleText}}</strong></div>
+      <div class="small text-center text-dark">{{subTitleText}}</div>
+      <form #userForm="ngForm"
+            (ngSubmit)="onSubmit();userForm.reset();">
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon text-theme"><i class="fa fa-user"></i>
+            </span>
 
-    <div class="brand-logo float-left"><a class="" routerLink="{{homePageLink}}">{{logoName}}</a></div>
-
-    <div class="pages-tag-line text-white">
-        <div class="h4">{{headingText}}</div>
-        <small>{{subText}}</small>
-    </div>
-
-    <div class="card pages-card col-lg-4 col-md-6 col-sm-6">
-        <div class="card-body ">
-            <div class="h4 text-center text-theme"><strong>{{titleText}}</strong></div>
-            <div class="small text-center text-dark">{{subTitleText}}</div>
-
-                <form #userForm="ngForm"
-                      (ngSubmit)="onSubmit();userForm.reset();">
-                    <div class="form-group">
-                        <div class="input-group">
-                             <span class="input-group-addon text-theme"><i class="fa fa-user"></i>
-                            </span>
-                            <input [(ngModel)]="firstName" type="text" id="firstName" name="firstName" class="form-control" placeholder="First Name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                             <span class="input-group-addon text-theme"><i class="fa fa-user"></i>
-                            </span>
-                            <input [(ngModel)]="lastName" type="text" id="lastName" name="lastName" class="form-control" placeholder="Last Name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span class="input-group-addon text-theme"><i class="fa fa-envelope"></i>
-                                        </span>
-                            <input [(ngModel)]="emailAddress"
-                                    type="email" id="emailAddress" name="emailAddress" class="form-control" placeholder="Email Address">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span class="input-group-addon text-theme"><i class="fa fa-asterisk"></i></span>
-                            <input [(ngModel)]="password"
-                                   type="password" id="password" name="password" class="form-control" placeholder="Password">
-
-                        </div>
-                    </div>
-                    <div class="form-group form-actions">
-                        <button type="submit" class="btn  btn-theme login-btn ">{{submitButtonText}}</button>
-                    </div>
-                </form>
-                <div class="text-center">
-                    <small>{{loginText}}
-                        <a routerLink="{{loginLink}}" class="text-theme">{{loginButtonText}}</a>
-                    </small>
-                </div>
-
+            <input [(ngModel)]="firstName"
+                   type="text"
+                   id="firstName"
+                   name="firstName"
+                   class="form-control"
+                   autocomplete="off"
+                   placeholder="First Name">
+          </div>
         </div>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon text-theme"><i class="fa fa-user"></i>
+            </span>
+
+            <input [(ngModel)]="lastName"
+                   type="text"
+                   autocomplete="off"
+                   id="lastName"
+                   name="lastName"
+                   class="form-control"
+                   placeholder="Last Name">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon text-theme"><i class="fa fa-envelope"></i>
+            </span>
+
+            <input [(ngModel)]="emailAddress"
+                   type="email"
+                   autocomplete="off"
+                   id="emailAddress"
+                   name="emailAddress"
+                   class="form-control"
+                   placeholder="Email Address">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon text-theme"><i class="fa fa-asterisk"></i></span>
+
+            <input [(ngModel)]="password"
+                   type="password"
+                   id="password"
+                   autocomplete="off"
+                   name="password"
+                   class="form-control"
+                   placeholder="Password">
+          </div>
+        </div>
+        <div class="form-group form-actions">
+          <button type="submit"
+                  class="btn  btn-theme login-btn ">{{submitButtonText}}</button>
+        </div>
+      </form>
+      <div class="text-center">
+        <small>{{loginText}}
+          <a routerLink="{{loginLink}}"
+             class="text-theme">{{loginButtonText}}</a>
+        </small>
+      </div>
     </div>
+  </div>
 </section>
 <div class="half-circle"></div>
 <div class="small-circle"></div>
