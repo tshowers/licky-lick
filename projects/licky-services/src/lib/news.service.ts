@@ -23,7 +23,7 @@ export class NewsService {
   public CNN = "cnn";
   public DAILY_MAIL = "daily-mail";
   public ENDGADGET = "endgadget";
-  public ENTERTAINMENT = "entertainment-weekly";
+  public ENTERTAINMENT_WEEKLY = "entertainment-weekly";
   public ESPN = "espn";
   public FINANCIAL_POST = "financial-post";
   public FINANCIAL_TiMES = "financial-times";
@@ -80,7 +80,25 @@ export class NewsService {
   public WIRED = "wired";
   public YNET = "ynet";
 
+  public BUSINESS = "business";
+  public ENTERTAINMENT = "entertainment";
+  public GENERAL = "general";
+  public HEALTH = "health";
+  public SCIENCE = "science";
+  public SPORTS = "sports";
+  public TECHNOLOGY = "technology";
+
   public aggregatedNews = []
+
+  public categories = [
+    { "name": "general" },
+    { "name": "business" },
+    { "name": "entertainment" },
+    { "name": "health" },
+    { "name": "science" },
+    { "name": "sports" },
+    { "name": "technology" }
+  ]
 
   public newsSources = [
     { "name": "ABC", "value": this.ABC },
@@ -156,34 +174,43 @@ export class NewsService {
     { "name": "YNET", "value": this.YNET },
   ];
 
+  private _pageSize: number = 5;
+  private _country = "us";
+  private _lang = "en";
+  private _sortParam = "popularity";
+  private _key = '&apiKey=' + this.NEWS_KEY;
+  private _pageSizeParam = '&pageSize=';
+  private _searchCriteria ='&sortBy=';
+  private _local = "&country=";
+  private _language = "&language=";
 
-  private _bbcURL = 'https://newsapi.org/v2/top-headlines?' +
-    'sources=bbc-news&' +
-    'apiKey=' + this.NEWS_KEY;
+  private _categoryURL = 'https://newsapi.org/v2/top-headlines?category=';
 
-  private _newsURL1 = 'https://newsapi.org/v2/top-headlines?' +
-    'sources=';
+  private _topHeadlinesByCountry = 'https://newsapi.org/v2/top-headlines?country=';
 
-  private _newsURL2 = '&apiKey=8edae266107643bd847972bb713a67bb';
+  private _sourcesURL1 = 'https://newsapi.org/v2/top-headlines?sources=';
 
-  private _searchURL1 = 'https://newsapi.org/v2/everything?q=';
+  private _searchURL = 'https://newsapi.org/v2/everything?q=';
 
-  private _searchURL2 = '&from=2017-12-22&' +
-    'sortBy=popularity&' +
-    'apiKey=8edae266107643bd847972bb713a67bb';
 
   constructor(private _http: HttpClient) { }
 
-  getBBC(): Observable<any> {
-    return this._http.get(this._bbcURL, { responseType: 'json' })
+  getNewsByCountry(country: string): Observable<any> {
+    return this._http.get(this._topHeadlinesByCountry + country + this._key + this._pageSizeParam + this._pageSize, { responseType: 'json' });
+  }
+
+  getNewsByCategory(category: string): Observable<any> {
+    let callString = this._categoryURL + category + this._local  + this._country + this._key + this._pageSizeParam + this._pageSize;
+    console.log(callString);
+    return this._http.get(this._categoryURL + category + this._local  + this._country + this._key + this._pageSizeParam + this._pageSize, { responseType: 'json' });
   }
 
   getNewsByProvider(provider: string): Observable<any> {
-    return this._http.get(this._newsURL1 + provider + this._newsURL2, { responseType: 'json' })
+    return this._http.get(this._sourcesURL1 + provider+ this._local + this._country + this._key + this._language + this._lang, { responseType: 'json' });
   }
 
   getNewsBySearchCriteria(argument: string): Observable<any> {
-    return this._http.get(this._searchURL1 + "\"" + encodeURI(argument) + "\"" + this._searchURL2, { responseType: 'json' })
+    return this._http.get(this._searchURL + "\"" + encodeURI(argument) + "\"" + this._searchCriteria +  + this._sortParam + this._language + this._lang + this._key, { responseType: 'json' });
   }
 
   getNewsByProviders(): Observable<any> {
@@ -196,9 +223,24 @@ export class NewsService {
   }
 
   addNews(provider: string): Observable<any> {
-    let url = this._newsURL1 + provider + this._newsURL2
+    let url = this._sourcesURL1 + provider + this._local + this._country + this._key
     return this._http.get(url, { responseType: 'json' })
   }
 
+  setPageSize(size: number) : void {
+    this._pageSize = size;
+  }
+
+  setCountry(countryCode: string) : void {
+    this._country = countryCode;
+  }
+
+  setLanguage(languageCode: string) : void {
+    this._lang = languageCode;
+  }
+
+  setSortParam(sortParam: string) : void {
+    this._sortParam = sortParam;
+  }
 
 }

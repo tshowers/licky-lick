@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { LickyLoginService} from 'licky-services';
 import { Subscription } from 'rxjs';
+import { AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-news-login',
@@ -14,15 +15,14 @@ export class NewsLoginComponent implements OnInit, OnDestroy {
 
   public password;
 
-  public user;
-
   private _loginError : Subscription;
 
   private _userSubscription: Subscription;
 
   public errorMessage;
 
-  constructor(public router: Router, private _loginService: LickyLoginService) { }
+
+  constructor(public router: Router, private _loginService: LickyLoginService, private _authService: AuthService) { }
 
   ngOnInit() {
     this.subscribeToLoginErrors();
@@ -38,18 +38,15 @@ export class NewsLoginComponent implements OnInit, OnDestroy {
 
   private determineUser() : void {
     this._userSubscription = this._loginService.firebaseUser.subscribe((firebaseUser) => {
-      this.user = firebaseUser;
+      this._authService.firebaseUser = firebaseUser;
+      let status : boolean = (this._authService.firebaseUser && this._authService.firebaseUser.uid) ? true : false
+      this._authService.setStatus(status);
       this.redirectOnLogin();
-      // console.log("determineUser-" + JSON.stringify(this.user));
     })
   }
 
-  private isUserLoggedIn() : boolean {
-    return (this.user && this.user.uid && this.user.displayName);
-  }
-
   private redirectOnLogin() : void {
-    if (this.isUserLoggedIn())
+    if (this._authService.isLoggedIn)
       this.router.navigate(['application', 'news']);
   }
 
@@ -79,11 +76,12 @@ export class NewsLoginComponent implements OnInit, OnDestroy {
   private subscribeToLoginErrors() : void {
     this._loginError = this._loginService.errorMessage.subscribe((error) => {
       console.log(error);
-      this.errorMessage = error;
+      this.errorMessage = "\n\n" + error;
     })
   }
 
   private onUserEmail() : void {
+    console.log("Siging in with " + this.emailAddress + " " + this.password)
     this._loginService.signInWithUserNameAndPassword(this.emailAddress, this.password, this.router, "/application/news");
   }
 

@@ -38,6 +38,7 @@ export class LickyLoginService {
     firebase.auth().signInWithEmailAndPassword(emailAddress, password)
       .then((credential) => {
         console.log("successful signin");
+        router.navigate([redirectURL]);
       })
       .catch((error) => {
         // Route to error page

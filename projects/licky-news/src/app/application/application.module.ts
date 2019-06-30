@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
 import { ApplicationRoutingModule } from './application-routing.module';
 
-import { LickyServicesModule } from 'licky-services';
 import { LickAppWidgetSignupModule} from 'lick-app-widget-signup';
 import { LickAppWidgetMaintenanceModule} from 'lick-app-widget-maintenance';
 import { LickAppWidgetLoginModule} from 'lick-app-widget-login';
@@ -30,9 +28,6 @@ import { NewsScreenLockComponent } from './news-screen-lock/news-screen-lock.com
 import { NewsLogoutComponent } from './news-logout/news-logout.component';
 
 
-import { environment } from '../../environments/environment';
-
-export const firebaseConfig = environment.firebaseConfig;
 
 @NgModule({
   declarations: [NewsPickerComponent, NewsViewComponent, NewsLoginComponent, NewsMaintenanceComponent, NewsSignupComponent, NewsForgotPasswordComponent, NewsScreenLockComponent, NewsLogoutComponent],
@@ -54,8 +49,10 @@ export const firebaseConfig = environment.firebaseConfig;
     LickMarketingLatestPost1Module,
     LickMarketingLatestPost2Module,
     LickAppWidgetSpinnerModule,
-    LickyServicesModule.forRoot(firebaseConfig)
+  ],
+  providers: [
 
   ]
+
 })
 export class ApplicationModule { }

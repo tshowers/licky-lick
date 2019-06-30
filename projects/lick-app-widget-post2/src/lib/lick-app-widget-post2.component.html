@@ -4,8 +4,8 @@
     <h3 class="section-title">{{headingText}}</h3>
     <div class="tabs tab-post__tabs">
       <ul class="tabs__list">
-        <li class="tabs__item" [ngClass]="{'tabs__item--active' : (i === 0)}" *ngFor="let category of categories; let i = index">
-          <span (click)="showCategory(i)" class="tabs__trigger" style="cursor: hand">{{category.name}}</span>
+        <li class="tabs__item" [ngClass]="{'tabs__item--active ta-blackcolor' : (activeTab === i)}" *ngFor="let category of categories; let i = index">
+          <span (click)="showCategory(i)" class="tabs__trigger" style="cursor: pointer">{{category.name}}</span>
         </li>
       </ul> <!-- end tabs -->
     </div>
@@ -19,19 +19,19 @@
         <div class="col-md-6" *ngFor="let item of tabData1; let i of index">
           <article class="entry card">
             <div class="entry__img-holder card__img-holder">
-              <a href="{{item?.link}}">
+              <a href="{{item?.url}}">
                 <div class="thumb-container thumb-70">
-                  <img data-src="{{item?.url}}" src="{{item?.url}}" class="entry__img lazyload" alt="{{item?.name}}" />
+                  <img data-src="{{item?.urlToImage}}" src="{{item?.urlToImage}}" class="entry__img lazyload" alt="{{item?.title}}" />
                 </div>
               </a>
-              <a href="item?.keyword.link" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
+              <a *ngIf="item.keyword" href="item?.keyword.link" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
             </div>
 
             <div class="entry__body card__body">
               <div class="entry__header">
 
                 <h2 class="entry__title">
-                  <a href="{{item?.link}}">{{item?.name}}</a>
+                  <a href="{{item?.url}}">{{item?.title}}</a>
                 </h2>
                 <ul class="entry__meta">
                   <li class="entry__meta-author">
@@ -52,24 +52,24 @@
       </div>
     </div> <!-- end pane 1 -->
 
-    <div class="tabs__content-pane" [ngClass]="{'tabs__content-pane--active' : (tab2 === '')}" id="tab-sixteen-post-widget2-2" [ngStyle]="{'display' : tab2}">
+    <div *ngIf="tabData2" class="tabs__content-pane" [ngClass]="{'tabs__content-pane--active' : (tab2 === '')}" id="tab-sixteen-post-widget2-2" [ngStyle]="{'display' : tab2}">
       <div class="row card-row">
         <div class="col-md-6" *ngFor="let item of tabData2; let i of index">
           <article class="entry card">
             <div class="entry__img-holder card__img-holder">
-              <a href="{{item?.link}}">
+              <a href="{{item?.url}}">
                 <div class="thumb-container thumb-70">
-                  <img data-src="{{item?.url}}" src="{{item?.url}}" class="entry__img lazyload" alt="{{item?.name}}" />
+                  <img data-src="{{item?.urlToImage}}" src="{{item?.urlToImage}}" class="entry__img lazyload" alt="{{item?.title}}" />
                 </div>
               </a>
-              <a href="{{item?.keyword.link}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
+              <a *ngIf="item.keyword" href="{{item?.keyword.link}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
             </div>
 
             <div class="entry__body card__body">
               <div class="entry__header">
 
                 <h2 class="entry__title">
-                  <a href="{{item?.link}}">{{item?.name}}</a>
+                  <a href="{{item?.url}}">{{item?.title}}</a>
                 </h2>
                 <ul class="entry__meta">
                   <li class="entry__meta-author">
@@ -90,24 +90,24 @@
       </div>
     </div> <!-- end pane 2 -->
 
-    <div class="tabs__content-pane"  [ngClass]="{'tabs__content-pane--active' : (tab3 === '')}" id="tab-sixteen-post-widget2-3" [ngStyle]="{'display' : tab3}">
+    <div *ngIf="tabData3" class="tabs__content-pane"  [ngClass]="{'tabs__content-pane--active' : (tab3 === '')}" id="tab-sixteen-post-widget2-3" [ngStyle]="{'display' : tab3}">
       <div class="row card-row">
         <div class="col-md-6" *ngFor="let item of tabData3; let i of index">
           <article class="entry card">
             <div class="entry__img-holder card__img-holder">
-              <a href="{{item?.link}}">
+              <a href="{{item?.url}}">
                 <div class="thumb-container thumb-70">
-                  <img data-src="{{item?.url}}" src="{{item?.url}}" class="entry__img lazyload" alt="{{item?.name}}" />
+                  <img data-src="{{item?.urlToImage}}" src="{{item?.urlToImage}}" class="entry__img lazyload" alt="{{item?.title}}" />
                 </div>
               </a>
-              <a href="{{item?.keyword.link}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
+              <a *ngIf="item.keyword" href="{{item?.keyword.link}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
             </div>
 
             <div class="entry__body card__body">
               <div class="entry__header">
 
                 <h2 class="entry__title">
-                  <a href="single-post.html">{{item?.name}}</a>
+                  <a href="{{item?.url}}">{{item?.title}}</a>
                 </h2>
                 <ul class="entry__meta">
                   <li class="entry__meta-author">
@@ -128,24 +128,24 @@
       </div>
     </div> <!-- end pane 3 -->
 
-    <div class="tabs__content-pane"  [ngClass]="{'tabs__content-pane--active' : (tab4 === '')}" id="tab-sixteen-post-widget2-4" [ngStyle]="{'display' : tab4}">
+    <div *ngIf="tabData4" class="tabs__content-pane"  [ngClass]="{'tabs__content-pane--active' : (tab4 === '')}" id="tab-sixteen-post-widget2-4" [ngStyle]="{'display' : tab4}">
       <div class="row card-row">
         <div class="col-md-6" *ngFor="let item of tabData4; let i of index">
           <article class="entry card">
             <div class="entry__img-holder card__img-holder">
-              <a href="{{item?.link}}">
+              <a href="{{item?.url}}">
                 <div class="thumb-container thumb-70">
-                  <img data-src="{{item?.url}}" src="{{item?.url}}" class="entry__img lazyload" alt="{{item?.name}}" />
+                  <img data-src="{{item?.urlToImage}}" src="{{item?.urlToImage}}" class="entry__img lazyload" alt="{{item?.title}}" />
                 </div>
               </a>
-              <a href="{{item?.keyword.link}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
+              <a *ngIf="item.keyword" href="{{item?.keyword.link}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
             </div>
 
             <div class="entry__body card__body">
               <div class="entry__header">
 
                 <h2 class="entry__title">
-                  <a href="{{item?.link}}">{{item?.name}}</a>
+                  <a href="{{item?.url}}">{{item?.title}}</a>
                 </h2>
                 <ul class="entry__meta">
                   <li class="entry__meta-author">
@@ -166,24 +166,24 @@
       </div>
     </div> <!-- end pane 4 -->
 
-    <div class="tabs__content-pane" [ngClass]="{'tabs__content-pane--active' : (tab5 === '')}" id="tab-sixteen-post-widget2-5" [ngStyle]="{'display' : tab5}">
+    <div *ngIf="tabData5" class="tabs__content-pane" [ngClass]="{'tabs__content-pane--active' : (tab5 === '')}" id="tab-sixteen-post-widget2-5" [ngStyle]="{'display' : tab5}">
       <div class="row card-row">
         <div class="col-md-6" *ngFor="let item of tabData5; let i of index">
           <article class="entry card">
             <div class="entry__img-holder card__img-holder">
-              <a href="{{item?.link}}">
+              <a href="{{item?.url}}">
                 <div class="thumb-container thumb-70">
-                  <img data-src="{{item?.url}}" src="{{item?.url}}" class="entry__img lazyload" alt="{{item?.name}}" />
+                  <img data-src="{{item?.urlToImage}}" src="{{item?.urlToImage}}" class="entry__img lazyload" alt="{{item?.title}}" />
                 </div>
               </a>
-              <a href="{{item?.keyword.link}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
+              <a *ngIf="item.keyword" href="{{item?.keyword.link}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
             </div>
 
             <div class="entry__body card__body">
               <div class="entry__header">
 
                 <h2 class="entry__title">
-                  <a href="{{item?.link}}">{{item?.name}}</a>
+                  <a href="{{item?.url}}">{{item?.title}}</a>
                 </h2>
                 <ul class="entry__meta">
                   <li class="entry__meta-author">
@@ -203,5 +203,83 @@
         </div>
       </div>
     </div> <!-- end pane 5 -->
+
+    <div *ngIf="tabData6" class="tabs__content-pane"  [ngClass]="{'tabs__content-pane--active' : (tab6 === '')}" id="tab-sixteen-post-widget2-6" [ngStyle]="{'display' : tab6}">
+      <div class="row card-row">
+        <div class="col-md-6" *ngFor="let item of tabData6; let i of index">
+          <article class="entry card">
+            <div class="entry__img-holder card__img-holder">
+              <a href="{{item?.url}}">
+                <div class="thumb-container thumb-70">
+                  <img data-src="{{item?.urlToImage}}" src="{{item?.urlToImage}}" class="entry__img lazyload" alt="{{item?.title}}" />
+                </div>
+              </a>
+              <a *ngIf="item.keyword" href="item?.keyword.link" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
+            </div>
+
+            <div class="entry__body card__body">
+              <div class="entry__header">
+
+                <h2 class="entry__title">
+                  <a href="{{item?.url}}">{{item?.title}}</a>
+                </h2>
+                <ul class="entry__meta">
+                  <li class="entry__meta-author">
+                    <span>by </span>
+                    <a href="#">{{item?.author}}</a>
+                  </li>
+                  <li class="entry__meta-date">
+                    {{item?.publishedAt | date : 'medium'}}
+                  </li>
+                </ul>
+              </div>
+              <div class="entry__excerpt" innerHTML="{{item?.description}}">
+
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div> <!-- end pane 6 -->
+
+
+    <div class="tabs__content-pane"  [ngClass]="{'tabs__content-pane--active' : (tab7 === '')}" id="tab-sixteen-post-widget2-7" [ngStyle]="{'display' : tab7}">
+      <div class="row card-row">
+        <div class="col-md-6" *ngFor="let item of tabData7; let i of index">
+          <article class="entry card">
+            <div class="entry__img-holder card__img-holder">
+              <a href="{{item?.url}}">
+                <div class="thumb-container thumb-70">
+                  <img data-src="{{item?.urlToImage}}" src="{{item?.urlToImage}}" class="entry__img lazyload" alt="{{item?.title}}" />
+                </div>
+              </a>
+              <a *ngIf="item.keyword" href="item?.keyword.link" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
+            </div>
+
+            <div class="entry__body card__body">
+              <div class="entry__header">
+
+                <h2 class="entry__title">
+                  <a href="{{item?.url}}">{{item?.title}}</a>
+                </h2>
+                <ul class="entry__meta">
+                  <li class="entry__meta-author">
+                    <span>by </span>
+                    <a href="#">{{item?.author}}</a>
+                  </li>
+                  <li class="entry__meta-date">
+                    {{item?.publishedAt | date : 'medium'}}
+                  </li>
+                </ul>
+              </div>
+              <div class="entry__excerpt" innerHTML="{{item?.description}}">
+
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div> <!-- end pane 7 -->
+
   </div> <!-- end tab content -->
 </section> <!-- end latest news -->

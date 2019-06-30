@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LickAppWidgetLockForgotPasswordComponent } from './lick-app-widget-lock-forgot-password.component';
 
 @NgModule({
@@ -9,7 +10,8 @@ import { LickAppWidgetLockForgotPasswordComponent } from './lick-app-widget-lock
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   exports: [LickAppWidgetLockForgotPasswordComponent]
 })

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LickyLoginService } from 'licky-services';
+import { AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-news-logout',
@@ -8,22 +9,12 @@ import { LickyLoginService } from 'licky-services';
 })
 export class NewsLogoutComponent implements OnInit {
 
-  menuItems: any[] = [
-    {
-      "link" : "/about",
-      "name" : "Home",
-    },
-    {
-      "link" : "/application/login",
-      "name" : "Login"
-    },
-  ]
 
-
-  constructor(private _loginService: LickyLoginService) { }
+  constructor(private _loginService: LickyLoginService, private _authService: AuthService) { }
 
   ngOnInit() {
     this._loginService.signOut();
+    this._authService.setStatus(false);
   }
 
 }

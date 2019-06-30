@@ -22,6 +22,8 @@ export class LickAppWidgetPost2Component implements OnInit {
   tab3 = 'none';
   tab4 = 'none';
   tab5 = 'none';
+  tab6 = 'none';
+  tab7 = 'none';
 
   @Input() tabData1: any[] = [
     {
@@ -29,6 +31,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "art", "link": "/art" },
       "name": "Follow These Smartphone Habits of Successful Entrepreneurs",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -42,6 +46,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "music", "link": "/art" },
       "name": "3 Things You Can Do to Get Your Customers Talking About Your Business",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -55,6 +61,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "lifestyle", "link": "/art" },
       "name": "Lose These 12 Bad Habits If You're Serious About Becoming a Millionaire",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -68,6 +76,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "politics", "link": "/art" },
       "name": "10 Horrible Habits You're Doing Right Now That Are Draining Your Energy",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -83,6 +93,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "world", "link": "/art" },
       "name": "Follow These Smartphone Habits of Successful Entrepreneurs",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -95,6 +107,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "id": Math.floor(Math.random() * 1000),
       "isExternal": true,
       "link": "/",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "url": "https://via.placeholder.com/386x270.png",
       "keyword": { "name": "fashion", "link": "/art" },
       "name": "3 Things You Can Do to Get Your Customers Talking About Your Business",
@@ -109,6 +123,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "contacts", "link": "/art" },
       "name": "Lose These 12 Bad Habits If You're Serious About Becoming a Millionaire",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -122,6 +138,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "politics", "link": "/art" },
       "name": "10 Horrible Habits You're Doing Right Now That Are Draining Your Energy",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -138,6 +156,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "news", "link": "/art" },
       "name": "Follow These Smartphone Habits of Successful Entrepreneurs",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -151,6 +171,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "business", "link": "/art" },
       "name": "3 Things You Can Do to Get Your Customers Talking About Your Business",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -164,6 +186,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "biotech", "link": "/art" },
       "name": "Lose These 12 Bad Habits If You're Serious About Becoming a Millionaire",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -177,6 +201,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "science", "link": "/art" },
       "name": "10 Horrible Habits You're Doing Right Now That Are Draining Your Energy",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -193,6 +219,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "culture", "link": "/art" },
       "name": "Follow These Smartphone Habits of Successful Entrepreneurs",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -206,6 +234,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "music", "link": "/art" },
       "name": "3 Things You Can Do to Get Your Customers Talking About Your Business",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -218,6 +248,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "id": Math.floor(Math.random() * 1000),
       "isExternal": true,
       "link": "/",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "url": "https://via.placeholder.com/386x270.png",
       "keyword": { "name": "commerce", "link": "/art" },
       "name": "Lose These 12 Bad Habits If You're Serious About Becoming a Millionaire",
@@ -232,6 +264,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "location", "link": "/art" },
       "name": "10 Horrible Habits You're Doing Right Now That Are Draining Your Energy",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -248,6 +282,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "technology", "link": "/art" },
       "name": "Follow These Smartphone Habits of Successful Entrepreneurs",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -261,6 +297,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "music", "link": "/art" },
       "name": "3 Things You Can Do to Get Your Customers Talking About Your Business",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -274,6 +312,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "technology", "link": "/art" },
       "name": "Lose These 12 Bad Habits If You're Serious About Becoming a Millionaire",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -287,6 +327,8 @@ export class LickAppWidgetPost2Component implements OnInit {
       "isExternal": true,
       "link": "/",
       "url": "https://via.placeholder.com/386x270.png",
+      "urlToImage" : "https://via.placeholder.com/386x270.png",
+      "content" : "Blah, blah, blah",
       "keyword": { "name": "technology", "link": "/art" },
       "name": "10 Horrible Habits You're Doing Right Now That Are Draining Your Energy",
       "description": "iPrice Group report offers insights on daily e-commerce activity in the ...",
@@ -296,7 +338,12 @@ export class LickAppWidgetPost2Component implements OnInit {
       "timeStamp": new Date()
     },
 
-  ]
+  ];
+
+  @Input() tabData6: any[];
+  @Input() tabData7: any[];
+
+  public activeTab: number = 0;
 
   constructor() { }
 
@@ -304,11 +351,14 @@ export class LickAppWidgetPost2Component implements OnInit {
   }
 
   showCategory(i): void {
+    this.activeTab = i;
     this.tab1 = (i == 0) ? '' : 'none';
     this.tab2 = (i == 1) ? '' : 'none';
     this.tab3 = (i == 2) ? '' : 'none';
     this.tab4 = (i == 3) ? '' : 'none';
     this.tab5 = (i == 4) ? '' : 'none';
+    this.tab6 = (i == 5) ? '' : 'none';
+    this.tab7 = (i == 6) ? '' : 'none';
   }
 
 }

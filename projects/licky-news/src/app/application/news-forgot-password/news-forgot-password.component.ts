@@ -14,8 +14,7 @@ export class NewsForgotPasswordComponent implements OnInit, OnDestroy {
   private _process: Subscription;
   private _error: Subscription;
 
-  public message = "Forgot Your Password?";
-  public error = "Input your registered email address to reset your password";
+  public message;
 
   constructor(public router: Router, private _loginService: LickyLoginService) { }
 
@@ -25,7 +24,7 @@ export class NewsForgotPasswordComponent implements OnInit, OnDestroy {
     })
 
     this._error = this._loginService.errorMessage.subscribe((error) => {
-      this.error = error;
+      this.message = error;
     })
   }
 

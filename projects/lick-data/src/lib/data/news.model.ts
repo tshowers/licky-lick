@@ -14,6 +14,8 @@ export class NewsArticle {
   public url?: string;
   public icon?;
   public badge?;
+  public urlToImage?;
+  public content?;
   public link?: string;
   public shared: boolean = true;
 

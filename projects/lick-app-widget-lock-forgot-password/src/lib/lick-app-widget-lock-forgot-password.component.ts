@@ -17,6 +17,8 @@ export class LickAppWidgetLockForgotPasswordComponent implements OnInit {
   @Input() loginButtonText = "Login";
   @Input() submitButtonText = " Reset Password";
   @Input() loginText = "I know my Password - Please";
+  @Input() message;
+  @Input() alertType = "info";
 
   @Output() pageEvent = new EventEmitter();
 
@@ -33,6 +35,10 @@ export class LickAppWidgetLockForgotPasswordComponent implements OnInit {
 
   onPageEvent(type: string) : void {
     this.pageEvent.emit(this.emailAddress);
+  }
+
+  close() : void {
+    this.message = null;
   }
 
 }

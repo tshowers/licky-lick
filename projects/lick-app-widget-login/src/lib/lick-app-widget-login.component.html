@@ -6,8 +6,11 @@
     <small>{{subText}}</small>
   </div>
   <div class="card pages-card col-lg-4 col-md-6 col-sm-6">
-    <div class="card-body ">
-      <div class="h4 text-center text-theme"><strong>{{titleText}}</strong></div>
+    <div class="card-body">
+      <ngb-alert *ngIf="errorMessage" [type]="errorType" (close)="close()">{{ errorMessage }}</ngb-alert>
+      <div class="h4 text-center text-theme">
+        <strong>{{titleText}}</strong>
+      </div>
       <!-- <div class="small text-center text-dark"> Login to Account </div> -->
       <form #userForm="ngForm"
             (ngSubmit)="onSubmit();userForm.reset();"
@@ -45,7 +48,8 @@
         </div>
         <div class="form-group form-actions"> <button class="btn  btn-theme login-btn "
                   type="submit"
-                  [disabled]="!userForm.form.valid">{{submitButtonText}}</button> </div>
+                  [disabled]="!userForm.form.valid">{{submitButtonText}}</button>
+        </div>
       </form>
       <div class="text-center"
            *ngIf="signUpLink">
@@ -62,17 +66,22 @@
       <hr>
       <h4 class="text-center text-theme">{{socialMediaTitle}}</h4>
       <div class="site-footer">
-      <div class="col-md-12 site-bottom-footer">
-
-      <div class="col-md-12 social-links">
-        <ul class="footer-social-icons">
-          <li *ngIf="isFacebookLoginButtonEnabled"><a (click)="onPageEvent('facebook')" title="Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a></li>
-          <li *ngIf="isTwitterLoginButtonEnabled"><a (click)="onPageEvent('twitter')" title="Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a></li>
-          <li *ngIf="isGoogleLoginButtonEnabled"><a (click)="onPageEvent('google')" title="Google"><i class="fa fa-fw fa-google" aria-hidden="true"></i></a></li>
-        </ul>
+        <div class="col-md-12 site-bottom-footer">
+          <div class="col-md-12 social-links">
+            <ul class="footer-social-icons">
+              <li *ngIf="isFacebookLoginButtonEnabled"><a (click)="onPageEvent('facebook')"
+                   title="Facebook"><i class="fa fa-fw fa-facebook"
+                     aria-hidden="true"></i></a></li>
+              <li *ngIf="isTwitterLoginButtonEnabled"><a (click)="onPageEvent('twitter')"
+                   title="Twitter"><i class="fa fa-fw fa-twitter"
+                     aria-hidden="true"></i></a></li>
+              <li *ngIf="isGoogleLoginButtonEnabled"><a (click)="onPageEvent('google')"
+                   title="Google"><i class="fa fa-fw fa-google"
+                     aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      </div></div>
-
     </div>
     <!-- end card-body -->
   </div>

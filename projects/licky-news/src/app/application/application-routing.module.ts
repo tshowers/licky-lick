@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../auth/auth.guard';
+
 import { NewsPickerComponent } from './news-picker/news-picker.component';
 import { NewsViewComponent } from './news-view/news-view.component';
 import { NewsLoginComponent } from './news-login/news-login.component';
@@ -16,8 +18,8 @@ const routes : Routes = [
   { path: 'maintenance', component: NewsMaintenanceComponent, data: { title: 'Maintenance - News - 16 AHEAD' }},
   { path: 'sign-up', component: NewsSignupComponent, data: { title: 'Sign Up - News - 16 AHEAD' }},
   { path: 'forgot-password', component: NewsForgotPasswordComponent, data: { title: 'Forgot Password - News - 16 AHEAD' }},
-  { path: 'news', component: NewsViewComponent, data: { title: 'News - 16 AHEAD' }},
-  { path: 'news-selector', component: NewsPickerComponent, data: { title: 'News Selector - 16 AHEAD' }},
+  { path: 'news', canActivate: [AuthGuard], component: NewsViewComponent, data: { title: 'News - 16 AHEAD' }},
+  { path: 'news-selector', canActivate: [AuthGuard], component: NewsPickerComponent, data: { title: 'News Selector - 16 AHEAD' }},
 ];
 
 

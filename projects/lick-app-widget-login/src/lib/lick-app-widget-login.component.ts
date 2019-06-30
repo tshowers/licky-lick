@@ -23,9 +23,9 @@ export class LickAppWidgetLoginComponent implements OnInit {
   @Input() isFacebookLoginButtonEnabled : boolean = true;
   @Input() isTwitterLoginButtonEnabled : boolean = true;
   @Input() isGoogleLoginButtonEnabled : boolean = true;
-
+  @Input() errorMessage;
+  @Input() errorType = "danger";
   @Output() pageEvent = new EventEmitter();
-
 
   public emailAddress;
   public password;
@@ -38,6 +38,10 @@ export class LickAppWidgetLoginComponent implements OnInit {
 
   onSubmit() : void {
     this.onPageEvent('submit');
+  }
+
+  close() : void {
+    this.errorMessage = null;
   }
 
   onPageEvent(type: string) : void {
