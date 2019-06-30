@@ -8,20 +8,20 @@
         <!-- Small post -->
         <div class="featured-posts-grid__item featured-posts-grid__item--sm" *ngFor="let item of data">
           <article class="entry card post-list featured-posts-grid__entry">
-            <div class="entry__img-holder post-list__img-holder card__img-holder" [ngStyle]="{'background-image': 'url(' + item?.url + ')'}">
-              <a href="{{item?.link}}" class="thumb-url"></a>
-              <img src="{{item?.url}}" alt="{{item?.name}}" class="entry__img d-none">
-                <a  href="{{item?.keywords.link}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keywords.name}}</a>
+            <div class="entry__img-holder post-list__img-holder card__img-holder" [ngStyle]="{'background-image': 'url(' + item?.urlToImage + ')'}">
+              <a href="{{item?.url}}" class="thumb-url"></a>
+              <img src="{{item?.urlToImage}}" alt="{{item?.title}}" class="entry__img d-none">
+                <a *ngIf="item?.keyword" href="{{item?.keywords.link}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keywords.name}}</a>
             </div>
 
             <div class="entry__body post-list__body card__body">
               <h2 class="entry__title">
-                <a href="{{item?.link}}">{{item?.name}}</a>
+                <a href="{{item?.url}}">{{item?.title}}</a>
               </h2>
               <ul class="entry__meta">
                 <li class="entry__meta-author">
                   <span>by </span>
-                  <a href="#">{{item?.author}}</a> {{item?.source.name}}
+                  {{item?.author}} {{item?.source.name}}
                 </li>
                 <li class="entry__meta-date">
                   {{item?.publishedAt | date : 'medium'}}
@@ -38,20 +38,21 @@
         <div class="featured-posts-grid__item featured-posts-grid__item--lg">
           <article class="entry card featured-posts-grid__entry">
             <div class="entry__img-holder card__img-holder">
-              <a *ngIf="featuredData?.isExternal" href="{{featuredData?.link}}"><img src="{{featuredData?.url}}" alt="" class="entry__img"></a>
-              <a *ngIf="!featuredData?.isExternal" routerLink="{{featuredData?.link}}"><img src="{{featuredData?.url}}" alt="" class="entry__img"></a>
-              <a href="{{featuredData?.keywords.link}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{featuredData?.keywords.name}}</a>
+              <a *ngIf="isExternal" href="{{featuredData?.url}}"><img src="{{featuredData?.urlToImage}}" alt="" class="entry__img"></a>
+              <a *ngIf="!isExternal" routerLink="{{featuredData?.url}}"><img src="{{featuredData?.urlToImage}}" alt="" class="entry__img"></a>
+              <a *ngIf="featuredData.keywords" href="{{featuredData?.keywords.link}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{featuredData?.keywords.name}}</a>
             </div>
 
             <div class="entry__body card__body">
               <h2 class="entry__title">
-                <a *ngIf="featuredData?.isExternal" href="{{featuredData?.link}}">{{featuredData?.name}}</a>
-                <a *ngIf="featuredData?.isExternal" routerLink="{{featuredData?.link}}">{{featuredData?.name}}</a>
+                <a *ngIf="!isExternal" href="{{featuredData?.url}}">{{featuredData?.title}}</a>
+                <a *ngIf="isExternal" routerLink="{{featuredData?.url}}">{{featuredData?.title}}</a>
               </h2>
+              <div innerHTML="featuredData?.content"></div>
               <ul class="entry__meta">
                 <li class="entry__meta-author">
                   <span>by </span>
-                  <a href="#">{{featuredData?.author}}</a> {{featuredData?.source.name}}
+                  {{featuredData?.author}} {{featuredData?.source.name}}
                 </li>
                 <li class="entry__meta-date">
                   {{featuredData?.publishedAt | date : 'medium'}}

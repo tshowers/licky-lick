@@ -5,9 +5,20 @@
                              [menuItems]="menuItems"></licky-lick-marketing-menu>
 </header>
 <div class="container mt-5 pt-5">
+  <licky-lick-marketing-latest-post1></licky-lick-marketing-latest-post1>
+  <licky-lick-app-widget-post1 [isExternal]="true"
+                               [data]="featuredNews"
+                               [featuredData]="featuredArticle"></licky-lick-app-widget-post1>
+  <licky-lick-app-widget-post3 [headingText]="'Latest News'"
+                               [isExternal]="true"
+                               [data]="topNews"></licky-lick-app-widget-post3>
   <licky-lick-app-widget-post2 [categories]="categories"
-  [headingText]="'Top Headlines'"
+                               [headingText]="'Headlines'"
                                [tabData1]="generalArticles"
                                [tabData2]="businessArticles"
-                               ></licky-lick-app-widget-post2>
+                               [tabData3]="entertainmentArticles"
+                               [tabData4]="healthArticles"
+                               [tabData5]="scienceArticles"
+                               [tabData6]="sportsArticles"
+                               [tabData7]="technologyArticles"></licky-lick-app-widget-post2>
 </div>

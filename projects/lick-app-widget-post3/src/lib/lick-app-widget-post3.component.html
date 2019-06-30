@@ -7,17 +7,17 @@
   </div>
 
   <article class="entry card post-list" *ngFor="let item of data; let i = index">
-    <div class="entry__img-holder post-list__img-holder card__img-holder" [ngStyle]="{'background-image': 'url(' + item?.url + ')'}">
-      <a *ngIf="item.isExternal" href="{{item?.link}}" class="thumb-url"></a>
-      <a *ngIf="!item.isExternal" routerLink="{{item?.link}}" class="thumb-url"></a>
-      <img src="{{item?.url}}" alt="{{item?.name}}" class="entry__img d-none">
-      <a href="{{item?.keyword.link}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
+    <div class="entry__img-holder post-list__img-holder card__img-holder" [ngStyle]="{'background-image': 'url(' + item?.urlToImage + ')'}">
+      <a *ngIf="isExternal" href="{{item?.url}}" class="thumb-url"></a>
+      <a *ngIf="!isExternal" routerLink="{{item?.url}}" class="thumb-url"></a>
+      <img src="{{item?.urlToImage}}" alt="{{item?.title}}" class="entry__img d-none">
+      <a *ngIf="item.keyword" href="{{item?.keyword.link}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
     </div>
 
     <div class="entry__body post-list__body card__body">
       <div class="entry__header">
         <h2 class="entry__title">
-          <a href="{{item?.link}}">{{item?.name}}</a>
+          <a href="{{item?.url}}">{{item?.title}}</a>
         </h2>
         <ul class="entry__meta">
           <li class="entry__meta-author">

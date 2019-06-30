@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LickAppWidgetPost1Component implements OnInit {
 
   @Input() headingText = "licky-lick-app-widget-post1";
+  @Input() isExternal = false;
 
 
   @Input() data: any[] = [
@@ -16,7 +17,10 @@ export class LickAppWidgetPost1Component implements OnInit {
       "isExternal": true,
       "link": "http://www.usatoday.com",
       "url": "https://via.placeholder.com/303x182.png",
+      "urlToImage" : "https://via.placeholder.com/303x182.png",
+      "content" : "Blah, blah, blah",
       "keywords": { "name": "art", "link": "/art" },
+      "title": "3 Founders With Booming Businesses Share Stories About Their Difficult Early",
       "name": "3 Founders With Booming Businesses Share Stories About Their Difficult Early",
       "author": "Ken Jensen",
       "source": { "id": "23", "name": "USA Today" },
@@ -28,7 +32,10 @@ export class LickAppWidgetPost1Component implements OnInit {
       "isExternal": true,
       "link": "http://www.usatoday.com",
       "url": "https://via.placeholder.com/303x182.png",
+      "urlToImage" : "https://via.placeholder.com/303x182.png",
+      "content" : "Blah, blah, blah",
       "keywords": { "name": "art", "link": "/art" },
+      "title": "3 Things You Can Do to Get Your Customers Talking About Your Business",
       "name": "3 Things You Can Do to Get Your Customers Talking About Your Business",
       "author": "Don Lemon",
       "source": { "id": "23", "name": "USA Today" },
@@ -40,7 +47,10 @@ export class LickAppWidgetPost1Component implements OnInit {
       "isExternal": true,
       "link": "http://www.usatoday.com",
       "url": "https://via.placeholder.com/303x182.png",
+      "urlToImage" : "https://via.placeholder.com/303x182.png",
+      "content" : "Blah, blah, blah",
       "keywords": { "name": "art", "link": "/art" },
+      "title": "These Are the 20 Best Places to Work in 2018",
       "name": "These Are the 20 Best Places to Work in 2018",
       "author": "Peggi Lacy",
       "source": { "id": "23", "name": "USA Today" },
@@ -53,7 +63,10 @@ export class LickAppWidgetPost1Component implements OnInit {
     "isExternal": true,
     "link": "http://www.usatoday.com",
     "url": "https://via.placeholder.com/604x356.png",
+    "urlToImage" : "https://via.placeholder.com/303x182.png",
+    "content" : "Blah, blah, blah",
     "keywords": { "name": "art", "link": "/art" },
+    "title": "licky-lick-app-widget-post1",
     "name": "licky-lick-app-widget-post1",
     "author": "Benji Ahmad",
     "source": { "id": "23", "name": "USA Today" },
