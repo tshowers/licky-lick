@@ -1,37 +1,36 @@
 <!-- Posts from categories -->
 <section class="section mb-0">
   <div class="row">
-
-    <div class="col-md-6">
-      <div class="title-wrap title-wrap--line">
-        <h3 class="section-title">{{heading1}}</h3>
+    <div class="col-md-6" *ngFor="let item of boxes">
+      <div class="title-wrap card-accent-theme">
+        <h3 class="section-title">{{item?.heading}}</h3>
       </div>
       <div class="row">
         <div class="col-lg-6">
           <article class="entry thumb thumb--size-2">
-            <div class="entry__img-holder thumb__img-holder" [ngStyle]="{'background-image': 'url(' + featuredData1?.urlToImage + ')'}">
+            <div class="entry__img-holder thumb__img-holder" [ngStyle]="{'background-image': 'url(' + item?.featuredArticle.urlToImage + ')'}">
               <div class="bottom-gradient"></div>
               <div class="thumb-text-holder thumb-text-holder--1">
                 <h2 class="thumb-entry-title">
-                  <a href="single-post.html">{{featuredData1?.title}}</a>
+                  <a href="single-post.html">{{item?.featuredArticle.title}}</a>
                 </h2>
                 <ul class="entry__meta">
                   <li class="entry__meta-author">
                     <span>by </span>
-                    {{featuredData1?.author}}
+                    {{item?.featuredArticle.author}}
                   </li>
                   <li class="entry__meta-date">
-                    {{featuredData1?.publishedAt | date : 'medium'}}
+                    {{item?.featuredArticle.publishedAt | date : 'medium'}}
                   </li>
                 </ul>
               </div>
-              <a href="{{featuredData1?.url}}" class="thumb-url"></a>
+              <a href="{{item?.featuredArticle.url}}" class="thumb-url"></a>
             </div>
           </article>
         </div>
         <div class="col-lg-6">
           <ul class="post-list-small post-list-small--dividers post-list-small--arrows mb-24">
-            <li class="post-list-small__item" *ngFor="let subItem of subFeaturedData1; let x = index">
+            <li class="post-list-small__item" *ngFor="let subItem of item.subArticles; let x = index">
               <article class="post-list-small__entry">
                 <div class="post-list-small__body">
                   <h3 class="post-list-small__entry-title">
@@ -44,136 +43,5 @@
         </div>
       </div>
     </div> <!-- end 1 -->
-
-    <div class="col-md-6">
-      <div class="title-wrap title-wrap--line">
-        <h3 class="section-title">{{heading2}}</h3>
-      </div>
-      <div class="row">
-        <div class="col-lg-6">
-          <article class="entry thumb thumb--size-2">
-            <div class="entry__img-holder thumb__img-holder" [ngStyle]="{'background-image': 'url(' + featuredData1?.urlToImage + ')'}">
-              <div class="bottom-gradient"></div>
-              <div class="thumb-text-holder thumb-text-holder--1">
-                <h2 class="thumb-entry-title">
-                  <a href="single-post.html">{{featuredData2?.title}}</a>
-                </h2>
-                <ul class="entry__meta">
-                  <li class="entry__meta-author">
-                    <span>by </span>
-                    {{featuredData2?.author}}
-                  </li>
-                  <li class="entry__meta-date">
-                    {{featuredData2?.publishedAt | date : 'medium'}}
-                  </li>
-                </ul>
-              </div>
-              <a href="{{featuredData2?.url}}" class="thumb-url"></a>
-            </div>
-          </article>
-        </div>
-        <div class="col-lg-6">
-          <ul class="post-list-small post-list-small--dividers post-list-small--arrows mb-24">
-            <li class="post-list-small__item" *ngFor="let subItem of subFeaturedData2; let x = index">
-              <article class="post-list-small__entry">
-                <div class="post-list-small__body">
-                  <h3 class="post-list-small__entry-title">
-                    <a href="{{subItem?.url}}">{{subItem?.title}}</a>
-                  </h3>
-                </div>
-              </article>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div> <!-- end 2 -->
-
-    <div class="col-md-6" *ngIf="featuredData3">
-      <div class="title-wrap title-wrap--line">
-        <h3 class="section-title">{{heading3}}</h3>
-      </div>
-      <div class="row">
-        <div class="col-lg-6">
-          <article class="entry thumb thumb--size-2">
-            <div class="entry__img-holder thumb__img-holder" [ngStyle]="{'background-image': 'url(' + featuredData3?.urlToImage + ')'}">
-              <div class="bottom-gradient"></div>
-              <div class="thumb-text-holder thumb-text-holder--1">
-                <h2 class="thumb-entry-title">
-                  <a href="single-post.html">{{featuredData3?.title}}</a>
-                </h2>
-                <ul class="entry__meta">
-                  <li class="entry__meta-author">
-                    <span>by </span>
-                    {{featuredData3?.author}}
-                  </li>
-                  <li class="entry__meta-date">
-                    {{featuredData3?.publishedAt | date : 'medium'}}
-                  </li>
-                </ul>
-              </div>
-              <a href="{{featuredData3?.url}}" class="thumb-url"></a>
-            </div>
-          </article>
-        </div>
-        <div class="col-lg-6">
-          <ul class="post-list-small post-list-small--dividers post-list-small--arrows mb-24">
-            <li class="post-list-small__item" *ngFor="let subItem of subFeaturedData3; let x = index">
-              <article class="post-list-small__entry">
-                <div class="post-list-small__body">
-                  <h3 class="post-list-small__entry-title">
-                    <a href="{{subItem?.url}}">{{subItem?.title}}</a>
-                  </h3>
-                </div>
-              </article>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div> <!-- end 3  -->
-
-    <div class="col-md-6" *ngIf="featuredData4">
-      <div class="title-wrap title-wrap--line">
-        <h3 class="section-title">{{heading4}}</h3>
-      </div>
-      <div class="row">
-        <div class="col-lg-6">
-          <article class="entry thumb thumb--size-2">
-            <div class="entry__img-holder thumb__img-holder" [ngStyle]="{'background-image': 'url(' + featuredData4?.urlToImage + ')'}">
-              <div class="bottom-gradient"></div>
-              <div class="thumb-text-holder thumb-text-holder--1">
-                <h2 class="thumb-entry-title">
-                  <a href="single-post.html">{{featuredData4?.title}}</a>
-                </h2>
-                <ul class="entry__meta">
-                  <li class="entry__meta-author">
-                    <span>by </span>
-                    {{featuredData4?.author}}
-                  </li>
-                  <li class="entry__meta-date">
-                    {{featuredData4?.publishedAt | date : 'medium'}}
-                  </li>
-                </ul>
-              </div>
-              <a href="{{featuredData4?.url}}" class="thumb-url"></a>
-            </div>
-          </article>
-        </div>
-        <div class="col-lg-6">
-          <ul class="post-list-small post-list-small--dividers post-list-small--arrows mb-24">
-            <li class="post-list-small__item" *ngFor="let subItem of subFeaturedData4; let x = index">
-              <article class="post-list-small__entry">
-                <div class="post-list-small__body">
-                  <h3 class="post-list-small__entry-title">
-                    <a href="{{subItem?.url}}">{{subItem?.title}}</a>
-                  </h3>
-                </div>
-              </article>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div> <!-- end 4  -->
-
-
   </div>
 </section> <!-- end posts from categories -->

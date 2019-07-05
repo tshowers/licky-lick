@@ -570,6 +570,18 @@
       ],
       "lick-app-widget-spinner/*": [
         "dist/lick-app-widget-spinner/*"
+      ],
+      "lick-app-widget-weather": [
+        "dist/lick-app-widget-weather"
+      ],
+      "lick-app-widget-weather/*": [
+        "dist/lick-app-widget-weather/*"
+      ],
+      "lick-app-widget-find": [
+        "dist/lick-app-widget-find"
+      ],
+      "lick-app-widget-find/*": [
+        "dist/lick-app-widget-find/*"
       ]
     }
   }

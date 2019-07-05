@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Article } from 'lick-data';
 
 @Component({
   selector: 'licky-lick-marketing-latest-post1',
@@ -10,7 +9,7 @@ export class LickMarketingLatestPost1Component implements OnInit {
 
   @Input() headingText = "licky-lick-marketing-latest-post1";
   @Input() descriptionText = "Impedit, quo voluptas nulla vero. Quisquam est, omnis voluptas sit, amet, consectetur, adipisci velit, sed quia. Ratione voluptatem sequi nesciunt, neque porro quisquam est omnis.";
-  @Input() articles: Article[] = [
+  @Input() articles: any[] = [
     {
       "$key": Math.floor(Math.random() * 1000).toString(),
       "id": Math.floor(Math.random() * 1000).toString(),
@@ -25,6 +24,7 @@ export class LickMarketingLatestPost1Component implements OnInit {
       "author": "Toni Bishop",
       "shared" : true,
       "url": "https://via.placeholder.com/1440x960.png",
+      "urlToImage": "https://via.placeholder.com/1440x960.png",
       "icon": "https://via.placeholder.com/32x32.png",
       "keywords": "growth",
       "user_id": Math.floor(Math.random() * 1000).toString(),
@@ -57,6 +57,7 @@ export class LickMarketingLatestPost1Component implements OnInit {
       "articleText": "<p>Magna inermis sea ei, id eam veniam aeterno. Possim scripta ne eam, mundi impetus indoctum has ne, cetero efficiendi sed ad.</p>",
       "author": "Danny Dawson",
       "url": "https://via.placeholder.com/1440x960.png",
+      "urlToImage": "https://via.placeholder.com/1440x960.png",
       "icon": "https://via.placeholder.com/32x32.png",
       "keywords": "growth",
       "user_id": Math.floor(Math.random() * 1000).toString(),
@@ -92,6 +93,7 @@ export class LickMarketingLatestPost1Component implements OnInit {
       "articleText": "<p>Alii illum conclusionemque cu duo, per cu oratio malorum vituperatoribus. Sed in ignota tibique, cu eam inimicus voluptatibus. Vix an veniam deserunt. Mel nihil scripta prodesset cu. No falli habemus vim.</p>",
       "author": "Melissa McDonald",
       "url": "https://via.placeholder.com/1440x960.png",
+      "urlToImage": "https://via.placeholder.com/1440x960.png",
       "icon": "https://via.placeholder.com/32x32.png",
       "keywords": "growth",
       "user_id": Math.floor(Math.random() * 1000).toString(),

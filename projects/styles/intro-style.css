@@ -3080,6 +3080,7 @@ a {
 */
 .index-post-block {
   position: relative;
+  display: flex;
 }
 
 .index-post-block .border-box {
@@ -3132,6 +3133,10 @@ a {
 
 .index-post-block .post-preview-footer a {
   margin-bottom: -1.5rem;
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  right: 25%;
 }
 
 /*

@@ -3,16 +3,18 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CountToModule } from 'angular-count-to';
 import { LickDataModule } from 'lick-data';
-import { LickAppWidgetPost4Component } from './lick-app-widget-post4.component';
+import { LickyServicesModule } from 'licky-services';
+import { LickAppWidgetWeatherComponent } from './lick-app-widget-weather.component';
 
 @NgModule({
-  declarations: [LickAppWidgetPost4Component],
+  declarations: [LickAppWidgetWeatherComponent],
   imports: [
     CommonModule,
     RouterModule,
     CountToModule,
-    LickDataModule
+    LickDataModule,
+    LickyServicesModule
   ],
-  exports: [LickAppWidgetPost4Component]
+  exports: [LickAppWidgetWeatherComponent]
 })
-export class LickAppWidgetPost4Module { }
+export class LickAppWidgetWeatherModule { }

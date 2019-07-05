@@ -3696,6 +3696,76 @@
           }
         }
       }
+    },
+    "lick-app-widget-weather": {
+      "root": "projects/lick-app-widget-weather",
+      "sourceRoot": "projects/lick-app-widget-weather/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-weather/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-weather/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-weather/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-weather/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-weather/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-weather/tsconfig.lib.json",
+              "projects/lick-app-widget-weather/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-find": {
+      "root": "projects/lick-app-widget-find",
+      "sourceRoot": "projects/lick-app-widget-find/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-find/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-find/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-find/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-find/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-find/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-find/tsconfig.lib.json",
+              "projects/lick-app-widget-find/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "lick-data"

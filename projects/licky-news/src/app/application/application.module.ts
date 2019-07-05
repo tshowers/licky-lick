@@ -1,22 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ApplicationRoutingModule } from './application-routing.module';
 
-import { LickAppWidgetSignupModule} from 'lick-app-widget-signup';
-import { LickAppWidgetMaintenanceModule} from 'lick-app-widget-maintenance';
-import { LickAppWidgetLoginModule} from 'lick-app-widget-login';
+import { LickAppWidgetSignupModule } from 'lick-app-widget-signup';
+import { LickAppWidgetMaintenanceModule } from 'lick-app-widget-maintenance';
+import { LickAppWidgetLoginModule } from 'lick-app-widget-login';
 import { LickAppWidgetLockScreenModule } from 'lick-app-widget-lock-screen';
 import { LickAppWidgetLockForgotPasswordModule } from 'lick-app-widget-lock-forgot-password';
-import { LickAppWidgetLogoutModule} from 'lick-app-widget-logout';
+import { LickAppWidgetLogoutModule } from 'lick-app-widget-logout';
 import { LickMarketingMenuModule } from 'lick-marketing-menu';
-import { LickAppWidgetPost1Module} from 'lick-app-widget-post1';
-import { LickAppWidgetPost2Module} from 'lick-app-widget-post2';
-import { LickAppWidgetPost3Module} from 'lick-app-widget-post3';
-import { LickAppWidgetPost4Module} from 'lick-app-widget-post4';
-import { LickMarketingLatestPost1Module} from 'lick-marketing-latest-post1';
-import { LickMarketingLatestPost2Module} from 'lick-marketing-latest-post2';
-import { LickAppWidgetSpinnerModule} from 'lick-app-widget-spinner';
+import { LickAppWidgetPost1Module } from 'lick-app-widget-post1';
+import { LickAppWidgetPost2Module } from 'lick-app-widget-post2';
+import { LickAppWidgetPost3Module } from 'lick-app-widget-post3';
+import { LickAppWidgetPost4Module } from 'lick-app-widget-post4';
+import { LickMarketingLatestPost1Module } from 'lick-marketing-latest-post1';
+import { LickMarketingLatestPost2Module } from 'lick-marketing-latest-post2';
+import { LickAppWidgetSpinnerModule } from 'lick-app-widget-spinner';
+import { LickAppWidgetWeatherModule } from 'lick-app-widget-weather';
 
 import { NewsPickerComponent } from './news-picker/news-picker.component';
 import { NewsViewComponent } from './news-view/news-view.component';
@@ -27,6 +31,7 @@ import { NewsForgotPasswordComponent } from './news-forgot-password/news-forgot-
 import { NewsScreenLockComponent } from './news-screen-lock/news-screen-lock.component';
 import { NewsLogoutComponent } from './news-logout/news-logout.component';
 
+import { LickMarketingFooter1Module } from 'lick-marketing-footer1';
 
 
 @NgModule({
@@ -34,6 +39,8 @@ import { NewsLogoutComponent } from './news-logout/news-logout.component';
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    NgbModule,
     ApplicationRoutingModule,
     LickAppWidgetSignupModule,
     LickAppWidgetMaintenanceModule,
@@ -49,6 +56,8 @@ import { NewsLogoutComponent } from './news-logout/news-logout.component';
     LickMarketingLatestPost1Module,
     LickMarketingLatestPost2Module,
     LickAppWidgetSpinnerModule,
+    LickMarketingFooter1Module,
+    LickAppWidgetWeatherModule
   ],
   providers: [
 

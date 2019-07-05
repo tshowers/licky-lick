@@ -5,20 +5,70 @@
                              [menuItems]="menuItems"></licky-lick-marketing-menu>
 </header>
 <div class="container mt-5 pt-5">
-  <licky-lick-marketing-latest-post1></licky-lick-marketing-latest-post1>
+  <form #dataForm="ngForm"
+        (ngSubmit)="onSubmit(); dataForm.reset()"
+        class="form-group">
+    <div class="input-group">
+
+      <input [(ngModel)]="searchArgument"
+             id="phrase"
+             name="phrase"
+             type="text"
+             class="form-control form-control-lg ta-input-element"
+             placeholder="Find in all news ..."
+             aria-label="Find ..."
+             required
+             autocomplete="off"
+             [ngbTypeahead]="typeFindService.searchWiki"> <span class="input-group-btn">
+        <button class="btn btn-primary"
+                type="submit"
+                [disabled]="!dataForm.form.valid">Find</button>
+      </span> </div>
+  </form>
+  <h1>My News</h1>
+  <licky-lick-app-widget-post4 [boxes]="boxes"></licky-lick-app-widget-post4>
   <licky-lick-app-widget-post1 [isExternal]="true"
                                [data]="featuredNews"
                                [featuredData]="featuredArticle"></licky-lick-app-widget-post1>
-  <licky-lick-app-widget-post3 [headingText]="'Latest News'"
-                               [isExternal]="true"
-                               [data]="topNews"></licky-lick-app-widget-post3>
+  <licky-lick-marketing-latest-post1 [articles]="generalArticles"
+                                     [headingText]="'Top Headlines'"
+                                     [descriptionText]="'Top headlines from the most reliable news sources. Carefully curated to keep you abreast of what\'s happening in the world.'"></licky-lick-marketing-latest-post1>
+  <div class="row">
+    <div class="col-lg-8 blog__content">
+      <licky-lick-app-widget-post3 [headingText]="'Latest News'"
+                                   [isExternal]="true"
+                                   [data]="topNews"></licky-lick-app-widget-post3>
+    </div>
+    <div class="col-lg-4 blog__content">
+      <licky-lick-app-widget-weather></licky-lick-app-widget-weather>
+    </div>
+  </div>
   <licky-lick-app-widget-post2 [categories]="categories"
-                               [headingText]="'Headlines'"
-                               [tabData1]="generalArticles"
-                               [tabData2]="businessArticles"
-                               [tabData3]="entertainmentArticles"
-                               [tabData4]="healthArticles"
-                               [tabData5]="scienceArticles"
-                               [tabData6]="sportsArticles"
-                               [tabData7]="technologyArticles"></licky-lick-app-widget-post2>
+                               [headingText]="'By Category'"
+                               [tabData1]="businessArticles"
+                               [tabData2]="entertainmentArticles"
+                               [tabData3]="healthArticles"
+                               [tabData4]="scienceArticles"
+                               [tabData5]="sportsArticles"
+                               [tabData6]="technologyArticles"></licky-lick-app-widget-post2>
 </div>
+<licky-lick-marketing-footer1 [headingText1]="'About'"
+                              [descriptionText]="'A core belief is to harness the power of computers, not only by collecting information, but analyzing the data, then proactively providing answers and courses of action. We also do not believe in searching. Why search when, finding is better?'"
+                              [column1Heading]="'Projects'"
+                              [column1Text1]="'CRM'"
+                              [column1Text2]="'Project'"
+                              [column1Text3]="'E-Commerce'"
+                              [column1Text4]="'Task-Assistant'"
+                              [column1Text5]="'SFA'"
+                              [column2Heading]="'Support'"
+                              [column2Text1]="'Github'"
+                              [column2Button1Link]="'https://github.com/tshowers/licky-lick'"
+                              [column2Text2]="'Privacy'"
+                              [column2Button2Link]="'/about/privacy'"
+                              [column2Text3]="'Contact'"
+                              [column2Button3Link]="'/about/contact'"
+                              [column2Text4]="null"
+                              [column2Text5]="null"
+                              [column3Heading]="null"
+                              [footerText]="'Copyright Taliferro. All rights reserved.'"
+                              [router]="router"></licky-lick-marketing-footer1>

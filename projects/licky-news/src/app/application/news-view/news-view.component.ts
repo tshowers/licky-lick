@@ -1,62 +1,98 @@
-import { Component, OnInit } from '@angular/core';
-import { NewsService, SortHelperService, TypeFindService } from 'licky-services';
-import { News, NewsArticle } from 'lick-data';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NewsService, TypeFindService } from 'licky-services';
+import { NewsArticle } from 'lick-data';
+import { ProviderBox } from 'lick-app-widget-post4';
 
 @Component({
   selector: 'app-news-view',
   templateUrl: './news-view.component.html',
   styleUrls: ['./news-view.component.css']
 })
-export class NewsViewComponent implements OnInit {
+export class NewsViewComponent implements OnInit, OnDestroy {
 
   menuItems: any[] = [
     {
-      "link" : "/application/news",
-      "name" : "News",
+      "link": "/application/news",
+      "name": "News",
     },
     {
-      "link" : "/application/news-selector",
-      "name" : "News Selector"
+      "link": "/application/news-selector",
+      "name": "News Selector"
     },
     {
-      "link" : "/application/logout",
-      "name" : "Log Out"
+      "link": "/application/logout",
+      "name": "Log Out"
     },
   ]
 
   local = "us";
+  searchArgument;
 
-  businessArticles : NewsArticle[] = [];
-  entertainmentArticles : NewsArticle[];
-  generalArticles : NewsArticle[];
-  healthArticles : NewsArticle[];
-  scienceArticles : NewsArticle[];
-  sportsArticles : NewsArticle[];
-  technologyArticles : NewsArticle[];
+  searchResults: NewsArticle[];
 
-  topNews : NewsArticle[];
+  businessArticles: NewsArticle[] = [];
+  entertainmentArticles: NewsArticle[];
+  generalArticles: NewsArticle[];
+  healthArticles: NewsArticle[];
+  scienceArticles: NewsArticle[];
+  sportsArticles: NewsArticle[];
+  technologyArticles: NewsArticle[];
+
+  topNews: NewsArticle[];
   featuredNews: NewsArticle[];
-  featuredArticle : NewsArticle;
+  featuredArticle: NewsArticle;
+
+  boxes: ProviderBox[] = [];
 
   categories;
 
-  constructor(private _newsService: NewsService, private _sortHelperService: SortHelperService) { }
+  constructor(private _newsService: NewsService, public typeFindService: TypeFindService) { }
 
   ngOnInit() {
-    this.categories = this._newsService.categories;
+    this.categories = this._newsService.categories.slice(1);
     this._newsService.setPageSize(4);
     this.setTopNewsArticles();
     this.setFeaturedNews();
-    this.setGeneralArticles();
     this.setBusinessArticles();
     this.setEntertainmentArticles();
     this.setHealthArticles();
     this.setScienceArticles();
     this.setSportsArticles();
     this.setTechnologyArticles();
+    this.setDefaultNewsSources();
+    this.setGeneralArticles();
   }
 
-  private setTopNewsArticles() : void {
+  ngOnDestroy() {
+
+  }
+
+  onSubmit(): void {
+
+  }
+
+  private setDefaultNewsSources(): void {
+    this.setSelectedNewsSources(this._newsService.CNN);
+    this.setSelectedNewsSources(this._newsService.BUZZFEED);
+    this.setSelectedNewsSources(this._newsService.MASHABLE);
+    this.setSelectedNewsSources(this._newsService.TIME);
+
+  }
+
+  private setSelectedNewsSources(source: string): void {
+    this._newsService.setPageSize(5);
+    this._newsService.getNewsByProvider(source).subscribe(
+      (news) => {
+        let box = new ProviderBox();
+        box.heading = source;
+        box.featuredArticle = news.articles[0];
+        box.subArticles = news.articles.slice(1);
+        this.boxes.push(box);
+      }
+    )
+  }
+
+  private setTopNewsArticles(): void {
     this._newsService.setPageNumber(1);
     this._newsService.getNewsByCountry("us").subscribe(
       (news) => {
@@ -65,7 +101,7 @@ export class NewsViewComponent implements OnInit {
     )
   }
 
-  private setFeaturedNews() : void {
+  private setFeaturedNews(): void {
     this._newsService.setPageNumber(2);
     this._newsService.getNewsByCountry("us").subscribe(
       (news) => {
@@ -75,7 +111,7 @@ export class NewsViewComponent implements OnInit {
     )
   }
 
-  private setBusinessArticles() : void {
+  private setBusinessArticles(): void {
     let category = this._newsService.BUSINESS;
     this._newsService.setPageNumber(1);
     this._newsService.getNewsByCategory(category).subscribe(
@@ -85,7 +121,7 @@ export class NewsViewComponent implements OnInit {
     )
   }
 
-  private setEntertainmentArticles() : void {
+  private setEntertainmentArticles(): void {
     let category = this._newsService.ENTERTAINMENT;
     this._newsService.setPageNumber(1);
     this._newsService.getNewsByCategory(category).subscribe(
@@ -94,16 +130,17 @@ export class NewsViewComponent implements OnInit {
       }
     )
   }
-  private setGeneralArticles() : void {
+  private setGeneralArticles(): void {
     let category = this._newsService.GENERAL;
     this._newsService.setPageNumber(3);
+    this._newsService.setPageSize(3);
     this._newsService.getNewsByCategory(category).subscribe(
       (news) => {
         this.generalArticles = news.articles;
       }
     )
   }
-  private setHealthArticles() : void {
+  private setHealthArticles(): void {
     let category = this._newsService.HEALTH;
     this._newsService.setPageNumber(1);
     this._newsService.getNewsByCategory(category).subscribe(
@@ -112,7 +149,7 @@ export class NewsViewComponent implements OnInit {
       }
     )
   }
-  private setScienceArticles() : void {
+  private setScienceArticles(): void {
     let category = this._newsService.SCIENCE;
     this._newsService.setPageNumber(1);
     this._newsService.getNewsByCategory(category).subscribe(
@@ -121,7 +158,7 @@ export class NewsViewComponent implements OnInit {
       }
     )
   }
-  private setSportsArticles() : void {
+  private setSportsArticles(): void {
     let category = this._newsService.SPORTS;
     this._newsService.setPageNumber(1);
     this._newsService.getNewsByCategory(category).subscribe(
@@ -130,7 +167,7 @@ export class NewsViewComponent implements OnInit {
       }
     )
   }
-  private setTechnologyArticles() : void {
+  private setTechnologyArticles(): void {
     let category = this._newsService.TECHNOLOGY;
     this._newsService.setPageNumber(1);
     this._newsService.getNewsByCategory(category).subscribe(

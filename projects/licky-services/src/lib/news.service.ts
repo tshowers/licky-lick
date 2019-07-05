@@ -181,7 +181,7 @@ export class NewsService {
   private _sortParam = "popularity";
   private _key = '&apiKey=' + this.NEWS_KEY;
   private _pageSizeParam = '&pageSize=';
-  private _searchCriteria ='&sortBy=';
+  private _searchCriteria = '&sortBy=';
   private _local = "&country=";
   private _language = "&language=";
   private _pageNumberParam = "&page=";
@@ -202,17 +202,17 @@ export class NewsService {
   }
 
   getNewsByCategory(category: string): Observable<any> {
-    let callString = this._categoryURL + category + this._local  + this._country + this._key + this._pageSizeParam + this._pageSize +  this._pageNumberParam + this._pageNumber;
-    console.log(callString);
-    return this._http.get(this._categoryURL + category + this._local  + this._country + this._key + this._pageSizeParam + this._pageSize + this._pageNumberParam + this._pageNumber, { responseType: 'json' });
+    // let callString = this._categoryURL + category + this._local + this._country + this._key + this._pageSizeParam + this._pageSize + this._pageNumberParam + this._pageNumber;
+    // console.log(callString);
+    return this._http.get(this._categoryURL + category + this._local + this._country + this._key + this._pageSizeParam + this._pageSize + this._pageNumberParam + this._pageNumber, { responseType: 'json' });
   }
 
   getNewsByProvider(provider: string): Observable<any> {
-    return this._http.get(this._sourcesURL1 + provider+ this._local + this._country + this._key + this._language + this._lang, { responseType: 'json' });
+    return this._http.get(this._sourcesURL1 + provider + this._key + this._language + this._lang + this._pageSizeParam + this._pageSize, { responseType: 'json' });
   }
 
   getNewsBySearchCriteria(argument: string): Observable<any> {
-    return this._http.get(this._searchURL + "\"" + encodeURI(argument) + "\"" + this._searchCriteria +  + this._sortParam + this._language + this._lang  + this._pageNumberParam + this._pageNumber + this._key, { responseType: 'json' });
+    return this._http.get(this._searchURL + "\"" + encodeURI(argument) + "\"" + this._searchCriteria + this._sortParam + this._language + this._lang + this._pageNumberParam + this._pageNumber + this._key, { responseType: 'json' });
   }
 
   getNewsByProviders(): Observable<any> {
@@ -229,23 +229,23 @@ export class NewsService {
     return this._http.get(url, { responseType: 'json' })
   }
 
-  setPageSize(size: number) : void {
+  setPageSize(size: number): void {
     this._pageSize = size;
   }
 
-  setCountry(countryCode: string) : void {
+  setCountry(countryCode: string): void {
     this._country = countryCode;
   }
 
-  setLanguage(languageCode: string) : void {
+  setLanguage(languageCode: string): void {
     this._lang = languageCode;
   }
 
-  setSortParam(sortParam: string) : void {
+  setSortParam(sortParam: string): void {
     this._sortParam = sortParam;
   }
 
-  setPageNumber(pageNumber: number) : void {
+  setPageNumber(pageNumber: number): void {
     this._pageNumber = pageNumber;
   }
 
