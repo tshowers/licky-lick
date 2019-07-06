@@ -16,6 +16,8 @@ export class LickyLoginService {
   public errorMessage = new Subject<any>();
   public processMessage = new Subject<any>();
   public firebaseUser = new Subject<firebase.User>();
+  public isLoggedIn : boolean = false;
+  public redirectUrl;
 
   constructor(@Inject(LickyLoginConfigService) private config) {
     this.initFirebase()
@@ -30,6 +32,7 @@ export class LickyLoginService {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.firebaseUser.next(user);
+        this.isLoggedIn = true;
       }
     })
   }
@@ -38,6 +41,7 @@ export class LickyLoginService {
     firebase.auth().signInWithEmailAndPassword(emailAddress, password)
       .then((credential) => {
         console.log("successful signin");
+        this.isLoggedIn = true;
         router.navigate([redirectURL]);
       })
       .catch((error) => {
@@ -56,6 +60,7 @@ export class LickyLoginService {
 
     firebase.auth().getRedirectResult()
       .then((authData) => {
+        this.isLoggedIn = true;
         router.navigate([redirectURL]);
         // console.log(authData);
       })
@@ -68,7 +73,7 @@ export class LickyLoginService {
 
   public signOut() {
     firebase.auth().signOut().then(() => {
-      // Sign-out successful.
+      this.isLoggedIn = false;
     }, function(error) {
       console.log(error);
       this.error.next(error.code);
@@ -80,6 +85,7 @@ export class LickyLoginService {
     var provider = new firebase.auth.TwitterAuthProvider();
 
     firebase.auth().signInWithPopup(provider).then(function(authData) {
+      this.isLoggedIn = true;
       router.navigate([redirectURL]);
     }).catch(function(error) {
       console.log(error);
@@ -94,6 +100,7 @@ export class LickyLoginService {
     provider.addScope('user_birthday');
 
     firebase.auth().signInWithPopup(provider).then(function(authData) {
+      this.isLoggedIn = true;
       router.navigate([redirectURL]);
     }).catch(function(error) {
       console.log(error);

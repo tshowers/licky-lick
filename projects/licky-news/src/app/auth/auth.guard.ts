@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, CanActivateChild, CanLoad, Route, UrlSegment, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from './auth.service';
+import { LickyLoginService} from 'licky-services';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private _lickyLoginService: LickyLoginService, private _router: Router) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -29,13 +29,13 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   checkLogin(url: string): boolean {
-    if (this.authService.isLoggedIn) { return true; }
+    if (this._lickyLoginService.isLoggedIn) { return true; }
 
     // Store the attempted URL for redirecting
-    this.authService.redirectUrl = url;
-    console.log("Redirecting back to login page bacuse isLoggedIn = " + this.authService.isLoggedIn);
+    this._lickyLoginService.redirectUrl = url;
+    console.log("Redirecting back to login page bacuse isLoggedIn = " + this._lickyLoginService.isLoggedIn);
     // Navigate to the login page with extras
-    this.router.navigate(['/application/login']);
+    this._router.navigate(['/application/login']);
     return false;
   }
 }

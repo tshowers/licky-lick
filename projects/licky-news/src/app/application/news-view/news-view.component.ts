@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router'
 import { NewsService, TypeFindService } from 'licky-services';
 import { NewsArticle } from 'lick-data';
 import { ProviderBox } from 'lick-app-widget-post4';
@@ -27,6 +28,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
 
   local = "us";
   searchArgument;
+  searchHeading = "...";
 
   searchResults: NewsArticle[];
 
@@ -46,7 +48,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
 
   categories;
 
-  constructor(private _newsService: NewsService, public typeFindService: TypeFindService) { }
+  constructor(public router: Router, private _newsService: NewsService, public typeFindService: TypeFindService) { }
 
   ngOnInit() {
     this.categories = this._newsService.categories.slice(1);
@@ -68,7 +70,13 @@ export class NewsViewComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-
+    console.log("Searching on " + this.searchArgument)
+    this._newsService.getNewsBySearchCriteria(this.searchArgument).subscribe(
+      (news) => {
+        console.log(news);
+      this.searchResults = news.articles;
+      this.searchHeading = "Found " + news.articles.length + " of " + news.totalResults + " articles";
+    })
   }
 
   private setDefaultNewsSources(): void {
