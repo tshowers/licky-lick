@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LickyLoginService} from 'licky-services';
 import { Subscription } from 'rxjs';
 
+
 @Component({
   selector: 'app-news-login',
   templateUrl: './news-login.component.html',
@@ -25,6 +26,7 @@ export class NewsLoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribeToLoginErrors();
+
     this.determineUser();
   }
 
@@ -38,6 +40,7 @@ export class NewsLoginComponent implements OnInit, OnDestroy {
   private determineUser() : void {
     this._userSubscription = this._loginService.firebaseUser.subscribe((firebaseUser) => {
       let status : boolean = (firebaseUser && firebaseUser.uid) ? true : false
+      console.log("status=" + status);
       this.router.navigate(['application', 'news']);
     })
   }

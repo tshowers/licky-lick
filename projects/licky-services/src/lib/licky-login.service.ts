@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import * as firebase from 'firebase';
 
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -15,7 +15,7 @@ export class LickyLoginService {
   public error = new Subject<any>();
   public errorMessage = new Subject<any>();
   public processMessage = new Subject<any>();
-  public firebaseUser = new Subject<firebase.User>();
+  public firebaseUser = new BehaviorSubject<firebase.User>(null);
   public isLoggedIn : boolean = false;
   public redirectUrl;
 

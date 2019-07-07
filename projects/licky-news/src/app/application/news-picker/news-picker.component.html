@@ -1,3 +1,50 @@
-<p>
-  news-picker works!
-</p>
+<header id="masthead"
+        class="site-header">
+  <licky-lick-marketing-menu [logo]="'assets/touch-icon-ipad.png'"
+                             [logoName]="'16 AHEAD'"
+                             [menuItems]="menuItems"></licky-lick-marketing-menu>
+</header>
+<div class="container mt-5 pt-5">
+  <div class="col-md-12">
+    <div class="card card-accent-theme">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <div class="h3 text-primary">
+              <strong>News Sources</strong>
+            </div>
+            <small class="text-primary"><span [CountTo]="newsService?.newsSources.length"></span>
+              TOTAL</small>
+          </div>
+          <div class="float-right">
+            <span>Selected</span>
+          </div>
+        </div>
+        <div class="row ta-row">
+          <div class="col">
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                  *ngFor="let ns of newsService.newsSources">
+                <a (click)="onNewsSelect(ns)"
+                   style="pointer:cursor">{{ns.name}}</a>
+                <span *ngIf="isCheckboxes(ns)">
+
+                  <input checked
+                         type="checkbox"
+                         name="{{ns.value}}"
+                         id="{{ns.value}}"
+                         (click)="onNewsSelect(ns)"></span>
+                <span *ngIf="!isCheckboxes(ns)">
+
+                  <input type="checkbox"
+                         name="{{ns.value}}"
+                         id="{{ns.value}}"
+                         (click)="onNewsSelect(ns)"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,11 @@ import { Router, CanActivate, CanActivateChild, CanLoad, Route, UrlSegment, Acti
 import { Observable } from 'rxjs';
 import { LickyLoginService} from 'licky-services';
 
+import { environment } from '../../environments/environment';
+
+export const maintenance = environment.maintenance;
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -28,14 +33,27 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     return true;
   }
 
-  checkLogin(url: string): boolean {
-    if (this._lickyLoginService.isLoggedIn) { return true; }
+  isNotMaintenance() : boolean  {
+    console.log("Under maintenance = " + maintenance);
+    if (!maintenance) { return true; }
 
-    // Store the attempted URL for redirecting
-    this._lickyLoginService.redirectUrl = url;
-    console.log("Redirecting back to login page bacuse isLoggedIn = " + this._lickyLoginService.isLoggedIn);
-    // Navigate to the login page with extras
-    this._router.navigate(['/application/login']);
+    this._router.navigate(['/application/maintenance']);
     return false;
+  }
+
+  checkLogin(url: string): boolean {
+    if (this.isNotMaintenance()) {
+      console.log("Checking isLoggedIn = " + this._lickyLoginService.isLoggedIn);
+      if (this._lickyLoginService.isLoggedIn) { return true; }
+
+      // Store the attempted URL for redirecting
+      this._lickyLoginService.redirectUrl = url;
+      console.log("Redirecting back to login page bacuse isLoggedIn = " + this._lickyLoginService.isLoggedIn);
+      // Navigate to the login page with extras
+      this._router.navigate(['/application/login']);
+      return false;
+    }
+    else
+      return false;
   }
 }

@@ -2,6 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { LickyLoginService} from 'licky-services';
 import { Subscription } from 'rxjs';
+import { environment } from '../../../environments/environment';
+
+export const maintenance = environment.maintenance;
 
 @Component({
   selector: 'app-home-page',
@@ -52,7 +55,11 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._loginSubscription = this._loginService.firebaseUser.subscribe((user) => {
+      console.log("firebaseUser=" + JSON.stringify(user));
       this.loggedIn = (user) ? true : false;
+      if (maintenance) {
+        this.loggedIn = false;
+      }
     })
   }
 
