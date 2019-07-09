@@ -38,7 +38,7 @@ export class UserLocationService {
   private setCityState(latitude, longitude): void {
     let latlng = new google.maps.LatLng(latitude, longitude);
     this._geocoder.geocode({latLng: latlng}, (addressResult, status) => {
-      console.log("status=" + status);
+      // console.log("status=" + status);
       if (status == google.maps.GeocoderStatus.OK) {
         this.fillInAddress(addressResult[0], latitude, longitude);
 

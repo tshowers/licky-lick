@@ -1730,6 +1730,14 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "dev": {
+              "fileReplacements" : [
+                {
+                  "replace": "projects/licky-crm/src/environments/environment.ts",
+                  "with": "projects/licky-crm/src/environments/environment.dev.ts"
+                }
+              ]
             }
           }
         },
@@ -1741,6 +1749,9 @@
           "configurations": {
             "production": {
               "browserTarget": "licky-crm:build:production"
+            },
+            "dev": {
+              "browserTarget": "licky-crm:build:dev"
             }
           }
         },
@@ -3323,6 +3334,14 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "dev": {
+              "fileReplacements" : [
+                {
+                  "replace": "projects/licky-news/src/environments/environment.ts",
+                  "with": "projects/licky-news/src/environments/environment.dev.ts"
+                }
+              ]
             }
           }
         },
@@ -3334,6 +3353,9 @@
           "configurations": {
             "production": {
               "browserTarget": "licky-news:build:production"
+            },
+            "dev" : {
+              "browserTarget": "licky-news:build:dev"
             }
           }
         },
@@ -3759,6 +3781,195 @@
             "tsConfig": [
               "projects/lick-app-widget-find/tsconfig.lib.json",
               "projects/lick-app-widget-find/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "licky-home": {
+      "root": "projects/licky-home/",
+      "sourceRoot": "projects/licky-home/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/licky-home",
+            "index": "projects/licky-home/src/index.html",
+            "main": "projects/licky-home/src/main.ts",
+            "polyfills": "projects/licky-home/src/polyfills.ts",
+            "tsConfig": "projects/licky-home/tsconfig.app.json",
+            "assets": [
+              "projects/licky-home/src/favicon.ico",
+              "projects/licky-home/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "projects/styles/intro-style.css",
+              "projects/styles/colors/color-1.css",
+              "projects/styles/simple-line-icons.css",
+              "projects/styles/styles.css",
+              "projects/styles/ta-styles.css",
+              "projects/styles/circle.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/licky-home/src/environments/environment.ts",
+                  "with": "projects/licky-home/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
+            "dev": {
+              "fileReplacements" : [
+                {
+                  "replace": "projects/licky-home/src/environments/environment.ts",
+                  "with": "projects/licky-home/src/environments/environment.dev.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "licky-home:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "licky-home:build:production"
+            },
+            "dev": {
+              "browserTarget": "licky-home:build:dev"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "licky-home:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/licky-home/src/test.ts",
+            "polyfills": "projects/licky-home/src/polyfills.ts",
+            "tsConfig": "projects/licky-home/tsconfig.spec.json",
+            "karmaConfig": "projects/licky-home/karma.conf.js",
+            "styles": [
+              "projects/licky-home/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/licky-home/src/favicon.ico",
+              "projects/licky-home/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/licky-home/tsconfig.app.json",
+              "projects/licky-home/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "licky-home-e2e": {
+      "root": "projects/licky-home-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/licky-home-e2e/protractor.conf.js",
+            "devServerTarget": "licky-home:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "licky-home:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/licky-home-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-not-found": {
+      "root": "projects/lick-app-widget-not-found",
+      "sourceRoot": "projects/lick-app-widget-not-found/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-not-found/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-not-found/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-not-found/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-not-found/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-not-found/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-not-found/tsconfig.lib.json",
+              "projects/lick-app-widget-not-found/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

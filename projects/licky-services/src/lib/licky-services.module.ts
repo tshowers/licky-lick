@@ -14,7 +14,6 @@ import { TypeFindService } from './type-find.service';
 import { DropdownService } from './dropdown.service';
 import { UserLocationService } from './user-location.service';
 import { AgmCoreModule } from '@agm/core';
-
 import { environment } from '../environment';
 
 
@@ -35,7 +34,7 @@ import { environment } from '../environment';
     TypeFindService,
     DropdownService,
     UserLocationService,
-    WeatherService
+    WeatherService,
   ]
 
 })

@@ -55,7 +55,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._loginSubscription = this._loginService.firebaseUser.subscribe((user) => {
-      console.log("firebaseUser=" + JSON.stringify(user));
+      // console.log("firebaseUser=" + JSON.stringify(user));
       this.loggedIn = (user) ? true : false;
       if (maintenance) {
         this.loggedIn = false;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsService } from 'licky-services';
+import { NewsService, FirebaseDataService, USERS } from 'licky-services';
+import { Router } from '@angular/router';
 import { User } from 'lick-data';
 
 @Component({
@@ -10,6 +11,10 @@ import { User } from 'lick-data';
 export class NewsPickerComponent implements OnInit {
 
   menuItems: any[] = [
+    {
+      "link": "/",
+      "name": "Home",
+    },
     {
       "link": "/application/news",
       "name": "News",
@@ -29,9 +34,12 @@ export class NewsPickerComponent implements OnInit {
 
   private _user: User;
 
-  constructor(public newsService: NewsService) { }
+  constructor(public router: Router, public newsService: NewsService, private _fds: FirebaseDataService) { }
 
   ngOnInit() {
+    this._fds.getDataCollection(USERS).subscribe((data) => {
+      console.log("What we get back > " + JSON.stringify(data))
+    });
   }
 
   onNewsSelect(newsSource): void {

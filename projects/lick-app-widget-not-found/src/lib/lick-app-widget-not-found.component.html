@@ -1,0 +1,27 @@
+<div class="ta-vertical-center">
+  <div class="container">
+    <div class="row justify-content-md-center ta-row">
+      <div class="col">
+        <section class="container-server-errors">
+          <div class="server-errors pages-card">
+            <div class="status-text-1">{{statusText}}</div>
+            <div class="status-error text-theme hertbit">{{errorCode}}</div>
+            <div class="text-center status-text-2 text-dark">{{errorMessage}}</div>
+            <div class="small text-center text-dark">{{subErrorMessage}}</div>
+            <div class="text-center" *ngIf="redirectLink"> <a routerLink="{{redirectLink}}" class="btn  btn-theme login-btn text-white">{{linkText}}</a> </div>
+            <div class="text-center" *ngIf="contactLink"> <small>{{problemText}}
+                            <a routerLink="{{contactLink}}" class="text-theme">{{contactText}}</a>
+                        </small> </div>
+          </div>
+          <!-- end server-error pages -->
+        </section>
+      </div>
+
+    </div>
+  </div>
+  <!-- end secton container -->
+</div>
+<div class="half-circle"></div>
+<div class="small-circle"></div>
+<div class="half-circle-bottom"></div>
+<div class="small-circle-bottom"></div>

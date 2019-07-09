@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let url: string = state.url;
-    console.log("canActivate - " + url);
+    console.log("URL in question - " + url);
     return this.checkLogin(url);
   }
   canActivateChild(
@@ -34,7 +34,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   isNotMaintenance() : boolean  {
-    console.log("Under maintenance = " + maintenance);
+    // console.log("Under maintenance = " + maintenance);
     if (!maintenance) { return true; }
 
     this._router.navigate(['/application/maintenance']);
@@ -43,12 +43,12 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   checkLogin(url: string): boolean {
     if (this.isNotMaintenance()) {
-      console.log("Checking isLoggedIn = " + this._lickyLoginService.isLoggedIn);
+      // console.log("Checking isLoggedIn = " + this._lickyLoginService.isLoggedIn);
       if (this._lickyLoginService.isLoggedIn) { return true; }
 
       // Store the attempted URL for redirecting
       this._lickyLoginService.redirectUrl = url;
-      console.log("Redirecting back to login page bacuse isLoggedIn = " + this._lickyLoginService.isLoggedIn);
+      // console.log("Redirecting back to login page bacuse isLoggedIn = " + this._lickyLoginService.isLoggedIn);
       // Navigate to the login page with extras
       this._router.navigate(['/application/login']);
       return false;

@@ -12,7 +12,7 @@
             <div class="h4 text-center text-theme"><strong>{{headingText}}</strong></div>
             <div class="small text-center text-dark"> {{subText}} </div>
 
-            <div class="text-center">
+            <div class="text-center" *ngIf="contactLink">
                     <small>{{contactText}}
                         <a routerLink="{{contactLink}}" class="text-theme">{{contactLinkText}}</a>
                     </small>

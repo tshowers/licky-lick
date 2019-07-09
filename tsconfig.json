@@ -582,6 +582,12 @@
       ],
       "lick-app-widget-find/*": [
         "dist/lick-app-widget-find/*"
+      ],
+      "lick-app-widget-not-found": [
+        "dist/lick-app-widget-not-found"
+      ],
+      "lick-app-widget-not-found/*": [
+        "dist/lick-app-widget-not-found/*"
       ]
     }
   }

@@ -13,6 +13,10 @@ export class NewsViewComponent implements OnInit, OnDestroy {
 
   menuItems: any[] = [
     {
+      "link": "/",
+      "name": "Home",
+    },
+    {
       "link": "/application/news",
       "name": "News",
     },

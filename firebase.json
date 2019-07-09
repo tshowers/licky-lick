@@ -6,11 +6,17 @@
       "rewrites": [{ "source": "**", "destination": "/index.html"  }]
     },
     {
-        "target": "news",
-        "public": "dist/licky-news",
-        "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
-        "rewrites": [{ "source": "**", "destination": "/index.html"  }]
-      },
+      "target": "news",
+      "public": "dist/licky-news",
+      "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
+      "rewrites": [{ "source": "**", "destination": "/index.html"  }]
+    },
+    {
+      "target": "home",
+      "public": "dist/licky-home",
+      "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
+      "rewrites": [{ "source": "**", "destination": "/index.html"  }]
+    },
     {
       "target": "crm",
       "public": "dist/licky-crm",

@@ -7,6 +7,7 @@
 <licky-lick-app-widget-lock-screen *ngIf="isWidget4"></licky-lick-app-widget-lock-screen>
 <licky-lick-app-widget-signup *ngIf="isWidget5"></licky-lick-app-widget-signup>
 <licky-lick-app-widget-logout *ngIf="isWidget6"></licky-lick-app-widget-logout>
+<licky-lick-app-widget-not-found  *ngIf="isWidget7"></licky-lick-app-widget-not-found>
 <ul class="nav nav-tabs bg-light fixed-bottom">
   <li class="nav-item" [ngClass]="{'active' : isWidget1}">
     <a class="nav-link" (click)="onMaintenance()">Maintenance</a>
@@ -25,5 +26,8 @@
   </li>
   <li class="nav-item" [ngClass]="{'active' : isWidget6}">
     <a class="nav-link" (click)="onLogout()">Log Out</a>
+  </li>
+  <li class="nav-item" [ngClass]="{'active' : isWidget7}">
+    <a class="nav-link" (click)="onNotFound()">Not Found</a>
   </li>
 </ul>
