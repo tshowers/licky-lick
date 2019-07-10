@@ -102,6 +102,7 @@ export class FirebaseDataService {
   }
 
   updateData(path: string, key: any, data: any): void {
+    console.log("Updating Data for " + path + '/' + key);
     this.setUpdateValues(data);
     this._db.ref(path + '/' + key).set(data, (error) => {
       if (error)
@@ -110,6 +111,7 @@ export class FirebaseDataService {
   }
 
   getData(path: string, id: string): Observable<any> {
+    console.log("Getting Data for " + path + '/' + id);
     return Observable.create((observer) => {
       this._db.ref(path + '/' + id).once('value').then(
         (snapshot) => {
@@ -127,6 +129,7 @@ export class FirebaseDataService {
   }
 
   getDataCollection(path): Observable<any> {
+    console.log("Getting Data Collection for " + path);
     return Observable.create((observer) => {
       this._db.ref(path).on('value', (snapshot) => {
         // console.log(snapshot.val());

@@ -40,7 +40,7 @@ export class NewsLoginComponent implements OnInit, OnDestroy {
   private determineUser() : void {
     this._userSubscription = this._loginService.firebaseUser.subscribe((firebaseUser) => {
       let status : boolean = (firebaseUser && firebaseUser.uid) ? true : false
-      console.log("status=" + status);
+      // console.log("status=" + status);
       this.router.navigate(['application', 'news']);
     })
   }

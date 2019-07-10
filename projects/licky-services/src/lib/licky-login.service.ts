@@ -2,7 +2,9 @@ import { Injectable, Inject } from '@angular/core';
 import { LickyLoginConfigService } from './licky-login-config.service';
 import { Router } from '@angular/router';
 
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/app';
+import 'firebase/auth';
 import { FirebaseDataService, GROUPS, USERS } from './firebase-data.service';
 import { User, Group } from 'lick-data';
 
@@ -20,7 +22,7 @@ export class LickyLoginService {
   public usersChanged = new Subject<User[]>();
   public userChanged = new Subject<User>();
   public firebaseUser = new BehaviorSubject<firebase.User>(null);
-  private _firebaseUser:firebase.User;
+  private _firebaseUser: firebase.User;
   private _user: User;
   private _users: any;
   public isLoggedIn: boolean = false;
@@ -34,27 +36,13 @@ export class LickyLoginService {
     firebase.initializeApp(this.config);
     this.userStateChange();
     this._fds.init();
-    this.initUsers();
   }
 
-  private userStateChange() {
-    firebase.auth().onAuthStateChanged((user : firebase.User) => {
-      if (user) {
-        this.firebaseUser.next(user);
-        this._firebaseUser = user;
-        this.isLoggedIn = true;
-        console.log("Got firebase User");
-        // this.checkUserRecord(user);
-      }
-    })
+  public getUserByID(id: string): User {
+    if (!this._users) return null;
+    return this._users[id];
   }
 
-  private checkUserRecord(user: firebase.User): void {
-    let userRecord = this.getUserByID(user.uid);
-    if (!userRecord) {
-      this.createUser(user);
-    }
-  }
 
   public signInWithUserNameAndPassword(emailAddress: string, password: string, router: Router, redirectURL: string) {
     firebase.auth().signInWithEmailAndPassword(emailAddress, password)
@@ -71,22 +59,21 @@ export class LickyLoginService {
       })
   }
 
-
-  private setAway() : void {
+  public setAway(): void {
     if (this._user) {
       this._user.status = 'away';
       this.update();
     }
   }
 
-  private setOnline() : void {
+  public setOnline(): void {
     if (this._user) {
       this._user.status = 'online';
       this.update();
     }
   }
 
-  private setOffline() : void {
+  public setOffline(): void {
     if (this._user) {
       this._user.status = 'offline';
       this.update();
@@ -100,6 +87,7 @@ export class LickyLoginService {
       this.isLoggedIn = false;
       this.firebaseUser.next(null);
       this._user = null;
+      this._fds.setUser(null);
       this.userChanged.next(null);
     }, function(error) {
       console.log(error);
@@ -114,6 +102,13 @@ export class LickyLoginService {
     provider.addScope('https://www.googleapis.com/auth/plus.login');
 
     firebase.auth().signInWithRedirect(provider);
+
+    firebase.auth().getRedirectResult().then(result => {
+      console.log("signInWithGoogle:" + JSON.stringify(result.user))
+      if (result.user) {
+
+      }
+    });
   }
 
   public signInWithTwitter(router: Router, redirectURL: string) {
@@ -157,7 +152,8 @@ export class LickyLoginService {
   public signUpUser(emailAddress: string, password: string, firstName: string, lastName: string, url: string, router: Router, redirectURL: string, referral?: string) {
     firebase.auth().createUserWithEmailAndPassword(emailAddress, password)
       .then((authData) => {
-        console.log(authData);
+        // this._firebaseUser = authData.user;
+        // this.createUser();
         router.navigate([redirectURL])
       })
       .catch(
@@ -166,54 +162,68 @@ export class LickyLoginService {
         });
   }
 
+  private userStateChange() {
+    firebase.auth().onAuthStateChanged((user: firebase.User) => {
+      if (user) {
+        this.firebaseUser.next(user);
+        this._firebaseUser = user;
+        this.isLoggedIn = true;
+        this.initUsers();
+      }
+    })
+  }
+
   private initUsers(): void {
-    console.log("Initalize Users");
     this._fds.getDataCollection(USERS).subscribe((users) => {
-      if (users) {
+      if (!users) {
+        console.log("No Users");
+        this.createUser();
+      } else {
         this._users = users;
-        console.log("Users > " + JSON.stringify(this._users), "firebaseUser >" + JSON.stringify( this._firebaseUser));
         this.usersChanged.next(this._users);
 
-        if(this._firebaseUser) {
+        try {
+          console.log("Users > " + JSON.stringify(this._users));
           let u = this._users[this._firebaseUser.uid];
-          console.log("initUsers > " + JSON.stringify(u))
+          console.log("User retrieved > " + JSON.stringify(u));
+
+          if (u === null || typeof u != 'object') {
+            this.createUser();
+          } else {
+            this._user = u;
+            this._fds.setUser(this._user);
+          }
+
+        } catch (err) {
+          console.error(err);
         }
       }
     })
   }
 
-  private createUser(fbUser: firebase.User): void {
+  private createUser(): void {
     let user = new User();
-    this.setAppUser(fbUser, user);
-    this._fds.updateData(USERS, fbUser.uid, user);
     this._user = user;
+    this._fds.setUser(this._user);
+    this.setAppUser(user);
+    this._fds.updateData(USERS, this._firebaseUser.uid, user);
     this.userChanged.next(this._user);
   }
 
-  private setAppUser(fbUser: firebase.User, user: User, referral?: string) {
+  private setAppUser(user: User, referral?: string) {
     user.timeStamp = new Date().getTime();
     user.draft = false;
     user.deleted = false;
-    user.name = fbUser.displayName;
-    user.url = fbUser.photoURL;
-    user.user_id = fbUser.uid;
-    user.id = fbUser.uid;
-    user.user_id = fbUser.uid;
+    user.name = this._firebaseUser.displayName;
+    user.url = this._firebaseUser.photoURL;
+    user.user_id = this._firebaseUser.uid;
+    user.id = this._firebaseUser.uid;
+    user.user_id = this._firebaseUser.uid;
     user.helpNeeded = true;
     user.newsSources = [];
     user.status = 'online';
     if (referral)
       user.referral = referral;
-  }
-
-
-  public getUserByID(id: string): User {
-    console.log("getUserByID:" +  JSON.stringify(this._users));
-    if (!this._users) return null;
-    let u = this._users[id]
-    console.log("getUserByID:" + JSON.stringify(u));
-    return u;
-    // return (this._users) ? (this._users.find(a => a.id == id)) : null;
   }
 
   private update() {
