@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'licky-lick-app-widget-post3',
@@ -79,9 +79,15 @@ export class LickAppWidgetPost3Component implements OnInit {
     },
   ];
 
+  @Output() pageEvent = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onPageEvent(article: any) : void {
+    this.pageEvent.emit({article});
   }
 
 }

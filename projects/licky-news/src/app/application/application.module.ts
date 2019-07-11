@@ -22,7 +22,8 @@ import { LickMarketingLatestPost1Module } from 'lick-marketing-latest-post1';
 import { LickMarketingLatestPost2Module } from 'lick-marketing-latest-post2';
 import { LickAppWidgetSpinnerModule } from 'lick-app-widget-spinner';
 import { LickAppWidgetWeatherModule } from 'lick-app-widget-weather';
-
+import { LickMarketingSimpleHeaderModule} from 'lick-marketing-simple-header';
+import { LickMarketingSimplePageModule} from 'lick-marketing-simple-page';
 import { NewsPickerComponent } from './news-picker/news-picker.component';
 import { NewsViewComponent } from './news-view/news-view.component';
 import { NewsLoginComponent } from './news-login/news-login.component';
@@ -33,10 +34,11 @@ import { NewsScreenLockComponent } from './news-screen-lock/news-screen-lock.com
 import { NewsLogoutComponent } from './news-logout/news-logout.component';
 
 import { LickMarketingFooter1Module } from 'lick-marketing-footer1';
-
+import { NewsReaderComponent } from './news-reader/news-reader.component';
+import { NewsHelperService} from './services/news-helper.service';
 
 @NgModule({
-  declarations: [NewsPickerComponent, NewsViewComponent, NewsLoginComponent, NewsMaintenanceComponent, NewsSignupComponent, NewsForgotPasswordComponent, NewsScreenLockComponent, NewsLogoutComponent],
+  declarations: [NewsPickerComponent, NewsViewComponent, NewsLoginComponent, NewsMaintenanceComponent, NewsSignupComponent, NewsForgotPasswordComponent, NewsScreenLockComponent, NewsLogoutComponent, NewsReaderComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -59,10 +61,12 @@ import { LickMarketingFooter1Module } from 'lick-marketing-footer1';
     LickMarketingLatestPost2Module,
     LickAppWidgetSpinnerModule,
     LickMarketingFooter1Module,
-    LickAppWidgetWeatherModule
+    LickAppWidgetWeatherModule,
+    LickMarketingSimpleHeaderModule,
+    LickMarketingSimplePageModule
   ],
   providers: [
-
+    NewsHelperService
   ]
 
 })

@@ -158,6 +158,7 @@ export class FirebaseDataService {
   }
 
   private setUpdateValues(data: any): void {
+    console.log("Updating user >", JSON.stringify(this._user));
     data.lastUpdated = new Date();
     if (this._user) {
       data.lastUpdatedBy = this._user.name;

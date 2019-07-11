@@ -22,15 +22,14 @@
 
             <div class="post-meta" *ngIf="article.keywords">
               <span class="post-date">
-                <a *ngIf="article.link" href="{{article?.link}}" title="{{article?.title}}">{{article?.publishedAt | date : 'medium'}}</a>
-                <a *ngIf="!article.link" href="{{article?.url}}" title="{{article?.title}}">{{article?.publishedAt | date : 'medium'}}</a>
+                <a (click)="onPageEvent(article)" title="{{article?.title}}">{{article?.publishedAt | date : 'medium'}}</a>
               </span>
               <!-- TODO -->
               <span *ngIf="article.keywords">in </span>
-              <span *ngIf="article.keywords" class="post-category"><a href="{{article?.url}}" title="{{article?.title}}">{{article?.keywords}}</a></span>
+              <span *ngIf="article.keywords" class="post-category"><a (click)="onPageEvent(article)" title="{{article?.title}}">{{article?.keywords}}</a></span>
             </div>
 
-            <h3><a href="{{article?.link}}" title="{{article?.title}}">{{article?.title | slice:0:40}}</a><span *ngIf="article?.title.length > 40">...</span> </h3>
+            <h3><a (click)="onPageEvent(article)" title="{{article?.title}}">{{article?.title | slice:0:40}}</a><span *ngIf="article?.title.length > 40">...</span> </h3>
 
             <div class="post-preview-text" innerHTML="{{article?.description}}">
             </div>
@@ -38,8 +37,7 @@
           </div> <!-- .post-preview-content -->
 
           <footer class="post-preview-footer">
-            <a *ngIf="article.link" href="{{article?.link}}" class="button button-full" title="{{article?.title}}">Read more</a>
-            <a *ngIf="!article.link" href="{{article?.url}}" class="button button-full" title="{{article?.title}}">Read more</a>
+            <a (click)="onPageEvent(article)" class="button button-full" title="{{article?.title}}">Read more</a>
           </footer>
 
         </div>

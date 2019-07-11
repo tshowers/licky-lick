@@ -1060,7 +1060,7 @@ a {
 .site-header .header-content-page {
   position: relative;
   height: 27rem;
-  background: #f8f8fa;
+  /* background: #f8f8fa; */
 }
 
 .site-header .header-content-page .header-overlay-page {
@@ -1069,7 +1069,7 @@ a {
   height: 100%;
   top: 0;
   left: 0;
-  background: #445383;
+  background: #000;
   opacity: 0.3;
   z-index: 2;
 }
@@ -1080,7 +1080,7 @@ a {
   height: 100%;
   top: 0;
   left: 0;
-  background: url(http://via.placeholder.com/1920x1275) center no-repeat;
+  /* background: url(http://via.placeholder.com/1920x1275) center no-repeat; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

@@ -15,11 +15,7 @@
                *ngFor="let item of data; let i = index">
         <div class="entry__img-holder post-list__img-holder card__img-holder"
              [ngStyle]="{'background-image': 'url(' + item?.urlToImage + ')'}">
-          <a *ngIf="isExternal"
-             href="{{item?.url}}"
-             class="thumb-url"></a>
-          <a *ngIf="!isExternal"
-             routerLink="{{item?.url}}"
+          <a (click)="onPageEvent(item)"
              class="thumb-url"></a>
           <img src="{{item?.urlToImage}}"
                alt="{{item?.title}}"
@@ -31,7 +27,7 @@
         <div class="entry__body post-list__body card__body">
           <div class="entry__header">
             <h2 class="entry__title">
-              <a href="{{item?.url}}">{{item?.title}}</a>
+              <a (click)="onPageEvent(item)">{{item?.title}}</a>
             </h2>
             <ul class="entry__meta">
               <li class="entry__meta-author">

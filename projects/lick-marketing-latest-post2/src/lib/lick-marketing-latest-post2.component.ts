@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Article } from 'lick-data';
 
 @Component({
@@ -111,9 +111,16 @@ export class LickMarketingLatestPost2Component implements OnInit {
       "timeStamp": new Date(),
     },
   ];
+
+  @Output() pageEvent = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onPageEvent(article: any) : void {
+    this.pageEvent.emit({article});
   }
 
 }

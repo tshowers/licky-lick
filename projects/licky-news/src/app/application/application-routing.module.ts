@@ -10,6 +10,7 @@ import { NewsSignupComponent } from './news-signup/news-signup.component';
 import { NewsForgotPasswordComponent } from './news-forgot-password/news-forgot-password.component';
 import { NewsScreenLockComponent } from './news-screen-lock/news-screen-lock.component';
 import { NewsLogoutComponent } from './news-logout/news-logout.component';
+import { NewsReaderComponent} from './news-reader/news-reader.component';
 
 const routes : Routes = [
   { path: 'login', component: NewsLoginComponent, data: { title: 'Login - News - 16 AHEAD' }},
@@ -20,6 +21,7 @@ const routes : Routes = [
   { path: 'forgot-password', component: NewsForgotPasswordComponent, data: { title: 'Forgot Password - News - 16 AHEAD' }},
   { path: 'news', canActivate: [AuthGuard], component: NewsViewComponent, data: { title: 'News - 16 AHEAD' }},
   { path: 'news-selector', canActivate: [AuthGuard], component: NewsPickerComponent, data: { title: 'News Selector - 16 AHEAD' }},
+  { path: 'news-reader', canActivate: [AuthGuard], component: NewsReaderComponent, data: { title: 'News Reader - 16 AHEAD' }},
 ];
 
 

@@ -20,12 +20,12 @@
           <div class="post-preview-content">
 
             <div class="post-meta" *ngIf="article?.keywords">
-              <span class="post-date"><a href="{{article?.link}}" title="{{article?.title}}">{{article?.publishedAt | date : 'medium'}}</a></span>
+              <span class="post-date"><a (click)="onPageEvent(article)" title="{{article?.title}}">{{article?.publishedAt | date : 'medium'}}</a></span>
               <span>in </span>
-              <span class="post-category"><a href="{{article?.link}}" title="{{article?.link}}">{{article?.keywords}}</a></span>
+              <span class="post-category">{{article?.keywords}}</span>
             </div>
 
-            <h3><a href="{{article.link}}" title="{{article?.title}}">{{article?.title}}</a></h3>
+            <h3><a (click)="onPageEvent(article)" title="{{article?.title}}">{{article?.title}}</a></h3>
 
             <div class="post-preview-text">
               <p>
@@ -36,7 +36,7 @@
           </div> <!-- .post-preview-content -->
 
           <footer class="post-preview-footer">
-            <a href="{{article?.link}}" class="button button-full" title="{{article?.title}}">Read more</a>
+            <a (click)="onPageEvent(article)" class="button button-full" title="{{article?.title}}">Read more</a>
           </footer>
 
         </div>

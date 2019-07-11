@@ -3,7 +3,7 @@ import { Router } from '@angular/router'
 import { NewsService, TypeFindService } from 'licky-services';
 import { NewsArticle } from 'lick-data';
 import { ProviderBox } from 'lick-app-widget-post4';
-
+import { NewsHelperService } from '../services/news-helper.service';
 @Component({
   selector: 'app-news-view',
   templateUrl: './news-view.component.html',
@@ -52,7 +52,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
 
   categories;
 
-  constructor(public router: Router, private _newsService: NewsService, public typeFindService: TypeFindService) { }
+  constructor(public router: Router, private _newsService: NewsService, public typeFindService: TypeFindService, private _newsHelperService: NewsHelperService) { }
 
   ngOnInit() {
     this.categories = this._newsService.categories.slice(1);
@@ -73,15 +73,23 @@ export class NewsViewComponent implements OnInit, OnDestroy {
 
   }
 
+  public onPageEvent(value): void {
+    this._newsHelperService.setNewsArticle(value);
+    // console.log("Article selected: ", JSON.stringify(value));
+    this.router.navigate(['/application/news-reader']);
+  }
+
+
   onSubmit(): void {
     console.log("Searching on " + this.searchArgument)
     this._newsService.getNewsBySearchCriteria(this.searchArgument).subscribe(
       (news) => {
         console.log(news);
-      this.searchResults = news.articles;
-      this.searchHeading = "Found " + news.articles.length + " of " + news.totalResults + " articles";
-    })
+        this.searchResults = news.articles;
+        this.searchHeading = "Found " + news.articles.length + " of " + news.totalResults + " articles";
+      })
   }
+
 
   private setDefaultNewsSources(): void {
     this.setSelectedNewsSources(this._newsService.CNN);

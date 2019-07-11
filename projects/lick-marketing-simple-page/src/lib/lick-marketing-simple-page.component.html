@@ -1,10 +1,22 @@
-      <section class="container-fluid page-block">
-        <div class="container">
-          <div class="row">
+<section class="container-fluid page-block">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 page-content">
+        <div *ngIf="author"><small>by {{author}}<br>
+            {{publishedAt | date}}<br><br>
+          </small>
+          <span class="lead" *ngIf="description">{{description}}</span>
+        </div>
+        <br>
+        <article>
+          <div innerHTML="{{ bodyText }}"></div>
+          <br>
+          <footer class="post-preview-footer text-center" *ngIf="source">
+            <a class="button button-full text-white" title="{{source}}">Read more on {{source}}</a>
+          </footer>
+        </article>
 
-          <div class="col-md-9 page-content" innerHTML="{{ bodyText }}">
-          </div>
-
-          </div> <!-- .row -->
-        </div> <!-- .container -->
-      </section>
+      </div>
+    </div> <!-- .row -->
+  </div> <!-- .container -->
+</section>

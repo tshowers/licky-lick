@@ -59,6 +59,19 @@ export class LickyLoginService {
       })
   }
 
+  public updateUserInfo(firstName: string, lastName: string, firebaseUser: firebase.User): void {
+    firebaseUser.updateProfile({
+      displayName: firstName + " " + lastName,
+    }).then(() => {
+      console.log("displayName updated to - " + firebaseUser.displayName);
+    },
+      (error) => {
+        console.error(error)
+      }
+    )
+  }
+
+
   public setAway(): void {
     if (this._user) {
       this._user.status = 'away';
@@ -152,8 +165,8 @@ export class LickyLoginService {
   public signUpUser(emailAddress: string, password: string, firstName: string, lastName: string, url: string, router: Router, redirectURL: string, referral?: string) {
     firebase.auth().createUserWithEmailAndPassword(emailAddress, password)
       .then((authData) => {
-        // this._firebaseUser = authData.user;
-        // this.createUser();
+        if (firstName && lastName)
+          this.updateUserInfo(firstName, lastName, authData.user);
         router.navigate([redirectURL])
       })
       .catch(
@@ -190,8 +203,7 @@ export class LickyLoginService {
           if (u === null || typeof u != 'object') {
             this.createUser();
           } else {
-            this._user = u;
-            this._fds.setUser(this._user);
+            this.setAppUser(u);
           }
 
         } catch (err) {
@@ -203,8 +215,6 @@ export class LickyLoginService {
 
   private createUser(): void {
     let user = new User();
-    this._user = user;
-    this._fds.setUser(this._user);
     this.setAppUser(user);
     this._fds.updateData(USERS, this._firebaseUser.uid, user);
     this.userChanged.next(this._user);
@@ -217,13 +227,19 @@ export class LickyLoginService {
     user.name = this._firebaseUser.displayName;
     user.url = this._firebaseUser.photoURL;
     user.user_id = this._firebaseUser.uid;
+    user.userName = this._firebaseUser.email;
+    user.userImage = this._firebaseUser.photoURL;
     user.id = this._firebaseUser.uid;
     user.user_id = this._firebaseUser.uid;
     user.helpNeeded = true;
     user.newsSources = [];
     user.status = 'online';
+    user.lastViewed = new Date();
+    user.lastUpdatedBy = this._firebaseUser.displayName;
     if (referral)
       user.referral = referral;
+    this._user = user;
+    this._fds.setUser(this._user);
   }
 
   private update() {

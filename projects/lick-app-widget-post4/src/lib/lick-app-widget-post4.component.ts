@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NewsArticle } from 'lick-data';
 
 @Component({
@@ -112,10 +112,15 @@ export class LickAppWidgetPost4Component implements OnInit {
     },
   ]
 
+  @Output() pageEvent = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onPageEvent(article: any) : void {
+    this.pageEvent.emit({article});
   }
 
 }

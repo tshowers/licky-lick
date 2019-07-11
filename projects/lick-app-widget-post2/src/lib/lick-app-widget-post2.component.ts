@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'licky-lick-app-widget-post2',
@@ -337,17 +337,22 @@ export class LickAppWidgetPost2Component implements OnInit {
       "publishedAt": new Date('May 8, 2019 10:30:00'),
       "timeStamp": new Date()
     },
-
   ];
 
   @Input() tabData6: any[];
   @Input() tabData7: any[];
+
+  @Output() pageEvent = new EventEmitter();
 
   public activeTab: number = 0;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onPageEvent(article: any) : void {
+    this.pageEvent.emit({article});
   }
 
   showCategory(i): void {

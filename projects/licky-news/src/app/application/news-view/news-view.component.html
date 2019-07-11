@@ -26,29 +26,37 @@
       </span> </div>
   </form>
 </div>
-<div class="container" *ngIf="searchArgument">
-  <div class="text-center my-4" *ngIf="!searchResults">
-          <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw text-theme"></i>
+<div class="container"
+     *ngIf="searchArgument">
+  <div class="text-center my-4"
+       *ngIf="!searchResults">
+    <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw text-theme"></i>
   </div>
-  <licky-lick-app-widget-post3 *ngIf="searchResults" [headingText]="searchHeading"
-          [viewAllLink]="null"
+  <licky-lick-app-widget-post3 *ngIf="searchResults"
+                               [headingText]="searchHeading"
+                               [viewAllLink]="null"
+                               (pageEvent)="onPageEvent($event)"
                                [isExternal]="true"
                                [data]="searchResults"></licky-lick-app-widget-post3>
-
 </div>
-<div class="container" *ngIf="!searchArgument">
+<div class="container"
+     *ngIf="!searchArgument">
   <h1>My News</h1>
-  <licky-lick-app-widget-post4 [boxes]="boxes"></licky-lick-app-widget-post4>
+  <licky-lick-app-widget-post4 [boxes]="boxes"
+                               (pageEvent)="onPageEvent($event)"></licky-lick-app-widget-post4>
   <licky-lick-app-widget-post1 [isExternal]="true"
+                               (pageEvent)="onPageEvent($event)"
                                [data]="featuredNews"
                                [featuredData]="featuredArticle"></licky-lick-app-widget-post1>
   <licky-lick-marketing-latest-post1 [articles]="generalArticles"
                                      [headingText]="'Top Headlines'"
+                                     (pageEvent)="onPageEvent($event)"
                                      [descriptionText]="'Top headlines from the most reliable news sources. Carefully curated to keep you abreast of what\'s happening in the world.'"></licky-lick-marketing-latest-post1>
   <div class="row">
     <div class="col-lg-8 blog__content">
       <licky-lick-app-widget-post3 [headingText]="'Latest News'"
-      [viewAllLink]="null"
+                                   [viewAllLink]="null"
+                                   (pageEvent)="onPageEvent($event)"
                                    [isExternal]="true"
                                    [data]="topNews"></licky-lick-app-widget-post3>
     </div>
@@ -57,6 +65,7 @@
     </div>
   </div>
   <licky-lick-app-widget-post2 [categories]="categories"
+                               (pageEvent)="onPageEvent($event)"
                                [headingText]="'By Category'"
                                [tabData1]="businessArticles"
                                [tabData2]="entertainmentArticles"

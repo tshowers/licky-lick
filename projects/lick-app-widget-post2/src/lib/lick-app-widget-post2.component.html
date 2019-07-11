@@ -27,7 +27,7 @@
                  *ngFor="let item of tabData1; let i of index">
               <article class="entry card">
                 <div class="entry__img-holder card__img-holder">
-                  <a href="{{item?.url}}">
+                  <a (click)="onPageEvent(item)">
                     <div class="thumb-container thumb-70">
                       <img data-src="{{item?.urlToImage}}"
                            src="{{item?.urlToImage}}"
@@ -36,18 +36,18 @@
                     </div>
                   </a>
                   <a *ngIf="item.keyword"
-                     href="item?.keyword.link"
+                     href="{{item?.keyword.link}}"
                      class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
                 </div>
                 <div class="entry__body card__body">
                   <div class="entry__header">
                     <h2 class="entry__title">
-                      <a href="{{item?.url}}">{{item?.title}}</a>
+                      <a (click)="onPageEvent(item)">{{item?.title}}</a>
                     </h2>
                     <ul class="entry__meta">
                       <li class="entry__meta-author">
                         <span>by </span>
-                        <a href="#">{{item?.author}}</a>
+                        {{item?.author}}
                       </li>
                       <li class="entry__meta-date">
                         {{item?.publishedAt | date : 'medium'}}
@@ -72,7 +72,7 @@
                  *ngFor="let item of tabData2; let i of index">
               <article class="entry card">
                 <div class="entry__img-holder card__img-holder">
-                  <a href="{{item?.url}}">
+                  <a (click)="onPageEvent(item)">
                     <div class="thumb-container thumb-70">
                       <img data-src="{{item?.urlToImage}}"
                            src="{{item?.urlToImage}}"
@@ -87,12 +87,12 @@
                 <div class="entry__body card__body">
                   <div class="entry__header">
                     <h2 class="entry__title">
-                      <a href="{{item?.url}}">{{item?.title}}</a>
+                      <a (click)="onPageEvent(item)">{{item?.title}}</a>
                     </h2>
                     <ul class="entry__meta">
                       <li class="entry__meta-author">
                         <span>by </span>
-                        <a href="#">{{item?.author}}</a>
+                        {{item?.author}}
                       </li>
                       <li class="entry__meta-date">
                         {{item?.publishedAt | date : 'medium'}}
@@ -117,7 +117,7 @@
                  *ngFor="let item of tabData3; let i of index">
               <article class="entry card">
                 <div class="entry__img-holder card__img-holder">
-                  <a href="{{item?.url}}">
+                  <a (click)="onPageEvent(item)">
                     <div class="thumb-container thumb-70">
                       <img data-src="{{item?.urlToImage}}"
                            src="{{item?.urlToImage}}"
@@ -132,12 +132,12 @@
                 <div class="entry__body card__body">
                   <div class="entry__header">
                     <h2 class="entry__title">
-                      <a href="{{item?.url}}">{{item?.title}}</a>
+                      <a (click)="onPageEvent(item)">{{item?.title}}</a>
                     </h2>
                     <ul class="entry__meta">
                       <li class="entry__meta-author">
                         <span>by </span>
-                        <a href="#">{{item?.author}}</a>
+                        {{item?.author}}
                       </li>
                       <li class="entry__meta-date">
                         {{item?.publishedAt | date : 'medium'}}
@@ -162,7 +162,7 @@
                  *ngFor="let item of tabData4; let i of index">
               <article class="entry card">
                 <div class="entry__img-holder card__img-holder">
-                  <a href="{{item?.url}}">
+                  <a (click)="onPageEvent(item)">
                     <div class="thumb-container thumb-70">
                       <img data-src="{{item?.urlToImage}}"
                            src="{{item?.urlToImage}}"
@@ -177,12 +177,12 @@
                 <div class="entry__body card__body">
                   <div class="entry__header">
                     <h2 class="entry__title">
-                      <a href="{{item?.url}}">{{item?.title}}</a>
+                      <a (click)="onPageEvent(item)">{{item?.title}}</a>
                     </h2>
                     <ul class="entry__meta">
                       <li class="entry__meta-author">
                         <span>by </span>
-                        <a href="#">{{item?.author}}</a>
+                        {{item?.author}}
                       </li>
                       <li class="entry__meta-date">
                         {{item?.publishedAt | date : 'medium'}}
@@ -207,7 +207,7 @@
                  *ngFor="let item of tabData5; let i of index">
               <article class="entry card">
                 <div class="entry__img-holder card__img-holder">
-                  <a href="{{item?.url}}">
+                  <a (click)="onPageEvent(item)">
                     <div class="thumb-container thumb-70">
                       <img data-src="{{item?.urlToImage}}"
                            src="{{item?.urlToImage}}"
@@ -222,12 +222,12 @@
                 <div class="entry__body card__body">
                   <div class="entry__header">
                     <h2 class="entry__title">
-                      <a href="{{item?.url}}">{{item?.title}}</a>
+                      <a (click)="onPageEvent(item)">{{item?.title}}</a>
                     </h2>
                     <ul class="entry__meta">
                       <li class="entry__meta-author">
                         <span>by </span>
-                        <a href="#">{{item?.author}}</a>
+                        {{item?.author}}
                       </li>
                       <li class="entry__meta-date">
                         {{item?.publishedAt | date : 'medium'}}
@@ -252,7 +252,7 @@
                  *ngFor="let item of tabData6; let i of index">
               <article class="entry card">
                 <div class="entry__img-holder card__img-holder">
-                  <a href="{{item?.url}}">
+                  <a (click)="onPageEvent(item)">
                     <div class="thumb-container thumb-70">
                       <img data-src="{{item?.urlToImage}}"
                            src="{{item?.urlToImage}}"
@@ -261,18 +261,18 @@
                     </div>
                   </a>
                   <a *ngIf="item.keyword"
-                     href="item?.keyword.link"
+                     href="{{item?.keyword.link}}"
                      class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
                 </div>
                 <div class="entry__body card__body">
                   <div class="entry__header">
                     <h2 class="entry__title">
-                      <a href="{{item?.url}}">{{item?.title}}</a>
+                      <a (click)="onPageEvent(item)">{{item?.title}}</a>
                     </h2>
                     <ul class="entry__meta">
                       <li class="entry__meta-author">
                         <span>by </span>
-                        <a href="#">{{item?.author}}</a>
+                        {{item?.author}}
                       </li>
                       <li class="entry__meta-date">
                         {{item?.publishedAt | date : 'medium'}}
@@ -296,7 +296,7 @@
                  *ngFor="let item of tabData7; let i of index">
               <article class="entry card">
                 <div class="entry__img-holder card__img-holder">
-                  <a href="{{item?.url}}">
+                  <a (click)="onPageEvent(item)">
                     <div class="thumb-container thumb-70">
                       <img data-src="{{item?.urlToImage}}"
                            src="{{item?.urlToImage}}"
@@ -305,18 +305,18 @@
                     </div>
                   </a>
                   <a *ngIf="item.keyword"
-                     href="item?.keyword.link"
+                     href="{{item?.keyword.link}}"
                      class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
                 </div>
                 <div class="entry__body card__body">
                   <div class="entry__header">
                     <h2 class="entry__title">
-                      <a href="{{item?.url}}">{{item?.title}}</a>
+                      <a (click)="onPageEvent(item)">{{item?.title}}</a>
                     </h2>
                     <ul class="entry__meta">
                       <li class="entry__meta-author">
                         <span>by </span>
-                        <a href="#">{{item?.author}}</a>
+                        {{item?.author}}
                       </li>
                       <li class="entry__meta-date">
                         {{item?.publishedAt | date : 'medium'}}
