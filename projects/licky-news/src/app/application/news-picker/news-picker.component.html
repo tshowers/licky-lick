@@ -13,33 +13,26 @@
             <div class="h3 text-primary">
               <strong>News Sources</strong>
             </div>
-            <small class="text-primary"><span [CountTo]="newsService?.newsSources.length"></span>
+            <small class="text-primary"><span [CountTo]="newsSources.length"></span>
               TOTAL</small>
           </div>
           <div class="float-right">
-            <span>Selected</span>
+            <a (click)="onSubmit()" class="button button-full text-white" title="Save Changes">Save Selections</a>
           </div>
         </div>
         <div class="row ta-row">
           <div class="col">
             <ul class="list-group">
               <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-                  *ngFor="let ns of newsService.newsSources">
+                  *ngFor="let ns of newsSources">
                 <a (click)="onNewsSelect(ns)"
                    style="pointer:cursor">{{ns.name}}</a>
-                <span *ngIf="isCheckboxes(ns)">
 
-                  <input checked
+                  <input [checked]="ns.checked"
                          type="checkbox"
                          name="{{ns.value}}"
                          id="{{ns.value}}"
-                         (click)="onNewsSelect(ns)"></span>
-                <span *ngIf="!isCheckboxes(ns)">
-
-                  <input type="checkbox"
-                         name="{{ns.value}}"
-                         id="{{ns.value}}"
-                         (click)="onNewsSelect(ns)"></span>
+                         (click)="onNewsSelect(ns)">
               </li>
             </ul>
           </div>

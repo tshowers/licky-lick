@@ -44,17 +44,28 @@
   <h1>My News</h1>
   <licky-lick-app-widget-post4 [boxes]="boxes"
                                (pageEvent)="onPageEvent($event)"></licky-lick-app-widget-post4>
+                               <h1>Top News</h1>
+                               <licky-lick-app-widget-post2 [categories]="categories"
+                                                            (pageEvent)="onPageEvent($event)"
+                                                            [headingText]="'By Category'"
+                                                            [tabData1]="businessArticles"
+                                                            [tabData2]="entertainmentArticles"
+                                                            [tabData3]="healthArticles"
+                                                            [tabData4]="scienceArticles"
+                                                            [tabData5]="sportsArticles"
+                                                            [tabData6]="technologyArticles"></licky-lick-app-widget-post2>
+<h1>Latest</h1>
   <licky-lick-app-widget-post1 [isExternal]="true"
                                (pageEvent)="onPageEvent($event)"
                                [data]="featuredNews"
                                [featuredData]="featuredArticle"></licky-lick-app-widget-post1>
   <licky-lick-marketing-latest-post1 [articles]="generalArticles"
-                                     [headingText]="'Top Headlines'"
+                                     [headingText]="'Headlines'"
                                      (pageEvent)="onPageEvent($event)"
                                      [descriptionText]="'Top headlines from the most reliable news sources. Carefully curated to keep you abreast of what\'s happening in the world.'"></licky-lick-marketing-latest-post1>
   <div class="row">
     <div class="col-lg-8 blog__content">
-      <licky-lick-app-widget-post3 [headingText]="'Latest News'"
+      <licky-lick-app-widget-post3 [headingText]="'In Other News . . .'"
                                    [viewAllLink]="null"
                                    (pageEvent)="onPageEvent($event)"
                                    [isExternal]="true"
@@ -64,15 +75,6 @@
       <licky-lick-app-widget-weather></licky-lick-app-widget-weather>
     </div>
   </div>
-  <licky-lick-app-widget-post2 [categories]="categories"
-                               (pageEvent)="onPageEvent($event)"
-                               [headingText]="'By Category'"
-                               [tabData1]="businessArticles"
-                               [tabData2]="entertainmentArticles"
-                               [tabData3]="healthArticles"
-                               [tabData4]="scienceArticles"
-                               [tabData5]="sportsArticles"
-                               [tabData6]="technologyArticles"></licky-lick-app-widget-post2>
 </div>
 <licky-lick-marketing-footer1 [headingText1]="'About'"
                               [descriptionText]="'A core belief is to harness the power of computers, not only by collecting information, but analyzing the data, then proactively providing answers and courses of action. We also do not believe in searching. Why search when, finding is better?'"

@@ -13,6 +13,8 @@
     <main id="main"
           class="site-main">
       <licky-lick-marketing-simple-page
+      [article]="articleObject"
+      (pageEvent)="onPageEvent($event)"
       [author]="articleObject.article.author"
       [description]="articleObject.article.description"
       [publishedAt]="articleObject.article.publishedAt"
@@ -21,3 +23,23 @@
     </main>
   </div>
 </div>
+<licky-lick-marketing-footer1 [headingText1]="'About'"
+                              [descriptionText]="'A core belief is to harness the power of computers, not only by collecting information, but analyzing the data, then proactively providing answers and courses of action. We also do not believe in searching. Why search when, finding is better?'"
+                              [column1Heading]="'Projects'"
+                              [column1Text1]="'CRM'"
+                              [column1Text2]="'Project'"
+                              [column1Text3]="'E-Commerce'"
+                              [column1Text4]="'Task-Assistant'"
+                              [column1Text5]="'SFA'"
+                              [column2Heading]="'Support'"
+                              [column2Text1]="'Github'"
+                              [column2Button1Link]="'https://github.com/tshowers/licky-lick'"
+                              [column2Text2]="'Privacy'"
+                              [column2Button2Link]="'/about/privacy'"
+                              [column2Text3]="'Contact'"
+                              [column2Button3Link]="'/about/contact'"
+                              [column2Text4]="null"
+                              [column2Text5]="null"
+                              [column3Heading]="null"
+                              [footerText]="'Copyright Taliferro. All rights reserved.'"
+                              [router]="router"></licky-lick-marketing-footer1>

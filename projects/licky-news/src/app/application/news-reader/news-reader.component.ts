@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsHelperService} from '../services/news-helper.service';
+import { Router } from '@angular/router';
+import { NewsHelperService } from '../services/news-helper.service';
 
 @Component({
   selector: 'app-news-reader',
@@ -30,11 +31,21 @@ export class NewsReaderComponent implements OnInit {
   ]
 
 
-  constructor(private _newsHelperService: NewsHelperService) { }
+  constructor(public router: Router, private _newsHelperService: NewsHelperService) { }
 
   ngOnInit() {
     this.articleObject = this._newsHelperService.getNewsArticle();
-    console.log("Article:" + this.articleObject);
+    console.log("Article:" + JSON.stringify(this.articleObject));
+  }
+
+  public onPageEvent(value): void {
+    let theLink: string = (value.link) ? value.link : value.article.url;
+    console.log("**Article Link >", theLink);
+    if (theLink && theLink.indexOf("http") >= 0) {
+      window.open(theLink, '_blank');
+    }
+    else
+      this.router.navigate([theLink]);
   }
 
 }

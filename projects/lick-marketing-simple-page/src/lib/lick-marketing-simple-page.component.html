@@ -11,8 +11,8 @@
         <article>
           <div innerHTML="{{ bodyText }}"></div>
           <br>
-          <footer class="post-preview-footer text-center" *ngIf="source">
-            <a class="button button-full text-white" title="{{source}}">Read more on {{source}}</a>
+          <footer class="post-preview-footer text-center" *ngIf="source && article">
+            <a (click)="onPageEvent()" class="button button-full text-white" title="{{source}}">More on {{source}}</a>
           </footer>
         </article>
 

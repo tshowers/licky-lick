@@ -20,7 +20,7 @@ export class LickyLoginService {
   public errorMessage = new Subject<any>();
   public processMessage = new Subject<any>();
   public usersChanged = new Subject<User[]>();
-  public userChanged = new Subject<User>();
+  public userChanged = new BehaviorSubject<User>(null);
   public firebaseUser = new BehaviorSubject<firebase.User>(null);
   private _firebaseUser: firebase.User;
   private _user: User;
@@ -43,11 +43,14 @@ export class LickyLoginService {
     return this._users[id];
   }
 
+  public getUser(): User {
+    return this._user;
+  }
 
   public signInWithUserNameAndPassword(emailAddress: string, password: string, router: Router, redirectURL: string) {
     firebase.auth().signInWithEmailAndPassword(emailAddress, password)
       .then((authData) => {
-        console.log(authData);
+        // console.log(authData);
         console.log("successful signin");
         this.isLoggedIn = true;
         router.navigate([redirectURL]);
@@ -103,7 +106,7 @@ export class LickyLoginService {
       this._fds.setUser(null);
       this.userChanged.next(null);
     }, function(error) {
-      console.log(error);
+      console.error(error);
       this.error.next(error.code);
       this.errorMessage.next(error.message);
     });
@@ -157,7 +160,7 @@ export class LickyLoginService {
         } else if (errorCode == 'auth/user-not-found') {
           this.errorMessage.next(error.message);
         }
-        console.log(error);
+        console.error(error);
         this.error.next(error.code);
       });
   }
@@ -196,14 +199,14 @@ export class LickyLoginService {
         this.usersChanged.next(this._users);
 
         try {
-          console.log("Users > " + JSON.stringify(this._users));
+          // console.log("Users > " + JSON.stringify(this._users));
           let u = this._users[this._firebaseUser.uid];
-          console.log("User retrieved > " + JSON.stringify(u));
+          // console.log("User retrieved > " + JSON.stringify(u));
 
           if (u === null || typeof u != 'object') {
             this.createUser();
           } else {
-            this.setAppUser(u);
+            this.setFirebaseAttributes(u);
           }
 
         } catch (err) {
@@ -217,13 +220,22 @@ export class LickyLoginService {
     let user = new User();
     this.setAppUser(user);
     this._fds.updateData(USERS, this._firebaseUser.uid, user);
-    this.userChanged.next(this._user);
   }
 
   private setAppUser(user: User, referral?: string) {
+    if (referral)
+      user.referral = referral;
     user.timeStamp = new Date().getTime();
     user.draft = false;
     user.deleted = false;
+    user.helpNeeded = true;
+    user.newsSources = [];
+    user.status = 'online';
+    user.lastViewed = new Date();
+    this.setFirebaseAttributes(user);
+  }
+
+  private setFirebaseAttributes(user: User) {
     user.name = this._firebaseUser.displayName;
     user.url = this._firebaseUser.photoURL;
     user.user_id = this._firebaseUser.uid;
@@ -231,18 +243,13 @@ export class LickyLoginService {
     user.userImage = this._firebaseUser.photoURL;
     user.id = this._firebaseUser.uid;
     user.user_id = this._firebaseUser.uid;
-    user.helpNeeded = true;
-    user.newsSources = [];
-    user.status = 'online';
-    user.lastViewed = new Date();
     user.lastUpdatedBy = this._firebaseUser.displayName;
-    if (referral)
-      user.referral = referral;
     this._user = user;
     this._fds.setUser(this._user);
+    this.userChanged.next(this._user);
   }
 
-  private update() {
+  public update(): void {
     if (!this._user) return;
     this._fds.updateData(USERS, this._user.id, this._user);
   }

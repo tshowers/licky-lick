@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsService, FirebaseDataService, USERS } from 'licky-services';
+import { NewsService, LickyLoginService } from 'licky-services';
 import { Router } from '@angular/router';
-import { User } from 'lick-data';
 
 @Component({
   selector: 'app-news-picker',
@@ -30,60 +29,37 @@ export class NewsPickerComponent implements OnInit {
   ]
 
 
-  userNewsSources;
+  newsSources;
 
-  private _user: User;
 
-  constructor(public router: Router, public newsService: NewsService, private _fds: FirebaseDataService) { }
+  constructor(public router: Router,
+    public newsService: NewsService,
+    private _loginSerive: LickyLoginService) { }
 
   ngOnInit() {
-    this._fds.getDataCollection(USERS).subscribe((data) => {
-      console.log("What we get back > " + JSON.stringify(data))
-    });
+    this.newSourcesExist();
   }
 
   onNewsSelect(newsSource): void {
-    this.newSourcesExist();
-    if (this.isThere(newsSource)) {
-      console.log("newsSource there delete")
-      this.removeNewsSource(newsSource);
-    }
-    else {
-      console.log("newsSource not there")
-      this.userNewsSources.push(newsSource);
-    }
+    // console.log("Current Value:", JSON.stringify(newsSource));
+    newsSource.checked = (!newsSource.checked);
+    // console.log("New Value:", JSON.stringify(newsSource));
   }
 
-  isCheckboxes(newsSource): boolean {
-    if (this.userNewsSources) {
-      let n = this.userNewsSources.newsSources.find((a => a.name == newsSource.name))
-      return (n) ? true : false;
-    }
-    else return false;
-  }
-
-
-  private isThere(newsSource): boolean {
-    if (this.userNewsSources) {
-      return this.userNewsSources.find((a => a.name == newsSource.name))
-    }
-    else return false;
-  }
-
-  private removeNewsSource(newsSource) {
-    let at = this.userNewsSources.findIndex(a => a.name == newsSource.name);
-    if (at >= 0) {
-      this.deleteNewsSource(at);
-    }
-  }
-
-  private deleteNewsSource(at: number) {
-    this.userNewsSources.splice(at, 1);
-  }
 
   private newSourcesExist() {
-    if (!this.userNewsSources)
-      this.userNewsSources = [];
+    if (this._loginSerive.getUser().newsSources && (this._loginSerive.getUser().newsSources.length > 0))
+      this.newsSources = this._loginSerive.getUser().newsSources;
+    else
+      this.newsSources = this.newsService.newsSources;
+  }
+
+  onSubmit(): void {
+    // console.log("NewsSources: ", JSON.stringify(this.newsSources));
+    this._loginSerive.getUser().newsSources = this.newsSources;
+    // console.log("User NewsSources: ", JSON.stringify(this._loginSerive.getUser().newsSources));
+    this._loginSerive.update();
+    this.router.navigate(['/application/news']);
   }
 
 
