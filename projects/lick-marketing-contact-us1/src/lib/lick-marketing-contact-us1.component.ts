@@ -8,7 +8,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 export class LickMarketingContactUs1Component implements OnInit {
 
   @Input() headingText = "Contact Us";
-  @Input() descriptionText = "We also don't like spam";
+  @Input() descriptionText = "We  don't like spam either";
 
   @Output() pageEvent = new EventEmitter();
 

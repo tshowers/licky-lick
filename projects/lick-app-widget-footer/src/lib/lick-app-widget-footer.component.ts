@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LickAppWidgetFooterComponent implements OnInit {
 
-  @Input() copyrightText = "&#169; Copyright Taliferro. Taliferro &#174; Is Registered In The U.S. Patent And Trademark Office.";
+  @Input() copyrightText = "ⓒ Copyright Taliferro. Taliferro Ⓡ Is Registered In The U.S. Patent And Trademark Office.";
   @Input() buttonLink = "https://www.taliferro.com";
   @Input() buttonText = "About Taliferro.";
 

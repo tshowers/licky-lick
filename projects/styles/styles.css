@@ -7956,11 +7956,14 @@ body {
 /*******************/
 .app-footer {
   z-index: 101 !important;
-  min-height: 50px;
+  font-size: 10px;
+  max-height: 40px;
   padding: 0 1rem;
-  line-height: 50px;
+  opacity: .8;
+  line-height: 30px;
   color: #555;
-  background: #eff1f4; }
+  background: #eff1f4;
+}
 
 /*******************
 /*05. Components*/

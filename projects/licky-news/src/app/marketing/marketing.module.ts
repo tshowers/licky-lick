@@ -13,6 +13,7 @@ import { LickMarketingHowTo1Module } from 'lick-marketing-how-to1';
 import { LickMarketingTryIt1Module } from 'lick-marketing-try-it1';
 import { LickMarketingMenuModule } from 'lick-marketing-menu';
 import { LickMarketingFooter1Module} from 'lick-marketing-footer1';
+import { LickMarketingFooter2Module } from 'lick-marketing-footer2';
 import { LickMarketingSimplePageModule } from 'lick-marketing-simple-page';
 import { LickMarketingSimpleHeaderModule } from 'lick-marketing-simple-header';
 import { LickMarketingContactUs1Module} from 'lick-marketing-contact-us1';
@@ -39,7 +40,8 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
     LickMarketingFooter1Module,
     LickMarketingSimplePageModule,
     LickMarketingSimpleHeaderModule,
-    LickMarketingContactUs1Module
+    LickMarketingContactUs1Module,
+    LickMarketingFooter2Module
   ]
 })
 export class MarketingModule { }

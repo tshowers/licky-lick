@@ -8,6 +8,8 @@ export class RemoteAssetService {
 
   private headers = new  HttpHeaders({ 'Content-Type': 'application/json' });
 
+  public JSON = 'json';
+  public TEXT = 'text';
 
   constructor(private http: HttpClient) { }
 
@@ -31,6 +33,10 @@ export class RemoteAssetService {
         }
       ))
 
+  }
+
+  public getFileContents(url, contentType) : Observable<any> {
+    return this.http.get(url, { responseType: contentType})
   }
 
 

@@ -1732,7 +1732,7 @@
               ]
             },
             "dev": {
-              "fileReplacements" : [
+              "fileReplacements": [
                 {
                   "replace": "projects/licky-crm/src/environments/environment.ts",
                   "with": "projects/licky-crm/src/environments/environment.dev.ts"
@@ -3336,7 +3336,7 @@
               ]
             },
             "dev": {
-              "fileReplacements" : [
+              "fileReplacements": [
                 {
                   "replace": "projects/licky-news/src/environments/environment.ts",
                   "with": "projects/licky-news/src/environments/environment.dev.ts"
@@ -3354,7 +3354,7 @@
             "production": {
               "browserTarget": "licky-news:build:production"
             },
-            "dev" : {
+            "dev": {
               "browserTarget": "licky-news:build:dev"
             }
           }
@@ -3855,7 +3855,7 @@
               ]
             },
             "dev": {
-              "fileReplacements" : [
+              "fileReplacements": [
                 {
                   "replace": "projects/licky-home/src/environments/environment.ts",
                   "with": "projects/licky-home/src/environments/environment.dev.ts"
@@ -3970,6 +3970,41 @@
             "tsConfig": [
               "projects/lick-app-widget-not-found/tsconfig.lib.json",
               "projects/lick-app-widget-not-found/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-footer2": {
+      "root": "projects/lick-marketing-footer2",
+      "sourceRoot": "projects/lick-marketing-footer2/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-footer2/tsconfig.lib.json",
+            "project": "projects/lick-marketing-footer2/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-footer2/src/test.ts",
+            "tsConfig": "projects/lick-marketing-footer2/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-footer2/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-footer2/tsconfig.lib.json",
+              "projects/lick-marketing-footer2/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

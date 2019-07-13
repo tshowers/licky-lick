@@ -588,6 +588,12 @@
       ],
       "lick-app-widget-not-found/*": [
         "dist/lick-app-widget-not-found/*"
+      ],
+      "lick-marketing-footer2": [
+        "dist/lick-marketing-footer2"
+      ],
+      "lick-marketing-footer2/*": [
+        "dist/lick-marketing-footer2/*"
       ]
     }
   }

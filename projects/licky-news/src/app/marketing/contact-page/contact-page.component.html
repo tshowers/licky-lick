@@ -1,3 +1,33 @@
-<p>
-  contact-page works!
-</p>
+<header id="masthead"
+        class="site-header">
+        <licky-lick-marketing-menu *ngIf="!loggedIn"
+                                   [logo]="'assets/touch-icon-ipad.png'"
+                                   [logoName]="'16 AHEAD'"
+                                   [menuItems]="menuItems"></licky-lick-marketing-menu>
+        <licky-lick-marketing-menu *ngIf="loggedIn"
+                                   [logo]="'assets/touch-icon-ipad.png'"
+                                   [logoName]="'16 AHEAD'"
+                                   [menuItems]="loggedInMenuItems"></licky-lick-marketing-menu>
+	<licky-lick-marketing-simple-header [headingText]="headingText"
+	                                    [backgroundImage]="'assets/images/contact-us.jpg'"></licky-lick-marketing-simple-header>
+</header>
+<!-- End Header -->
+<!-- Content -->
+<div id="content"
+     class="site-content">
+	<div id="primary"
+	     class="content-area">
+		<main id="main"
+		      class="site-main">
+          <licky-lick-marketing-contact-us1 (pageEvent)="onPageEvent($event)"></licky-lick-marketing-contact-us1>
+		</main>
+	</div>
+</div>
+<licky-lick-marketing-footer2 [buttonText1]="'Home'"
+                              [buttonLink1]="'/about'"
+                              [buttonText2]="'Privacy'"
+                              [buttonLink2]="'/about/privacy'"
+                              [buttonText3]="'Contact'"
+                              [buttonLink3]="'/about/contact'"
+                              [buttonLink4]="null"
+                              [router]="router"></licky-lick-marketing-footer2>

@@ -24,6 +24,9 @@ import { LickAppWidgetSpinnerModule } from 'lick-app-widget-spinner';
 import { LickAppWidgetWeatherModule } from 'lick-app-widget-weather';
 import { LickMarketingSimpleHeaderModule} from 'lick-marketing-simple-header';
 import { LickMarketingSimplePageModule} from 'lick-marketing-simple-page';
+import { LickAppWidgetFooterModule } from 'lick-app-widget-footer';
+import { LickMarketingFooter1Module } from 'lick-marketing-footer1';
+import { LickMarketingFooter2Module } from 'lick-marketing-footer2';
 import { NewsPickerComponent } from './news-picker/news-picker.component';
 import { NewsViewComponent } from './news-view/news-view.component';
 import { NewsLoginComponent } from './news-login/news-login.component';
@@ -32,8 +35,6 @@ import { NewsSignupComponent } from './news-signup/news-signup.component';
 import { NewsForgotPasswordComponent } from './news-forgot-password/news-forgot-password.component';
 import { NewsScreenLockComponent } from './news-screen-lock/news-screen-lock.component';
 import { NewsLogoutComponent } from './news-logout/news-logout.component';
-
-import { LickMarketingFooter1Module } from 'lick-marketing-footer1';
 import { NewsReaderComponent } from './news-reader/news-reader.component';
 import { NewsHelperService} from './services/news-helper.service';
 
@@ -63,7 +64,9 @@ import { NewsHelperService} from './services/news-helper.service';
     LickMarketingFooter1Module,
     LickAppWidgetWeatherModule,
     LickMarketingSimpleHeaderModule,
-    LickMarketingSimplePageModule
+    LickMarketingSimplePageModule,
+    LickAppWidgetFooterModule,
+    LickMarketingFooter2Module
   ],
   providers: [
     NewsHelperService

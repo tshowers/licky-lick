@@ -102,10 +102,10 @@ export class NewsViewComponent implements OnInit, OnDestroy {
       // console.log("User > ", JSON.stringify(user))
       this.boxes = [];
       if (user && user.newsSources && (user.newsSources.length > 0)) {
-        console.log("**User News Sources")
+        // console.log("**User News Sources")
         this.setUserNewsSources(user);
       } else {
-        console.log("**Defaultr News Sources")
+        // console.log("**Defaultr News Sources")
         this.setDefaultMyNews();
       }
     })
