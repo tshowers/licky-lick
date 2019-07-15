@@ -8007,18 +8007,18 @@ input::placeholder {
   color: #10b1dd !important; }
 
 textarea::-webkit-input-placeholder {
-  color: #e0b4b9 !important; }
+  color: #10b1dd !important; }
 
 textarea:-moz-placeholder {
   /* Firefox 18- */
-  color: #e0b4b9 !important; }
+  color: #10b1dd !important; }
 
 textarea::-moz-placeholder {
   /* Firefox 19+ */
-  color: #e0b4b9 !important; }
+  color: #10b1dd !important; }
 
 textarea:-ms-input-placeholder {
-  color: #e0b4b9 !important; }
+  color: #10b1dd !important; }
 
 .is-valid {
   border: solid 1px #37BC9B !important; }

@@ -5,13 +5,8 @@
         <section class="container-server-errors">
           <div class="server-errors pages-card">
             <div class="status-text-1" *ngIf="statusText">{{statusText}}</div>
-            <div class="status-error text-theme hertbit" *ngIf="errorCode">{{errorCode}}</div>
-            <div class="text-center status-text-2 text-dark" *ngIf="errorMessage">{{errorMessage}}</div>
-            <div class="small text-center text-dark" *ngIf="subErrorMessage">{{subErrorMessage}}</div>
+            <div class="text-center status-text-2 text-dark" *ngIf="message">{{message}}</div>
             <div class="text-center" *ngIf="redirectLink"> <a routerLink="{{redirectLink}}" class="btn btn-theme login-btn text-white">{{linkText}}</a> </div>
-            <div class="text-center" *ngIf="contactLink"> <small>{{problemText}}
-                            <a routerLink="{{contactLink}}" class="text-theme">{{contactText}}</a>
-                        </small> </div>
           </div>
           <!-- end server-error pages -->
         </section>

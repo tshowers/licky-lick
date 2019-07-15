@@ -20,7 +20,8 @@
                    type="text"
                    name="firstName"
                    autocomplete="off"
-                   placeholder="First Name">
+                   placeholder="First Name"
+                   required>
           </div>
           <div class="col-md-6">
 
@@ -30,7 +31,8 @@
                    type="text"
                    name="lastName"
                    autocomplete="off"
-                   placeholder="Last Name">
+                   placeholder="Last Name"
+                   required>
           </div>
           <div class="col-md-12">
 
@@ -40,14 +42,16 @@
                    class="form-control"
                    name="emailAddress"
                    autocomplete="off"
-                   placeholder="Email Address">
+                   placeholder="Email Address"
+                   required>
           </div>
           <div class="col-md-12">
             <textarea [(ngModel)]="message"
                       id="message"
                       class="form-control"
                       name="message"
-                      placeholder="Message"></textarea>
+                      placeholder="Message"
+                      required></textarea>
           </div>
           <div class="col-md-12 form-text">
             <p>{{descriptionText}}</p>

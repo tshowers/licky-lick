@@ -12,18 +12,19 @@ import { LickMarketingFaq1Module } from 'lick-marketing-faq1';
 import { LickMarketingHowTo1Module } from 'lick-marketing-how-to1';
 import { LickMarketingTryIt1Module } from 'lick-marketing-try-it1';
 import { LickMarketingMenuModule } from 'lick-marketing-menu';
-import { LickMarketingFooter1Module} from 'lick-marketing-footer1';
+import { LickMarketingFooter1Module } from 'lick-marketing-footer1';
 import { LickMarketingFooter2Module } from 'lick-marketing-footer2';
 import { LickMarketingSimplePageModule } from 'lick-marketing-simple-page';
 import { LickMarketingSimpleHeaderModule } from 'lick-marketing-simple-header';
-import { LickMarketingContactUs1Module} from 'lick-marketing-contact-us1';
-
+import { LickMarketingContactUs1Module } from 'lick-marketing-contact-us1';
+import { LickAppWidgetMessageModule } from 'lick-app-widget-message';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
+import { MessagePageComponent } from './message-page/message-page.component';
 
 @NgModule({
-  declarations: [HomePageComponent, PrivacyPageComponent, ContactPageComponent],
+  declarations: [HomePageComponent, PrivacyPageComponent, ContactPageComponent, MessagePageComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -41,7 +42,8 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
     LickMarketingSimplePageModule,
     LickMarketingSimpleHeaderModule,
     LickMarketingContactUs1Module,
-    LickMarketingFooter2Module
+    LickMarketingFooter2Module,
+    LickAppWidgetMessageModule
   ]
 })
 export class MarketingModule { }

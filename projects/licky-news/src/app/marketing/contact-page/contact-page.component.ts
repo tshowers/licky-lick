@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { LickyLoginService} from 'licky-services';
+import { LickyLoginService, FirebaseDataService} from 'licky-services';
 import { Subscription } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
@@ -14,6 +14,8 @@ export const maintenance = environment.maintenance;
 export class ContactPageComponent implements OnInit, OnDestroy {
 
   private _loginSubscription : Subscription;
+  private _errorSubscription: Subscription;
+  errorMessage;
   loggedIn: boolean = false;
 
   menuItems: any[] = [
@@ -50,7 +52,7 @@ export class ContactPageComponent implements OnInit, OnDestroy {
     },
   ]
 
-  constructor(public router: Router, private _loginService: LickyLoginService) { }
+  constructor(public router: Router, private _loginService: LickyLoginService, private _fds: FirebaseDataService) { }
 
   ngOnInit() {
     this._loginSubscription = this._loginService.firebaseUser.subscribe((user) => {
@@ -59,15 +61,26 @@ export class ContactPageComponent implements OnInit, OnDestroy {
         this.loggedIn = false;
       }
     })
+
+    this._errorSubscription = this._fds.databaseError.subscribe((message) => {
+      this.errorMessage = message;
+    })
   }
 
   ngOnDestroy() {
     this._loginSubscription.unsubscribe();
+    this._errorSubscription.unsubscribe();
   }
 
   public onPageEvent(value): void {
-    console.log(JSON.stringify(value));
-
+    // console.log(JSON.stringify(value));
+    this._fds.writeData('/inquiries', {
+      firstName: value.firstName,
+      lastName: value.lastName,
+      emailAddress: value.emailAddress,
+      message: value.message
+    })
+    this.router.navigate(['about', 'message']);
   }
 
 }

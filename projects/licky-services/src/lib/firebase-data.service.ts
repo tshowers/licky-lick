@@ -89,15 +89,11 @@ export class FirebaseDataService {
     this._db = firebase.database();
   }
 
-  writeData(path: string, data: any): Observable<any> {
+  writeData(path: string, data: any): void {
     this.setNewDataValues(data);
-    return Observable.create((observer) => {
-      let key = this._db.ref(path).push(data, (error) => {
-        if (error)
-          this.databaseError.next(error.message)
-      }).key;
-      observer.next(key)
-      observer.complete()
+    this._db.ref(path).push(data, (error) => {
+      if (error)
+        this.databaseError.next(error.message);
     })
   }
 
@@ -150,18 +146,18 @@ export class FirebaseDataService {
   private setNewDataValues(data: any): void {
     data.timeStamp = new Date();
     if (this._user) {
-      data.user_id = this._user.$key;
-      data.userName = this._user.name;
-      data.userImage = this._user.url;
+      data.user_id = (this._user.$key) ? this._user.$key : null;
+      data.userName = (this._user.name) ? this._user.name : null;
+      data.userImage = (this._user.url) ? this._user.url : null;
     }
     this.setUpdateValues(data);
   }
 
   private setUpdateValues(data: any): void {
-    console.log("Updating user >", JSON.stringify(this._user));
+    // console.log("Updating for user >", JSON.stringify(this._user));
     data.lastUpdated = new Date();
-    if (this._user) {
-      data.lastUpdatedBy = this._user.name;
+    if (this._user && this._user.name) {
+      data.lastUpdatedBy = (this._user.name);
     }
   }
 

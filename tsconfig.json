@@ -594,6 +594,12 @@
       ],
       "lick-marketing-footer2/*": [
         "dist/lick-marketing-footer2/*"
+      ],
+      "lick-app-widget-message": [
+        "dist/lick-app-widget-message"
+      ],
+      "lick-app-widget-message/*": [
+        "dist/lick-app-widget-message/*"
       ]
     }
   }
