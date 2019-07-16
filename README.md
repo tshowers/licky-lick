@@ -9,27 +9,32 @@ Examples of the libraries can be viewed through the following links.
 * [Miscellaneous Marketing Libraries](https://lick-test.firebaseapp.com/marketing/misc-widgets)
 * [Application Specific Libraries](https://lick-test.firebaseapp.com/application/gernal-widgets)
 * [Statistics Libraries](https://lick-test.firebaseapp.com/application/stat-widgets)
+* [News Libraries](https://lick-test.firebaseapp.com/application/news-widgets)
+* [Page Libraries](https://lick-test.firebaseapp.com/application/page-widgets)
+
+## Summary
+
+The goal is to make a business run smoothly and efficiently. Consider how information is processed and used throughout an organization. The software should enhance a company, not weigh it down and make it react sluggishly or not at all.
+
+Business challenges are usually: lack of vision, infrastructure, and a transparent management system. Using the software presented here helps create a view, build the necessary infrastructure, and operate a management system that keeps a pulse of business activity.
 
 ## Vision
 
 * Eliminate App Fatigue
 * Familiar look and feel to process
 * Pro-active data analysis and suggestion
-* Find instead of searching
-* Can’t get a clear picture of your business if email is separate from your e-commerce and your sales opportunities are separate from your calendar
-* Most systems you put information in and when you need the information, you go retrieve it, not with 16AHEAD, once you put information in, the AI goes to work analyzing information and sends you alerts on what you should be doing
+* Find instead of search
 
-## Summary
+## Challenges of current software
 
-The goal is to make business run smoothly and efficiently. Consider how information is processed and used throughout an organization. Software should enhance a company, not weigh it down and make it react sluggishly or not at all.
-
-Business challenges are usually: lack of vision, infrastructure, and a transparent management system. Using the software presented here helps create a view, build the necessary infrastructure, and operate a management system that keeps a pulse of business activity.
+* Can’t get a clear picture of your business if the email is separate from the e-commerce while your sales opportunities are separate from your calendar
+* Most systems you put information in, and when you need the data, you retrieve it, not with this project, once you put data in, the AI goes to work analyzing information and sends you alerts on what you should be doing
 
 # Business Goals
 
 Automate as many processes as possible. An active organization does not waste time on non-essential tasks but instead places that energy on building the brand.
 
-Through research and development, we've found the following functionalities help build a successful business:
+Through research and development, the following functionalities help build a successful business:
 
 - Lead Generation and Conversion
 - Build a strong sales team with lead generation, online forms, opportunity and relationship tracking.
@@ -46,7 +51,7 @@ Display your company's mission statement on each user's home page.
 
 The use of a data-focused application with an integrated process will help a business become more predictable and lead to improving not only staff productivity but client services as well.
 
-We attempt to offer a complete enterprise solution that can be set up in a few minutes at a fraction of the price of similar systems. If you are affected by any of the following, this software can save you time and dollars. A must-have application if you suffer from any of the following:
+This project is an attempt to offer a complete enterprise solution that can be set up in a few minutes at a fraction of the price of similar systems. If you are affected by any of the following, this software can save you time and dollars. A must-have application if you suffer from any of the following:
 
 - Disconnected Communication
 - No Data Alignment

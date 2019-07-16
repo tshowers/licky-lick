@@ -7,14 +7,14 @@ import { environment } from '../../../environments/environment';
 export const maintenance = environment.maintenance;
 
 @Component({
-  selector: 'app-privacy-page',
-  templateUrl: './privacy-page.component.html',
-  styleUrls: ['./privacy-page.component.css']
+  selector: 'app-terms-page',
+  templateUrl: './terms-page.component.html',
+  styleUrls: ['./terms-page.component.css']
 })
-export class PrivacyPageComponent implements OnInit, OnDestroy {
+export class TermsPageComponent implements OnInit, OnDestroy {
 
-  public headingText = "Privacy Policy";
-  public backgroundImage = 'assets/images/privacy.jpg';
+  public headingText = "Terms of Service";
+  public backgroundImage = 'assets/images/terms-of-service.jpg';
   public bodyText;
   private _loginSubscription : Subscription;
   private _fileSubscription : Subscription;
@@ -68,9 +68,9 @@ export class PrivacyPageComponent implements OnInit, OnDestroy {
     })
 
     // Get Terms of service from file
-    this._fileSubscription = this._remoteAssetService.getFileContents('./assets/privacy.txt', this._remoteAssetService.TEXT)
+    this._fileSubscription = this._remoteAssetService.getFileContents('./assets/terms.txt', this._remoteAssetService.TEXT)
     .subscribe({
-      next: data => {this.bodyText = data; },
+      next: data => {this.bodyText = data;},
       error: err => console.error(err)
     })
   }

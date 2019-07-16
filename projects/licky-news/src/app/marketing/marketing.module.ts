@@ -22,9 +22,10 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { MessagePageComponent } from './message-page/message-page.component';
+import { TermsPageComponent } from './terms-page/terms-page.component';
 
 @NgModule({
-  declarations: [HomePageComponent, PrivacyPageComponent, ContactPageComponent, MessagePageComponent],
+  declarations: [HomePageComponent, PrivacyPageComponent, ContactPageComponent, MessagePageComponent, TermsPageComponent],
   imports: [
     CommonModule,
     RouterModule,

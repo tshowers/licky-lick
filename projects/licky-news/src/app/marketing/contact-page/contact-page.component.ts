@@ -52,6 +52,8 @@ export class ContactPageComponent implements OnInit, OnDestroy {
     },
   ]
 
+  headingText = "Contact Us"
+
   constructor(public router: Router, private _loginService: LickyLoginService, private _fds: FirebaseDataService) { }
 
   ngOnInit() {

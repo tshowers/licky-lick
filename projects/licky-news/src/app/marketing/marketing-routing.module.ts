@@ -5,11 +5,13 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import { MessagePageComponent } from './message-page/message-page.component';
+import { TermsPageComponent } from './terms-page/terms-page.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent, data: { title: 'Home Page - 16 AHEAD - News' } },
   { path: 'contact', component: ContactPageComponent, data: { title: 'Contact Page - 16 AHEAD - News' } },
   { path: 'privacy', component: PrivacyPageComponent, data: { title: 'Privacy Policy - 16 AHEAD - News' } },
+  { path: 'terms', component: TermsPageComponent, data: { title: 'Terms of Service - 16 AHEAD - News' } },
   { path: 'message', component: MessagePageComponent, data: { title: 'Message - 16 AHEAD - News' } }
 ];
 
