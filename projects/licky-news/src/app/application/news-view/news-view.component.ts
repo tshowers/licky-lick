@@ -14,25 +14,6 @@ import { User } from 'lick-data';
 })
 export class NewsViewComponent implements OnInit, OnDestroy {
 
-  menuItems: any[] = [
-    {
-      "link": "/",
-      "name": "Home",
-    },
-    {
-      "link": "/application/news",
-      "name": "News",
-    },
-    {
-      "link": "/application/news-selector",
-      "name": "News Selector"
-    },
-    {
-      "link": "/application/logout",
-      "name": "Log Out"
-    },
-  ]
-
   local = "us";
   searchArgument;
   searchHeading = "...";

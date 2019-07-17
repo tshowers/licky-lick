@@ -11,26 +11,6 @@ export class NewsReaderComponent implements OnInit {
 
   public articleObject;
 
-  menuItems: any[] = [
-    {
-      "link": "/",
-      "name": "Home",
-    },
-    {
-      "link": "/application/news",
-      "name": "News",
-    },
-    {
-      "link": "/application/news-selector",
-      "name": "News Selector"
-    },
-    {
-      "link": "/application/logout",
-      "name": "Log Out"
-    },
-  ]
-
-
   constructor(public router: Router, private _newsHelperService: NewsHelperService) { }
 
   ngOnInit() {

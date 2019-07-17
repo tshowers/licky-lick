@@ -600,6 +600,12 @@
       ],
       "lick-app-widget-message/*": [
         "dist/lick-app-widget-message/*"
+      ],
+      "lick-app-widget-profile": [
+        "dist/lick-app-widget-profile"
+      ],
+      "lick-app-widget-profile/*": [
+        "dist/lick-app-widget-profile/*"
       ]
     }
   }

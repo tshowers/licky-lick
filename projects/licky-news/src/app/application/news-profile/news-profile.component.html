@@ -1,0 +1,22 @@
+<header id="masthead"
+        class="site-header">
+        <app-nav></app-nav>
+</header>
+<div class="container mt-5 pt-5">
+  <div id="content"
+       class="site-content">
+    <div id="primary"
+         class="content-area">
+      <main id="main"
+            class="site-main">
+        <div *ngIf="message"
+             class="text-center">{{message}}</div>
+        <licky-lick-app-widget-profile *ngIf="!message"
+                                       (pageEvent)="onPageEvent($event)"
+                                       [user]="user"
+                                       [firebaseUser]="firebaseUser"></licky-lick-app-widget-profile>
+      </main>
+    </div>
+  </div>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

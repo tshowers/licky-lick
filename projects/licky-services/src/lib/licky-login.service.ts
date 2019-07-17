@@ -142,7 +142,7 @@ export class LickyLoginService {
   }
 
 
-  public sendEmailVerification(router: Router, redirectURL: string) {
+  public sendEmailVerification() {
     firebase.auth().currentUser.sendEmailVerification().then(() => {
       this.processMessage.next('Email Verification Sent!')
     });

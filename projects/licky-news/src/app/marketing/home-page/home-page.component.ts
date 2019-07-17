@@ -1,10 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { LickyLoginService} from 'licky-services';
-import { Subscription } from 'rxjs';
-import { environment } from '../../../environments/environment';
 
-export const maintenance = environment.maintenance;
 
 @Component({
   selector: 'app-home-page',
@@ -13,58 +9,15 @@ export const maintenance = environment.maintenance;
 })
 export class HomePageComponent implements OnInit, OnDestroy {
 
-  private _loginSubscription : Subscription;
 
-  loggedIn: boolean = false;
-
-  menuItems: any[] = [
-    {
-      "link" : "/about",
-      "name" : "Home",
-    },
-    {
-      "link" : "/application/sign-up",
-      "name" : "Sign Up"
-    },
-    {
-      "link" : "/application/login",
-      "name" : "Login"
-    },
-  ]
-
-  loggedInMenuItems: any[] = [
-    {
-      "link" : "/about",
-      "name" : "Home",
-    },
-    {
-      "link": "/application/news",
-      "name": "News",
-    },
-    {
-      "link": "/application/news-selector",
-      "name": "News Selector"
-    },
-    {
-      "link": "/application/logout",
-      "name": "Log Out"
-    },
-  ]
-
-  constructor(public router: Router, private _loginService: LickyLoginService) { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
-    this._loginSubscription = this._loginService.firebaseUser.subscribe((user) => {
-      // console.log("firebaseUser=" + JSON.stringify(user));
-      this.loggedIn = (user) ? true : false;
-      if (maintenance) {
-        this.loggedIn = false;
-      }
-    })
+
   }
 
   ngOnDestroy() {
-    this._loginSubscription.unsubscribe();
+
   }
 
 }

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { MarketingRoutingModule } from './marketing-routing.module';
-
+import { SharedModule } from '../shared/shared.module';
 import { LickMarketingHeader2Module } from 'lick-marketing-header2';
 import { LickMarketingFeatures1Module } from 'lick-marketing-features1';
 import { LickMarketingAboutProduct4Module } from 'lick-marketing-about-product4';
@@ -30,7 +30,7 @@ import { TermsPageComponent } from './terms-page/terms-page.component';
     CommonModule,
     RouterModule,
     MarketingRoutingModule,
-
+    SharedModule,
     LickMarketingHeader2Module,
     LickMarketingFeatures1Module,
     LickMarketingAboutProduct4Module,

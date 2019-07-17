@@ -9,26 +9,6 @@ import { Router } from '@angular/router';
 })
 export class NewsPickerComponent implements OnInit {
 
-  menuItems: any[] = [
-    {
-      "link": "/",
-      "name": "Home",
-    },
-    {
-      "link": "/application/news",
-      "name": "News",
-    },
-    {
-      "link": "/application/news-selector",
-      "name": "News Selector"
-    },
-    {
-      "link": "/application/logout",
-      "name": "Log Out"
-    },
-  ]
-
-
   newsSources;
 
 
@@ -41,9 +21,7 @@ export class NewsPickerComponent implements OnInit {
   }
 
   onNewsSelect(newsSource): void {
-    // console.log("Current Value:", JSON.stringify(newsSource));
     newsSource.checked = (!newsSource.checked);
-    // console.log("New Value:", JSON.stringify(newsSource));
   }
 
 
@@ -55,9 +33,7 @@ export class NewsPickerComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // console.log("NewsSources: ", JSON.stringify(this.newsSources));
     this._loginSerive.getUser().newsSources = this.newsSources;
-    // console.log("User NewsSources: ", JSON.stringify(this._loginSerive.getUser().newsSources));
     this._loginSerive.update();
     this.router.navigate(['/application/news']);
   }

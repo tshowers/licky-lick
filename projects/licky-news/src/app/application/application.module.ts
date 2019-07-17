@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CountToModule } from 'angular-count-to';
+import { SharedModule } from '../shared/shared.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ApplicationRoutingModule } from './application-routing.module';
@@ -27,6 +28,7 @@ import { LickMarketingSimplePageModule} from 'lick-marketing-simple-page';
 import { LickAppWidgetFooterModule } from 'lick-app-widget-footer';
 import { LickMarketingFooter1Module } from 'lick-marketing-footer1';
 import { LickMarketingFooter2Module } from 'lick-marketing-footer2';
+import { LickAppWidgetProfileModule } from 'lick-app-widget-profile';
 import { NewsPickerComponent } from './news-picker/news-picker.component';
 import { NewsViewComponent } from './news-view/news-view.component';
 import { NewsLoginComponent } from './news-login/news-login.component';
@@ -37,14 +39,16 @@ import { NewsScreenLockComponent } from './news-screen-lock/news-screen-lock.com
 import { NewsLogoutComponent } from './news-logout/news-logout.component';
 import { NewsReaderComponent } from './news-reader/news-reader.component';
 import { NewsHelperService} from './services/news-helper.service';
+import { NewsProfileComponent } from './news-profile/news-profile.component';
 
 @NgModule({
-  declarations: [NewsPickerComponent, NewsViewComponent, NewsLoginComponent, NewsMaintenanceComponent, NewsSignupComponent, NewsForgotPasswordComponent, NewsScreenLockComponent, NewsLogoutComponent, NewsReaderComponent],
+  declarations: [NewsPickerComponent, NewsViewComponent, NewsLoginComponent, NewsMaintenanceComponent, NewsSignupComponent, NewsForgotPasswordComponent, NewsScreenLockComponent, NewsLogoutComponent, NewsReaderComponent, NewsProfileComponent],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     NgbModule,
+    SharedModule,
     CountToModule,
     ApplicationRoutingModule,
     LickAppWidgetSignupModule,
@@ -66,7 +70,8 @@ import { NewsHelperService} from './services/news-helper.service';
     LickMarketingSimpleHeaderModule,
     LickMarketingSimplePageModule,
     LickAppWidgetFooterModule,
-    LickMarketingFooter2Module
+    LickMarketingFooter2Module,
+    LickAppWidgetProfileModule
   ],
   providers: [
     NewsHelperService
