@@ -39,7 +39,7 @@
 </div>
 <div class="container"
      *ngIf="!searchArgument">
-  <h1>My News</h1>
+  <h1 *ngIf="boxes && (boxes.length > 0)">My News</h1>
   <licky-lick-app-widget-post4 [boxes]="boxes"
                                (pageEvent)="onPageEvent($event)"></licky-lick-app-widget-post4>
                                <h1>Top News</h1>

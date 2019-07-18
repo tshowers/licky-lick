@@ -1,7 +1,7 @@
 <div class="card mx-auto d-block ta-max-view">
   <img *ngIf="!user.url"
        class="card-img-top img-reponsive"
-       src="defaultImage"
+       src="{{defaultImage}}"
        alt="No Photo Available">
   <img *ngIf="firebaseUser.photoURL"
        class="card-img-top img-reponsive"

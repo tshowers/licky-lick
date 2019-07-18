@@ -35,12 +35,14 @@ export class NewsViewComponent implements OnInit, OnDestroy {
   boxes: ProviderBox[] = [];
 
   private _userSubscription: Subscription;
+  private _user: User;
 
   categories;
 
   constructor(public router: Router, private _loginService: LickyLoginService, private _newsService: NewsService, public typeFindService: TypeFindService, private _newsHelperService: NewsHelperService) { }
 
   ngOnInit() {
+    this.setUser();
     this.categories = this._newsService.categories.slice(1);
     this._newsService.setPageSize(4);
     this.setTopNewsArticles();
@@ -51,13 +53,20 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     this.setScienceArticles();
     this.setSportsArticles();
     this.setTechnologyArticles();
-    this.setDefaultNewsSources();
     this.setGeneralArticles();
+    this.setDefaultNewsSources();
   }
 
   ngOnDestroy() {
-    if (this._userSubscription)
-      this._userSubscription.unsubscribe();
+    this._userSubscription.unsubscribe();
+  }
+
+  private setUser(): void {
+    this._userSubscription = this._loginService.userChanged.subscribe((user: User) => {
+      this._user = user;
+      this.boxes.length = 0;
+      this.setUserNewsSources();
+    })
   }
 
   public onPageEvent(value): void {
@@ -71,7 +80,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     console.log("Searching on " + this.searchArgument)
     this._newsService.getNewsBySearchCriteria(this.searchArgument).subscribe(
       (news) => {
-        console.log(JSON.stringify( news));
+        console.log(JSON.stringify(news));
         this.searchResults = news.articles;
         this.searchHeading = "Found " + news.articles.length + " of " + news.totalResults + " articles";
       })
@@ -79,21 +88,14 @@ export class NewsViewComponent implements OnInit, OnDestroy {
 
 
   private setDefaultNewsSources(): void {
-    this._userSubscription = this._loginService.userChanged.subscribe((user: User) => {
-      // console.log("User > ", JSON.stringify(user))
-      this.boxes = [];
-      if (user && user.newsSources && (user.newsSources.length > 0)) {
-        // console.log("**User News Sources")
-        this.setUserNewsSources(user);
-      } else {
-        // console.log("**Defaultr News Sources")
-        this.setDefaultMyNews();
-      }
-    })
+    if (this._user && this._user.newsSources && (this._user.newsSources.length > 0))
+      this.setUserNewsSources();
+
+    // this.setDefaultMyNews();
   }
 
-  private setUserNewsSources(user: User) : void {
-    let newsSources = user.newsSources;
+  private setUserNewsSources(): void {
+    let newsSources = this._user.newsSources;
     // console.log("User News Sources", JSON.stringify(newsSources))
     newsSources.forEach((newsSource) => {
       if (newsSource.checked)
@@ -101,7 +103,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     })
   }
 
-  private setDefaultMyNews() : void {
+  private setDefaultMyNews(): void {
     this.setSelectedNewsSources(this._newsService.REUTERS);
     this.setSelectedNewsSources(this._newsService.BBC);
     this.setSelectedNewsSources(this._newsService.MTV_NEWS);

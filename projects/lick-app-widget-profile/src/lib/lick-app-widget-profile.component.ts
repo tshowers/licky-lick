@@ -13,7 +13,7 @@ export class LickAppWidgetProfileComponent implements OnInit {
 
   @Output() pageEvent = new EventEmitter();
 
-  defaultImage = "/assets/images/default-user.png"
+  defaultImage = "assets/images/default-user.png"
 
   constructor() { }
 

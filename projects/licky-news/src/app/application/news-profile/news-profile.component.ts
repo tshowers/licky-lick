@@ -26,10 +26,6 @@ export class NewsProfileComponent implements OnInit, OnDestroy {
       this.firebaseUser = firebaseUser;
     })
 
-    this._userSubscription = this._lickyLoginService.userChanged.subscribe((user) => {
-      this.user = user;
-    })
-
     this._messageSubscription = this._lickyLoginService.processMessage.subscribe((message) => {
       this.message = message;
     })
@@ -43,6 +39,14 @@ export class NewsProfileComponent implements OnInit, OnDestroy {
   onPageEvent() {
     this._lickyLoginService.sendEmailVerification();
     // this.router.navigate(['about', 'message']);
+  }
+
+  private setUser() : void {
+    this.user = this._lickyLoginService.getUser();
+    this._userSubscription = this._lickyLoginService.userChanged.subscribe((user) => {
+      this.user = user;
+    })
+
   }
 
 }
