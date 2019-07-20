@@ -24,7 +24,7 @@ export class LickAppWidgetWeatherComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._addressSubscription = this._userLocationService.address.subscribe((address) => {
-      // console.log("Address :" + JSON.stringify(address));
+      console.log("Address :" + JSON.stringify(address));
       this._address = address;
       this.setWeather(address);
     })
@@ -40,7 +40,7 @@ export class LickAppWidgetWeatherComponent implements OnInit, OnDestroy {
 
   setWeather(address: Address) : void {
     this._weatherSubscription = this._weatherService.getWeatherByLonLat(address.longitude, address.latitude).subscribe((weather) => {
-      // console.log("Weather is :" + JSON.stringify(weather));
+      console.log("Weather is :" + JSON.stringify(weather));
       this.weather = weather;
     })
   }

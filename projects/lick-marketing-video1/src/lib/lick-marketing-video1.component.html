@@ -2,17 +2,22 @@
   <div class="container">
     <div class="row">
 
-      <h2>{{headingText}}</h2>
-      <div class="block-desc">
-        <p>{{descriptionText}}</p>
+      <h2 innerHTML="{{headingText}}"></h2>
+      <div class="block-desc" innerHTML="{{descriptionText}}">
       </div>
 
       <div class="col-md-12 video-block">
-        <a class="popup-video" href="{{videoURL}}"><!-- Link to a YouTube video -->
+
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" [src]="videoURL" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+
+        <!-- <a class="popup-video" href="{{videoURL}}" target="_blank">
           <span class="overlay"></span>
           <img class="preview" src="{{imageURL}}" alt="video">
           <i class="fa fa-play play-button" aria-hidden="true"></i>
-        </a>
+        </a> -->
       </div>
 
     </div> <!-- .row -->

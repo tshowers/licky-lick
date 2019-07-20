@@ -29,6 +29,7 @@ import { LickAppWidgetFooterModule } from 'lick-app-widget-footer';
 import { LickMarketingFooter1Module } from 'lick-marketing-footer1';
 import { LickMarketingFooter2Module } from 'lick-marketing-footer2';
 import { LickAppWidgetProfileModule } from 'lick-app-widget-profile';
+import { LickMarketingVideo1Module } from 'lick-marketing-video1';
 import { NewsPickerComponent } from './news-picker/news-picker.component';
 import { NewsViewComponent } from './news-view/news-view.component';
 import { NewsLoginComponent } from './news-login/news-login.component';
@@ -71,7 +72,8 @@ import { NewsProfileComponent } from './news-profile/news-profile.component';
     LickMarketingSimplePageModule,
     LickAppWidgetFooterModule,
     LickMarketingFooter2Module,
-    LickAppWidgetProfileModule
+    LickAppWidgetProfileModule,
+    LickMarketingVideo1Module
   ],
   providers: [
     NewsHelperService

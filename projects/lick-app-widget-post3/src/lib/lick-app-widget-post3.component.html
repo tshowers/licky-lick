@@ -13,7 +13,7 @@
       </div>
       <article class="entry card post-list"
                *ngFor="let item of data; let i = index">
-        <div class="entry__img-holder post-list__img-holder card__img-holder"
+        <div *ngIf="item?.urlToImage && (item?.urlToImage != null)" class="entry__img-holder post-list__img-holder card__img-holder"
              [ngStyle]="{'background-image': 'url(' + item?.urlToImage + ')'}">
           <a (click)="onPageEvent(item)"
              class="thumb-url"></a>
@@ -23,6 +23,9 @@
           <a *ngIf="item.keyword"
              href="{{item?.keyword.link}}"
              class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--sixteen-widget">{{item?.keyword.name}}</a>
+        </div>
+        <div *ngIf="!item?.urlToImage" class="entry__img-holder post-list__img-holder card__img-holder"
+             [ngStyle]="{'background-image': 'url(' + defaultImage + ')'}">
         </div>
         <div class="entry__body post-list__body card__body">
           <div class="entry__header">

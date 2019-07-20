@@ -1,11 +1,11 @@
 <div class="card mx-auto d-block ta-max-view">
-  <img *ngIf="!user.url"
+  <img *ngIf="!firebaseUser?.photoURL"
        class="card-img-top img-reponsive"
        src="{{defaultImage}}"
        alt="No Photo Available">
-  <img *ngIf="firebaseUser.photoURL"
+  <img *ngIf="firebaseUser?.photoURL"
        class="card-img-top img-reponsive"
-       src="{{firebaseUser.photoURL}}"
+       src="{{firebaseUser?.photoURL}}"
        alt="{{firebaseUser?.displayName}}">
   <div class="card-header">
     <h4 class="my-0 font-weight-normal">
@@ -15,7 +15,7 @@
   <div class="card-body">
     <ul class="list-group list-group-flush">
       <li class="list-group-item"
-          *ngIf="firebaseUser.email">
+          *ngIf="firebaseUser?.email">
         <div class="row">
           <div class="col"><span class="ta-label">email address:</span> </div>
           <div class="col">
@@ -27,8 +27,8 @@
         <div class="row">
           <div class="col"><span class="ta-label">email verified:</span> </div>
           <div class="col">
-            <p *ngIf="firebaseUser.emailVerified" class="card-text"><i class="fa fa-check" aria-hidden="true"></i></p>
-            <p *ngIf="!firebaseUser.emailVerified" class="card-text"><i class="fa fa-times" aria-hidden="true"></i> <a class="text-primary" (click)="onPageEvent()">Resend Verification</a> </p>
+            <p *ngIf="firebaseUser?.emailVerified" class="card-text"><i class="fa fa-check" aria-hidden="true"></i></p>
+            <p *ngIf="!firebaseUser?.emailVerified" class="card-text"><i class="fa fa-times" aria-hidden="true"></i> <a class="text-primary" (click)="onPageEvent()">Resend Verification</a> </p>
           </div>
         </div>
       </li>
@@ -36,16 +36,16 @@
         <div class="row">
           <div class="col"><span class="ta-label">profile shared:</span> </div>
           <div class="col">
-            <p *ngIf="user.shared" class="card-text"><i class="fa fa-check" aria-hidden="true"></i></p>
-            <p *ngIf="!user.shared" class="card-text"><i class="fa fa-times" aria-hidden="true"></i></p>
+            <p *ngIf="user?.shared" class="card-text"><i class="fa fa-check" aria-hidden="true"></i></p>
+            <p *ngIf="!user?.shared" class="card-text"><i class="fa fa-times" aria-hidden="true"></i></p>
           </div>
         </div>
       </li>
-      <li class="list-group-item" *ngIf="user.newsSources && user.newsSources.length > 0">
+      <li class="list-group-item" *ngIf="user?.newsSources && user?.newsSources.length > 0">
         <div class="row">
           <div class="col"><span class="ta-label">news sources:</span> </div>
           <div class="col">
-            <div *ngFor="let source of user.newsSources">
+            <div *ngFor="let source of user?.newsSources">
               <span *ngIf="source.checked">{{source.name}} </span>
             </div>
           </div>

@@ -22,6 +22,8 @@ export class NewsProfileComponent implements OnInit, OnDestroy {
   constructor(public router: Router, private _lickyLoginService: LickyLoginService) { }
 
   ngOnInit() {
+    this.setUser();
+
     this._firebaseUserSubscription = this._lickyLoginService.firebaseUser.subscribe((firebaseUser) => {
       this.firebaseUser = firebaseUser;
     })
@@ -42,8 +44,10 @@ export class NewsProfileComponent implements OnInit, OnDestroy {
   }
 
   private setUser() : void {
+    console.log("1" + JSON.stringify(this.user));
     this.user = this._lickyLoginService.getUser();
     this._userSubscription = this._lickyLoginService.userChanged.subscribe((user) => {
+      console.log("2" + JSON.stringify(this.user));
       this.user = user;
     })
 

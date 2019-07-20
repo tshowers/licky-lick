@@ -2,13 +2,13 @@
   <div class="container">
     <div class="row">
 
-      <h2>{{headingText}}</h2>
+      <h2 innerHTML="{{headingText}}"></h2>
       <div class="block-desc">
         <p>{{descriptionText}}</p>
       </div>
 
       <div class="col-md-12 video-block">
-        <a class="popup-video" href="{{videoURL}}"><!-- Link to a YouTube video -->
+        <a class="popup-video" href="{{videoURL}}" target="_blank"><!-- Link to a YouTube video -->
           <span class="overlay"></span>
           <img class="preview" src="{{imageURL}}" alt="video">
           <i class="fa fa-play play-button" aria-hidden="true"></i>

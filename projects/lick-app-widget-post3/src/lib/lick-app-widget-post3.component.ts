@@ -11,6 +11,7 @@ export class LickAppWidgetPost3Component implements OnInit {
   @Input() viewAllLink = "/";
   @Input() viewAllText = "View All";
   @Input() isExternal = false;
+  @Input() defaultImage = "assets/images/noPhoto.jpg";
 
   @Input() data: any[] = [
     {

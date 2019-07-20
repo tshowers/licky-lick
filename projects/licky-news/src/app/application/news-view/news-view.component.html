@@ -11,7 +11,7 @@
       <input [(ngModel)]="searchArgument"
              id="phrase"
              name="phrase"
-             type="text"
+             type="search"
              class="form-control form-control-lg ta-input-element"
              placeholder="Find in all news ..."
              aria-label="Find ..."
@@ -71,6 +71,9 @@
     </div>
     <div class="col-lg-4 blog__content">
       <licky-lick-app-widget-weather></licky-lick-app-widget-weather>
+      <div *ngFor="let video of videos">
+        <licky-lick-marketing-video1  [headingText]="video?.snippet.title" [descriptionText]="video?.snippet.description" [videoURL]="'https://www.youtube.com/embed/' + video?.id.videoId" [imageURL]="video?.snippet.thumbnails.medium.url"></licky-lick-marketing-video1>
+      </div>
     </div>
   </div>
 </div>
