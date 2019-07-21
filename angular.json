@@ -4082,6 +4082,162 @@
           }
         }
       }
+    },
+    "taliferro": {
+      "root": "projects/taliferro/",
+      "sourceRoot": "projects/taliferro/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/taliferro",
+            "index": "projects/taliferro/src/index.html",
+            "main": "projects/taliferro/src/main.ts",
+            "polyfills": "projects/taliferro/src/polyfills.ts",
+            "tsConfig": "projects/taliferro/tsconfig.app.json",
+            "assets": [
+              "projects/taliferro/src/favicon.ico",
+              "projects/taliferro/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "projects/styles/intro-style.css",
+              "projects/styles/colors/color-1.css",
+              "projects/styles/simple-line-icons.css",
+              "projects/styles/styles.css",
+              "projects/styles/ta-styles.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/taliferro/src/environments/environment.ts",
+                  "with": "projects/taliferro/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "taliferro:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "taliferro:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "taliferro:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/taliferro/src/test.ts",
+            "polyfills": "projects/taliferro/src/polyfills.ts",
+            "tsConfig": "projects/taliferro/tsconfig.spec.json",
+            "karmaConfig": "projects/taliferro/karma.conf.js",
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "projects/styles/intro-style.css",
+              "projects/styles/colors/color-1.css",
+              "projects/styles/simple-line-icons.css",
+              "projects/styles/styles.css",
+              "projects/styles/ta-styles.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ],
+            "assets": [
+              "projects/taliferro/src/favicon.ico",
+              "projects/taliferro/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/taliferro/tsconfig.app.json",
+              "projects/taliferro/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "taliferro-e2e": {
+      "root": "projects/taliferro-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/taliferro-e2e/protractor.conf.js",
+            "devServerTarget": "taliferro:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "taliferro:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/taliferro-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "lick-data"

@@ -18,6 +18,12 @@
       "rewrites": [{ "source": "**", "destination": "/index.html"  }]
     },
     {
+      "target": "taliferro",
+      "public": "dist/taliferro",
+      "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
+      "rewrites": [{ "source": "**", "destination": "/index.html"  }]
+    },
+    {
       "target": "crm",
       "public": "dist/licky-crm",
       "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],

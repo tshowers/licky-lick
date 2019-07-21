@@ -12,6 +12,11 @@ Examples of the libraries can be viewed through the following links.
 * [News Libraries](https://lick-test.firebaseapp.com/application/news-widgets)
 * [Page Libraries](https://lick-test.firebaseapp.com/application/page-widgets)
 
+Actual implementations of the libraries
+
+* [Taliferro](https://www.taliferro.com)
+* [16AHEAD News](https://news-dev.16ahead.com)
+
 ## Summary
 
 The goal is to make a business run smoothly and efficiently. Consider how information is processed and used throughout an organization. The software should enhance a company, not weigh it down and make it react sluggishly or not at all.
