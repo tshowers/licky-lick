@@ -9,6 +9,7 @@ export class LickAppWidgetPost1Component implements OnInit {
 
   @Input() headingText = "licky-lick-app-widget-post1";
   @Input() isExternal = false;
+  @Input() defaultImage = "assets/images/noPhoto.jpg";
 
 
   @Input() data: any[] = [

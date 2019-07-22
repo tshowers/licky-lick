@@ -19,6 +19,9 @@ export class NewsViewComponent implements OnInit, OnDestroy {
   local = "us";
   searchArgument;
   searchHeading = "...";
+  currentPage: number = 1;
+  searchPageSize: number = 20;
+  searchTotal: number = 0;
 
   searchResults: NewsArticle[];
 
@@ -108,20 +111,33 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     })
   }
 
+  public onPageChange(value) : void {
+    this.currentPage = value;
+    this.onSubmit();
+  }
+
   public onPageEvent(value): void {
     this._newsHelperService.setNewsArticle(value);
     // console.log("Article selected: ", JSON.stringify(value));
     this.router.navigate(['/application/news-reader']);
   }
 
+  onKey(value: string) {
+    if (!value || (value === ''))
+      this.searchResults = null;
+  }
 
   onSubmit(): void {
-    // console.log("Searching on " + this.searchArgument)
-    this._newsService.getNewsBySearchCriteria(this.searchArgument).subscribe(
+    this._newsService.getNewsBySearchCriteria(this.searchArgument, this.currentPage).subscribe(
       (news) => {
-        // console.log(JSON.stringify(news));
+        // console.log("Current Page: " + this.currentPage, "Found >>>" + JSON.stringify(news));
         this.searchResults = news.articles;
-        this.searchHeading = "Found " + news.articles.length + " of " + news.totalResults + " articles";
+        let total = ((news.articles.length === 0) ? 0 : news.totalResults);
+        this.searchTotal = total;
+        if (total === 0)
+          this.searchHeading = "No articles found";
+        else
+          this.searchHeading = "Found " + news.articles.length + " of " + total + " articles";
       })
   }
 
@@ -129,8 +145,6 @@ export class NewsViewComponent implements OnInit, OnDestroy {
   private setDefaultNewsSources(): void {
     if (this._user && this._user.newsSources && (this._user.newsSources.length > 0))
       this.setUserNewsSources();
-
-    // this.setDefaultMyNews();
   }
 
   private setUserNewsSources(): void {
@@ -272,7 +286,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
 
   private getChannel(): string {
     let x = this.getRandomInt(this._channels.length);
-    console.log("X=" + x);
+    // console.log("X=" + x);
     return this._channels[x].value;
   }
 

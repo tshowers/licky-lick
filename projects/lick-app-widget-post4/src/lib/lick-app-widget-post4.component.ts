@@ -9,6 +9,7 @@ import { NewsArticle } from 'lick-data';
 export class LickAppWidgetPost4Component implements OnInit {
 
   @Input() headingText = "licky-lick-app-widget-post4";
+  @Input() defaultImage = "assets/images/noPhoto.jpg";
 
 
   @Input() boxes: any[] = [

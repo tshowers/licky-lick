@@ -29,7 +29,7 @@
               <span *ngIf="article.keywords" class="post-category"><a (click)="onPageEvent(article)" title="{{article?.title}}">{{article?.keywords}}</a></span>
             </div>
 
-            <h3><a (click)="onPageEvent(article)" title="{{article?.title}}">{{article?.title | slice:0:40}}</a><span *ngIf="article?.title.length > 40">...</span> </h3>
+            <h3><a (click)="onPageEvent(article)" title="{{article?.title}}" innerHTML="{{article?.title}}"></a> </h3>
 
             <div class="post-preview-text" innerHTML="{{article?.description}}">
             </div>

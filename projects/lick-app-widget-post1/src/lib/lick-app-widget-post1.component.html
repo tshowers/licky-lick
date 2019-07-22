@@ -21,10 +21,10 @@
               </div>
               <div class="entry__body post-list__body card__body">
                 <h2 class="entry__title">
-                  <a (click)="onPageEvent(item)">{{item?.title}}</a>
+                  <a (click)="onPageEvent(item)"innerHTML="{{item?.title}}"></a>
                 </h2>
                 <ul class="entry__meta">
-                  <li class="entry__meta-author">
+                  <li class="entry__meta-author" *ngIf="item?.author">
                     <span>by </span>
                     {{item?.author}} {{item?.source.name}}
                   </li>
@@ -51,11 +51,11 @@
               </div>
               <div class="entry__body card__body">
                 <h2 class="entry__title">
-                  <a (click)="onPageEvent(featuredData)">{{featuredData?.title}}</a>
+                  <a (click)="onPageEvent(featuredData)" innerHTML="{{featuredData?.title}}"></a>
                 </h2>
                 <div innerHTML="{{featuredData?.content}}"></div>
                 <ul class="entry__meta">
-                  <li class="entry__meta-author">
+                  <li class="entry__meta-author" *ngIf="featuredData?.author">
                     <span>by </span>
                     {{featuredData?.author}} {{featuredData?.source.name}}
                   </li>

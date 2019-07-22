@@ -1,60 +1,73 @@
 <header id="masthead"
         class="site-header">
-        <app-nav></app-nav>
+  <app-nav></app-nav>
 </header>
 <div class="container mt-5 pt-5">
   <form #dataForm="ngForm"
         (ngSubmit)="onSubmit()"
         class="form-group">
-        <div class="row">
-          <div class="col-md-10 col-12">
-            <input [(ngModel)]="searchArgument"
-                   id="phrase"
-                   name="phrase"
-                   type="search"
-                   class="form-control form-control-lg ta-input-element"
-                   placeholder="Enter text, click Find button ... erase text to return home"
-                   aria-label="Find ..."
-                   required
-                   autocomplete="off"
-                   [ngbTypeahead]="typeFindService.searchWiki">    </div>
-          <div class="col-md-2 col-12">
-            <button class="btn btn-primary btn-block"
-                    type="submit"
-                    [disabled]="!dataForm.form.valid">Find</button>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col-md-10 col-12">
+
+        <input [(ngModel)]="searchArgument"
+               id="phrase"
+               #phrase
+               (keyup)="onKey(phrase.value)"
+               name="phrase"
+               type="search"
+               class="form-control form-control-lg ta-input-element"
+               placeholder="Enter text, click Find button ... erase text to return home"
+               aria-label="Find ..."
+               required
+               autocomplete="off"
+               [ngbTypeahead]="typeFindService.searchWiki"> </div>
+      <div class="col-md-2 col-12">
+        <button class="btn btn-primary btn-block"
+                type="submit"
+                [disabled]="!dataForm.form.valid">Find</button>
+      </div>
+    </div>
   </form>
 </div>
 <div class="container"
-     *ngIf="searchArgument">
-  <div class="text-center my-4"
-       *ngIf="!searchResults">
-    <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw text-theme"></i>
-  </div>
-  <licky-lick-app-widget-post3 *ngIf="searchResults"
-                               [headingText]="searchHeading"
-                               [viewAllLink]="null"
-                               (pageEvent)="onPageEvent($event)"
-                               [isExternal]="true"
-                               [data]="searchResults"></licky-lick-app-widget-post3>
+     *ngIf="searchResults">
+     <div class="row">
+       <div class="col">
+         <licky-lick-app-widget-post3 [headingText]="searchHeading"
+                                      [viewAllLink]="null"
+                                      (pageEvent)="onPageEvent($event)"
+                                      [isExternal]="true"
+                                      [data]="searchResults"></licky-lick-app-widget-post3>
+       </div>
+     </div>
+     <div class="row">
+       <div class="col d-flex justify-content-center">
+         <ngb-pagination [(page)]="currentPage"
+                         (pageChange)="onPageChange($event)"
+                         [maxSize]="5"
+                         [pageSize]="searchPageSize"
+                         [collectionSize]="searchTotal"></ngb-pagination>
+       </div>
+     </div>
+    <br>
+    <br>
 </div>
 <div class="container"
-     *ngIf="!searchArgument">
+     *ngIf="!searchResults">
   <h1 *ngIf="boxes && (boxes.length > 0)">My News</h1>
   <licky-lick-app-widget-post4 [boxes]="boxes"
                                (pageEvent)="onPageEvent($event)"></licky-lick-app-widget-post4>
-                               <h1>Top News</h1>
-                               <licky-lick-app-widget-post2 [categories]="categories"
-                                                            (pageEvent)="onPageEvent($event)"
-                                                            [headingText]="'By Category'"
-                                                            [tabData1]="businessArticles"
-                                                            [tabData2]="entertainmentArticles"
-                                                            [tabData3]="healthArticles"
-                                                            [tabData4]="scienceArticles"
-                                                            [tabData5]="sportsArticles"
-                                                            [tabData6]="technologyArticles"></licky-lick-app-widget-post2>
-<h1>Latest</h1>
+  <h1>Top News</h1>
+  <licky-lick-app-widget-post2 [categories]="categories"
+                               (pageEvent)="onPageEvent($event)"
+                               [headingText]="'By Category'"
+                               [tabData1]="businessArticles"
+                               [tabData2]="entertainmentArticles"
+                               [tabData3]="healthArticles"
+                               [tabData4]="scienceArticles"
+                               [tabData5]="sportsArticles"
+                               [tabData6]="technologyArticles"></licky-lick-app-widget-post2>
+  <h1>Latest</h1>
   <licky-lick-app-widget-post1 [isExternal]="true"
                                (pageEvent)="onPageEvent($event)"
                                [data]="featuredNews"
@@ -74,7 +87,10 @@
     <div class="col-lg-4 blog__content">
       <licky-lick-app-widget-weather></licky-lick-app-widget-weather>
       <div *ngFor="let video of videos">
-        <licky-lick-marketing-video1  [headingText]="video?.snippet.title" [descriptionText]="video?.snippet.description" [videoURL]="'https://www.youtube.com/embed/' + video?.id.videoId" [imageURL]="video?.snippet.thumbnails.medium.url"></licky-lick-marketing-video1>
+        <licky-lick-marketing-video1 [headingText]="video?.snippet.title"
+                                     [descriptionText]="video?.snippet.description"
+                                     [videoURL]="'https://www.youtube.com/embed/' + video?.id.videoId"
+                                     [imageURL]="video?.snippet.thumbnails.medium.url"></licky-lick-marketing-video1>
       </div>
     </div>
   </div>

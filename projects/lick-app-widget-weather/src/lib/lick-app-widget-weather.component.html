@@ -1,9 +1,13 @@
 <div *ngIf="weather"
      class="card card-accent-theme">
   <div class="card-body text-center">
-    <h4 class="ta-header1">
+    <h4 class="ta-header1" *ngIf="(address && address.city && address.state)">
+      {{address?.city}} {{address?.state}}
+    </h4>
+    <h4 class="ta-header1" *ngIf="!(address && address.city && address.state)">
       {{weather?.name}}
-    </h4> <span style="text-transform: capitalize">{{weather?.weather[0].description}}</span>
+    </h4>
+    <span style="text-transform: capitalize">{{weather?.weather[0].description}}</span>
     <br>
     <h1>{{weather?.main.temp}}&deg;</h1>
     <div class="d-flex justify-content-center">
@@ -13,10 +17,10 @@
           Humidity <span class="badge badge-theme badge-pill ta-large">{{weather?.main.humidity}}</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-          Maximum <span class="badge badge-theme badge-pill ta-large">{{weather?.main.temp_max}}&deg;</span>
+          High <span class="badge badge-theme badge-pill ta-large">{{weather?.main.temp_max | number : '1.0-0'}}&deg;</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-          Minimum <span class="badge badge-theme badge-pill ta-large">{{weather?.main.temp_min}}&deg;</span>
+          Low <span class="badge badge-theme badge-pill ta-large">{{weather?.main.temp_min | number : '1.0-0'}}&deg;</span>
         </li>
       </ul>
     </div>

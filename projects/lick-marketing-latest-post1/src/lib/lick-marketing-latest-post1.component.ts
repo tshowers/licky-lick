@@ -9,6 +9,7 @@ export class LickMarketingLatestPost1Component implements OnInit {
 
   @Input() headingText = "licky-lick-marketing-latest-post1";
   @Input() descriptionText = "Impedit, quo voluptas nulla vero. Quisquam est, omnis voluptas sit, amet, consectetur, adipisci velit, sed quia. Ratione voluptatem sequi nesciunt, neque porro quisquam est omnis.";
+  @Input() defaultImage = "assets/images/noPhoto.jpg";
   @Input() articles: any[] = [
     {
       "$key": Math.floor(Math.random() * 1000).toString(),

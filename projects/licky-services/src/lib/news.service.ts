@@ -217,8 +217,8 @@ export class NewsService {
     return this._http.get(this._sourcesURL1 + provider + this._key + this._language + this._lang + this._pageSizeParam + this._pageSize, { responseType: 'json' });
   }
 
-  getNewsBySearchCriteria(argument: string): Observable<any> {
-    return this._http.get(this._searchURL + "\"" + encodeURI(argument) + "\"" + this._searchCriteria + this._sortParam + this._language + this._lang + this._pageNumberParam + this._pageNumber + this._key, { responseType: 'json' });
+  getNewsBySearchCriteria(argument: string, currentPage? : number): Observable<any> {
+    return this._http.get(this._searchURL + "\"" + encodeURI(argument) + "\"" + this._searchCriteria + this._sortParam + this._language + this._lang + this._pageNumberParam + ((currentPage) ? currentPage : this._pageNumber) + this._key, { responseType: 'json' });
   }
 
   getNewsByProviders(): Observable<any> {

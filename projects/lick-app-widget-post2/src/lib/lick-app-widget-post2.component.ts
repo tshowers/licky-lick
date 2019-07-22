@@ -8,6 +8,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 export class LickAppWidgetPost2Component implements OnInit {
 
   @Input() headingText = "licky-lick-app-widget-post2";
+  @Input() defaultImage = "assets/images/noPhoto.jpg";
 
   @Input() categories = [
     { "name": "All" },

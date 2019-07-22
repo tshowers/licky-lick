@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Address } from 'lick-data';
 import { MapsAPILoader } from '@agm/core';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 declare let google: any;
 
@@ -14,7 +14,7 @@ export class UserLocationService {
 
   private _geocoder;
 
-  public address = new Subject<Address>();
+  public address = new BehaviorSubject<Address>(null);
 
   constructor(private _mapsAPILoader: MapsAPILoader) {
     this._mapsAPILoader.load().then(() => {
@@ -29,7 +29,7 @@ export class UserLocationService {
       navigator.geolocation.getCurrentPosition((position) => {
         let latitude = position.coords.latitude;
         let longitude = position.coords.longitude;
-        console.log("latitude=" + latitude, "longitude=" + longitude);
+        // console.log("latitude=" + latitude, "longitude=" + longitude);
         this.setCityState(latitude, longitude);
       });
     }
@@ -38,7 +38,7 @@ export class UserLocationService {
   private setCityState(latitude, longitude): void {
     let latlng = new google.maps.LatLng(latitude, longitude);
     this._geocoder.geocode({latLng: latlng}, (addressResult, status) => {
-      console.log("status=" + status);
+      // console.log("status=" + status);
       if (status == google.maps.GeocoderStatus.OK) {
         this.fillInAddress(addressResult[0], latitude, longitude);
 
