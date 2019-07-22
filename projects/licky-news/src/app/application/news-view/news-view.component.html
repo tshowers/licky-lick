@@ -6,22 +6,24 @@
   <form #dataForm="ngForm"
         (ngSubmit)="onSubmit()"
         class="form-group">
-    <div class="input-group">
-
-      <input [(ngModel)]="searchArgument"
-             id="phrase"
-             name="phrase"
-             type="search"
-             class="form-control form-control-lg ta-input-element"
-             placeholder="Find in all news ..."
-             aria-label="Find ..."
-             required
-             autocomplete="off"
-             [ngbTypeahead]="typeFindService.searchWiki"> <span class="input-group-btn">
-        <button class="btn btn-primary"
-                type="submit"
-                [disabled]="!dataForm.form.valid">Find</button>
-      </span> </div>
+        <div class="row">
+          <div class="col-md-10 col-12">
+            <input [(ngModel)]="searchArgument"
+                   id="phrase"
+                   name="phrase"
+                   type="search"
+                   class="form-control form-control-lg ta-input-element"
+                   placeholder="Enter text, click Find button ... erase text to return home"
+                   aria-label="Find ..."
+                   required
+                   autocomplete="off"
+                   [ngbTypeahead]="typeFindService.searchWiki">    </div>
+          <div class="col-md-2 col-12">
+            <button class="btn btn-primary btn-block"
+                    type="submit"
+                    [disabled]="!dataForm.form.valid">Find</button>
+          </div>
+        </div>
   </form>
 </div>
 <div class="container"

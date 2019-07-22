@@ -1,13 +1,32 @@
 {
-  "hosting": [{
+  "hosting": [
+    {
       "target": "test",
       "public": "dist/licky-tester",
       "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
       "rewrites": [{ "source": "**", "destination": "/index.html"  }]
     },
     {
+      "target": "framework",
+      "public": "dist/licky-tester",
+      "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
+      "rewrites": [{ "source": "**", "destination": "/index.html"  }]
+    },
+    {
+      "target": "news-prod",
+      "public": "dist/licky-news",
+      "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
+      "rewrites": [{ "source": "**", "destination": "/index.html"  }]
+    },
+    {
       "target": "news",
       "public": "dist/licky-news",
+      "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
+      "rewrites": [{ "source": "**", "destination": "/index.html"  }]
+    },
+    {
+      "target": "16ahead-prod",
+      "public": "dist/licky-home",
       "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
       "rewrites": [{ "source": "**", "destination": "/index.html"  }]
     },
@@ -22,6 +41,12 @@
       "public": "dist/taliferro",
       "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
       "rewrites": [{ "source": "**", "destination": "/index.html"  }]
+    },
+    {
+      "target": "crm-prod",
+      "public": "dist/licky-crm",
+      "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
+      "rewrites": [{ "source": "**", "destination": "/index.html" }]
     },
     {
       "target": "crm",

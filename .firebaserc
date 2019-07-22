@@ -25,6 +25,22 @@
           "taliferro-de66f"
         ]
       }
+    },
+    "addieprod": {
+      "hosting": {
+        "news-prod": [
+          "news-757d7"
+        ],
+        "16ahead-prod": [
+          "addieprod"
+        ],
+        "crm-prod": [
+          "crm-6c176"
+        ],
+        "framework": [
+          "licky-test"
+        ]
+      }
     }
   }
 }
