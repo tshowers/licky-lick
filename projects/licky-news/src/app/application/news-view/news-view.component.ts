@@ -111,7 +111,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     })
   }
 
-  public onPageChange(value) : void {
+  public onPageChange(value): void {
     this.currentPage = value;
     this.onSubmit();
   }
@@ -145,15 +145,19 @@ export class NewsViewComponent implements OnInit, OnDestroy {
   private setDefaultNewsSources(): void {
     if (this._user && this._user.newsSources && (this._user.newsSources.length > 0))
       this.setUserNewsSources();
+    else
+      this.setDefaultMyNews();
   }
 
   private setUserNewsSources(): void {
     let newsSources = this._user.newsSources;
     // console.log("User News Sources", JSON.stringify(newsSources))
-    newsSources.forEach((newsSource) => {
-      if (newsSource.checked)
-        this.setSelectedNewsSources(newsSource.value);
-    })
+    if (newsSources) {
+      newsSources.forEach((newsSource) => {
+        if (newsSource.checked)
+          this.setSelectedNewsSources(newsSource.value);
+      })
+    }
   }
 
   private setDefaultMyNews(): void {
@@ -203,6 +207,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     this._newsService.setPageNumber(1);
     this._newsService.getNewsByCategory(category).subscribe(
       (news) => {
+        console.log("*****" + JSON.stringify(news.articles));
         this.businessArticles = news.articles;
       }
     )

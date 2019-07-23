@@ -20,7 +20,7 @@ export class NewsReaderComponent implements OnInit {
 
   public onPageEvent(value): void {
     let theLink: string = (value.link) ? value.link : value.article.url;
-    console.log("**Article Link >", theLink);
+    // console.log("**Article Link >", theLink);
     if (theLink && theLink.indexOf("http") >= 0) {
       window.open(theLink, '_blank');
     }

@@ -1958,6 +1958,10 @@ a {
 /*
 * 8. Features
 */
+.feature-height {
+  display: flex;
+}
+
 .features i {
   font-size: 1.953rem;
   line-height: 3rem;

@@ -1,11 +1,49 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: rgba(255,255,255,.9)">
-  <a class="navbar-brand d-none d-sm-block" routerLink="/"><img src="{{logo}}" width="64" height="64" class="d-inline-block align-top" alt="{{logoName}}"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light"
+     style="background-color: rgba(255,255,255,.9)">
+  <a class="navbar-brand d-none d-sm-block"
+     routerLink="/"><img src="{{logo}}"
+         width="64"
+         height="64"
+         class="d-inline-block align-top"
+         alt="{{logoName}}"></a>
+  <button class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a *ngFor="let item of menuItems" class="nav-link text-primary" routerLinkActive="active" routerLink="{{item?.link}}">{{item?.name}}</a>
+  <div class="collapse navbar-collapse"
+       id="navbarNavAltMarkup">
+    <div class="navbar-nav mr-auto">
+      <a *ngFor="let item of menuItems"
+         class="nav-link text-primary"
+         routerLinkActive="active"
+         routerLink="{{item?.link}}">{{item?.name}}</a>
+    </div>
+    <div class="navbar-nav ml-auto"
+         *ngIf="resendVerificationLink">
+      <span class="text-primary"
+            *ngIf="verified"><i class="fa fa-envelope-o"
+           aria-hidden="true"></i><i class="fa fa-check"
+           aria-hidden="true"></i></span>
+      <a class="nav-link text-danger"
+         (click)="onMenuEvent()"
+         title="Click to resend verification email"
+         *ngIf="!verified"><i class="fa fa-envelope-o"
+           aria-hidden="true"></i> {{verificationText}}</a>
+      <a class="navbar-brand d-none d-sm-block"
+         routerLink="{{profileLink}}">
+        <span *ngIf="!profileImage"
+              class="text-primary"> Profile </span>
+        <img *ngIf="profileImage"
+             src="{{profileImage}}"
+             width="48"
+             height="48"
+             class="rounded-circle d-inline-block align-top"
+             alt="{{displayName}}"></a>
     </div>
   </div>
 </nav>

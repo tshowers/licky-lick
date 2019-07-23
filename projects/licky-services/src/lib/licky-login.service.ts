@@ -145,6 +145,9 @@ export class LickyLoginService {
   public sendEmailVerification() {
     firebase.auth().currentUser.sendEmailVerification().then(() => {
       this.processMessage.next('Email Verification Sent!')
+    }).catch((error) => {
+      console.error(JSON.stringify(error), JSON.stringify(firebase.auth().currentUser));
+      this.processMessage.next('Unable to process request');
     });
   }
 

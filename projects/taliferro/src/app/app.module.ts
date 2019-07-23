@@ -18,6 +18,7 @@ import { LickMarketingFooter2Module} from 'lick-marketing-footer2';
 import { LickMarketingSimplePageModule } from 'lick-marketing-simple-page';
 import { LickMarketingSimpleHeaderModule } from 'lick-marketing-simple-header';
 import { LickMarketingContactUs1Module} from 'lick-marketing-contact-us1';
+import { LickMarketingTryIt2Module } from 'lick-marketing-try-it2';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -62,7 +63,8 @@ export const firebaseConfig = environment.firebaseConfig;
     LickMarketingSimpleHeaderModule,
     LickMarketingContactUs1Module,
     LickMarketingTeam1Module,
-    LickDataModule
+    LickDataModule,
+    LickMarketingTryIt2Module
   ],
   providers: [],
   bootstrap: [AppComponent]

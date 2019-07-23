@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'licky-lick-marketing-menu',
@@ -8,7 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LickMarketingMenuComponent implements OnInit {
 
   @Input() logo = "https://via.placeholder.com/64";
-  @Input() logoName = "Logo Name"
+  @Input() logoName = "Logo Name";
+  @Input() verified : boolean = true;
+  @Input() resendVerificationLink : boolean = false;
+  @Output() menuEvent = new EventEmitter();
+  @Input() verificationText = "Unverified";
+  @Input() profileLink;
+  @Input() profileImage;
+  @Input() displayName;
 
   @Input() menuItems: any[] = [
     {
@@ -45,5 +52,10 @@ export class LickMarketingMenuComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  onMenuEvent() : void {
+    this.menuEvent.emit('resendVerification');
+  }
+
 
 }
