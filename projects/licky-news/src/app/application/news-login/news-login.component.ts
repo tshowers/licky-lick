@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { LickyLoginService} from 'licky-services';
+import { LickyLoginService, DateUtilService } from 'licky-services';
 import { Subscription } from 'rxjs';
 
 
@@ -15,14 +15,14 @@ export class NewsLoginComponent implements OnInit, OnDestroy {
 
   public password;
 
-  private _loginError : Subscription;
+  private _loginError: Subscription;
 
   private _userSubscription: Subscription;
 
   public errorMessage;
 
 
-  constructor(public router: Router, private _loginService: LickyLoginService) { }
+  constructor(public router: Router, private _loginService: LickyLoginService, private _dateUtilService: DateUtilService) { }
 
   ngOnInit() {
     this.subscribeToLoginErrors();
@@ -34,19 +34,38 @@ export class NewsLoginComponent implements OnInit, OnDestroy {
     if (this._loginError)
       this._loginError.unsubscribe();
     if (this._userSubscription)
-        this._userSubscription.unsubscribe();
+      this._userSubscription.unsubscribe();
   }
 
-  private determineUser() : void {
+  private determineUser(): void {
     this._userSubscription = this._loginService.firebaseUser.subscribe((firebaseUser) => {
-      let status : boolean = (firebaseUser && firebaseUser.uid) ? true : false
-      // console.log("status=" + status);
+      let status: boolean = (firebaseUser && firebaseUser.uid) ? true : false
+      this.getVerified(firebaseUser);
       this.router.navigate(['application', 'news']);
     })
   }
 
+  private getVerified(firebaseUser): boolean {
+    let today = new Date().getTime();
+    if (firebaseUser) {
+      let creationTime = firebaseUser.metadata.creationTime;
+      let createdAt = new Date(creationTime).getTime();
+      console.log(createdAt, today);
+      let diff = this._dateUtilService.getDaysDiff(today, createdAt);
+      console.log(diff);
+    }
+    return true;
+    // if (firebaseUser.verified) {
+    //   return true;
+    // } else {
+    //
+    //
+    //   return false;
+    // }
+  }
 
-  public onPageEvent(value) : void {
+
+  public onPageEvent(value): void {
     // console.log(value);
     switch (value.type) {
       case 'submit':
@@ -69,27 +88,27 @@ export class NewsLoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  private subscribeToLoginErrors() : void {
+  private subscribeToLoginErrors(): void {
     this._loginError = this._loginService.errorMessage.subscribe((error) => {
       console.log(error);
       this.errorMessage = "\n\n" + error;
     })
   }
 
-  private onUserEmail() : void {
+  private onUserEmail(): void {
     console.log("Siging in with " + this.emailAddress + " " + this.password)
     this._loginService.signInWithUserNameAndPassword(this.emailAddress, this.password, this.router, "/application/news");
   }
 
-  private onTwitter() : void {
+  private onTwitter(): void {
     this._loginService.signInWithTwitter(this.router, "/application/news");
   }
 
-  private onFacebook() : void {
+  private onFacebook(): void {
     this._loginService.signInWithFacebook(this.router, "/application/news");
   }
 
-  private onGoogle() : void {
+  private onGoogle(): void {
     this._loginService.signInWithGoogle(this.router, "/application/news");
   }
 

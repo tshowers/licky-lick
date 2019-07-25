@@ -1,12 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router'
 import { NewsService, TypeFindService, LickyLoginService, YoutubeService } from 'licky-services';
-import { NewsArticle } from 'lick-data';
+import { NewsArticle, User } from 'lick-data';
 import { ProviderBox } from 'lick-app-widget-post4';
 import { NewsHelperService } from '../services/news-helper.service';
-import { Subscription } from 'rxjs';
-import { User } from 'lick-data';
-import { Subject } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -86,14 +84,12 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     this.categories = this._newsService.categories.slice(1);
     this._newsService.setPageSize(4);
     this.setTopNewsArticles();
-    this.setFeaturedNews();
     this.setBusinessArticles();
     this.setEntertainmentArticles();
     this.setHealthArticles();
     this.setScienceArticles();
     this.setSportsArticles();
     this.setTechnologyArticles();
-    this.setGeneralArticles();
     this.setDefaultNewsSources();
     this.setVideos();
   }
@@ -118,7 +114,6 @@ export class NewsViewComponent implements OnInit, OnDestroy {
 
   public onPageEvent(value): void {
     this._newsHelperService.setNewsArticle(value);
-    // console.log("Article selected: ", JSON.stringify(value));
     this.router.navigate(['/application/news-reader']);
   }
 
@@ -182,21 +177,13 @@ export class NewsViewComponent implements OnInit, OnDestroy {
 
   private setTopNewsArticles(): void {
     this._newsService.setPageNumber(1);
-    this._newsService.setPageSize(10);
+    this._newsService.setPageSize(20);
     this._newsService.getNewsByCountry("us").subscribe(
       (news) => {
-        this.topNews = news.articles;
-      }
-    )
-  }
-
-  private setFeaturedNews(): void {
-    this._newsService.setPageNumber(2);
-    this._newsService.setPageSize(4);
-    this._newsService.getNewsByCountry("us").subscribe(
-      (news) => {
-        this.featuredArticle = news.articles[0];
-        this.featuredNews = news.articles.slice(1);
+        this.topNews = news.articles.slice(0,10);
+        this.featuredArticle = news.articles[10];
+        this.featuredNews = news.articles.slice(11,14);
+        this.generalArticles = news.articles.slice(14,20);
       }
     )
   }
@@ -207,7 +194,6 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     this._newsService.setPageNumber(1);
     this._newsService.getNewsByCategory(category).subscribe(
       (news) => {
-        console.log("*****" + JSON.stringify(news.articles));
         this.businessArticles = news.articles;
       }
     )
@@ -220,16 +206,6 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     this._newsService.getNewsByCategory(category).subscribe(
       (news) => {
         this.entertainmentArticles = news.articles;
-      }
-    )
-  }
-  private setGeneralArticles(): void {
-    let category = this._newsService.GENERAL;
-    this._newsService.setPageNumber(3);
-    this._newsService.setPageSize(3);
-    this._newsService.getNewsByCategory(category).subscribe(
-      (news) => {
-        this.generalArticles = news.articles;
       }
     )
   }
@@ -281,7 +257,6 @@ export class NewsViewComponent implements OnInit, OnDestroy {
         for (let element of lista["items"]) {
           this.videos.push(element)
         }
-        // console.log(this.videos);
       })
   }
 
@@ -291,7 +266,6 @@ export class NewsViewComponent implements OnInit, OnDestroy {
 
   private getChannel(): string {
     let x = this.getRandomInt(this._channels.length);
-    // console.log("X=" + x);
     return this._channels[x].value;
   }
 

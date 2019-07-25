@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'licky-lick-marketing-header4',
@@ -11,6 +11,9 @@ export class LickMarketingHeader4Component implements OnInit {
   @Input() heading2 = "software";
   @Input() headerText = "Present your awesome product";
   @Input() descriptionText = "Delectus, ut perspiciatis, unde omnis voluptas nulla vero. Facilis est laborum et harum quidem rerum necessitatibus saepe. Magni dolores et molestiae consequatur, vel illum, qui.";
+
+  @Output() pageEvent = new EventEmitter();
+
   emailAddress;
 
   constructor() { }
@@ -19,7 +22,15 @@ export class LickMarketingHeader4Component implements OnInit {
   }
 
   onSubmit() {
-    console.log("Submit Clicked")
+    this.onPageEvent('submit');
+  }
+
+  onPageEvent(type: string) : void {
+    this.pageEvent.emit(
+      {
+        type: type,
+        emailAddress: this.emailAddress,
+      });
   }
 
 }

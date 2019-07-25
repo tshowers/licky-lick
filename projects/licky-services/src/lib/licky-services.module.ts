@@ -10,6 +10,7 @@ import { LickyLoginConfigService } from './licky-login-config.service';
 import { FirebaseConfig } from './firebase-config.model';
 
 import { SortHelperService } from './sort-helper.service';
+import { DateUtilService } from './date-util.service';
 import { TypeFindService } from './type-find.service';
 import { DropdownService } from './dropdown.service';
 import { UserLocationService } from './user-location.service';
@@ -38,7 +39,8 @@ import { environment } from '../environment';
     DropdownService,
     UserLocationService,
     WeatherService,
-    RemoteAssetService
+    RemoteAssetService,
+    DateUtilService
   ]
 
 })

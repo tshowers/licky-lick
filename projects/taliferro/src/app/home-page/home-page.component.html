@@ -35,7 +35,7 @@
                                 [imageURL]="'assets/images/consulting2.jpg'"></licky-lick-marketing-parallax1>
 <licky-lick-marketing-faq3 [descriptionText]="'Below are some commonly asked questions about Taliferro and the services we offer. If further assistance is required, please reach out by filling out the contact form or calling the phone number below.'"
                            [imageURL]="'assets/images/consulting3.jpg'"
-                           [faqHeading1]="'What is your typical clients size?'"
+                           [faqHeading1]="'What is your typical client size?'"
                            [faqDescription1]="'Our work spans Fortune 500 companies to start-ups across 4 continents.'"
                            [faqHeading2]="'Can you help with cloud initiatives?'"
                            [faqDescription2]="'Any company trying to navigate cloud technology and business processes in today’s challenging global environment will benefit from his knowledge and expertise in software architecture. Tyrone holds a bachelor of science in computer science.'"
@@ -44,10 +44,13 @@
 <licky-lick-marketing-team1 [users]="users"
                             [headingText]="'The Team'"
                             [descriptionText]="description"></licky-lick-marketing-team1>
-<licky-lick-marketing-try-it2 [headingText]="'Taliferro can help your company\'s technology vision become reality'" [descriptionText]="'Contact us for a free assessment of where you are and where you want to go.'" [buttonLink]="null"></licky-lick-marketing-try-it2>
+<licky-lick-marketing-try-it2 [headingText]="'Taliferro can help your company\'s technology vision become reality'"
+                              [descriptionText]="'Contact us for a free assessment of where you are and where you want to go.'"
+                              [buttonLink]="null"></licky-lick-marketing-try-it2>
 <licky-lick-marketing-contact-us1 [descriptionText]="message"
                                   (pageEvent)="onPageEvent($event)"></licky-lick-marketing-contact-us1>
-<licky-lick-marketing-footer2 [copyrightText]="'&#169; Copyright Taliferro. Taliferro &#174; Is Registered In The U.S. Patent And Trademark Office. 425.305.3748'" [buttonText1]="'Home'"
+<licky-lick-marketing-footer2 [copyrightText]="'&#169; Copyright Taliferro. Taliferro &#174; Is Registered In The U.S. Patent And Trademark Office. 425.305.3748'"
+                              [buttonText1]="'Home'"
                               [buttonLink1]="'/'"
                               [buttonText2]="'Privacy'"
                               [buttonLink2]="'/privacy'"

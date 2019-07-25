@@ -38,7 +38,7 @@ export class LickMarketingFooter2Component implements OnInit {
 
   @Input() router: Router;
 
-  @Input() copyrightText = "ⓒ Copyright Taliferro. Taliferro Ⓡ Is Registered In The U.S. Patent And Trademark Office.";
+  @Input() copyrightText = "&#169; Copyright Taliferro. Taliferro &#174; Is Registered In The U.S. Patent And Trademark Office.";
 
   constructor() { }
 
