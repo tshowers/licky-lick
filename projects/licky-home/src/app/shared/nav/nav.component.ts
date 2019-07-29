@@ -18,6 +18,10 @@ export class NavComponent implements OnInit, OnDestroy {
     {
       "link": "/",
       "name": "Home",
+    },
+    {
+      "link": "/products",
+      "name": "Products",
     }
   ]
 
@@ -25,6 +29,10 @@ export class NavComponent implements OnInit, OnDestroy {
     {
       "link": "/",
       "name": "Home",
+    },
+    {
+      "link": "/products",
+      "name": "Products",
     }
   ]
 

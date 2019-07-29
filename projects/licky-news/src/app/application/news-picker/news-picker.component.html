@@ -11,11 +11,11 @@
             <div class="h3 text-primary">
               <strong>News Sources</strong>
             </div>
-            <small class="text-primary"><span [CountTo]="newsSources.length"></span>
-              TOTAL</small>
+            <small class="text-primary">{{numberChecked}} of <span [CountTo]="newsSources.length"></span>
+              TOTAL <i>(maximun 10)</i> </small>
           </div>
           <div class="float-right">
-            <a (click)="onSubmit()" class="button button-full text-white" title="Save Changes">Save Selections</a>
+            <a (click)="onReset()" class="button button-full text-white" title="Uncheck all boxes" style="margin-right: 5px">Reset</a> <a (click)="onSubmit()" class="button button-full text-white" title="Save Changes">Save Selections</a>
           </div>
         </div>
         <div class="row ta-row">
@@ -27,9 +27,11 @@
                    style="pointer:cursor">{{ns.name}}</a>
 
                   <input [checked]="ns.checked"
+                          class="ta-input-element"
                          type="checkbox"
                          name="{{ns.value}}"
                          id="{{ns.value}}"
+                         [disabled]="isDisabled"
                          (click)="onNewsSelect(ns)">
               </li>
             </ul>

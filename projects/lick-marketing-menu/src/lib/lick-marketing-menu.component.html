@@ -37,12 +37,14 @@
       <a class="navbar-brand d-none d-sm-block"
          routerLink="{{profileLink}}">
         <span *ngIf="!profileImage"
+              title="{{displayName}}"
               class="text-primary"> Profile </span>
         <img *ngIf="profileImage"
              src="{{profileImage}}"
              width="48"
              height="48"
              class="rounded-circle d-inline-block align-top"
+             title="{{displayName}}"
              alt="{{displayName}}"></a>
     </div>
   </div>

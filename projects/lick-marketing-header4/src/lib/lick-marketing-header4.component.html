@@ -18,8 +18,8 @@
           <div class="header-newsletter-form">
             <div class="header-center-form">
               <form #dataForm="ngForm" id="header-newsletter-form" class="newsletter-form">
-                <input [(ngModel)]="emailAddress" id="header-newsletter-email" class="newsletter-email" type="email" name="emailAddress" placeholder="Enter your email">
-                <input id="header-newsletter-submit" class="button-form newsletter-submit" name="newsletter-submit" value="Submit" type="submit" (click)="onSubmit()">
+                <input [(ngModel)]="emailAddress" id="header-newsletter-email" class="newsletter-email" type="email" name="emailAddress" placeholder="Enter your email" required>
+                <input id="header-newsletter-submit" class="button-form newsletter-submit" name="newsletter-submit" value="Submit" type="submit" (click)="onSubmit();dataForm.reset();" [disabled]="!dataForm.form.valid">
               </form>
             </div>
           </div>

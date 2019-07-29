@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 export class NewsPickerComponent implements OnInit {
 
   newsSources;
-
+  isDisabled : boolean = false;
+  numberChecked: number = 0;
 
   constructor(public router: Router,
     public newsService: NewsService,
@@ -18,10 +19,12 @@ export class NewsPickerComponent implements OnInit {
 
   ngOnInit() {
     this.newSourcesExist();
+    this.setDisabledCount();
   }
 
   onNewsSelect(newsSource): void {
     newsSource.checked = (!newsSource.checked);
+    this.setDisabledCount();
   }
 
 
@@ -36,6 +39,23 @@ export class NewsPickerComponent implements OnInit {
     this._loginSerive.getUser().newsSources = this.newsSources;
     this._loginSerive.update();
     this.router.navigate(['/application/news']);
+  }
+
+  onReset() : void {
+    this.newsSources.forEach((newsSource) => {
+      newsSource.checked = false;
+    });
+    this.isDisabled = false;
+    this.setDisabledCount();
+  }
+
+  private setDisabledCount() : void {
+    this.numberChecked = 0;
+    this.newsSources.forEach((newsSource) => {
+      if (newsSource.checked)
+        this.numberChecked++;
+    })
+    if (this.numberChecked >= 10) this.isDisabled = true;
   }
 
 
