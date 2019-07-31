@@ -10,7 +10,7 @@
 
       <div class="col-md-6 cta-button-block" *ngIf="buttonLink">
         <div class="cta-button">
-          <a href="{{buttonLink}}" class="button button-full">{{buttonText}}</a>
+          <a (click)="onPageEvent(buttonLink)" class="button button-full">{{buttonText}}</a>
         </div>
       </div>
     <!-- </div> -->

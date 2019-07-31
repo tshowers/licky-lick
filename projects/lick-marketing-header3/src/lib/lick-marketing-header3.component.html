@@ -15,8 +15,8 @@
             </div>
 
             <ul class="header-nav-buttons">
-              <li *ngIf="buttonLink1"><a routerLink="{{buttonLink1}}" class="button button-full" title="{{buttonText1}}">{{buttonText1}}</a></li>
-              <li *ngIf="buttonLink2"><a routerLink="{{buttonLink2}}" class="button button-border" title="{{buttonText2}}">{{buttonText2}}</a></li>
+              <li *ngIf="buttonLink1"><a (click)="onPageEvent(buttonLink1)" class="button button-full" title="{{buttonText1}}">{{buttonText1}}</a></li>
+              <li *ngIf="buttonLink2"><a (click)="onPageEvent(buttonLink2)" class="button button-border" title="{{buttonText2}}">{{buttonText2}}</a></li>
             </ul>
 
           </div> <!-- .header-text -->

@@ -1,0 +1,60 @@
+<div id="page"
+     class="site">
+  <header id="masthead"
+          class="site-header">
+    <app-nav></app-nav>
+  </header>
+</div>
+<div id="content"
+     class="site-content mt-5 pt-5">
+  <div id="primary"
+       class="content-area">
+    <main id="main"
+          class="site-main">
+      <licky-lick-marketing-about-product4 [headingText]="'The Factory'"
+                                           [descriptionText]="'Are you curious about our software creation process, or just curious about software development in general? This our portal to that experience. Each piece of the software resides in a library; the library relates to a particular category, marketing, and application-related widgets.'"
+                                           (pageEvent)="onPageEvent($event)"
+                                           [iconFeature1]="'icon-home'"
+                                           [featureText1]="'Headers for Marketing'"
+                                           [iconFeature2]="'icon-star'"
+                                           [featureText2]="'External Components'"
+                                           [iconFeature3]="'icon-organization'"
+                                           [featureText3]="'Internal Components'"
+                                           [iconFeature4]="'icon-pie-chart'"
+                                           [featureText4]="'Statistical Views'"
+                                           [featureBadgeText2]="null"
+                                           [featureBadgeText3]="null"
+                                           [buttonLink]="exploreLink"
+                                           [buttonText]="'Explore'"></licky-lick-marketing-about-product4>
+      <licky-lick-marketing-how-to1 [headingText]="'Development Process'"
+                                    [descriptionText]="'16AHEAD has many stories. You can see the momentum. You can see learning — design enhancements.  Though history is essential, we are consumed by what we have yet to do.'"
+                                    [header1]="'Discover'"
+                                    [header2]="'Visualize'"
+                                    [header3]="'Remediate'"
+                                    [description1]="'The development process starts with some error-prone process in our business that hasn\'t been solved to our satisfaction with software.'"
+                                    [description2]="'Break the problem down in smaller concepts analogous to tearing a faulty building down and analyzing each piece, then vowing to create a better structure with better parts.'"
+                                    [description3]="'Finally, through trial, error, and remediation, confirm a new and better way.'"></licky-lick-marketing-how-to1>
+    </main>
+  </div>
+</div>
+<licky-lick-marketing-footer2 [buttonText1]="'Home'"
+                              [buttonLink1]="'/'"
+                              [buttonText2]="'Privacy'"
+                              [buttonLink2]="'/privacy'"
+                              [buttonText3]="'Terms'"
+                              [buttonLink3]="'/terms'"
+                              [buttonLink4]="null"
+                              [socialText1]="'Twitter'"
+                              [socialText2]="'GitHub'"
+                              [socialText3]="'YouTube'"
+                              [socialText4]="null"
+                              [socialText5]="null"
+                              [socialLink1]="'https://twitter.com/16Ahead'"
+                              [socialLink2]="'https://github.com/tshowers/licky-lick'"
+                              [socialLink3]="'https://www.youtube.com/channel/UCmsqXdXkbD8Seh-kvHPApig'"
+                              [socialLink4]="null"
+                              [socialLink5]="null"
+                              [socialIcon1]="'fa-twitter'"
+                              [socialIcon2]="'fa-github'"
+                              [socialIcon3]="'fa-youtube'"
+                              [router]="router"></licky-lick-marketing-footer2>

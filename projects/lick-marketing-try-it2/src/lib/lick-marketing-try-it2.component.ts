@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'licky-lick-marketing-try-it2',
@@ -12,9 +12,14 @@ export class LickMarketingTryIt2Component implements OnInit {
   @Input() buttonLink = "/";
   @Input() buttonText = "Start Free Trial";
 
+  @Output() pageEvent = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  onPageEvent(link) : void {
+    this.pageEvent.emit(link);
+  }
 }

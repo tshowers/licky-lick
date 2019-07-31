@@ -20,7 +20,7 @@
             <p>{{integrationDescription1}}</p>
 
             <div class="integration-link" *ngIf="buttonLink1">
-              <a href="buttonLink1" title="{{integrationHeading1}}"><i [ngClass]="buttonIcon1"></i></a>
+              <a (click)="onPageEvent(buttonLink1)" title="{{integrationHeading1}}"><i [ngClass]="buttonIcon1"></i></a>
             </div>
           </div>
 
@@ -40,7 +40,7 @@
             <p>{{integrationDescription2}}</p>
 
             <div class="integration-link" *ngIf="buttonLink2">
-              <a href="{{buttonLink2}}" title="{{integrationHeading2}}"><i [ngClass]="buttonIcon2"></i></a>
+              <a (click)="onPageEvent(buttonLink2)" title="{{integrationHeading2}}"><i [ngClass]="buttonIcon2"></i></a>
             </div>
           </div>
 
@@ -60,7 +60,7 @@
             <p>{{integrationDescription3}}</p>
 
             <div class="integration-link" *ngIf="buttonLink3">
-              <a href="{{buttonLink3}}" title="{{integrationHeading3}}"><i [ngClass]="buttonIcon3"></i></a>
+              <a (click)="onPageEvent(buttonLink3)" title="{{integrationHeading3}}"><i [ngClass]="buttonIcon3"></i></a>
             </div>
           </div>
 
@@ -80,7 +80,7 @@
             <p>{{integrationDescription4}}</p>
 
             <div class="integration-link" *ngIf="buttonLink4">
-              <a href="{{buttonLink4}}" title="{{integrationHeading4}}"><i [ngClass]="buttonIcon4"></i></a>
+              <a click="onPageEvent(buttonLink4)" title="{{integrationHeading4}}"><i [ngClass]="buttonIcon4"></i></a>
             </div>
           </div>
 

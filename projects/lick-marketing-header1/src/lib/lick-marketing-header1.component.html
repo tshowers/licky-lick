@@ -10,8 +10,8 @@
           </div>
 
           <ul class="header-nav-buttons">
-            <li *ngIf="button1Link"><a routerLink="{{button1Link}}" class="button button-full" title="Sign Up">{{button1Text}}</a></li>
-            <li *ngIf="button2Link"><a routerLink="{{button2Link}}" class="button button-border" title="Read More">{{button2Text}}</a></li>
+            <li *ngIf="button1Link"><a (click)="onPageEvent(button1Link)" class="button button-full" title="Sign Up">{{button1Text}}</a></li>
+            <li *ngIf="button2Link"><a (click)="onPageEvent(button2Link)" class="button button-border" title="Read More">{{button2Text}}</a></li>
           </ul>
 
         </div> <!-- .title-center-content -->

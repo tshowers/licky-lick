@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'licky-lick-marketing-header1',
@@ -21,9 +21,16 @@ export class LickMarketingHeader1Component implements OnInit {
   @Input() featureIcon2 = "icon-cloud-upload";
   @Input() badgeFeature2;
 
+  @Output() pageEvent = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
   }
+
+  onPageEvent(link) : void {
+    this.pageEvent.emit(link);
+  }
+
 
 }

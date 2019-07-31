@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
 import { Carousel } from 'lick-data';
 import { OwlCarousel } from 'ngx-owl-carousel';
 
@@ -122,6 +122,8 @@ export class LickMarketingCarouselComponent implements OnInit {
   @Input() rgba2_blue = 58;
   @Input() isRadialBackground = false;
 
+  @Output() pageEvent = new EventEmitter();
+
   images = [];
 
 
@@ -156,6 +158,10 @@ export class LickMarketingCarouselComponent implements OnInit {
       autoplay: this.autoPlay,
       items: this.numberOfItemsToDisplay
     };
+  }
+
+  onPageEvent(link) : void {
+    this.pageEvent.emit(link);
   }
 
 

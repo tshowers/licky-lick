@@ -37,7 +37,7 @@
       <div class="col-md-6 col-sm-5 col-xs-12 about-text">
         <h2>{{headingText}}</h2>
         <p>{{descriptionText}}</p>
-        <a *ngIf="buttonLink" routerLink="{{buttonLink}}" class="button button-full" title="{{buttonText}}">{{buttonText}}</a>
+        <a (click)="onPageEvent()" class="button button-full text-white" title="{{buttonText}}">{{buttonText}}</a>
       </div>
 
     </div> <!-- .row -->

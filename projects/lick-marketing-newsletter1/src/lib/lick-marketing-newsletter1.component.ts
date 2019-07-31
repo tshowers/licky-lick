@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'licky-lick-marketing-newsletter1',
@@ -14,7 +14,13 @@ export class LickMarketingNewsletter1Component implements OnInit {
 
   constructor() { }
 
+  @Output() pageEvent = new EventEmitter();
+
   ngOnInit() {
+  }
+
+  onPageEvent() : void {
+    this.pageEvent.emit();
   }
 
   onSubmit() {

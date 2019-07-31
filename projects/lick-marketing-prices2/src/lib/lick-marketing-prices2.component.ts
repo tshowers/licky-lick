@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Product } from 'lick-data';
 
 @Component({
@@ -218,9 +218,15 @@ export class LickMarketingPrices2Component implements OnInit {
     },
   ];
 
+  @Output() pageEvent = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onPageEvent(link) : void {
+    this.pageEvent.emit(link);
   }
 
 }

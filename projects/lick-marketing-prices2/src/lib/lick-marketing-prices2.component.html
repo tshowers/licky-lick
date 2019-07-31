@@ -19,7 +19,7 @@
             <li *ngFor="let feature of product.features">{{feature}}</li>
           </ul>
 
-          <a href="{{product?.url}}" class="button button-full">{{actionText}}</a>
+          <a (click)="onPageEvent(product.url)" class="button button-full">{{actionText}}</a>
 
         </div>
       </div> <!-- .price -->

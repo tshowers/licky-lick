@@ -37,7 +37,7 @@
         "crm-prod": [
           "crm-6c176"
         ],
-        "framework": [
+        "factory": [
           "licky-test"
         ]
       }

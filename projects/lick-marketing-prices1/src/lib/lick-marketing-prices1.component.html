@@ -36,7 +36,7 @@
               <h4>{{product?.price | currency}} <br><span> per {{product?.orderQuantity}} {{product?.orderQuantityMeasure}}</span></h4>
             </div>
             <div class="col-lg-6 col-md-12 price-right-info">
-              <a href="{{product?.url}}" class="button button-full">{{actionText}}</a>
+              <a (click)="onPageEvent(product.url)" class="button button-full">{{actionText}}</a>
             </div>
           </div>
 

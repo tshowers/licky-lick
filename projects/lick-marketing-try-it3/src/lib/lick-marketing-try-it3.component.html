@@ -11,7 +11,7 @@
 
         <div class="col-md-6 cta-button-block">
           <div class="cta-button-img">
-            <a *ngIf="buttonLink" routerLink="{{buttonLink}}" class="button button-full">{{buttonText}}</a>
+            <a *ngIf="buttonLink" (click)="onPageEvent(buttonLink)" class="button button-full">{{buttonText}}</a>
           </div>
         </div>
 

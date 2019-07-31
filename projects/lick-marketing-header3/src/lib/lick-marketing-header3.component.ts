@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'licky-lick-marketing-header3',
@@ -19,9 +19,15 @@ export class LickMarketingHeader3Component implements OnInit {
   @Input() imageURL1 = "http://via.placeholder.com/1525x880";
   @Input() imageURL2 = "http://via.placeholder.com/460x118";
 
+  @Output() pageEvent = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onPageEvent(link) : void {
+    this.pageEvent.emit(link);
   }
 
 }

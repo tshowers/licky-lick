@@ -31,6 +31,10 @@
   right: 15px;
 }
 
+.ta-lower-case {
+  text-transform: lowercase;
+}
+
 .ta-left-middle {
   text-align: left;
   position: absolute;
