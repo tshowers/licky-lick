@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 export class HomePageComponent implements OnInit {
 
   headerText = "Intelligent Services";
-  descriptionText = "Imagine a system of services that flow seamlessly from one process to another. How much more effective and productive would you be if you didn\'t have to keep putting the same information in over and over? Now imagine a service that tells you what to do base on the data entered? A system that suggests what customers to call, or products to elevate in the sales channel. We\'re building it! Let\'s keep in touch.";
+  descriptionText = "Imagine a system of services that flow seamlessly from one process to another. How much more effective and productive would you be if you didn\'t have to keep putting the same information in over and over? Now imagine a service that tells you what to do based on the data entered? A system that suggests what customers to call, or products to elevate in the sales channel. We\'re building it! Let\'s keep in touch.";
 
   constructor(public router: Router, private _fds: FirebaseDataService) { }
 
@@ -23,6 +23,7 @@ export class HomePageComponent implements OnInit {
       emailAddress: value.emailAddress,
     })
     this.headerText = "Thank You! We'll be in touch."
+    setTimeout(() =>{ this.headerText = "Intelligent Services", 3000})
   }
 
 

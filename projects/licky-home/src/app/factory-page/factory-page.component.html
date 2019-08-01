@@ -6,13 +6,13 @@
   </header>
 </div>
 <div id="content"
-     class="site-content mt-5 pt-5">
+     class="site-content mt-md-5 pt-md-5">
   <div id="primary"
        class="content-area">
     <main id="main"
           class="site-main">
       <licky-lick-marketing-about-product4 [headingText]="'The Factory'"
-                                           [descriptionText]="'Are you curious about our software creation process, or just curious about software development in general? This our portal to that experience. Each piece of the software resides in a library; the library relates to a particular category, marketing, and application-related widgets.'"
+                                           [descriptionText]="'Are you curious about our software creation process, or just curious about software development in general? This is our portal to that experience. Each piece of the software resides in a library; the library relates to a particular category of marketing and application-related widgets.'"
                                            (pageEvent)="onPageEvent($event)"
                                            [iconFeature1]="'icon-home'"
                                            [featureText1]="'Headers for Marketing'"
@@ -34,6 +34,11 @@
                                     [description1]="'The development process starts with some error-prone process in our business that hasn\'t been solved to our satisfaction with software.'"
                                     [description2]="'Break the problem down in smaller concepts analogous to tearing a faulty building down and analyzing each piece, then vowing to create a better structure with better parts.'"
                                     [description3]="'Finally, through trial, error, and remediation, confirm a new and better way.'"></licky-lick-marketing-how-to1>
+      <licky-lick-marketing-try-it2 [headingText]="'Try Our News Service'"
+                                    (pageEvent)="onPageEvent($event)"
+                                    [descriptionText]="'Keep in mind that the news application is still under development, with an expected alpha release date of late summer.'"
+                                    [buttonLink]="'https://news-dev.16ahead.com/'"
+                                    [buttonText]="'Try It'"></licky-lick-marketing-try-it2>
     </main>
   </div>
 </div>

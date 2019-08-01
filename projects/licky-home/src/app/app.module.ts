@@ -19,6 +19,7 @@ import { LickMarketingParallax1Module } from 'lick-marketing-parallax1';
 import { LickMarketingAboutProduct4Module} from 'lick-marketing-about-product4';
 import { LickMarketingAboutProduct5Module} from 'lick-marketing-about-product5';
 import { LickMarketingHowTo1Module } from 'lick-marketing-how-to1';
+import { LickMarketingTryIt2Module } from 'lick-marketing-try-it2';
 import { HomeMaintenanceComponent } from './home-maintenance/home-maintenance.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -72,7 +73,8 @@ export const firebaseConfig = environment.firebaseConfig;
     LickMarketingFaq2Module,
     LickMarketingAboutProduct5Module,
     LickMarketingAboutProduct4Module,
-    LickMarketingHowTo1Module
+    LickMarketingHowTo1Module,
+    LickMarketingTryIt2Module
   ],
   providers: [],
   bootstrap: [AppComponent]
