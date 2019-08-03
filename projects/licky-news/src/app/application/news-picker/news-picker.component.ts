@@ -19,12 +19,17 @@ export class NewsPickerComponent implements OnInit {
 
   ngOnInit() {
     this.newSourcesExist();
-    this.setDisabledCount();
+    this.setCountSelected();
   }
 
-  onNewsSelect(newsSource): void {
+  onNewsSelect(checkbox, newsSource): void {
     newsSource.checked = (!newsSource.checked);
-    this.setDisabledCount();
+    if (this.isOverCount()) {
+      newsSource.checked = false;
+      checkbox.srcElement.checked = false;
+      this.setCountSelected();
+      console.log(checkbox.srcElement);
+    };
   }
 
 
@@ -45,17 +50,21 @@ export class NewsPickerComponent implements OnInit {
     this.newsSources.forEach((newsSource) => {
       newsSource.checked = false;
     });
-    this.isDisabled = false;
-    this.setDisabledCount();
+    this.setCountSelected();
   }
 
-  private setDisabledCount() : void {
+  private setCountSelected() : void {
     this.numberChecked = 0;
     this.newsSources.forEach((newsSource) => {
       if (newsSource.checked)
         this.numberChecked++;
     })
-    if (this.numberChecked >= 10) this.isDisabled = true;
+  }
+
+  private isOverCount() : boolean {
+    this.setCountSelected();
+    return (this.numberChecked > 10);
+    // if (this.numberChecked >= 10) this.isDisabled = true;
   }
 
 

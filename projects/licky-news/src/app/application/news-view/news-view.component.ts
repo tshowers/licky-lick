@@ -166,6 +166,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     this._newsService.setPageSize(5);
     this._newsService.getNewsByProvider(source).subscribe(
       (news) => {
+        // console.log(JSON.stringify(news));
         let box = new ProviderBox();
         box.heading = source;
         box.featuredArticle = news.articles[0];

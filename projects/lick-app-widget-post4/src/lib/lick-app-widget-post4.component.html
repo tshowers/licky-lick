@@ -2,10 +2,15 @@
 <section class="section mb-0">
   <div class="row">
     <div class="col-md-6" *ngFor="let item of boxes">
-      <div class="title-wrap card-accent-theme">
+      <div class="title-wrap card-accent-theme" *ngIf="item">
         <h3 class="section-title">{{item?.heading}}</h3>
       </div>
-      <div class="row">
+      <div class="row" *ngIf="(!item || !item.featuredArticle)">
+        <div class="col text-warning pt-md-5 pb-md-5">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This provider has no content available. Consider selecting another source.
+        </div>
+      </div>
+      <div class="row" *ngIf="item && item.featuredArticle">
         <div class="col-lg-6">
           <article class="entry thumb thumb--size-2">
             <div *ngIf="!item?.featuredArticle.urlToImage || (item?.featuredArticle.urlToImage === null)" class="entry__img-holder thumb__img-holder" [ngStyle]="{'background-image': 'url(' + defaultImage + ')'}">

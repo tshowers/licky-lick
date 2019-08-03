@@ -1,6 +1,6 @@
 <header id="masthead"
         class="site-header">
-        <app-nav></app-nav>
+  <app-nav></app-nav>
 </header>
 <div class="container mt-5 pt-5">
   <div class="col-md-12">
@@ -15,7 +15,12 @@
               TOTAL <i>(maximun 10)</i> </small>
           </div>
           <div class="float-right">
-            <a (click)="onReset()" class="button button-full text-white" title="Uncheck all boxes" style="margin-right: 5px">Reset</a> <a (click)="onSubmit()" class="button button-full text-white" title="Save Changes">Save Selections</a>
+            <a (click)="onReset()"
+               class="button button-full text-white"
+               title="Uncheck all boxes"
+               style="margin-right: 5px">Reset</a> <a (click)="onSubmit()"
+               class="button button-full text-white"
+               title="Save Changes">Save Selections</a>
           </div>
         </div>
         <div class="row ta-row">
@@ -26,13 +31,13 @@
                 <a (click)="onNewsSelect(ns)"
                    style="pointer:cursor">{{ns.name}}</a>
 
-                  <input [checked]="ns.checked"
-                          class="ta-input-element"
-                         type="checkbox"
-                         name="{{ns.value}}"
-                         id="{{ns.value}}"
-                         [disabled]="isDisabled"
-                         (click)="onNewsSelect(ns)">
+                <input [checked]="ns.checked"
+                       class="ta-input-element"
+                       type="checkbox"
+                       name="{{ns.value}}"
+                       id="{{ns.value}}"
+                       [disabled]="isDisabled"
+                       (click)="onNewsSelect($event, ns)">
               </li>
             </ul>
           </div>

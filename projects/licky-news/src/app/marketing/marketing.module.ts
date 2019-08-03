@@ -18,6 +18,7 @@ import { LickMarketingSimplePageModule } from 'lick-marketing-simple-page';
 import { LickMarketingSimpleHeaderModule } from 'lick-marketing-simple-header';
 import { LickMarketingContactUs1Module } from 'lick-marketing-contact-us1';
 import { LickAppWidgetMessageModule } from 'lick-app-widget-message';
+import { LickMarketingLightbox1Module } from 'lick-marketing-lightbox1';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
@@ -44,7 +45,8 @@ import { TermsPageComponent } from './terms-page/terms-page.component';
     LickMarketingSimpleHeaderModule,
     LickMarketingContactUs1Module,
     LickMarketingFooter2Module,
-    LickAppWidgetMessageModule
+    LickAppWidgetMessageModule,
+    LickMarketingLightbox1Module
   ]
 })
 export class MarketingModule { }

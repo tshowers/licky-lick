@@ -606,6 +606,12 @@
       ],
       "lick-app-widget-profile/*": [
         "dist/lick-app-widget-profile/*"
+      ],
+      "lick-marketing-lightbox1": [
+        "dist/lick-marketing-lightbox1"
+      ],
+      "lick-marketing-lightbox1/*": [
+        "dist/lick-marketing-lightbox1/*"
       ]
     }
   }

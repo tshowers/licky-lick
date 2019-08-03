@@ -1,0 +1,23 @@
+
+
+<section class="container-fluid section-block features color-block">
+  <div class="container">
+    <div class="row">
+
+      <h2>{{headerText}}</h2>
+      <div class="block-desc">
+        <p>{{descriptionText}}</p>
+      </div>
+
+
+
+    </div> <!-- .row -->
+    <div class="row d-flex justify-content-center">
+      <div class="col" *ngFor="let image of images; let i=index">
+        <img style="cursor: pointer" [src]="image.thumb"
+             (click)="open(i)" />
+      </div>
+    </div>
+
+  </div> <!-- .container -->
+</section>

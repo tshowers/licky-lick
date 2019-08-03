@@ -63,6 +63,7 @@
               "node_modules/animate.css/animate.min.css",
               "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
               "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
               "projects/styles/intro-style.css",
               "projects/styles/colors/color-1.css",
               "projects/styles/simple-line-icons.css",
@@ -135,6 +136,7 @@
               "node_modules/animate.css/animate.min.css",
               "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
               "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
               "projects/styles/intro-style.css",
               "projects/styles/colors/color-1.css",
               "projects/styles/simple-line-icons.css",
@@ -3295,6 +3297,7 @@
               "node_modules/animate.css/animate.min.css",
               "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
               "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
               "projects/styles/intro-style.css",
               "projects/styles/colors/color-1.css",
               "projects/styles/simple-line-icons.css",
@@ -3378,6 +3381,7 @@
               "node_modules/animate.css/animate.min.css",
               "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
               "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
               "projects/styles/intro-style.css",
               "projects/styles/colors/color-1.css",
               "projects/styles/simple-line-icons.css",
@@ -3814,6 +3818,7 @@
               "node_modules/animate.css/animate.min.css",
               "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
               "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
               "projects/styles/intro-style.css",
               "projects/styles/colors/color-1.css",
               "projects/styles/simple-line-icons.css",
@@ -3897,6 +3902,7 @@
               "node_modules/animate.css/animate.min.css",
               "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
               "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
               "projects/styles/intro-style.css",
               "projects/styles/colors/color-1.css",
               "projects/styles/simple-line-icons.css",
@@ -4247,6 +4253,41 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "projects/taliferro-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-lightbox1": {
+      "root": "projects/lick-marketing-lightbox1",
+      "sourceRoot": "projects/lick-marketing-lightbox1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-lightbox1/tsconfig.lib.json",
+            "project": "projects/lick-marketing-lightbox1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-lightbox1/src/test.ts",
+            "tsConfig": "projects/lick-marketing-lightbox1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-lightbox1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-lightbox1/tsconfig.lib.json",
+              "projects/lick-marketing-lightbox1/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

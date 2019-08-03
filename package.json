@@ -28,6 +28,7 @@
     "firebase": "^6.2.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
+    "ngx-lightbox": "^2.0.1",
     "ngx-owl-carousel": "^2.0.7",
     "ngx-wow": "^2.0.1",
     "owl.carousel": "^2.3.4",

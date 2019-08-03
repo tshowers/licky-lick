@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { LickDataModule } from 'lick-data';
 import { LickyServicesModule } from 'licky-services';
 import { SharedModule } from './shared/shared.module';
-
 import { LickAppWidgetMaintenanceModule } from 'lick-app-widget-maintenance';
 import { LickAppWidgetNotFoundModule } from 'lick-app-widget-not-found';
 import { LickMarketingFooter2Module } from 'lick-marketing-footer2';
@@ -20,6 +19,7 @@ import { LickMarketingAboutProduct4Module} from 'lick-marketing-about-product4';
 import { LickMarketingAboutProduct5Module} from 'lick-marketing-about-product5';
 import { LickMarketingHowTo1Module } from 'lick-marketing-how-to1';
 import { LickMarketingTryIt2Module } from 'lick-marketing-try-it2';
+import { LickMarketingLightbox1Module } from 'lick-marketing-lightbox1';
 import { HomeMaintenanceComponent } from './home-maintenance/home-maintenance.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -74,7 +74,8 @@ export const firebaseConfig = environment.firebaseConfig;
     LickMarketingAboutProduct5Module,
     LickMarketingAboutProduct4Module,
     LickMarketingHowTo1Module,
-    LickMarketingTryIt2Module
+    LickMarketingTryIt2Module,
+    LickMarketingLightbox1Module
   ],
   providers: [],
   bootstrap: [AppComponent]
