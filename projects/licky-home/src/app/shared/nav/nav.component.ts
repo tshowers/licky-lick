@@ -26,6 +26,10 @@ export class NavComponent implements OnInit, OnDestroy {
     {
       "link": "/factory",
       "name": "Factory",
+    },
+    {
+      "link": "/contact",
+      "name": "Contact",
     }
   ]
 
@@ -41,6 +45,10 @@ export class NavComponent implements OnInit, OnDestroy {
     {
       "link": "/factory",
       "name": "Factory",
+    },
+    {
+      "link": "/contact",
+      "name": "Contact",
     }
   ]
 

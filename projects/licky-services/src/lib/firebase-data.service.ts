@@ -144,7 +144,7 @@ export class FirebaseDataService {
   }
 
   private setNewDataValues(data: any): void {
-    data.timeStamp = new Date();
+    data.timeStamp = new Date().getTime();
     if (this._user) {
       data.user_id = (this._user.$key) ? this._user.$key : null;
       data.userName = (this._user.name) ? this._user.name : null;
@@ -155,7 +155,7 @@ export class FirebaseDataService {
 
   private setUpdateValues(data: any): void {
     // console.log("Updating for user >", JSON.stringify(this._user));
-    data.lastUpdated = new Date();
+    data.lastUpdated = new Date().getTime();
     if (this._user && this._user.name) {
       data.lastUpdatedBy = (this._user.name);
     }

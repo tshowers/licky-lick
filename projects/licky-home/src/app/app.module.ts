@@ -20,6 +20,8 @@ import { LickMarketingAboutProduct5Module} from 'lick-marketing-about-product5';
 import { LickMarketingHowTo1Module } from 'lick-marketing-how-to1';
 import { LickMarketingTryIt2Module } from 'lick-marketing-try-it2';
 import { LickMarketingLightbox1Module } from 'lick-marketing-lightbox1';
+import { LickMarketingContactUs1Module } from 'lick-marketing-contact-us1';
+import { LickAppWidgetMessageModule } from 'lick-app-widget-message';
 import { HomeMaintenanceComponent } from './home-maintenance/home-maintenance.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -30,7 +32,8 @@ import { TermsPageComponent } from './terms-page/terms-page.component';
 import { environment } from '../environments/environment';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { FactoryPageComponent } from './factory-page/factory-page.component';
-
+import { ContactPageComponent } from './contact-page/contact-page.component';
+import { MessagePageComponent } from './message-page/message-page.component';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -45,6 +48,8 @@ export const firebaseConfig = environment.firebaseConfig;
     TermsPageComponent,
     ProductPageComponent,
     FactoryPageComponent,
+    ContactPageComponent,
+    MessagePageComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +58,8 @@ export const firebaseConfig = environment.firebaseConfig;
     RouterModule.forRoot([
       { path: '', component: HomePageComponent, data: { title: 'Home Page - 16 AHEAD' } },
       { path: 'products', component: ProductPageComponent, data: { title: 'Products - 16 AHEAD' } },
+      { path: 'contact', component: ContactPageComponent, data: { title: 'Contact Us - 16 AHEAD' } },
+      { path: 'message', component: MessagePageComponent, data: { title: 'Thank You - 16 AHEAD' } },
       { path: 'factory', component: FactoryPageComponent, data: { title: 'Factory - 16 AHEAD' } },
       { path: 'maintenance', component: HomeMaintenanceComponent, data: { title: 'Site Maintenance - 16 AHEAD' } },
       { path: 'privacy', component: PrivacyPageComponent, data: { title: 'Privacy Policy - 16 AHEAD' } },
@@ -75,7 +82,9 @@ export const firebaseConfig = environment.firebaseConfig;
     LickMarketingAboutProduct4Module,
     LickMarketingHowTo1Module,
     LickMarketingTryIt2Module,
-    LickMarketingLightbox1Module
+    LickMarketingLightbox1Module,
+    LickMarketingContactUs1Module,
+    LickAppWidgetMessageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
