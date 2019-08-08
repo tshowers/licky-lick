@@ -27,7 +27,7 @@ export class PrivacyPageComponent implements OnInit {
   constructor(private _remoteAssetService: RemoteAssetService) { }
 
   ngOnInit() {
-    this._remoteAssetService.getFileContents('./assets/terms.txt', this._remoteAssetService.TEXT)
+    this._remoteAssetService.getFileContents('./assets/privacy.txt', this._remoteAssetService.TEXT)
     .subscribe({
       next: data => {this.bodyText = data; },
       error: err => console.error(err)

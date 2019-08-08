@@ -1685,7 +1685,8 @@
             "tsConfig": "projects/licky-crm/tsconfig.app.json",
             "assets": [
               "projects/licky-crm/src/favicon.ico",
-              "projects/licky-crm/src/assets"
+              "projects/licky-crm/src/assets",
+              "projects/licky-crm/src/manifest.json"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -1731,7 +1732,9 @@
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "projects/licky-crm/ngsw-config.json"
             },
             "dev": {
               "fileReplacements": [
@@ -1791,7 +1794,8 @@
             ],
             "assets": [
               "projects/licky-crm/src/favicon.ico",
-              "projects/licky-crm/src/assets"
+              "projects/licky-crm/src/assets",
+              "projects/licky-crm/src/manifest.json"
             ]
           }
         },
@@ -4287,6 +4291,41 @@
             "tsConfig": [
               "projects/lick-marketing-lightbox1/tsconfig.lib.json",
               "projects/lick-marketing-lightbox1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-marketing-security": {
+      "root": "projects/lick-marketing-security",
+      "sourceRoot": "projects/lick-marketing-security/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-marketing-security/tsconfig.lib.json",
+            "project": "projects/lick-marketing-security/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-marketing-security/src/test.ts",
+            "tsConfig": "projects/lick-marketing-security/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-marketing-security/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-marketing-security/tsconfig.lib.json",
+              "projects/lick-marketing-security/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

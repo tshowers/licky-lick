@@ -1,7 +1,16 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light"
      style="background-color: rgba(255,255,255,.9)">
-  <a class="navbar-brand d-none d-sm-block"
-     routerLink="/"><img src="{{logo}}"
+  <a *ngIf="!isExternalLink"
+     class="navbar-brand d-none d-sm-block"
+     routerLink="{{companyLink}}"><img src="{{logo}}"
+         width="64"
+         height="64"
+         class="d-inline-block align-top"
+         alt="{{logoName}}"></a>
+  <a *ngIf="isExternalLink"
+     class="navbar-brand d-none d-sm-block"
+     href="{{companyLink}}"
+     target="_blank"><img src="{{logo}}"
          width="64"
          height="64"
          class="d-inline-block align-top"

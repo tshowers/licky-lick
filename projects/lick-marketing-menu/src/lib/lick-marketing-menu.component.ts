@@ -16,6 +16,8 @@ export class LickMarketingMenuComponent implements OnInit {
   @Input() profileLink;
   @Input() profileImage;
   @Input() displayName;
+  @Input() companyLink = "/";
+  @Input() isExternalLink ; boolean = false;
 
   @Input() menuItems: any[] = [
     {

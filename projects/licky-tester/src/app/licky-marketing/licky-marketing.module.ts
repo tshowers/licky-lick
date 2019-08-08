@@ -67,6 +67,8 @@ import { LickMarketingVideo2Module } from 'lick-marketing-video2';
 import { LickMarketingCarouselModule } from 'lick-marketing-carousel';
 import { LickMarketingSimpleHeaderModule } from 'lick-marketing-simple-header';
 import { LickMarketingSimplePageModule } from 'lick-marketing-simple-page';
+
+import { LickMarketingLightbox1Module} from 'lick-marketing-lightbox1';
 import { MiscellaneousWidgetsComponent } from './miscellaneous-widgets/miscellaneous-widgets.component';
 
 
@@ -136,7 +138,9 @@ import { MiscellaneousWidgetsComponent } from './miscellaneous-widgets/miscellan
 
     LickMarketingCarouselModule,
     LickMarketingSimpleHeaderModule,
-    LickMarketingSimplePageModule
+    LickMarketingSimplePageModule,
+
+    LickMarketingLightbox1Module
   ]
 })
 export class LickyMarketingModule { }

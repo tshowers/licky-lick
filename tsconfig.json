@@ -612,6 +612,12 @@
       ],
       "lick-marketing-lightbox1/*": [
         "dist/lick-marketing-lightbox1/*"
+      ],
+      "lick-marketing-security": [
+        "dist/lick-marketing-security"
+      ],
+      "lick-marketing-security/*": [
+        "dist/lick-marketing-security/*"
       ]
     }
   }

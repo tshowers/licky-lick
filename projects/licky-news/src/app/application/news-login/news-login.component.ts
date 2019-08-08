@@ -55,13 +55,6 @@ export class NewsLoginComponent implements OnInit, OnDestroy {
       console.log(diff);
     }
     return true;
-    // if (firebaseUser.verified) {
-    //   return true;
-    // } else {
-    //
-    //
-    //   return false;
-    // }
   }
 
 

@@ -1,6 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MarketingRoutingModule } from './marketing-routing.module';
@@ -14,6 +15,7 @@ import { LickMarketingHowTo1Module } from 'lick-marketing-how-to1';
 import { LickMarketingTryIt2Module } from 'lick-marketing-try-it2';
 import { LickMarketingMenuModule } from 'lick-marketing-menu';
 import { LickMarketingFooter1Module} from 'lick-marketing-footer1';
+import { LickMarketingFooter2Module } from 'lick-marketing-footer2';
 import { LickMarketingSimplePageModule } from 'lick-marketing-simple-page';
 import { LickMarketingSimpleHeaderModule } from 'lick-marketing-simple-header';
 import { LickMarketingContactUs1Module} from 'lick-marketing-contact-us1';
@@ -23,13 +25,15 @@ import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 
 import { RemoteAssetService } from './services/remote-asset.service';
+import { TermsPageComponent } from './terms-page/terms-page.component';
 
 @NgModule({
-  declarations: [HomePageComponent, PrivacyPageComponent, ContactPageComponent],
+  declarations: [HomePageComponent, PrivacyPageComponent, ContactPageComponent, TermsPageComponent],
   imports: [
     CommonModule,
     RouterModule,
     HttpClientModule,
+    SharedModule,
     MarketingRoutingModule,
     LickMarketingHeader3Module,
     LickMarketingFeatures2Module,
@@ -42,7 +46,8 @@ import { RemoteAssetService } from './services/remote-asset.service';
     LickMarketingFooter1Module,
     LickMarketingSimplePageModule,
     LickMarketingSimpleHeaderModule,
-    LickMarketingContactUs1Module
+    LickMarketingContactUs1Module,
+    LickMarketingFooter2Module
   ],
   providers: [RemoteAssetService]
 })
