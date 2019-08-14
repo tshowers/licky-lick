@@ -109,8 +109,10 @@ export class FirebaseDataService {
   getData(path: string, id: string): Observable<any> {
     console.log("Getting Data for " + path + '/' + id);
     return Observable.create((observer) => {
+      console.log("firebase.database=" + this._db)
       this._db.ref(path + '/' + id).once('value').then(
         (snapshot) => {
+          // console.log("Snapshot is : " + JSON.stringify(snapshot));
           let value = snapshot.val();
           console.log("Value is : " + JSON.stringify(value));
           observer.next(value)
@@ -125,11 +127,12 @@ export class FirebaseDataService {
   }
 
   getDataCollection(path): Observable<any> {
-    console.log("Getting Data Collection for " + path);
+    console.log("Getting Data Collection for " + path, "DB is " , this._db);
     return Observable.create((observer) => {
+
       this._db.ref(path).on('value', (snapshot) => {
-        // console.log(snapshot.val());
-        observer.next(snapshot.val());
+        // console.log("Snapshot is : " + JSON.stringify(snapshot));
+        observer.next((snapshot) ? snapshot.val() : null);
         observer.complete();
       },
         (error) => {

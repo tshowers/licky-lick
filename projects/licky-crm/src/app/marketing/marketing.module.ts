@@ -1,8 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
 
 import { MarketingRoutingModule } from './marketing-routing.module';
 
@@ -31,8 +29,6 @@ import { TermsPageComponent } from './terms-page/terms-page.component';
   declarations: [HomePageComponent, PrivacyPageComponent, ContactPageComponent, TermsPageComponent],
   imports: [
     CommonModule,
-    RouterModule,
-    HttpClientModule,
     SharedModule,
     MarketingRoutingModule,
     LickMarketingHeader3Module,

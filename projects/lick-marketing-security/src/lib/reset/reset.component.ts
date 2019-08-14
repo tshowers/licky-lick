@@ -21,15 +21,17 @@ export class ResetComponent implements OnInit, OnDestroy {
   @Input() headingText = "16 AHEAD";
   @Input() subText = "Just a few steps away from catching up on all the news.";
   @Input() loginPageLink = "/application/login";
+  @Input() router: Router;
+  @Input() loginService: LickyLoginService;
 
-  constructor(public router: Router, private _loginService: LickyLoginService) { }
+  constructor() { }
 
   ngOnInit() {
-    this._process = this._loginService.processMessage.subscribe((message) => {
+    this._process = this.loginService.processMessage.subscribe((message) => {
       this.message = message;
     })
 
-    this._error = this._loginService.errorMessage.subscribe((error) => {
+    this._error = this.loginService.errorMessage.subscribe((error) => {
       this.message = error;
     })
   }
@@ -42,7 +44,7 @@ export class ResetComponent implements OnInit, OnDestroy {
   }
 
   public onPageEvent(value): void {
-    this._loginService.sendPasswordReset(value, this.router, this.loginPageLink);
+    this.loginService.sendPasswordReset(value, this.router, this.loginPageLink);
   }
 
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '../../shared/shared.module';
 import { ContactRoutingModule } from './contact-routing.module';
 
 import { ContactListComponent } from './contact-list/contact-list.component';
@@ -10,7 +11,9 @@ import { ContactViewComponent } from './contact-view/contact-view.component';
 @NgModule({
   declarations: [ContactListComponent, ContactEditComponent, ContactDashboardComponent, ContactViewComponent],
   imports: [
-    CommonModule, ContactRoutingModule
+    CommonModule,
+    ContactRoutingModule,
+    SharedModule
   ]
 })
 export class ContactModule { }

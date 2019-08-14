@@ -33,9 +33,11 @@ export class LickyLoginService {
   }
 
   private initFirebase() {
-    firebase.initializeApp(this.config);
-    this.userStateChange();
+    if (!firebase.apps.length) {
+      firebase.initializeApp(this.config);
+    }
     this._fds.init();
+    this.userStateChange();
   }
 
   public getUserByID(id: string): User {
@@ -97,14 +99,18 @@ export class LickyLoginService {
   }
 
   public signOut() {
+
     this.setOffline();
 
     firebase.auth().signOut().then(() => {
+      console.log("Logging out user");
       this.isLoggedIn = false;
       this.firebaseUser.next(null);
+      this._firebaseUser = null;
       this._user = null;
       this._fds.setUser(null);
       this.userChanged.next(null);
+      console.log("Finished logging out user");
     }, function(error) {
       console.error(error);
       this.error.next(error.code);

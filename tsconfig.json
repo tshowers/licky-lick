@@ -618,6 +618,30 @@
       ],
       "lick-marketing-security/*": [
         "dist/lick-marketing-security/*"
+      ],
+      "lick-app-widget-no-data": [
+        "dist/lick-app-widget-no-data"
+      ],
+      "lick-app-widget-no-data/*": [
+        "dist/lick-app-widget-no-data/*"
+      ],
+      "lick-app-widget-notification-alert": [
+        "dist/lick-app-widget-notification-alert"
+      ],
+      "lick-app-widget-notification-alert/*": [
+        "dist/lick-app-widget-notification-alert/*"
+      ],
+      "lick-app-widget-notification-message": [
+        "dist/lick-app-widget-notification-message"
+      ],
+      "lick-app-widget-notification-message/*": [
+        "dist/lick-app-widget-notification-message/*"
+      ],
+      "lick-app-widget-notification-task": [
+        "dist/lick-app-widget-notification-task"
+      ],
+      "lick-app-widget-notification-task/*": [
+        "dist/lick-app-widget-notification-task/*"
       ]
     }
   }

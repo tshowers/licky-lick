@@ -14,8 +14,10 @@ export class SignupComponent implements OnInit {
   @Input() headingText = "headerText";
   @Input() subText = "Just one step away from catching up on all the news.";
   @Input() loginLink = "/application/login";
+  @Input() router: Router;
+  @Input() loginService: LickyLoginService;
 
-  constructor(public router: Router, private _loginService: LickyLoginService) { }
+  constructor() { }
 
   ngOnInit() {
   }
@@ -23,7 +25,7 @@ export class SignupComponent implements OnInit {
   public onPageEvent(value) : void {
     if(value.type == 'submit') {
       console.log("isSubmit=" + JSON.stringify(value))
-      this._loginService.signUpUser(value.emailAddress, value.password, value.firstName, value.lastName, null, this.router, "/application/login")
+      this.loginService.signUpUser(value.emailAddress, value.password, value.firstName, value.lastName, null, this.router, "/application/login")
     }
   }
 

@@ -1,0 +1,49 @@
+<li class="nav-item" title="Click here to view new notifications of messages just entered. The list shows the last 5 messages entered. Once revealed, to view all new messages click the SEE ALL MESSAGES link. "> <a class="nav-link" href="#" data-toggle="dropdown" (click)="checkingMessages()">
+        <i class="fa fa-comments" aria-hidden="true"></i>
+        <span *ngIf="!messagesChecked" class="notification hertbit"></span>
+    </a>
+  <div class="dropdown-menu dropdown-menu-right message-list animated flipInY nicescroll-box" style="max-width: 25rem">
+    <div class="dropdown-header"> <strong>Messages</strong> <span class="badge badge-pill badge-theme pull-right"> latest ({{(messages$ | async)?.length}})</span> </div>
+    <div class="wrap">
+      <div class="dropdown-item" *ngFor="let m of messages$ | async; let i = index">
+        <div *ngIf="m.dataModel_id" class="message-box">
+          <div class="u-img"> <img *ngIf="m.photoURL" src="{{m.photoURL}}" alt="{{m.creatorName}}" /> <i *ngIf="!m.photoURL" class="fa fa-user-circle fa-3x"></i> <span class="notification" [ngClass]="m?.status"></span> </div>
+          <div class="u-text">
+            <div class="u-name"> <strong>{{m?.creatorName}}</strong> </div>
+            <p class="text-muted">
+              <i *ngIf="!m?.iconClass" class="fa fa-info-circle" aria-hidden="true"></i>
+              <i *ngIf="m?.iconClass" ngClass="[m.iconClass]" aria-hidden="true"></i>
+              <a routerLink="{{m?.linkUrl}}">{{m?.name}}</a></p> <small><i class="fa fa-clock-o fa-fw"></i> {{m?.lastUpdated | date:'short'}}</small> </div>
+        </div>
+        <div *ngIf="!m.article && !m.dataModel_id" class="message-box">
+          <div class="u-img"> <img *ngIf="m.photoURL" src="{{m.photoURL}}" alt="{{m.creatorName}}" /> <i *ngIf="!m.photoURL" class="fa fa-user-circle fa-3x"></i> <span class="notification" [ngClass]="m?.status"></span> </div>
+          <div class="u-text">
+            <div class="u-name"> <strong>{{m?.creatorName}}</strong> </div>
+            <p class="text-muted">{{m?.text}}</p> <small><i class="fa fa-clock-o fa-fw"></i> {{m?.lastUpdated | date:'short'}}</small> </div>
+        </div>
+        <div *ngIf="m.article" class="message-box">
+          <div class="u-img"> <img *ngIf="m.photoURL" src="{{m.photoURL}}" alt="{{m.creatorName}}" /> <i *ngIf="!m.photoURL" class="fa fa-user-circle fa-3x"></i> <span class="notification" [ngClass]="m?.status"></span> </div>
+          <div class="u-text">
+            <div class="u-name"> <strong>{{m?.creatorName}}</strong> </div>
+
+            <p class="text-muted"><i class="fa fa-newspaper-o danger" aria-hidden="true"></i><a href="{{m?.article.url}}" target="_blank">{{m?.article.title}}</a> </p>
+             <small><i class="fa fa-clock-o fa-fw"></i> {{m?.lastUpdated | date:'short'}}</small>
+           </div>
+        </div>
+      </div>
+      <div *ngIf="(messages$ | async)?.length == 0">
+        <p align="center" class="alert alert-warning" role="alert"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> No messages</p>
+      </div>
+    </div>
+    <div class="dropdown-footer "> <a routerLink="/app/messages">
+                <strong>See all messages</strong>
+            </a> <br> <br>
+      <hr>
+      <form #dataForm="ngForm" class="form-group">
+        <div class="input-group text-center" style="max-width: 90%"> <input [(ngModel)]="message.text" id="phrase" name="phrase" type="text" class="form-control" placeholder="Say something" aria-label="Send" required autofocus> <button class="btn btn-theme" type="submit" (click)="onSubmit()" [disabled]="!dataForm.form.valid">
+                                <i class="fa fa-paper-plane"></i>
+                            </button> </div>
+      </form>
+    </div>
+  </div>
+</li>

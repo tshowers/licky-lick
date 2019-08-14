@@ -30,7 +30,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   @Input() forgotPasswordLink = "/application/forgot-password";
 
-  constructor(public router: Router, private _loginService: LickyLoginService, private _dateUtilService: DateUtilService) { }
+  @Input() loginService: LickyLoginService;
+
+  @Input() router: Router;
+
+  constructor(private _dateUtilService: DateUtilService) { }
 
   ngOnInit() {
     this.subscribeToLoginErrors();
@@ -39,7 +43,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private determineUser(): void {
-    this._userSubscription = this._loginService.firebaseUser.subscribe((firebaseUser) => {
+    this._userSubscription = this.loginService.firebaseUser.subscribe((firebaseUser) => {
       let status: boolean = (firebaseUser && firebaseUser.uid) ? true : false;
       if (status) {
         console.log("LIBRARY: " , firebaseUser, status);
@@ -58,7 +62,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private subscribeToLoginErrors(): void {
-    this._loginError = this._loginService.errorMessage.subscribe((error) => {
+    this._loginError = this.loginService.errorMessage.subscribe((error) => {
       console.log(error);
       this.errorMessage = "\n\n" + error;
     })
@@ -100,19 +104,19 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private onUserEmail(): void {
     console.log("Siging in with " + this.emailAddress + " " + this.password)
-    this._loginService.signInWithUserNameAndPassword(this.emailAddress, this.password, this.router, this.successRoute);
+    this.loginService.signInWithUserNameAndPassword(this.emailAddress, this.password, this.router, this.successRoute);
   }
 
   private onTwitter(): void {
-    this._loginService.signInWithTwitter(this.router, this.successRoute);
+    this.loginService.signInWithTwitter(this.router, this.successRoute);
   }
 
   private onFacebook(): void {
-    this._loginService.signInWithFacebook(this.router, this.successRoute);
+    this.loginService.signInWithFacebook(this.router, this.successRoute);
   }
 
   private onGoogle(): void {
-    this._loginService.signInWithGoogle(this.router, this.successRoute);
+    this.loginService.signInWithGoogle(this.router, this.successRoute);
   }
 
 

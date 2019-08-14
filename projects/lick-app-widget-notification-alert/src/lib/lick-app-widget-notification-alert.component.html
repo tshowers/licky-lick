@@ -1,0 +1,22 @@
+<li class="nav-item" title="Selecting here allows you to view any alert notification that have occurred. Once revealed you can also view all alerts by VIEW ALL ALERTS link."> <a class="nav-link" href="#" data-toggle="dropdown" (click)="checkingAlerts()">
+      <i class="fa fa-bell" aria-hidden="true"></i>
+        <span *ngIf="!alertsChecked" class="notification hertbit"></span>
+    </a>
+  <div class="dropdown-menu dropdown-menu-right task-list animated flipInY nicescroll-box">
+    <div class="dropdown-header">
+      <strong>Alerts</strong>
+      <span class="badge badge-pill badge-theme pull-right" *ngIf="(alerts$ | async)?.length"> new ({{(alerts$ | async)?.length}})</span> </div>
+    <div class="wrap"> <a class="dropdown-item" *ngFor="let a of alerts$ | async">
+              <div class="alert" [ngClass]="'alert-' + a?.type">{{a?.description}}
+
+              </div>
+          </a>
+      <div *ngIf="(alerts$ | async)?.length == 0">
+        <p align="center" class="alert alert-warning" role="alert"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> No Alerts</p>
+      </div>
+    </div>
+    <div class="dropdown-footer "> <a routerLink="/app/alerts">
+                <strong>view all alerts</strong>
+            </a> </div>
+  </div>
+</li>

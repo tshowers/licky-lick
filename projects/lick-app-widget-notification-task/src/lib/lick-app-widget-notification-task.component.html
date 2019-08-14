@@ -1,0 +1,22 @@
+<li class="nav-item" title="Click here to view all tasks assigned to you. Once revealed, you can view all your tasks by clicking the VIEW ALL TASKS link."> <a class="nav-link" href="#" data-toggle="dropdown" (click)="checkingTasks()">
+      <i class="fa fa-tasks" aria-hidden="true"></i>
+        <span *ngIf="!tasksChecked" class="notification hertbit"></span>
+    </a>
+  <div class="dropdown-menu dropdown-menu-right task-list animated flipInY nicescroll-box">
+    <div class="dropdown-header"> <strong>Task List</strong> <span class="badge badge-pill badge-theme pull-right" *ngIf="(tasks$ | async)?.length"> new ({{(tasks$ | async)?.length}})</span> </div>
+    <div class="wrap"> <a routerLink="/app/tasks/{{t.id}}" class="dropdown-item" *ngFor="let t of tasks$ | async">
+              <strong>{{t?.name}}</strong>
+              <small class="pull-right" >
+                <span *ngIf="t.dueDate" [ngClass]="{'text-danger' : t.isPastDate}">Due: {{t.dueDate | date}}</span>
+                <span *ngIf="!t.dueDate">{{t?.status}} </span>
+              </small>
+          </a>
+      <div *ngIf="(tasks$ | async)?.length == 0">
+        <p align="center" class="alert alert-warning" role="alert"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> No tasks</p>
+      </div>
+    </div>
+    <div class="dropdown-footer "> <a routerLink="/app/tasks">
+                <strong>view all tasks</strong>
+            </a> </div>
+  </div>
+</li>

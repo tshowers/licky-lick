@@ -4333,6 +4333,146 @@
           }
         }
       }
+    },
+    "lick-app-widget-no-data": {
+      "root": "projects/lick-app-widget-no-data",
+      "sourceRoot": "projects/lick-app-widget-no-data/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-no-data/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-no-data/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-no-data/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-no-data/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-no-data/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-no-data/tsconfig.lib.json",
+              "projects/lick-app-widget-no-data/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-notification-alert": {
+      "root": "projects/lick-app-widget-notification-alert",
+      "sourceRoot": "projects/lick-app-widget-notification-alert/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-notification-alert/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-notification-alert/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-notification-alert/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-notification-alert/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-notification-alert/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-notification-alert/tsconfig.lib.json",
+              "projects/lick-app-widget-notification-alert/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-notification-message": {
+      "root": "projects/lick-app-widget-notification-message",
+      "sourceRoot": "projects/lick-app-widget-notification-message/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-notification-message/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-notification-message/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-notification-message/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-notification-message/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-notification-message/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-notification-message/tsconfig.lib.json",
+              "projects/lick-app-widget-notification-message/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-notification-task": {
+      "root": "projects/lick-app-widget-notification-task",
+      "sourceRoot": "projects/lick-app-widget-notification-task/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-notification-task/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-notification-task/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-notification-task/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-notification-task/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-notification-task/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-notification-task/tsconfig.lib.json",
+              "projects/lick-app-widget-notification-task/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "lick-data"

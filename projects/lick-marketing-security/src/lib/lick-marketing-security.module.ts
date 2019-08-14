@@ -1,8 +1,7 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LickDataModule } from 'lick-data';
-import { LickyServicesModule, FirebaseConfig } from 'licky-services';
 import { LickAppWidgetLoginModule } from 'lick-app-widget-login';
 import { LickAppWidgetLogoutModule } from 'lick-app-widget-logout';
 import { LickAppWidgetSignupModule } from 'lick-app-widget-signup';
@@ -25,15 +24,4 @@ import { ResetComponent } from './reset/reset.component';
   ],
   exports: [LoginComponent, LogoutComponent, LogoutComponent, SignupComponent, ResetComponent]
 })
-export class LickMarketingSecurityModule {
-
-  static forRoot(config: FirebaseConfig): ModuleWithProviders {
-    imports: [
-      LickyServicesModule.forRoot(config)
-    ]
-    return {
-      ngModule: LickMarketingSecurityModule
-    }
-
-  }
-}
+export class LickMarketingSecurityModule {}

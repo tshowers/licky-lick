@@ -14,10 +14,12 @@ export class LogoutComponent implements OnInit {
 
   @Input() homePageLink = "/";
 
-  constructor(private _loginService: LickyLoginService) { }
+  @Input() loginService : LickyLoginService;
+
+  constructor() { }
 
   ngOnInit() {
-    this._loginService.signOut();
+    this.loginService.signOut();
   }
 
 }
