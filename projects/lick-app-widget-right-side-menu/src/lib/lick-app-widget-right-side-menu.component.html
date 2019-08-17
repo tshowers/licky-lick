@@ -1,0 +1,26 @@
+<aside class="aside-menu">
+  <div class="aside-header bg-theme text-uppercase">{{panelHeaderText}}</div>
+  <div class="aside-body">
+    <section class="container-fluid section-block how-to-use-2 color-block">
+    <h2>{{helpHeaderText}}</h2>
+    <div class="block-desc">
+      <p>{{descriptionText}}</p>
+    </div>
+    <div class="how-to-block-2" *ngIf="header1">
+      <span class="number">1</span>
+      <h3>{{header1}}</h3>
+      <p>{{description1}}</p>
+    </div> <!-- .how-to-block -->
+    <div class="how-to-block-2" *ngIf="header2">
+      <span class="number">2</span>
+      <h3>{{header2}}</h3>
+      <p>{{description2}}</p>
+    </div> <!-- .how-to-block -->
+    <div class="how-to-block-2" *ngIf="header3">
+      <span class="number">3</span>
+      <h3>{{header3}}</h3>
+      <p>{{description3}}</p>
+    </div> <!-- .how-to-block -->
+    </section>
+  </div>
+</aside>

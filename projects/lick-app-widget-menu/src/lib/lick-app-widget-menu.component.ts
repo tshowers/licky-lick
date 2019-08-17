@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Contact } from 'lick-data';
+import { LickyLoginService, FirebaseDataService } from 'licky-services';
 import { LickAppWidgetMenuService } from './lick-app-widget-menu.service';
 
 @Component({
@@ -20,8 +21,11 @@ export class LickAppWidgetMenuComponent implements OnInit {
   @Input() version: string = "0.3";
   @Input() loggedIn: boolean = false;
   @Input() userName;
+  @Input() loginService: LickyLoginService;
+  @Input() db: FirebaseDataService;
+  searchArgument = '';
 
-  leftSidebar: boolean = false;
+  leftSidebar: boolean = true;
   rightSidebar: boolean = false;
 
   constructor(private _renderer: Renderer2, private _lickAppWidgetMenuService: LickAppWidgetMenuService) { }

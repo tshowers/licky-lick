@@ -43,6 +43,8 @@ import { LickAppWidgetTableDataModule } from 'lick-app-widget-table-data';
 import { LickAppWidgetTotalsModule } from 'lick-app-widget-totals';
 import { LickAppWidgetSpinnerModule} from 'lick-app-widget-spinner';
 import { LickAppWidgetNotFoundModule} from 'lick-app-widget-not-found';
+import { LickAppWidgetChatPopupModule} from 'lick-app-widget-chat-popup';
+import { LickAppWidgetBreadcrumbModule } from 'lick-app-widget-breadcrumb';
 
 import { LickAppWidgetSignupModule} from 'lick-app-widget-signup';
 import { LickAppWidgetMaintenanceModule} from 'lick-app-widget-maintenance';
@@ -104,7 +106,9 @@ import { PageWidgetsComponent } from './page-widgets/page-widgets.component';
     LickAppWidgetTableDataModule,
     LickAppWidgetTotalsModule,
     LickAppWidgetSpinnerModule,
-    LickAppWidgetNotFoundModule
+    LickAppWidgetNotFoundModule,
+    LickAppWidgetChatPopupModule,
+    LickAppWidgetBreadcrumbModule
   ]
 })
 export class LickyAppModule { }

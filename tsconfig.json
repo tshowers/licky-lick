@@ -642,6 +642,36 @@
       ],
       "lick-app-widget-notification-task/*": [
         "dist/lick-app-widget-notification-task/*"
+      ],
+      "lick-app-widget-left-side-menu": [
+        "dist/lick-app-widget-left-side-menu"
+      ],
+      "lick-app-widget-left-side-menu/*": [
+        "dist/lick-app-widget-left-side-menu/*"
+      ],
+      "lick-app-widget-right-side-menu": [
+        "dist/lick-app-widget-right-side-menu"
+      ],
+      "lick-app-widget-right-side-menu/*": [
+        "dist/lick-app-widget-right-side-menu/*"
+      ],
+      "lick-app-panel": [
+        "dist/lick-app-panel"
+      ],
+      "lick-app-panel/*": [
+        "dist/lick-app-panel/*"
+      ],
+      "lick-app-widget-chat-popup": [
+        "dist/lick-app-widget-chat-popup"
+      ],
+      "lick-app-widget-chat-popup/*": [
+        "dist/lick-app-widget-chat-popup/*"
+      ],
+      "lick-app-widget-breadcrumb": [
+        "dist/lick-app-widget-breadcrumb"
+      ],
+      "lick-app-widget-breadcrumb/*": [
+        "dist/lick-app-widget-breadcrumb/*"
       ]
     }
   }

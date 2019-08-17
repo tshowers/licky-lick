@@ -14,4 +14,5 @@ export * from './lib/sort-helper.service';
 export * from './lib/type-find.service';
 export * from './lib/user-location.service';
 export * from './lib/youtube.service';
+export * from './lib/dropdown.service';
 export * from './lib/firebase-config.model';

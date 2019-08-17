@@ -15,6 +15,7 @@ export class LickAppWidgetNotificationTaskComponent implements OnInit {
   tasks$: Observable<Task[]>;
   @Input() db: FirebaseDataService;
   @Input() loginService: LickyLoginService;
+  @Input() router: Router;
   private _user: User;
   tasksChecked: boolean = false;
   userSubscription: Subscription;
@@ -25,7 +26,7 @@ export class LickAppWidgetNotificationTaskComponent implements OnInit {
     this._user = this.loginService.getUser();
     this.tasks$ = this.db.getDataCollection(TASKS)
       .pipe(map((tasks: Task[]) => {
-        if (tasks.length) {
+        if (tasks && tasks.length) {
           this._sortHelperService.sortByLastUpdated(tasks);
           tasks.forEach((task) => {
             let l = this.isPastDate(task.dueDate);

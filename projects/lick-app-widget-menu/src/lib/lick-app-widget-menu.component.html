@@ -1,41 +1,58 @@
 <header class="app-header navbar">
-  <!-- <div class="hamburger hamburger--arrowalt-r navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto"
+  <div class="hamburger hamburger--arrowalt-r navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto"
        (click)="toggleSidebarMinimized()">
     <div class="hamburger-box">
       <div class="hamburger-inner"></div>
     </div>
-  </div>  -->
-  <a class="navbar-brand ta-darkcolor"
+  </div>
+  <!-- end hamburger -->
+  <a class="navbar-brand"
      routerLink="/"
-     title="Click here to always return to the home page."><img
-         src="/assets/touch-icon-ipad.png"
-         width="28"
-         height="28"
-         class="d-inline-block"> AHEAD<small class="ta-small"></small></a>
+     title="Click here to always return to the home page.">
+    <strong><img src="/assets/touch-icon-ipad.png"
+           width="28"
+           height="28"
+           class="d-inline-block"> AHEAD</strong>
+  </a>
   <div class="hamburger hamburger--arrowalt-r navbar-toggler sidebar-toggler d-md-down-none mr-auto"
        (click)="toggleSidebar()">
     <div class="hamburger-box"
-         title="Click here to hide or reveal the sidebar navigation.">
+         title="Click here to hide or reveal the sidebar.">
       <div class="hamburger-inner"></div>
     </div>
   </div>
+  <!-- end hamburger -->
+  <div class="navbar-search">
+    <div class="input-group"> <span class="input-group-addon bg-theme">
+        <i class="fa fa-filter"></i>
+      </span>
+
+      <input type="text"
+             [(ngModel)]="searchArgument"
+             class="form-control form-control-lg ta-input-element"
+             placeholder="Find a contact . ..">
+    </div>
+  </div>
+  <!-- end navbar-search -->
   <ul class="nav navbar-nav ">
-    <!-- <app-alert-notification [authService]="authService" [db]="db"></app-alert-notification>
-    <app-message-notification [authService]="authService"></app-message-notification>
-    <app-task-notication [authService]="authService" [db]="db"></app-task-notication> -->
-    <li class="nav-item dropdown"
-        title="Click here to get access to your bookmarks, favorites, settings and profile information. You can also logout from here.">
+    <licky-lick-app-widget-notification-alert [loginService]="loginService"
+                                              [db]="db"
+                                              [router]="router"></licky-lick-app-widget-notification-alert>
+    <licky-lick-app-widget-notification-message [loginService]="loginService"
+                                                [db]="db"
+                                                [router]="router"></licky-lick-app-widget-notification-message>
+    <licky-lick-app-widget-notification-task [loginService]="loginService"
+                                             [db]="db"
+                                             [router]="router"></licky-lick-app-widget-notification-task>
+    <li class="nav-item dropdown">
       <a class="btn btn-round btn-theme btn-sm"
          data-toggle="dropdown"
          href="#"
          role="button"
          aria-haspopup="true"
          aria-expanded="false">
-        <span class="d-none d-md-block">{{displayName}}
+        <span class="">{{displayName}}
           <i class="fa fa-arrow-down"></i>
-        </span>
-        <span class="d-md-none">
-          {{displayName}}
         </span>
       </a>
       <div class="dropdown-menu dropdown-menu-right user-menu animated flipInY ">
@@ -46,7 +63,6 @@
                    alt="{{displayName}}" /> </div>
             <div class="u-text">
               <h5 class="text-capitalize">{{displayName}}</h5>
-              <!-- <p class="text-muted" *ngIf="COMPANY_NAME">{{COMPANY_NAME}}</p> -->
               <p class="text-muted"
                  *ngIf="role">Role: {{role}}</p>
               <p class="text-muted">{{emailAddress}} <br> <small>Use this as
@@ -57,33 +73,28 @@
                   Profile</span> </a>
             </div>
           </div>
+          <!-- end dw-user-box -->
           <a class="dropdown-item"
-             routerLink="/app/start">
-            <i class="fa fa-fast-backward"></i> Start</a> <a class="dropdown-item"
-             routerLink="/app/settings/bookmarks">
-            <i class="fa fa-bookmark"></i> Bookmarks</a> <a class="dropdown-item"
-             routerLink="/app/settings/favorites">
-            <i class="fa fa-heart"></i> Favorites</a> <a class="dropdown-item"
-             routerLink="/app/settings/settings">
+             routerLink="/application/profile">
+            <i class="fa fa-user"></i> Profile</a>
+          <a class="dropdown-item"
+             routerLink="/application/settings">
             <i class="fa fa-wrench"></i> Settings</a>
-          <div class="divider"></div> <a class="dropdown-item"
-             style="cursor:pointer"
+          <div class="divider"></div>
+          <a class="dropdown-item"
              (click)="logout()">
-            <i class="fa fa-sign-out"></i> Logout</a>
+            <i class="fa fa-lock"></i> Logout</a>
         </div>
+        <!-- end wrap -->
       </div>
+      <!-- end dropdown-menu -->
     </li>
+    <!-- end nav-item -->
   </ul>
-  <div class="hamburger hamburger--arrowalt-r navbar-toggler aside-menu-toggler"
+  <div class="hamburger hamburger--arrowalt-r navbar-toggler aside-menu-toggler "
        (click)="toggleRightSidebar()">
-    <div class="ta-hamburger-box"
-         title="Click here to add information to 16AHEAD. Clicking here will show you a list of items that can be added. The list is dynamic and changes depending on what information you are viewing. For example if you're looking at a project the list will display, deliverables, requirements, etc. that can be added to the project.">
-      <i class="fa fa-plus-circle"
-         aria-hidden="true"
-         *ngIf="!rightSidebar"></i>
-      <i class="fa fa-minus-circle"
-         aria-hidden="true"
-         *ngIf="rightSidebar"></i>
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
     </div>
   </div>
 </header>

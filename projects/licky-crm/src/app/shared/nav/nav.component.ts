@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { LickyLoginService } from 'licky-services';
+import { Router } from '@angular/router';
+import { LickyLoginService, FirebaseDataService } from 'licky-services';
 import { Subscription } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
@@ -58,10 +59,10 @@ export class NavComponent implements OnInit, OnDestroy {
 
   private _loginSubscription: Subscription;
 
-  constructor(private _loginService: LickyLoginService) { }
+  constructor(public loginService: LickyLoginService, public router: Router, public db: FirebaseDataService) { }
 
   ngOnInit() {
-    this._loginSubscription = this._loginService.firebaseUser.subscribe((user) => {
+    this._loginSubscription = this.loginService.firebaseUser.subscribe((user) => {
       // console.log(JSON.stringify(user));
       this.loggedIn = (user) ? true : false;
       this.setVerified(user);
@@ -70,7 +71,7 @@ export class NavComponent implements OnInit, OnDestroy {
       }
     })
 
-    this._messageSubscription = this._loginService.processMessage.subscribe((message) => {
+    this._messageSubscription = this.loginService.processMessage.subscribe((message) => {
       this.verificationText = message;
     })
   }
@@ -83,7 +84,7 @@ export class NavComponent implements OnInit, OnDestroy {
   onMenuEvent(value): void {
     // console.log(value);
     // this.verificationText = 'Check your Inbox';
-    this._loginService.sendEmailVerification();
+    this.loginService.sendEmailVerification();
   }
 
   private setVerified(user): void {

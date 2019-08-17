@@ -1,21 +1,22 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FirebaseDataService, CONTACTS } from 'licky-services';
+import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
+import { LickyLoginService, FirebaseDataService, CONTACTS } from 'licky-services';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Contact } from 'lick-data';
+import { LickAppPageComponent } from 'lick-app-page';
 
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css']
 })
-export class ContactListComponent implements OnInit, OnDestroy {
+export class ContactListComponent extends LickAppPageComponent implements OnInit, OnDestroy {
 
   $contacts: Observable<any[]>;
   data: Contact[];
 
-  constructor(public router: Router, public db: FirebaseDataService) {
-
+  constructor(protected renderer2: Renderer2, public loginService: LickyLoginService, public router: Router, public db: FirebaseDataService) {
+    super(renderer2);
   }
 
   ngOnInit() {
@@ -27,12 +28,12 @@ export class ContactListComponent implements OnInit, OnDestroy {
   }
 
   setDataSet() : void {
-    // console.log(CONTACTS)
     this.db.getDataCollection(CONTACTS).subscribe((contacts: Contact[]) => {
       console.log(JSON.stringify(contacts));
       if (contacts)
       this.data = contacts;
     });
   }
+
 
 }

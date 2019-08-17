@@ -1,0 +1,4 @@
+<span class="ta-open-button text-primary btn-lg" (click)="openChat()"><i class="fa fa-commenting-o" aria-hidden="true"></i></span>
+<div class="ta-chat-popup" [ngStyle]="{'display': chatDisplay}">
+  <licky-lick-app-widget-chat [headingText]="headingText" [messages]="messages" [currentUser]="currentUser" [activeUsers]="activeUsers" [defaultImage]="defaultImage"></licky-lick-app-widget-chat>
+</div>

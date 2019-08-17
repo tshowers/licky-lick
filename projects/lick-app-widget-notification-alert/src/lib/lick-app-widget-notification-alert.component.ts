@@ -15,16 +15,17 @@ export class LickAppWidgetNotificationAlertComponent implements OnInit {
   alerts$: Observable<Alert[]>;
   @Input() loginService: LickyLoginService;
   @Input() db: FirebaseDataService;
-  @Input() user: User;
   @Input() router: Router;
   alertsChecked: boolean = false;
+  public user: User;
 
   constructor(private _sortHelperService: SortHelperService) { }
 
   ngOnInit() {
+    this.user = this.loginService.getUser();
     this.alerts$ = this.db.getDataCollection(ALERTS)
       .pipe(map((alerts: Alert[]) => {
-        if (alerts.length)
+        if (alerts && alerts.length)
           this.setUpIndicator(alerts);
         else
           this.alertsChecked = true;

@@ -14,7 +14,7 @@ import { map } from 'rxjs/operators';
 export class LickAppWidgetNotificationMessageComponent implements OnInit {
 
   messages$: Observable<Message[]>;
-  public message: Message;
+  public message: Message = new Message();
   private _userContact: Contact;
   private _user: User;
   maxArticleLength = 30;
@@ -32,7 +32,7 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit {
     this._user = this.loginService.getUser();
     this.messages$ = this.db.getDataCollection(MESSAGES)
       .pipe(map((messages: Message[]) => {
-        if (messages.length)
+        if (messages && messages.length)
           this.setUpIndicator(messages);
         else
           this.messagesChecked = true;
