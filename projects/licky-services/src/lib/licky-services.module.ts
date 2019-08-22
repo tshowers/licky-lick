@@ -16,6 +16,7 @@ import { DropdownService } from './dropdown.service';
 import { UserLocationService } from './user-location.service';
 import { RemoteAssetService} from './remote-asset.service';
 import { YoutubeService } from './youtube.service';
+import { UploadService } from './upload.service';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../environment';
 
@@ -40,7 +41,8 @@ import { environment } from '../environment';
     UserLocationService,
     WeatherService,
     RemoteAssetService,
-    DateUtilService
+    DateUtilService,
+    UploadService
   ]
 
 })

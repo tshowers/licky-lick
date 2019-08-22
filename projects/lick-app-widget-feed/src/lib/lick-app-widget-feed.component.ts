@@ -33,7 +33,7 @@ export class LickAppWidgetFeedComponent implements OnInit {
 
   }, {
     "id": Math.floor(Math.random() * 1000).toString(),
-    "text": "Provident impedit atque nemo culpa et modi molestiae. Error non dolorum voluptas non a. Molestiae et nobis nisi sed",
+    "text": "Provident impedit atque nemo culpa et modi molestiae. Error non dolorum voluptas non a. Molestiae et nobis nisi sed. Modi ratione aliquid non. Et porro deserunt illum sed velit necessitatibus.",
     "name": "Bill Burr",
     "replies": [],
     "favored": false,
