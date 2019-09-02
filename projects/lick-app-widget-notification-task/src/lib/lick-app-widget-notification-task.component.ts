@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { Task, User } from 'lick-data';
@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './lick-app-widget-notification-task.component.html',
   styles: []
 })
-export class LickAppWidgetNotificationTaskComponent implements OnInit {
+export class LickAppWidgetNotificationTaskComponent implements OnInit, AfterViewInit {
 
   tasks$: Observable<Task[]>;
   @Input() db: FirebaseDataService;
@@ -20,7 +20,7 @@ export class LickAppWidgetNotificationTaskComponent implements OnInit {
   tasksChecked: boolean = false;
   userSubscription: Subscription;
 
-  constructor(private _sortHelperService: SortHelperService) { }
+  constructor(private _sortHelperService: SortHelperService, private _cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this._user = this.loginService.getUser();
@@ -39,6 +39,11 @@ export class LickAppWidgetNotificationTaskComponent implements OnInit {
         return tasks;
       }))
 
+  }
+
+  ngAfterViewInit() {
+    // it must be last line
+    this._cd.detectChanges();
   }
 
   ngOnDestroy() {

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { Alert, User } from 'lick-data';
@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './lick-app-widget-notification-alert.component.html',
   styles: []
 })
-export class LickAppWidgetNotificationAlertComponent implements OnInit {
+export class LickAppWidgetNotificationAlertComponent implements OnInit, AfterViewInit {
 
   alerts$: Observable<Alert[]>;
   @Input() loginService: LickyLoginService;
@@ -19,7 +19,7 @@ export class LickAppWidgetNotificationAlertComponent implements OnInit {
   alertsChecked: boolean = false;
   public user: User;
 
-  constructor(private _sortHelperService: SortHelperService) { }
+  constructor(private _sortHelperService: SortHelperService, private _cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.user = this.loginService.getUser();
@@ -32,6 +32,11 @@ export class LickAppWidgetNotificationAlertComponent implements OnInit {
         return alerts;
       }))
 
+  }
+
+  ngAfterViewInit() {
+    // it must be last line
+    this._cd.detectChanges();
   }
 
   checkingAlerts(): void {

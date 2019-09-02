@@ -6,7 +6,8 @@
                 <div class="h3 text-white">
                     <strong>{{headingText}}</strong>
                 </div>
-                <small class="text-white"><span [CountTo]="total"></span> TOTAL</small>
+                <small class="text-white">
+                  <span [CountTo]="total"></span> TOTAL</small>
             </div>
 
             <div class="float-right">
@@ -21,7 +22,10 @@
                     <div class="widget-pm-summary">
                         <i class="{{iconClass1}}" aria-hidden="true"></i>
                         <div class="widget-text">
-                            <div class="h2 text-white"><span [CountTo]="count1"></span></div>
+                            <div class="h2 text-white">
+                              <span *ngIf="count1 > 0" [CountTo]="count1"></span>
+                              <span *ngIf="count1 === 0">{{count1}}</span>
+                            </div>
                             <small class="text-white">{{countText1}}</small>
                         </div>
                         <!-- end widget-text -->
@@ -37,7 +41,10 @@
                     <div class="widget-pm-summary">
                         <i class="{{iconClass2}}" aria-hidden="true"></i>
                         <div class="widget-text">
-                            <div class="h2 text-white"><span [CountTo]="count2"></span></div>
+                            <div class="h2 text-white">
+                              <span *ngIf="count2 > 0" [CountTo]="count2"></span>
+                              <span *ngIf="count2 === 0">{{count2}}</span>
+                            </div>
                             <small class="text-white">{{countText2}}</small>
                         </div>
                         <!-- end widget-text -->
@@ -53,7 +60,10 @@
                     <div class="widget-pm-summary">
                         <i class="{{iconClass3}}" aria-hidden="true"></i>
                         <div class="widget-text">
-                            <div class="h2 text-white"><span [CountTo]="count3"></span></div>
+                            <div class="h2 text-white">
+                              <span *ngIf="count3 > 0" [CountTo]="count3"></span>
+                              <span *ngIf="count3 === 0">{{count3}}</span>
+                            </div>
                             <small class="text-white">{{countText3}}</small>
                         </div>
                         <!-- end widget-text -->
@@ -69,7 +79,10 @@
                     <div class="widget-pm-summary">
                         <i class="{{iconClass4}}" aria-hidden="true"></i>
                         <div class="widget-text">
-                            <div class="h2 text-white"><span [CountTo]="count4"></span></div>
+                            <div class="h2 text-white">
+                              <span *ngIf="count4 > 0" [CountTo]="count4"></span>
+                              <span *ngIf="count4 === 0">{{count4}}</span>
+                            </div>
                             <small class="text-white">{{countText4}}</small>
                         </div>
                         <!-- end widget-text -->

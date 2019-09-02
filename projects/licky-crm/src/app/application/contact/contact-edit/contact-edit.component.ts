@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild, Renderer2 } from '@angular/cor
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Upload, Contact, Dependent,Dropdown } from 'lick-data';
-import { UploadService, DropdownService, TypeFindService, FirebaseDataService, CONTACTS } from 'licky-services';
+import { UploadService, DropdownService, TypeFindService, FirebaseDataService, LickyLoginService, CONTACTS } from 'licky-services';
 import { LickAppPageComponent } from 'lick-app-page';
 
 @Component({
@@ -26,23 +26,34 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
 
   @ViewChild('dataForm') private frm: NgForm;
 
-  @ViewChild('tabContent') tabs;
+  @ViewChild('t') ngbTabSet;
 
   selectedFiles: FileList;
 
   currentUpload: Upload;
 
-  constructor(protected renderer2: Renderer2, public db: FirebaseDataService, public router: Router, public typeFindService: TypeFindService, private _uploadService: UploadService, private _dropdownService: DropdownService, private _route: ActivatedRoute) {
-    super(renderer2);
+
+  constructor(public loginService: LickyLoginService, protected renderer2: Renderer2, public db: FirebaseDataService, public router: Router, public typeFindService: TypeFindService, private _uploadService: UploadService, private _dropdownService: DropdownService, private _route: ActivatedRoute) {
+    super(router, loginService, db, renderer2);
   }
 
   ngOnInit() {
+    this.initializeDropdowns();
+    this.setBreadCrumb();
     this._route.data
       .subscribe((data: { contact: Contact }) => {
         if (data.contact) {
           this.contact = data.contact;
         }
       });
+  }
+
+  setBreadCrumb() : void {
+    this.crumbs = [
+      { name: "home", link: "/", active: false },
+      { name: "contacts", link: "/application/contacts", active: false },
+      { name: "edit", link: "/application/contacts/new", active: true },
+    ]
   }
 
   ngOnDestroy() {

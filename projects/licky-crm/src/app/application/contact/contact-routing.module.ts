@@ -10,13 +10,15 @@ import { ContactDashboardComponent} from './contact-dashboard/contact-dashboard.
 import { ContactListComponent} from './contact-list/contact-list.component';
 import { ContactEditComponent } from './contact-edit/contact-edit.component';
 import { ContactViewComponent } from './contact-view/contact-view.component';
+import { ContactResolverService } from './services/contact-resolver.service';
+import { ContactViewResolverService } from './services/contact-view-resolver.service';
 
 const routes : Routes = [
   { path: '', component: ContactListComponent, data : { title: 'Contact List'}},
   { path: 'dashboard', component : ContactDashboardComponent, data : { title: 'Contact Dashboard'}},
-  { path: 'new', component: ContactEditComponent, data: { title: 'New Contact', state: 'new contact' } },
-  { path: ':id', component: ContactViewComponent, data: { title: 'Contact Detail', state: 'contact detail' } },
-  { path: ':id/edit', component: ContactEditComponent, data: { title: 'Edit Contact', state: 'edit contact' } },
+  { path: 'new', component: ContactEditComponent, resolve: { contact: ContactResolverService }, data: { title: 'New Contact', state: 'new contact' } },
+  { path: ':id', component: ContactViewComponent, resolve:{contact: ContactViewResolverService}, data: { title: 'Contact Detail', state: 'contact detail' } },
+  { path: ':id/edit', component: ContactEditComponent, resolve: { contact: ContactResolverService }, data: { title: 'Edit Contact', state: 'edit contact' } },
   { path: ':id/addresses', canLoad: [AuthGuard], children: [ {path: '', loadChildren: '../address/address.module#AddressModule'} ]},
   { path: ':id/email-addresses', canLoad: [AuthGuard], children: [ {path: '', loadChildren: '../email-address/email-address.module#EmailAddressModule'} ]},
   { path: ':id/form-of-payments', canLoad: [AuthGuard], children: [ {path: '', loadChildren: '../fop/fop.module#FopModule'} ]},
@@ -27,6 +29,10 @@ const routes : Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    ContactResolverService,
+    ContactViewResolverService,
+  ]
 })
 export class ContactRoutingModule { }

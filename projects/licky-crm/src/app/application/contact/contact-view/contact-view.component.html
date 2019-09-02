@@ -1,3 +1,226 @@
-<p>
-  contact-view works!
-</p>
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="db"
+                            [loginService]="loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"></licky-lick-app-widget-breadcrumb>
+<div class="container d-flex justify-content-center">
+  <div class="row">
+    <div [ngClass]="{'col-12 col-xl-6 col-lg-6 col-md-7 col-sm-12 order-xl-last order-lg-last order-md-last order-first' : messageFeed, 'col-11 order-lg-last order-first' : messageFeed, 'col-11' : !messageFeed }">
+      <div class="card mx-auto d-block ta-max-view">
+        <img *ngIf="!contact.url"
+             class="card-img-top img-reponsive"
+             src="assets/images/default-user.png"
+             alt="No Photo Available">
+        <img *ngIf="contact.url"
+             class="card-img-top img-reponsive"
+             src="{{contact?.url}}"
+             alt="{{contact?.firstName}} {{contact?.lastName}}">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">
+            {{ contact?.prefix }}
+            {{ contact?.firstName }}
+            {{ contact?.lastName}}
+          </h4>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"
+                *ngIf="contact.nickname">
+              <div class="row">
+                <div class="col"> <strong class="ta-label">nickname:</strong>
+                </div>
+                <div class="col">
+                  <p class="card-text">{{contact?.nickname}}</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item"
+                *ngIf="contact.ssn">
+              <div class="row">
+                <div class="col"> <strong class="ta-label">ssn:</strong> </div>
+                <div class="col">
+                  <p class="card-text">{{contact?.ssn}}</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item"
+                *ngIf="contact.profession">
+              <div class="row">
+                <div class="col"> <strong class="ta-label">profession:</strong>
+                </div>
+                <div class="col">
+                  <p class="card-text">{{contact?.profession}}</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item"
+                *ngIf="contact.status">
+              <div class="row">
+                <div class="col"> <strong class="ta-label">status:</strong>
+                </div>
+                <div class="col">
+                  <p class="card-text">{{contact?.status}}</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item"
+                *ngIf="contact.profileType">
+              <div class="row">
+                <div class="col"> <strong class="ta-label">profile type:</strong>
+                </div>
+                <div class="col">
+                  <p class="card-text">{{contact?.profileType}}</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item"
+                *ngIf="contact.gender">
+              <div class="row">
+                <div class="col"> <strong class="ta-label">gender:</strong>
+                </div>
+                <div class="col">
+                  <p class="card-text">{{contact?.gender}}</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item"
+                *ngIf="contact.url">
+              <div class="row">
+                <div class="col">
+                  <p class="card-text"><a href="{{contact?.url}}"
+                       target="_blank"><i class="fa fa-file-image-o fa-2x"
+                         aria-hidden="true"></i></a></p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item"
+                *ngIf="contact.linkedinUrl">
+              <div class="row">
+                <div class="col">
+                  <p class="card-text"><a href="{{contact?.linkedinUrl}}"
+                       target="_blank">{{contact?.linkedinUrl}}</a></p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item"
+                *ngIf="contact.nickname">
+              <div class="row">
+                <div class="col"> <strong class="ta-label">nickname:</strong>
+                </div>
+                <div class="col">
+                  <p class="card-text">{{contact?.nickname}}</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item"
+                *ngIf="contact.birthday">
+              <div class="row">
+                <div class="col"> <strong class="ta-label">birthday:</strong>
+                </div>
+                <div class="col">
+                  <p class="card-text">{{contact?.birthday}}</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item"
+                *ngIf="contact.anniversary">
+              <div class="row">
+                <div class="col"> <strong class="ta-label">anniversary:</strong>
+                </div>
+                <div class="col">
+                  <p class="card-text">{{contact?.anniversary.year}}/{{contact?.anniversary.month}}/{{contact?.anniversary.day}}</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item"
+                *ngFor="let p of $phoneNumbers | async">
+              <div class="row">
+                <div class="col">
+                  <p class="card-text">{{p.phoneNumber}} ({{p.phoneNumberType}})</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item"
+                *ngFor="let a of $addresses | async">
+              <div class="row">
+                <div class="col"> <address>{{a.streetAddress}}<br>{{a.city}}
+                    {{a.state}}
+                    {{a.zip}}<br>{{a.country}}</address> </div>
+              </div>
+            </li>
+            <li class="list-group-item"
+                *ngFor="let e of $emailAddresses | async">
+              <div class="row">
+                <div class="col">
+                  <p class="card-text">{{e.emailAddress}} ({{e.emailAddressType}})</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item"
+                *ngIf="contact.dependents && contact.dependents.length">
+              <div class="row">
+                <div class="col"> <strong class="ta-label">dependents:</strong>
+                </div>
+                <div class="col">
+                  <p class="card-text"
+                     *ngFor="let d of contact.dependents">{{d.firstName}}
+                    {{d.lastName}} ({{d.relationship}})</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item"
+                *ngFor="let n of $notes | async">
+              <div class="row">
+                <div class="col">
+                  <strong>{{n?.name}}</strong><br>
+                  <div innerHTML={{n?.text}}></div>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col"> <strong class="ta-label">private:</strong>
+                </div>
+                <div class="col">
+                  <p class="card-text"><span *ngIf="contact.draft">Yes</span>
+                    <span *ngIf="!contact.draft">No</span></p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item"
+                *ngIf="contact?.billingRate">
+              <div class="row">
+                <div class="col"> <strong class="ta-label">billing rate:</strong>
+                </div>
+                <div class="col"> <strong class="badge-pill badge-theme">{{contact.billingRate | currency:'USD':'symbol'}}</strong>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <button *ngIf="canEdit"
+                  class="btn btn-primary btn-lg btn-round"
+                  (click)="onEdit()">Edit <i class="fa fa-pencil"
+               aria-hidden="true"></i>
+          </button> <button *ngIf="canDelete"
+                  class="btn btn-danger btn-round btn-lg"
+                  (click)="onDelete()">Delete <i class="fa fa-times"
+               aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+</main>
+<licky-lick-app-widget-right-side-menu></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

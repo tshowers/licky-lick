@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -65,22 +65,25 @@ export class LickAppWidgetTableDataComponent implements OnInit {
   @Input() viewable: boolean = true;
   @Input() editable: boolean = true;
   @Input() canCreate: boolean = true;
+  @Output() detailEvent = new EventEmitter();
+  @Output() deleteEvent = new EventEmitter();
+  @Output() editEvent = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onDetail(id: string) {
-    this.router.navigate([this.contextPath + this.path + id], { queryParamsHandling: 'preserve' });
+  onDetail(item) {
+    this.detailEvent.emit(item);
   }
 
-  onEdit(id: string) {
-    this.router.navigate([this.contextPath + this.path + id + '/edit'], { queryParamsHandling: 'preserve' });
+  onEdit(item) {
+    this.editEvent.emit(item);
   }
 
   onDelete(item) {
-    console.log("Delete clicked");
+    this.deleteEvent.emit(item);
   }
 
 

@@ -7,9 +7,28 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <licky-lick-app-widget-breadcrumb></licky-lick-app-widget-breadcrumb>
-          <licky-lick-app-widget-stats15 [newItemLink]="'application/contacts/new'" [router]="router"></licky-lick-app-widget-stats15>
-          <licky-lick-app-widget-table-data [data]="data"
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"></licky-lick-app-widget-breadcrumb>
+          <licky-lick-app-widget-stats15 *ngIf="(contacts$ | async)?.length > 0"
+            [total]="(contacts$ | async)?.length"
+            [headingText]="'Contacts'"
+                                         [iconClass1]="'fa fa-building-o'"
+                                         [count1]="companyContacts"
+                                         [countText1]="'Companies'"
+                                         [iconClass2]="'fa fa-user-secret'"
+                                         [count2]="privateContacts"
+                                         [countText2]="'Private'"
+                                         [iconClass3]="'fa fa-pencil-square-o'"
+                                         [count3]="draftContacts"
+                                         [countText3]="'Draft'"
+                                         [iconClass4]="'fa fa-trash-o'"
+                                         [count4]="deletedContacts"
+                                         [countText4]="'Deleted'"
+                                         [newItemLink]="'application/contacts/new'"
+                                         [router]="router"></licky-lick-app-widget-stats15>
+          <licky-lick-app-widget-table-data [data]="contacts$ | async"
+                                            (detailEvent)="onDetail($event)"
+                                            (deleteEvent)="onDelete($event)"
+                                            (editEvent)="onEdit($event)"
                                             [headingText]="'Contacts'"
                                             [router]="router"
                                             [path]="CONTACTS"></licky-lick-app-widget-table-data>

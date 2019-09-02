@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { Message, User, Contact } from 'lick-data';
@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './lick-app-widget-notification-message.component.html',
   styles: []
 })
-export class LickAppWidgetNotificationMessageComponent implements OnInit {
+export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterViewInit {
 
   messages$: Observable<Message[]>;
   public message: Message = new Message();
@@ -26,7 +26,7 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit {
   @Input() loginService: LickyLoginService;
   @Input() db: FirebaseDataService;
 
-  constructor(private _sortHelperService: SortHelperService) { }
+  constructor(private _sortHelperService: SortHelperService, private _cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this._user = this.loginService.getUser();
@@ -38,6 +38,11 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit {
           this.messagesChecked = true;
         return messages;
       }))
+  }
+
+  ngAfterViewInit() {
+    // it must be last line
+    this._cd.detectChanges();
   }
 
   ngOnDestroy() {

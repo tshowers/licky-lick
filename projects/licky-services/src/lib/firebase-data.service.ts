@@ -127,7 +127,7 @@ export class FirebaseDataService {
   }
 
   getDataCollection(path): Observable<any> {
-    console.log("Getting Data Collection for " + path, "DB is " , this._db);
+    console.log("Getting Data Collection for " + path, "DB is ", this._db);
     return Observable.create((observer) => {
 
       this._db.ref(path).on('value', (snapshot) => {
@@ -144,6 +144,30 @@ export class FirebaseDataService {
 
   setUser(user: User): void {
     this._user = user;
+  }
+
+  public getConvertDataToList(data: any): Observable<any> {
+    let list: any[] = [];
+    for (let item in data) {
+      this.doFixUpData(data, item);
+      list.push(data[item]);
+    }
+    console.log("CONVERTED LIST", JSON.stringify(list));
+    return Observable.create((observer) => {
+      observer.next(list);
+      observer.complete();
+    })
+  }
+
+  private doFixUpData(data, item): void {
+    data[item].id = item;
+    if (data[item].firstName)
+      data[item].name = data[item].firstName;
+    if (data[item].lastName)
+      data[item].name += (' ' + data[item].lastName);
+    if (data[item].firstName && data[item].lastName)
+      data[item].name = data[item].firstName + ' ' + data[item].lastName;
+
   }
 
   private setNewDataValues(data: any): void {

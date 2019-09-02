@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { LickyServicesModule } from 'licky-services';
 import { LickDataModule } from 'lick-data';
 import { LickAppPageComponent } from './lick-app-page.component';
+import { LickAppWidgetBreadcrumbModule } from 'lick-app-widget-breadcrumb'
 
 @NgModule({
   declarations: [LickAppPageComponent],
@@ -11,7 +12,8 @@ import { LickAppPageComponent } from './lick-app-page.component';
     CommonModule,
     RouterModule,
     LickyServicesModule,
-    LickDataModule
+    LickDataModule,
+    LickAppWidgetBreadcrumbModule
   ],
   exports: [LickAppPageComponent]
 })
