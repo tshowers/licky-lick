@@ -48,7 +48,7 @@ import { environment } from '../environment';
 })
 export class LickyServicesModule {
   static forRoot(config: FirebaseConfig, caller?: string): ModuleWithProviders {
-    console.log("Environment passed =" + JSON.stringify(config), caller);
+    // console.log("Environment passed =" + JSON.stringify(config), caller);
     // console.log("Google Maps API =" + environment.googleMapsKey);
     return {
       ngModule: LickyServicesModule,

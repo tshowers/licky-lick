@@ -15,6 +15,7 @@ export class ContactResolverService {
     let id = route.paramMap.get('id');
     let user = route.queryParamMap.get('user');
     let employee = route.queryParamMap.get('employee');
+    console.log("ID:", id);
     return this.getContact(id, user, employee);
   }
 
@@ -24,7 +25,7 @@ export class ContactResolverService {
         .pipe(map(contact => {
           if (contact) {
             // Contact.restoreData(contact);
-            this.incrementViewCount(contact);
+            this.incrementViewCount(contact, id);
             return (contact.id == id) ? contact : of(new Contact());
           } else {
             return of(this.getContactObject(user, employee));
@@ -68,10 +69,19 @@ export class ContactResolverService {
     // contact.url = this._authService.getPhotoURL();
   }
 
-  private incrementViewCount(contact: Contact): void {
-    contact.views++;
-    contact.lastViewed = new Date().getTime();
-    this._db.updateData(CONTACTS, contact.id, contact);
+  private incrementViewCount(contact: Contact, id): void {
+    console.log("INCREMENT COUNT:", contact);
+    if (contact) {
+      contact.id = id;
+      if (contact.views && !isNaN(contact.views)) {
+        contact.views++;
+      } else {
+        contact.views = 0;
+        contact.views++;
+      }
+      contact.lastViewed = new Date().getTime();
+      this._db.updateData(CONTACTS, id, contact);
+    }
   }
 
 

@@ -4,7 +4,7 @@
       *ngFor="let c of crumbs">
     <a *ngIf="c.link"
        style="cursor:pointer"
-       (click)="onRouteTo(c.link)">{{c?.name}}</a>
+       (click)="onPageEvent(c.link)">{{c?.name}}</a>
     <span *ngIf="!c.link">{{c?.name}}</span>
   </li>
 </ol>

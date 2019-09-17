@@ -13,11 +13,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of data; let i = index">
+            <tr *ngFor="let item of data; let i = index" [ngClass]="{'ta-deleted' : item?.deleted}">
               <td>{{item?.name}}</td>
               <td>
-                <span *ngIf="item?.creatorName">{{item?.creatorName}}</span>
-                <span *ngIf="!item?.creatorName">{{item?.lastUpdatedBy}} <small>(*lub)</small></span>
+                <span *ngIf="item?.userName">{{item?.userName}}</span>
+                <span *ngIf="!item?.userName">{{item?.lastUpdatedBy}} <small>(*lub)</small></span>
               </td>
               <td>{{item?.lastUpdated | date : 'fullDate'}}</td>
               <td class="text-nowrap">
@@ -40,6 +40,11 @@
             </tr>
           </tbody>
         </table>
+        <ngb-pagination [(page)]="currentPage"
+                        (pageChange)="onPageChange($event)"
+                        [pageSize]="pageSize"
+                        [collectionSize]="totalRecords"></ngb-pagination>
+
       </div>
     </div>
     <!-- end card-body -->

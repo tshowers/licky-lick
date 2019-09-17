@@ -89,16 +89,9 @@ export class FirebaseDataService {
     this._db = firebase.database();
   }
 
-  writeData(path: string, data: any): void {
-    this.setNewDataValues(data);
-    this._db.ref(path).push(data, (error) => {
-      if (error)
-        this.databaseError.next(error.message);
-    })
-  }
 
   updateData(path: string, key: any, data: any): void {
-    console.log("Updating Data for " + path + '/' + key);
+    console.log("Updating Data for " + path + '/' + key, JSON.stringify(data));
     this.setUpdateValues(data);
     this._db.ref(path + '/' + key).set(data, (error) => {
       if (error)
@@ -126,6 +119,30 @@ export class FirebaseDataService {
     })
   }
 
+  writeData(path: string, data: any): Observable<any> {
+    this.setNewDataValues(data);
+    return Observable.create((observer) => {
+      this._db.ref(path).push(data, (error) => {
+        console.log("PUSHED DATA:", data)
+        if (error)
+          this.databaseError.next(error.message);
+      }).then((snap) => {
+        if (snap)
+          observer.next(snap.key);
+        else
+          observer.next(null);
+        observer.complete();
+      })
+    })
+  }
+
+
+  setDeleted(path: string, data: any): void {
+    data.deleted = true;
+    this.updateData(path, data.id, data);
+
+  }
+
   getDataCollection(path): Observable<any> {
     console.log("Getting Data Collection for " + path, "DB is ", this._db);
     return Observable.create((observer) => {
@@ -142,6 +159,22 @@ export class FirebaseDataService {
     })
   }
 
+  getDataByBatch(path: string, batchSize: number, keyField: string, lastKey?: string): Observable<any> {
+    if (lastKey)
+      return Observable.create((observer) => {
+        this._db.ref(path)
+          .startAt(lastKey)
+          .limitToFirst(batchSize)
+          .on('value', (snapshot) =>{
+            observer.next((snapshot) ? snapshot.val() : null)
+            observer.complete();
+          }, (error) =>{
+            if (error)
+              this.databaseError.next(error);
+          })
+      })
+  }
+
   setUser(user: User): void {
     this._user = user;
   }
@@ -152,12 +185,17 @@ export class FirebaseDataService {
       this.doFixUpData(data, item);
       list.push(data[item]);
     }
-    console.log("CONVERTED LIST", JSON.stringify(list));
+    // console.log("CONVERTED LIST", JSON.stringify(list));
     return Observable.create((observer) => {
       observer.next(list);
       observer.complete();
     })
   }
+
+  public getRecordsToDisplay(startPage, pageSize, data: any[]): any[] {
+    return data.slice(((startPage - 1) * pageSize), (((startPage - 1) * pageSize) + pageSize))
+  }
+
 
   private doFixUpData(data, item): void {
     data[item].id = item;
@@ -173,9 +211,9 @@ export class FirebaseDataService {
   private setNewDataValues(data: any): void {
     data.timeStamp = new Date().getTime();
     if (this._user) {
-      data.user_id = (this._user.$key) ? this._user.$key : null;
+      data.user_id = (this._user.user_id) ? this._user.user_id : null;
       data.userName = (this._user.name) ? this._user.name : null;
-      data.userImage = (this._user.url) ? this._user.url : null;
+      data.userImage = (this._user.userImage) ? this._user.userImage : null;
     }
     this.setUpdateValues(data);
   }

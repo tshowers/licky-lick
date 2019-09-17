@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"></licky-lick-app-widget-breadcrumb>
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
           <form #dataForm="ngForm"
                 class="form-group">
             <div *ngIf="currentUpload">
@@ -360,8 +360,10 @@
         </div>
       </div>
     </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
     <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
   </main>
   <licky-lick-app-widget-right-side-menu></licky-lick-app-widget-right-side-menu>
 </div>
+
 <licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

@@ -4,7 +4,7 @@
 
       <h2>{{headingText}}</h2>
       <div class="block-desc">
-        <p>{{descriptionText}}</p>
+        <div innerHTML="{{descriptionText}}"></div>
       </div>
 
       <!-- Member 1 -->
@@ -18,7 +18,7 @@
 
           <div class="member-content">
             <h2>{{member?.name}}</h2>
-            <span>{{member?.contact.profession}}</span>
+            <div innerHTML="{{member?.contact.profession}}"></div>
           </div>
 
         </div> <!-- .border-box -->

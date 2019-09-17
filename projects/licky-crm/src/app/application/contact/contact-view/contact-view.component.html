@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"></licky-lick-app-widget-breadcrumb>
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
 <div class="container d-flex justify-content-center">
   <div class="row">
     <div [ngClass]="{'col-12 col-xl-6 col-lg-6 col-md-7 col-sm-12 order-xl-last order-lg-last order-md-last order-first' : messageFeed, 'col-11 order-lg-last order-first' : messageFeed, 'col-11' : !messageFeed }">
@@ -182,16 +182,6 @@
                 </div>
               </div>
             </li>
-            <li class="list-group-item">
-              <div class="row">
-                <div class="col"> <strong class="ta-label">private:</strong>
-                </div>
-                <div class="col">
-                  <p class="card-text"><span *ngIf="contact.draft">Yes</span>
-                    <span *ngIf="!contact.draft">No</span></p>
-                </div>
-              </div>
-            </li>
             <li class="list-group-item"
                 *ngIf="contact?.billingRate">
               <div class="row">
@@ -202,11 +192,12 @@
               </div>
             </li>
           </ul>
+          <licky-lick-app-widget-data-footer [data]="contact"></licky-lick-app-widget-data-footer>
           <button *ngIf="canEdit"
                   class="btn btn-primary btn-lg btn-round"
                   (click)="onEdit()">Edit <i class="fa fa-pencil"
                aria-hidden="true"></i>
-          </button> <button *ngIf="canDelete"
+          </button> <button *ngIf="canDelete && (!contact.deleted)"
                   class="btn btn-danger btn-round btn-lg"
                   (click)="onDelete()">Delete <i class="fa fa-times"
                aria-hidden="true"></i>
@@ -219,6 +210,7 @@
 </div>
 </div>
 </div>
+<licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
 <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
 </main>
 <licky-lick-app-widget-right-side-menu></licky-lick-app-widget-right-side-menu>

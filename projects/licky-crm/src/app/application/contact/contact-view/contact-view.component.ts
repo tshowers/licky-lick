@@ -55,7 +55,7 @@ export class ContactViewComponent extends LickAppPageComponent implements OnInit
 
   }
 
-  setBreadCrumb() : void {
+  private setBreadCrumb() : void {
     this.crumbs = [
       { name: "home", link: "/", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
@@ -63,25 +63,22 @@ export class ContactViewComponent extends LickAppPageComponent implements OnInit
     ]
   }
 
-
-  onAll() {
-    this.router.navigate(['application', 'contacts']);
-  }
-
-  // Edit Contact item
   onEdit() {
     this.router.navigate(['application', 'contacts', this.contact.id, 'edit'], { queryParams: { allowEdit: '1' }, fragment: 'top' });
   }
 
-  // Delete this contact item
   onDelete() {
-    // this.db.deleteData(CONTACTS + this.authService.getDataPrefix(), this.contact.id);
-    this.onAll();
+    this.contact.deleted = true;
+    this.db.updateData(CONTACTS, this.contact.id, this.contact);
+    this.router.navigate(['application', 'contacts']);
+  }
+
+  onBreadCrumb(link) : void {
+      this.router.navigate([link]);
   }
 
   get diagnostic() {
     return JSON.stringify(this.contact, null, 2)
   }
-
 
 }

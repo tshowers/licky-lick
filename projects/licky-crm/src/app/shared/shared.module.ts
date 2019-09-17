@@ -13,6 +13,7 @@ import { LickMarketingSecurityModule } from 'lick-marketing-security';
 import { LickAppWidgetChatPopupModule } from 'lick-app-widget-chat-popup';
 import { LickAppWidgetFooterModule } from 'lick-app-widget-footer';
 import { LickAppWidgetBreadcrumbModule } from 'lick-app-widget-breadcrumb';
+import { LickAppWidgetDataFooterModule } from 'lick-app-widget-data-footer';
 
 import { LickDataModule } from 'lick-data';
 import { LickAppPageModule } from 'lick-app-page';
@@ -45,7 +46,8 @@ import { NavComponent } from './nav/nav.component';
     LickAppWidgetChatPopupModule,
     LickAppWidgetFooterModule,
     LickAppWidgetBreadcrumbModule,
-    FormsModule
+    FormsModule,
+    LickAppWidgetDataFooterModule
   ],
   exports: [
     NavComponent,
@@ -64,7 +66,8 @@ import { NavComponent } from './nav/nav.component';
     LickAppWidgetFooterModule,
     LickAppWidgetBreadcrumbModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    LickAppWidgetDataFooterModule
   ]
 })
 export class SharedModule { }

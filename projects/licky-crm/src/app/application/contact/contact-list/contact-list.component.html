@@ -7,9 +7,9 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"></licky-lick-app-widget-breadcrumb>
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
           <licky-lick-app-widget-stats15 *ngIf="(contacts$ | async)?.length > 0"
-            [total]="(contacts$ | async)?.length"
+            [total]="totalRecords"
             [headingText]="'Contacts'"
                                          [iconClass1]="'fa fa-building-o'"
                                          [count1]="companyContacts"
@@ -31,10 +31,14 @@
                                             (editEvent)="onEdit($event)"
                                             [headingText]="'Contacts'"
                                             [router]="router"
+                                            [pageSize]="pageSize"
+                                            [totalRecords]="totalRecords"
+                                            (currentPageEvent)="newPage($event)"
                                             [path]="CONTACTS"></licky-lick-app-widget-table-data>
         </div>
       </div>
     </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
     <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
   </main>
   <licky-lick-app-widget-right-side-menu></licky-lick-app-widget-right-side-menu>

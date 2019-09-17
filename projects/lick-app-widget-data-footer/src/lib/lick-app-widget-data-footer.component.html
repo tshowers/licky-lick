@@ -1,0 +1,12 @@
+<blockquote class="blockquote d-flex justify-content-center">
+  <footer class="blockquote-footer"><small>
+    <span *ngIf="data?.draft">Private: <span *ngIf="data.draft">Yes</span> <span *ngIf="!data.draft">No</span><br></span>
+    <span *ngIf="data?.deleted"> <strong>Deleted: <span *ngIf="data.deleted" class="text-danger"> Yes</span></strong>  <span *ngIf="!data.deleted">No</span><br></span>
+    <span *ngIf="data?.user_id">Creator: <cite title="{{data?.user_id}}">{{data?.userName}}</cite><br></span>
+    <span *ngIf="data?.lastUpdated">Last Updated - {{data?.lastUpdated | date:'medium'}}<br></span>
+    <span *ngIf="data?.lastViewed">Last Viewed - {{data?.lastViewed | date:'medium'}}<br></span>
+    <span *ngIf="data?.lastUpdatedBy">Last Updated By: <cite title="{{data?.lastUpdatedBy}}">{{data?.lastUpdatedBy}}</cite><br></span>
+    <span *ngIf="data?.views">Views ({{data?.views}})</span>
+    <!-- <span *ngIf="!data?.views">Views (0)</span> -->
+  </small> </footer>
+</blockquote>

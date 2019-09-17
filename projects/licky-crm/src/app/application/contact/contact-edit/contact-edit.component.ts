@@ -85,20 +85,27 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
       if (file) {
         this.currentUpload = new Upload(file);
         this.currentUpload.contact_id = this.contact.id;
-        this._uploadService.pushContact(this.currentUpload, this.contact);
+        console.log("CALLING UPLOAD SERVICE WITH", this.currentUpload.contact_id, this.contact);
+        this._uploadService.pushFileToStorage(this.currentUpload, CONTACTS, '/application/contacts/' + this.contact.id,  this.contact, this.db);
       }
     }
   }
 
+  detectFiles(event) {
+    this.selectedFiles = event.target.files;
+  }
+
   onUpdate(): void {
-    this.db.updateData(CONTACTS, this.contact, this.contact.id);
+    this.db.updateData(CONTACTS, this.contact.id, this.contact);
     this.uploadSingle();
   }
 
   saveNewContact(): void {
-    this.db.writeData(CONTACTS, this.contact);
-    console.log("contacts after updating:", this.contact)
-    this.uploadSingle();
+    this.db.writeData(CONTACTS, this.contact).subscribe((key) => {
+      this.contact.id = key;
+      console.log("CONTACT AFTER SAVE", this.contact, key)
+      this.uploadSingle();
+    });
   }
 
   onBrandNew(): void {
@@ -135,6 +142,13 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
   modelCheck() {
     if (this.dependent.firstName)
       this.newDependent();
+  }
+
+  onBreadCrumb(link) : void {
+      this.router.navigate([link]);
+  }
+  get diagnostic() {
+    return JSON.stringify(this.contact, null, 2)
   }
 
 }

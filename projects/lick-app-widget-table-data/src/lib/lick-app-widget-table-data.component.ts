@@ -68,6 +68,12 @@ export class LickAppWidgetTableDataComponent implements OnInit {
   @Output() detailEvent = new EventEmitter();
   @Output() deleteEvent = new EventEmitter();
   @Output() editEvent = new EventEmitter();
+  @Output() currentPageEvent = new EventEmitter();
+
+  currentPage: number = 1;
+  @Input() pageSize: number = 20;
+  @Input() totalRecords: number = 0;
+
 
   constructor() { }
 
@@ -84,6 +90,11 @@ export class LickAppWidgetTableDataComponent implements OnInit {
 
   onDelete(item) {
     this.deleteEvent.emit(item);
+  }
+
+  public onPageChange(value): void {
+    this.currentPage = value;
+    this.currentPageEvent.emit(this.currentPage);
   }
 
 

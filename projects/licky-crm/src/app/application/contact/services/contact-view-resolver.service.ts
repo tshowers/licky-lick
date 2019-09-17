@@ -26,18 +26,24 @@ export class ContactViewResolverService {
       }
     }));
   }
+
   private setSocialData(contact: Contact): void {
     // this._socialService.setDataItemSocial(contact);
   }
 
   private incrementViewCount(contact: Contact, id): void {
-    if (contact && !contact.id) {
-      if (!contact.id)
-        contact.id = id;
-      contact.views++;
+    console.log("INCREMENT COUNT:", contact)
+    if (contact) {
+      contact.id = id;
+      if (contact.views && !isNaN(contact.views)) {
+        contact.views++;
+      } else {
+        contact.views = 0;
+        contact.views++;
+      }
       contact.lastViewed = new Date().getTime();
+      this._db.updateData(CONTACTS, id, contact);
     }
-    // this._db.updateData(CONTACTS, contact.id, contact);
   }
 
 }

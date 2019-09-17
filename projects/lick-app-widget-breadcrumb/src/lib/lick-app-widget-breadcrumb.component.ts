@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 export interface Crumb {
@@ -20,17 +20,15 @@ export class LickAppWidgetBreadcrumbComponent implements OnInit {
     { name: "contacts", link: "/", active: false },
     { name: "create", link: "/", active: true }
   ];
-  @Input() router: Router;
+
+  @Output() pageEvent = new EventEmitter();
 
   constructor() {}
 
   ngOnInit() {
   }
 
-  onRouteTo(link): void {
-    if (link.indexOf('http') >= 0)
-      window.open(link, '_blank');
-    else
-      this.router.navigate([link]);
+  onPageEvent(link: string): void {
+    this.pageEvent.emit(link);
   }
 }

@@ -37,7 +37,7 @@ export class HomePageComponent implements OnInit {
       "timeStamp": new Date(),
       "userName": "System",
       "userImage": "https://firebasestorage.googleapis.com/v0/b/addieprod.appspot.com/o/app-images%2Fteam-slider1.jpg?alt=media&token=27ae2753-beff-40f3-a47e-cb5bab47bd44",
-      "contact": { "name": "Vikki Owens", "profession": "Co-founder and CEO", "shared": true, "firstName": "Vikki", "lastName": "Owens" }
+      "contact": { "name": "Vikki Owens", "profession": "<span>Co-founder and CEO</span><br><img src='assets/images/CertScrumMasterSeal.png'>", "shared": true, "firstName": "Vikki", "lastName": "Owens" }
 
     },
     {
@@ -58,7 +58,7 @@ export class HomePageComponent implements OnInit {
       "timeStamp": new Date(),
       "userName": "System",
       "userImage": "https://firebasestorage.googleapis.com/v0/b/addieprod.appspot.com/o/app-images%2Fteam-slider2.jpg?alt=media&token=8487f9ca-ab68-4812-a9d2-bbea95399ca4",
-      "contact": { "name": "Tyrone Showers", "profession": "Engineer", "shared": true, "firstName": "Tyrone", "lastName": "Showers" }
+      "contact": { "name": "Tyrone Showers", "profession": "<span>Engineer</span>", "shared": true, "firstName": "Tyrone", "lastName": "Showers" }
     },
     {
       "$key": Math.floor(Math.random() * 1000).toString(),
@@ -78,11 +78,11 @@ export class HomePageComponent implements OnInit {
       "timeStamp": new Date(),
       "userName": "System",
       "userImage": "assets/images/default-user.png",
-      "contact": { "name": "Bradford Nims", "profession": "Technical Writer", "shared": true, "firstName": "Bradford", "lastName": "Nims" }
+      "contact": { "name": "Bradford Nims", "profession": "<span>Technical Writer</span>", "shared": true, "firstName": "Bradford", "lastName": "Nims" }
     },
   ];
 
-  description = "Vikki co-founded two IT startups and other business ventures, including a pop culture and arts ezine and a private wine tasting company. Her penchant for planning, coordinating, and executing is grounded in events and project management. She oversees Taliferro project initiatives and serves as an internal consultant on matters of agile and change management.";
+  description = "<p>Vikki co-founded two IT startups and other business ventures, including a pop culture and arts ezine and a private wine tasting company. Her penchant for planning, coordinating, and executing is grounded in events and project management. She oversees Taliferro project initiatives and serves as an internal consultant on matters of agile and change management.</p>";
 
   constructor(public router: Router, private _fds: FirebaseDataService) { }
 
