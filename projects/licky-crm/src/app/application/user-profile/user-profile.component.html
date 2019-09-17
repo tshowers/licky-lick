@@ -1,0 +1,34 @@
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="db"
+                            [photoURL]="photoURL"
+                            [displayName]="displayName"
+                            [emailAddress]="emailAddress"
+                            [loggedIn]="loggedIn"
+                            [userName]="userName"
+                            [emailVerified]="emailVerified"
+                            (settingsEvent)="onSettings()"
+                            (profileEvent)="onViewProfile()"
+                            [loginService]="loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"
+                                            (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+          <div *ngIf="message"
+               class="text-center">{{message}}</div>
+          <licky-lick-app-widget-profile *ngIf="!message"
+                                         (pageEvent)="onPageEvent($event)"
+                                         [user]="user"
+                                         [firebaseUser]="firebaseUser"></licky-lick-app-widget-profile>
+        </div>
+      </div>
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

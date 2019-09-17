@@ -1,5 +1,13 @@
 <licky-lick-app-widget-menu [router]="router"
                             [db]="db"
+                            [photoURL]="photoURL"
+                            [displayName]="displayName"
+                            [emailAddress]="emailAddress"
+                            [loggedIn]="loggedIn"
+                            [userName]="userName"
+                            [emailVerified]="emailVerified"
+                            (settingsEvent)="onSettings()"
+                            (profileEvent)="onViewProfile()"
                             [loginService]="loginService"></licky-lick-app-widget-menu>
 <div class="app-body">
   <licky-lick-app-widget-left-side-menu></licky-lick-app-widget-left-side-menu>

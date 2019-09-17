@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Contact } from 'lick-data';
 import { LickAppPageComponent } from 'lick-app-page';
 import { map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-contact-list',
@@ -18,11 +19,18 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
   privateContacts: number = 0;
   draftContacts: number = 0;
   companyContacts: number = 0;
+  photoURL;
+  displayName;
+  emailAddress;
+  loggedIn;
+  userName;
+  emailVerified;
 
   pageSize = 5;
   totalRecords = 0;
 
   private _contacts: Contact[];
+  private _firebaseUserSubscription: Subscription;
 
   constructor(protected renderer2: Renderer2, public loginService: LickyLoginService, public router: Router, public db: FirebaseDataService, private _sortHelper: SortHelperService) {
     super(router, loginService, db, renderer2);
@@ -30,10 +38,28 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
 
   ngOnInit() {
     this.setBreadCrumb();
+    this.setUserProperties();
     this.setDataSet();
   }
 
-  ngOnDestroy() {  }
+  ngOnDestroy() {
+    this._firebaseUserSubscription.unsubscribe();
+  }
+
+  private setUserProperties() : void {
+    this._firebaseUserSubscription = this.loginService.firebaseUser.subscribe((firebaseUser) => {
+      if (firebaseUser) {
+        this.photoURL = firebaseUser.photoURL;
+        this.displayName = firebaseUser.displayName;
+        this.emailAddress = firebaseUser.email;
+        this.loggedIn = true;
+        this.userName = firebaseUser.email;
+        this.emailVerified = firebaseUser.emailVerified;
+      }
+    })
+
+
+  }
 
   private setBreadCrumb(): void {
     this.crumbs = [
@@ -88,6 +114,14 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
 
   onBreadCrumb(link): void {
     this.router.navigate([link]);
+  }
+
+  onViewProfile() : void {
+    this.router.navigate(['application', 'profile'])
+  }
+
+  onSettings() : void {
+    this.router.navigate(['application', 'settings'])
   }
 
   get diagnostic() {

@@ -6,10 +6,12 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { ResetPageComponent } from './reset-page/reset-page.component';
 import { LogoutPageComponent } from './logout-page/logout-page.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
 
 
 @NgModule({
-  declarations: [LoginPageComponent, SignUpPageComponent, ResetPageComponent, LogoutPageComponent],
+  declarations: [LoginPageComponent, SignUpPageComponent, ResetPageComponent, LogoutPageComponent, UserProfileComponent, UserSettingsComponent],
   imports: [
     CommonModule,
     SharedModule,

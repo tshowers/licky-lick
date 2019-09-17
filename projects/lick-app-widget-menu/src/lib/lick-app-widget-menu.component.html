@@ -65,8 +65,10 @@
               <h5 class="text-capitalize">{{displayName}}</h5>
               <p class="text-muted"
                  *ngIf="role">Role: {{role}}</p>
-              <p class="text-muted">{{emailAddress}} <br> <small>Use this as
-                  your referral email address</small> </p>
+                  <p [ngClass]="{'text-primary' : emailVerified, 'text-danger' : !emailVerified}">
+                   <span *ngIf="!emailVerified"><i class="fa fa-envelope-o" aria-hidden="true"></i> Not Verified</span>
+                   <span *ngIf="emailVerified"><i class="fa fa-check" aria-hidden="true"></i> Verified</span>
+                    </p>
               <a (click)="onViewProfile()"
                  style="cursor:pointer"
                  class="btn btn-round btn-theme btn-sm"><span class="ta-whitecolor">View
@@ -75,10 +77,10 @@
           </div>
           <!-- end dw-user-box -->
           <a class="dropdown-item"
-             routerLink="/application/profile">
+             (click)="onViewProfile()">
             <i class="fa fa-user"></i> Profile</a>
           <a class="dropdown-item"
-             routerLink="/application/settings">
+             (click)="onSettings()">
             <i class="fa fa-wrench"></i> Settings</a>
           <div class="divider"></div>
           <a class="dropdown-item"

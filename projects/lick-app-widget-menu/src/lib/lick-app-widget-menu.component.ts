@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, Renderer2, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Contact } from 'lick-data';
 import { LickyLoginService, FirebaseDataService } from 'licky-services';
@@ -14,7 +14,7 @@ export class LickAppWidgetMenuComponent implements OnInit {
   @Input() router: Router;
   @Input() photoURL = "http://via.placeholder.com/32";
   @Input() displayName = "unknown";
-  @Input() role = "unknown";
+  @Input() role = "N/A";
   @Input() emailAddress = "unknown@16ahead.com";
   @Input() userContact: Contact;
 
@@ -22,15 +22,23 @@ export class LickAppWidgetMenuComponent implements OnInit {
   @Input() loggedIn: boolean = false;
   @Input() userName;
   @Input() loginService: LickyLoginService;
+  @Input() emailVerified: false;
   @Input() db: FirebaseDataService;
   searchArgument = '';
 
   leftSidebar: boolean = true;
   rightSidebar: boolean = false;
 
+  @Output() settingsEvent = new EventEmitter();
+  @Output() profileEvent = new EventEmitter();
+
+
   constructor(private _renderer: Renderer2, private _lickAppWidgetMenuService: LickAppWidgetMenuService) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.toggleSidebar();
+    }, 3000)
   }
 
   logout() {
@@ -75,8 +83,12 @@ export class LickAppWidgetMenuComponent implements OnInit {
     this.resizeBroadcast();
   }
 
-  onViewProfile() {
-    console.log("onViewProfile not implemented")
+  onViewProfile() : void {
+    this.profileEvent.emit();
+  }
+
+  onSettings() : void {
+    this.settingsEvent.emit();
   }
 
 
