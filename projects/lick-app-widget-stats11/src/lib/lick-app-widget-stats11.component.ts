@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Chart } from 'chart.js';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'licky-lick-app-widget-stats11',
@@ -12,9 +13,9 @@ export class LickAppWidgetStats11Component implements OnInit {
   @Input() headingText = "licky-lick-app-widget-stats11";
   ctx1: any;
   ctx2: any;
-  @Input() chartData1: number[] = [Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000)];
+  @Input() chartData1: any[] = [Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000)];
   @Input() chartLabels1 = ['Active', 'In-active', 'Pending', 'Dormant'];
-  @Input() chartData2: number[] = [Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000)];
+  @Input() chartData2: any[] = [Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000)];
   @Input() chartLabels2 = ['Active', 'In-active', 'Pending', 'Dormant'];
   @Input() responsive: boolean = true;
   currentDataDisplay = '';
@@ -25,13 +26,20 @@ export class LickAppWidgetStats11Component implements OnInit {
   @Input() showMoreLink = "/";
   @Input() showMoreText = "More Details";
   @Input() router: Router;
+  setupTimer;
 
   constructor() { }
 
   ngOnInit() {
-    this.initChart1();
-    this.initChart2();
+    this.setDataSet();
   }
+
+  private setDataSet(): void {
+      this.initChart1();
+      this.initChart2();
+  }
+
+
   private initChart1(): void {
     this.ctx1 = document.getElementById("chart-widget11-1");
     if (this.ctx1) {

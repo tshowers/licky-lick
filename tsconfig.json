@@ -678,6 +678,12 @@
       ],
       "lick-app-widget-data-footer/*": [
         "dist/lick-app-widget-data-footer/*"
+      ],
+      "lick-app-widget-post5": [
+        "dist/lick-app-widget-post5"
+      ],
+      "lick-app-widget-post5/*": [
+        "dist/lick-app-widget-post5/*"
       ]
     }
   }

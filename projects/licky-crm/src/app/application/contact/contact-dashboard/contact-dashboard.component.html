@@ -1,3 +1,125 @@
-<p>
-  contact-dashboard works!
-</p>
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="db"
+                            [photoURL]="photoURL"
+                            [displayName]="displayName"
+                            [emailAddress]="emailAddress"
+                            [loggedIn]="loggedIn"
+                            [userName]="userName"
+                            [emailVerified]="emailVerified"
+                            (settingsEvent)="onSettings()"
+                            (profileEvent)="onViewProfile()"
+                            [loginService]="loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [searchArgument]="searchArgument"
+                                        [newsService]="newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"
+                                            (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+        </div>
+      </div>
+      <div class="row" *ngIf="totalRecords == 0">
+        <div class="col-md-12">
+          <licky-lick-marketing-faq2
+            [headingText]="FAQheadingText"
+            [descriptionText]="descriptionText"
+            [faqHeading1]="faqHeading1"
+            [faqDescription1]="faqDescription1"
+            [faqHeading2]="faqHeading2"
+            [faqDescription2]="faqDescription2"
+            [faqHeading3]="faqHeading3"
+            [faqDescription3]="faqDescription3"
+            [faqHeading4]="faqHeading4"
+            [faqDescription4]="faqDescription4"
+          ></licky-lick-marketing-faq2>
+        </div>
+      </div>
+      <div class="row ta-row" *ngIf="totalRecords > 0">
+        <div class="col-md-12">
+          <licky-lick-app-widget-stats4 [headingText]="'Contacts'"
+                                        [subHeadingText]="'Total Records'"
+                                        [iconClass]="'fa fa-address-book'"
+                                        [count]="totalRecords"></licky-lick-app-widget-stats4>
+        </div>
+      </div>
+      <div class="row ta-row" *ngIf="totalRecords > 0">
+        <div class="col-md-12">
+          <licky-lick-app-widget-card-deck [data]="highlightedContacts"
+                                           (pageEvent)="onViewContact($event)"></licky-lick-app-widget-card-deck>
+        </div>
+      </div>
+      <div class="row ta-row" *ngIf="totalRecords > 0">
+        <div class="col-md-6">
+          <licky-lick-app-widget-stats3 [data]="contactStatusData"
+                                        [iconClass]="'fa fa-arrows-alt'"
+                                        [headingText]="'Status'"
+                                        [subHeadingText]="'category'"></licky-lick-app-widget-stats3>
+        </div>
+        <div class="col-md-6">
+          <licky-lick-app-widget-stats9 *ngIf="(chartData1$ | async)?.length > 0"
+                                        [headingText]="headingText"
+                                        [buttonText1]="buttonText1"
+                                        [buttonText2]="buttonText2"
+                                        [buttonText3]="buttonText3"
+                                        [totalCount]="totalRecords"
+                                        [subHeadingText]="subHeadingText"
+                                        [chartLabels]="chartLabels"
+                                        [chartData1]="chartData1$ | async"
+                                        [chartData2]="chartData2$ | async"
+                                        [chartData3]="chartData3$ | async"></licky-lick-app-widget-stats9>
+        </div>
+      </div>
+      <div class="row ta-row" *ngIf="totalRecords > 0">
+        <div class="col-md-6">
+          <licky-lick-app-widget-stats11 *ngIf="(pieData1$ | async)?.length > 0"
+                                         [headingText]="'State Status'"
+                                         [chartData1]="pieData1$ | async"
+                                         [chartLabels1]="pieLabels1"
+                                         [chartData2]="pieData2$ | async"
+                                         [chartLabels2]="pieLabels2"
+                                         [currentButtonText]="'Progress'"
+                                         [pastButtonText]="'Strategy'"
+                                         [showMoreLink]="null"></licky-lick-app-widget-stats11>
+        </div>
+        <div class="col-md-6">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <licky-lick-app-widget-stats6 [showMoreLink]="null"
+                                              [iconClass]="'fa fa-user-circle-o'"
+                                              [label]="'Draft'"
+                                              [count]="draftCount"></licky-lick-app-widget-stats6>
+              </div>
+              <div class="col-md-6">
+                <licky-lick-app-widget-stats6 [showMoreLink]="null"
+                                              [iconClass]="'fa fa-address-book-o'"
+                                              [label]="'Shared'"
+                                              [count]="sharedCount"></licky-lick-app-widget-stats6>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <licky-lick-app-widget-stats6 [showMoreLink]="null"
+                                              [iconClass]="'fa fa-user-times'"
+                                              [label]="'Deleted'"
+                                              [count]="deletedCount"></licky-lick-app-widget-stats6>
+              </div>
+              <div class="col-md-6">
+                <licky-lick-app-widget-stats6 [showMoreLink]="null"
+                                              [iconClass]="'fa fa-building'"
+                                              [label]="'Companies'"
+                                              [count]="companyCount"></licky-lick-app-widget-stats6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

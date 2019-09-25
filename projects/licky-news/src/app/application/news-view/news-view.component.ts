@@ -39,6 +39,17 @@ export class NewsViewComponent implements OnInit, OnDestroy {
 
   videos: any[];
 
+  private _newsSearchSubscription: Subscription;
+  private _newsProviderSubscription: Subscription;
+  private _newsCountrySubscription: Subscription;
+  private _newsCategorySubscription1: Subscription;
+  private _newsCategorySubscription2: Subscription;
+  private _newsCategorySubscription3: Subscription;
+  private _newsCategorySubscription4: Subscription;
+  private _newsCategorySubscription5: Subscription;
+  private _newsCategorySubscription6: Subscription;
+  private _youTubeSubscription: Subscription;
+
   private _channels = [
     { 'name': 'VICE News', 'value': 'UCZaT_X_mc0BI-djXOlfhqWQ' },
     { 'name': 'CBS NEWS', 'value': 'UC8p1vwvWtl6T73JiExfWs1g' },
@@ -96,6 +107,26 @@ export class NewsViewComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this._userSubscription.unsubscribe();
+    if (this._newsSearchSubscription)
+      this._newsSearchSubscription.unsubscribe();
+    if (this._newsProviderSubscription)
+      this._newsProviderSubscription.unsubscribe();
+    if (this._newsCountrySubscription)
+      this._newsCountrySubscription.unsubscribe();
+    if (this._newsCategorySubscription1)
+      this._newsCategorySubscription1.unsubscribe();
+    if (this._newsCategorySubscription2)
+      this._newsCategorySubscription2.unsubscribe();
+    if (this._newsCategorySubscription3)
+      this._newsCategorySubscription3.unsubscribe();
+    if (this._newsCategorySubscription4)
+      this._newsCategorySubscription4.unsubscribe();
+    if (this._newsCategorySubscription5)
+      this._newsCategorySubscription5.unsubscribe();
+    if (this._newsCategorySubscription6)
+      this._newsCategorySubscription6.unsubscribe();
+    if (this._youTubeSubscription)
+      this._youTubeSubscription.unsubscribe();
   }
 
   private setUser(): void {
@@ -123,7 +154,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    this._newsService.getNewsBySearchCriteria(this.searchArgument, this.currentPage).subscribe(
+    this._newsSearchSubscription = this._newsService.getNewsBySearchCriteria(this.searchArgument, this.currentPage).subscribe(
       (news) => {
         // console.log("Current Page: " + this.currentPage, "Found >>>" + JSON.stringify(news));
         this.searchResults = news.articles;
@@ -164,9 +195,8 @@ export class NewsViewComponent implements OnInit, OnDestroy {
 
   private setSelectedNewsSources(source: string): void {
     this._newsService.setPageSize(5);
-    this._newsService.getNewsByProvider(source).subscribe(
+    this._newsProviderSubscription = this._newsService.getNewsByProvider(source).subscribe(
       (news) => {
-        // console.log(JSON.stringify(news));
         let box = new ProviderBox();
         box.heading = source;
         box.featuredArticle = news.articles[0];
@@ -179,12 +209,12 @@ export class NewsViewComponent implements OnInit, OnDestroy {
   private setTopNewsArticles(): void {
     this._newsService.setPageNumber(1);
     this._newsService.setPageSize(20);
-    this._newsService.getNewsByCountry("us").subscribe(
+    this._newsCountrySubscription = this._newsService.getNewsByCountry("us").subscribe(
       (news) => {
-        this.topNews = news.articles.slice(0,10);
+        this.topNews = news.articles.slice(0, 10);
         this.featuredArticle = news.articles[10];
-        this.featuredNews = news.articles.slice(11,14);
-        this.generalArticles = news.articles.slice(14,20);
+        this.featuredNews = news.articles.slice(11, 14);
+        this.generalArticles = news.articles.slice(14, 20);
       }
     )
   }
@@ -193,7 +223,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     let category = this._newsService.BUSINESS;
     this._newsService.setPageSize(4);
     this._newsService.setPageNumber(1);
-    this._newsService.getNewsByCategory(category).subscribe(
+    this._newsCategorySubscription1 = this._newsService.getNewsByCategory(category).subscribe(
       (news) => {
         this.businessArticles = news.articles;
       }
@@ -204,7 +234,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     let category = this._newsService.ENTERTAINMENT;
     this._newsService.setPageSize(4);
     this._newsService.setPageNumber(1);
-    this._newsService.getNewsByCategory(category).subscribe(
+    this._newsCategorySubscription2 = this._newsService.getNewsByCategory(category).subscribe(
       (news) => {
         this.entertainmentArticles = news.articles;
       }
@@ -214,7 +244,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     let category = this._newsService.HEALTH;
     this._newsService.setPageNumber(1);
     this._newsService.setPageSize(4);
-    this._newsService.getNewsByCategory(category).subscribe(
+    this._newsCategorySubscription3 = this._newsService.getNewsByCategory(category).subscribe(
       (news) => {
         this.healthArticles = news.articles;
       }
@@ -224,7 +254,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     let category = this._newsService.SCIENCE;
     this._newsService.setPageSize(4);
     this._newsService.setPageNumber(1);
-    this._newsService.getNewsByCategory(category).subscribe(
+    this._newsCategorySubscription4 = this._newsService.getNewsByCategory(category).subscribe(
       (news) => {
         this.scienceArticles = news.articles;
       }
@@ -234,7 +264,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     let category = this._newsService.SPORTS;
     this._newsService.setPageSize(4);
     this._newsService.setPageNumber(1);
-    this._newsService.getNewsByCategory(category).subscribe(
+    this._newsCategorySubscription5 = this._newsService.getNewsByCategory(category).subscribe(
       (news) => {
         this.sportsArticles = news.articles;
       }
@@ -244,7 +274,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     let category = this._newsService.TECHNOLOGY;
     this._newsService.setPageSize(4);
     this._newsService.setPageNumber(1);
-    this._newsService.getNewsByCategory(category).subscribe(
+    this._newsCategorySubscription6 = this._newsService.getNewsByCategory(category).subscribe(
       (news) => {
         this.technologyArticles = news.articles;
       }
@@ -253,7 +283,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
 
   private setVideos(): void {
     this.videos = [];
-    this._youTubeService.getVideosForChannel(this.getChannel(), 5)
+    this._youTubeSubscription = this._youTubeService.getVideosForChannel(this.getChannel(), 5)
       .pipe(takeUntil(this._unsubscribe$)).subscribe(lista => {
         for (let element of lista["items"]) {
           this.videos.push(element)

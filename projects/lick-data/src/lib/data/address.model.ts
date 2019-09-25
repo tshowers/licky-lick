@@ -1,7 +1,6 @@
 import { Section } from './section.model';
 
 export class Address {
-  public $key?: string;
   public id?: string;
 
   public name: string;

@@ -6,7 +6,7 @@
             <button class="btn btn-sm" [ngClass]="{'btn-secondary' : (buttonActive2 === 'none'), 'btn-theme' : (buttonActive2 === '') }" (click)="buttonClick2()">{{buttonText2}}</button>
             <button class="btn btn-sm" [ngClass]="{'btn-secondary' : (buttonActive3 === 'none'), 'btn-theme' : (buttonActive3 === '') }" (click)="buttonClick3()">{{buttonText3}}</button>
         </div>
-        <div class="ecom-chart-text text-center"><span [CountTo]="totalCount"></span> {{headingText}}</div>
+        <div class="ecom-chart-text text-center">{{headingText}}</div>
         <div class="chart-period text-center"> {{subHeadingText}} </div>
 
         <div class="text-center">

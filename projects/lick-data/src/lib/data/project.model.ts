@@ -1,7 +1,6 @@
 import { Section } from './section.model';
 
 export class Project  {
-  public $key?: string;
   public id?;
 
   public name: string;
@@ -62,7 +61,6 @@ export class Project  {
 }
 
 export class Milestone {
-  public $key?: string;
   public id?;
   public title?: string;
   public date?;
@@ -101,7 +99,6 @@ export class Milestone {
 }
 
 export class Requirement {
-  public $key?: string;
   public id?;
   public project_id?;
 
@@ -143,7 +140,6 @@ export class Requirement {
 }
 
 export class Deliverable {
-  public $key?: string;
   public id?;
   public project_id?;
 
@@ -185,7 +181,6 @@ export class Deliverable {
 }
 
 export class AffectedParty {
-  public $key?: string;
   public id?;
   public project_id?;
 
@@ -225,7 +220,6 @@ export class AffectedParty {
 }
 
 export class AffectedSystem {
-  public $key?: string;
   id?;
 
   public name: string;
@@ -266,7 +260,6 @@ export class AffectedSystem {
 }
 
 export class ImplementationPlan {
-  public $key?: string;
   public id?;
   public project_id?;
 
@@ -305,7 +298,6 @@ export class ImplementationPlan {
 
 }
 export class Bug {
-  public $key?: string;
   public id?;
   public project_id?;
   public deliverable_id?;
@@ -351,7 +343,6 @@ export class Bug {
 
 
 export class ProjectReport {
-  public $key?: string;
   public id?;
 
   public name: string;
@@ -394,7 +385,6 @@ export class ProjectReport {
 }
 
 export class Approval  {
-  public $key?: string;
   public id?;
   public project_id?;
 

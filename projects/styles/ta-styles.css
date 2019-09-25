@@ -831,6 +831,10 @@ a.btn-primary {
 .ta-small {
   font-size: 0.8rem;
 }
+.ta-side-news {
+  max-height: 1400px;
+  overflow-y: auto;
+}
 
 .ta-absolute-center-parent-lg {
   width: 100%;

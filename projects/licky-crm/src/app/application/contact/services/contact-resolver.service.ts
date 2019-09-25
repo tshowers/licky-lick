@@ -15,7 +15,7 @@ export class ContactResolverService {
     let id = route.paramMap.get('id');
     let user = route.queryParamMap.get('user');
     let employee = route.queryParamMap.get('employee');
-    console.log("ID:", id);
+    // console.log("ID:", id);
     return this.getContact(id, user, employee);
   }
 

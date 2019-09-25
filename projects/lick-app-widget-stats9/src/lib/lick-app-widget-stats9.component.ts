@@ -24,7 +24,7 @@ export class LickAppWidgetStats9Component implements OnInit {
   @Input() dataSetLabel = "Per Month";
   @Input() borderColor = "#10b1dd";
   @Input() fill: boolean = true;
-  @Input() chartData1: number[] = [
+  @Input() chartData1: any[] = [
     Math.floor(Math.random() * 1000),
     Math.floor(Math.random() * 1000),
     Math.floor(Math.random() * 1000),
@@ -38,7 +38,7 @@ export class LickAppWidgetStats9Component implements OnInit {
     Math.floor(Math.random() * 1000),
     Math.floor(Math.random() * 1000)
   ];
-  @Input() chartData2: number[] = [
+  @Input() chartData2: any[] = [
     Math.floor(Math.random() * 1000),
     Math.floor(Math.random() * 1000),
     Math.floor(Math.random() * 1000),
@@ -52,7 +52,7 @@ export class LickAppWidgetStats9Component implements OnInit {
     Math.floor(Math.random() * 1000),
     Math.floor(Math.random() * 1000)
   ];
-  @Input() chartData3: number[] = [
+  @Input() chartData3: any[] = [
     Math.floor(Math.random() * 1000),
     Math.floor(Math.random() * 1000),
     Math.floor(Math.random() * 1000),

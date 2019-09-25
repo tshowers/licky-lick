@@ -2,7 +2,6 @@ import { Section } from './section.model';
 import { Product } from './product.model';
 
 export class ShoppingCart {
-  public $key?: string;
   id?;
 
   public name: string;

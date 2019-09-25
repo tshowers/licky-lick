@@ -1,7 +1,6 @@
 import { Section } from './section.model';
 
 export class Event {
-  public $key?: string;
   public schedule_id?: string;
   public project_id?: string;
   public title?: string;

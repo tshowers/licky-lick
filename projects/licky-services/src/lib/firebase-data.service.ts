@@ -91,6 +91,7 @@ export class FirebaseDataService {
 
 
   updateData(path: string, key: any, data: any): void {
+    path = this.getAugmentedPath(path);
     console.log("Updating Data for " + path + '/' + key, JSON.stringify(data));
     this.setUpdateValues(data);
     this._db.ref(path + '/' + key).set(data, (error) => {
@@ -100,6 +101,7 @@ export class FirebaseDataService {
   }
 
   getData(path: string, id: string): Observable<any> {
+    path = this.getAugmentedPath(path);
     console.log("Getting Data for " + path + '/' + id);
     return Observable.create((observer) => {
       console.log("firebase.database=" + this._db)
@@ -107,7 +109,7 @@ export class FirebaseDataService {
         (snapshot) => {
           // console.log("Snapshot is : " + JSON.stringify(snapshot));
           let value = snapshot.val();
-          console.log("Value is : " + JSON.stringify(value));
+          // console.log("Value is : " + JSON.stringify(value));
           observer.next(value)
           observer.complete()
         }
@@ -120,6 +122,7 @@ export class FirebaseDataService {
   }
 
   writeData(path: string, data: any): Observable<any> {
+    path = this.getAugmentedPath(path);
     this.setNewDataValues(data);
     return Observable.create((observer) => {
       this._db.ref(path).push(data, (error) => {
@@ -136,14 +139,23 @@ export class FirebaseDataService {
     })
   }
 
+  public getAugmentedPath(path: string): string {
+    if (path == USERS)
+      return path;
+    else if (this._user && this._user.account)
+      return path + "/" + this._user.account
+    else return path;
+  }
+
 
   setDeleted(path: string, data: any): void {
+    path = this.getAugmentedPath(path);
     data.deleted = true;
     this.updateData(path, data.id, data);
-
   }
 
   getDataCollection(path): Observable<any> {
+    path = this.getAugmentedPath(path);
     console.log("Getting Data Collection for " + path, "DB is ", this._db);
     return Observable.create((observer) => {
 
@@ -160,15 +172,16 @@ export class FirebaseDataService {
   }
 
   getDataByBatch(path: string, batchSize: number, keyField: string, lastKey?: string): Observable<any> {
+    path = this.getAugmentedPath(path);
     if (lastKey)
       return Observable.create((observer) => {
         this._db.ref(path)
           .startAt(lastKey)
           .limitToFirst(batchSize)
-          .on('value', (snapshot) =>{
+          .on('value', (snapshot) => {
             observer.next((snapshot) ? snapshot.val() : null)
             observer.complete();
-          }, (error) =>{
+          }, (error) => {
             if (error)
               this.databaseError.next(error);
           })
@@ -191,6 +204,17 @@ export class FirebaseDataService {
       observer.complete();
     })
   }
+
+  public getListToArray(data: any): any[] {
+    let list: any[] = [];
+    for (let item in data) {
+      this.doFixUpData(data, item);
+      list.push(data[item]);
+    }
+    // console.log("CONVERTED LIST", JSON.stringify(list));
+    return list;
+  }
+
 
   public getRecordsToDisplay(startPage, pageSize, data: any[]): any[] {
     return data.slice(((startPage - 1) * pageSize), (((startPage - 1) * pageSize) + pageSize))

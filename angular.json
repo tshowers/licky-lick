@@ -4683,6 +4683,41 @@
           }
         }
       }
+    },
+    "lick-app-widget-post5": {
+      "root": "projects/lick-app-widget-post5",
+      "sourceRoot": "projects/lick-app-widget-post5/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-post5/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-post5/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-post5/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-post5/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-post5/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-post5/tsconfig.lib.json",
+              "projects/lick-app-widget-post5/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "lick-data"

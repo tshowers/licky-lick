@@ -2,7 +2,6 @@ import {Address} from './address.model';
 import { Section } from './section.model';
 
 export class Property {
-  public $key?: string;
   public id?;
 
   public name: string;
@@ -52,7 +51,6 @@ export class Property {
 }
 
 export class Showing  {
-  public $key?: string;
   public id?;
 
   public name: string;

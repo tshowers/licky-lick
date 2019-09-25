@@ -1,8 +1,6 @@
 import { Section } from './section.model';
 
 export class Image {
-  public $key?: string;
-
   public id?;
   public title?: string;
 

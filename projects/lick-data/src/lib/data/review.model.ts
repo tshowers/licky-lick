@@ -2,7 +2,6 @@ import { Section } from './section.model';
 import { Company } from './contact.model';
 
 export class Review  {
-  public $key?: string;
   public id?;
   public stars  = [];
   public description?;

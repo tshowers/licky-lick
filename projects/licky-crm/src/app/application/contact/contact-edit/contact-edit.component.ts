@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild, Renderer2 } from '@angular/cor
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Upload, Contact, Dependent,Dropdown } from 'lick-data';
-import { UploadService, DropdownService, TypeFindService, FirebaseDataService, LickyLoginService, CONTACTS } from 'licky-services';
+import { NewsService, UploadService, DropdownService, TypeFindService, FirebaseDataService, LickyLoginService, CONTACTS } from 'licky-services';
 import { LickAppPageComponent } from 'lick-app-page';
 
 @Component({
@@ -32,32 +32,36 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
 
   currentUpload: Upload;
 
+  searchArgument;
 
-  constructor(public loginService: LickyLoginService, protected renderer2: Renderer2, public db: FirebaseDataService, public router: Router, public typeFindService: TypeFindService, private _uploadService: UploadService, private _dropdownService: DropdownService, private _route: ActivatedRoute) {
+  constructor(public newsService: NewsService, public loginService: LickyLoginService, protected renderer2: Renderer2, public db: FirebaseDataService, public router: Router, public typeFindService: TypeFindService, private _uploadService: UploadService, private _dropdownService: DropdownService, private _route: ActivatedRoute) {
     super(router, loginService, db, renderer2);
   }
 
   ngOnInit() {
+    super.ngOnInit();
     this.initializeDropdowns();
     this.setBreadCrumb();
     this._route.data
       .subscribe((data: { contact: Contact }) => {
         if (data.contact) {
           this.contact = data.contact;
+          if (this.contact.isCompany && this.contact.company)
+            this.searchArgument = this.contact.company.name;
         }
       });
   }
 
   setBreadCrumb() : void {
     this.crumbs = [
-      { name: "home", link: "/", active: false },
+      { name: "home", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
       { name: "edit", link: "/application/contacts/new", active: true },
     ]
   }
 
   ngOnDestroy() {
-
+    super.ngOnDestroy();
   }
 
   onSubmit(): void {
@@ -85,7 +89,7 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
       if (file) {
         this.currentUpload = new Upload(file);
         this.currentUpload.contact_id = this.contact.id;
-        console.log("CALLING UPLOAD SERVICE WITH", this.currentUpload.contact_id, this.contact);
+        // console.log("CALLING UPLOAD SERVICE WITH", this.currentUpload.contact_id, this.contact);
         this._uploadService.pushFileToStorage(this.currentUpload, CONTACTS, '/application/contacts/' + this.contact.id,  this.contact, this.db);
       }
     }
@@ -147,6 +151,7 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
   onBreadCrumb(link) : void {
       this.router.navigate([link]);
   }
+
   get diagnostic() {
     return JSON.stringify(this.contact, null, 2)
   }

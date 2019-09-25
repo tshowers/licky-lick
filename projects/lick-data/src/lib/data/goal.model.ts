@@ -1,8 +1,6 @@
 import { Section } from './section.model';
 
 export class Goal {
-
-  public $key?: string;
   public id?;
 
   public name: string;

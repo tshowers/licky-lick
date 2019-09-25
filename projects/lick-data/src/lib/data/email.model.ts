@@ -3,7 +3,6 @@ import { Section } from './section.model';
 
 
 export class Email  {
-  public $key?: string;
   public id?;
   public subject: string;
   public message: string

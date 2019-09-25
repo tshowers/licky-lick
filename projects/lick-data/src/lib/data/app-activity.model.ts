@@ -1,5 +1,4 @@
 export class AppActivity {
-  public $key?: string;
   public id?;
 
   public name: string;

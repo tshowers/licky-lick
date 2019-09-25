@@ -15,55 +15,42 @@ import { Subscription } from 'rxjs';
 export class ContactListComponent extends LickAppPageComponent implements OnInit, OnDestroy {
 
   contacts$: Observable<any[]>;
+
   deletedContacts: number = 0;
+
   privateContacts: number = 0;
+
   draftContacts: number = 0;
+
   companyContacts: number = 0;
-  photoURL;
-  displayName;
-  emailAddress;
-  loggedIn;
-  userName;
-  emailVerified;
 
   pageSize = 5;
+
   totalRecords = 0;
 
   private _contacts: Contact[];
-  private _firebaseUserSubscription: Subscription;
 
   constructor(protected renderer2: Renderer2, public loginService: LickyLoginService, public router: Router, public db: FirebaseDataService, private _sortHelper: SortHelperService) {
     super(router, loginService, db, renderer2);
   }
 
   ngOnInit() {
+    super.ngOnInit();
     this.setBreadCrumb();
-    this.setUserProperties();
-    this.setDataSet();
+    this.waitForUserSet();
   }
 
   ngOnDestroy() {
-    this._firebaseUserSubscription.unsubscribe();
+    super.ngOnDestroy();
   }
 
-  private setUserProperties() : void {
-    this._firebaseUserSubscription = this.loginService.firebaseUser.subscribe((firebaseUser) => {
-      if (firebaseUser) {
-        this.photoURL = firebaseUser.photoURL;
-        this.displayName = firebaseUser.displayName;
-        this.emailAddress = firebaseUser.email;
-        this.loggedIn = true;
-        this.userName = firebaseUser.email;
-        this.emailVerified = firebaseUser.emailVerified;
-      }
-    })
-
-
+  private waitForUserSet(): void {
+    this.setupTimer = setInterval(() => this.setDataSet(), 250);
   }
 
   private setBreadCrumb(): void {
     this.crumbs = [
-      { name: "home", link: "/", active: false },
+      { name: "home", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: true }
     ]
   }
@@ -76,15 +63,18 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
   }
 
   setDataSet(): void {
-    this.db.getDataCollection(CONTACTS).subscribe((contacts: Contact[]) => {
-      if (contacts) {
-        this.contacts$ = this.db.getConvertDataToList(contacts)
-          .pipe(map(contactData => {
-            this.setCounts(contactData);
-            return this.db.getRecordsToDisplay(1, this.pageSize, contactData);
-          }));
-      }
-    });
+    if (this.loginService.getUser()) {
+      clearInterval(this.setupTimer);
+      this.db.getDataCollection(CONTACTS).subscribe((contacts: Contact[]) => {
+        if (contacts) {
+          this.contacts$ = this.db.getConvertDataToList(contacts)
+            .pipe(map(contactData => {
+              this.setCounts(contactData);
+              return this.db.getRecordsToDisplay(1, this.pageSize, contactData);
+            }));
+        }
+      });
+    }
   }
 
   setCounts(contacts: Contact[]): void {
@@ -106,7 +96,6 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
   }
 
   onDelete(data): void {
-    console.log("onDelete", JSON.stringify(data));
     data.deleted = true;
     this.db.updateData(CONTACTS, data.id, data);
     this.router.navigate(['application', 'contacts', data.id])
@@ -114,14 +103,6 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
 
   onBreadCrumb(link): void {
     this.router.navigate([link]);
-  }
-
-  onViewProfile() : void {
-    this.router.navigate(['application', 'profile'])
-  }
-
-  onSettings() : void {
-    this.router.navigate(['application', 'settings'])
   }
 
   get diagnostic() {

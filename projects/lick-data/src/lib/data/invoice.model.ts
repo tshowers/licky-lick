@@ -3,7 +3,6 @@ import { Section } from './section.model';
 
 
 export class Invoice {
-  public $key?: string;
   public id?;
 
   public name: string;

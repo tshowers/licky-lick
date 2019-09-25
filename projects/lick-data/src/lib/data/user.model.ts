@@ -7,7 +7,6 @@ import { Address } from './address.model';
 import { FOP } from './fop.model';
 
 export class User {
-  public $key?: string;
   public id?;
   public customer_id?: string;
   public status?: string;
@@ -20,7 +19,7 @@ export class User {
   public badge?;
   public link?: string;
   public shared: boolean = false;
-
+  public account: string;
 
   public helpNeeded? : boolean =true;
   public openView? : boolean = false;
@@ -117,7 +116,6 @@ export interface ModuleAccess {
 
 
 export class Favorite {
-  public $key?: string;
   public id?;
 
   public name: string;
@@ -148,7 +146,6 @@ export class Favorite {
 }
 
 export class Bookmark {
-  public $key?: string;
   public id?: string;
 
   public name: string;

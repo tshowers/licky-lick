@@ -22,14 +22,18 @@
           <i [ngClass]="item?.iconClass"
              aria-hidden="true"></i>
           <br><br>
-          <div class="service-text"><span [CountTo]="item?.count"></span></div>
+          <div *ngIf="item?.count > 0" class="service-text"><span [CountTo]="item?.count"></span></div>
+          <div *ngIf="item?.count === 0"class="service-text"><span>{{item?.count}}</span></div>
           <div class="service-small-text">{{item?.label}}</div>
         </div>
         <div class="col-md-6 service-widget-items bg-theme text-center">
           <i [ngClass]="data[i+1]?.iconClass"
              aria-hidden="true"></i>
           <br><br>
-          <div class="service-text"><span [CountTo]="data[i+1]?.count"></span></div>
+          <div class="service-text">
+            <span *ngIf="data[i+1]?.count > 0" [CountTo]="data[i+1]?.count"></span>
+            <span *ngIf="data[i+1]?.count === 0">{{data[i+1]?.count}}</span>
+          </div>
           <div class="service-small-text">{{data[i+1]?.label}}</div>
         </div>
       </ng-container>

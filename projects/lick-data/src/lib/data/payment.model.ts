@@ -1,7 +1,6 @@
 import { Section } from './section.model';
 
 export class Payment {
-  public $key?: string;
   public id?;
 
   public contact_id?;
@@ -58,12 +57,10 @@ export class Payment {
 }
 
 export class Paypal {
-  public $key?: string;
   id?;
 }
 
 export class PaymentLine {
-  public $key?: string;
   id?;
   creditIndicator: boolean = false;
   allocationTypeCode: string;
@@ -95,7 +92,6 @@ export class PaymentLine {
 }
 
 export class PaymentAttachment {
-  public $key?: string;
   id?;
   typeCode: string;
   name: string;
@@ -127,7 +123,6 @@ export class PaymentAttachment {
 }
 
 export class FromBankAccount {
-  public $key?: string;
   id?;
   accountNumber: number = 0;
   bankName: string;
@@ -157,7 +152,6 @@ export class FromBankAccount {
 }
 
 export class Check {
-  public $key?: string;
   id?;
   accountHolderName: string;
   bankName: string;
@@ -188,7 +182,6 @@ export class Check {
 
 }
 export class CardPayment {
-  public $key?: string;
   id?;
   traceNumber: string;
   cardType: string;

@@ -1,7 +1,6 @@
 import { Section } from './section.model';
 
 export class JustText  {
-  public $key?: string;
   public id?;
 
   public name: string;

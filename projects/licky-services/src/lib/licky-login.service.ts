@@ -7,7 +7,7 @@ import 'firebase/app';
 import 'firebase/auth';
 import { FirebaseDataService, GROUPS, USERS } from './firebase-data.service';
 import { User, Group } from 'lick-data';
-
+import { IdGeneratorService } from './id-generator.service';
 import { Subject, BehaviorSubject } from 'rxjs';
 
 
@@ -27,9 +27,14 @@ export class LickyLoginService {
   private _users: any;
   public isLoggedIn: boolean = false;
   public redirectUrl;
+  private _token: string;
 
   constructor(@Inject(LickyLoginConfigService) private config, private _fds: FirebaseDataService) {
     this.initFirebase();
+  }
+
+  public setToken(token): void {
+    this._token = token;
   }
 
   private initFirebase() {
@@ -52,6 +57,7 @@ export class LickyLoginService {
   public signInWithUserNameAndPassword(emailAddress: string, password: string, router: Router, redirectURL: string) {
     firebase.auth().signInWithEmailAndPassword(emailAddress, password)
       .then((authData) => {
+        // authData.user.getIdToken(true)
         // console.log(authData);
         console.log("successful signin");
         this.isLoggedIn = true;
@@ -227,6 +233,7 @@ export class LickyLoginService {
 
   private createUser(): void {
     let user = new User();
+    user.account = IdGeneratorService.generateUUID();
     this.setAppUser(user);
     this._fds.updateData(USERS, this._firebaseUser.uid, user);
   }

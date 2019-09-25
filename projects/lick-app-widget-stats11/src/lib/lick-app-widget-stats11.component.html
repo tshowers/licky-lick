@@ -23,7 +23,7 @@
           <canvas id="chart-widget11-2" height="100"></canvas>
         </div>
 
-        <div class="category-progress" [ngStyle]="{'display' : currentDataDisplay}">
+        <div *ngIf="chartData1" class="category-progress" [ngStyle]="{'display' : currentDataDisplay}">
             <div class="row">
                 <div class="col-md-6">
                     <div class="category-progress">
@@ -88,7 +88,7 @@
 
         </div>
         <!-- end category-process -->
-        <div class="category-progress" [ngStyle]="{'display' : pastDataDisplay}">
+        <div *ngIf="chartData2" class="category-progress" [ngStyle]="{'display' : pastDataDisplay}">
             <div class="row">
                 <div class="col-md-6">
                     <div class="category-progress">

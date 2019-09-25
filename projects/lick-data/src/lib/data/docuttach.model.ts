@@ -1,7 +1,6 @@
 import { Section } from './section.model';
 
 export class Docuttach  {
-  $key: string;
   public id: string;
 
   public name: string;

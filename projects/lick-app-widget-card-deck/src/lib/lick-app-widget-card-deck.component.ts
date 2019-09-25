@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'licky-lick-app-widget-card-deck',
@@ -53,10 +53,16 @@ export class LickAppWidgetCardDeckComponent implements OnInit {
     "timeStamp": new Date(),
     "userName": "Barbara McNamara"
   }];
+  @Output() pageEvent = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
+
+  onPageEvent(dataItem) : void {
+    this.pageEvent.emit(dataItem);
+  }
+
 
 }

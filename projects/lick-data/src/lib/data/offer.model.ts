@@ -1,7 +1,6 @@
 import { Section } from './section.model';
 
 export class Offer {
-  public $key?: string;
   public id?;
   public title?: string;
 

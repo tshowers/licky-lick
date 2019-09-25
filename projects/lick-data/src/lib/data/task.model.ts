@@ -2,7 +2,6 @@ import { TaTime } from './ta-date.model';
 import { Section } from './section.model';
 
 export class Task  {
-  public $key?: string;
   public id?;
 
   public name: string;

@@ -15,8 +15,13 @@ import { LickAppWidgetFooterModule } from 'lick-app-widget-footer';
 import { LickAppWidgetBreadcrumbModule } from 'lick-app-widget-breadcrumb';
 import { LickAppWidgetDataFooterModule } from 'lick-app-widget-data-footer';
 import { LickAppWidgetProfileModule} from 'lick-app-widget-profile';
-
-
+import { LickAppWidgetStats3Module } from 'lick-app-widget-stats3';
+import { LickAppWidgetStats4Module } from 'lick-app-widget-stats4';
+import { LickAppWidgetStats6Module } from 'lick-app-widget-stats6';
+import { LickAppWidgetStats9Module } from 'lick-app-widget-stats9';
+import { LickAppWidgetCardDeckModule } from 'lick-app-widget-card-deck';
+import { LickAppWidgetStats11Module } from 'lick-app-widget-stats11';
+import { LickMarketingFaq2Module } from 'lick-marketing-faq2';
 import { LickDataModule } from 'lick-data';
 import { LickAppPageModule } from 'lick-app-page';
 import { LickAppWidgetLeftSideMenuModule } from 'lick-app-widget-left-side-menu';
@@ -50,7 +55,14 @@ import { NavComponent } from './nav/nav.component';
     LickAppWidgetBreadcrumbModule,
     FormsModule,
     LickAppWidgetProfileModule,
-    LickAppWidgetDataFooterModule
+    LickAppWidgetDataFooterModule,
+    LickAppWidgetStats3Module,
+    LickAppWidgetStats4Module,
+    LickAppWidgetStats6Module,
+    LickAppWidgetStats9Module,
+    LickAppWidgetStats11Module,
+    LickAppWidgetCardDeckModule,
+    LickMarketingFaq2Module
   ],
   exports: [
     NavComponent,
@@ -71,7 +83,14 @@ import { NavComponent } from './nav/nav.component';
     NgbModule,
     FormsModule,
     LickAppWidgetDataFooterModule,
-    LickAppWidgetProfileModule
+    LickAppWidgetProfileModule,
+    LickAppWidgetStats3Module,
+    LickAppWidgetStats4Module,
+    LickAppWidgetStats6Module,
+    LickAppWidgetStats9Module,
+    LickAppWidgetStats11Module,
+    LickAppWidgetCardDeckModule,
+    LickMarketingFaq2Module
   ]
 })
 export class SharedModule { }
