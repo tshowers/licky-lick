@@ -17,6 +17,7 @@ export class LickAppWidgetMenuComponent implements OnInit {
   @Input() role = "N/A";
   @Input() emailAddress = "unknown@16ahead.com";
   @Input() userContact: Contact;
+  @Input() logoutPage = "/";
 
   @Input() version: string = "0.3";
   @Input() loggedIn: boolean = false;
@@ -28,9 +29,12 @@ export class LickAppWidgetMenuComponent implements OnInit {
 
   leftSidebar: boolean = true;
   rightSidebar: boolean = false;
+  searchDisplay = '';
+  cancelDisplay = 'none';
 
   @Output() settingsEvent = new EventEmitter();
   @Output() profileEvent = new EventEmitter();
+  @Output() searchEvent = new EventEmitter();
 
 
   constructor(private _renderer: Renderer2, private _lickAppWidgetMenuService: LickAppWidgetMenuService) { }
@@ -42,8 +46,9 @@ export class LickAppWidgetMenuComponent implements OnInit {
   }
 
   logout() {
-    this.router.navigate(['/home']);
-    this._lickAppWidgetMenuService.signOut();
+    this.router.navigate([this.logoutPage]);
+    if (this.loginService)
+      this.loginService.signOut();
     setTimeout(() => { window.location.reload() }, 500);
   }
 
@@ -83,12 +88,25 @@ export class LickAppWidgetMenuComponent implements OnInit {
     this.resizeBroadcast();
   }
 
-  onViewProfile() : void {
+  onViewProfile(): void {
     this.profileEvent.emit();
   }
 
-  onSettings() : void {
+  onSettings(): void {
     this.settingsEvent.emit();
+  }
+
+  onSearch(): void {
+    this.searchEvent.emit(this.searchArgument);
+    this.searchDisplay = 'none';
+    this.cancelDisplay = '';
+  }
+
+  onCancelSearch() : void {
+    this.searchArgument = '';
+    this.searchDisplay = '';
+    this.cancelDisplay = 'none';
+    this.searchEvent.emit(null);
   }
 
 

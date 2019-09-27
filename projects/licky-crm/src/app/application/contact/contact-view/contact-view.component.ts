@@ -64,6 +64,7 @@ export class ContactViewComponent extends LickAppPageComponent implements OnInit
     this.crumbs = [
       { name: "home", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
+      { name: "new", link: "/application/contacts/new", active: false },
       { name: "view", link: "/application/contacts/" + this.contact.id, active: true },
     ]
   }
@@ -80,6 +81,11 @@ export class ContactViewComponent extends LickAppPageComponent implements OnInit
 
   onBreadCrumb(link) : void {
       this.router.navigate([link]);
+  }
+
+  onSearch(value) : void {
+    console.log("ONSEARCH", value);
+    this.router.navigate(['application', 'contacts'], {queryParams: { searchArgument: value}})
   }
 
   get diagnostic() {

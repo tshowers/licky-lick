@@ -41,7 +41,7 @@ export class NavComponent implements OnInit, OnDestroy {
       "name": "Home",
     },
     {
-      "link": "/application/contacts",
+      "link": "/application/contacts/dashboard",
       "name": "Contacts",
     },
     {

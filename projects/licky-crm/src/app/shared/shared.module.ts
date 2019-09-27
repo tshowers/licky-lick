@@ -27,6 +27,9 @@ import { LickAppPageModule } from 'lick-app-page';
 import { LickAppWidgetLeftSideMenuModule } from 'lick-app-widget-left-side-menu';
 import { LickAppWidgetRightSideMenuModule } from 'lick-app-widget-right-side-menu';
 import { LickAppWidgetStats15Module } from 'lick-app-widget-stats15';
+
+import { NameDecriptionFilterPipe } from './filters/name-decription-filter.pipe';
+
 import { environment } from '../../environments/environment';
 
 export const firebaseConfig = environment.firebaseConfig;
@@ -34,7 +37,7 @@ export const firebaseConfig = environment.firebaseConfig;
 import { NavComponent } from './nav/nav.component';
 
 @NgModule({
-  declarations: [NavComponent],
+  declarations: [NavComponent, NameDecriptionFilterPipe],
   imports: [
     CommonModule,
     RouterModule,
@@ -90,7 +93,8 @@ import { NavComponent } from './nav/nav.component';
     LickAppWidgetStats9Module,
     LickAppWidgetStats11Module,
     LickAppWidgetCardDeckModule,
-    LickMarketingFaq2Module
+    LickMarketingFaq2Module,
+    NameDecriptionFilterPipe
   ]
 })
 export class SharedModule { }

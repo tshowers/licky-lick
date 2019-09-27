@@ -160,6 +160,7 @@ export class ContactDashboardComponent extends LickAppPageComponent implements O
     this.crumbs = [
       { name: "home", link: "/application/contacts/dashboard", active: true },
       { name: "contacts", link: "/application/contacts", active: false },
+      { name: "new", link: "/application/contacts/new", active: false },
     ]
   }
 
@@ -1244,6 +1245,11 @@ export class ContactDashboardComponent extends LickAppPageComponent implements O
 
   onBreadCrumb(link): void {
     this.router.navigate([link]);
+  }
+
+  onSearch(value) : void {
+    console.log("ONSEARCH", value);
+    this.router.navigate(['application', 'contacts'], {queryParams: { searchArgument: value}})
   }
 
   get diagnostic() {

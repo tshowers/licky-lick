@@ -23,15 +23,26 @@
   </div>
   <!-- end hamburger -->
   <div class="navbar-search">
-    <div class="input-group"> <span class="input-group-addon bg-theme">
-        <i class="fa fa-filter"></i>
-      </span>
-
+    <form #searchForm="ngForm"
+          class="form-group">
+    <div class="input-group"> <button [ngStyle]="{'display' : searchDisplay}" (click)="onSearch()" [disabled]="!searchForm.form.valid" type="submit" class="input-group-addon bg-theme">
+        <i class="fa fa-search"></i>
+      </button><button title="Cancel search" [ngStyle]="{'display' : cancelDisplay}" (click)="onCancelSearch();searchForm.reset()" type="button" class="input-group-addon btn-outline-dark">
+          <i class="fa fa-times"></i>
+        </button>
       <input type="text"
              [(ngModel)]="searchArgument"
+             name="searchArgument"
+             id="searchArgument"
+             autocorrect="off"
+             autocapitalize="off"
+             spellcheck="off"
+             autocomplete="off"
              class="form-control form-control-lg ta-input-element"
-             placeholder="Find a contact . ..">
+             placeholder="Find a contact . .."
+             required>
     </div>
+    </form>
   </div>
   <!-- end navbar-search -->
   <ul class="nav navbar-nav ">
