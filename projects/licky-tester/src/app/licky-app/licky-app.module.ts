@@ -22,6 +22,7 @@ import { LickAppWidgetPost1Module } from 'lick-app-widget-post1';
 import { LickAppWidgetPost2Module } from 'lick-app-widget-post2';
 import { LickAppWidgetPost3Module } from 'lick-app-widget-post3';
 import { LickAppWidgetPost4Module } from 'lick-app-widget-post4';
+import { LickAppWidgetPost5Module } from 'lick-app-widget-post5';
 import { LickAppWidgetStats1Module } from 'lick-app-widget-stats1';
 import { LickAppWidgetStats2Module } from 'lick-app-widget-stats2';
 import { LickAppWidgetStats3Module } from 'lick-app-widget-stats3';
@@ -86,6 +87,7 @@ import { PageWidgetsComponent } from './page-widgets/page-widgets.component';
     LickAppWidgetPost2Module,
     LickAppWidgetPost3Module,
     LickAppWidgetPost4Module,
+    LickAppWidgetPost5Module,
     LickAppWidgetStats1Module,
     LickAppWidgetStats2Module,
     LickAppWidgetStats3Module,
