@@ -102,7 +102,7 @@ export class FirebaseDataService {
 
   getData(path: string, id: string): Observable<any> {
     path = this.getAugmentedPath(path);
-    console.log("Getting Data for " + path + '/' + id);
+    console.log("Getting Data for PATH", path , 'ID=' + id);
     return Observable.create((observer) => {
       console.log("firebase.database=" + this._db)
       this._db.ref(path + '/' + id).once('value').then(
@@ -222,6 +222,7 @@ export class FirebaseDataService {
 
 
   private doFixUpData(data, item): void {
+    console.log("FIXING UP ITEM")
     data[item].id = item;
     if (data[item].firstName)
       data[item].name = data[item].firstName;

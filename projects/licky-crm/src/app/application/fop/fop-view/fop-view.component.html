@@ -1,3 +1,33 @@
-<p>
-  fop-view works!
-</p>
+<div class="card mx-auto d-block ta-max-view">
+  <div class="card-body">
+    <a title="Go To Contact"
+       routerLink="/app/contacts/{{contact?.id}}">
+      <h4 class="card-title"><span *ngIf="contact?.company">{{contact?.company.name}}
+          <br></span>
+        <span *ngIf="contact"> {{contact?.firstName}} {{contact?.lastName}}</span>
+        <i class="fa fa-link"
+           aria-hidden="true"></i></h4>
+    </a>
+    <p class="card-text">{{ fop?.fopType }}</p>
+    <p class="card-text">{{fop?.ccType}}</p>
+    <p class="card-text">{{fop?.ccNumber}}</p>
+    <p class="card-text">{{fop?.expDate}}</p>
+    <p class="card-text">{{fop?.ccv}}</p>
+    <p class="card-text">{{fop?.bankName}}</p>
+    <p class="card-text">{{fop?.bankAccountNumber}}</p>
+    <p class="card-text">{{fop?.bankRoutingNumber}}</p>
+    <p class="card-text">{{fop?.checkNumber}}</p>
+    <p class="card-text">{{fop?.bankCity}}</p>
+    <p class="card-text">{{fop?.bankState}}</p>
+    <p class="card-text">{{fop?.bankPhone}}</p>
+    <button *ngIf="canEdit"
+            class="btn btn-primary btn-lg btn-round"
+            (click)="onEdit()">Edit <i class="fa fa-pencil-square-o"
+         aria-hidden="true"></i>
+    </button> <button *ngIf="canDelete"
+            class="btn btn-danger btn-lg btn-round"
+            (click)="onDelete()">Delete <i class="fa fa-times"
+         aria-hidden="true"></i>
+    </button>
+  </div>
+</div>

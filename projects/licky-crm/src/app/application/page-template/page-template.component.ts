@@ -1,8 +1,7 @@
-import { Component, OnInit, OnDestroy, ViewChild, Renderer2 } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { Contact } from 'lick-data';
-import { NewsService, FirebaseDataService, LickyLoginService, CONTACTS } from 'licky-services';
 import { LickAppPageComponent } from 'lick-app-page';
+import { DataMediationService } from '../../shared/services/data-mediation.service';
 
 @Component({
   selector: 'app-page-template',
@@ -11,8 +10,8 @@ import { LickAppPageComponent } from 'lick-app-page';
 })
 export class PageTemplateComponent extends LickAppPageComponent implements OnInit, OnDestroy {
 
-  constructor(public newsService: NewsService, public loginService: LickyLoginService, protected renderer2: Renderer2, public db: FirebaseDataService, public router: Router) {
-    super(router, loginService, db, renderer2);
+  constructor(public dm: DataMediationService, protected renderer2: Renderer2, public router: Router) {
+    super(router,renderer2);
   }
 
   ngOnInit() {

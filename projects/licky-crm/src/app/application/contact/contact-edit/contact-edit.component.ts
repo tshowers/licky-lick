@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy, ViewChild, Renderer2 } from '@angular/cor
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Upload, Contact, Dependent,Dropdown } from 'lick-data';
-import { NewsService, UploadService, DropdownService, TypeFindService, FirebaseDataService, LickyLoginService, CONTACTS } from 'licky-services';
+import { UploadService, DropdownService, TypeFindService, CONTACTS } from 'licky-services';
 import { LickAppPageComponent } from 'lick-app-page';
+import { DataMediationService } from '../../../shared/services/data-mediation.service';
 
 @Component({
   selector: 'app-contact-edit',
@@ -34,8 +35,8 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
 
   searchArgument;
 
-  constructor(public newsService: NewsService, public loginService: LickyLoginService, protected renderer2: Renderer2, public db: FirebaseDataService, public router: Router, public typeFindService: TypeFindService, private _uploadService: UploadService, private _dropdownService: DropdownService, private _route: ActivatedRoute) {
-    super(router, loginService, db, renderer2);
+  constructor(public dm: DataMediationService, protected renderer2: Renderer2, public router: Router, public typeFindService: TypeFindService, private _uploadService: UploadService, private _dropdownService: DropdownService, private _route: ActivatedRoute) {
+    super(router, renderer2);
   }
 
   ngOnInit() {
@@ -54,7 +55,7 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
 
   setBreadCrumb() : void {
     this.crumbs = [
-      { name: "home", link: "/application/contacts/dashboard", active: false },
+      { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
       { name: "edit", link: "/application/contacts/new", active: true },
     ]
@@ -70,7 +71,7 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
     this.redirect();
   }
 
-  redirect(): void {
+  private redirect(): void {
     if (!this.currentUpload)
       this.router.navigate(['/application/contacts/' + this.contact.id]);
     else {
@@ -83,29 +84,34 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
     }
   }
 
-  uploadSingle() {
+  private uploadSingle() {
     if (this.selectedFiles) {
       let file = this.selectedFiles.item(0)
       if (file) {
         this.currentUpload = new Upload(file);
         this.currentUpload.contact_id = this.contact.id;
-        // console.log("CALLING UPLOAD SERVICE WITH", this.currentUpload.contact_id, this.contact);
-        this._uploadService.pushFileToStorage(this.currentUpload, CONTACTS, '/application/contacts/' + this.contact.id,  this.contact, this.db);
+        this._uploadService.pushFileToStorage(this.currentUpload, CONTACTS, '/application/contacts/' + this.contact.id,  this.contact, this.dm.db);
       }
     }
   }
 
-  detectFiles(event) {
+  private detectFiles(event) {
     this.selectedFiles = event.target.files;
   }
 
   onUpdate(): void {
-    this.db.updateData(CONTACTS, this.contact.id, this.contact);
+    this.dm.db.updateData(CONTACTS, this.contact.id, this.contact);
     this.uploadSingle();
   }
 
+  onDelete(): void {
+    this.contact.deleted = true;
+    this.onUpdate();
+    this.onBrandNew();
+  }
+
   saveNewContact(): void {
-    this.db.writeData(CONTACTS, this.contact).subscribe((key) => {
+    this.dm.db.writeData(CONTACTS, this.contact).subscribe((key) => {
       this.contact.id = key;
       console.log("CONTACT AFTER SAVE", this.contact, key)
       this.uploadSingle();
@@ -116,14 +122,8 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
     this.contact = new Contact();
   }
 
-  onDelete(): void {
-    this.contact.deleted = true;
-    this.onUpdate();
-    // this.changeSuccessMessage("Contact deleted successfully at ", 'success');
-    this.onBrandNew();
-  }
 
-  initializeDropdowns(): void {
+  private initializeDropdowns(): void {
     this.genders = this._dropdownService.getGenders();
     this.prefixes = this._dropdownService.getPrefixes();
     this.status = this._dropdownService.getStatus();
@@ -143,7 +143,7 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
     this.contact.dependents.splice(at, 1);
   }
 
-  modelCheck() {
+  private modelCheck() {
     if (this.dependent.firstName)
       this.newDependent();
   }

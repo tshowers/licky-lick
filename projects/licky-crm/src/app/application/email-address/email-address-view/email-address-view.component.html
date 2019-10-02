@@ -1,3 +1,26 @@
-<p>
-  email-address-view works!
-</p>
+<div class="card mx-auto d-block ta-max-view">
+  <div class="card-header">
+    <a title="Go To Contact"
+       routerLink="/app/contacts/{{contact?.id}}">
+      <h4><span *ngIf="contact?.company"><strong>{{contact?.company.name}}</strong>
+          <br></span>
+        <span *ngIf="contact"> {{contact?.firstName}} {{contact?.lastName}}</span>
+        <i class="fa fa-link"
+           aria-hidden="true"></i></h4>
+    </a>
+  </div>
+  <div class="card-body">
+    <p class="card-text"> <a href="mailto:{{emailAddress?.emailAddress}}">{{ emailAddress?.emailAddress }}</a>
+      <span *ngIf="emailAddress?.emailAddressType">({{emailAddress?.emailAddressType}})</span>
+    </p>
+    <button *ngIf="canEdit"
+            class="btn btn-primary btn-lg btn-round"
+            (click)="onEdit()">Edit <i class="fa fa-pencil-square-o"
+         aria-hidden="true"></i>
+    </button> <button *ngIf="canDelete"
+            class="btn btn-danger btn-lg btn-round"
+            (click)="onDelete()">Delete <i class="fa fa-times"
+         aria-hidden="true"></i>
+    </button>
+  </div>
+</div>

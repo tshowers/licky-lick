@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { LickyLoginService, FirebaseDataService } from 'licky-services';
 import { LickAppPageComponent } from 'lick-app-page';
+import { DataMediationService } from '../../shared/services/data-mediation.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -12,8 +12,8 @@ export class UserProfileComponent extends LickAppPageComponent implements OnInit
 
   message;
 
-  constructor(protected renderer2: Renderer2, public loginService: LickyLoginService, public router: Router, public db: FirebaseDataService) {
-    super(router, loginService, db, renderer2);
+  constructor(public dm: DataMediationService, protected renderer2: Renderer2, public router: Router) {
+    super(router, renderer2);
   }
 
   ngOnInit() {
@@ -33,7 +33,7 @@ export class UserProfileComponent extends LickAppPageComponent implements OnInit
   }
 
   onPageEvent() {
-    this.loginService.sendEmailVerification();
+    this.dm.loginService.sendEmailVerification();
     this.message = "Check your email.";
   }
 

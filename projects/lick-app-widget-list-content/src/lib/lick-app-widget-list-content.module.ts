@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { LickDataModule } from 'lick-data';
 import { CountToModule } from 'angular-count-to';
 import { LickAppWidgetListContentComponent } from './lick-app-widget-list-content.component';
+import { LickAppWidgetNoDataModule } from 'lick-app-widget-no-data';
 
 @NgModule({
   declarations: [LickAppWidgetListContentComponent],
@@ -11,7 +12,8 @@ import { LickAppWidgetListContentComponent } from './lick-app-widget-list-conten
     CommonModule,
     RouterModule,
     LickDataModule,
-    CountToModule
+    CountToModule,
+    LickAppWidgetNoDataModule
   ],
   exports: [LickAppWidgetListContentComponent]
 })

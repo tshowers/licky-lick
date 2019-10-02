@@ -1,3 +1,42 @@
-<p>
-  address-view works!
-</p>
+<div class="card mx-auto d-block ta-max-view">
+  <div>
+    <agm-map *ngIf="latitude && longitude"
+             style="height: 15rem"
+             [latitude]="latitude"
+             [styles]="styles"
+             [longitude]="longitude"
+             [scrollwheel]="false"
+             [zoom]="zoom">
+      <agm-marker [latitude]="latitude"
+                  [longitude]="longitude"></agm-marker>
+    </agm-map>
+  </div>
+  <div class="card-header">
+    <a title="Go To Contact"
+       routerLink="/app/contacts/{{contact?.id}}">
+      <h4 class="my-0 font-weight-normal"><span *ngIf="contact?.company"><strong>{{contact?.company.name}}</strong>
+          <br></span>
+        <span *ngIf="contact"> {{contact?.firstName}} {{contact?.lastName}}</span>
+        <i class="fa fa-link"
+           aria-hidden="true"></i></h4>
+    </a>
+  </div>
+  <div class="card-body">
+    <address>
+      {{address?.streetAddress}} <br>
+      {{address?.city}} {{address?.state}} {{address?.zip}} <br>
+      {{address?.county}}
+      {{ address?.country }} <br>
+      <strong>{{ address?.addressType}}</strong>
+    </address>
+    <button *ngIf="canEdit"
+            class="btn btn-primary btn-lg btn-round"
+            (click)="onEdit()">Edit <i class="fa fa-pencil-square-o"
+         aria-hidden="true"></i>
+    </button> <button *ngIf="canDelete"
+            class="btn btn-danger btn-lg btn-round"
+            (click)="onDelete()">Delete <i class="fa fa-times"
+         aria-hidden="true"></i>
+    </button>
+  </div>
+</div>

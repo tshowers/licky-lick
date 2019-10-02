@@ -1,4 +1,4 @@
-<div class="card card-accent-theme">
+<div class="card card-accent-theme" *ngIf="data && (data.length > 0); else noData">
     <div class="card-body">
         <div class="list-group">
             <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" [ngClass]="{'active' : (i === 0)}" *ngFor="let item of data; let i = index">
@@ -15,3 +15,6 @@
     <!-- end card body -->
 </div>
 <!-- end card -->
+<ng-template #noData>
+  <licky-lick-app-widget-no-data></licky-lick-app-widget-no-data>
+</ng-template>

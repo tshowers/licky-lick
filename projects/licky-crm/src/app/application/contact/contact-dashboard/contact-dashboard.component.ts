@@ -1,19 +1,22 @@
 import { Component, OnInit, OnDestroy, ViewChild, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { Contact } from 'lick-data';
-import { SortHelperService, NewsService, FirebaseDataService, LickyLoginService, CONTACTS } from 'licky-services';
-import { LickAppPageComponent } from 'lick-app-page';
+import { Contact, Topic } from 'lick-data';
+import { SortHelperService, NewsService, FirebaseDataService, LickyLoginService, CONTACTS, TOPICS } from 'licky-services';
+import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { map } from 'rxjs/operators';
 import { Subscription, Observable } from 'rxjs';
+import { DataMediationService } from '../../../shared/services/data-mediation.service';
 
 @Component({
   selector: 'app-contact-dashboard',
   templateUrl: './contact-dashboard.component.html',
   styleUrls: ['./contact-dashboard.component.css']
 })
-export class ContactDashboardComponent extends LickAppPageComponent implements OnInit, OnDestroy {
+export class ContactDashboardComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
   private _contacts: Contact[] = [];
+  topics: Topic[]
+
   FAQheadingText = "Contact Dashboard";
   descriptionText = "Welcome to 16AHEAD contacts. This page, over time, will turn into your contact dashboard. You can also think of this as your contact start page. Once you add contacts, this page will show valuable information you should be aware of regarding your contacts.";
   faqHeading1 = "Getting Started";
@@ -144,21 +147,28 @@ export class ContactDashboardComponent extends LickAppPageComponent implements O
   l_novCountViewed: number = 0;
   l_decCountViewed: number = 0;
 
-  private contactSubscription: Subscription;
+  private _contactSubscription: Subscription;
 
-  constructor(public newsService: NewsService, public loginService: LickyLoginService, protected renderer2: Renderer2, public db: FirebaseDataService, public router: Router, private _sortHelper: SortHelperService) {
-    super(router, loginService, db, renderer2);
+
+  constructor(public dm: DataMediationService, protected renderer2: Renderer2, public router: Router) {
+    super(router, renderer2);
   }
 
   ngOnInit() {
     super.ngOnInit();
     this.setBreadCrumb();
-    this.waitForUserSet();
+    this.dm.doContacts();
+    this._contactSubscription = this.dm.contacts.subscribe((contacts: Contact[]) =>{
+      if (contacts) {
+        this._contacts = contacts;
+        this.setCounts(this._contacts);
+      }
+    })
   }
 
   setBreadCrumb(): void {
     this.crumbs = [
-      { name: "home", link: "/application/contacts/dashboard", active: true },
+      { name: "dashboard", link: "/application/contacts/dashboard", active: true },
       { name: "contacts", link: "/application/contacts", active: false },
       { name: "new", link: "/application/contacts/new", active: false },
     ]
@@ -166,29 +176,11 @@ export class ContactDashboardComponent extends LickAppPageComponent implements O
 
   ngOnDestroy() {
     super.ngOnDestroy();
-    if (this.contactSubscription)
-      this.contactSubscription.unsubscribe();
-  }
-
-  private waitForUserSet(): void {
-    this.setupTimer = setInterval(() => this.setDataSet(), 250);
-  }
-
-  setDataSet(): void {
-    if (this.loginService.getUser()) {
-      clearInterval(this.setupTimer);
-      this.contactSubscription = this.db.getDataCollection(CONTACTS)
-        .subscribe((contactData: Contact[]) => {
-          if (contactData) {
-            let contacts: Contact[] = this.db.getListToArray(contactData);
-            this.setCounts(contacts);
-          }
-        });
-    }
+    this._contactSubscription.unsubscribe();
   }
 
   private setCounts(contacts: Contact[]): void {
-    this._sortHelper.sortByLastName(contacts);
+    this.dm.sortHelper.sortByLastName(contacts);
     this.totalRecords = contacts.length;
     this.deletedCount = contacts.filter((contact) => contact.deleted).length;
     this.sharedCount = contacts.filter((contact) => contact.shared).length;
@@ -242,7 +234,7 @@ export class ContactDashboardComponent extends LickAppPageComponent implements O
   }
 
   private setHighlightedContacts(contacts: Contact[]): void {
-    this._sortHelper.sortByViews(contacts);
+    this.dm.sortHelper.sortByViews(contacts);
     this.highlightedContacts = contacts.slice(-3);
     for (let i = 0; i < this.highlightedContacts.length; i++) {
       if (!this.highlightedContacts[i].url)

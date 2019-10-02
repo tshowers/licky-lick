@@ -15,7 +15,7 @@ export class ContactViewResolverService {
     let id = route.paramMap.get('id');
 
     return this._db.getData(CONTACTS, id).pipe(map(contact => {
-      // console.log("WE GOT BACK", contact)
+      console.log("WE GOT BACK FOR ID", id, contact)
       if (contact) {
         this.setSocialData(contact);
         this.incrementViewCount(contact, id);

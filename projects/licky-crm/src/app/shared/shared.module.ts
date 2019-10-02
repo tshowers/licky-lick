@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AgmCoreModule } from '@agm/core';
 
 import { RouterModule } from '@angular/router';
 import { LickyServicesModule } from 'licky-services';
@@ -29,7 +30,7 @@ import { LickAppWidgetRightSideMenuModule } from 'lick-app-widget-right-side-men
 import { LickAppWidgetStats15Module } from 'lick-app-widget-stats15';
 
 import { NameDecriptionFilterPipe } from './filters/name-decription-filter.pipe';
-
+import { DataMediationService } from './services/data-mediation.service';
 import { environment } from '../../environments/environment';
 
 export const firebaseConfig = environment.firebaseConfig;
@@ -40,6 +41,7 @@ import { NavComponent } from './nav/nav.component';
   declarations: [NavComponent, NameDecriptionFilterPipe],
   imports: [
     CommonModule,
+    AgmCoreModule.forRoot({ apiKey: environment.googleMapsKey, libraries:["places"]}),
     RouterModule,
     HttpClientModule,
     NgbModule,
@@ -84,6 +86,7 @@ import { NavComponent } from './nav/nav.component';
     LickAppWidgetFooterModule,
     LickAppWidgetBreadcrumbModule,
     NgbModule,
+    AgmCoreModule,
     FormsModule,
     LickAppWidgetDataFooterModule,
     LickAppWidgetProfileModule,
@@ -95,6 +98,9 @@ import { NavComponent } from './nav/nav.component';
     LickAppWidgetCardDeckModule,
     LickMarketingFaq2Module,
     NameDecriptionFilterPipe
+  ],
+  providers: [
+    DataMediationService
   ]
 })
 export class SharedModule { }

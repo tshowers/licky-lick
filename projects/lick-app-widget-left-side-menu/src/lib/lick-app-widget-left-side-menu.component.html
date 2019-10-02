@@ -1,8 +1,8 @@
 <div class="sidebar"
      id="sidebar">
-  <licky-lick-app-widget-weather *ngIf="!searchArgument"></licky-lick-app-widget-weather>
-  <licky-lick-app-widget-list-content *ngIf="!searchArgument"></licky-lick-app-widget-list-content>
-  <licky-lick-app-widget-post5 *ngIf="searchArgument"
+
+  <!-- <licky-lick-app-widget-weather *ngIf="!searchArgument"></licky-lick-app-widget-weather> -->
+  <licky-lick-app-widget-post5
                                [headingText]="searchHeading"
                                [viewAllLink]="null"
                                (pageEvent)="onPageEvent($event)"

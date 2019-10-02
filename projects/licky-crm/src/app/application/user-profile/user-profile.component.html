@@ -1,14 +1,14 @@
 <licky-lick-app-widget-menu [router]="router"
-                            [db]="db"
-                            [photoURL]="photoURL"
-                            [displayName]="displayName"
-                            [emailAddress]="emailAddress"
-                            [loggedIn]="loggedIn"
-                            [userName]="userName"
-                            [emailVerified]="emailVerified"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
                             (settingsEvent)="onSettings()"
                             (profileEvent)="onViewProfile()"
-                            [loginService]="loginService"></licky-lick-app-widget-menu>
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
 <div class="app-body">
   <licky-lick-app-widget-left-side-menu></licky-lick-app-widget-left-side-menu>
   <main class="main">
@@ -21,8 +21,8 @@
                class="text-center">{{message}}</div>
           <licky-lick-app-widget-profile *ngIf="!message"
                                          (pageEvent)="onPageEvent($event)"
-                                         [user]="user"
-                                         [firebaseUser]="firebaseUser"></licky-lick-app-widget-profile>
+                                         [user]="dm.user"
+                                         [firebaseUser]="dm.firebaseUser"></licky-lick-app-widget-profile>
         </div>
       </div>
     </div>

@@ -1,3 +1,66 @@
-<p>
-  note-edit works!
-</p>
+<form #dataForm="ngForm"
+      class="form-group">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="form-group"><label for="noteName">Name of Note</label>
+          <input id="noteName"
+                 [(ngModel)]="justText.name"
+                 name="noteName"
+                 type="text"
+                 placeholder="Type of note or name"
+                 class="form-control form-control-lg ta-input-element"
+                 autofocus></div>
+        <div class="form-group"> <label for="scribbles">Notes</label>
+          <textarea [(ngModel)]="justText.text"
+                    id="scribbles"
+                    name="scribbles"
+                    rows="5"
+                    cols="80"
+                    class="form-control form-control-lg ta-input-element"></textarea>
+        </div>
+        <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
+
+          <input [(ngModel)]="justText.draft"
+                 id="dataDraft"
+                 name="dataDraft"
+                 type="checkbox">
+          <label for="dataDraft"
+                 title="Draft indicates the record is not finished and should not be made public">Private</label>
+        </div>
+        <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
+
+          <input [(ngModel)]="justText.deleted"
+                 id="dataDeleted"
+                 name="dataDeleted"
+                 type="checkbox">
+          <label for="dataDeleted"
+                 title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted</label>
+        </div>
+        <div class="form-group"><label for="dataKeywords">Keywords</label>
+
+          <input [(ngModel)]="justText.keywords"
+                 id="dataKeywords"
+                 name="dataKeywords"
+                 type="text"
+                 class="form-control form-control-lg ta-input-element"
+                 placeholder="Enter keywords seperated by commas"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center"> <button class="btn btn-primary btn-lg btn-round"
+                (click)="onSubmit()"
+                type="submit"
+                [disabled]="!dataForm.form.valid"
+                title="Submit to database">Save <i class="fa fa-cloud"
+             aria-hidden="true"></i>
+        </button>
+        <button *ngIf="canDelete"
+                class="btn btn-danger btn-lg btn-round"
+                (click)="onDelete();dataForm.reset()"
+                [hidden]="!justText.id">Delete <i class="fa fa-times"
+             aria-hidden="true"></i>
+        </button></div>
+    </div>
+  </div>
+</form>

@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Contact, Address, EmailAddress, FOP, JustText, PhoneNumber, Project, Opportunity } from 'lick-data';
 import { LickAppPageComponent } from 'lick-app-page';
-import { NewsService, FirebaseDataService, LickyLoginService, CONTACTS } from 'licky-services';
+import { CONTACTS } from 'licky-services';
+import { DataMediationService } from '../../../shared/services/data-mediation.service';
 
 
 @Component({
@@ -35,10 +36,10 @@ export class ContactViewComponent extends LickAppPageComponent implements OnInit
 
   searchArgument;
 
-  constructor(public newsService: NewsService, public loginService: LickyLoginService, protected renderer2: Renderer2, public db: FirebaseDataService,
+  constructor(public dm: DataMediationService, protected renderer2: Renderer2,
     public router: Router,
     private _route: ActivatedRoute) {
-    super(router, loginService, db, renderer2);
+    super(router, renderer2);
   }
 
   ngOnInit() {
@@ -60,9 +61,9 @@ export class ContactViewComponent extends LickAppPageComponent implements OnInit
     super.ngOnDestroy();
   }
 
-  private setBreadCrumb() : void {
+  private setBreadCrumb(): void {
     this.crumbs = [
-      { name: "home", link: "/application/contacts/dashboard", active: false },
+      { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
       { name: "new", link: "/application/contacts/new", active: false },
       { name: "view", link: "/application/contacts/" + this.contact.id, active: true },
@@ -75,17 +76,17 @@ export class ContactViewComponent extends LickAppPageComponent implements OnInit
 
   onDelete() {
     this.contact.deleted = true;
-    this.db.updateData(CONTACTS, this.contact.id, this.contact);
+    this.dm.db.updateData(CONTACTS, this.contact.id, this.contact);
     this.router.navigate(['application', 'contacts']);
   }
 
-  onBreadCrumb(link) : void {
-      this.router.navigate([link]);
+  onBreadCrumb(link): void {
+    this.router.navigate([link]);
   }
 
-  onSearch(value) : void {
+  onSearch(value): void {
     console.log("ONSEARCH", value);
-    this.router.navigate(['application', 'contacts'], {queryParams: { searchArgument: value}})
+    this.router.navigate(['application', 'contacts'], { queryParams: { searchArgument: value } })
   }
 
   get diagnostic() {

@@ -1,11 +1,10 @@
 import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
-import { LickyLoginService, FirebaseDataService, SortHelperService, CONTACTS } from 'licky-services';
-import { Observable } from 'rxjs';
+import { CONTACTS } from 'licky-services';
+import { DataMediationService } from '../../../shared/services/data-mediation.service';
+import { Observable, Subscription } from 'rxjs';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Contact } from 'lick-data';
 import { LickAppPageComponent } from 'lick-app-page';
-import { map } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-contact-list',
@@ -36,20 +35,29 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
 
   private _searchArgumentSubscription: Subscription;
 
-  constructor(protected renderer2: Renderer2, public loginService: LickyLoginService, public router: Router, public db: FirebaseDataService, private _sortHelper: SortHelperService, private _route: ActivatedRoute) {
-    super(router, loginService, db, renderer2);
+  private _contactSubscription: Subscription;
+
+  constructor(public dm: DataMediationService, protected renderer2: Renderer2, public router: Router, private _route: ActivatedRoute) {
+    super(router, renderer2);
   }
 
   ngOnInit() {
     super.ngOnInit();
     this.setBreadCrumb();
-    this.waitForUserSet();
+    this.dm.doContacts();
+    this._contactSubscription = this.dm.contacts.subscribe((contacts: Contact[]) => {
+      if (contacts) {
+        this.setCounts(contacts);
+        this.doDataMassage(contacts);
+      }
+    })
   }
 
   ngOnDestroy() {
     super.ngOnDestroy();
     if (this._searchArgumentSubscription)
       this._searchArgumentSubscription.unsubscribe();
+    this._contactSubscription.unsubscribe();
   }
 
   private isSearch(): boolean {
@@ -65,13 +73,10 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
     return false;
   }
 
-  private waitForUserSet(): void {
-    this.setupTimer = setInterval(() => this.setDataSet(), 250);
-  }
 
   private setBreadCrumb(): void {
     this.crumbs = [
-      { name: "home", link: "/application/contacts/dashboard", active: false },
+      { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: true },
       { name: "new", link: "/application/contacts/new", active: false },
     ]
@@ -79,33 +84,24 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
 
   newPage(value): void {
     this.contacts$ = Observable.create((observer) => {
-      observer.next(this.db.getRecordsToDisplay(value, this.pageSize, this._contacts));
+      observer.next(this.dm.db.getRecordsToDisplay(value, this.pageSize, this._contacts));
       observer.complete();
     })
   }
 
-  private setDataSet(): void {
-    if (this.loginService.getUser()) {
-      clearInterval(this.setupTimer);
-      this.db.getDataCollection(CONTACTS).subscribe((contacts: Contact[]) => {
-        if (contacts) {
-          this.doDataMassage(contacts);
-        }
-      });
-    }
-  }
 
   private doDataMassage(contacts: Contact[]): void {
-    this.contacts$ = this.db.getConvertDataToList(contacts)
-      .pipe(map(contactData => {
-        this.setCounts(contactData);
-        if (this.isSearch()) {
-          this.setSearchResult()
-          return this.db.getRecordsToDisplay(1, this.pageSize, this._contacts)
-        }
-        else
-          return this.db.getRecordsToDisplay(1, this.pageSize, contactData);
-      }));
+    this.contacts$ = Observable.create((observer) => {
+      if (this.isSearch()) {
+        this.setSearchResult();
+        observer.next(this.dm.db.getRecordsToDisplay(1, this.pageSize, this._contacts));
+      }
+      else
+        observer.next(this.dm.db.getRecordsToDisplay(1, this.pageSize, contacts));
+
+      observer.complete();
+    })
+
   }
 
   private setSearchResult(): void {
@@ -119,7 +115,7 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
   }
 
   private setCounts(contacts: Contact[]): void {
-    this._sortHelper.sortByLastName(contacts);
+    this.dm.sortHelper.sortByLastName(contacts);
     this._contacts = contacts;
     this._contactsOriginal = contacts;
     this.totalRecords = contacts.length;
@@ -130,6 +126,7 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
   }
 
   onDetail(data): void {
+    console.log("GETTING DETAILS FOR", data.id)
     this.router.navigate(['application', 'contacts', data.id])
   }
 
@@ -139,7 +136,7 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
 
   onDelete(data): void {
     data.deleted = true;
-    this.db.updateData(CONTACTS, data.id, data);
+    this.dm.db.updateData(CONTACTS, data.id, data);
     this.router.navigate(['application', 'contacts', data.id])
   }
 

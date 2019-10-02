@@ -1,3 +1,23 @@
-<p>
-  phone-number-view works!
-</p>
+<div class="card mx-auto d-block ta-max-view">
+  <div class="card-body">
+    <a title="Go To Contact"
+       routerLink="/app/contacts/{{contact?.id}}">
+      <h4 class="card-title"><span *ngIf="contact?.company">{{contact?.company.name}}
+          <br></span>
+        <span *ngIf="contact"> {{contact?.firstName}} {{contact?.lastName}}</span>
+        <i class="fa fa-link"
+           aria-hidden="true"></i></h4>
+    </a>
+    <p class="card-text">{{ phoneNumber?.phoneNumber }}</p>
+    <p class="card-text">{{phoneNumber?.phoneNumberType}}</p>
+    <button *ngIf="canEdit"
+            class="btn btn-primary btn-lg btn-round"
+            (click)="onEdit()">Edit <i class="fa fa-archive"
+         aria-hidden="true"></i>
+    </button> <button *ngIf="canDelete"
+            class="btn btn-danger btn-lg btn-round"
+            (click)="onDelete()">Delete <i class="fa fa-pencil-square-o"
+         aria-hidden="true"></i>
+    </button>
+  </div>
+</div>

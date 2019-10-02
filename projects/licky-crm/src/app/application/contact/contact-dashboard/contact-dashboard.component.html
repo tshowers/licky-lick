@@ -1,19 +1,19 @@
 <licky-lick-app-widget-menu [router]="router"
-                            [db]="db"
-                            [photoURL]="photoURL"
-                            [displayName]="displayName"
-                            [emailAddress]="emailAddress"
-                            [loggedIn]="loggedIn"
-                            [userName]="userName"
-                            [emailVerified]="emailVerified"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
                             (settingsEvent)="onSettings()"
                             (profileEvent)="onViewProfile()"
                             (searchEvent)="onSearch($event)"
                             [logoutPage]="'/application/logout'"
-                            [loginService]="loginService"></licky-lick-app-widget-menu>
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
 <div class="app-body">
   <licky-lick-app-widget-left-side-menu [searchArgument]="searchArgument"
-                                        [newsService]="newsService"></licky-lick-app-widget-left-side-menu>
+                                        [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
   <main class="main">
     <div class="container-fluid">
       <div class="row">
@@ -22,23 +22,23 @@
                                             (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
         </div>
       </div>
-      <div class="row" *ngIf="totalRecords == 0">
+      <div class="row"
+           *ngIf="totalRecords == 0">
         <div class="col-md-12">
-          <licky-lick-marketing-faq2
-            [headingText]="FAQheadingText"
-            [descriptionText]="descriptionText"
-            [faqHeading1]="faqHeading1"
-            [faqDescription1]="faqDescription1"
-            [faqHeading2]="faqHeading2"
-            [faqDescription2]="faqDescription2"
-            [faqHeading3]="faqHeading3"
-            [faqDescription3]="faqDescription3"
-            [faqHeading4]="faqHeading4"
-            [faqDescription4]="faqDescription4"
-          ></licky-lick-marketing-faq2>
+          <licky-lick-marketing-faq2 [headingText]="FAQheadingText"
+                                     [descriptionText]="descriptionText"
+                                     [faqHeading1]="faqHeading1"
+                                     [faqDescription1]="faqDescription1"
+                                     [faqHeading2]="faqHeading2"
+                                     [faqDescription2]="faqDescription2"
+                                     [faqHeading3]="faqHeading3"
+                                     [faqDescription3]="faqDescription3"
+                                     [faqHeading4]="faqHeading4"
+                                     [faqDescription4]="faqDescription4"></licky-lick-marketing-faq2>
         </div>
       </div>
-      <div class="row ta-row" *ngIf="totalRecords > 0">
+      <div class="row ta-row"
+           *ngIf="totalRecords > 0">
         <div class="col-md-12">
           <licky-lick-app-widget-stats4 [headingText]="'Contacts'"
                                         [subHeadingText]="'Total Records'"
@@ -46,13 +46,15 @@
                                         [count]="totalRecords"></licky-lick-app-widget-stats4>
         </div>
       </div>
-      <div class="row ta-row" *ngIf="totalRecords > 0">
+      <div class="row ta-row"
+           *ngIf="totalRecords > 0">
         <div class="col-md-12">
           <licky-lick-app-widget-card-deck [data]="highlightedContacts"
                                            (pageEvent)="onViewContact($event)"></licky-lick-app-widget-card-deck>
         </div>
       </div>
-      <div class="row ta-row" *ngIf="totalRecords > 0">
+      <div class="row ta-row"
+           *ngIf="totalRecords > 0">
         <div class="col-md-6">
           <licky-lick-app-widget-stats3 [data]="contactStatusData"
                                         [iconClass]="'fa fa-arrows-alt'"
@@ -73,7 +75,8 @@
                                         [chartData3]="chartData3$ | async"></licky-lick-app-widget-stats9>
         </div>
       </div>
-      <div class="row ta-row" *ngIf="totalRecords > 0">
+      <div class="row ta-row"
+           *ngIf="totalRecords > 0">
         <div class="col-md-6">
           <licky-lick-app-widget-stats11 *ngIf="(pieData1$ | async)?.length > 0"
                                          [headingText]="'State Status'"
@@ -122,6 +125,14 @@
     <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
     <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
   </main>
-  <licky-lick-app-widget-right-side-menu></licky-lick-app-widget-right-side-menu>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Contact Dashboard'"
+                                         [descriptionText]="'The contact dashboard panel allows you to take a comprehensive look at all your contacts.'"
+                                         [header1]="'Total Records'"
+                                         [description1]="'Once contacts have been added, here you will see how many total connections are currently in the system.'"
+                                         [header2]="'Who to Contact'"
+                                         [description2]="'The system analyzes each piece of information against other known pieces of information and highlights the people that you should contact.'"
+                                         [header3]="'Status Breakdown'"
+                                         [description3]="'Counts and graphical representations of categories provide insight into the state of the aggregate contact total.'"></licky-lick-app-widget-right-side-menu>
 </div>
 <licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

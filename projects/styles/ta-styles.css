@@ -832,7 +832,7 @@ a.btn-primary {
   font-size: 0.8rem;
 }
 .ta-side-news {
-  max-height: 1400px;
+  height: calc(100vh - 175px);
   overflow-y: auto;
 }
 
