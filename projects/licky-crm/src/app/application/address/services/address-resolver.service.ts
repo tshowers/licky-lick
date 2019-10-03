@@ -22,8 +22,9 @@ export class AddressResolverService {
   }
 
   getAddress(id1, id2) : Observable<Address> {
+    console.log("PASSED Parameters",id1, id2);
     if (id2) {
-      return this._db.getDataCollection(ADDRESSES + '/' + id1)
+      return this._db.getData(ADDRESSES + '/' + id1, id2, true)
       .pipe(
         map(address => {
           if (address) {
@@ -45,6 +46,7 @@ export class AddressResolverService {
     let data = new Address();
     data.contact_id = contact_id
     data.draft = true;
+    console.log("NEW ADDRESS", JSON.stringify(data))
     return data;
   }
 

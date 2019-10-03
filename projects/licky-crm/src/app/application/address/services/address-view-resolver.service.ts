@@ -15,7 +15,7 @@ export class AddressViewResolverService {
     let id1 = route.paramMap.get('id');
     let id2 = route.paramMap.get('id2');
 
-    return this._db.getData(ADDRESSES + '/' + id1, id2)
+    return this._db.getData(ADDRESSES + '/' + id1, id2, true)
     .pipe(map(address => {
       if (address) {
         // Address.restoreData(address);

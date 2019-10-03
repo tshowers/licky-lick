@@ -70,7 +70,7 @@ export class ContactResolverService {
   }
 
   private incrementViewCount(contact: Contact, id): void {
-    console.log("INCREMENT COUNT:", contact);
+    // console.log("INCREMENT COUNT:", contact);
     if (contact) {
       contact.id = id;
       if (contact.views && !isNaN(contact.views)) {

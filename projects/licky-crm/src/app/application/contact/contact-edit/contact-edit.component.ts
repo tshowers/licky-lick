@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Upload, Contact, Dependent,Dropdown } from 'lick-data';
 import { UploadService, DropdownService, TypeFindService, CONTACTS } from 'licky-services';
-import { LickAppPageComponent } from 'lick-app-page';
+import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { DataMediationService } from '../../../shared/services/data-mediation.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { DataMediationService } from '../../../shared/services/data-mediation.se
   templateUrl: './contact-edit.component.html',
   styleUrls: ['./contact-edit.component.css']
 })
-export class ContactEditComponent extends LickAppPageComponent implements OnInit, OnDestroy {
+export class ContactEditComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
   contact: Contact = new Contact();
 

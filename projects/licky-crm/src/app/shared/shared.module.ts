@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
+
 import { AgmCoreModule } from '@agm/core';
 
-import { RouterModule } from '@angular/router';
-import { LickyServicesModule } from 'licky-services';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { LickDataModule } from 'lick-data';
+import { LickAppPageModule } from 'lick-app-page';
 import { LickAppWidgetMenuModule } from 'lick-app-widget-menu';
 import { LickAppWidgetTableDataModule } from 'lick-app-widget-table-data';
 import { LickMarketingMenuModule } from 'lick-marketing-menu';
@@ -23,35 +26,36 @@ import { LickAppWidgetStats9Module } from 'lick-app-widget-stats9';
 import { LickAppWidgetCardDeckModule } from 'lick-app-widget-card-deck';
 import { LickAppWidgetStats11Module } from 'lick-app-widget-stats11';
 import { LickMarketingFaq2Module } from 'lick-marketing-faq2';
-import { LickDataModule } from 'lick-data';
-import { LickAppPageModule } from 'lick-app-page';
 import { LickAppWidgetLeftSideMenuModule } from 'lick-app-widget-left-side-menu';
 import { LickAppWidgetRightSideMenuModule } from 'lick-app-widget-right-side-menu';
 import { LickAppWidgetStats15Module } from 'lick-app-widget-stats15';
 
 import { NameDecriptionFilterPipe } from './filters/name-decription-filter.pipe';
-import { DataMediationService } from './services/data-mediation.service';
+
+import { NavComponent } from './nav/nav.component';
+
 import { environment } from '../../environments/environment';
 
 export const firebaseConfig = environment.firebaseConfig;
 
-import { NavComponent } from './nav/nav.component';
+// Repetition is reduced by having SharedModule re-export
+// CommonModule, FormsModule etc. so that importers of SharedModule get
+// CommonModule, FormsModule etc. for free.
 
 @NgModule({
   declarations: [NavComponent, NameDecriptionFilterPipe],
   imports: [
     CommonModule,
-    AgmCoreModule.forRoot({ apiKey: environment.googleMapsKey, libraries:["places"]}),
     RouterModule,
     HttpClientModule,
     NgbModule,
+    AgmCoreModule.forRoot({ apiKey: environment.googleMapsKey, libraries:["places"]}),
+    LickAppPageModule,
     LickDataModule,
-    LickyServicesModule.forRoot(firebaseConfig),
     LickMarketingSecurityModule,
     LickMarketingMenuModule,
     LickAppWidgetTableDataModule,
     LickAppWidgetMenuModule,
-    LickAppPageModule,
     LickAppWidgetLeftSideMenuModule,
     LickAppWidgetRightSideMenuModule,
     LickAppWidgetStats15Module,
@@ -73,12 +77,12 @@ import { NavComponent } from './nav/nav.component';
     NavComponent,
     RouterModule,
     HttpClientModule,
+    LickAppPageModule,
+    AgmCoreModule,
     LickDataModule,
-    LickyServicesModule,
     LickMarketingSecurityModule,
     LickAppWidgetTableDataModule,
     LickAppWidgetMenuModule,
-    LickAppPageModule,
     LickAppWidgetLeftSideMenuModule,
     LickAppWidgetRightSideMenuModule,
     LickAppWidgetStats15Module,
@@ -86,7 +90,6 @@ import { NavComponent } from './nav/nav.component';
     LickAppWidgetFooterModule,
     LickAppWidgetBreadcrumbModule,
     NgbModule,
-    AgmCoreModule,
     FormsModule,
     LickAppWidgetDataFooterModule,
     LickAppWidgetProfileModule,
@@ -98,9 +101,6 @@ import { NavComponent } from './nav/nav.component';
     LickAppWidgetCardDeckModule,
     LickMarketingFaq2Module,
     NameDecriptionFilterPipe
-  ],
-  providers: [
-    DataMediationService
   ]
 })
 export class SharedModule { }

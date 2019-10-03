@@ -90,9 +90,11 @@ export class FirebaseDataService {
   }
 
 
-  updateData(path: string, key: any, data: any): void {
+  updateData(path: string, key: any, data: any, notAugmented?: boolean): void {
+    if (!notAugmented)
     path = this.getAugmentedPath(path);
-    console.log("Updating Data for " + path + '/' + key, JSON.stringify(data));
+    // console.log("Updating Data for " + path + '/' + key, JSON.stringify(data));
+    console.log("Updating Data for " + path + '/' + key);
     this.setUpdateValues(data);
     this._db.ref(path + '/' + key).set(data, (error) => {
       if (error)
@@ -100,11 +102,12 @@ export class FirebaseDataService {
     })
   }
 
-  getData(path: string, id: string): Observable<any> {
+  getData(path: string, id: string, notAugmented?: boolean): Observable<any> {
+    if (!notAugmented)
     path = this.getAugmentedPath(path);
     console.log("Getting Data for PATH", path , 'ID=' + id);
     return Observable.create((observer) => {
-      console.log("firebase.database=" + this._db)
+      // console.log("firebase.database=" + this._db)
       this._db.ref(path + '/' + id).once('value').then(
         (snapshot) => {
           // console.log("Snapshot is : " + JSON.stringify(snapshot));
@@ -121,12 +124,13 @@ export class FirebaseDataService {
     })
   }
 
-  writeData(path: string, data: any): Observable<any> {
+  writeData(path: string, data: any, notAugmented?: boolean): Observable<any> {
+    if (!notAugmented)
     path = this.getAugmentedPath(path);
     this.setNewDataValues(data);
     return Observable.create((observer) => {
       this._db.ref(path).push(data, (error) => {
-        console.log("PUSHED DATA:", data)
+        console.log("PUSHED DATA TO:", path)
         if (error)
           this.databaseError.next(error.message);
       }).then((snap) => {
@@ -148,13 +152,15 @@ export class FirebaseDataService {
   }
 
 
-  setDeleted(path: string, data: any): void {
+  setDeleted(path: string, data: any, notAugmented?: boolean): void {
+    if (!notAugmented)
     path = this.getAugmentedPath(path);
     data.deleted = true;
     this.updateData(path, data.id, data);
   }
 
-  getDataCollection(path): Observable<any> {
+  getDataCollection(path, notAugmented?: boolean): Observable<any> {
+    if (!notAugmented)
     path = this.getAugmentedPath(path);
     console.log("Getting Data Collection for " + path, "DB is ", this._db);
     return Observable.create((observer) => {
@@ -171,7 +177,8 @@ export class FirebaseDataService {
     })
   }
 
-  getDataByBatch(path: string, batchSize: number, keyField: string, lastKey?: string): Observable<any> {
+  getDataByBatch(path: string, batchSize: number, keyField: string, lastKey?: string, notAugmented?: boolean): Observable<any> {
+    if (!notAugmented)
     path = this.getAugmentedPath(path);
     if (lastKey)
       return Observable.create((observer) => {
@@ -222,7 +229,7 @@ export class FirebaseDataService {
 
 
   private doFixUpData(data, item): void {
-    console.log("FIXING UP ITEM")
+    // console.log("FIXING UP ITEM")
     data[item].id = item;
     if (data[item].firstName)
       data[item].name = data[item].firstName;

@@ -75,7 +75,7 @@ export class DataMediationService implements OnDestroy {
   }
 
   public doAddresses(contact_id: string): void {
-    this._addressSubscription = this.db.getDataCollection(ADDRESSES + "/" + contact_id )
+    this._addressSubscription = this.db.getDataCollection(ADDRESSES + "/" + contact_id, true )
       .subscribe((addressData: Address[]) => {
         if (addressData) {
           this._addresses = this.db.getListToArray(addressData);
@@ -129,12 +129,19 @@ export class DataMediationService implements OnDestroy {
       });
   }
 
-  public doContact(id) : void {
+  public doContact(id: string) : void {
+    // console.log("doContact()", JSON.stringify(this._contacts))
     this.db.getData(CONTACTS, id).pipe(map(contact => {
+      console.log("GETTING CONTACT", id, contact);
       if (contact)
         this.contact.next(contact);
     }))
-    // return this._contacts.find(contact => contact.id == id);
+  }
+
+  public getContact(id: string): Contact {
+    return  (this._contacts) ?
+    this._contacts.find(contact => contact.id == id) : null
+
   }
 
   public doContacts(): void {
@@ -157,7 +164,7 @@ export class DataMediationService implements OnDestroy {
       .subscribe((contactData: Contact[]) => {
         if (contactData) {
           this._contacts = this.db.getListToArray(contactData);
-          console.log("CONTACTS TO ARRAY", JSON.stringify(this._contacts))
+          // console.log("CONTACTS TO ARRAY", JSON.stringify(this._contacts))
           this.contacts.next(this._contacts);
         }
       });

@@ -1,9 +1,7 @@
-import { Component, OnInit, OnDestroy, ViewChild, Renderer2 } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Contact, Topic } from 'lick-data';
-import { SortHelperService, NewsService, FirebaseDataService, LickyLoginService, CONTACTS, TOPICS } from 'licky-services';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
-import { map } from 'rxjs/operators';
 import { Subscription, Observable } from 'rxjs';
 import { DataMediationService } from '../../../shared/services/data-mediation.service';
 
@@ -210,7 +208,7 @@ export class ContactDashboardComponent extends LickAppPageComponent implements O
 
   private setPieChart(): void {
     this.pieData1$ = new Observable((observer) => {
-      console.log("pieData1$")
+      // console.log("pieData1$")
       observer.next([
         ((this.notStartedCount / this.totalRecords) * 100),
         ((this.completeCount / this.totalRecords) * 100),
@@ -220,7 +218,7 @@ export class ContactDashboardComponent extends LickAppPageComponent implements O
       observer.complete();
     })
     this.pieData2$ = new Observable((observer) => {
-      console.log("pieData2$")
+      // console.log("pieData2$")
       observer.next([
         ((this.expiredCount / this.totalRecords) * 100),
         ((this.closedCount / this.totalRecords) * 100),
@@ -729,7 +727,7 @@ export class ContactDashboardComponent extends LickAppPageComponent implements O
         ];
         break;
     }
-    console.log("Returning", monthArray)
+    // console.log("Returning", monthArray)
     return monthArray;
   }
 
@@ -1240,7 +1238,7 @@ export class ContactDashboardComponent extends LickAppPageComponent implements O
   }
 
   onSearch(value) : void {
-    console.log("ONSEARCH", value);
+    // console.log("ONSEARCH", value);
     this.router.navigate(['application', 'contacts'], {queryParams: { searchArgument: value}})
   }
 

@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy, ViewChild, Renderer2, ElementRef, NgZone } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { Address, Contact, Dependent, Dropdown } from 'lick-data';
+import { Address, Contact, Dropdown } from 'lick-data';
 import { DropdownService, TypeFindService, ADDRESSES } from 'licky-services';
-import { LickAppPageComponent } from 'lick-app-page';
+import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { DataMediationService } from '../../../shared/services/data-mediation.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { MapsAPILoader } from '@agm/core';
 
 
@@ -14,7 +14,7 @@ import { MapsAPILoader } from '@agm/core';
   templateUrl: './address-edit.component.html',
   styleUrls: ['./address-edit.component.css']
 })
-export class AddressEditComponent extends LickAppPageComponent implements OnInit, OnDestroy {
+export class AddressEditComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
   public latitude: number;
 
@@ -33,6 +33,10 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
   addressTypes: Dropdown[];
 
   private _paramSubscription: Subscription;
+
+  private _addressSubscription: Subscription;
+
+  private _contactSubscription: Subscription;
 
   contact_id;
 
@@ -161,6 +165,7 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
     this.setBreadCrumb();
     this._route.data
       .subscribe((data: { address: Address }) => {
+        console.log("RETURNED", JSON.stringify(data), JSON.stringify(data.address))
         if (data.address) {
           this.address = data.address;
           this.contact_id = this.address.contact_id
@@ -173,6 +178,10 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
 
   ngOnDestroy() {
     super.ngOnDestroy();
+    if (this._contactSubscription)
+      this._contactSubscription.unsubscribe();
+    if (this._addressSubscription)
+      this._addressSubscription.unsubscribe();
   }
 
   onSubmit(): void {
@@ -202,7 +211,7 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
   }
 
 
-  private setBreadCrumb(): void {
+  setBreadCrumb(): void {
     this.crumbs = [
       { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
@@ -224,12 +233,13 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
 
   private setContact() : void {
     if (this.contact_id) {
-      console.log("1 setContact()", JSON.stringify( this.contact))
-      this.dm.doContact(this.contact_id);
-      this.dm.contact.subscribe(contact => {
-        console.log("2 setContact()", JSON.stringify( this.contact))
-        this.contact = contact;
-      })
+      this.contact = this.dm.getContact(this.contact_id);
+      // console.log("1 setContact()", JSON.stringify( this.contact))
+      // this.dm.doContact(this.contact_id);
+      // this._contactSubscription = this.dm.contact.subscribe(contact => {
+      //   console.log("2 setContact()", JSON.stringify( this.contact))
+      //   this.contact = contact;
+      // })
     }
   }
 

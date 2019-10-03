@@ -4,14 +4,14 @@ import { DataMediationService } from '../../../shared/services/data-mediation.se
 import { Observable, Subscription } from 'rxjs';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Contact } from 'lick-data';
-import { LickAppPageComponent } from 'lick-app-page';
+import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css']
 })
-export class ContactListComponent extends LickAppPageComponent implements OnInit, OnDestroy {
+export class ContactListComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
   contacts$: Observable<any[]>;
 
@@ -74,12 +74,16 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
   }
 
 
-  private setBreadCrumb(): void {
+  setBreadCrumb(): void {
     this.crumbs = [
       { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: true },
       { name: "new", link: "/application/contacts/new", active: false },
     ]
+  }
+
+  onBreadCrumb(link): void {
+    this.router.navigate([link]);
   }
 
   newPage(value): void {
@@ -138,10 +142,6 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
     data.deleted = true;
     this.dm.db.updateData(CONTACTS, data.id, data);
     this.router.navigate(['application', 'contacts', data.id])
-  }
-
-  onBreadCrumb(link): void {
-    this.router.navigate([link]);
   }
 
   onSearch(value): void {

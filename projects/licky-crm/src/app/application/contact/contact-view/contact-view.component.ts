@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Contact, Address, EmailAddress, FOP, JustText, PhoneNumber, Project, Opportunity } from 'lick-data';
-import { LickAppPageComponent } from 'lick-app-page';
+import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { CONTACTS } from 'licky-services';
 import { DataMediationService } from '../../../shared/services/data-mediation.service';
 
@@ -12,7 +12,7 @@ import { DataMediationService } from '../../../shared/services/data-mediation.se
   templateUrl: './contact-view.component.html',
   styleUrls: ['./contact-view.component.css']
 })
-export class ContactViewComponent extends LickAppPageComponent implements OnInit, OnDestroy {
+export class ContactViewComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
   contact: Contact;
 
@@ -61,13 +61,17 @@ export class ContactViewComponent extends LickAppPageComponent implements OnInit
     super.ngOnDestroy();
   }
 
-  private setBreadCrumb(): void {
+  setBreadCrumb(): void {
     this.crumbs = [
       { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
       { name: "new", link: "/application/contacts/new", active: false },
       { name: "view", link: "/application/contacts/" + this.contact.id, active: true },
     ]
+  }
+
+  onBreadCrumb(link): void {
+    this.router.navigate([link]);
   }
 
   onEdit() {
@@ -78,10 +82,6 @@ export class ContactViewComponent extends LickAppPageComponent implements OnInit
     this.contact.deleted = true;
     this.dm.db.updateData(CONTACTS, this.contact.id, this.contact);
     this.router.navigate(['application', 'contacts']);
-  }
-
-  onBreadCrumb(link): void {
-    this.router.navigate([link]);
   }
 
   onSearch(value): void {

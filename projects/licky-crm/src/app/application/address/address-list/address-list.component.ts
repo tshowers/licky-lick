@@ -3,14 +3,14 @@ import { DataMediationService } from '../../../shared/services/data-mediation.se
 import { Observable, Subscription } from 'rxjs';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Address, Contact } from 'lick-data';
-import { LickAppPageComponent } from 'lick-app-page';
+import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 
 @Component({
   selector: 'app-address-list',
   templateUrl: './address-list.component.html',
   styleUrls: ['./address-list.component.css']
 })
-export class AddressListComponent extends LickAppPageComponent implements OnInit, OnDestroy {
+export class AddressListComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
   data$: Observable<any[]>;
 
@@ -46,7 +46,8 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
     super.ngOnDestroy();
     if (this._searchArgumentSubscription)
       this._searchArgumentSubscription.unsubscribe();
-    this._addressSubscription.unsubscribe();
+    if (this._addressSubscription)
+      this._addressSubscription.unsubscribe();
   }
 
   private setContactContext(): void {
@@ -69,21 +70,28 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
   }
 
   private setAddresses(): void {
-    this._addressSubscription = this.dm.addresses.subscribe((addresses: Address[]) => {
-      if (addresses) {
-        this.newPage(addresses);
-      }
-    })
+    if (this.contact_id) {
+      this.dm.doAddresses(this.contact_id);
+      this._addressSubscription = this.dm.addresses.subscribe((addresses: Address[]) => {
+        if (addresses) {
+          this.newPage(addresses);
+        }
+      })
+    }
   }
 
-  private setBreadCrumb(): void {
+  setBreadCrumb(): void {
     this.crumbs = [
       { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
       { name: "name", link: "/application/contacts/new", active: false },
       { name: "address", link: "/application/contacts", active: true },
-      { name: "new", link: "/application/contacts/" + this.contact_id + "/new", active: false },
+      { name: "new", link: "/application/contacts/" + this.contact_id + "/addresses/new", active: false },
     ]
+  }
+
+  onBreadCrumb(link): void {
+    this.router.navigate([link]);
   }
 
   newPage(value): void {
@@ -92,11 +100,10 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
       observer.complete();
     })
   }
-  
+
   get diagnostic() {
     return "contact_id=" + this.contact_id
       + ", CONTACT=" + JSON.stringify(this.contact, null, 2)
   }
-
 
 }
