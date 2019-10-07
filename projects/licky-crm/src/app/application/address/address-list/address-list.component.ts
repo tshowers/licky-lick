@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Address, Contact } from 'lick-data';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
+import { ADDRESSES } from 'licky-services';
 
 @Component({
   selector: 'app-address-list',
@@ -37,9 +38,7 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
   ngOnInit() {
     super.ngOnInit();
     this.setContactContext();
-    this.setContact();
     this.setBreadCrumb();
-    this.setAddresses();
   }
 
   ngOnDestroy() {
@@ -57,27 +56,29 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
         (params: Params) => {
           this.contact_id = this._route.snapshot.params['id'];
         });
+      this.setContact();
+      this.setAddresses();
     }
   }
 
   private setContact(): void {
-    if (this.contact_id) {
-      this.dm.doContact(this.contact_id);
-      this.dm.contact.subscribe(contact => {
-        this.contact = contact;
-      })
-    }
+    this.dm.doContact(this.contact_id);
+    this.dm.contact.subscribe((contact) => {
+      this.contact = contact;
+      console.log("CONTACT IS", JSON.stringify(this.contact), this.contact_id);
+    })
+    // this.contact = this.dm.getContact(this.contact_id);
   }
 
   private setAddresses(): void {
-    if (this.contact_id) {
-      this.dm.doAddresses(this.contact_id);
-      this._addressSubscription = this.dm.addresses.subscribe((addresses: Address[]) => {
-        if (addresses) {
-          this.newPage(addresses);
-        }
-      })
-    }
+    this.dm.doAddresses(this.contact_id);
+    this._addressSubscription = this.dm.addresses.subscribe((addresses: Address[]) => {
+      if (addresses) {
+        this.totalRecords = addresses.length;
+        this._addresses = addresses;
+        this.newPage(1);
+      }
+    })
   }
 
   setBreadCrumb(): void {
@@ -94,12 +95,29 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
     this.router.navigate([link]);
   }
 
-  newPage(value): void {
+  newPage(value: number): void {
     this.data$ = Observable.create((observer) => {
-      observer.next(this.dm.db.getRecordsToDisplay(value, this.pageSize, this._addresses));
+      let addresses = this.dm.db.getRecordsToDisplay(value, this.pageSize, this._addresses);
+      observer.next(addresses);
       observer.complete();
     })
   }
+
+  onDetail(data): void {
+    console.log("GETTING DETAILS FOR", data.id)
+    this.router.navigate(['application', 'contacts', this.contact_id, 'addresses',  data.id])
+  }
+
+  onEdit(data): void {
+    this.router.navigate(['application', 'contacts', this.contact_id, 'addresses', data.id, 'edit'])
+  }
+
+  onDelete(data): void {
+    data.deleted = true;
+    this.dm.db.updateData(ADDRESSES + '/' + this.contact_id, data.id, data);
+    this.router.navigate(['application', 'contacts', this.contact_id, 'addresses',  data.id])
+  }
+
 
   get diagnostic() {
     return "contact_id=" + this.contact_id

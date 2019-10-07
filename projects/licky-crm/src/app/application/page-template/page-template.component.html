@@ -1,0 +1,36 @@
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [searchArgument]="searchArgument"
+                                        [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+      <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"
+                                        (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Contact Edit'"
+                                         [descriptionText]="'The edit screen is where you create a new contact or edit and existing one.'"
+                                         [header1]="'Status'"
+                                         [description1]="'Assign a status to better management contacts. The state allows you to track and measure connections wholistically.'"
+                                         [header2]="'Multiples'"
+                                         [description2]="'You can add multiple addresses, email addresses, notes, and phone numbers to contact. Once a contact is added, you will have the option of adding addresses, email addresses, notes, and phone numbers.'"
+                                         [header3]="'Notes'"
+                                         [description3]="'Sometimes it may be necessary to enter information about discussions with a contact.  Create a note to log calls, conferences, or preferences.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

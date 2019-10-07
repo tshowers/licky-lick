@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { User } from 'lick-data';
-import { IdGeneratorService } from './id-generator.service';
 
 export const APP_ACTIVITY = '/app-activity'
 export const BLOGS = '/blogs';
@@ -83,6 +82,24 @@ export class FirebaseDataService {
   private _db;
   private _user: User;
 
+  private _augmentPath = [
+    CONTACTS,
+    NEWS,
+    PROJECTS,
+    BLOGS,
+    ALERTS,
+    TOPICS,
+    SHOPPING_CARTS,
+    SETTINGS,
+    STORES,
+    EVENTS,
+    OPPORTUNITES,
+    HELP,
+    FAVORITES,
+    BOOKMARKS,
+    APP_ACTIVITY
+  ]
+
   constructor() { }
 
   init(): void {
@@ -90,8 +107,7 @@ export class FirebaseDataService {
   }
 
 
-  updateData(path: string, key: any, data: any, notAugmented?: boolean): void {
-    if (!notAugmented)
+  updateData(path: string, key: any, data: any): void {
     path = this.getAugmentedPath(path);
     // console.log("Updating Data for " + path + '/' + key, JSON.stringify(data));
     console.log("Updating Data for " + path + '/' + key);
@@ -102,11 +118,10 @@ export class FirebaseDataService {
     })
   }
 
-  getData(path: string, id: string, notAugmented?: boolean): Observable<any> {
-    if (!notAugmented)
+  getData(path: string, id: string): Observable<any> {
     path = this.getAugmentedPath(path);
-    console.log("Getting Data for PATH", path , 'ID=' + id);
-    return Observable.create((observer) => {
+    // console.log("Getting Data for PATH", path + '/' + id);
+    return new Observable((observer) => {
       // console.log("firebase.database=" + this._db)
       this._db.ref(path + '/' + id).once('value').then(
         (snapshot) => {
@@ -124,8 +139,7 @@ export class FirebaseDataService {
     })
   }
 
-  writeData(path: string, data: any, notAugmented?: boolean): Observable<any> {
-    if (!notAugmented)
+  writeData(path: string, data: any): Observable<any> {
     path = this.getAugmentedPath(path);
     this.setNewDataValues(data);
     return Observable.create((observer) => {
@@ -144,23 +158,23 @@ export class FirebaseDataService {
   }
 
   public getAugmentedPath(path: string): string {
-    if (path == USERS)
-      return path;
-    else if (this._user && this._user.account)
-      return path + "/" + this._user.account
-    else return path;
+    for (let i = 0; i < this._augmentPath.length; i++) {
+        // console.log("Comparing")
+        if (this._augmentPath[i] == path) {
+          return path + "/" + this._user.account
+        }
+    }
+    return path;
   }
 
 
-  setDeleted(path: string, data: any, notAugmented?: boolean): void {
-    if (!notAugmented)
+  setDeleted(path: string, data: any): void {
     path = this.getAugmentedPath(path);
     data.deleted = true;
     this.updateData(path, data.id, data);
   }
 
-  getDataCollection(path, notAugmented?: boolean): Observable<any> {
-    if (!notAugmented)
+  getDataCollection(path): Observable<any> {
     path = this.getAugmentedPath(path);
     console.log("Getting Data Collection for " + path, "DB is ", this._db);
     return Observable.create((observer) => {
@@ -177,8 +191,7 @@ export class FirebaseDataService {
     })
   }
 
-  getDataByBatch(path: string, batchSize: number, keyField: string, lastKey?: string, notAugmented?: boolean): Observable<any> {
-    if (!notAugmented)
+  getDataByBatch(path: string, batchSize: number, keyField: string, lastKey?: string): Observable<any> {
     path = this.getAugmentedPath(path);
     if (lastKey)
       return Observable.create((observer) => {

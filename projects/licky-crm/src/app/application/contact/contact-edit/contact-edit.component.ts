@@ -53,6 +53,10 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
       });
   }
 
+  ngOnDestroy() {
+    super.ngOnDestroy();
+  }
+
   setBreadCrumb() : void {
     this.crumbs = [
       { name: "dashboard", link: "/application/contacts/dashboard", active: false },
@@ -61,8 +65,8 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
     ]
   }
 
-  ngOnDestroy() {
-    super.ngOnDestroy();
+  onBreadCrumb(link) : void {
+      this.router.navigate([link]);
   }
 
   onSubmit(): void {
@@ -146,10 +150,6 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
   private modelCheck() {
     if (this.dependent.firstName)
       this.newDependent();
-  }
-
-  onBreadCrumb(link) : void {
-      this.router.navigate([link]);
   }
 
   onSearch(value) : void {

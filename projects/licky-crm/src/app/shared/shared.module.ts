@@ -33,6 +33,7 @@ import { LickAppWidgetStats15Module } from 'lick-app-widget-stats15';
 import { NameDecriptionFilterPipe } from './filters/name-decription-filter.pipe';
 
 import { NavComponent } from './nav/nav.component';
+import { ContextNavComponent } from './nav/context-nav/context-nav.component';
 
 import { environment } from '../../environments/environment';
 
@@ -43,7 +44,7 @@ export const firebaseConfig = environment.firebaseConfig;
 // CommonModule, FormsModule etc. for free.
 
 @NgModule({
-  declarations: [NavComponent, NameDecriptionFilterPipe],
+  declarations: [NavComponent, NameDecriptionFilterPipe, ContextNavComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -75,6 +76,7 @@ export const firebaseConfig = environment.firebaseConfig;
   ],
   exports: [
     NavComponent,
+    ContextNavComponent,
     RouterModule,
     HttpClientModule,
     LickAppPageModule,

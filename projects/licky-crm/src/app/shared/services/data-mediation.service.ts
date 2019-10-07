@@ -74,11 +74,93 @@ export class DataMediationService implements OnDestroy {
       this._phoneNumberSubscription.unsubscribe();
   }
 
+  public getAddressListToArray(data: any): any[] {
+    let list: any[] = [];
+    for (let item in data) {
+      this.doAddressFixUp(data, item);
+      list.push(data[item]);
+    }
+    return list;
+  }
+
+  private doAddressFixUp(data, item): void {
+    data[item].id = item;
+    if (data[item].streetAddress)
+      data[item].name = data[item].streetAddress;
+    if (data[item].city)
+      data[item].name += " " + data[item].city;
+    if (data[item].state)
+      data[item].name += " " + data[item].state;
+    if (data[item].zip)
+      data[item].name += " " + data[item].zip;
+  }
+
+  public getEmailAddressListToArray(data: any): any[] {
+    let list: any[] = [];
+    for (let item in data) {
+      this.doEmailAddressFixUp(data, item);
+      list.push(data[item]);
+    }
+    return list;
+  }
+
+  private doEmailAddressFixUp(data, item): void {
+    data[item].id = item;
+    if (data[item].emailAddress)
+      data[item].name = data[item].emailAddress;
+  }
+
+  public getPhoneNumberListToArray(data: any): any[] {
+    let list: any[] = [];
+    for (let item in data) {
+      this.doPhoneNumberFixUp(data, item);
+      list.push(data[item]);
+    }
+    return list;
+  }
+
+  private doPhoneNumberFixUp(data, item): void {
+    data[item].id = item;
+    if (data[item].phoneNumber)
+      data[item].name = data[item].phoneNumber;
+  }
+
+  public getFOPListToArray(data: any): any[] {
+    let list: any[] = [];
+    for (let item in data) {
+      this.doFOPFixUp(data, item);
+      list.push(data[item]);
+    }
+    return list;
+  }
+
+  private doFOPFixUp(data, item): void {
+    data[item].id = item;
+    if (data[item].fopType)
+      data[item].name = data[item].fopType;
+  }
+
+  public getNoteListToArray(data: any): any[] {
+    let list: any[] = [];
+    for (let item in data) {
+      this.doNoteFixUp(data, item);
+      list.push(data[item]);
+    }
+    return list;
+  }
+
+
+  private doNoteFixUp(data, item): void {
+    data[item].id = item;
+    if (data[item].name)
+      data[item].name = data[item].name.slice(0,25);
+  }
+
   public doAddresses(contact_id: string): void {
-    this._addressSubscription = this.db.getDataCollection(ADDRESSES + "/" + contact_id, true )
+    this._addressSubscription = this.db.getDataCollection(ADDRESSES + "/" + contact_id )
       .subscribe((addressData: Address[]) => {
         if (addressData) {
-          this._addresses = this.db.getListToArray(addressData);
+          this._addresses = this.getAddressListToArray(addressData);
           console.log("ADDRESSES TO ARRAY", JSON.stringify(this._addresses))
           this.addresses.next(this._addresses);
         }
@@ -89,7 +171,7 @@ export class DataMediationService implements OnDestroy {
     this._emailAddressSubscription = this.db.getDataCollection(EMAIL_ADDRESSES + "/" + contact_id )
       .subscribe((data: EmailAddress[]) => {
         if (data) {
-          this._emailAddresses = this.db.getListToArray(data);
+          this._emailAddresses = this.getEmailAddressListToArray(data);
           console.log("EMAIL ADDRESSES TO ARRAY", JSON.stringify(this._emailAddresses))
           this.emailAddress.next(this._emailAddresses);
         }
@@ -100,7 +182,7 @@ export class DataMediationService implements OnDestroy {
     this._fopSubscription = this.db.getDataCollection(FOPS + "/" + contact_id )
       .subscribe((data: FOP[]) => {
         if (data) {
-          this._fops = this.db.getListToArray(data);
+          this._fops = this.getFOPListToArray(data);
           console.log("FOPS TO ARRAY", JSON.stringify(this._fops))
           this.fops.next(this._fops);
         }
@@ -111,7 +193,7 @@ export class DataMediationService implements OnDestroy {
     this._noteSubscription = this.db.getDataCollection(JUST_TEXTS + "/" + contact_id )
       .subscribe((data: JustText[]) => {
         if (data) {
-          this._notes = this.db.getListToArray(data);
+          this._notes = this.getNoteListToArray(data);
           console.log("FOPS TO ARRAY", JSON.stringify(this._notes))
           this.notes.next(this._notes);
         }
@@ -122,7 +204,7 @@ export class DataMediationService implements OnDestroy {
     this._phoneNumberSubscription = this.db.getDataCollection(PHONE_NUMBERS + "/" + contact_id )
       .subscribe((data: PhoneNumber[]) => {
         if (data) {
-          this._phoneNumbers = this.db.getListToArray(data);
+          this._phoneNumbers = this.getPhoneNumberListToArray(data);
           console.log("PHONE NUMBERS TO ARRAY", JSON.stringify(this._notes))
           this.phoneNumbers.next(this._phoneNumbers);
         }
@@ -130,15 +212,19 @@ export class DataMediationService implements OnDestroy {
   }
 
   public doContact(id: string) : void {
-    // console.log("doContact()", JSON.stringify(this._contacts))
-    this.db.getData(CONTACTS, id).pipe(map(contact => {
-      console.log("GETTING CONTACT", id, contact);
-      if (contact)
-        this.contact.next(contact);
-    }))
+    // console.log("doContact()")
+    // this.db.getData(CONTACTS, id).pipe(map(contact => {
+    //   console.log("GETTING CONTACT", id, contact);
+    //   if (contact)
+    //     this.contact.next(contact);
+    // })).subscribe();
+    this.db.getData(CONTACTS, id).subscribe((contact) => {
+      console.log("CONTACT IS > ", JSON.stringify(contact))
+    })
   }
 
   public getContact(id: string): Contact {
+    console.log("getContact()", JSON.stringify(this._contacts))
     return  (this._contacts) ?
     this._contacts.find(contact => contact.id == id) : null
 

@@ -16,36 +16,12 @@
                                         [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
   <main class="main">
     <div class="container-fluid">
+      <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"
+                                        (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+
+      <app-context-nav [contact]="contact"></app-context-nav>
       <div class="row">
-        <div *ngIf="contact.id"
-             class="col-md-2">
-          <nav class="sidebar-nav"
-               id="sidebar-nav-scroller">
-            <br>
-            <a class="nav-link"
-               routerLink="/application/contacts/{{contact.id}}/addresses"><i
-                 class="fa fa-address-book-o"
-                 aria-hidden="true"></i> Address</a>
-            <a class="nav-link"
-               routerLink="/application/contacts/{{contact.id}}/email-addresses"><i
-                 class="fa fa-at"
-                 aria-hidden="true"></i> Email</a>
-            <a class="nav-link"
-               routerLink="/application/contacts/{{contact.id}}/form-of-payments"><i
-                 class="fa fa-credit-card"
-                 aria-hidden="true"></i> FOP</a>
-            <a class="nav-link"
-               routerLink="/application/contacts/{{contact.id}}/notes"><i class="fa fa-sticky-note-o"
-                 aria-hidden="true"></i> Note</a>
-            <a class="nav-link"
-               routerLink="/application/contacts/{{contact.id}}/phone-numbers"><i
-                 class="fa fa-phone"
-                 aria-hidden="true"></i> Phone</a>
-          </nav>
-        </div>
-        <div [ngClass]="{'col-md-10' : contact.id, 'col-md-2': !contact.id}">
-          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"
-                                            (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+        <div class="col-md-12">
           <form #dataForm="ngForm"
                 class="form-group">
             <div *ngIf="currentUpload">

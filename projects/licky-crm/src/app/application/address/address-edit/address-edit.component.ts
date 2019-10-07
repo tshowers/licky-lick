@@ -170,10 +170,9 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
           this.address = data.address;
           this.contact_id = this.address.contact_id
           this.setContactContext();
-          this.setContact();
         }
       });
-      this.setUpGoogleSearch();
+    this.setUpGoogleSearch();
   }
 
   ngOnDestroy() {
@@ -185,12 +184,12 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
   }
 
   onSubmit(): void {
-    (this.address.id ? this.onUpdate() : this.saveNewContact());
+    (this.address.id ? this.onUpdate() : this.saveNewAddress());
     this.router.navigate(['/application/contacts/' + this.contact_id + "/addresses"]);
   }
 
   onUpdate(): void {
-    this.dm.db.updateData(ADDRESSES, this.address.id, this.address);
+    this.dm.db.updateData(ADDRESSES + "/" + this.contact_id, this.address.id, this.address);
   }
 
   onDelete(): void {
@@ -199,8 +198,8 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
     this.onBrandNew();
   }
 
-  saveNewContact(): void {
-    this.dm.db.writeData(ADDRESSES, this.address).subscribe((key) => {
+  saveNewAddress(): void {
+    this.dm.db.writeData(ADDRESSES + "/" + this.contact_id, this.address).subscribe((key) => {
       this.address.id = key;
       console.log("ADDRESS AFTER SAVE", this.address, key)
     });
@@ -216,31 +215,25 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
       { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
       { name: "name", link: "/application/contacts/new", active: false },
-      { name: "address", link: "/application/contacts", active: true },
-      { name: "new", link: "/application/contacts/" + this.contact_id + "/new", active: false },
+      { name: "address", link: "/application/contacts", active: false },
+      { name: "new", link: "/application/contacts/" + this.contact_id + "/new", active: true },
     ]
   }
 
-  private setContactContext() : void {
+  private setContactContext(): void {
     if (this._route.snapshot.params['id']) {
       this.contact_id = this._route.snapshot.params['id'];
       this._paramSubscription = this._route.params.subscribe(
         (params: Params) => {
           this.contact_id = this._route.snapshot.params['id'];
         });
+      this.setContact();
     }
   }
 
-  private setContact() : void {
-    if (this.contact_id) {
-      this.contact = this.dm.getContact(this.contact_id);
-      // console.log("1 setContact()", JSON.stringify( this.contact))
-      // this.dm.doContact(this.contact_id);
-      // this._contactSubscription = this.dm.contact.subscribe(contact => {
-      //   console.log("2 setContact()", JSON.stringify( this.contact))
-      //   this.contact = contact;
-      // })
-    }
+  private setContact(): void {
+    this.contact = this.dm.getContact(this.contact_id);
+    console.log("CONTACT IS", JSON.stringify(this.contact))
   }
 
   private initializeDropdowns(): void {

@@ -1,0 +1,31 @@
+<ul class="nav nav-pills nav-fill" *ngIf="contact && contact.id">
+  <li class="nav-item">
+    <a class="nav-link"
+       routerLink="/application/contacts/{{contact.id}}/addresses"><i
+         class="fa fa-address-book-o"
+         aria-hidden="true"></i> Address</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"
+       routerLink="/application/contacts/{{contact.id}}/email-addresses"><i
+         class="fa fa-at"
+         aria-hidden="true"></i> Email</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"
+       routerLink="/application/contacts/{{contact.id}}/form-of-payments"><i
+         class="fa fa-credit-card"
+         aria-hidden="true"></i> FOP</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"
+       routerLink="/application/contacts/{{contact.id}}/notes"><i class="fa fa-sticky-note-o"
+         aria-hidden="true"></i> Note</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"
+       routerLink="/application/contacts/{{contact.id}}/phone-numbers"><i
+         class="fa fa-phone"
+         aria-hidden="true"></i> Phone</a>
+  </li>
+</ul>
