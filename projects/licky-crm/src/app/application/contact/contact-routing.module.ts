@@ -14,11 +14,11 @@ import { ContactResolverService } from './services/contact-resolver.service';
 import { ContactViewResolverService } from './services/contact-view-resolver.service';
 
 const routes : Routes = [
-  { path: '', component: ContactListComponent, data : { title: 'Contact List'}},
-  { path: 'dashboard', component : ContactDashboardComponent, data : { title: 'Contact Dashboard'}},
-  { path: 'new', component: ContactEditComponent, resolve: { contact: ContactResolverService }, data: { title: 'New Contact', state: 'new contact' } },
-  { path: ':id', component: ContactViewComponent, resolve:{contact: ContactViewResolverService}, data: { title: 'Contact Detail', state: 'contact detail' } },
-  { path: ':id/edit', component: ContactEditComponent, resolve: { contact: ContactResolverService }, data: { title: 'Edit Contact', state: 'edit contact' } },
+  { path: '', canActivate: [AuthGuard], component: ContactListComponent, data : { title: 'Contact List'}},
+  { path: 'dashboard', canActivate: [AuthGuard], component : ContactDashboardComponent, data : { title: 'Contact Dashboard'}},
+  { path: 'new', canActivate: [AuthGuard], component: ContactEditComponent, resolve: { contact: ContactResolverService }, data: { title: 'New Contact', state: 'new contact' } },
+  { path: ':id', canActivate: [AuthGuard], component: ContactViewComponent, resolve:{contact: ContactViewResolverService}, data: { title: 'Contact Detail', state: 'contact detail' } },
+  { path: ':id/edit', canActivate: [AuthGuard], component: ContactEditComponent, resolve: { contact: ContactResolverService }, data: { title: 'Edit Contact', state: 'edit contact' } },
   { path: ':id/addresses', canLoad: [AuthGuard], children: [ {path: '', loadChildren: '../address/address.module#AddressModule'} ]},
   { path: ':id/email-addresses', canLoad: [AuthGuard], children: [ {path: '', loadChildren: '../email-address/email-address.module#EmailAddressModule'} ]},
   { path: ':id/form-of-payments', canLoad: [AuthGuard], children: [ {path: '', loadChildren: '../fop/fop.module#FopModule'} ]},

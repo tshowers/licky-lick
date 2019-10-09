@@ -162,10 +162,9 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
   ngOnInit() {
     super.ngOnInit();
     this.initializeDropdowns();
-    this.setBreadCrumb();
     this._route.data
       .subscribe((data: { address: Address }) => {
-        console.log("RETURNED", JSON.stringify(data), JSON.stringify(data.address))
+        // console.log("RETURNED", JSON.stringify(data), JSON.stringify(data.address))
         if (data.address) {
           this.address = data.address;
           this.contact_id = this.address.contact_id
@@ -177,6 +176,8 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
 
   ngOnDestroy() {
     super.ngOnDestroy();
+    if (this._paramSubscription)
+      this._paramSubscription.unsubscribe();
     if (this._contactSubscription)
       this._contactSubscription.unsubscribe();
     if (this._addressSubscription)
@@ -193,7 +194,7 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
   }
 
   onDelete(): void {
-    this.contact.deleted = true;
+    this.address.deleted = true;
     this.onUpdate();
     this.onBrandNew();
   }
@@ -214,9 +215,9 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
     this.crumbs = [
       { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
-      { name: "name", link: "/application/contacts/new", active: false },
+      { name: this.contact.firstName + " " + this.contact.lastName, link: "/application/contacts/" + this.contact.id, active: false },
       { name: "address", link: "/application/contacts", active: false },
-      { name: "new", link: "/application/contacts/" + this.contact_id + "/new", active: true },
+      { name: "new", link: "/application/contacts/" + this.contact_id + "/addresses/new", active: true },
     ]
   }
 
@@ -232,8 +233,12 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
   }
 
   private setContact(): void {
-    this.contact = this.dm.getContact(this.contact_id);
-    console.log("CONTACT IS", JSON.stringify(this.contact))
+    this.dm.doContact(this.contact_id);
+    this.dm.contact.subscribe((contact) => {
+      this.contact = contact;
+      // console.log("CONTACT IS", JSON.stringify(this.contact), this.contact_id);
+      this.setBreadCrumb();
+    })
   }
 
   private initializeDropdowns(): void {

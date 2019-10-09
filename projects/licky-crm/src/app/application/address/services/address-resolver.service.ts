@@ -12,6 +12,7 @@ export class AddressResolverService {
   constructor(private _db: FirebaseDataService, public router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Address> {
+    console.log(JSON.stringify(route.paramMap));
     let id1 = route.paramMap.get('id');
     let id2 = route.paramMap.get('id2');
 
@@ -29,7 +30,7 @@ export class AddressResolverService {
         map(address => {
           if (address) {
             Address.restoreData(address);
-            this.incrementViewCount(address, id1);
+            this.incrementViewCount(address, id1, id2);
             return (address.id == id2) ? address : of(this.getNew(id1));
           } else {
             return of(this.getNew(id1));
@@ -50,10 +51,18 @@ export class AddressResolverService {
     return data;
   }
 
-  private incrementViewCount(address: Address, id1): void {
-    address.views++;
-    address.lastViewed = new Date().getTime();
-    this._db.updateData(ADDRESSES + '/' + id1, address.id, address);
+  private incrementViewCount(address: Address, id1, id2): void {
+    if (address) {
+      address.id = id2;
+      if (address.views && !isNaN(address.views)) {
+        address.views++;
+      } else {
+        address.views = 0;
+        address.views++;
+      }
+      address.lastViewed = new Date().getTime();
+      this._db.updateData(ADDRESSES + '/' + id1, id2, address);
+    }
   }
 
 

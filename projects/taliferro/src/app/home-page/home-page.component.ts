@@ -20,8 +20,8 @@ export class HomePageComponent implements OnInit {
 
   users: User[] = [
     {
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "status": "Active",
+      "account" : "null",
       "email": "vikki.owens@taliferro.com",
       "name": "Vikki Owens",
       "helpNeeded": false,
@@ -41,8 +41,8 @@ export class HomePageComponent implements OnInit {
 
     },
     {
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "status": "Active",
+      "account" : "null",
       "email": "ty.showers@taliferro.com",
       "name": "Tyrone Showers",
       "helpNeeded": false,
@@ -61,9 +61,9 @@ export class HomePageComponent implements OnInit {
       "contact": { "name": "Tyrone Showers", "profession": "<span>Engineer</span>", "shared": true, "firstName": "Tyrone", "lastName": "Showers" }
     },
     {
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "status": "Active",
       "email": "bradford.nims@taliferro.com",
+      "account" : "null",
       "name": "Bradford Nims",
       "helpNeeded": false,
       "openView": false,

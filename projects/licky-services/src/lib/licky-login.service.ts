@@ -25,7 +25,7 @@ export class LickyLoginService {
   private _firebaseUser: firebase.User;
   private _user: User;
   private _users: any;
-  public isLoggedIn: boolean = false;
+  private _loggedIn: boolean = false;
   public redirectUrl;
   private _token: string;
 
@@ -60,7 +60,7 @@ export class LickyLoginService {
         // authData.user.getIdToken(true)
         // console.log(authData);
         console.log("successful signin");
-        this.isLoggedIn = true;
+        this._loggedIn = true;
         router.navigate([redirectURL]);
       })
       .catch((error) => {
@@ -82,6 +82,11 @@ export class LickyLoginService {
     )
   }
 
+  public isLoggedIn() : boolean {
+    console.log("LOG STATUS", this._firebaseUser, this._user);
+    this._loggedIn = (this._firebaseUser && this._user) ? true : false;
+    return (this._loggedIn);
+  }
 
   public setAway(): void {
     if (this._user) {
@@ -110,7 +115,7 @@ export class LickyLoginService {
 
     firebase.auth().signOut().then(() => {
       console.log("Logging out user");
-      this.isLoggedIn = false;
+      this._loggedIn = false;
       this.firebaseUser.next(null);
       this._firebaseUser = null;
       this._user = null;
@@ -198,7 +203,7 @@ export class LickyLoginService {
       if (user) {
         this.firebaseUser.next(user);
         this._firebaseUser = user;
-        this.isLoggedIn = true;
+        this._loggedIn = true;
         this.initUsers();
       }
     })

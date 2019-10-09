@@ -161,7 +161,12 @@ export class FirebaseDataService {
     for (let i = 0; i < this._augmentPath.length; i++) {
         // console.log("Comparing")
         if (this._augmentPath[i] == path) {
-          return path + "/" + this._user.account
+          if (this._user && this._user.account)
+            return path + "/" + this._user.account;
+          else {
+            console.error("USER OR USER ACCOUNT IS NULL");
+            return path;
+          }
         }
     }
     return path;

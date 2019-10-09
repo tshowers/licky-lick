@@ -38,7 +38,6 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
   ngOnInit() {
     super.ngOnInit();
     this.setContactContext();
-    this.setBreadCrumb();
   }
 
   ngOnDestroy() {
@@ -65,9 +64,9 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
     this.dm.doContact(this.contact_id);
     this.dm.contact.subscribe((contact) => {
       this.contact = contact;
-      console.log("CONTACT IS", JSON.stringify(this.contact), this.contact_id);
+      // console.log("CONTACT IS", JSON.stringify(this.contact), this.contact_id);
+      this.setBreadCrumb();
     })
-    // this.contact = this.dm.getContact(this.contact_id);
   }
 
   private setAddresses(): void {
@@ -85,7 +84,7 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
     this.crumbs = [
       { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
-      { name: "name", link: "/application/contacts/new", active: false },
+      { name: this.contact.firstName + " " + this.contact.lastName, link: "/application/contacts/" + this.contact.id, active: false },
       { name: "address", link: "/application/contacts", active: true },
       { name: "new", link: "/application/contacts/" + this.contact_id + "/addresses/new", active: false },
     ]
@@ -105,11 +104,11 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
 
   onDetail(data): void {
     console.log("GETTING DETAILS FOR", data.id)
-    this.router.navigate(['application', 'contacts', this.contact_id, 'addresses',  data.id])
+    this.router.navigate(['/application/contacts/' + this.contact_id  + '/addresses/' +  data.id])
   }
 
   onEdit(data): void {
-    this.router.navigate(['application', 'contacts', this.contact_id, 'addresses', data.id, 'edit'])
+    this.router.navigate(['/application/contacts/' + this.contact_id + '/addresses/' + data.id + '/edit'])
   }
 
   onDelete(data): void {
@@ -117,7 +116,6 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
     this.dm.db.updateData(ADDRESSES + '/' + this.contact_id, data.id, data);
     this.router.navigate(['application', 'contacts', this.contact_id, 'addresses',  data.id])
   }
-
 
   get diagnostic() {
     return "contact_id=" + this.contact_id

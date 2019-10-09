@@ -161,7 +161,7 @@ export class DataMediationService implements OnDestroy {
       .subscribe((addressData: Address[]) => {
         if (addressData) {
           this._addresses = this.getAddressListToArray(addressData);
-          console.log("ADDRESSES TO ARRAY", JSON.stringify(this._addresses))
+          // console.log("ADDRESSES TO ARRAY", JSON.stringify(this._addresses))
           this.addresses.next(this._addresses);
         }
       });
@@ -212,14 +212,9 @@ export class DataMediationService implements OnDestroy {
   }
 
   public doContact(id: string) : void {
-    // console.log("doContact()")
-    // this.db.getData(CONTACTS, id).pipe(map(contact => {
-    //   console.log("GETTING CONTACT", id, contact);
-    //   if (contact)
-    //     this.contact.next(contact);
-    // })).subscribe();
     this.db.getData(CONTACTS, id).subscribe((contact) => {
-      console.log("CONTACT IS > ", JSON.stringify(contact))
+      // console.log("CONTACT IS > ", JSON.stringify(contact));
+      this.contact.next(contact);
     })
   }
 
@@ -250,7 +245,6 @@ export class DataMediationService implements OnDestroy {
       .subscribe((contactData: Contact[]) => {
         if (contactData) {
           this._contacts = this.db.getListToArray(contactData);
-          // console.log("CONTACTS TO ARRAY", JSON.stringify(this._contacts))
           this.contacts.next(this._contacts);
         }
       });

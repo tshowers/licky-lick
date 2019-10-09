@@ -10,8 +10,8 @@ import { AddressViewResolverService } from './services/address-view-resolver.ser
 const routes : Routes = [
   { path: '', component: AddressListComponent, data : { title: 'Address List'}},
   { path: 'new', resolve:{address: AddressResolverService}, component: AddressEditComponent, data: { title: 'New Address', state: 'new address' } },
-  { path: ':id', resolve:{address: AddressViewResolverService}, component: AddressViewComponent, data: { title: 'Address Detail', state: 'adddress detail' } },
-  { path: ':id/edit', resolve:{address: AddressResolverService}, component: AddressEditComponent, data: { title: 'Edit Address', state: 'edit address' } },
+  { path: ':id2', resolve:{address: AddressViewResolverService}, component: AddressViewComponent, data: { title: 'Address Detail', state: 'adddress detail' } },
+  { path: ':id2/edit', resolve:{address: AddressResolverService}, component: AddressEditComponent, data: { title: 'Edit Address', state: 'edit address' } },
 ];
 
 
