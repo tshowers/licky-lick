@@ -12,7 +12,6 @@ export class AddressResolverService {
   constructor(private _db: FirebaseDataService, public router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Address> {
-    console.log(JSON.stringify(route.paramMap));
     let id1 = route.paramMap.get('id');
     let id2 = route.paramMap.get('id2');
 
@@ -23,13 +22,11 @@ export class AddressResolverService {
   }
 
   getAddress(id1, id2) : Observable<Address> {
-    console.log("PASSED Parameters",id1, id2);
     if (id2) {
       return this._db.getData(ADDRESSES + '/' + id1, id2)
       .pipe(
         map(address => {
           if (address) {
-            Address.restoreData(address);
             this.incrementViewCount(address, id1, id2);
             return (address.id == id2) ? address : of(this.getNew(id1));
           } else {
@@ -47,7 +44,6 @@ export class AddressResolverService {
     let data = new Address();
     data.contact_id = contact_id
     data.draft = true;
-    console.log("NEW ADDRESS", JSON.stringify(data))
     return data;
   }
 

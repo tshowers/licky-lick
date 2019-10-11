@@ -208,8 +208,6 @@ export class NewsService {
   }
 
   getNewsByCategory(category: string): Observable<any> {
-    // let callString = this._categoryURL + category + this._local + this._country + this._key + this._pageSizeParam + this._pageSize + this._pageNumberParam + this._pageNumber;
-    // console.log(callString);
     return this._http.get(this._categoryURL + category + this._local + this._country + this._key + this._pageSizeParam + this._pageSize + this._pageNumberParam + this._pageNumber, { responseType: 'json' });
   }
 

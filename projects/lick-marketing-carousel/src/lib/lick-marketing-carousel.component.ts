@@ -140,7 +140,6 @@ export class LickMarketingCarouselComponent implements OnInit {
 
   private setCarouselItems() : void {
     this.carousel.forEach((c) => {
-      console.log(c.url);
       this.images.push(c.url)
     })
   }

@@ -208,7 +208,6 @@ export class ContactDashboardComponent extends LickAppPageComponent implements O
 
   private setPieChart(): void {
     this.pieData1$ = new Observable((observer) => {
-      // console.log("pieData1$")
       observer.next([
         ((this.notStartedCount / this.totalRecords) * 100),
         ((this.completeCount / this.totalRecords) * 100),
@@ -218,7 +217,6 @@ export class ContactDashboardComponent extends LickAppPageComponent implements O
       observer.complete();
     })
     this.pieData2$ = new Observable((observer) => {
-      // console.log("pieData2$")
       observer.next([
         ((this.expiredCount / this.totalRecords) * 100),
         ((this.closedCount / this.totalRecords) * 100),
@@ -238,7 +236,6 @@ export class ContactDashboardComponent extends LickAppPageComponent implements O
       if (!this.highlightedContacts[i].url)
         this.highlightedContacts[i].url = "assets/images/default-user.png";
     }
-    // console.log("HIGHLIGHTED=", JSON.stringify(this.highlightedContacts));
   }
 
   private setContactStatusData(): void {
@@ -727,7 +724,6 @@ export class ContactDashboardComponent extends LickAppPageComponent implements O
         ];
         break;
     }
-    // console.log("Returning", monthArray)
     return monthArray;
   }
 
@@ -1238,7 +1234,6 @@ export class ContactDashboardComponent extends LickAppPageComponent implements O
   }
 
   onSearch(value) : void {
-    // console.log("ONSEARCH", value);
     this.router.navigate(['application', 'contacts'], {queryParams: { searchArgument: value}})
   }
 

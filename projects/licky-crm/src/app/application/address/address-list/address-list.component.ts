@@ -64,7 +64,6 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
     this.dm.doContact(this.contact_id);
     this.dm.contact.subscribe((contact) => {
       this.contact = contact;
-      // console.log("CONTACT IS", JSON.stringify(this.contact), this.contact_id);
       this.setBreadCrumb();
     })
   }
@@ -85,7 +84,7 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
       { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
       { name: this.contact.firstName + " " + this.contact.lastName, link: "/application/contacts/" + this.contact.id, active: false },
-      { name: "address", link: "/application/contacts", active: true },
+      { name: "address", link: "/application/contacts/" + this.contact_id + "/addresses", active: true },
       { name: "new", link: "/application/contacts/" + this.contact_id + "/addresses/new", active: false },
     ]
   }
@@ -103,7 +102,6 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
   }
 
   onDetail(data): void {
-    console.log("GETTING DETAILS FOR", data.id)
     this.router.navigate(['/application/contacts/' + this.contact_id  + '/addresses/' +  data.id])
   }
 

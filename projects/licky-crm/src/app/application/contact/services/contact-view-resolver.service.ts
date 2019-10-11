@@ -14,7 +14,6 @@ export class ContactViewResolverService {
     let id = route.paramMap.get('id');
 
     return this._db.getData(CONTACTS, id).pipe(map(contact => {
-      // console.log("WE GOT BACK FOR ID", id, contact)
       if (contact) {
         this.setSocialData(contact);
         this.incrementViewCount(contact, id);
@@ -31,7 +30,6 @@ export class ContactViewResolverService {
   }
 
   private incrementViewCount(contact: Contact, id): void {
-    // console.log("INCREMENT COUNT:", contact)
     if (contact) {
       contact.id = id;
       if (contact.views && !isNaN(contact.views)) {

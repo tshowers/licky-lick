@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this._userSubscription = this.loginService.firebaseUser.subscribe((firebaseUser) => {
       let status: boolean = (firebaseUser && firebaseUser.uid) ? true : false;
       if (status) {
-        console.log("LIBRARY: " , firebaseUser, status);
+        console.info("LIBRARY: " , firebaseUser, "STATUS: ", status);
         this.getVerified(firebaseUser);
         this.router.navigate([this.successRoute]);
       }
@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private subscribeToLoginErrors(): void {
     this._loginError = this.loginService.errorMessage.subscribe((error) => {
-      console.log(error);
+      console.error(error);
       this.errorMessage = "\n\n" + error;
     })
   }
@@ -73,9 +73,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (firebaseUser) {
       let creationTime = firebaseUser.metadata.creationTime;
       let createdAt = new Date(creationTime).getTime();
-      console.log(createdAt, today);
       let diff = this._dateUtilService.getDaysDiff(today, createdAt);
-      console.log(diff);
     }
     return true;
   }
@@ -103,7 +101,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private onUserEmail(): void {
-    console.log("Siging in with " + this.emailAddress + " " + this.password)
     this.loginService.signInWithUserNameAndPassword(this.emailAddress, this.password, this.router, this.successRoute);
   }
 

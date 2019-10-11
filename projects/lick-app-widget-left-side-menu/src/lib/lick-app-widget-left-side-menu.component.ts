@@ -36,7 +36,7 @@ export class LickAppWidgetLeftSideMenuComponent implements OnInit, OnDestroy {
   }
 
   searchNews(): void {
-    console.log("Searching news for ", this.searchArgument)
+    // console.log("Searching news for ", this.searchArgument)
     if (this.newsService)
       this._newsSubscription = this.newsService.getNewsBySearchCriteria(this.searchArgument, 1).subscribe(
         (news) => {

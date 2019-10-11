@@ -64,7 +64,7 @@ export class NavComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this._loginSubscription = this.loginService.firebaseUser.subscribe((user) => {
       this.loggedIn = (user) ? true : false;
-      console.log("LOGGED IN = ", this.loggedIn);
+      console.info("LOGGED IN = ", this.loggedIn);
       this.setVerified(user);
       if (maintenance) {
         this.loggedIn = false;
@@ -82,8 +82,6 @@ export class NavComponent implements OnInit, OnDestroy {
   }
 
   onMenuEvent(value): void {
-    // console.log(value);
-    // this.verificationText = 'Check your Inbox';
     this.loginService.sendEmailVerification();
   }
 

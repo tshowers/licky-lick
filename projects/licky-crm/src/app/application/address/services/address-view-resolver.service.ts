@@ -18,9 +18,8 @@ export class AddressViewResolverService {
     return this._db.getData(ADDRESSES + '/' + id1, id2)
     .pipe(map(address => {
       if (address) {
-        // Address.restoreData(address);
-        this.setSocialData(address);
-        this.incrementViewCount(address, id1);
+        // this.setSocialData(address);
+        this.incrementViewCount(address, id1, id2);
         return (address.id == id2) ? address : null;
       } else {
         if (id1)
@@ -34,13 +33,20 @@ export class AddressViewResolverService {
 
   private setSocialData(address: Address) : void {
     //TODO
-    // this._socialService.setDataItemSocial(address);
   }
 
-  private incrementViewCount(address: Address, id1) : void {
-    address.views++;
-    address.lastViewed = new Date().getTime();
-    this._db.updateData(ADDRESSES + '/' + id1, address.id, address);
+  private incrementViewCount(address: Address, id1, id2) : void {
+    if (address) {
+      address.id = id2;
+      if (address.views && !isNaN(address.views)) {
+        address.views++;
+      } else {
+        address.views = 0;
+        address.views++;
+      }
+      address.lastViewed = new Date().getTime();
+      this._db.updateData(ADDRESSES + '/' + id1, id2, address);
+    }
   }
 
 }

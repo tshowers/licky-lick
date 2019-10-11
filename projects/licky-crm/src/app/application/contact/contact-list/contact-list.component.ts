@@ -130,7 +130,6 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
   }
 
   onDetail(data): void {
-    console.log("GETTING DETAILS FOR", data.id)
     this.router.navigate(['application', 'contacts', data.id])
   }
 
@@ -145,7 +144,6 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
   }
 
   onSearch(value): void {
-    console.log("SEARCHING FOR", value);
     if (value == null)
       this.searchArgument = ''
     else

@@ -15,7 +15,6 @@ export class ContactResolverService {
     let id = route.paramMap.get('id');
     let user = route.queryParamMap.get('user');
     let employee = route.queryParamMap.get('employee');
-    // console.log("ID:", id);
     return this.getContact(id, user, employee);
   }
 
@@ -24,7 +23,6 @@ export class ContactResolverService {
       return this._db.getData(CONTACTS, id)
         .pipe(map(contact => {
           if (contact) {
-            // Contact.restoreData(contact);
             this.incrementViewCount(contact, id);
             return (contact.id == id) ? contact : of(new Contact());
           } else {
@@ -70,7 +68,6 @@ export class ContactResolverService {
   }
 
   private incrementViewCount(contact: Contact, id): void {
-    // console.log("INCREMENT COUNT:", contact);
     if (contact) {
       contact.id = id;
       if (contact.views && !isNaN(contact.views)) {

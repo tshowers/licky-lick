@@ -19,7 +19,6 @@ export class UserLocationService {
   constructor(private _mapsAPILoader: MapsAPILoader) {
     this._mapsAPILoader.load().then(() => {
       this._geocoder = new google.maps.Geocoder();
-      // console.log("_geocoder=" + JSON.stringify(this._geocoder));
       this.setCurrentPosition();
     })
   }
@@ -29,7 +28,6 @@ export class UserLocationService {
       navigator.geolocation.getCurrentPosition((position) => {
         let latitude = position.coords.latitude;
         let longitude = position.coords.longitude;
-        // console.log("latitude=" + latitude, "longitude=" + longitude);
         this.setCityState(latitude, longitude);
       });
     }
@@ -38,7 +36,6 @@ export class UserLocationService {
   private setCityState(latitude, longitude): void {
     let latlng = new google.maps.LatLng(latitude, longitude);
     this._geocoder.geocode({latLng: latlng}, (addressResult, status) => {
-      // console.log("status=" + status);
       if (status == google.maps.GeocoderStatus.OK) {
         this.fillInAddress(addressResult[0], latitude, longitude);
 
@@ -48,8 +45,6 @@ export class UserLocationService {
 
 
   private fillInAddress(place, latitude, longitude): void {
-    // console.log("Address Components: " + JSON.stringify(place.address_components));
-    // console.log("Result: " + JSON.stringify(place));
     let componentCount = place.address_components.length;
     let addr = new Address();
     addr.longitude = longitude;

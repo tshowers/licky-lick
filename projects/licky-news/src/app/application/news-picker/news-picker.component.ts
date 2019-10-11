@@ -28,7 +28,6 @@ export class NewsPickerComponent implements OnInit {
       newsSource.checked = false;
       checkbox.srcElement.checked = false;
       this.setCountSelected();
-      console.log(checkbox.srcElement);
     };
   }
 

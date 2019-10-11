@@ -13,7 +13,6 @@ export class LickMarketingLatestPost2Component implements OnInit {
   @Input() defaultImage = "assets/images/noPhoto.jpg";
   @Input() articles: Article[] = [
     {
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "id": Math.floor(Math.random() * 1000).toString(),
       "title": "Lose These 12 Bad Habits If You're Serious About Becoming a Millionaire",
       "name": "Lose These 12 Bad Habits If You're Serious About Becoming a Millionaire",
@@ -46,7 +45,6 @@ export class LickMarketingLatestPost2Component implements OnInit {
       "timeStamp": new Date(),
     },
     {
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "id": Math.floor(Math.random() * 1000).toString(),
       "title": "June in Africa: Taxi wars, smarter cities and increased investments",
       "name": "June in Africa: Taxi wars, smarter cities and increased investments",
@@ -79,7 +77,6 @@ export class LickMarketingLatestPost2Component implements OnInit {
       "timeStamp": new Date(),
     },
     {
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "id": Math.floor(Math.random() * 1000).toString(),
       "title": "10 Horrible Habits You're Doing Right Now That Are Draining Your Energy",
       "name": "10 Horrible Habits You're Doing Right Now That Are Draining Your Energy",

@@ -23,7 +23,6 @@ export class AuthService {
     return Observable.create((observer) => {
       this._loginService.firebaseUser
       .subscribe((firebaseUser) => {
-        console.log("Creating Observable from" + (firebaseUser && firebaseUser.uid))
         observer.next((firebaseUser && firebaseUser.uid))
         observer.complete()
       })

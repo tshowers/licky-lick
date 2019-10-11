@@ -156,7 +156,6 @@ export class NewsViewComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     this._newsSearchSubscription = this._newsService.getNewsBySearchCriteria(this.searchArgument, this.currentPage).subscribe(
       (news) => {
-        // console.log("Current Page: " + this.currentPage, "Found >>>" + JSON.stringify(news));
         this.searchResults = news.articles;
         let total = ((news.articles.length === 0) ? 0 : news.totalResults);
         this.searchTotal = total;
@@ -177,7 +176,6 @@ export class NewsViewComponent implements OnInit, OnDestroy {
 
   private setUserNewsSources(): void {
     let newsSources = this._user.newsSources;
-    // console.log("User News Sources", JSON.stringify(newsSources))
     if (newsSources) {
       newsSources.forEach((newsSource) => {
         if (newsSource.checked)

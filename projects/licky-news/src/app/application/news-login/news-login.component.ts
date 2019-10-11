@@ -50,16 +50,13 @@ export class NewsLoginComponent implements OnInit, OnDestroy {
     if (firebaseUser) {
       let creationTime = firebaseUser.metadata.creationTime;
       let createdAt = new Date(creationTime).getTime();
-      console.log(createdAt, today);
       let diff = this._dateUtilService.getDaysDiff(today, createdAt);
-      console.log(diff);
     }
     return true;
   }
 
 
   public onPageEvent(value): void {
-    // console.log(value);
     switch (value.type) {
       case 'submit':
         this.emailAddress = value.emailAddress;
@@ -83,13 +80,12 @@ export class NewsLoginComponent implements OnInit, OnDestroy {
 
   private subscribeToLoginErrors(): void {
     this._loginError = this._loginService.errorMessage.subscribe((error) => {
-      console.log(error);
+      console.error(error);
       this.errorMessage = "\n\n" + error;
     })
   }
 
   private onUserEmail(): void {
-    console.log("Siging in with " + this.emailAddress + " " + this.password)
     this._loginService.signInWithUserNameAndPassword(this.emailAddress, this.password, this.router, "/application/news");
   }
 

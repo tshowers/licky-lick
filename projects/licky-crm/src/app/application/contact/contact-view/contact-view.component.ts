@@ -46,7 +46,6 @@ export class ContactViewComponent extends LickAppPageComponent implements OnInit
     super.ngOnInit();
     this._route.data
       .subscribe((data: { contact: Contact }) => {
-        // console.log("ABOUT TO VIEW", JSON.stringify(data.contact))
         this.contact = data.contact;
         this.setBreadCrumb();
         if (this.contact.isCompany && this.contact.company)

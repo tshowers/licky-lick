@@ -52,8 +52,7 @@ export class LickAppWidgetStats17Component implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // console.log(this.event);
-    // console.log(this.event.attendees);
+
   }
 
 }

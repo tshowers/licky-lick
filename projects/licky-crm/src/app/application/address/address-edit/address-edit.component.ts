@@ -164,7 +164,6 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
     this.initializeDropdowns();
     this._route.data
       .subscribe((data: { address: Address }) => {
-        // console.log("RETURNED", JSON.stringify(data), JSON.stringify(data.address))
         if (data.address) {
           this.address = data.address;
           this.contact_id = this.address.contact_id
@@ -202,7 +201,7 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
   saveNewAddress(): void {
     this.dm.db.writeData(ADDRESSES + "/" + this.contact_id, this.address).subscribe((key) => {
       this.address.id = key;
-      console.log("ADDRESS AFTER SAVE", this.address, key)
+      console.info("ADDRESS AFTER SAVE", this.address, "KEY IS", key)
     });
   }
 
@@ -216,7 +215,7 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
       { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
       { name: this.contact.firstName + " " + this.contact.lastName, link: "/application/contacts/" + this.contact.id, active: false },
-      { name: "address", link: "/application/contacts", active: false },
+      { name: "address", link: "/application/contacts/" + this.contact_id + "/addresses", active: false },
       { name: "new", link: "/application/contacts/" + this.contact_id + "/addresses/new", active: true },
     ]
   }
@@ -236,7 +235,6 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
     this.dm.doContact(this.contact_id);
     this.dm.contact.subscribe((contact) => {
       this.contact = contact;
-      // console.log("CONTACT IS", JSON.stringify(this.contact), this.contact_id);
       this.setBreadCrumb();
     })
   }

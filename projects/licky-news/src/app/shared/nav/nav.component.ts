@@ -80,8 +80,6 @@ export class NavComponent implements OnInit, OnDestroy {
   }
 
   onMenuEvent(value): void {
-    console.log(value);
-    // this.verificationText = 'Check your Inbox';
     this._loginService.sendEmailVerification();
   }
 

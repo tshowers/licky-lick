@@ -24,7 +24,6 @@ export class SignupComponent implements OnInit {
 
   public onPageEvent(value) : void {
     if(value.type == 'submit') {
-      console.log("isSubmit=" + JSON.stringify(value))
       this.loginService.signUpUser(value.emailAddress, value.password, value.firstName, value.lastName, null, this.router, "/application/login")
     }
   }

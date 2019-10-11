@@ -14,7 +14,6 @@ export class LickMarketingPrices2Component implements OnInit {
   @Input() products: Product[] = [
     {
       "name": "Premium",
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "id": Math.floor(Math.random() * 1000).toString(),
       "catalog_id": Math.floor(Math.random() * 1000).toString(),
       "store_id": Math.floor(Math.random() * 1000).toString(),
@@ -65,7 +64,6 @@ export class LickMarketingPrices2Component implements OnInit {
     },
     {
       "name": "Pro",
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "id": Math.floor(Math.random() * 1000).toString(),
       "catalog_id": Math.floor(Math.random() * 1000).toString(),
       "store_id": Math.floor(Math.random() * 1000).toString(),
@@ -116,7 +114,6 @@ export class LickMarketingPrices2Component implements OnInit {
     },
     {
       "name": "Personal",
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "id": Math.floor(Math.random() * 1000).toString(),
       "catalog_id": Math.floor(Math.random() * 1000).toString(),
       "store_id": Math.floor(Math.random() * 1000).toString(),
@@ -167,7 +164,6 @@ export class LickMarketingPrices2Component implements OnInit {
     },
     {
       "name": "Basic",
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "id": Math.floor(Math.random() * 1000).toString(),
       "catalog_id": Math.floor(Math.random() * 1000).toString(),
       "store_id": Math.floor(Math.random() * 1000).toString(),

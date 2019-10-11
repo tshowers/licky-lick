@@ -20,7 +20,6 @@ export class WeatherService {
 
   getWeatherByLonLat(lon, lat): Observable<any> {
     let url = OPEN_WEATHER_URL + 'lat=' + lat + '&lon=' + lon + '&APPID=' + OPEN_WEATHER_API_KEY + '&units=Imperial';
-    // console.log(url);
     return this.http.get(url, {responseType: 'json'})
   }
 

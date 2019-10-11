@@ -160,7 +160,7 @@ export class AddressViewComponent extends LickAppPageComponent implements OnInit
       { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
       { name: this.contact.firstName + " " + this.contact.lastName, link: "/application/contacts/" + this.contact.id, active: false },
-      { name: "address", link: "/application/contacts", active: false },
+      { name: "address", link: "/application/contacts/" + this.contact_id + "/addresses", active: false },
       { name: "view", link: "/application/contacts/" + this.contact_id + "/addresses/" + this.address.id, active: true },
     ]
   }
@@ -191,7 +191,6 @@ export class AddressViewComponent extends LickAppPageComponent implements OnInit
     this.dm.doContact(this.contact_id);
     this.dm.contact.subscribe((contact) => {
       this.contact = contact;
-      console.log("CONTACT IS", JSON.stringify(this.contact), this.contact_id);
       this.setBreadCrumb();
     })
   }
@@ -211,6 +210,8 @@ export class AddressViewComponent extends LickAppPageComponent implements OnInit
 
   get diagnostic() {
     return JSON.stringify(this.address, null, 2)
+    + ", latitude=" + this.latitude
+    + ", longitude=" + this.longitude
       + ", contact_id=" + this.contact_id
       + ", CONTACT=" + JSON.stringify(this.contact, null, 2)
   }

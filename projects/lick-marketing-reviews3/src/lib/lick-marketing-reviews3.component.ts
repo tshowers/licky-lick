@@ -12,7 +12,6 @@ export class LickMarketingReviews3Component implements OnInit {
   @Input() descriptionText = 'Earum rerum necessitatibus saepe eveniet, ut labore. Dicta sunt, explicabo laborum et harum quidem rerum hic tenetur. Itaque earum rerum hic tenetur a sapiente delectus, ut et.';
   @Input() reviews: Review[] = [
     {
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "id": Math.floor(Math.random() * 1000).toString(),
       "stars": [true, true, true, true, false],
       "description": "Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue.",
@@ -30,7 +29,6 @@ export class LickMarketingReviews3Component implements OnInit {
       "company": { "name": "Miles Studio" }
     },
     {
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "id": Math.floor(Math.random() * 1000).toString(),
       "stars": [true, true, true, true, true],
       "description": "Proin sodales libero eget ante. Nulla quam.",
@@ -48,7 +46,6 @@ export class LickMarketingReviews3Component implements OnInit {
       "company": { "name": "Valid Software" }
     },
     {
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "id": Math.floor(Math.random() * 1000).toString(),
       "stars": [true, true, true, true, false],
       "description": "Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. ",

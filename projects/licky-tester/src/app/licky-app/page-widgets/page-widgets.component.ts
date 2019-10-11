@@ -90,7 +90,7 @@ export class PageWidgetsComponent implements OnInit {
   }
 
   onPageEvent(type) : void {
-    console.log("pageEvent = " + type)
+
   }
 
 }

@@ -109,8 +109,7 @@ export class FirebaseDataService {
 
   updateData(path: string, key: any, data: any): void {
     path = this.getAugmentedPath(path);
-    // console.log("Updating Data for " + path + '/' + key, JSON.stringify(data));
-    console.log("Updating Data for " + path + '/' + key);
+
     this.setUpdateValues(data);
     this._db.ref(path + '/' + key).set(data, (error) => {
       if (error)
@@ -120,14 +119,14 @@ export class FirebaseDataService {
 
   getData(path: string, id: string): Observable<any> {
     path = this.getAugmentedPath(path);
-    // console.log("Getting Data for PATH", path + '/' + id);
+
     return new Observable((observer) => {
-      // console.log("firebase.database=" + this._db)
+
       this._db.ref(path + '/' + id).once('value').then(
         (snapshot) => {
-          // console.log("Snapshot is : " + JSON.stringify(snapshot));
+
           let value = snapshot.val();
-          // console.log("Value is : " + JSON.stringify(value));
+
           observer.next(value)
           observer.complete()
         }
@@ -144,7 +143,7 @@ export class FirebaseDataService {
     this.setNewDataValues(data);
     return Observable.create((observer) => {
       this._db.ref(path).push(data, (error) => {
-        console.log("PUSHED DATA TO:", path)
+
         if (error)
           this.databaseError.next(error.message);
       }).then((snap) => {
@@ -159,7 +158,7 @@ export class FirebaseDataService {
 
   public getAugmentedPath(path: string): string {
     for (let i = 0; i < this._augmentPath.length; i++) {
-        // console.log("Comparing")
+
         if (this._augmentPath[i] == path) {
           if (this._user && this._user.account)
             return path + "/" + this._user.account;
@@ -181,11 +180,11 @@ export class FirebaseDataService {
 
   getDataCollection(path): Observable<any> {
     path = this.getAugmentedPath(path);
-    console.log("Getting Data Collection for " + path, "DB is ", this._db);
+
     return Observable.create((observer) => {
 
       this._db.ref(path).on('value', (snapshot) => {
-        // console.log("Snapshot is : " + JSON.stringify(snapshot));
+
         observer.next((snapshot) ? snapshot.val() : null);
         observer.complete();
       },
@@ -223,7 +222,7 @@ export class FirebaseDataService {
       this.doFixUpData(data, item);
       list.push(data[item]);
     }
-    // console.log("CONVERTED LIST", JSON.stringify(list));
+
     return Observable.create((observer) => {
       observer.next(list);
       observer.complete();
@@ -236,7 +235,7 @@ export class FirebaseDataService {
       this.doFixUpData(data, item);
       list.push(data[item]);
     }
-    // console.log("CONVERTED LIST", JSON.stringify(list));
+
     return list;
   }
 
@@ -247,7 +246,7 @@ export class FirebaseDataService {
 
 
   private doFixUpData(data, item): void {
-    // console.log("FIXING UP ITEM")
+
     data[item].id = item;
     if (data[item].firstName)
       data[item].name = data[item].firstName;
@@ -269,7 +268,7 @@ export class FirebaseDataService {
   }
 
   private setUpdateValues(data: any): void {
-    // console.log("Updating for user >", JSON.stringify(this._user));
+
     data.lastUpdated = new Date().getTime();
     if (this._user && this._user.name) {
       data.lastUpdatedBy = (this._user.name);

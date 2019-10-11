@@ -57,9 +57,7 @@ export class LickyLoginService {
   public signInWithUserNameAndPassword(emailAddress: string, password: string, router: Router, redirectURL: string) {
     firebase.auth().signInWithEmailAndPassword(emailAddress, password)
       .then((authData) => {
-        // authData.user.getIdToken(true)
-        // console.log(authData);
-        console.log("successful signin");
+
         this._loggedIn = true;
         router.navigate([redirectURL]);
       })
@@ -74,7 +72,7 @@ export class LickyLoginService {
     firebaseUser.updateProfile({
       displayName: firstName + " " + lastName,
     }).then(() => {
-      console.log("displayName updated to - " + firebaseUser.displayName);
+      console.info("displayName updated to - " + firebaseUser.displayName);
     },
       (error) => {
         console.error(error)
@@ -83,7 +81,7 @@ export class LickyLoginService {
   }
 
   public isLoggedIn() : boolean {
-    console.log("LOG STATUS", this._firebaseUser, this._user);
+    console.info("LOGIN STATUS", this._firebaseUser, this._user);
     this._loggedIn = (this._firebaseUser && this._user) ? true : false;
     return (this._loggedIn);
   }
@@ -114,14 +112,14 @@ export class LickyLoginService {
     this.setOffline();
 
     firebase.auth().signOut().then(() => {
-      console.log("Logging out user");
+      console.info("Logging out user");
       this._loggedIn = false;
       this.firebaseUser.next(null);
       this._firebaseUser = null;
       this._user = null;
       this._fds.setUser(null);
       this.userChanged.next(null);
-      console.log("Finished logging out user");
+      console.info("Finished logging out user");
     }, function(error) {
       console.error(error);
       this.error.next(error.code);
@@ -137,7 +135,7 @@ export class LickyLoginService {
     firebase.auth().signInWithRedirect(provider);
 
     firebase.auth().getRedirectResult().then(result => {
-      console.log("signInWithGoogle:" + JSON.stringify(result.user))
+
       if (result.user) {
 
       }
@@ -212,16 +210,16 @@ export class LickyLoginService {
   private initUsers(): void {
     this._fds.getDataCollection(USERS).subscribe((users) => {
       if (!users) {
-        console.log("No Users");
+        console.info("NO USERS FOUND!");
         this.createUser();
       } else {
         this._users = users;
         this.usersChanged.next(this._users);
 
         try {
-          // console.log("Users > " + JSON.stringify(this._users));
+
           let u = this._users[this._firebaseUser.uid];
-          // console.log("User retrieved > " + JSON.stringify(u));
+
 
           if (u === null || typeof u != 'object') {
             this.createUser();

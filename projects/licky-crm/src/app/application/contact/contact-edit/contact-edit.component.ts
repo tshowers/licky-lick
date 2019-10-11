@@ -117,7 +117,6 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
   saveNewContact(): void {
     this.dm.db.writeData(CONTACTS, this.contact).subscribe((key) => {
       this.contact.id = key;
-      console.log("CONTACT AFTER SAVE", this.contact, key)
       this.uploadSingle();
     });
   }
@@ -153,7 +152,6 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
   }
 
   onSearch(value) : void {
-    console.log("ONSEARCH", value);
     this.router.navigate(['application', 'contacts'], {queryParams: { searchArgument: value}})
   }
 

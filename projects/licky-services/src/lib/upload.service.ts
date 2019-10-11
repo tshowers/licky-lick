@@ -48,7 +48,6 @@ export class UploadService {
 
     this.uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot: Snapshot) => {
-        console.log("// UPLOAD IN PROGRESS", storeLocation)
         upload.progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
       },
       (error) => {
@@ -64,7 +63,6 @@ export class UploadService {
           upload.url = url;
           this.saveFilePointer(true, upload, fn, db);
           data.url = upload.url;
-          console.log("// UPDATING DATA WITH URL", JSON.stringify(data), JSON.stringify(upload))
           db.updateData(dataPath, data.id, data);
         }).catch((error) => console.error(error));
       }
@@ -72,13 +70,11 @@ export class UploadService {
   }
 
   private deleteFileStored(name: string) {
-    console.log("Deleting file " + name)
     let storageRef = firebase.storage().ref();
     storageRef.child(DOCUMENTS + '/' + name).delete();
   }
 
   private saveFileData(upload: Upload, db: FirebaseDataService) {
-    console.log("// WRITING UPLOAD", JSON.stringify(upload))
     db.writeData(DOCUMENTS, upload);
   }
 
@@ -91,7 +87,6 @@ export class UploadService {
   }
 
   private saveFilePointer(imageUpload: boolean, upload: Upload, imageName: string, db: FirebaseDataService): void {
-    console.log("UPLOAD URL=" + upload.url)
     upload.byteSize = this.uploadTask.snapshot.totalBytes;
     upload.originalName = upload.file.name;
     upload.name = imageName;

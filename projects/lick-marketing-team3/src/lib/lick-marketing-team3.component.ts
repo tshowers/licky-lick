@@ -12,8 +12,8 @@ export class LickMarketingTeam3Component implements OnInit {
   @Input() descriptionText = "Saepe eveniet, ut perspiciatis, unde omnis iste natus sit voluptatem sequi. Deleniti atque corrupti, quos dolores. Accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore.";
   @Input() users: User[] = [
     {
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "status": "Active",
+      "account" : "null",
       "email": "beth.Jordan@mymail.com",
       "name": "Beth Jordan",
       "helpNeeded": false,
@@ -33,8 +33,8 @@ export class LickMarketingTeam3Component implements OnInit {
 
     },
     {
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "status": "Active",
+      "account" : "null",
       "email": "mindy.kittle@mymail.com",
       "name": "Mindy Kittle",
       "helpNeeded": false,
@@ -53,8 +53,8 @@ export class LickMarketingTeam3Component implements OnInit {
       "contact": { "name": "Mindy Kittle", "profession": "Marketing Specialist", "shared": true, "firstName": "Mindy", "lastName": "Kittle" }
     },
     {
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "status": "Active",
+      "account" : "null",
       "email": "todd.booker@mymail.com",
       "name": "Todd Booker",
       "helpNeeded": false,
@@ -73,8 +73,8 @@ export class LickMarketingTeam3Component implements OnInit {
       "contact": { "name": "Todd Booker", "profession": "Developer", "shared": true, "firstName": "Todd", "lastName": "Booker" }
     },
     {
-      "$key": Math.floor(Math.random() * 1000).toString(),
       "status": "Active",
+      "account" : "null",
       "email": "kathy.avery@mymail.com",
       "name": "Kathy Avery",
       "helpNeeded": false,
