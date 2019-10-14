@@ -2533,6 +2533,7 @@ tbody.collapse.show {
   width: 100%; }
 
 .card-img-top {
+  height: auto;
   width: 100%; }
 
 .card-img-bottom {

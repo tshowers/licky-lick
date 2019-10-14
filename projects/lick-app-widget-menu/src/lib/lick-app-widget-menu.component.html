@@ -22,7 +22,7 @@
     </div>
   </div>
   <!-- end hamburger -->
-  <div class="navbar-search">
+  <div class="navbar-search d-none d-xl-block">
     <form #searchForm="ngForm"
           class="form-group">
     <div class="input-group"> <button [ngStyle]="{'display' : searchDisplay}" (click)="onSearch()" [disabled]="!searchForm.form.valid" type="submit" class="input-group-addon bg-theme">

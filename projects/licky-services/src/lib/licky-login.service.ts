@@ -28,6 +28,8 @@ export class LickyLoginService {
   private _loggedIn: boolean = false;
   public redirectUrl;
   private _token: string;
+  private _firstName: string;
+  private _lastName: string;
 
   constructor(@Inject(LickyLoginConfigService) private config, private _fds: FirebaseDataService) {
     this.initFirebase();
@@ -69,10 +71,12 @@ export class LickyLoginService {
   }
 
   public updateUserInfo(firstName: string, lastName: string, firebaseUser: firebase.User): void {
+    this._firstName = firstName;
+    this._lastName = lastName;
     firebaseUser.updateProfile({
       displayName: firstName + " " + lastName,
     }).then(() => {
-      console.info("displayName updated to - " + firebaseUser.displayName);
+      console.info("DISPLAY NAME UPDATED TO - " + firebaseUser.displayName);
     },
       (error) => {
         console.error(error)
@@ -222,8 +226,10 @@ export class LickyLoginService {
 
 
           if (u === null || typeof u != 'object') {
+            console.log("CREATE USER");
             this.createUser();
           } else {
+            console.log("USER FOUND", JSON.stringify(u));
             this.setFirebaseAttributes(u);
           }
 
@@ -254,8 +260,18 @@ export class LickyLoginService {
     this.setFirebaseAttributes(user);
   }
 
-  private setFirebaseAttributes(user: User) {
+  private setUsersName(user: User) : void {
     user.name = this._firebaseUser.displayName;
+    console.log("NAME", user.name, "DISPLAY NAME", this._firebaseUser.displayName);
+    if (this._firebaseUser.displayName == null) {
+        if (this._firstName && this._lastName)
+          user.name = this._firstName + " " + this._lastName;
+    }
+
+  }
+
+  private setFirebaseAttributes(user: User) {
+    this.setUsersName(user);
     user.url = this._firebaseUser.photoURL;
     user.user_id = this._firebaseUser.uid;
     user.userName = this._firebaseUser.email;

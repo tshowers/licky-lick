@@ -17,7 +17,7 @@
               <td>{{item?.name}}</td>
               <td>
                 <span *ngIf="item?.userName">{{item?.userName}}</span>
-                <span *ngIf="!item?.userName">{{item?.lastUpdatedBy}} <small>(*lub)</small></span>
+                <span *ngIf="!item?.userName">{{item?.lastUpdatedBy}} <small>(*n/a)</small></span>
               </td>
               <td>{{item?.lastUpdated | date : 'fullDate'}}</td>
               <td class="text-nowrap">

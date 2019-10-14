@@ -64,7 +64,7 @@ export class ContactViewComponent extends LickAppPageComponent implements OnInit
     this.crumbs = [
       { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
-      { name: "new", link: "/application/contacts/new", active: false },
+      { name: this.contact.firstName + " " + this.contact.lastName, link: "/application/contacts/new", active: false },
       { name: "view", link: "/application/contacts/" + this.contact.id, active: true },
     ]
   }
