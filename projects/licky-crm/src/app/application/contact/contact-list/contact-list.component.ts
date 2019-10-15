@@ -17,7 +17,7 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
 
   deletedContacts: number = 0;
 
-  privateContacts: number = 0;
+  sharedContacts: number = 0;
 
   draftContacts: number = 0;
 
@@ -124,7 +124,7 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
     this._contactsOriginal = contacts;
     this.totalRecords = contacts.length;
     this.deletedContacts = contacts.filter((contact) => contact.deleted).length;
-    this.privateContacts = contacts.filter((contact) => !contact.shared).length;
+    this.sharedContacts = contacts.filter((contact) => contact.shared).length;
     this.draftContacts = contacts.filter((contact) => contact.draft).length;
     this.companyContacts = contacts.filter((contact) => contact.isCompany).length;
   }

@@ -93,6 +93,10 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
     this.router.navigate([link]);
   }
 
+  onNewItem() : void {
+    this.router.navigate(['application', 'contacts', this.contact_id, 'addresses', 'new']);
+  }
+
   newPage(value: number): void {
     this.data$ = Observable.create((observer) => {
       let addresses = this.dm.db.getRecordsToDisplay(value, this.pageSize, this._addresses);

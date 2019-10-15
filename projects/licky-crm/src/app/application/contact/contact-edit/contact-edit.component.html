@@ -20,8 +20,7 @@
                                         (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
 
       <app-context-nav [contact]="contact"></app-context-nav>
-      <div class="row">
-        <div class="col-md-12">
+      <div class="container">
           <form #dataForm="ngForm"
                 class="form-group">
             <div *ngIf="currentUpload">
@@ -55,7 +54,8 @@
                                class="form-control ta-input-element"
                                type="text"
                                [ngbTypeahead]="typeFindService.searchNames"
-                               required>
+                               required
+                               autofocus>
                         <div [hidden]="firstName.valid || firstName.pristine"
                              class="alert alert-danger"> <i class="fa fa-exclamation-triangle"
                              aria-hidden="true"></i> First Name is required
@@ -370,7 +370,6 @@
               </div>
             </div>
           </form>
-        </div>
       </div>
     </div>
     <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>

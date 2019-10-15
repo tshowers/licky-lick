@@ -69,6 +69,7 @@ export class LickAppWidgetTableDataComponent implements OnInit {
   @Output() deleteEvent = new EventEmitter();
   @Output() editEvent = new EventEmitter();
   @Output() currentPageEvent = new EventEmitter();
+  @Output() newItemEvent = new EventEmitter();
 
   currentPage: number = 1;
   @Input() pageSize: number = 20;
@@ -78,6 +79,11 @@ export class LickAppWidgetTableDataComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onNewItem() {
+    console.log("LickAppWidgetTableDataComponent onNewItem")
+    this.newItemEvent.emit();
   }
 
   onDetail(item) {

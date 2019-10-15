@@ -42,11 +42,11 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
   ngOnInit() {
     super.ngOnInit();
     this.initializeDropdowns();
-    this.setBreadCrumb();
     this._route.data
       .subscribe((data: { contact: Contact }) => {
         if (data.contact) {
           this.contact = data.contact;
+          this.setBreadCrumb();
           if (this.contact.isCompany && this.contact.company)
             this.searchArgument = this.contact.company.name;
         }
@@ -58,10 +58,11 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
   }
 
   setBreadCrumb() : void {
+
     this.crumbs = [
       { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
-      { name: "edit", link: "/application/contacts/new", active: true },
+      { name: (this.contact.id ? (this.contact.firstName + " " + this.contact.lastName) : "edit"), link: "/application/contacts/new", active: true },
     ]
   }
 
