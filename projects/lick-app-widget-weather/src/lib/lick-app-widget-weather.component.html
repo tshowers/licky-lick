@@ -1,16 +1,16 @@
 <div *ngIf="weather"
      class="card card-accent-theme">
   <div class="card-body text-center">
-    <h4 class="ta-header1" *ngIf="(address && address.city && address.state)">
+    <h4 class="ta-header1 wow fadeInUp" *ngIf="(address && address.city && address.state)">
       {{address?.city}} {{address?.state}}
     </h4>
-    <h4 class="ta-header1" *ngIf="!(address && address.city && address.state)">
+    <h4 class="ta-header1 wow fadeInUp" *ngIf="!(address && address.city && address.state)">
       {{weather?.name}}
     </h4>
-    <span style="text-transform: capitalize">{{weather?.weather[0].description}}</span>
+    <span class="wow fadeInUp" style="text-transform: capitalize">{{weather?.weather[0].description}}</span>
     <br>
-    <h1>{{weather?.main.temp}}&deg;</h1>
-    <div class="d-flex justify-content-center">
+    <h1 class="wow fadeInUp">{{weather?.main.temp}}&deg;</h1>
+    <div class="d-flex justify-content-center wow fadeInUp">
       <ul class="list-group"
           style="width: 20rem;">
         <li class="list-group-item d-flex justify-content-between align-items-center">

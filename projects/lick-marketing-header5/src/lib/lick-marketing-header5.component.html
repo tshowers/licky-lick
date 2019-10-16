@@ -4,14 +4,14 @@
 
       <div class="title-centered-content">
         <div class="col-md-6 header-text">
-          <h1>{{headingText}}</h1>
+          <h1 class="wow fadeIn">{{headingText}}</h1>
 
-          <div class="title-desc">
+          <div class="title-desc wow fadeIn">
             <p>{{descriptionText}}</p>
           </div>
 
           <ul class="header-nav-buttons">
-            <li *ngIf="buttonLink1"><a (click)="onPageEvent(buttonLink1)" class="button button-full" title="{{buttonText1}}">{{buttonText1}}</a></li>
+            <li *ngIf="buttonLink1"><a (click)="onPageEvent(buttonLink1)" class="button button-full text-white" title="{{buttonText1}}">{{buttonText1}}</a></li>
             <li *ngIf="buttonLink2"><a routerLink="onPageEvent(buttonLink2)" class="button button-border" title="{{buttonText2}}">{{buttonText2}}</a></li>
           </ul>
 

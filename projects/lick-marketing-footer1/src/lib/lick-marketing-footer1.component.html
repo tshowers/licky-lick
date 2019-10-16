@@ -3,13 +3,13 @@
     <div class="row">
 
       <div class="col-md-6 col-sm-12 footer-col footer-col-1">
-        <h3>{{headingText1}}</h3>
-        <p>{{descriptionText}}</p>
+        <h3 class="wow fadeInUp">{{headingText1}}</h3>
+        <p class="wow fadeInUp">{{descriptionText}}</p>
       </div> <!-- .footer-col-1 -->
 
       <div class="col-md-2 col-sm-4 footer-col footer-col-2" *ngIf="column1Heading">
-        <h3>{{column1Heading}}</h3>
-        <ul>
+        <h3 class="wow fadeIn">{{column1Heading}}</h3>
+        <ul class="wow fadeIn">
           <li *ngIf="column1Text1"><a (click)="onFootClick(column1Button1Link)" title="{{column1Text1}}">{{column1Text1}}</a></li>
           <li *ngIf="column1Text2"><a (click)="onFootClick(column1Button2Link)" title="{{column1Text2}}">{{column1Text2}}</a></li>
           <li *ngIf="column1Text3"><a (click)="onFootClick(column1Button3Link)" title="{{column1Text3}}">{{column1Text3}}</a></li>
@@ -19,8 +19,8 @@
       </div> <!-- .footer-col-2 -->
 
       <div class="col-md-2 col-sm-4 footer-col footer-col-3" *ngIf="column2Heading">
-        <h3>{{column2Heading}}</h3>
-        <ul>
+        <h3 class="wow fadeIn">{{column2Heading}}</h3>
+        <ul class="wow fadeIn">
           <li *ngIf="column2Text1"><a (click)="onFootClick(column2Button1Link)" title="{{column2Text1}}">{{column2Text1}}</a></li>
           <li *ngIf="column2Text2"><a (click)="onFootClick(column2Button2Link)" title="{{column2Text2}}">{{column2Text2}}</a></li>
           <li *ngIf="column2Text3"><a (click)="onFootClick(column2Button3Link)" title="{{column2Text3}}">{{column2Text3}}</a></li>
@@ -30,8 +30,8 @@
       </div> <!-- .footer-col-3 -->
 
       <div class="col-md-2 col-sm-4 footer-col footer-col-4" *ngIf="column3Heading">
-        <h3>{{column3Heading}}</h3>
-        <ul>
+        <h3 class="wow fadeIn">{{column3Heading}}</h3>
+        <ul class="wow fadeIn">
           <li *ngIf="column3Text1"><a (click)="onFootClick(column3Button1Link)" title="{{column3Text1}}">{{column3Text1}}</a></li>
           <li *ngIf="column3Text2"><a (click)="onFootClick(column3Button2Link)" title="{{column3Text2}}">{{column3Text2}}</a></li>
           <li *ngIf="column3Text3"><a (click)="onFootClick(column3Button3Link)" title="{{column3Text3}}">{{column3Text3}}</a></li>
@@ -42,7 +42,7 @@
       <div class="col-md-12 col-sm-12 bottom-footer">
 
         <div class="col-md-6 col-sm-12 copy-text">
-          <p>{{footerText}}</p>
+          <p class="wow fadeInUp">{{footerText}}</p>
         </div>
 
 

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LickDataModule } from 'lick-data';
 import { LickyServicesModule } from 'licky-services';
+import { NgwWowModule } from 'ngx-wow';
 import { SharedModule } from './shared/shared.module';
 import { LickAppWidgetMaintenanceModule } from 'lick-app-widget-maintenance';
 import { LickAppWidgetNotFoundModule } from 'lick-app-widget-not-found';
@@ -54,6 +55,7 @@ export const firebaseConfig = environment.firebaseConfig;
   imports: [
     BrowserModule,
     SharedModule,
+    NgwWowModule,
     LickyServicesModule.forRoot(firebaseConfig),
     RouterModule.forRoot([
       { path: '', component: HomePageComponent, data: { title: 'Home Page - 16 AHEAD' } },

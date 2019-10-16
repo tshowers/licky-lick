@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { NgwWowModule } from 'ngx-wow';
 import { LickyServicesModule } from 'licky-services';
 
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ export const firebaseConfig = environment.firebaseConfig;
     BrowserModule,
     RouterModule,
     AppRoutingModule,
+    NgwWowModule,
     LickyServicesModule.forRoot(firebaseConfig)
   ],
   providers: [],

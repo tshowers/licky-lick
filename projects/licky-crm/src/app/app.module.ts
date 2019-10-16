@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core.module';
-
+import { NgwWowModule } from 'ngx-wow';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -28,6 +28,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     RouterModule,
     AppRoutingModule,
+    NgwWowModule,
     CoreModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],

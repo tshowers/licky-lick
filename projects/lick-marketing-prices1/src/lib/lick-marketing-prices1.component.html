@@ -2,14 +2,14 @@
   <div class="container">
     <div class="row">
 
-      <h2>{{headingText}}</h2>
-      <div class="block-desc">
+      <h2 class="wow fadeIn">{{headingText}}</h2>
+      <div class="block-desc wow fadeIn">
         <p>{{descriptionText}}</p>
       </div>
 
       <!-- Price box 1 -->
       <div class="col-md-4 price" *ngFor="let product of products; let i = index">
-        <div class="border-box">
+        <div class="border-box wow fadeIn">
           <h3>{{product?.name}}</h3>
           <p>{{product?.description}}</p>
 

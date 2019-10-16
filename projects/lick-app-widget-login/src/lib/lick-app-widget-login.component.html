@@ -1,14 +1,14 @@
 <section class="container-pages ta-vertical-center">
-  <div class="brand-logo float-left"><a class=""
+  <div class="brand-logo float-left"><a class="wow fadeIn"
        routerLink="{{homePageLink}}">{{logoName}}</a></div>
   <div class="pages-tag-line text-white">
-    <div class="h4">{{headingText}}</div>
+    <div class="h4 wow fadeIn">{{headingText}}</div>
     <small>{{subText}}</small>
   </div>
   <div class="card pages-card col-lg-4 col-md-6 col-sm-6">
     <div class="card-body">
       <ngb-alert *ngIf="errorMessage" [type]="errorType" (close)="close()">{{ errorMessage }}</ngb-alert>
-      <div class="h4 text-center text-theme">
+      <div class="h4 text-center text-theme wow fadeInUp">
         <strong>{{titleText}}</strong>
       </div>
       <!-- <div class="small text-center text-dark"> Login to Account </div> -->

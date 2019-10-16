@@ -10,7 +10,7 @@
             <img src="{{imageURL}}" alt="{{headingText}}">
 
             <!-- Feature block -->
-            <div class="feature-box feature-box-second feature-image">
+            <div class="feature-box feature-box-second feature-image wow fadeInUp">
               <span *ngIf="badgeFeatureText" class="badge badge-second">{{badgeFeatureText}}</span>
               <i [ngClass]="iconFeature"></i>
               <p>{{featureText}}</p>
@@ -22,9 +22,9 @@
 
       <!-- Text block -->
       <div class="col-md-6 col-sm-5 col-xs-12 about-text">
-        <h2>{{headingText}} <span *ngIf="badgeText" class="badge badge-primary">{{badgeText}}</span></h2>
-        <p>{{descriptionText}}</p>
-        <a *ngIf="buttonLink" routerLink="{{buttonLink}}" class="button button-full" title="button">{{buttonText}}</a>
+        <h2 class="wow fadeInUp">{{headingText}} <span *ngIf="badgeText" class="badge badge-primary">{{badgeText}}</span></h2>
+        <p class="wow fadeInUp">{{descriptionText}}</p>
+        <a *ngIf="buttonLink" routerLink="{{buttonLink}}" class="button button-full wow fadeIn" title="button">{{buttonText}}</a>
       </div>
 
     </div> <!-- .row -->

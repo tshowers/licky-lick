@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import {filter, map, mergeMap} from 'rxjs/operators'
+import {filter, map, mergeMap} from 'rxjs/operators';
+import { NgwWowService } from 'ngx-wow';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import {filter, map, mergeMap} from 'rxjs/operators'
 })
 export class AppComponent implements OnInit {
 
-  public constructor(private _activatedRoute: ActivatedRoute, public router: Router, private _titleService: Title) {  }
+  public constructor(private _activatedRoute: ActivatedRoute, public router: Router, private _titleService: Title, private _wowService: NgwWowService) {  }
 
   ngOnInit() {
     this.router.events
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
         mergeMap((route) => route.data))
       .subscribe((event) => {
         this._titleService.setTitle(event['title']);
+        this._wowService.init();
       });
 
   }

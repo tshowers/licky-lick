@@ -1,14 +1,14 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light"
      style="background-color: rgba(255,255,255,.9)">
   <a *ngIf="!isExternalLink"
-     class="navbar-brand d-none d-sm-block"
+     class="navbar-brand d-none d-sm-block wow fadeIn"
      routerLink="{{companyLink}}"><img src="{{logo}}"
          width="64"
          height="64"
          class="d-inline-block align-top"
          alt="{{logoName}}"></a>
   <a *ngIf="isExternalLink"
-     class="navbar-brand d-none d-sm-block"
+     class="navbar-brand d-none d-sm-block wow fadeIn"
      href="{{companyLink}}"
      target="_blank"><img src="{{logo}}"
          width="64"
@@ -28,11 +28,11 @@
        id="navbarNavAltMarkup">
     <div class="navbar-nav mr-auto">
       <a *ngFor="let item of menuItems"
-         class="nav-link text-primary"
+         class="nav-link text-primary wow fadeIn"
          routerLinkActive="active"
          routerLink="{{item?.link}}">{{item?.name}}</a>
     </div>
-    <div class="navbar-nav ml-auto"
+    <div class="navbar-nav ml-auto wow fadeIn"
          *ngIf="resendVerificationLink">
       <span class="text-primary"
             *ngIf="verified"><i class="fa fa-envelope-o"

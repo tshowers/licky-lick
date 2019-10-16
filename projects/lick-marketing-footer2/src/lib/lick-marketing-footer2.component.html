@@ -5,7 +5,7 @@
       <div class="col-md-12 site-bottom-footer">
 
         <nav class="footer-nav">
-          <ul>
+          <ul class="wow fadeInUp">
             <li *ngIf="buttonLink1"><a (click)="onNavClick(buttonLink1)" title="Home">{{buttonText1}}</a></li>
             <li *ngIf="buttonLink2"><a (click)="onNavClick(buttonLink2)" title="Blog">{{buttonText2}}</a></li>
             <li *ngIf="buttonLink3"><a (click)="onNavClick(buttonLink3)" title="Post">{{buttonText3}}</a></li>
@@ -14,7 +14,7 @@
         </nav>
 
         <div class="col-md-12 social-links">
-          <ul class="footer-social-icons">
+          <ul class="footer-social-icons wow pulse">
             <li *ngIf="socialLink1"><a (click)="onNavClick(socialLink1)" title="{{socialText1}}"><i class="fa fa-fw" [ngClass]="socialIcon1" aria-hidden="true"></i></a></li>
             <li *ngIf="socialLink2"><a (click)="onNavClick(socialLink2)" title="{{socialText2}}"><i class="fa fa-fw" [ngClass]="socialIcon2" aria-hidden="true"></i></a></li>
             <li *ngIf="socialLink3"><a (click)="onNavClick(socialLink3)" title="{{socialText3}}"><i class="fa fa-fw" [ngClass]="socialIcon3" aria-hidden="true"></i></a></li>
@@ -24,7 +24,7 @@
         </div> <!-- .social-links -->
 
         <div class="col-md-12 copy-text">
-          <p> <small innerHTML="{{copyrightText}}"></small> </p>
+          <p class="wow fadeInUp"> <small innerHTML="{{copyrightText}}"></small> </p>
         </div>
 
       </div> <!-- .site-bottom-footer -->

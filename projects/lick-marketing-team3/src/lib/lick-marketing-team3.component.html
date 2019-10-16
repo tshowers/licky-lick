@@ -2,13 +2,13 @@
   <div class="container">
     <div class="row">
 
-      <h2>{{headingText}}</h2>
-      <div class="block-desc">
+      <h2 class="wow fadeInUp">{{headingText}}</h2>
+      <div class="block-desc wow fadeInUp">
         <p>{{descriptionText}}</p>
       </div>
 
       <!-- Member 1 -->
-      <div class="col-md-3 col-sm-6 member-block" *ngFor="let member of users; let i = index">
+      <div class="col-md-3 col-sm-6 member-block wow fadeInUp" *ngFor="let member of users; let i = index">
 
         <div class="member-photo">
           <img src="{{member?.url}}" alt="{{member?.name}}">

@@ -3,14 +3,14 @@
       <div class="row">
 
         <div class="col-md-12 title-center-content wow slideInDown">
-          <h1>{{headingText}}</h1>
+          <h1 class="wow fadeIn">{{headingText}}</h1>
 
-          <div class="title-desc wow slideInUp">
+          <div class="title-desc wow fadeInUp">
             <p>{{descriptionText}}</p>
           </div>
 
-          <ul class="header-nav-buttons">
-            <li *ngIf="button1Link"><a (click)="onPageEvent(button1Link)" class="button button-full" title="Sign Up">{{button1Text}}</a></li>
+          <ul class="header-nav-buttons wow fadeIn">
+            <li *ngIf="button1Link"><a (click)="onPageEvent(button1Link)" class="button button-full text-white" title="Sign Up">{{button1Text}}</a></li>
             <li *ngIf="button2Link"><a (click)="onPageEvent(button2Link)" class="button button-border" title="Read More">{{button2Text}}</a></li>
           </ul>
 
@@ -22,21 +22,21 @@
 
             <!-- Dots -->
             <div class="dots">
-              <span class="figs header-fig1"></span>
-              <span class="figs header-fig2"></span>
-              <span class="figs header-fig3"></span>
-              <span class="figs header-fig4"></span>
-              <span class="figs header-fig5"></span>
-              <span class="figs header-fig6"></span>
+              <span class="figs header-fig1 wow flash"></span>
+              <span class="figs header-fig2 wow flash"></span>
+              <span class="figs header-fig3 wow flash"></span>
+              <span class="figs header-fig4 wow flash"></span>
+              <span class="figs header-fig5 wow flash"></span>
+              <span class="figs header-fig6 wow flash"></span>
             </div>
 
-            <div class="feature-box feature-box-second left-feature" *ngIf="featureBox1">
+            <div class="feature-box feature-box-second left-feature wow fadeIn" *ngIf="featureBox1">
               <span class="badge badge-second" *ngIf="badgeFeature1">{{badgeFeature1}}</span>
               <i class="{{featureIcon1}}"></i>
               <p>{{featureBox1}}</p>
             </div>
 
-            <div class="feature-box feature-box-second right-feature" *ngIf="featureBox2">
+            <div class="feature-box feature-box-second right-feature wow fadeIn" *ngIf="featureBox2">
               <i class="{{featureIcon2}}"></i>
               <p>{{featureBox2}}</p>
             </div>

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { NgwWowService } from 'ngx-wow';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'taliferro';
+  title = 'Taliferro';
+
+  public constructor(private _router: Router, private _wowService: NgwWowService) {
+    this._router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event) => {
+        this._wowService.init();
+      });
+  }
 }

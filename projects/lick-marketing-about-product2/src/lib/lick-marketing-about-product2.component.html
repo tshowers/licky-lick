@@ -19,14 +19,14 @@
 
       <!-- Text block -->
       <div class="col-md-6 col-sm-5 col-xs-12 about-text">
-        <h2>{{headingText}}</h2>
-        <p>{{descriptionText}}</p>
-        <ul>
+        <h2 class="wow fadeInUp">{{headingText}}</h2>
+        <p class="wow fadeInUp">{{descriptionText}}</p>
+        <ul class="wow fadeInUp">
           <li>{{bulletText1}}</li>
           <li>{{bulletText2}}</li>
           <li>{{bulletText3}}</li>
         </ul>
-        <a *ngIf="buttonLink" routerLink="{{buttonLink}}" class="button button-full" title="{{buttonText}}">{{buttonText}}</a>
+        <a *ngIf="buttonLink" routerLink="{{buttonLink}}" class="button button-full wow fadeIn" title="{{buttonText}}">{{buttonText}}</a>
       </div>
 
     </div> <!-- .row -->

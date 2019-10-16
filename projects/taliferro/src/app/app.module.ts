@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { NgwWowModule } from 'ngx-wow';
 import { LickAppWidgetMaintenanceModule } from 'lick-app-widget-maintenance';
 import { LickAppWidgetNotFoundModule } from 'lick-app-widget-not-found';
 import { LickDataModule } from 'lick-data';
@@ -41,6 +42,7 @@ export const firebaseConfig = environment.firebaseConfig;
   ],
   imports: [
     BrowserModule,
+    NgwWowModule,
     LickyServicesModule.forRoot(firebaseConfig),
     RouterModule.forRoot([
       {path: '', component: HomePageComponent},
