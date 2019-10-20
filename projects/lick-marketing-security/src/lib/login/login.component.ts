@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private determineUser(): void {
     this._userSubscription = this.loginService.firebaseUser.subscribe((firebaseUser) => {
-      let status: boolean = (firebaseUser && firebaseUser.uid) ? true : false;
+      const status: boolean = (firebaseUser && firebaseUser.uid) ? true : false;
       if (status) {
         console.info("LIBRARY: " , firebaseUser, "STATUS: ", status);
         this.getVerified(firebaseUser);
@@ -69,11 +69,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private getVerified(firebaseUser): boolean {
-    let today = new Date().getTime();
+    const today = new Date().getTime();
     if (firebaseUser) {
-      let creationTime = firebaseUser.metadata.creationTime;
-      let createdAt = new Date(creationTime).getTime();
-      let diff = this._dateUtilService.getDaysDiff(today, createdAt);
+      const creationTime = firebaseUser.metadata.creationTime;
+      const createdAt = new Date(creationTime).getTime();
+      const diff = this._dateUtilService.getDaysDiff(today, createdAt);
     }
     return true;
   }

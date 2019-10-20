@@ -222,7 +222,7 @@ export class LickyLoginService {
 
         try {
 
-          let u = this._users[this._firebaseUser.uid];
+          const u = this._users[this._firebaseUser.uid];
 
 
           if (u === null || typeof u != 'object') {

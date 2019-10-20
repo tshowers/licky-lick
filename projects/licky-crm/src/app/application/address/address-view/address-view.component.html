@@ -17,63 +17,65 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
-<div class="card mx-auto d-block ta-max-view">
-  <div>
-    <agm-map *ngIf="latitude && longitude"
-             style="height: 15rem"
-             [latitude]="latitude"
-             [styles]="styles"
-             [longitude]="longitude"
-             [scrollwheel]="false"
-             [zoom]="zoom">
-      <agm-marker [latitude]="latitude"
-                  [longitude]="longitude"></agm-marker>
-    </agm-map>
-  </div>
-  <div class="card-header">
-    <a title="Go To Contact"
-       routerLink="/app/contacts/{{contact?.id}}">
-      <h4 class="my-0 font-weight-normal"><span *ngIf="contact?.company"><strong>{{contact?.company.name}}</strong>
-          <br></span>
-        <span *ngIf="contact"> {{contact?.firstName}} {{contact?.lastName}}</span>
-        <i class="fa fa-link"
-           aria-hidden="true"></i></h4>
-    </a>
-  </div>
-  <div class="card-body">
-    <address>
-      {{address?.streetAddress}} <br>
-      {{address?.city}} {{address?.state}} {{address?.zip}} <br>
-      {{address?.county}}
-      {{ address?.country }} <br>
-      <strong>{{ address?.addressType}}</strong>
-    </address>
-    <button *ngIf="canEdit"
-            class="btn btn-primary btn-lg btn-round"
-            (click)="onEdit()">Edit <i class="fa fa-pencil-square-o"
-         aria-hidden="true"></i>
-    </button> <button *ngIf="canDelete"
-            class="btn btn-danger btn-lg btn-round"
-            (click)="onDelete()">Delete <i class="fa fa-times"
-         aria-hidden="true"></i>
-    </button>
-  </div>
-</div>
-</div>
-</div>
-</div>
-<licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
-<licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
-</main>
-<licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
-                                 [helpHeaderText]="'Address List'"
-                                 [descriptionText]="'This page displays a list of contacts entered into the system.'"
-                                 [header1]="'Filter'"
-                                 [description1]="'You can filter the displayed contacts by typing in the find box. Just type a few letters and click the icon.'"
-                                 [header2]="'Actions'"
-                                 [description2]="'You can either choose to edit, view more information about a contact or if you have permission, mark a contact for deletion.'"
-                                 [header3]="'Deleted'"
-                                 [description3]="'Deleted contacts display as faint text.'"></licky-lick-app-widget-right-side-menu>
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"
+                                            (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+          <div class="card mx-auto d-block ta-max-view">
+            <div>
+              <agm-map *ngIf="latitude && longitude"
+                       style="height: 15rem"
+                       [latitude]="latitude"
+                       [styles]="styles"
+                       [longitude]="longitude"
+                       [scrollwheel]="false"
+                       [zoom]="zoom">
+                <agm-marker [latitude]="latitude"
+                            [longitude]="longitude"></agm-marker>
+              </agm-map>
+            </div>
+            <div class="card-header">
+              <a title="Go To Contact"
+                 routerLink="/application/contacts/{{contact?.id}}">
+                <h4 class="my-0 font-weight-normal"><span *ngIf="contact?.company"><strong>{{contact?.company.name}}</strong>
+                    <br></span>
+                  <span *ngIf="contact"> {{contact?.firstName}}
+                    {{contact?.lastName}}</span>
+                  <i class="fa fa-link"
+                     aria-hidden="true"></i></h4>
+              </a>
+            </div>
+            <div class="card-body">
+              <address>
+                {{address?.streetAddress}} <br>
+                {{address?.city}} {{address?.state}} {{address?.zip}} <br>
+                {{address?.county}}
+                {{ address?.country }} <br>
+                <strong>{{ address?.addressType}}</strong>
+              </address>
+              <button
+                      class="btn btn-primary btn-lg btn-round"
+                      (click)="onEdit()">Edit <i class="fa fa-pencil-square-o"
+                   aria-hidden="true"></i>
+              </button> <button *ngIf="(!address.deleted)"
+                      class="btn btn-danger btn-lg btn-round"
+                      (click)="onDelete()">Delete <i class="fa fa-times"
+                   aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Address View'"
+                                         [descriptionText]="'This page displays a single address entered into the system.'"
+                                         [header1]="'Maps'"
+                                         [description1]="'A map of the address allows you to better understand the surroundings.'"
+                                         [header2]="'Actions'"
+                                         [description2]="'You can either choose to edit, view more information about a contact or if you have permission, mark a address for deletion.'"
+                                         [header3]="'Deleted'"
+                                         [description3]="'Deleted addresses display as faint text.'"></licky-lick-app-widget-right-side-menu>
 </div>
 <licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

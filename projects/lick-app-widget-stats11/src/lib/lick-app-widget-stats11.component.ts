@@ -43,7 +43,7 @@ export class LickAppWidgetStats11Component implements OnInit {
   private initChart1(): void {
     this.ctx1 = document.getElementById("chart-widget11-1");
     if (this.ctx1) {
-      let chart = new Chart(this.ctx1, {
+      const chart = new Chart(this.ctx1, {
         type: 'doughnut',
         data: {
           datasets: [{
@@ -64,7 +64,7 @@ export class LickAppWidgetStats11Component implements OnInit {
   private initChart2(): void {
     this.ctx2 = document.getElementById("chart-widget11-2");
     if (this.ctx2) {
-      let chart = new Chart(this.ctx2, {
+      const chart = new Chart(this.ctx2, {
         type: 'doughnut',
         data: {
           datasets: [{

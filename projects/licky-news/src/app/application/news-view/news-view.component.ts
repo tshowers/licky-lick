@@ -145,7 +145,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
 
   public onPageEvent(value): void {
     this._newsHelperService.setNewsArticle(value);
-    this.router.navigate(['/application/news-reader']);
+    this.router.navigate(['application', 'news-reader']);
   }
 
   onKey(value: string) {
@@ -157,7 +157,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     this._newsSearchSubscription = this._newsService.getNewsBySearchCriteria(this.searchArgument, this.currentPage).subscribe(
       (news) => {
         this.searchResults = news.articles;
-        let total = ((news.articles.length === 0) ? 0 : news.totalResults);
+        const total = ((news.articles.length === 0) ? 0 : news.totalResults);
         this.searchTotal = total;
         if (total === 0)
           this.searchHeading = "No articles found";
@@ -175,7 +175,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
   }
 
   private setUserNewsSources(): void {
-    let newsSources = this._user.newsSources;
+    const newsSources = this._user.newsSources;
     if (newsSources) {
       newsSources.forEach((newsSource) => {
         if (newsSource.checked)
@@ -218,7 +218,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
   }
 
   private setBusinessArticles(): void {
-    let category = this._newsService.BUSINESS;
+    const category = this._newsService.BUSINESS;
     this._newsService.setPageSize(4);
     this._newsService.setPageNumber(1);
     this._newsCategorySubscription1 = this._newsService.getNewsByCategory(category).subscribe(
@@ -229,7 +229,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
   }
 
   private setEntertainmentArticles(): void {
-    let category = this._newsService.ENTERTAINMENT;
+    const category = this._newsService.ENTERTAINMENT;
     this._newsService.setPageSize(4);
     this._newsService.setPageNumber(1);
     this._newsCategorySubscription2 = this._newsService.getNewsByCategory(category).subscribe(
@@ -239,7 +239,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     )
   }
   private setHealthArticles(): void {
-    let category = this._newsService.HEALTH;
+    const category = this._newsService.HEALTH;
     this._newsService.setPageNumber(1);
     this._newsService.setPageSize(4);
     this._newsCategorySubscription3 = this._newsService.getNewsByCategory(category).subscribe(
@@ -249,7 +249,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     )
   }
   private setScienceArticles(): void {
-    let category = this._newsService.SCIENCE;
+    const category = this._newsService.SCIENCE;
     this._newsService.setPageSize(4);
     this._newsService.setPageNumber(1);
     this._newsCategorySubscription4 = this._newsService.getNewsByCategory(category).subscribe(
@@ -259,7 +259,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     )
   }
   private setSportsArticles(): void {
-    let category = this._newsService.SPORTS;
+    const category = this._newsService.SPORTS;
     this._newsService.setPageSize(4);
     this._newsService.setPageNumber(1);
     this._newsCategorySubscription5 = this._newsService.getNewsByCategory(category).subscribe(
@@ -269,7 +269,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
     )
   }
   private setTechnologyArticles(): void {
-    let category = this._newsService.TECHNOLOGY;
+    const category = this._newsService.TECHNOLOGY;
     this._newsService.setPageSize(4);
     this._newsService.setPageNumber(1);
     this._newsCategorySubscription6 = this._newsService.getNewsByCategory(category).subscribe(
@@ -294,7 +294,7 @@ export class NewsViewComponent implements OnInit, OnDestroy {
   }
 
   private getChannel(): string {
-    let x = this.getRandomInt(this._channels.length);
+    const x = this.getRandomInt(this._channels.length);
     return this._channels[x].value;
   }
 

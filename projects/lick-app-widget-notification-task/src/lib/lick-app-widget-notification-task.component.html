@@ -4,7 +4,7 @@
     </a>
   <div class="dropdown-menu dropdown-menu-right task-list animated flipInY nicescroll-box">
     <div class="dropdown-header"> <strong>Task List</strong> <span class="badge badge-pill badge-theme pull-right" *ngIf="(tasks$ | async)?.length"> new ({{(tasks$ | async)?.length}})</span> </div>
-    <div class="wrap"> <a routerLink="/app/tasks/{{t.id}}" class="dropdown-item" *ngFor="let t of tasks$ | async">
+    <div class="wrap"> <a routerLink="/application/tasks/{{t.id}}" class="dropdown-item" *ngFor="let t of tasks$ | async">
               <strong>{{t?.name}}</strong>
               <small class="pull-right" >
                 <span *ngIf="t.dueDate" [ngClass]="{'text-danger' : t.isPastDate}">Due: {{t.dueDate | date}}</span>
@@ -15,7 +15,7 @@
         <p align="center" class="alert alert-warning" role="alert"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> No tasks</p>
       </div>
     </div>
-    <div class="dropdown-footer "> <a routerLink="/app/tasks">
+    <div class="dropdown-footer "> <a routerLink="/application/tasks">
                 <strong>view all tasks</strong>
             </a> </div>
   </div>

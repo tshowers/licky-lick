@@ -26,8 +26,7 @@ export class EmailAddressResolverService {
       return this._db.getData(EMAIL_ADDRESSES + '/' + id1, id2)
         .pipe(map(emailAddress => {
           if (emailAddress) {
-            // EmailAddress.restoreData(emailAddress);
-            this.incrementViewCount(emailAddress, id1);
+            this.incrementViewCount(emailAddress, id1, id2);
             return (emailAddress.id == id2) ? emailAddress : of(this.getNew(id1));
           } else {
             return of(this.getNew(id1));
@@ -45,10 +44,18 @@ export class EmailAddressResolverService {
     return data;
   }
 
-  private incrementViewCount(emailAddress: EmailAddress, id1): void {
-    emailAddress.views++;
-    emailAddress.lastViewed = new Date().getTime();
-    this._db.updateData(EMAIL_ADDRESSES + '/' + id1, emailAddress.id, emailAddress);
+  private incrementViewCount(emailAddress: EmailAddress, id1, id2): void {
+    if (emailAddress) {
+      emailAddress.id = id2;
+      if (emailAddress.views && !isNaN(emailAddress.views)) {
+        emailAddress.views++;
+      } else {
+        emailAddress.views = 0;
+        emailAddress.views++;
+      }
+      emailAddress.lastViewed = new Date().getTime();
+      this._db.updateData(EMAIL_ADDRESSES + '/' + id1, id2, emailAddress);
+    }
   }
 
 

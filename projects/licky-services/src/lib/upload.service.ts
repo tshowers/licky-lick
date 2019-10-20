@@ -16,10 +16,10 @@ export class UploadService {
   constructor(private _sortHelperService: SortHelperService) { }
 
   pushUpload(imageUpload: boolean, upload: Upload, db: FirebaseDataService) {
-    let storageRef = firebase.storage().ref();
-    let extention = upload.file.name.substring(upload.file.name.lastIndexOf("."));
-    let fn = IdGeneratorService.generateUUID() + extention;
-    let storeLocation = DOCUMENTS + "/" + fn;
+    const storageRef = firebase.storage().ref();
+    const extention = upload.file.name.substring(upload.file.name.lastIndexOf("."));
+    const fn = IdGeneratorService.generateUUID() + extention;
+    const storeLocation = DOCUMENTS + "/" + fn;
     this.uploadTask = storageRef.child(`${DOCUMENTS}/${upload.file.name}`).put(upload.file);
 
     this.uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
@@ -40,10 +40,10 @@ export class UploadService {
 
 
   pushFileToStorage(upload: Upload, dataPath: string, uploadRef: string, data: any, db: FirebaseDataService) {
-    let storageRef = firebase.storage().ref();
-    let extention = upload.file.name.substring(upload.file.name.lastIndexOf("."));
-    let fn = IdGeneratorService.generateUUID() + extention;
-    let storeLocation = DOCUMENTS + '/' + fn;
+    const storageRef = firebase.storage().ref();
+    const extention = upload.file.name.substring(upload.file.name.lastIndexOf("."));
+    const fn = IdGeneratorService.generateUUID() + extention;
+    const storeLocation = DOCUMENTS + '/' + fn;
     this.uploadTask = storageRef.child(storeLocation).put(upload.file);
 
     this.uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
@@ -70,7 +70,7 @@ export class UploadService {
   }
 
   private deleteFileStored(name: string) {
-    let storageRef = firebase.storage().ref();
+    const storageRef = firebase.storage().ref();
     storageRef.child(DOCUMENTS + '/' + name).delete();
   }
 

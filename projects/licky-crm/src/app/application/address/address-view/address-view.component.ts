@@ -166,13 +166,13 @@ export class AddressViewComponent extends LickAppPageComponent implements OnInit
   }
 
   onEdit(): void {
-    this.router.navigate(['/application/contacts/' + this.contact_id + "/addresses/" + this.address.id]);
+    this.router.navigate(['application', 'contacts', this.contact_id, 'addresses', this.address.id, 'edit']);
   }
 
   onDelete(): void {
     this.address.deleted = true;
     this.dm.db.updateData(ADDRESSES + "/" + this.contact_id, this.address.id, this.address);
-    this.router.navigate(['/application/contacts/' + this.contact_id + "/addresses"]);
+    this.router.navigate(['application', 'contacts', this.contact_id, 'addresses']);
   }
 
 

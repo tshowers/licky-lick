@@ -80,7 +80,7 @@ export class LickAppWidgetStats9Component implements OnInit {
   private initChart1(): void {
     this.ctxa = document.getElementById("chart-widget9-1");
     if (this.ctxa) {
-      let chart = new Chart(this.ctxa, {
+      const chart = new Chart(this.ctxa, {
         type: 'line',
         data: {
           labels: this.chartLabels,
@@ -111,7 +111,7 @@ export class LickAppWidgetStats9Component implements OnInit {
   private initChart2(): void {
     this.ctxb = document.getElementById("chart-widget9-2");
     if (this.ctxb) {
-      let chart = new Chart(this.ctxb, {
+      const chart = new Chart(this.ctxb, {
         type: 'line',
         data: {
           labels: this.chartLabels,
@@ -142,7 +142,7 @@ export class LickAppWidgetStats9Component implements OnInit {
   private initChart3(): void {
     this.ctxc = document.getElementById("chart-widget9-3");
     if (this.ctxc) {
-      let chart = new Chart(this.ctxc, {
+      const chart = new Chart(this.ctxc, {
         type: 'line',
         data: {
           labels: this.chartLabels,

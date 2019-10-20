@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 import { AgmCoreModule } from '@agm/core';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -32,6 +31,8 @@ import { LickAppWidgetStats15Module } from 'lick-app-widget-stats15';
 
 import { NameDecriptionFilterPipe } from './filters/name-decription-filter.pipe';
 
+import { AutoFocusDirective } from './directives/auto-focus.directive';
+
 import { NavComponent } from './nav/nav.component';
 import { ContextNavComponent } from './nav/context-nav/context-nav.component';
 
@@ -44,7 +45,7 @@ export const firebaseConfig = environment.firebaseConfig;
 // CommonModule, FormsModule etc. for free.
 
 @NgModule({
-  declarations: [NavComponent, NameDecriptionFilterPipe, ContextNavComponent],
+  declarations: [NavComponent, NameDecriptionFilterPipe, ContextNavComponent, AutoFocusDirective],
   imports: [
     CommonModule,
     RouterModule,
@@ -77,6 +78,7 @@ export const firebaseConfig = environment.firebaseConfig;
   exports: [
     NavComponent,
     ContextNavComponent,
+    AutoFocusDirective,
     RouterModule,
     HttpClientModule,
     LickAppPageModule,

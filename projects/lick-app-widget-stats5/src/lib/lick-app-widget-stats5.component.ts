@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class LickAppWidgetStats5Component implements OnInit {
 
   @Input() headingText = "licky-lick-app-widget-stats5";
-  @Input() subHeadingText = "Summery of Last (7 day)";
+  @Input() subHeadingText = "Summary of Last (7 day)";
 
 
   @Input() circleData : LickAppWidgetStats5CircleData[] = [{

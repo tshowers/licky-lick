@@ -12,33 +12,39 @@ export class NoteViewResolverService {
   constructor(private _db: FirebaseDataService, public router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<JustText> {
-    let id1 = route.paramMap.get('id');
-    let id2 = route.paramMap.get('id2');
+    const id1 = route.paramMap.get('id');
+    const id2 = route.paramMap.get('id2');
 
     return this._db.getData(JUST_TEXTS + '/' + id1, id2)
-    .pipe(map(justText => {
-      if (justText) {
-        // JustText.restoreData(justText);
-        this.setSocialData(justText);
-        this.incrementViewCount(justText, id1);
-        return (justText.id == id2) ? justText : null;
-      } else {
-        if (id1)
-          this.router.navigate(['/app/contacts/' + id1 + '/notes']);
-        else
-          this.router.navigate(['/app/contacts']);
-        return null;
-      }
-    }));
+      .pipe(map(justText => {
+        if (justText) {
+          this.incrementViewCount(justText, id1, id2);
+          return (justText.id == id2) ? justText : null;
+        } else {
+          if (id1)
+            this.router.navigate(['application', 'contacts', id1, 'notes']);
+          else
+            this.router.navigate(['application', 'contacts']);
+          return null;
+        }
+      }));
   }
-  private setSocialData(justText: JustText) : void {
-    // this._socialService.setDataItemSocial(justText);
+  private setSocialData(justText: JustText): void {
+    //TODO
   }
 
-  private incrementViewCount(justText: JustText, id1) : void {
-    justText.views++;
-    justText.lastViewed = new Date().getTime();
-    this._db.updateData(JUST_TEXTS + '/' + id1, justText.id, justText);
+  private incrementViewCount(justText: JustText, id1, id2): void {
+    if (justText) {
+      justText.id = id2;
+      if (justText.views && !isNaN(justText.views)) {
+        justText.views++;
+      } else {
+        justText.views = 0;
+        justText.views++;
+      }
+      justText.lastViewed = new Date().getTime();
+      this._db.updateData(JUST_TEXTS + '/' + id1, id2, justText);
+    }
   }
 
 }

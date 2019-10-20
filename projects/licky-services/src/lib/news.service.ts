@@ -229,7 +229,7 @@ export class NewsService {
   }
 
   addNews(provider: string): Observable<any> {
-    let url = this._sourcesURL1 + provider + this._local + this._country + this._key
+    const url = this._sourcesURL1 + provider + this._local + this._country + this._key
     return this._http.get(url, { responseType: 'json' })
   }
 

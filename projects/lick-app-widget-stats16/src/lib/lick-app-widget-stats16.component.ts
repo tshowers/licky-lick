@@ -37,7 +37,7 @@ export class LickAppWidgetStats16Component implements OnInit {
   private initChart(): void {
     this.ctxa = document.getElementById("chart-stat-widget16");
     if (this.ctxa) {
-      let chart = new Chart(this.ctxa, {
+      const chart = new Chart(this.ctxa, {
         type: 'line',
         data: {
           labels: this.chartLabels,

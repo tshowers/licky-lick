@@ -12,20 +12,19 @@ export class AddressViewResolverService {
   constructor(private _db: FirebaseDataService, public router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Address> {
-    let id1 = route.paramMap.get('id');
-    let id2 = route.paramMap.get('id2');
+    const id1 = route.paramMap.get('id');
+    const id2 = route.paramMap.get('id2');
 
     return this._db.getData(ADDRESSES + '/' + id1, id2)
     .pipe(map(address => {
       if (address) {
-        // this.setSocialData(address);
         this.incrementViewCount(address, id1, id2);
         return (address.id == id2) ? address : null;
       } else {
         if (id1)
-          this.router.navigate(['/application/contacts/' + id1 + '/addresses']);
+          this.router.navigate(['application', 'contacts', id1, 'addresses']);
         else
-          this.router.navigate(['/application/contacts']);
+          this.router.navigate(['application', 'contacts']);
         return null;
       }
     }));

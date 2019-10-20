@@ -12,8 +12,8 @@ export class PhoneNumberResolverService {
   constructor(private _db: FirebaseDataService, public router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<PhoneNumber> {
-    let id1 = route.paramMap.get('id');
-    let id2 = route.paramMap.get('id2');
+    const id1 = route.paramMap.get('id');
+    const id2 = route.paramMap.get('id2');
     if (id1)
       return this.getPhoneNumber(id1, id2)
     else
@@ -44,10 +44,18 @@ export class PhoneNumberResolverService {
     return data;
   }
 
-  private incrementViewCount(phoneNumber: PhoneNumber, id1): void {
-    phoneNumber.views++;
-    phoneNumber.lastViewed = new Date().getTime();
-    this._db.updateData(PHONE_NUMBERS + '/' + id1, phoneNumber.id, phoneNumber);
+  private incrementViewCount(phoneNumber: PhoneNumber, id1, id2): void {
+    if (phoneNumber) {
+      phoneNumber.id = id2;
+      if (phoneNumber.views && !isNaN(phoneNumber.views)) {
+        phoneNumber.views++;
+      } else {
+        phoneNumber.views = 0;
+        phoneNumber.views++;
+      }
+      phoneNumber.lastViewed = new Date().getTime();
+      this._db.updateData(PHONE_NUMBERS + '/' + id1, id2, phoneNumber);
+    }
   }
 
 }

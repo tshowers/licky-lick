@@ -1,33 +1,70 @@
-<div class="card mx-auto d-block ta-max-view">
-  <div class="card-body">
-    <a title="Go To Contact"
-       routerLink="/app/contacts/{{contact?.id}}">
-      <h4 class="card-title"><span *ngIf="contact?.company">{{contact?.company.name}}
-          <br></span>
-        <span *ngIf="contact"> {{contact?.firstName}} {{contact?.lastName}}</span>
-        <i class="fa fa-link"
-           aria-hidden="true"></i></h4>
-    </a>
-    <p class="card-text">{{ fop?.fopType }}</p>
-    <p class="card-text">{{fop?.ccType}}</p>
-    <p class="card-text">{{fop?.ccNumber}}</p>
-    <p class="card-text">{{fop?.expDate}}</p>
-    <p class="card-text">{{fop?.ccv}}</p>
-    <p class="card-text">{{fop?.bankName}}</p>
-    <p class="card-text">{{fop?.bankAccountNumber}}</p>
-    <p class="card-text">{{fop?.bankRoutingNumber}}</p>
-    <p class="card-text">{{fop?.checkNumber}}</p>
-    <p class="card-text">{{fop?.bankCity}}</p>
-    <p class="card-text">{{fop?.bankState}}</p>
-    <p class="card-text">{{fop?.bankPhone}}</p>
-    <button *ngIf="canEdit"
-            class="btn btn-primary btn-lg btn-round"
-            (click)="onEdit()">Edit <i class="fa fa-pencil-square-o"
-         aria-hidden="true"></i>
-    </button> <button *ngIf="canDelete"
-            class="btn btn-danger btn-lg btn-round"
-            (click)="onDelete()">Delete <i class="fa fa-times"
-         aria-hidden="true"></i>
-    </button>
-  </div>
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+      <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"
+                                        (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+      <app-context-nav [contact]="contact"
+                       [context]="'fop'"></app-context-nav>
+      <div class="card mx-auto d-block ta-max-view">
+        <div class="card-body">
+          <a title="Go To Contact"
+             routerLink="/application/contacts/{{contact?.id}}">
+            <h4 class="card-title"><span *ngIf="contact?.company">{{contact?.company.name}}
+                <br></span>
+              <span *ngIf="contact"> {{contact?.firstName}}
+                {{contact?.lastName}}</span>
+              <i class="fa fa-link"
+                 aria-hidden="true"></i></h4>
+          </a>
+          <p class="card-text">{{ fop?.fopType }}</p>
+          <p class="card-text">{{fop?.ccType}}</p>
+          <p class="card-text">{{fop?.ccNumber}}</p>
+          <p class="card-text">{{fop?.expDate}}</p>
+          <p class="card-text">{{fop?.ccv}}</p>
+          <p class="card-text">{{fop?.bankName}}</p>
+          <p class="card-text">{{fop?.bankAccountNumber}}</p>
+          <p class="card-text">{{fop?.bankRoutingNumber}}</p>
+          <p class="card-text">{{fop?.checkNumber}}</p>
+          <p class="card-text">{{fop?.bankCity}}</p>
+          <p class="card-text">{{fop?.bankState}}</p>
+          <p class="card-text">{{fop?.bankPhone}}</p>
+          <button
+                  class="btn btn-primary btn-lg btn-round"
+                  (click)="onEdit()">Edit <i class="fa fa-pencil-square-o"
+               aria-hidden="true"></i>
+          </button> <button *ngIf="(!fop.deleted)"
+                  class="btn btn-danger btn-lg btn-round"
+                  (click)="onDelete()">Delete <i class="fa fa-times"
+               aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Form of Payment View'"
+                                         [descriptionText]="'This page displays a single form of payment entered into the system.'"
+                                         [header1]="'Obfuscation'"
+                                         [description1]="'Certain information may not be displayed to protect the contacts privacy.'"
+                                         [header2]="'Actions'"
+                                         [description2]="'You can either choose to edit, view more information about a contact or if you have permission, mark a address for deletion.'"
+                                         [header3]="'Deleted'"
+                                         [description3]="'Deleted addresses display as faint text.'"></licky-lick-app-widget-right-side-menu>
 </div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

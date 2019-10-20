@@ -267,14 +267,14 @@ export class ContactDashboardComponent extends LickAppPageComponent implements O
   }
 
   private setByMonth(contacts: Contact[]): void {
-    let today = new Date();
-    let month = today.getMonth();
-    let year = today.getFullYear()
+    const today = new Date();
+    const month = today.getMonth();
+    const year = today.getFullYear()
 
     for (let i = 0; i < contacts.length; i++) {
-      let createDate = (contacts[i].timeStamp) ? new Date(contacts[i].timeStamp) : null;
-      let lastUpdated = (contacts[i].lastUpdated) ? new Date(contacts[i].lastUpdated) : null;
-      let lastViewed = (contacts[i].lastViewed) ? new Date(contacts[i].lastViewed) : null;
+      const createDate = (contacts[i].timeStamp) ? new Date(contacts[i].timeStamp) : null;
+      const lastUpdated = (contacts[i].lastUpdated) ? new Date(contacts[i].lastUpdated) : null;
+      const lastViewed = (contacts[i].lastViewed) ? new Date(contacts[i].lastViewed) : null;
 
       let createMonth;
       let createYear;

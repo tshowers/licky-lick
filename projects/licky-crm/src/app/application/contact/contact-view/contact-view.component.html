@@ -208,11 +208,11 @@
             </li>
           </ul>
           <licky-lick-app-widget-data-footer [data]="contact"></licky-lick-app-widget-data-footer>
-          <button *ngIf="canEdit"
+          <button
                   class="btn btn-primary btn-lg btn-round"
                   (click)="onEdit()">Edit <i class="fa fa-pencil"
                aria-hidden="true"></i>
-          </button> <button *ngIf="canDelete && (!contact.deleted)"
+          </button> <button *ngIf="(!contact.deleted)"
                   class="btn btn-danger btn-round btn-lg"
                   (click)="onDelete()">Delete <i class="fa fa-times"
                aria-hidden="true"></i>

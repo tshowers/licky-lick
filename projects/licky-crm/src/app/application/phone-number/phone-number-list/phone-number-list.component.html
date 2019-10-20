@@ -1,3 +1,45 @@
-<p>
-  phone-number-list works!
-</p>
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+          <app-context-nav [contact]="contact" [context]="'phone'"></app-context-nav>
+          <licky-lick-app-widget-table-data [data]="data$ | async"
+                                            (newItemEvent)="onNewItem()"
+                                            (detailEvent)="onDetail($event)"
+                                            (deleteEvent)="onDelete($event)"
+                                            (editEvent)="onEdit($event)"
+                                            [headingText]="'Phone Numbers'"
+                                            [router]="router"
+                                            [pageSize]="pageSize"
+                                            [totalRecords]="totalRecords"
+                                            (currentPageEvent)="newPage($event)"
+                                            [path]="PHONE_NUMBERS + '/' + contact_id"></licky-lick-app-widget-table-data>
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Phone Numbers'"
+                                         [descriptionText]="'This page displays a list of phone numbers for a contact entered into the system.'"
+                                         [header1]="'Multiple'"
+                                         [description1]="'A contact can have multiple addresses.'"
+                                         [header2]="'Actions'"
+                                         [description2]="'You can either choose to edit, view more information about a contact or if you have permission, mark a contact for deletion.'"
+                                         [header3]="'Deleted'"
+                                         [description3]="'Deleted phone numbers display as faint text.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

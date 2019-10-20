@@ -18,179 +18,192 @@
     <div class="container-fluid">
       <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"
                                         (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
-      <app-context-nav [contact]="contact" [context]="'address'"></app-context-nav>
+      <app-context-nav [contact]="contact"
+                       [context]="'address'"></app-context-nav>
       <div class="container">
         <div class="card card-accent-theme">
           <div class="card-body">
+            <form #dataForm="ngForm"
+                  class="form-group">
+              <div class="form-group">
+                <label for="streetAddress">Search for Address</label>
 
-        <form #dataForm="ngForm"
-              class="form-group">
-          <div class="form-group">
-            <label for="streetAddress">Search for Address</label>
+                <input licky-auto-focus
+                       placeholder="Search for Location"
+                       id="streetAddress"
+                       name="streetAddress"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       spellcheck="off"
+                       autocomplete="off"
+                       type="text"
+                       tabindex="1"
+                       class="form-control form-control-lg ta-input-element"
+                       #search>
+              </div>
+              <br>
+              <agm-map style="height: 15rem"
+                       [latitude]="latitude"
+                       [longitude]="longitude"
+                       [styles]="styles"
+                       [scrollwheel]="false"
+                       [zoom]="zoom">
+                <agm-marker [latitude]="latitude"
+                            [longitude]="longitude"></agm-marker>
+              </agm-map>
+              <br>
+              <div class="form-group"> <label for="streetAddress">Street
+                  Address</label>
 
-            <input placeholder="search for location"
-                   id="streetAddress"
-                   name="streetAddress"
-                   autocorrect="off"
-                   autocapitalize="off"
-                   spellcheck="off"
-                   autocomplete="off"
-                   type="text"
-                   class="form-control form-control-lg ta-input-element"
-                   #search
-                   autofocus>
+                <input [(ngModel)]="address.streetAddress"
+                       #streetAddress="ngModel"
+                       id="streetAddress"
+                       name="streetAddress"
+                       placeholder="Street Address"
+                       type="text"
+                       tabindex="2"
+                       class="form-control form-control-lg ta-input-element"
+                       required>
+                <div [hidden]="streetAddress.valid || streetAddress.pristine"
+                     class="alert alert-danger"> <i class="fa fa-exclamation-triangle"
+                     aria-hidden="true"></i> Street Address is required </div>
+              </div>
+              <div class="form-group"> <label for="city">City</label>
+
+                <input [(ngModel)]="address.city"
+                       #city="ngModel"
+                       id="city"
+                       name="city"
+                       placeholder="City"
+                       type="text"
+                       tabindex="3"
+                       class="form-control form-control-lg ta-input-element"
+                       required>
+                <div [hidden]="city.valid || city.pristine"
+                     class="alert alert-danger"> <i class="fa fa-exclamation-triangle"
+                     aria-hidden="true"></i> City is required </div>
+              </div>
+              <div class="form-group">
+                <label for="state">State</label>
+
+                <select [(ngModel)]="address.state"
+                        name="state"
+                        tabindex="4"
+                        id="state"
+                        class="form-control form-control-lg ta-input-element">
+                  <option value=""></option>
+                  <option *ngFor="let s of states"
+                          value="{{s.name}}">{{s.name}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="zip">Zip Code</label>
+
+                <input [(ngModel)]="address.zip"
+                       #zip="ngModel"
+                       id="zip"
+                       tabindex="5"
+                       name="zip"
+                       type="text"
+                       class="form-control form-control-lg ta-input-element"
+                       placeholder="Zip Code"
+                       required>
+                <div [hidden]="zip.valid || zip.pristine"
+                     class="alert alert-danger">
+                  <i class="fa fa-exclamation-triangle"
+                     aria-hidden="true"></i> Zip code is required </div>
+              </div>
+              <div class="form-group"> <label for="contactCountry">Country</label>
+
+                <input [(ngModel)]="address.country"
+                       #contactCountry="ngModel"
+                       id="contactCountry"
+                       tabindex="6"
+                       name="contactCountry"
+                       type="text"
+                       class="form-control form-control-lg ta-input-element"
+                       placeholder="Country"
+                       required>
+                <div [hidden]="contactCountry.valid || contactCountry.pristine"
+                     class="alert alert-danger"> <i class="fa fa-exclamation-triangle"
+                     aria-hidden="true"></i> Country is required </div>
+              </div>
+              <div class="form-group"> <label for="addressType">Address Type</label>
+
+                <select [(ngModel)]="address.addressType"
+                        name="addressType"
+                        id="addressType"
+                        tabindex="7"
+                        class='form-control form-control-lg ta-input-element'>
+                  <option value=""></option>
+                  <option *ngFor="let e of addressTypes"
+                          value="{{e.name}}">{{e.name}}</option>
+                </select> </div>
+              <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
+
+                <input [(ngModel)]="address.draft"
+                       id="dataDraft"
+                       name="dataDraft"
+                       tabindex="8"
+                       type="checkbox">
+                <label for="dataDraft"
+                       title="Draft indicates the record is not finished and should not be made public">Private</label>
+              </div>
+              <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
+
+                <input [(ngModel)]="address.deleted"
+                       id="dataDeleted"
+                       name="dataDeleted"
+                       tabindex="9"
+                       type="checkbox">
+                <label for="dataDeleted"
+                       title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted</label>
+              </div>
+              <div class="form-group"><label for="dataKeywords">Keywords</label>
+
+                <input [(ngModel)]="address.keywords"
+                       id="dataKeywords"
+                       name="dataKeywords"
+                       tabindex="10"
+                       type="text"
+                       class="form-control form-control-lg ta-input-element"
+                       placeholder="Enter keywords seperated by commas">
+              </div>
+              <div class="row">
+                <div class="col text-center">
+                  <button class="btn btn-primary btn-lg btn-round"
+                          (click)="onSubmit()"
+                          type="submit"
+                          tabindex="11"
+                          [disabled]="!dataForm.form.valid"
+                          title="Submit to database">Save <i class="fa fa-cloud"
+                       aria-hidden="true"></i>
+                  </button>
+                  <button *ngIf="canDelete"
+                          class="btn btn-danger btn-lg btn-round"
+                          tabindex="12"
+                          (click)="onDelete();dataForm.reset()"
+                          [hidden]="!address.id">Delete <i class="fa fa-times"
+                       aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
-          <br>
-          <agm-map style="height: 15rem"
-                   [latitude]="latitude"
-                   [longitude]="longitude"
-                   [styles]="styles"
-                   [scrollwheel]="false"
-                   [zoom]="zoom">
-            <agm-marker [latitude]="latitude"
-                        [longitude]="longitude"></agm-marker>
-          </agm-map>
-          <br>
-          <div class="form-group"> <label for="streetAddress">Street Address</label>
-
-            <input [(ngModel)]="address.streetAddress"
-                   #streetAddress="ngModel"
-                   id="streetAddress"
-                   name="streetAddress"
-                   placeholder="Street Address"
-                   type="text"
-                   class="form-control form-control-lg ta-input-element"
-                   required>
-            <div [hidden]="streetAddress.valid || streetAddress.pristine"
-                 class="alert alert-danger"> <i class="fa fa-exclamation-triangle"
-                 aria-hidden="true"></i> Street Address is required </div>
-          </div>
-          <div class="form-group"> <label for="city">City</label>
-
-            <input [(ngModel)]="address.city"
-                   #city="ngModel"
-                   id="city"
-                   name="city"
-                   placeholder="City"
-                   type="text"
-                   class="form-control form-control-lg ta-input-element"
-                   required>
-            <div [hidden]="city.valid || city.pristine"
-                 class="alert alert-danger"> <i class="fa fa-exclamation-triangle"
-                 aria-hidden="true"></i> City is required </div>
-          </div>
-          <div class="form-group">
-            <label for="state">State</label>
-
-            <select [(ngModel)]="address.state"
-                    name="state"
-                    id="state"
-                    class="form-control form-control-lg ta-input-element">
-              <option value=""></option>
-              <option *ngFor="let s of states"
-                      value="{{s.name}}">{{s.name}}</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="zip">Zip Code</label>
-
-            <input [(ngModel)]="address.zip"
-                   #zip="ngModel"
-                   id="zip"
-                   name="zip"
-                   type="text"
-                   class="form-control form-control-lg ta-input-element"
-                   placeholder="Zip Code"
-                   required>
-            <div [hidden]="zip.valid || zip.pristine"
-                 class="alert alert-danger">
-              <i class="fa fa-exclamation-triangle"
-                 aria-hidden="true"></i> Zip code is required </div>
-          </div>
-          <div class="form-group"> <label for="contactCountry">Country</label>
-
-            <input [(ngModel)]="address.country"
-                   #contactCountry="ngModel"
-                   id="contactCountry"
-                   name="contactCountry"
-                   type="text"
-                   class="form-control form-control-lg ta-input-element"
-                   placeholder="Country"
-                   required>
-            <div [hidden]="contactCountry.valid || contactCountry.pristine"
-                 class="alert alert-danger"> <i class="fa fa-exclamation-triangle"
-                 aria-hidden="true"></i> Country is required </div>
-          </div>
-          <div class="form-group"> <label for="addressType">Address Type</label>
-
-            <select [(ngModel)]="address.addressType"
-                    name="addressType"
-                    id="addressType"
-                    class='form-control form-control-lg ta-input-element'>
-              <option value=""></option>
-              <option *ngFor="let e of addressTypes"
-                      value="{{e.name}}">{{e.name}}</option>
-            </select> </div>
-          <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
-
-            <input [(ngModel)]="address.draft"
-                   id="dataDraft"
-                   name="dataDraft"
-                   type="checkbox">
-            <label for="dataDraft"
-                   title="Draft indicates the record is not finished and should not be made public">Private</label>
-          </div>
-          <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
-
-            <input [(ngModel)]="address.deleted"
-                   id="dataDeleted"
-                   name="dataDeleted"
-                   type="checkbox">
-            <label for="dataDeleted"
-                   title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted</label>
-          </div>
-          <div class="form-group"><label for="dataKeywords">Keywords</label>
-
-            <input [(ngModel)]="address.keywords"
-                   id="dataKeywords"
-                   name="dataKeywords"
-                   type="text"
-                   class="form-control form-control-lg ta-input-element"
-                   placeholder="Enter keywords seperated by commas">
-          </div>
-          <div class="row">
-            <div class="col text-center">
-              <button class="btn btn-primary btn-lg btn-round"
-                      (click)="onSubmit()"
-                      type="submit"
-                      [disabled]="!dataForm.form.valid"
-                      title="Submit to database">Save <i class="fa fa-cloud"
-                   aria-hidden="true"></i>
-              </button>
-              <button *ngIf="canDelete"
-                      class="btn btn-danger btn-lg btn-round"
-                      (click)="onDelete();dataForm.reset()"
-                      [hidden]="!address.id">Delete <i class="fa fa-times"
-                   aria-hidden="true"></i>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
+        </div>
       </div>
     </div>
     <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
     <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
   </main>
   <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
-                                         [helpHeaderText]="'Contact Edit'"
-                                         [descriptionText]="'The edit screen is where you create a new contact or edit and existing one.'"
-                                         [header1]="'Status'"
-                                         [description1]="'Assign a status to better management contacts. The state allows you to track and measure connections wholistically.'"
+                                         [helpHeaderText]="'Address Edit'"
+                                         [descriptionText]="'The edit screen is where you create a new address or edit and existing one.'"
+                                         [header1]="'Maps'"
+                                         [description1]="'Search for an address using map search.'"
                                          [header2]="'Multiples'"
                                          [description2]="'You can add multiple addresses, email addresses, notes, and phone numbers to contact. Once a contact is added, you will have the option of adding addresses, email addresses, notes, and phone numbers.'"
-                                         [header3]="'Notes'"
-                                         [description3]="'Sometimes it may be necessary to enter information about discussions with a contact.  Create a note to log calls, conferences, or preferences.'"></licky-lick-app-widget-right-side-menu>
+                                         [header3]="'Keywords'"
+                                         [description3]="'The use of keywords is optional but helps searching for the address.'"></licky-lick-app-widget-right-side-menu>
 </div>
 <licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

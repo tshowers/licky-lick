@@ -12,8 +12,8 @@ export class AddressResolverService {
   constructor(private _db: FirebaseDataService, public router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Address> {
-    let id1 = route.paramMap.get('id');
-    let id2 = route.paramMap.get('id2');
+    const id1 = route.paramMap.get('id');
+    const id2 = route.paramMap.get('id2');
 
     if (id1)
       return this.getAddress(id1, id2);

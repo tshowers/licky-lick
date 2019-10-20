@@ -1,26 +1,64 @@
-<div class="card mx-auto d-block ta-max-view">
-  <div class="card-header">
-    <a title="Go To Contact"
-       routerLink="/app/contacts/{{contact?.id}}">
-      <h4><span *ngIf="contact?.company"><strong>{{contact?.company.name}}</strong>
-          <br></span>
-        <span *ngIf="contact"> {{contact?.firstName}} {{contact?.lastName}}</span>
-        <i class="fa fa-link"
-           aria-hidden="true"></i></h4>
-    </a>
-  </div>
-  <div class="card-body">
-    <p class="card-text"> <a href="mailto:{{emailAddress?.emailAddress}}">{{ emailAddress?.emailAddress }}</a>
-      <span *ngIf="emailAddress?.emailAddressType">({{emailAddress?.emailAddressType}})</span>
-    </p>
-    <button *ngIf="canEdit"
-            class="btn btn-primary btn-lg btn-round"
-            (click)="onEdit()">Edit <i class="fa fa-pencil-square-o"
-         aria-hidden="true"></i>
-    </button> <button *ngIf="canDelete"
-            class="btn btn-danger btn-lg btn-round"
-            (click)="onDelete()">Delete <i class="fa fa-times"
-         aria-hidden="true"></i>
-    </button>
-  </div>
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+      <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"
+                                        (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+      <app-context-nav [contact]="contact"
+                       [context]="'email'"></app-context-nav>
+      <div class="card mx-auto d-block ta-max-view">
+        <div class="card-header">
+          <a title="Go To Contact"
+             routerLink="/application/contacts/{{contact?.id}}">
+            <h4><span *ngIf="contact?.company"><strong>{{contact?.company.name}}</strong>
+                <br></span>
+              <span *ngIf="contact"> {{contact?.firstName}}
+                {{contact?.lastName}}</span>
+              <i class="fa fa-link"
+                 aria-hidden="true"></i></h4>
+          </a>
+        </div>
+        <div class="card-body">
+          <p class="card-text"> <a href="mailto:{{emailAddress?.emailAddress}}">{{ emailAddress?.emailAddress }}</a>
+            <span *ngIf="emailAddress?.emailAddressType">({{emailAddress?.emailAddressType}})</span>
+          </p>
+          <button
+                  class="btn btn-primary btn-lg btn-round"
+                  (click)="onEdit()">Edit <i class="fa fa-pencil-square-o"
+               aria-hidden="true"></i>
+          </button> <button *ngIf="(!emailAddress.deleted)"
+                  class="btn btn-danger btn-lg btn-round"
+                  (click)="onDelete()">Delete <i class="fa fa-times"
+               aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Email Address View'"
+                                         [descriptionText]="'This page displays a single email address entered into the system.'"
+                                         [header1]="'Actions'"
+                                         [description1]="'You can either choose to edit, view more information about a contact or if you have permission, mark a address for deletion.'"
+                                         [header2]="'Deleted'"
+                                         [description2]="'Deleted email addresses display as faint text.'"
+                                         [header3]="null"
+                                         [description3]="null">
+  </licky-lick-app-widget-right-side-menu>
 </div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

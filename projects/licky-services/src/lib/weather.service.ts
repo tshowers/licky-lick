@@ -19,12 +19,12 @@ export class WeatherService {
   }
 
   getWeatherByLonLat(lon, lat): Observable<any> {
-    let url = OPEN_WEATHER_URL + 'lat=' + lat + '&lon=' + lon + '&APPID=' + OPEN_WEATHER_API_KEY + '&units=Imperial';
+    const url = OPEN_WEATHER_URL + 'lat=' + lat + '&lon=' + lon + '&APPID=' + OPEN_WEATHER_API_KEY + '&units=Imperial';
     return this.http.get(url, {responseType: 'json'})
   }
 
   getNew(): Weather {
-    let weather = new Weather();
+    const weather = new Weather();
     return weather;
   }
 

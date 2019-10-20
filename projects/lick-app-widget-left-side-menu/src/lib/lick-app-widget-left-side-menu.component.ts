@@ -36,12 +36,11 @@ export class LickAppWidgetLeftSideMenuComponent implements OnInit, OnDestroy {
   }
 
   searchNews(): void {
-    // console.log("Searching news for ", this.searchArgument)
     if (this.newsService)
       this._newsSubscription = this.newsService.getNewsBySearchCriteria(this.searchArgument, 1).subscribe(
         (news) => {
           this.searchResults = news.articles;
-          let total = ((news.articles.length === 0) ? 0 : news.totalResults);
+          const total = ((news.articles.length === 0) ? 0 : news.totalResults);
           this.searchTotal = total;
           if (total === 0)
             this.searchHeading = "No articles found";

@@ -46,6 +46,7 @@
                                [ngClass]="{'form-control-sm' : contact?.isCompany, 'form-control-lg' : !contact?.isCompany}"
                                id="firstName"
                                name="firstName"
+                               tabindex="1"
                                placeholder="First Name"
                                autocorrect="off"
                                autocapitalize="off"
@@ -70,6 +71,7 @@
                                [ngClass]="{'form-control-sm' : contact?.isCompany, 'form-control-lg' : !contact?.isCompany}"
                                id="lastName"
                                name="lastName"
+                               tabindex="2"
                                autocorrect="off"
                                autocapitalize="off"
                                spellcheck="off"
@@ -91,6 +93,7 @@
                         <input [(ngModel)]="contact.company.name"
                                id="dataCompanyName"
                                name="dataCompanyName"
+                               tabindex="3"
                                type="text"
                                [ngClass]="{'form-control-lg' : contact?.isCompany, 'form-control-sm' : !contact?.isCompany}"
                                class="form-control ta-input-element"
@@ -100,6 +103,7 @@
                         <input [(ngModel)]="contact.isCompany"
                                id="dataCompanyIndicator"
                                name="dataCompanyIndicator"
+                               tabindex="4"
                                type="checkbox"
                                class="checkbox"></div>
                       <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
@@ -107,6 +111,7 @@
                         <input [(ngModel)]="contact.draft"
                                id="dataDraft"
                                name="dataDraft"
+                               tabindex="5"
                                type="checkbox">
                         <label for="dataDraft"
                                title="Draft indicates the record is not finished and should not be made public">Private</label>
@@ -116,6 +121,7 @@
                         <input [(ngModel)]="contact.deleted"
                                id="dataDeleted"
                                name="dataDeleted"
+                               tabindex="6"
                                type="checkbox">
                         <label for="dataDeleted"
                                title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted</label>
@@ -125,6 +131,7 @@
                         <input [(ngModel)]="contact.keywords"
                                id="dataKeywords"
                                name="dataKeywords"
+                               tabindex="7"
                                type="text"
                                class="form-control form-control-lg ta-input-element"
                                placeholder="Enter keywords seperated by commas"></div>
@@ -140,6 +147,7 @@
                             <select [(ngModel)]="contact.prefix"
                                     #prefix="ngModel"
                                     name="prefix"
+                                    tabindex="8"
                                     id="prefix"
                                     class="form-control form-control-lg ta-input-element">
                               <option value=""></option>

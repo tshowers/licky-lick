@@ -106,11 +106,11 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
   }
 
   onDetail(data): void {
-    this.router.navigate(['/application/contacts/' + this.contact_id  + '/addresses/' +  data.id])
+    this.router.navigate(['application', 'contacts', this.contact_id, 'addresses',  data.id])
   }
 
   onEdit(data): void {
-    this.router.navigate(['/application/contacts/' + this.contact_id + '/addresses/' + data.id + '/edit'])
+    this.router.navigate(['application', 'contacts', this.contact_id, 'addresses', data.id, 'edit'])
   }
 
   onDelete(data): void {

@@ -26,8 +26,8 @@ export class UserLocationService {
   private setCurrentPosition() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        let latitude = position.coords.latitude;
-        let longitude = position.coords.longitude;
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
         this.setCityState(latitude, longitude);
       });
     }
@@ -45,12 +45,12 @@ export class UserLocationService {
 
 
   private fillInAddress(place, latitude, longitude): void {
-    let componentCount = place.address_components.length;
-    let addr = new Address();
+    const componentCount = place.address_components.length;
+    const addr = new Address();
     addr.longitude = longitude;
     addr.latitude = latitude;
     for (var i = 0; i < componentCount; i++) {
-      let addressType = place.address_components[i].types[0];
+      const addressType = place.address_components[i].types[0];
       if (addressType === 'administrative_area_level_2')
         addr.county = place.address_components[i].long_name;
       else if (addressType === 'administrative_area_level_1')

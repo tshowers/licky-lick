@@ -29,7 +29,7 @@ export class LickAppWidgetNotificationTaskComponent implements OnInit, AfterView
         if (tasks && tasks.length) {
           this._sortHelperService.sortByLastUpdated(tasks);
           tasks.forEach((task) => {
-            let l = this.isPastDate(task.dueDate);
+            const l = this.isPastDate(task.dueDate);
             task.isPastDate = l;
           })
           this.setUpIndicator(tasks);
@@ -60,9 +60,9 @@ export class LickAppWidgetNotificationTaskComponent implements OnInit, AfterView
 
   isPastDate(value: Date): boolean {
     if (!value) return false;
-    let testDate = new Date(value);
+    const testDate = new Date(value);
 
-    let today = new Date();
+    const today = new Date();
     return (testDate < today);
   }
 
@@ -84,8 +84,8 @@ export class LickAppWidgetNotificationTaskComponent implements OnInit, AfterView
 
   private isIndicatorNeeded(value: Date, compareDate: Date): boolean {
     if (!value || !compareDate) return false;
-    let lastChecked = new Date(compareDate);
-    let messageDate = new Date(value);
+    const lastChecked = new Date(compareDate);
+    const messageDate = new Date(value);
     return (messageDate.getTime() > lastChecked.getTime());
   }
 

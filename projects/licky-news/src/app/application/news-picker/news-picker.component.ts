@@ -42,7 +42,7 @@ export class NewsPickerComponent implements OnInit {
   onSubmit(): void {
     this._loginSerive.getUser().newsSources = this.newsSources;
     this._loginSerive.update();
-    this.router.navigate(['/application/news']);
+    this.router.navigate(['application', 'news']);
   }
 
   onReset() : void {

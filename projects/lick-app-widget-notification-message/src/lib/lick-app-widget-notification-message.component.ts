@@ -96,8 +96,8 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterV
 
   private isIndicatorNeeded(value: Date, compareDate: Date): boolean {
     if (!value || !compareDate) return false;
-    let lastChecked = new Date(compareDate);
-    let messageDate = new Date(value);
+    const lastChecked = new Date(compareDate);
+    const messageDate = new Date(value);
     return (messageDate.getTime() > lastChecked.getTime());
   }
 

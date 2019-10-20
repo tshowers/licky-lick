@@ -1,66 +1,117 @@
-<form #dataForm="ngForm"
-      class="form-group">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col">
-        <div class="form-group"><label for="noteName">Name of Note</label>
-          <input id="noteName"
-                 [(ngModel)]="justText.name"
-                 name="noteName"
-                 type="text"
-                 placeholder="Type of note or name"
-                 class="form-control form-control-lg ta-input-element"
-                 autofocus></div>
-        <div class="form-group"> <label for="scribbles">Notes</label>
-          <textarea [(ngModel)]="justText.text"
-                    id="scribbles"
-                    name="scribbles"
-                    rows="5"
-                    cols="80"
-                    class="form-control form-control-lg ta-input-element"></textarea>
-        </div>
-        <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [searchArgument]="searchArgument"
+                                        [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+      <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"
+                                        (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+      <app-context-nav [contact]="contact"
+                       [context]="'note'"></app-context-nav>
+      <div class="container">
+        <div class="card card-accent-theme">
+          <div class="card-body">
+            <form #dataForm="ngForm"
+                  class="form-group">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group"><label for="noteName">Note Name</label>
 
-          <input [(ngModel)]="justText.draft"
-                 id="dataDraft"
-                 name="dataDraft"
-                 type="checkbox">
-          <label for="dataDraft"
-                 title="Draft indicates the record is not finished and should not be made public">Private</label>
-        </div>
-        <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
+                      <input autofocus
+                             id="noteName"
+                             tabindex="1"
+                             [(ngModel)]="justText.name"
+                             name="noteName"
+                             type="text"
+                             placeholder="Type of note or name"
+                             class="form-control form-control-lg ta-input-element"></div>
+                    <div class="form-group"> <label for="scribbles">Notes</label>
+                      <textarea [(ngModel)]="justText.text"
+                                id="scribbles"
+                                tabindex="2"
+                                name="scribbles"
+                                rows="5"
+                                cols="80"
+                                class="form-control form-control-lg ta-input-element"></textarea>
+                    </div>
+                    <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
 
-          <input [(ngModel)]="justText.deleted"
-                 id="dataDeleted"
-                 name="dataDeleted"
-                 type="checkbox">
-          <label for="dataDeleted"
-                 title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted</label>
-        </div>
-        <div class="form-group"><label for="dataKeywords">Keywords</label>
+                      <input [(ngModel)]="justText.draft"
+                             id="dataDraft"
+                             tabindex="3"
+                             name="dataDraft"
+                             type="checkbox">
+                      <label for="dataDraft"
+                             title="Draft indicates the record is not finished and should not be made public">Private</label>
+                    </div>
+                    <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
 
-          <input [(ngModel)]="justText.keywords"
-                 id="dataKeywords"
-                 name="dataKeywords"
-                 type="text"
-                 class="form-control form-control-lg ta-input-element"
-                 placeholder="Enter keywords seperated by commas"></div>
+                      <input [(ngModel)]="justText.deleted"
+                             id="dataDeleted"
+                             tabindex="4"
+                             name="dataDeleted"
+                             type="checkbox">
+                      <label for="dataDeleted"
+                             title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted</label>
+                    </div>
+                    <div class="form-group"><label for="dataKeywords">Keywords</label>
+
+                      <input [(ngModel)]="justText.keywords"
+                             id="dataKeywords"
+                             tabindex="5"
+                             name="dataKeywords"
+                             type="text"
+                             class="form-control form-control-lg ta-input-element"
+                             placeholder="Enter keywords seperated by commas"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col text-center"> <button class="btn btn-primary btn-lg btn-round"
+                            (click)="onSubmit()"
+                            type="submit"
+                            tabindex="6"
+                            [disabled]="!dataForm.form.valid"
+                            title="Submit to database">Save <i class="fa fa-cloud"
+                         aria-hidden="true"></i>
+                    </button>
+                    <button *ngIf="canDelete"
+                            tabindex="7"
+                            class="btn btn-danger btn-lg btn-round"
+                            (click)="onDelete();dataForm.reset()"
+                            [hidden]="!justText.id">Delete <i class="fa fa-times"
+                         aria-hidden="true"></i>
+                    </button></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col text-center"> <button class="btn btn-primary btn-lg btn-round"
-                (click)="onSubmit()"
-                type="submit"
-                [disabled]="!dataForm.form.valid"
-                title="Submit to database">Save <i class="fa fa-cloud"
-             aria-hidden="true"></i>
-        </button>
-        <button *ngIf="canDelete"
-                class="btn btn-danger btn-lg btn-round"
-                (click)="onDelete();dataForm.reset()"
-                [hidden]="!justText.id">Delete <i class="fa fa-times"
-             aria-hidden="true"></i>
-        </button></div>
-    </div>
-  </div>
-</form>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Note Edit'"
+                                         [descriptionText]="'The edit screen is where you create a new note or edit and existing one.'"
+                                         [header1]="'Freeform'"
+                                         [description1]="'You may format the note any way you choose with the editor option.'"
+                                         [header2]="'Multiples'"
+                                         [description2]="'You can add multiple addresses, email addresses, notes, and phone numbers to contact. Once a contact is added, you will have the option of adding addresses, email addresses, notes, and phone numbers.'"
+                                         [header3]="'Keywords'"
+                                         [description3]="'The use of keywords is optional but helps searching for the note.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

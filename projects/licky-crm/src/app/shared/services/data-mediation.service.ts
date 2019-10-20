@@ -171,7 +171,7 @@ export class DataMediationService implements OnDestroy {
       .subscribe((data: EmailAddress[]) => {
         if (data) {
           this._emailAddresses = this.getEmailAddressListToArray(data);
-          this.emailAddress.next(this._emailAddresses);
+          this.emailAddresses.next(this._emailAddresses);
         }
       });
   }

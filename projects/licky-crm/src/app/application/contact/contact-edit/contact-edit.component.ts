@@ -78,12 +78,12 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
 
   private redirect(): void {
     if (!this.currentUpload)
-      this.router.navigate(['/application/contacts/' + this.contact.id]);
+      this.router.navigate(['application', 'contacts', this.contact.id]);
     else {
       let uploadCheck = setInterval(() => {
         if (this.currentUpload.progress >= 100) {
           clearInterval(uploadCheck);
-          this.router.navigate(['/application/contacts/' + this.contact.id]);
+          this.router.navigate(['application', 'contacts', this.contact.id]);
         }
       }, 1000)
     }

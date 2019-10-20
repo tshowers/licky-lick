@@ -14,6 +14,7 @@ export class FopResolverService {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<FOP> {
     let id1 = route.paramMap.get('id');
     let id2 = route.paramMap.get('id2');
+
     if (id1)
       return this.getFop(id1, id2);
     else
@@ -25,8 +26,7 @@ export class FopResolverService {
       return this._db.getData(FOPS + '/' + id1, id2)
         .pipe(map(fop => {
           if (fop) {
-            // FOP.restoreData(fop);
-            this.incrementViewCount(fop, id1);
+            this.incrementViewCount(fop, id1, id2);
             return (fop.id == id2) ? fop : of(this.getNew(id1));
           } else {
             return of(this.getNew(id1));
@@ -45,10 +45,18 @@ export class FopResolverService {
     return data;
   }
 
-  private incrementViewCount(fop: FOP, id1): void {
-    fop.views++;
-    fop.lastViewed = new Date().getTime();
-    this._db.updateData(FOPS + '/' + id1, fop.id, fop);
+  private incrementViewCount(fop: FOP, id1, id2): void {
+    if (fop) {
+      fop.id = id2;
+      if (fop.views && !isNaN(fop.views)) {
+        fop.views++;
+      } else {
+        fop.views = 0;
+        fop.views++;
+      }
+      fop.lastViewed = new Date().getTime();
+      this._db.updateData(FOPS + '/' + id1, id2, fop);
+    }
   }
 
 }

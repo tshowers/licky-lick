@@ -11,7 +11,7 @@ export class ContactViewResolverService {
   constructor(private _db: FirebaseDataService, public router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Contact> {
-    let id = route.paramMap.get('id');
+    const id = route.paramMap.get('id');
 
     return this._db.getData(CONTACTS, id).pipe(map(contact => {
       if (contact) {

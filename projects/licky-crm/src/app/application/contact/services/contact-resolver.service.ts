@@ -12,9 +12,9 @@ export class ContactResolverService {
   constructor(private _db: FirebaseDataService, public router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Contact> {
-    let id = route.paramMap.get('id');
-    let user = route.queryParamMap.get('user');
-    let employee = route.queryParamMap.get('employee');
+    const id = route.paramMap.get('id');
+    const user = route.queryParamMap.get('user');
+    const employee = route.queryParamMap.get('employee');
     return this.getContact(id, user, employee);
   }
 
@@ -49,9 +49,9 @@ export class ContactResolverService {
   }
 
   private fillContactWithUserData(contact: Contact) {
-    let theName = contact.name;
+    const theName = contact.name;
     if (theName) {
-      let space = theName.indexOf(" ");
+      const space = theName.indexOf(" ");
       let firstName = '';
       let lastName = '';
       if (space > 0) {

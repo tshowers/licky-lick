@@ -25,8 +25,7 @@ export class NoteResolverService {
       return this._db.getData(JUST_TEXTS + '/' + id1, id2)
         .pipe(map(justText => {
           if (justText) {
-            // JustText.restoreData(justText);
-            this.incrementViewCount(justText, id1);
+            this.incrementViewCount(justText, id1, id2);
             return (justText.id == id2) ? justText : of(this.getNew(id1));
           } else {
             return of(this.getNew(id1));
@@ -44,10 +43,18 @@ export class NoteResolverService {
     return data;
   }
 
-  private incrementViewCount(justText: JustText, id1): void {
-    justText.views++;
-    justText.lastViewed = new Date().getTime();
-    this._db.updateData(JUST_TEXTS + '/' + id1, justText.id, justText);
+  private incrementViewCount(justText: JustText, id1, id2): void {
+    if (justText) {
+      justText.id = id2;
+      if (justText.views && !isNaN(justText.views)) {
+        justText.views++;
+      } else {
+        justText.views = 0;
+        justText.views++;
+      }
+      justText.lastViewed = new Date().getTime();
+      this._db.updateData(JUST_TEXTS + '/' + id1, id2, justText);
+    }
   }
 
 }

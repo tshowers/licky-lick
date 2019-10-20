@@ -185,7 +185,7 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
 
   onSubmit(): void {
     (this.address.id ? this.onUpdate() : this.saveNewAddress());
-    this.router.navigate(['/application/contacts/' + this.contact_id + "/addresses"]);
+    this.router.navigate(['application', 'contacts', this.contact_id, 'addresses']);
   }
 
   onUpdate(): void {
