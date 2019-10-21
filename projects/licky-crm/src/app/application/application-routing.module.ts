@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth/auth.guard';
 
 import { ContactModule } from './contact/contact.module';
+import { NotificationModule } from './notification/notification.module';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { ResetPageComponent } from './reset-page/reset-page.component';
@@ -12,6 +13,7 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { PageTemplateComponent } from './page-template/page-template.component';
 
 const routes : Routes = [
+  { path: 'notification', canLoad: [AuthGuard], children: [ {path: '', loadChildren: './notification/notification.module#NotificationModule'} ]},
   { path: 'contacts', canLoad: [AuthGuard], children: [ {path: '', loadChildren: './contact/contact.module#ContactModule'} ]},
   { path: 'template', component: PageTemplateComponent, data: { title: 'Template - CRM - 16 AHEAD' }},
   { path: 'profile', component: UserProfileComponent, data: { title: 'Profile - CRM - 16 AHEAD' }},

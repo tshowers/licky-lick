@@ -1,6 +1,9 @@
 <licky-lick-app-widget-menu [router]="router"
                             [db]="dm.db"
                             [photoURL]="dm.photoURL"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
                             [displayName]="dm.displayName"
                             [emailAddress]="dm.emailAddress"
                             [loggedIn]="dm.loggedIn"
@@ -30,7 +33,7 @@
                   <div class="col">
                     <div class="form-group"><label for="noteName">Note Name</label>
 
-                      <input autofocus
+                      <input licky-auto-focus
                              id="noteName"
                              tabindex="1"
                              [(ngModel)]="justText.name"

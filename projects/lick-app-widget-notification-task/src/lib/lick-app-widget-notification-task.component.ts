@@ -16,6 +16,7 @@ export class LickAppWidgetNotificationTaskComponent implements OnInit, AfterView
   @Input() db: FirebaseDataService;
   @Input() loginService: LickyLoginService;
   @Input() router: Router;
+  @Input() taskLink;
   private _user: User;
   tasksChecked: boolean = false;
   userSubscription: Subscription;
@@ -74,12 +75,13 @@ export class LickAppWidgetNotificationTaskComponent implements OnInit, AfterView
 
   private setUpIndicator(tasks): void {
     this.tasksChecked = true;
-    for (let i = 0; i < tasks.length; i++) {
-      if (this.isIndicatorNeeded(tasks[i].lastUpdated, this._user.tasksLastCheckedDate)) {
-        this.tasksChecked = false;
-        break;
+    if (tasks)
+      for (let i = 0; i < tasks.length; i++) {
+        if (this.isIndicatorNeeded(tasks[i].lastUpdated, this._user.tasksLastCheckedDate)) {
+          this.tasksChecked = false;
+          break;
+        }
       }
-    }
   }
 
   private isIndicatorNeeded(value: Date, compareDate: Date): boolean {

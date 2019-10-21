@@ -25,35 +25,47 @@
   <div class="navbar-search d-none d-xl-block">
     <form #searchForm="ngForm"
           class="form-group">
-    <div class="input-group"> <button [ngStyle]="{'display' : searchDisplay}" (click)="onSearch()" [disabled]="!searchForm.form.valid" type="submit" class="input-group-addon bg-theme">
-        <i class="fa fa-search"></i>
-      </button><button title="Cancel search" [ngStyle]="{'display' : cancelDisplay}" (click)="onCancelSearch();searchForm.reset()" type="button" class="input-group-addon btn-outline-dark">
+      <div class="input-group"> <button [ngStyle]="{'display' : searchDisplay}"
+                (click)="onSearch()"
+                [disabled]="!searchForm.form.valid"
+                type="submit"
+                class="input-group-addon bg-theme">
+          <i class="fa fa-search"></i>
+        </button><button title="Cancel search"
+                [ngStyle]="{'display' : cancelDisplay}"
+                (click)="onCancelSearch();searchForm.reset()"
+                type="button"
+                class="input-group-addon btn-outline-dark">
           <i class="fa fa-times"></i>
         </button>
-      <input type="text"
-             [(ngModel)]="searchArgument"
-             name="searchArgument"
-             id="searchArgument"
-             autocorrect="off"
-             autocapitalize="off"
-             spellcheck="off"
-             autocomplete="off"
-             class="form-control form-control-lg ta-input-element"
-             placeholder="Find a contact . .."
-             required>
-    </div>
+
+        <input type="text"
+               [(ngModel)]="searchArgument"
+               name="searchArgument"
+               id="searchArgument"
+               autocorrect="off"
+               autocapitalize="off"
+               spellcheck="off"
+               autocomplete="off"
+               class="form-control form-control-lg ta-input-element"
+               placeholder="Find a contact . .."
+               required>
+      </div>
     </form>
   </div>
   <!-- end navbar-search -->
   <ul class="nav navbar-nav ">
     <licky-lick-app-widget-notification-alert [loginService]="loginService"
                                               [db]="db"
+                                              [alertLink]="alertLink"
                                               [router]="router"></licky-lick-app-widget-notification-alert>
     <licky-lick-app-widget-notification-message [loginService]="loginService"
+                                                [messageLink]="messageLink"
                                                 [db]="db"
                                                 [router]="router"></licky-lick-app-widget-notification-message>
     <licky-lick-app-widget-notification-task [loginService]="loginService"
                                              [db]="db"
+                                             [taskLink]="taskLink"
                                              [router]="router"></licky-lick-app-widget-notification-task>
     <li class="nav-item dropdown">
       <a class="btn btn-round btn-theme btn-sm"
@@ -76,10 +88,12 @@
               <h5 class="text-capitalize">{{displayName}}</h5>
               <p class="text-muted"
                  *ngIf="role">Role: {{role}}</p>
-                  <p [ngClass]="{'text-primary' : emailVerified, 'text-danger' : !emailVerified}">
-                   <span *ngIf="!emailVerified"><i class="fa fa-envelope-o" aria-hidden="true"></i> Not Verified</span>
-                   <span *ngIf="emailVerified"><i class="fa fa-check" aria-hidden="true"></i> Verified</span>
-                    </p>
+              <p [ngClass]="{'text-primary' : emailVerified, 'text-danger' : !emailVerified}">
+                <span *ngIf="!emailVerified"><i class="fa fa-envelope-o"
+                     aria-hidden="true"></i> Not Verified</span>
+                <span *ngIf="emailVerified"><i class="fa fa-check"
+                     aria-hidden="true"></i> Verified</span>
+              </p>
               <a (click)="onViewProfile()"
                  style="cursor:pointer"
                  class="btn btn-round btn-theme btn-sm"><span class="ta-whitecolor">View

@@ -3,6 +3,9 @@
                             [photoURL]="dm.photoURL"
                             [displayName]="dm.displayName"
                             [emailAddress]="dm.emailAddress"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
                             [loggedIn]="dm.loggedIn"
                             [userName]="dm.userName"
                             [emailVerified]="dm.emailVerified"
@@ -29,7 +32,7 @@
                 <div class="form-group"> <label for="contactPhoneNumber">Phone
                     Number</label>
 
-                  <input autofocus
+                  <input licky-auto-focus
                          tabindex="1"
                          [(ngModel)]="phoneNumber.phoneNumber"
                          #contactPhoneNumber="ngModel"

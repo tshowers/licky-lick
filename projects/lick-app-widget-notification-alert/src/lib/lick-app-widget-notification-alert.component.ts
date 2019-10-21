@@ -16,6 +16,7 @@ export class LickAppWidgetNotificationAlertComponent implements OnInit, AfterVie
   @Input() loginService: LickyLoginService;
   @Input() db: FirebaseDataService;
   @Input() router: Router;
+  @Input() alertLink;
   alertsChecked: boolean = false;
   public user: User;
 
@@ -54,12 +55,13 @@ export class LickAppWidgetNotificationAlertComponent implements OnInit, AfterVie
   private setUpIndicator(alerts): void {
     this.alertsChecked = true;
     const lastChecked = this.user.alertsLastCheckedDate;
-    for (let i = 0; i < alerts.length; i++) {
-      if (this.isIndicatorNeeded(alerts[i].lastUpdated, lastChecked)) {
-        this.alertsChecked = false;
-        break;
+    if (alerts)
+      for (let i = 0; i < alerts.length; i++) {
+        if (this.isIndicatorNeeded(alerts[i].lastUpdated, lastChecked)) {
+          this.alertsChecked = false;
+          break;
+        }
       }
-    }
   }
 
   private isIndicatorNeeded(value: Date, compareDate: Date): boolean {

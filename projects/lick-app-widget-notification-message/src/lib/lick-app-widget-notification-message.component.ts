@@ -25,6 +25,7 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterV
   @Input() router: Router;
   @Input() loginService: LickyLoginService;
   @Input() db: FirebaseDataService;
+  @Input() messageLink;
 
   constructor(private _sortHelperService: SortHelperService, private _cd: ChangeDetectorRef) { }
 
@@ -86,12 +87,13 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterV
   private setUpIndicator(messages): void {
     this.messagesChecked = true;
     const lastChecked = this._user.messagesLastCheckedDate;
-    for (let i = 0; i < messages.length; i++) {
-      if (this.isIndicatorNeeded(messages[i].lastUpdated, lastChecked)) {
-        this.messagesChecked = false;
-        break;
+    if (messages)
+      for (let i = 0; i < messages.length; i++) {
+        if (this.isIndicatorNeeded(messages[i].lastUpdated, lastChecked)) {
+          this.messagesChecked = false;
+          break;
+        }
       }
-    }
   }
 
   private isIndicatorNeeded(value: Date, compareDate: Date): boolean {

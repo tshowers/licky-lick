@@ -35,8 +35,8 @@
         <p align="center" class="alert alert-warning" role="alert"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> No messages</p>
       </div>
     </div>
-    <div class="dropdown-footer "> <a routerLink="/application/messages">
-                <strong>See all messages</strong>
+    <div class="dropdown-footer" *ngIf="messageLink"> <a routerLink="{{messageLink}}">
+                <strong>See all message notifications</strong>
             </a> <br> <br>
       <hr>
       <form #dataForm="ngForm" class="form-group">

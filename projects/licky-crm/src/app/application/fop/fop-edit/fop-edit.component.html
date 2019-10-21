@@ -1,5 +1,8 @@
 <licky-lick-app-widget-menu [router]="router"
                             [db]="dm.db"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
                             [photoURL]="dm.photoURL"
                             [displayName]="dm.displayName"
                             [emailAddress]="dm.emailAddress"
@@ -30,7 +33,7 @@
                   <div class="col"> <label for="fopType">Type of Form of
                       Payment</label>
 
-                    <select autofocus
+                    <select licky-auto-focus
                             tabindex="1"
                             [(ngModel)]="fop.fopType"
                             #fopType="ngModel"

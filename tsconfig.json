@@ -684,6 +684,12 @@
       ],
       "lick-app-widget-post5/*": [
         "dist/lick-app-widget-post5/*"
+      ],
+      "lick-app-widget-under-construction": [
+        "dist/lick-app-widget-under-construction"
+      ],
+      "lick-app-widget-under-construction/*": [
+        "dist/lick-app-widget-under-construction/*"
       ]
     }
   }

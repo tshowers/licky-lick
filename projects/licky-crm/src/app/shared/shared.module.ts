@@ -28,6 +28,7 @@ import { LickMarketingFaq2Module } from 'lick-marketing-faq2';
 import { LickAppWidgetLeftSideMenuModule } from 'lick-app-widget-left-side-menu';
 import { LickAppWidgetRightSideMenuModule } from 'lick-app-widget-right-side-menu';
 import { LickAppWidgetStats15Module } from 'lick-app-widget-stats15';
+import { LickAppWidgetUnderConstructionModule } from 'lick-app-widget-under-construction';
 
 import { NameDecriptionFilterPipe } from './filters/name-decription-filter.pipe';
 
@@ -65,6 +66,7 @@ export const firebaseConfig = environment.firebaseConfig;
     LickAppWidgetFooterModule,
     LickAppWidgetBreadcrumbModule,
     FormsModule,
+    LickAppWidgetUnderConstructionModule,
     LickAppWidgetProfileModule,
     LickAppWidgetDataFooterModule,
     LickAppWidgetStats3Module,
@@ -93,6 +95,7 @@ export const firebaseConfig = environment.firebaseConfig;
     LickAppWidgetChatPopupModule,
     LickAppWidgetFooterModule,
     LickAppWidgetBreadcrumbModule,
+    LickAppWidgetUnderConstructionModule,
     NgbModule,
     FormsModule,
     LickAppWidgetDataFooterModule,

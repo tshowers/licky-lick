@@ -25,6 +25,9 @@ export class LickAppWidgetMenuComponent implements OnInit {
   @Input() loginService: LickyLoginService;
   @Input() emailVerified: false;
   @Input() db: FirebaseDataService;
+  @Input() messageLink;
+  @Input() alertLink;
+  @Input() taskLink;
   searchArgument = '';
 
   leftSidebar: boolean = true;

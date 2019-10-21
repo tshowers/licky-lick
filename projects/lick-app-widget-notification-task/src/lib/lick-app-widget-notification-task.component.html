@@ -15,8 +15,8 @@
         <p align="center" class="alert alert-warning" role="alert"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> No tasks</p>
       </div>
     </div>
-    <div class="dropdown-footer "> <a routerLink="/application/tasks">
-                <strong>view all tasks</strong>
+    <div class="dropdown-footer" *ngIf="taskLink"> <a routerLink="{{taskLink}}">
+                <strong>view all task notifications</strong>
             </a> </div>
   </div>
 </li>
