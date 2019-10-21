@@ -8,11 +8,11 @@
        src="{{firebaseUser?.photoURL}}"
        alt="{{firebaseUser?.displayName}}">
   <div class="card-header">
-    <h4 class="my-0 font-weight-normal">
+    <h4 class="my-0 font-weight-normal wow fadeIn">
       {{ firebaseUser?.displayName }}
     </h4>
   </div>
-  <div class="card-body">
+  <div class="card-body wow fadeIn">
     <ul class="list-group list-group-flush">
       <li class="list-group-item"
           *ngIf="firebaseUser?.email">

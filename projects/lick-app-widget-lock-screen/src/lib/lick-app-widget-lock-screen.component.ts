@@ -16,6 +16,7 @@ export class LickAppWidgetLockScreenComponent implements OnInit {
   @Input() status = "LOCKED";
   @Input() user : User = {
     "name" : "User Name",
+    "account": null,
     "url" : "http://via.placeholder.com/100x100",
     "shared" : false,
     "publishedAt" : new Date(),

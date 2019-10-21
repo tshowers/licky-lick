@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-md-6" *ngFor="let item of boxes">
       <div class="title-wrap card-accent-theme" *ngIf="item">
-        <h3 class="section-title">{{item?.heading}}</h3>
+        <h3 class="section-title wow fadeInDown">{{item?.heading}}</h3>
       </div>
       <div class="row" *ngIf="(!item || !item.featuredArticle)">
         <div class="col text-warning pt-md-5 pb-md-5">

@@ -1,8 +1,8 @@
 <section class="container-pages ta-vertical-center">
   <div class="brand-logo float-left"><a routerLink="{{homePageLink}}">{{logoName}}</a></div>
   <div class="pages-tag-line text-white">
-    <div class="h4">{{headingText}}</div>
-    <small> {{subText}}</small>
+    <div class="h4 wow fadeInDown">{{headingText}}</div>
+    <small class="wow fadeIn"> {{subText}}</small>
   </div>
   <div class="card pages-card col-lg-4 col-md-6 col-sm-6">
     <div class="card-body ">
@@ -11,9 +11,9 @@
              alt=""
              class="text-center">
       </div>
-      <div class="h4 text-center text-theme"><strong>{{user?.name}}</strong></div>
-      <div class="small text-center text-dark"> {{status}} </div>
-      <div class="small text-center text-dark"> {{titleText}} </div>
+      <div class="h4 text-center text-theme wow fadeIn"><strong>{{user?.name}}</strong></div>
+      <div class="small text-center text-dark wow fadeIn"> {{status}} </div>
+      <div class="small text-center text-dark wow fadeIn"> {{titleText}} </div>
       <form #userForm="ngForm"
             (ngSubmit)="onSubmit();userForm.reset()">
         <div class="form-group">

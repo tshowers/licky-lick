@@ -7,7 +7,7 @@
           <!-- Small post -->
           <div class="featured-posts-grid__item featured-posts-grid__item--sm"
                *ngFor="let item of data">
-            <article class="entry card post-list featured-posts-grid__entry">
+            <article class="entry card post-list featured-posts-grid__entry wow fadeInUp">
               <div *ngIf="item?.urlToImage && (item?.urlToImage != null)" class="entry__img-holder post-list__img-holder card__img-holder"
                    [ngStyle]="{'background-image': 'url(' + item?.urlToImage + ')'}">
                 <a (click)="onPageEvent(item)"
@@ -51,7 +51,7 @@
              *ngIf="featuredData">
           <!-- Large post -->
           <div class="featured-posts-grid__item featured-posts-grid__item--lg">
-            <article class="entry card featured-posts-grid__entry">
+            <article class="entry card featured-posts-grid__entry wow fadeInUp">
               <div class="entry__img-holder card__img-holder">
                 <a (click)="onPageEvent(featuredData)"><img src="{{featuredData?.urlToImage}}"
                        alt=""

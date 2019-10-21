@@ -1,7 +1,7 @@
 <div class="card card-accent-theme">
   <div class=" products-widget">
     <div class="header">
-      <div class="heading">{{headingText}}</div>
+      <div class="heading wow fadeInDown">{{headingText}}</div>
       <div class="pull-right header-tool">
         <ul>
           <li>
@@ -27,8 +27,8 @@
           </td>
           <td class="document">
             <a routerLink="{{item?.link}}">
-              <div class="heading">{{item?.name}}</div>
-              <p class="description">{{item?.description}} </p>
+              <div class="heading wow fadeIn">{{item?.name}}</div>
+              <p class="description wow fadeIn">{{item?.description}} </p>
             </a>
           </td>
           <td class="date">{{item?.lastUpdated | date : 'short'}}</td>

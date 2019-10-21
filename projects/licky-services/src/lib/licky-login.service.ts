@@ -85,7 +85,7 @@ export class LickyLoginService {
   }
 
   public isLoggedIn() : boolean {
-    console.info("LOGIN STATUS", this._firebaseUser, this._user);
+    // console.info("LOGIN STATUS", this._firebaseUser, this._user);
     this._loggedIn = (this._firebaseUser && this._user) ? true : false;
     return (this._loggedIn);
   }
@@ -226,10 +226,10 @@ export class LickyLoginService {
 
 
           if (u === null || typeof u != 'object') {
-            console.log("CREATE USER");
+            // console.log("CREATE USER");
             this.createUser();
           } else {
-            console.log("USER FOUND", JSON.stringify(u));
+            // console.log("USER FOUND", JSON.stringify(u));
             this.setFirebaseAttributes(u);
           }
 
