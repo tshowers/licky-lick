@@ -37,4 +37,13 @@ export class UserProfileComponent extends LickAppPageComponent implements OnInit
     this.message = "Check your email.";
   }
 
+  onSearch(value) : void {
+    this.router.navigate(['application', 'contacts'], {queryParams: { searchArgument: value}})
+  }
+
+  get diagnostic() {
+    return JSON.stringify(this.message, null, 2);
+  }
+
+
 }

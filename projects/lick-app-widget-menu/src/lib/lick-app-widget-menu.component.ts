@@ -13,6 +13,7 @@ export class LickAppWidgetMenuComponent implements OnInit {
 
   @Input() router: Router;
   @Input() photoURL = "http://via.placeholder.com/32";
+
   @Input() displayName = "unknown";
   @Input() role = "N/A";
   @Input() emailAddress = "unknown@16ahead.com";
@@ -34,6 +35,7 @@ export class LickAppWidgetMenuComponent implements OnInit {
   rightSidebar: boolean = false;
   searchDisplay = '';
   cancelDisplay = 'none';
+  @Input() defaultPhoto = "/assets/images/default-user.png"
 
   @Output() settingsEvent = new EventEmitter();
   @Output() profileEvent = new EventEmitter();

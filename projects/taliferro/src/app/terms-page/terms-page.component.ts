@@ -16,6 +16,10 @@ export class TermsPageComponent implements OnInit {
       "name" : "Home",
     },
     {
+      "link" : "/blog",
+      "name" : "Blog",
+    },
+    {
       "link" : "/terms",
       "name" : "Terms"
     },

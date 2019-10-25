@@ -119,6 +119,10 @@ export class AddressListComponent extends LickAppPageComponent implements OnInit
     this.router.navigate(['application', 'contacts', this.contact_id, 'addresses',  data.id])
   }
 
+  onSearch(value) : void {
+    this.router.navigate(['application', 'contacts'], {queryParams: { searchArgument: value}})
+  }
+
   get diagnostic() {
     return "contact_id=" + this.contact_id
       + ", CONTACT=" + JSON.stringify(this.contact, null, 2)

@@ -21,6 +21,10 @@ export class PrivacyPageComponent implements OnInit {
       "name" : "Home",
     },
     {
+      "link" : "/blog",
+      "name" : "Blog",
+    },
+    {
       "link" : "/terms",
       "name" : "Terms"
     },

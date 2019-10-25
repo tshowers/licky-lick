@@ -15,7 +15,7 @@ export class Contact {
   public lastName: string;
 
   public isCompany?: boolean = false;
-
+  public description?: string;
   public ssn?: string;
   public company?: Company = new Company();
   public prefix?: string;

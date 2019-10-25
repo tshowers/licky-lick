@@ -37,11 +37,11 @@ export class NavComponent implements OnInit, OnDestroy {
 
   loggedInMenuItems: any[] = [
     {
-      "link": "/",
-      "name": "Home",
+      "link": "/application/contacts/dashboard",
+      "name": "Dashboard",
     },
     {
-      "link": "/application/contacts/dashboard",
+      "link": "/application/contacts",
       "name": "Contacts",
     },
     {

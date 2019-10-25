@@ -8,6 +8,7 @@
 <licky-lick-app-widget-signup *ngIf="isWidget5"></licky-lick-app-widget-signup>
 <licky-lick-app-widget-logout *ngIf="isWidget6"></licky-lick-app-widget-logout>
 <licky-lick-app-widget-not-found  *ngIf="isWidget7"></licky-lick-app-widget-not-found>
+<licky-lick-app-widget-under-construction *ngIf="isWidget8"></licky-lick-app-widget-under-construction>
 <ul class="nav nav-tabs bg-light fixed-bottom">
   <li class="nav-item" [ngClass]="{'active' : isWidget1}">
     <a class="nav-link" (click)="onMaintenance()">Maintenance</a>
@@ -29,5 +30,8 @@
   </li>
   <li class="nav-item" [ngClass]="{'active' : isWidget7}">
     <a class="nav-link" (click)="onNotFound()">Not Found</a>
+  </li>
+  <li class="nav-item" [ngClass]="{'active' : isWidget8}">
+    <a class="nav-link" (click)="onUnderConstruction()">Under Construction</a>
   </li>
 </ul>

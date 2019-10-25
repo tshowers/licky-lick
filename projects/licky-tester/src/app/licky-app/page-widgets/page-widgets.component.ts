@@ -14,6 +14,7 @@ export class PageWidgetsComponent implements OnInit {
   isWidget5 : boolean = false;
   isWidget6 : boolean = false;
   isWidget7 : boolean = false;
+  isWidget8 : boolean = false;
 
   constructor() { }
 
@@ -28,6 +29,7 @@ export class PageWidgetsComponent implements OnInit {
     this.isWidget5 = false;
     this.isWidget6 = false;
     this.isWidget7 = false;
+    this.isWidget8 = false;
   }
 
   onForgot() : void {
@@ -38,6 +40,7 @@ export class PageWidgetsComponent implements OnInit {
     this.isWidget5 = false;
     this.isWidget6 = false;
     this.isWidget7 = false;
+    this.isWidget8 = false;
   }
 
   onLogin() : void {
@@ -48,6 +51,7 @@ export class PageWidgetsComponent implements OnInit {
     this.isWidget5 = false;
     this.isWidget6 = false;
     this.isWidget7 = false;
+    this.isWidget8 = false;
   }
 
   onLock() : void {
@@ -58,6 +62,7 @@ export class PageWidgetsComponent implements OnInit {
     this.isWidget5 = false;
     this.isWidget6 = false;
     this.isWidget7 = false;
+    this.isWidget8 = false;
   }
   onSignUp() : void {
     this.isWidget1 = false;
@@ -67,6 +72,7 @@ export class PageWidgetsComponent implements OnInit {
     this.isWidget5 = true;
     this.isWidget6 = false;
     this.isWidget7 = false;
+    this.isWidget8 = false;
   }
 
   onLogout() : void {
@@ -77,6 +83,7 @@ export class PageWidgetsComponent implements OnInit {
     this.isWidget5 = false;
     this.isWidget6 = true;
     this.isWidget7 = false;
+    this.isWidget8 = false;
   }
 
   onNotFound() : void {
@@ -87,6 +94,18 @@ export class PageWidgetsComponent implements OnInit {
     this.isWidget5 = false;
     this.isWidget6 = false;
     this.isWidget7 = true;
+    this.isWidget8 = false;
+  }
+
+  onUnderConstruction() : void {
+    this.isWidget1 = false;
+    this.isWidget2 = false;
+    this.isWidget3 = false;
+    this.isWidget4 = false;
+    this.isWidget5 = false;
+    this.isWidget6 = false;
+    this.isWidget7 = false;
+    this.isWidget8 = true;
   }
 
   onPageEvent(type) : void {

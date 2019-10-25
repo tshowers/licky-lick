@@ -690,6 +690,12 @@
       ],
       "lick-app-widget-under-construction/*": [
         "dist/lick-app-widget-under-construction/*"
+      ],
+      "lick-app-widget-article": [
+        "dist/lick-app-widget-article"
+      ],
+      "lick-app-widget-article/*": [
+        "dist/lick-app-widget-article/*"
       ]
     }
   }

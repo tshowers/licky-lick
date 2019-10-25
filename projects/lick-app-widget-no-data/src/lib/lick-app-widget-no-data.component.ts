@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'licky-lick-app-widget-no-data',
@@ -8,7 +8,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class LickAppWidgetNoDataComponent implements OnInit {
 
   @Output() newItemEvent = new EventEmitter();
-
+  @Input() newButton: boolean = true;
 
   constructor() { }
 

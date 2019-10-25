@@ -1,0 +1,34 @@
+<div class="container ta-container-view"
+     *ngIf="data && (data.length > 0); else noData">
+  <article *ngFor="let article of data; let i = index">
+    <div class="row">
+      <div class="col">
+        <div class="ta-neglected-featured"> <img src="{{article?.url}}"
+               alt="{{article?.title}}"> </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2>{{article?.title}}</h2>
+        <p class="lead">{{article?.description}}</p>
+        <div class="about-text" innerHTML={{article?.articleText}}></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div>
+          <p>{{article?.author}}</p>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </article>
+  <ngb-pagination [(page)]="currentPage"
+                  (pageChange)="onPageChange($event)"
+                  [pageSize]="pageSize"
+                  [collectionSize]="totalRecords"></ngb-pagination>
+
+</div>
+<ng-template #noData>
+  <licky-lick-app-widget-no-data [newButton]="false">Articles</licky-lick-app-widget-no-data>
+</ng-template>

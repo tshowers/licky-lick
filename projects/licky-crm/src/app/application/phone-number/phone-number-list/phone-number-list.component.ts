@@ -120,6 +120,10 @@ export class PhoneNumberListComponent extends LickAppPageComponent implements On
     this.router.navigate(['application', 'contacts', this.contact_id, 'phone-numbers',  data.id])
   }
 
+  onSearch(value) : void {
+    this.router.navigate(['application', 'contacts'], {queryParams: { searchArgument: value}})
+  }
+
   get diagnostic() {
     return "contact_id=" + this.contact_id
       + ", CONTACT=" + JSON.stringify(this.contact, null, 2)

@@ -119,6 +119,10 @@ export class FopListComponent extends LickAppPageComponent implements OnInit, On
     this.router.navigate(['application', 'contacts', this.contact_id, 'form-of-payments',  data.id])
   }
 
+  onSearch(value) : void {
+    this.router.navigate(['application', 'contacts'], {queryParams: { searchArgument: value}})
+  }
+
   get diagnostic() {
     return "contact_id=" + this.contact_id
       + ", CONTACT=" + JSON.stringify(this.contact, null, 2)

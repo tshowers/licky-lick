@@ -180,11 +180,11 @@ export class FirebaseDataService {
 
   getDataCollection(path): Observable<any> {
     path = this.getAugmentedPath(path);
-
+    // console.log("Getting data for path", path);
     return Observable.create((observer) => {
 
       this._db.ref(path).on('value', (snapshot) => {
-
+        // console.log("Snapshot", JSON.stringify( snapshot.val()));
         observer.next((snapshot) ? snapshot.val() : null);
         observer.complete();
       },
@@ -217,6 +217,7 @@ export class FirebaseDataService {
   }
 
   public getConvertDataToList(data: any): Observable<any> {
+    // console.log(JSON.stringify(data));
     let list: any[] = [];
     for (let item in data) {
       this.doFixUpData(data, item);
@@ -230,6 +231,7 @@ export class FirebaseDataService {
   }
 
   public getListToArray(data: any): any[] {
+    // console.log(JSON.stringify(data));
     let list: any[] = [];
     for (let item in data) {
       this.doFixUpData(data, item);

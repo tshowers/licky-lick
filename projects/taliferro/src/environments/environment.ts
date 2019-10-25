@@ -14,7 +14,8 @@ export const environment = {
   },
   googleMapsKey: 'AIzaSyBuTmQj9nLYKV9jb-Kk_6W2Ue95dfMw8Kc',
   stripeKey: 'pk_test_N5dHl4vGjMGFLOTiccfaXscI',
-  newsAPIKey: '8edae266107643bd847972bb713a67bb'
+  newsAPIKey: '8edae266107643bd847972bb713a67bb',
+  maintenance: false,
 };
 
 /*

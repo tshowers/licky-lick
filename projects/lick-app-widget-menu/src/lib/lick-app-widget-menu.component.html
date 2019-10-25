@@ -74,7 +74,7 @@
          role="button"
          aria-haspopup="true"
          aria-expanded="false">
-        <span class="">{{displayName}}
+        <span class="text-white">{{displayName}}
           <i class="fa fa-arrow-down"></i>
         </span>
       </a>
@@ -83,6 +83,9 @@
           <div class="dw-user-box">
             <div class="u-img"
                  *ngIf="photoURL"> <img src="{{photoURL}}"
+                   alt="{{displayName}}" /> </div>
+            <div class="u-img"
+                 *ngIf="!photoURL"> <img src="{{defaultPhoto}}"
                    alt="{{displayName}}" /> </div>
             <div class="u-text">
               <h5 class="text-capitalize">{{displayName}}</h5>
@@ -101,9 +104,6 @@
             </div>
           </div>
           <!-- end dw-user-box -->
-          <a class="dropdown-item"
-             (click)="onViewProfile()">
-            <i class="fa fa-user"></i> Profile</a>
           <a class="dropdown-item"
              (click)="onSettings()">
             <i class="fa fa-wrench"></i> Settings</a>

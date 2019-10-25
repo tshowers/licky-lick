@@ -20,6 +20,7 @@ import { LickMarketingSimplePageModule } from 'lick-marketing-simple-page';
 import { LickMarketingSimpleHeaderModule } from 'lick-marketing-simple-header';
 import { LickMarketingContactUs1Module} from 'lick-marketing-contact-us1';
 import { LickMarketingTryIt2Module } from 'lick-marketing-try-it2';
+import { LickAppWidgetArticleModule } from 'lick-app-widget-article';
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -28,6 +29,7 @@ import { MaintenancePageComponent } from './maintenance-page/maintenance-page.co
 import { environment } from '../environments/environment';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import { TermsPageComponent } from './terms-page/terms-page.component';
+import { BlogComponent } from './blog/blog.component';
 
 export const firebaseConfig = environment.firebaseConfig;
 
@@ -38,7 +40,8 @@ export const firebaseConfig = environment.firebaseConfig;
     HomePageComponent,
     MaintenancePageComponent,
     PrivacyPageComponent,
-    TermsPageComponent
+    TermsPageComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ export const firebaseConfig = environment.firebaseConfig;
     LickyServicesModule.forRoot(firebaseConfig),
     RouterModule.forRoot([
       {path: '', component: HomePageComponent},
+      {path: 'blog', component: BlogComponent},
       {path: 'privacy', component: PrivacyPageComponent},
       {path: 'terms', component: TermsPageComponent},
       {path: 'maintenance', component: MaintenancePageComponent},
@@ -65,6 +69,7 @@ export const firebaseConfig = environment.firebaseConfig;
     LickMarketingSimpleHeaderModule,
     LickMarketingContactUs1Module,
     LickMarketingTeam1Module,
+    LickAppWidgetArticleModule,
     LickDataModule,
     LickMarketingTryIt2Module
   ],

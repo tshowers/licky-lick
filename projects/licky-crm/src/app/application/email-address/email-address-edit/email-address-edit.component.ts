@@ -125,6 +125,10 @@ export class EmailAddressEditComponent extends LickAppPageComponent implements O
     this.router.navigate([link]);
   }
 
+  onSearch(value) : void {
+    this.router.navigate(['application', 'contacts'], {queryParams: { searchArgument: value}})
+  }
+
   get diagnostic() {
     return JSON.stringify(this.emailAddress, null, 2)
       + ", contact_id=" + this.contact_id

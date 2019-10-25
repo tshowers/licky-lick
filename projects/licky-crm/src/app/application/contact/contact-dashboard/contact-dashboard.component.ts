@@ -38,7 +38,7 @@ export class ContactDashboardComponent extends LickAppPageComponent implements O
   chartData2$: Observable<any[]>;
   chartData3$: Observable<any[]>;
   subHeadingText;
-  headingText = "Contact Data Activity";
+  headingText = "Activity";
 
   buttonText1 = "Updated";
   buttonText2 = "New Contacts";

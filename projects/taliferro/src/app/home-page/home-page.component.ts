@@ -15,6 +15,18 @@ export class HomePageComponent implements OnInit {
       "link" : "/",
       "name" : "Home",
     },
+    {
+      "link" : "/blog",
+      "name" : "Blog",
+    },
+    {
+      "link" : "/terms",
+      "name" : "Terms"
+    },
+    {
+      "link" : "/privacy",
+      "name" : "Privacy"
+    },
   ];
   message = "We don't like spam either";
 

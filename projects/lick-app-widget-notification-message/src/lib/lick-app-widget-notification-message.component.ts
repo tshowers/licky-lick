@@ -14,7 +14,6 @@ import { map } from 'rxjs/operators';
 export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterViewInit {
 
   messages$: Observable<Message[]>;
-  public message: Message = new Message();
   private _userContact: Contact;
   private _user: User;
   maxArticleLength = 30;
@@ -57,25 +56,6 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterV
     this._user.messagesLastCheckedDate = new Date().getTime();
     this.toggleIndicator();
     this.loginService.update();
-  }
-
-  onSubmit(): void {
-    this.newMessage();
-  }
-
-  newMessage(): void {
-    this.setUserImageForMessage();
-    this.db.writeData(MESSAGES, this.message);
-    this.onBrandNew();
-  }
-
-  setUserImageForMessage() {
-    if (this._userContact && this._userContact.url)
-      this.message.url = this._userContact.url;
-  }
-
-  onBrandNew(): void {
-    this.message = new Message();
   }
 
   private toggleIndicator() {

@@ -1,11 +1,11 @@
-<div class="card card-accent-theme">
+<div class="card">
   <div class="card-body">
     <div class="row">
       <div class="col wow fadeInUp">
         <i class="fa fa-exclamation-circle"
            aria-hidden="true"></i> No <ng-content></ng-content> data found!
       </div>
-      <div class="col text-right wow fadeIn">
+      <div *ngIf="newButton" class="col text-right wow fadeIn">
         <button class="btn btn-dark"
                 (click)="onNewItem()">New</button>
       </div>

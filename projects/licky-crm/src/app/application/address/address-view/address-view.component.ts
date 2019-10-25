@@ -208,6 +208,10 @@ export class AddressViewComponent extends LickAppPageComponent implements OnInit
     this.router.navigate([link]);
   }
 
+  onSearch(value) : void {
+    this.router.navigate(['application', 'contacts'], {queryParams: { searchArgument: value}})
+  }
+
   get diagnostic() {
     return JSON.stringify(this.address, null, 2)
     + ", latitude=" + this.latitude

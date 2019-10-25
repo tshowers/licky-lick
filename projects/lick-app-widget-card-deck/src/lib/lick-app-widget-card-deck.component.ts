@@ -6,7 +6,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
   styles: []
 })
 export class LickAppWidgetCardDeckComponent implements OnInit {
-
+  @Input() headingText;
   @Input() data : any = [{
     "id": Math.floor(Math.random() * 1000).toString(),
     "title": "Title 1",
