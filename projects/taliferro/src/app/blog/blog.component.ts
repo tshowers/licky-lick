@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
-import { FirebaseDataService, LickyLoginService, ARTICLES } from 'licky-services';
+import { FirebaseDataService, LickyLoginService, SortHelperService, ARTICLES } from 'licky-services';
 import { Observable, Subscription } from 'rxjs';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { Article } from 'lick-data';
@@ -27,10 +27,6 @@ export class BlogComponent implements OnInit, OnDestroy {
 
   menuItems: any[] = [
     {
-      "link" : "/",
-      "name" : "Home",
-    },
-    {
       "link" : "/blog",
       "name" : "Blog",
     },
@@ -45,7 +41,7 @@ export class BlogComponent implements OnInit, OnDestroy {
   ];
 
 
-  constructor(private _lickyLoginService: LickyLoginService, public db: FirebaseDataService) { }
+  constructor(public router: Router, private _lickyLoginService: LickyLoginService, public db: FirebaseDataService, private _sortHelperService: SortHelperService) { }
 
   ngOnInit() {
     this.doArticles();
@@ -59,10 +55,10 @@ export class BlogComponent implements OnInit, OnDestroy {
   doArticles() : void {
     this._articleSubscription = this.db.getDataCollection(ARTICLES)
       .subscribe((articles: Article[]) => {
-        // console.log("doArticles()", JSON.stringify(articles))
         if (articles) {
-          this.totalRecords = articles.length;
           this._articles = this.db.getListToArray(articles);
+          this.totalRecords = this._articles.length;
+          this._sortHelperService.sortByIDDescending(this._articles);
           this.newPage(this.currentPage);
         }
       });

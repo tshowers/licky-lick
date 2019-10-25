@@ -12,10 +12,6 @@ export class HomePageComponent implements OnInit {
 
   menuItems: any[] = [
     {
-      "link" : "/",
-      "name" : "Home",
-    },
-    {
       "link" : "/blog",
       "name" : "Blog",
     },

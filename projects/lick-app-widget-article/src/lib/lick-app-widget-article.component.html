@@ -3,14 +3,14 @@
   <article *ngFor="let article of data; let i = index">
     <div class="row">
       <div class="col">
-        <div class="ta-neglected-featured"> <img src="{{article?.url}}"
+        <div class="ta-neglected-featured"> <img class="rounded" src="{{article?.url}}"
                alt="{{article?.title}}"> </div>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <h2>{{article?.title}}</h2>
-        <p class="lead">{{article?.description}}</p>
+        <h1>{{article?.title}}</h1>
+        <p class="lead" innerHTML="{{article?.description}}"></p>
         <div class="about-text" innerHTML={{article?.articleText}}></div>
       </div>
     </div>

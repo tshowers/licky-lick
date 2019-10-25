@@ -11,15 +11,11 @@ import { Subscription } from 'rxjs';
 export class PrivacyPageComponent implements OnInit {
 
   public headingText = "Privacy Policy";
-  public backgroundImage = 'assets/images/TF_consulting_logo_final.jpg';
+  public backgroundImage = 'assets/images/privacy.jpg';
   public bodyText;
   private _fileSubscription : Subscription;
 
   menuItems: any[] = [
-    {
-      "link" : "/",
-      "name" : "Home",
-    },
     {
       "link" : "/blog",
       "name" : "Blog",
