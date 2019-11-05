@@ -8,17 +8,26 @@
 
         <div class="row">
             <div class="col-md-4  online-users">
-                <div class="count-small"><span [CountTo]="count1"></span></div>
+                <div class="count-small">
+                  <span *ngIf="count1 > 0" [CountTo]="count1"></span>
+                  <span *ngIf="count1 == 0">{{count1}}</span>
+                </div>
                 <div class="heading-small">{{count1Text}}</div>
             </div>
             <!-- online-users -->
             <div class="col-md-4 offline-users">
-                <div class="count-small"><span [CountTo]="count2"></span></div>
+                <div class="count-small">
+                  <span *ngIf="count2 > 0" [CountTo]="count2"></span>
+                  <span *ngIf="count2 == 0">{{count2}}</span>
+                </div>
                 <div class="heading-small">{{count2Text}}</div>
             </div>
             <!-- end offline-users -->
             <div class="col-md-4 pending-users">
-                <div class="count-small"><span [CountTo]="count3"></span></div>
+                <div class="count-small">
+                  <span *ngIf="count3 > 0" [CountTo]="count3"></span>
+                  <span *ngIf="count3 == 0">{{count3}}</span>
+                </div>
                 <div class="heading-small">{{count3Text}}</div>
             </div>
             <!-- end pending users -->

@@ -1,0 +1,155 @@
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            (searchEvent)="onSearch($event)"
+                            (placeholder)="'Find a Topic . . .'"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [searchArgument]="searchArgument"
+                                        [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+      <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"
+                                        (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+      <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <form #dataForm="ngForm" class="form-group">
+              <div class="container-fluid">
+                <div *ngIf="currentUpload">
+                  <div class="progress" *ngIf="currentUpload?.progress < 100">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }">Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name">Title or Name</label>
+                  <input [(ngModel)]="topic.name" #topicName="ngModel" id="name" name="name" placeholder="Topic Title" type="text" class="form-control form-control-lg ta-input-element" required licky-auto-focus autocomplete="off" [ngbTypeahead]="typeFindService.searchWiki">
+                  <div [hidden]="topicName.valid || topicName.pristine" class="alert alert-danger">
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Title required
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name">Phrase</label>
+                  <input [(ngModel)]="topic.phrase" id="phrase" name="phrase" placeholder="Phrase or tagline" type="text" class="form-control form-control-lg ta-input-element" autocomplete="off" [ngbTypeahead]="typeFindService.searchWiki">
+                </div>
+                <div class="form-group">
+                  <label for="name">Target</label>
+                  <input [(ngModel)]="topic.target" id="target" name="target" placeholder="Target or targets" type="text" class="form-control form-control-lg ta-input-element" autocomplete="off" [ngbTypeahead]="typeFindService.searchWiki">
+                </div>
+                <div class="form-group">
+                  <label for="name">Author or Key Person</label>
+                  <input [(ngModel)]="topic.author" id="author" name="author" placeholder="Author or Key Person of Topic" type="text" class="form-control form-control-lg ta-input-element" autocomplete="off" [ngbTypeahead]="typeFindService.searchWiki">
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea [(ngModel)]="topic.description" id="description" name="description" rows="5" cols="80" class="form-control form-control-lg ta-input-element"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Notes</label>
+                  <textarea [(ngModel)]="topic.notes" id="notes" name="notes" rows="5" cols="80" class="form-control form-control-lg ta-input-element"></textarea>
+                </div>
+
+                <h3>Sections</h3>
+                <div class="form-group">
+                  <label for="sectionName">Section Name</label>
+                  <input [(ngModel)]="section.name" id="sectionName" name="sectionName" placeholder="Section Name" class="form-control form-control-lg ta-input-element" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="sectionDescription">Section Text</label>
+                  <textarea [(ngModel)]="section.description" id="sectionDescription" name="sectionDescription" rows="5" cols="80" class="form-control form-control-lg ta-input-element"></textarea>
+                </div>
+
+                <button type="button" class="btn btn-primary" (click)="newSection()"><i class="fa fa-plus"></i>
+                Add Additional Sections</button>
+                <br>
+                <div *ngIf="(topic && topic.sections && (topic.sections.length > 0))">
+                  <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let section of topic.sections; let i = index">
+                      <div class="row">
+                        <div class="col-2">
+                          <button type="button" class="btn btn-primary btn-sm" (click)="editSection(i)"><i class="fa fa-pencil-square-o"></i> Edit </button>
+                          <button type="button" class="btn btn-danger btn-sm" (click)="removeSection(i)"><i class="fa fa-times"></i> Delete </button>
+                        </div>
+                        <div class="col-10">
+                          <h2> {{section?.name}}</h2>
+                          ({{section?.description}})
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+
+                <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
+                  <input [(ngModel)]="topic.draft" id="dataDraft" name="dataDraft" type="checkbox">
+                  <label for="dataDraft" title="Draft indicates the record is not finished and should not be made public" title="Draft indicates the record is not finished and should not be made public">Private</label>
+                </div>
+                <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
+                  <input [(ngModel)]="topic.deleted" id="dataDeleted" name="dataDeleted" type="checkbox">
+                  <label for="dataDeleted" title="Checking deleted marks the record as deleted, but does not remove the record from the database" title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted</label>
+                </div>
+                <div class="form-group"><label for="dataKeywords">Keywords</label> <input [(ngModel)]="topic.keywords" id="dataKeywords" name="dataKeywords" type="text" class="form-control form-control-lg ta-input-element" placeholder="Enter keywords seperated by commas"></div>
+
+                <div class="form-group">
+                  <div class="form-group">
+                    <label for="selectedFiles"> Upload</label>
+                    <input class="form-control form-control-lg ta-input-element" type="file" id="selectedFiles" name="selectedFiles" (change)="detectFiles($event)" multiple>
+                  </div>
+                </div>
+                <div *ngIf="topic && topic.id && topic.upload && (topic.upload.length > 0)">
+                  <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let u of topic.upload; let i = index">
+                      <button type="button" class="btn btn-danger btn-sm" (click)="removeTopicFile(i)"><i class="fa fa-times"></i> Delete </button>
+                      <div class="form-group" *ngIf="sortHelperService.isImage(u?.url)">
+                        <img *ngIf="u?.url" src="{{u?.url}}" alt="u?.url" class="img-fluid mx-auto d-block img-thumbnail">
+                      </div>
+                      <div class="form-group" *ngIf="topic.id && sortHelperService.isPDF(topic?.url)">
+                        <a href="u?.url"><i class="fa fa-file-pdf-o fa-2x"></i></a>
+                      </div>
+                      </li>
+                  </ul>
+                </div>
+
+
+                <div class="row">
+                  <div class="col text-center">
+                    <button class="btn btn-primary btn-lg btn-round" (click)="onSubmit()" type="submit" [disabled]="!dataForm.form.valid"  title="Submit to database">Save
+                        <i class="fa fa-cloud" aria-hidden="true"></i>
+                      </button>
+                      <button *ngIf="canDelete" class="btn btn-danger btn-lg btn-round" (click)="onDelete();dataForm.reset()" [hidden]="!topic.id">Delete
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </button>
+
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Topic Edit'"
+                                         [descriptionText]="'The edit screen is where you create a new topic or edit and existing one.'"
+                                         [header1]="'Validity'"
+                                         [description1]="'A suitably formatted topic is required, otherwise save is not allowed.'"
+                                         [header2]="'Sectopms'"
+                                         [description2]="'You can add additional metadata to a topic. For example, if you would like to add something other than description or notes, the Section area allows you to add additional information about the Topic. E.g., you may want to add a disclaimer to the Topic.'"
+                                         [header3]="'Keywords'"
+                                         [description3]="'The use of keywords is optional but helps to search for the topic.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

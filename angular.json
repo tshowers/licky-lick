@@ -4788,6 +4788,172 @@
           }
         }
       }
+    },
+    "licky-km": {
+      "root": "projects/licky-km/",
+      "sourceRoot": "projects/licky-km/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/licky-km",
+            "index": "projects/licky-km/src/index.html",
+            "main": "projects/licky-km/src/main.ts",
+            "polyfills": "projects/licky-km/src/polyfills.ts",
+            "tsConfig": "projects/licky-km/tsconfig.app.json",
+            "assets": [
+              "projects/licky-km/src/favicon.ico",
+              "projects/licky-km/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "projects/styles/intro-style.css",
+              "projects/styles/colors/color-1.css",
+              "projects/styles/simple-line-icons.css",
+              "projects/styles/styles.css",
+              "projects/styles/ta-styles.css",
+              "projects/styles/circle.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/licky-km/src/environments/environment.ts",
+                  "with": "projects/licky-km/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/licky-km/src/environments/environment.ts",
+                  "with": "projects/licky-km/src/environments/environment.dev.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "licky-km:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "licky-km:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "licky-km:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/licky-km/src/test.ts",
+            "polyfills": "projects/licky-km/src/polyfills.ts",
+            "tsConfig": "projects/licky-km/tsconfig.spec.json",
+            "karmaConfig": "projects/licky-km/karma.conf.js",
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "projects/styles/intro-style.css",
+              "projects/styles/colors/color-1.css",
+              "projects/styles/simple-line-icons.css",
+              "projects/styles/styles.css",
+              "projects/styles/ta-styles.css",
+              "projects/styles/circle.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/wowjs/dist/wow.js",
+              "node_modules/owl.carousel/dist/owl.carousel.js"
+            ],
+            "assets": [
+              "projects/licky-km/src/favicon.ico",
+              "projects/licky-km/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/licky-km/tsconfig.app.json",
+              "projects/licky-km/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "licky-km-e2e": {
+      "root": "projects/licky-km-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/licky-km-e2e/protractor.conf.js",
+            "devServerTarget": "licky-km:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "licky-km:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/licky-km-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "lick-data"

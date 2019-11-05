@@ -30,8 +30,6 @@ import { LickAppWidgetRightSideMenuModule } from 'lick-app-widget-right-side-men
 import { LickAppWidgetStats15Module } from 'lick-app-widget-stats15';
 import { LickAppWidgetUnderConstructionModule } from 'lick-app-widget-under-construction';
 
-import { NameDecriptionFilterPipe } from './filters/name-decription-filter.pipe';
-
 import { AutoFocusDirective } from './directives/auto-focus.directive';
 
 import { NavComponent } from './nav/nav.component';
@@ -46,7 +44,7 @@ export const firebaseConfig = environment.firebaseConfig;
 // CommonModule, FormsModule etc. for free.
 
 @NgModule({
-  declarations: [NavComponent, NameDecriptionFilterPipe, ContextNavComponent, AutoFocusDirective],
+  declarations: [NavComponent, ContextNavComponent, AutoFocusDirective],
   imports: [
     CommonModule,
     RouterModule,
@@ -80,7 +78,6 @@ export const firebaseConfig = environment.firebaseConfig;
   exports: [
     NavComponent,
     ContextNavComponent,
-    AutoFocusDirective,
     RouterModule,
     HttpClientModule,
     LickAppPageModule,
@@ -107,7 +104,7 @@ export const firebaseConfig = environment.firebaseConfig;
     LickAppWidgetStats11Module,
     LickAppWidgetCardDeckModule,
     LickMarketingFaq2Module,
-    NameDecriptionFilterPipe
+    AutoFocusDirective
   ]
 })
 export class SharedModule { }

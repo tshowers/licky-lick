@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'licky-lick-app-widget-list-content',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styles: []
 })
 export class LickAppWidgetListContentComponent implements OnInit {
-
+  @Input() router: Router;
   @Input() data : any = [{
     "id": Math.floor(Math.random() * 1000).toString(),
     "title": "Title 1",
@@ -53,10 +54,16 @@ export class LickAppWidgetListContentComponent implements OnInit {
     "timeStamp": new Date(),
     "userName": "Barbara McNamara"
   }];
+  @Output() itemEvent = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
+
+  public onListItem(item): void {
+    this.itemEvent.emit(item);
+  }
+
 
 }

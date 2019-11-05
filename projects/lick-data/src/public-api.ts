@@ -36,6 +36,7 @@ export * from './lib/data/project.model';
 export * from './lib/data/property.model';
 export * from './lib/data/receipt.model';
 export * from './lib/data/setting.model';
+export * from './lib/data/section.model';
 export * from './lib/data/shopping-cart.model';
 export * from './lib/data/stat.model';
 export * from './lib/data/store.model';

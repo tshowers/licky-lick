@@ -160,8 +160,8 @@ export class AddressViewComponent extends LickAppPageComponent implements OnInit
       { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
       { name: this.contact.firstName + " " + this.contact.lastName, link: "/application/contacts/" + this.contact.id, active: false },
-      { name: "address", link: "/application/contacts/" + this.contact_id + "/addresses", active: false },
-      { name: "view", link: "/application/contacts/" + this.contact_id + "/addresses/" + this.address.id, active: true },
+      { name: "addresses", link: "/application/contacts/" + this.contact_id + "/addresses/", active: false },
+      { name: "new", link: "/application/contacts/" + this.contact_id + "/addresses/new" , active: false },
     ]
   }
 

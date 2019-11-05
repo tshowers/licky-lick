@@ -1,0 +1,47 @@
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
+                            [displayName]="dm.displayName"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"
+                                            (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+          <div *ngIf="message"
+               class="text-center">{{message}}</div>
+          <licky-lick-app-widget-profile *ngIf="!message"
+                                         (pageEvent)="onPageEvent($event)"
+                                         [user]="dm.user"
+                                         [firebaseUser]="dm.firebaseUser"></licky-lick-app-widget-profile>
+        </div>
+      </div>
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Your Profile'"
+                                         [descriptionText]="'Here you can see the information that is related to you as a user of the system.'"
+                                         [header1]="'Email Verified'"
+                                         [description1]="'If there is an X next to email verified, this means your access to the system has not been verified by you. You can initiate verification by clicking - Resend Verification.'"
+                                         [header2]="'Profile Shared'"
+                                         [description2]="'If there is an X next to profile shared, this means that you are using the system in private mode and others will not be able to see your profile.'"
+                                         [header3]="'Create Date'"
+                                         [description3]="'This is the date you signed up to use the system.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

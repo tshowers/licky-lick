@@ -22,7 +22,6 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 
-import { RemoteAssetService } from './services/remote-asset.service';
 import { TermsPageComponent } from './terms-page/terms-page.component';
 
 @NgModule({
@@ -45,7 +44,7 @@ import { TermsPageComponent } from './terms-page/terms-page.component';
     LickMarketingContactUs1Module,
     LickMarketingFooter2Module
   ],
-  providers: [RemoteAssetService]
+  providers: []
 })
 export class MarketingModule { }
 

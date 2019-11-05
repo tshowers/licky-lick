@@ -43,6 +43,12 @@
       "rewrites": [{ "source": "**", "destination": "/index.html"  }]
     },
     {
+      "target": "km",
+      "public": "dist/licky-km",
+      "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],
+      "rewrites": [{ "source": "**", "destination": "/index.html" }]
+    },
+    {
       "target": "crm-prod",
       "public": "dist/licky-crm",
       "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ],

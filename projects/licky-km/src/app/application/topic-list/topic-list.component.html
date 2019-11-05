@@ -1,0 +1,64 @@
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+          <licky-lick-app-widget-stats15 *ngIf="(data$ | async)?.length > 0"
+            [total]="totalRecords"
+            [headingText]="'Topics'"
+                                         [iconClass1]="'fa fa-paperclip'"
+                                         [count1]="uploadTopics"
+                                         [countText1]="'With Attachment'"
+                                         [iconClass2]="'fa fa-share-alt-square'"
+                                         [count2]="sharedTopics"
+                                         [countText2]="'Shared'"
+                                         [iconClass3]="'fa fa-pencil-square-o'"
+                                         [count3]="draftTopics"
+                                         [countText3]="'Draft'"
+                                         [iconClass4]="'fa fa-trash-o'"
+                                         [count4]="deletedTopics"
+                                         [countText4]="'Deleted'"
+                                         [newItemLink]="'application/topics/new'"
+                                         [router]="router"></licky-lick-app-widget-stats15>
+          <licky-lick-app-widget-table-data [data]="data$ | async"
+                                            (newItemEvent)="onNewItem()"
+                                            (detailEvent)="onDetail($event)"
+                                            (deleteEvent)="onDelete($event)"
+                                            (editEvent)="onEdit($event)"
+                                            [headingText]="'Topics'"
+                                            [router]="router"
+                                            [pageSize]="pageSize"
+                                            [totalRecords]="totalRecords"
+                                            (currentPageEvent)="newPage($event)"
+                                            [path]="TOPICS"></licky-lick-app-widget-table-data>
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Topic List'"
+                                         [descriptionText]="'This page displays a list of topics entered into the system.'"
+                                         [header1]="'Find'"
+                                         [description1]="'To find a specific topic, use the search box at the top of the screen.'"
+                                         [header2]="'Actions'"
+                                         [description2]="'You have the choice to edit, view or mark a topic for deletion - if your edit privileges allow.'"
+                                         [header3]="'Deleted'"
+                                         [description3]="'Deleted topics display as faint text.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

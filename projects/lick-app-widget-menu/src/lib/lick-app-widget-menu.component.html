@@ -48,7 +48,7 @@
                spellcheck="off"
                autocomplete="off"
                class="form-control form-control-lg ta-input-element"
-               placeholder="Find a contact . .."
+               placeholder="{{placeholder}}"
                required>
       </div>
     </form>
@@ -118,10 +118,12 @@
     </li>
     <!-- end nav-item -->
   </ul>
-  <div class="hamburger hamburger--arrowalt-r navbar-toggler aside-menu-toggler "
+  <div class="hamburger hamburger--arrowalt-r navbar-toggler aside-menu-toggler"
        (click)="toggleRightSidebar()">
-    <div class="hamburger-box">
-      <div class="hamburger-inner"></div>
-    </div>
+       <div class="ta-hamburger-box" title="Click here to get information about the current screen.">
+         <i class="fa fa-question" aria-hidden="true" *ngIf="!rightSidebar"></i>
+         <i class="fa fa-minus" aria-hidden="true" *ngIf="rightSidebar"></i>
+
+       </div>
   </div>
 </header>

@@ -53,8 +53,8 @@ export class EmailAddressViewComponent extends LickAppPageComponent implements O
       { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
       { name: this.contact.firstName + " " + this.contact.lastName, link: "/application/contacts/" + this.contact.id, active: false },
-      { name: "email address", link: "/application/contacts/" + this.contact_id + "/email-addresses", active: false },
-      { name: "view", link: "/application/contacts/" + this.contact_id + "/email-addresses/" + this.emailAddress.id, active: true },
+      { name: "email addresses", link: "/application/contacts/" + this.contact_id + "/email-addresses", active: false },
+      { name: "new", link: "/application/contacts/" + this.contact_id + "/email-addresses/new", active: false },
     ]
   }
 

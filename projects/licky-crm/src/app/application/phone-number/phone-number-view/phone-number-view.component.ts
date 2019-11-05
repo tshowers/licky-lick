@@ -54,7 +54,7 @@ export class PhoneNumberViewComponent extends LickAppPageComponent implements On
       { name: "contacts", link: "/application/contacts", active: false },
       { name: this.contact.firstName + " " + this.contact.lastName, link: "/application/contacts/" + this.contact.id, active: false },
       { name: "email address", link: "/application/contacts/" + this.contact_id + "/phone-numbers", active: false },
-      { name: "view", link: "/application/contacts/" + this.contact_id + "/phone-numbers/" + this.phoneNumber.id, active: true },
+      { name: "new", link: "/application/contacts/" + this.contact_id + "/phone-numbers/new", active: false },
     ]
   }
 

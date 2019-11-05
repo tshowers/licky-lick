@@ -54,7 +54,7 @@ export class NoteViewComponent extends LickAppPageComponent implements OnInit, O
       { name: "contacts", link: "/application/contacts", active: false },
       { name: this.contact.firstName + " " + this.contact.lastName, link: "/application/contacts/" + this.contact.id, active: false },
       { name: "note", link: "/application/contacts/" + this.contact_id + "/notes", active: false },
-      { name: "view", link: "/application/contacts/" + this.contact_id + "/notes/" + this.justText.id, active: true },
+      { name: "new", link: "/application/contacts/" + this.contact_id + "/notes/new", active: false },
     ]
   }
 

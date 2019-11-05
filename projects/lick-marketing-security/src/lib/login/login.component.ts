@@ -34,6 +34,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   @Input() router: Router;
 
+  @Input() subText: "Just one step away from catching up on all the news.";
+
   constructor(private _dateUtilService: DateUtilService) { }
 
   ngOnInit() {

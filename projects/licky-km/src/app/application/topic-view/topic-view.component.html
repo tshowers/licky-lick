@@ -1,0 +1,139 @@
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [searchArgument]="searchArgument"
+                                        [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+      <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"
+                                        (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+      <div class="container d-flex justify-content-center">
+        <div class="row">
+          <div [ngClass]="{'col-12 col-xl-6 col-lg-6 col-md-7 col-sm-12 order-xl-last order-lg-last order-md-last order-first' : messageFeed, 'col-11 order-lg-last order-first' : messageFeed, 'col-11' : !messageFeed }">
+            <div class="card mx-auto d-block ta-max-view">
+              <img *ngIf="topic.url && isImage"
+                   class="card-img-top img-reponsive"
+                   src="{{topic?.url}}"
+                   alt="{{topic?.name}}">
+              <div class="card-header">
+                <h4 class="my-0 font-weight-normal">
+                  {{ topic?.name }}
+                </h4>
+              </div>
+              <div class="card-body">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"
+                      *ngIf="topic?.phrase">
+                    <div class="row">
+                      <div class="col"> <strong class="ta-label">phrase:</strong>
+                      </div>
+                      <div class="col">
+                        <p class="card-text">{{topic?.phrase}}</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item"
+                      *ngIf="topic?.target">
+                    <div class="row">
+                      <div class="col"> <strong class="ta-label">target:</strong>
+                      </div>
+                      <div class="col">
+                        <p class="card-text">{{topic?.target}}</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item"
+                      *ngIf="topic?.author">
+                    <div class="row">
+                      <div class="col"> <strong class="ta-label">author:</strong>
+                      </div>
+                      <div class="col">
+                        <p class="card-text">{{topic?.author}}</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item"
+                      *ngIf="topic?.notes">
+                    <div class="row">
+                      <div class="col"> <strong class="ta-label">notes:</strong>
+                      </div>
+                      <div class="col"
+                           innerHTML="{{topic?.notes}}">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item"
+                      *ngIf="topic?.description">
+                    <div class="row">
+                      <div class="col"> <strong class="ta-label">description:</strong>
+                      </div>
+                      <div class="col"
+                           innerHTML="{{topic?.description}}">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item"
+                      *ngIf="topic?.url">
+                    <div class="row">
+                      <div class="col">
+                        <p class="card-text"><a href="{{topic?.url}}"
+                             target="_blank"><i class="fa fa-paperclip fa-2x"
+                               aria-hidden="true"></i></a></p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item"
+                      *ngIf="topic.sections && topic.sections.length">
+                    <div class="row"
+                         *ngFor="let d of topic.sections">
+                      <div class="col"> <strong class="ta-label">{{d?.name}}:</strong>
+                      </div>
+                      <div class="col"
+                           innerHTML="{{d?.description}}">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <licky-lick-app-widget-data-footer [data]="topic"></licky-lick-app-widget-data-footer>
+                <button class="btn btn-primary btn-lg btn-round"
+                        (click)="onEdit()">Edit <i class="fa fa-pencil"
+                     aria-hidden="true"></i>
+                </button> <button *ngIf="(!topic.deleted)"
+                        class="btn btn-danger btn-round btn-lg"
+                        (click)="onDelete()">Delete <i class="fa fa-times"
+                     aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Topic View'"
+                                         [descriptionText]="'The view screen is where you can see an existing topic.'"
+                                         [header1]="'Sections'"
+                                         [description1]="'Each topic may differ in composition depending on the number of custom sections entered.'"
+                                         [header2]="'Attachments'"
+                                         [description2]="'If the attachment associated with a topic is an image, you can see the image immediately. However, if the attachment is a document, you will need to click the attachment link to download. Some browsers will open the enclosure within the browser, while others download the document to open in your application of preference. '"
+                                         [header3]="'Views'"
+                                         [description3]="'The view count represents the total clicks of the Topic for editing or viewing.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

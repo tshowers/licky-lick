@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class LickAppWidgetStats7Component implements OnInit {
 
-  @Input() data: LickAppWidgetStats7Data[] = [{
+  @Input() data: any[] = [{
     "label": "alpha",
     "value": 48
   }, {

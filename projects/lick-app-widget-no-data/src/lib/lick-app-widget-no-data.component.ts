@@ -16,7 +16,7 @@ export class LickAppWidgetNoDataComponent implements OnInit {
   }
 
   onNewItem() {
-    console.log("LickAppWidgetNoDataComponent onNewItem")
+    // console.log("LickAppWidgetNoDataComponent onNewItem")
     this.newItemEvent.emit();
   }
 

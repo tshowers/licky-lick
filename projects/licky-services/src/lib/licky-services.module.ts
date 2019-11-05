@@ -18,11 +18,13 @@ import { RemoteAssetService} from './remote-asset.service';
 import { YoutubeService } from './youtube.service';
 import { UploadService } from './upload.service';
 import { AgmCoreModule } from '@agm/core';
+
 import { environment } from '../environment';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -42,7 +44,7 @@ import { environment } from '../environment';
     WeatherService,
     RemoteAssetService,
     DateUtilService,
-    UploadService
+    UploadService,
   ]
 
 })

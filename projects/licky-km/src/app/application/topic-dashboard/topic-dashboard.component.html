@@ -1,0 +1,130 @@
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            (profileEvent)="onViewProfile()"
+                            (searchEvent)="onSearch($event)"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [searchArgument]="searchArgument"
+                                        [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"
+                                            (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+        </div>
+      </div>
+      <div class="row"
+           *ngIf="totalRecords == 0">
+        <div class="col-md-12">
+          <licky-lick-marketing-faq2 [headingText]="FAQheadingText"
+                                     [descriptionText]="descriptionText"
+                                     [faqHeading1]="faqHeading1"
+                                     [faqDescription1]="faqDescription1"
+                                     [faqHeading2]="faqHeading2"
+                                     [faqDescription2]="faqDescription2"
+                                     [faqHeading3]="faqHeading3"
+                                     [faqDescription3]="faqDescription3"
+                                     [faqHeading4]="faqHeading4"
+                                     [faqDescription4]="faqDescription4"></licky-lick-marketing-faq2>
+        </div>
+      </div>
+      <div class="row ta-row"
+           *ngIf="totalRecords > 0">
+        <div class="col-md-6">
+          <licky-lick-app-widget-stats7 [headingText]="'Total Knowledge Management Topics'"
+                                        [subHeadingText]="totalRecords"
+                                        [iconClass]="'fa fa-book'"
+                                        [data]="data$ | async"
+                                        [showMoreLink]="null"></licky-lick-app-widget-stats7>
+        </div>
+        <div class="col-md-6">
+            <licky-lick-app-widget-stats9 *ngIf="(chartData1$ | async)?.length > 0"
+                                          [headingText]="headingText"
+                                          [buttonText1]="buttonText1"
+                                          [buttonText2]="buttonText2"
+                                          [buttonText3]="buttonText3"
+                                          [totalCount]="totalRecords"
+                                          [subHeadingText]="subHeadingText"
+                                          [chartLabels]="chartLabels"
+                                          [chartData1]="chartData1$ | async"
+                                          [chartData2]="chartData2$ | async"
+                                          [chartData3]="chartData3$ | async"></licky-lick-app-widget-stats9>
+        </div>
+      </div>
+      <div class="row ta-row"
+           *ngIf="totalRecords > 0">
+        <div class="col-md-4">
+          <h2>Most Clicked Topics</h2>
+          <licky-lick-app-widget-list-content [data]="mostClickedTopcis"
+                                              (itemEvent)="onListItem($event)"></licky-lick-app-widget-list-content>
+        </div>
+        <div class="col-md-4">
+          <h2>Last Updated Topics</h2>
+          <licky-lick-app-widget-list-content [data]="lastUpdatedTopcis"
+                                              (itemEvent)="onListItem($event)"></licky-lick-app-widget-list-content>
+        </div>
+        <div class="col-md-4">
+          <h2>Most Shared Topics</h2>
+          <licky-lick-app-widget-list-content [data]="mostSharedTopcis"
+                                              (itemEvent)="onListItem($event)"></licky-lick-app-widget-list-content>
+
+        </div>
+      </div>
+      <div class="row ta-row"
+           *ngIf="totalRecords > 0">
+           <div class="col-md-4">
+             <licky-lick-app-widget-stats8 [headingText]="'Total Active Topics'"
+                                           [totalCount]="(totalRecords-deletedCount)"
+                                           [descriptionText]="'Active topics represent all topics less deleted.'"
+                                           [count1]="sharedCount"
+                                           [count1Text]="'Shared'"
+                                           [count2]="draftCount"
+                                           [count2Text]="'Draft'"
+                                           [count3]="deletedCount"
+                                           [count3Text]="'Deleted'"></licky-lick-app-widget-stats8>
+
+           </div>
+           <div class="col-md-8">
+             <licky-lick-app-widget-stats13 [headingText]="'Percentage Breakdown'"
+                                            [countHeading1]="'Bookmark'"
+                                            [count1]="bookmarkedCount"
+                                            [countHeading2]="'Favor'"
+                                            [count2]="favoredCount"
+                                            [countHeading3]="'Broadcast'"
+                                            [count3]="broadcastedCount"
+                                            [countHeading4]="'Delete'"
+                                            [count4]="deletedPercentage"
+                                            [countHeading5]="'Share'"
+                                            [count5]="sharedPercentage"
+                                            [countHeading6]="'Draft'"
+                                            [count6]="draftPercentage"></licky-lick-app-widget-stats13>
+
+           </div>
+      </div>
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Topic Dashboard'"
+                                         [descriptionText]="'The Topic dashboard allows you to take a comprehensive statistical look at all Topics.'"
+                                         [header1]="'Total Records'"
+                                         [description1]="'Total records are all topics in the system (active or deleted). '"
+                                         [header2]="'Highlights'"
+                                         [description2]="'The system analyzes each topic against other known information and highlights topics you may want to review.'"
+                                         [header3]="'Percentages'"
+                                         [description3]="'Graphical representations of the topic state provide insight into the popularity of a topic.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

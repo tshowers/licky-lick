@@ -37,7 +37,7 @@
       <div class="col-md-6 col-sm-5 col-xs-12 about-text wow fadeInUp">
         <h2>{{headingText}}</h2>
         <p>{{descriptionText}}</p>
-        <a (click)="onPageEvent()" class="button button-full text-white" title="{{buttonText}}">{{buttonText}}</a>
+        <a *ngIf="buttonText" (click)="onPageEvent()" class="button button-full text-white" title="{{buttonText}}">{{buttonText}}</a>
       </div>
 
     </div> <!-- .row -->

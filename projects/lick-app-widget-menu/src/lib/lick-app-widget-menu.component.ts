@@ -13,6 +13,7 @@ export class LickAppWidgetMenuComponent implements OnInit {
 
   @Input() router: Router;
   @Input() photoURL = "http://via.placeholder.com/32";
+  @Input() placeholder = "Find a contact ...";
 
   @Input() displayName = "unknown";
   @Input() role = "N/A";

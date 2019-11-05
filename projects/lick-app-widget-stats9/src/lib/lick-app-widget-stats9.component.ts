@@ -131,6 +131,10 @@ export class LickAppWidgetStats9Component implements OnInit {
           },
           scales: {
             yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                callback: function(value) { if (Number.isInteger(value)) { return value; } },
+              },
               display: true,
             }]
           }

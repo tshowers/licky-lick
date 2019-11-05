@@ -54,8 +54,8 @@ export class FopViewComponent extends LickAppPageComponent implements OnInit, On
       { name: "dashboard", link: "/application/contacts/dashboard", active: false },
       { name: "contacts", link: "/application/contacts", active: false },
       { name: this.contact.firstName + " " + this.contact.lastName, link: "/application/contacts/" + this.contact.id, active: false },
-      { name: "form of payment", link: "/application/contacts/" + this.contact_id + "/form-of-payments", active: false },
-      { name: "view", link: "/application/contacts/" + this.contact_id + "/form-of-payments/" + this.fop.id, active: true },
+      { name: "form of payments", link: "/application/contacts/" + this.contact_id + "/form-of-payments", active: false },
+      { name: "new", link: "/application/contacts/" + this.contact_id + "/form-of-payments/new", active: false },
     ]
   }
 
