@@ -58,8 +58,8 @@ export class Topic {
     data.author = (data.author) ? data.author : null;
     data.upload = (data.upload) ? data.upload : [];
 
-    data.sections = (data.sections) ? data.sections : [];
     data.publishedAt = (data.publishedAt) ? data.publishedAt : null;
+    data.sections = (data.sections) ? data.sections : [];
 
     data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
     data.timeStamp = (data.timeStamp) ? data.timeStamp : null;

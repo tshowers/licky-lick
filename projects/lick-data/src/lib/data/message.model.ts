@@ -4,8 +4,6 @@ import { Section } from './section.model';
 
 export class Message  {
   public id?;
-  public title?;
-  public text?;
 
   public name: string;
   public url?: string;
@@ -14,6 +12,8 @@ export class Message  {
   public link?: string;
   public shared: boolean = false;
 
+  public title?;
+  public text?;
   public status?;
   public handle?;
   public article : Article;
@@ -41,4 +41,46 @@ export class Message  {
   public favoredCount?;
   public broadcasted?;
   public broadcastedCount?;
+
+  static restoreData(data: any): void {
+    data.id = (data.id) ? data.id : null;
+    data.name = (data.name) ? data.name : null;
+    data.url = (data.url) ? data.url : null;
+    data.icon = (data.icon) ? data.icon : null;
+    data.badge = (data.badge) ? data.badge : null;
+    data.link = (data.link) ? data.link : null;
+    data.shared = (data.shared) ? data.shared : false;
+
+    data.title = (data.title) ? data.title : null;
+    data.text = (data.text) ? data.text : null;
+    data.status = (data.status) ? data.status : null;
+    data.handle = (data.handle) ? data.handle : null;
+    data.article = (data.article) ? data.article : null;
+    data.dataModel_id = (data.dataModel_id) ? data.dataModel_id : null;
+    data.replies = (data.replies) ? data.replies : [];
+
+
+    data.sections = (data.sections) ? data.sections : [];
+
+    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
+    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
+    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
+    data.views = (data.views) ? data.views : 0;
+    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+
+    data.draft = (data.draft) ? data.draft : true;
+    data.deleted = (data.deleted) ? data.deleted : false;
+    data.keywords = (data.keywords) ? data.keywords : null;
+
+    data.user_id = (data.user_id) ? data.user_id : null;
+    data.userName = (data.userName) ? data.userName : null;
+    data.userImage = (data.userImage) ? data.userImage : null;
+
+    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
+    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
+    data.favored = (data.favored) ? data.favored : false;
+    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
+    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
+    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+  }
 }

@@ -58,12 +58,71 @@ export class Project  {
   public favoredCount?;
   public broadcasted?;
   public broadcastedCount?;
+
+  static restoreData(data: any): void {
+    data.id = (data.id) ? data.id : null;
+    data.name = (data.name) ? data.name : null;
+    data.url = (data.url) ? data.url : null;
+    data.icon = (data.icon) ? data.icon : null;
+    data.badge = (data.badge) ? data.badge : null;
+    data.link = (data.link) ? data.link : null;
+    data.shared = (data.shared) ? data.shared : false;
+
+    data.projectType = (data.projectType) ? data.projectType : null;
+    data.status = (data.status) ? data.status : null;
+    data.startDate = (data.startDate) ? data.startDate : null;
+    data.endDate = (data.endDate) ? data.endDate : null;
+    data.billingEstimate = (data.billingEstimate) ? data.billingEstimate : 0;
+    data.description = (data.description) ? data.description : null;
+    data.purchaseOrderNumber = (data.purchaseOrderNumber) ? data.purchaseOrderNumber : null;
+
+    data.events = (data.events) ? data.events : [];
+    data.milestones = (data.milestones) ? data.milestones : [];
+    data.requirements = (data.requirements) ? data.requirements : [];
+    data.affectedParties = (data.affectedParties) ? data.affectedParties : [];
+    data.implementationPlans = (data.implementationPlans) ? data.implementationPlans : [];
+    data.affectedSystems = (data.affectedSystems) ? data.affectedSystems : [];
+    data.approvals = (data.approvals) ? data.approvals : [];
+
+    data.sponsor = (data.sponsor) ? data.sponsor : null;
+    data.sponsorType = (data.sponsorType) ? data.sponsorType : null;
+    data.summaryOfBudget = (data.summaryOfBudget) ? data.summaryOfBudget : null;
+    data.projectManager = (data.projectManager) ? data.projectManager : null;
+    data.projectManagerName = (data.projectManagerName) ? data.projectManagerName : null;
+    data.responsibilities = (data.responsibilities) ? data.responsibilities : null;
+    data.purpose = (data.purpose) ? data.purpose : null;
+    data.contact_id = (data.contact_id) ? data.contact_id : null;
+    data.company_id = (data.company_id) ? data.company_id : null;
+    data.percentTimeComplete = (data.percentTimeComplete) ? data.percentTimeComplete : 0;
+
+    data.sections = (data.sections) ? data.sections : [];
+
+    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
+    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
+    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
+    data.views = (data.views) ? data.views : 0;
+    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+
+    data.draft = (data.draft) ? data.draft : true;
+    data.deleted = (data.deleted) ? data.deleted : false;
+    data.keywords = (data.keywords) ? data.keywords : null;
+
+    data.user_id = (data.user_id) ? data.user_id : null;
+    data.userName = (data.userName) ? data.userName : null;
+    data.userImage = (data.userImage) ? data.userImage : null;
+
+    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
+    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
+    data.favored = (data.favored) ? data.favored : false;
+    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
+    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
+    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+  }
 }
 
 export class Milestone {
   public id?;
-  public title?: string;
-  public date?;
+
 
   public name: string;
   public url?: string;
@@ -73,8 +132,11 @@ export class Milestone {
   public shared: boolean = true;
 
   public description?: string;
-  public sections?: Array<Section> = [];
+  public title?: string;
+  public date?;
   public project_id?;
+
+  public sections?: Array<Section> = [];
 
   public lastUpdated;
   public timeStamp;
@@ -96,11 +158,48 @@ export class Milestone {
   public favoredCount?;
   public broadcasted?;
   public broadcastedCount?;
+
+  static restoreData(data: any): void {
+    data.id = (data.id) ? data.id : null;
+    data.name = (data.name) ? data.name : null;
+    data.url = (data.url) ? data.url : null;
+    data.icon = (data.icon) ? data.icon : null;
+    data.badge = (data.badge) ? data.badge : null;
+    data.link = (data.link) ? data.link : null;
+    data.shared = (data.shared) ? data.shared : false;
+
+    data.description = (data.description) ? data.description : null;
+    data.title = (data.title) ? data.title : null;
+    data.date = (data.date) ? data.date : null;
+    data.project_id = (data.project_id) ? data.project_id : null;
+
+    data.sections = (data.sections) ? data.sections : [];
+
+    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
+    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
+    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
+    data.views = (data.views) ? data.views : 0;
+    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+
+    data.draft = (data.draft) ? data.draft : true;
+    data.deleted = (data.deleted) ? data.deleted : false;
+    data.keywords = (data.keywords) ? data.keywords : null;
+
+    data.user_id = (data.user_id) ? data.user_id : null;
+    data.userName = (data.userName) ? data.userName : null;
+    data.userImage = (data.userImage) ? data.userImage : null;
+
+    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
+    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
+    data.favored = (data.favored) ? data.favored : false;
+    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
+    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
+    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+  }
 }
 
 export class Requirement {
   public id?;
-  public project_id?;
 
   public name: string;
   public url?: string;
@@ -110,6 +209,7 @@ export class Requirement {
   public shared: boolean = true;
 
 
+  public project_id?;
   public description?;
   public sections?: Array<Section> = [];
   public requirementStatus?;
@@ -137,11 +237,49 @@ export class Requirement {
   public broadcasted?;
   public broadcastedCount?;
 
+  static restoreData(data: any): void {
+    data.id = (data.id) ? data.id : null;
+    data.name = (data.name) ? data.name : null;
+    data.url = (data.url) ? data.url : null;
+    data.icon = (data.icon) ? data.icon : null;
+    data.badge = (data.badge) ? data.badge : null;
+    data.link = (data.link) ? data.link : null;
+    data.shared = (data.shared) ? data.shared : false;
+
+    data.project_id = (data.project_id) ? data.project_id : null;
+    data.description = (data.description) ? data.description : null;
+    data.requirementStatus = (data.requirementStatus) ? data.requirementStatus : null;
+
+    data.publishedAt = (data.publishedAt) ? data.publishedAt : null;
+
+    data.sections = (data.sections) ? data.sections : [];
+
+    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
+    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
+    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
+    data.views = (data.views) ? data.views : 0;
+    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+
+    data.draft = (data.draft) ? data.draft : true;
+    data.deleted = (data.deleted) ? data.deleted : false;
+    data.keywords = (data.keywords) ? data.keywords : null;
+
+    data.user_id = (data.user_id) ? data.user_id : null;
+    data.userName = (data.userName) ? data.userName : null;
+    data.userImage = (data.userImage) ? data.userImage : null;
+
+    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
+    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
+    data.favored = (data.favored) ? data.favored : false;
+    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
+    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
+    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+  }
+
 }
 
 export class Deliverable {
   public id?;
-  public project_id?;
 
   public name: string;
   public url?: string;
@@ -150,12 +288,13 @@ export class Deliverable {
   public link?: string;
   public shared: boolean = true;
 
+  public project_id?;
   public deliverableStatus?;
   public category?;
-  public sections?: Array<Section> = [];
   public description?;
 
   public publishedAt;
+  public sections?: Array<Section> = [];
 
   public lastUpdated;
   public timeStamp;
@@ -177,12 +316,51 @@ export class Deliverable {
   public favoredCount?;
   public broadcasted?;
   public broadcastedCount?;
+
+  static restoreData(data: any): void {
+    data.id = (data.id) ? data.id : null;
+    data.name = (data.name) ? data.name : null;
+    data.url = (data.url) ? data.url : null;
+    data.icon = (data.icon) ? data.icon : null;
+    data.badge = (data.badge) ? data.badge : null;
+    data.link = (data.link) ? data.link : null;
+    data.shared = (data.shared) ? data.shared : false;
+
+    data.project_id = (data.project_id) ? data.project_id : null;
+    data.deliverableStatus = (data.deliverableStatus) ? data.deliverableStatus : null;
+    data.category = (data.category) ? data.category : null;
+    data.description = (data.description) ? data.description : null;
+
+    data.publishedAt = (data.publishedAt) ? data.publishedAt : null;
+
+    data.sections = (data.sections) ? data.sections : [];
+
+    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
+    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
+    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
+    data.views = (data.views) ? data.views : 0;
+    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+
+    data.draft = (data.draft) ? data.draft : true;
+    data.deleted = (data.deleted) ? data.deleted : false;
+    data.keywords = (data.keywords) ? data.keywords : null;
+
+    data.user_id = (data.user_id) ? data.user_id : null;
+    data.userName = (data.userName) ? data.userName : null;
+    data.userImage = (data.userImage) ? data.userImage : null;
+
+    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
+    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
+    data.favored = (data.favored) ? data.favored : false;
+    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
+    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
+    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+  }
 
 }
 
 export class AffectedParty {
   public id?;
-  public project_id?;
 
   public name: string;
   public url?: string;
@@ -191,11 +369,12 @@ export class AffectedParty {
   public link?: string;
   public shared: boolean = true;
 
+  public project_id?;
   public description?;
-  public sections?: Array<Section> = [];
   public affectedPartyType?;
 
   public publishedAt;
+  public sections?: Array<Section> = [];
 
   public lastUpdated;
   public timeStamp;
@@ -217,6 +396,45 @@ export class AffectedParty {
   public favoredCount?;
   public broadcasted?;
   public broadcastedCount?;
+
+  static restoreData(data: any): void {
+    data.id = (data.id) ? data.id : null;
+    data.name = (data.name) ? data.name : null;
+    data.url = (data.url) ? data.url : null;
+    data.icon = (data.icon) ? data.icon : null;
+    data.badge = (data.badge) ? data.badge : null;
+    data.link = (data.link) ? data.link : null;
+    data.shared = (data.shared) ? data.shared : false;
+
+    data.project_id = (data.project_id) ? data.project_id : null;
+    data.description = (data.description) ? data.description : null;
+    data.affectedPartyType = (data.affectedPartyType) ? data.affectedPartyType : null;
+
+    data.publishedAt = (data.publishedAt) ? data.publishedAt : null;
+
+    data.sections = (data.sections) ? data.sections : [];
+
+    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
+    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
+    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
+    data.views = (data.views) ? data.views : 0;
+    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+
+    data.draft = (data.draft) ? data.draft : true;
+    data.deleted = (data.deleted) ? data.deleted : false;
+    data.keywords = (data.keywords) ? data.keywords : null;
+
+    data.user_id = (data.user_id) ? data.user_id : null;
+    data.userName = (data.userName) ? data.userName : null;
+    data.userImage = (data.userImage) ? data.userImage : null;
+
+    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
+    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
+    data.favored = (data.favored) ? data.favored : false;
+    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
+    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
+    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+  }
 }
 
 export class AffectedSystem {
@@ -229,9 +447,9 @@ export class AffectedSystem {
   public link?: string;
   public shared: boolean = false;
 
-  project_id?;
+  public project_id?;
 
-  description?;
+  public description?;
   public sections?: Array<Section> = [];
 
   public publishedAt;
@@ -256,12 +474,49 @@ export class AffectedSystem {
   public favoredCount?;
   public broadcasted?;
   public broadcastedCount?;
+
+  static restoreData(data: any): void {
+    data.id = (data.id) ? data.id : null;
+    data.name = (data.name) ? data.name : null;
+    data.url = (data.url) ? data.url : null;
+    data.icon = (data.icon) ? data.icon : null;
+    data.badge = (data.badge) ? data.badge : null;
+    data.link = (data.link) ? data.link : null;
+    data.shared = (data.shared) ? data.shared : false;
+
+    data.project_id = (data.project_id) ? data.project_id : null;
+
+    data.description = (data.description) ? data.description : null;
+    data.publishedAt = (data.publishedAt) ? data.publishedAt : null;
+
+    data.sections = (data.sections) ? data.sections : [];
+
+    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
+    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
+    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
+    data.views = (data.views) ? data.views : 0;
+    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+
+    data.draft = (data.draft) ? data.draft : true;
+    data.deleted = (data.deleted) ? data.deleted : false;
+    data.keywords = (data.keywords) ? data.keywords : null;
+
+    data.user_id = (data.user_id) ? data.user_id : null;
+    data.userName = (data.userName) ? data.userName : null;
+    data.userImage = (data.userImage) ? data.userImage : null;
+
+    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
+    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
+    data.favored = (data.favored) ? data.favored : false;
+    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
+    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
+    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+  }
 
 }
 
 export class ImplementationPlan {
   public id?;
-  public project_id?;
 
   public name: string;
   public url?: string;
@@ -270,10 +525,11 @@ export class ImplementationPlan {
   public link?: string;
   public shared: boolean = false;
 
+  public project_id?;
   public description?;
+  public publishedAt;
   public sections?: Array<Section> = [];
 
-  public publishedAt;
 
   public lastUpdated;
   public timeStamp;
@@ -295,12 +551,47 @@ export class ImplementationPlan {
   public favoredCount?;
   public broadcasted?;
   public broadcastedCount?;
+
+  static restoreData(data: any): void {
+    data.id = (data.id) ? data.id : null;
+    data.name = (data.name) ? data.name : null;
+    data.url = (data.url) ? data.url : null;
+    data.icon = (data.icon) ? data.icon : null;
+    data.badge = (data.badge) ? data.badge : null;
+    data.link = (data.link) ? data.link : null;
+    data.shared = (data.shared) ? data.shared : false;
+
+    data.project_id = (data.project_id) ? data.project_id : null;
+    data.description = (data.description) ? data.description : null;
+
+    data.publishedAt = (data.publishedAt) ? data.publishedAt : null;
+    data.sections = (data.sections) ? data.sections : [];
+
+    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
+    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
+    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
+    data.views = (data.views) ? data.views : 0;
+    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+
+    data.draft = (data.draft) ? data.draft : true;
+    data.deleted = (data.deleted) ? data.deleted : false;
+    data.keywords = (data.keywords) ? data.keywords : null;
+
+    data.user_id = (data.user_id) ? data.user_id : null;
+    data.userName = (data.userName) ? data.userName : null;
+    data.userImage = (data.userImage) ? data.userImage : null;
+
+    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
+    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
+    data.favored = (data.favored) ? data.favored : false;
+    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
+    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
+    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+  }
 
 }
 export class Bug {
   public id?;
-  public project_id?;
-  public deliverable_id?;
 
   public name: string;
   public url?: string;
@@ -310,13 +601,15 @@ export class Bug {
   public shared: boolean = false;
 
 
+  public project_id?;
+  public deliverable_id?;
   public description?;
   public currentState?;
   public proposedSolution?;
   public bugStatus?;
+  public publishedAt;
   public sections?: Array<Section> = [];
 
-  public publishedAt;
 
   public lastUpdated;
   public timeStamp;
@@ -338,6 +631,47 @@ export class Bug {
   public favoredCount?;
   public broadcasted?;
   public broadcastedCount?;
+
+  static restoreData(data: any): void {
+    data.id = (data.id) ? data.id : null;
+    data.name = (data.name) ? data.name : null;
+    data.url = (data.url) ? data.url : null;
+    data.icon = (data.icon) ? data.icon : null;
+    data.badge = (data.badge) ? data.badge : null;
+    data.link = (data.link) ? data.link : null;
+    data.shared = (data.shared) ? data.shared : false;
+
+    data.project_id = (data.project_id) ? data.project_id : null;
+    data.deliverable_id = (data.deliverable_id) ? data.deliverable_id : null;
+    data.description = (data.description) ? data.description : null;
+    data.currentState = (data.currentState) ? data.currentState : null;
+    data.proposedSolution = (data.proposedSolution) ? data.proposedSolution : null;
+    data.bugStatus = (data.bugStatus) ? data.bugStatus : null;
+    data.publishedAt = (data.publishedAt) ? data.publishedAt : null;
+
+    data.sections = (data.sections) ? data.sections : [];
+
+    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
+    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
+    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
+    data.views = (data.views) ? data.views : 0;
+    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+
+    data.draft = (data.draft) ? data.draft : true;
+    data.deleted = (data.deleted) ? data.deleted : false;
+    data.keywords = (data.keywords) ? data.keywords : null;
+
+    data.user_id = (data.user_id) ? data.user_id : null;
+    data.userName = (data.userName) ? data.userName : null;
+    data.userImage = (data.userImage) ? data.userImage : null;
+
+    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
+    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
+    data.favored = (data.favored) ? data.favored : false;
+    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
+    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
+    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+  }
 
 }
 
@@ -356,10 +690,10 @@ export class ProjectReport {
   public report_version?: number = 0;
   public status?;
 
-  public sections?: Array<Section>;
   public description?;
 
   public publishedAt;
+  public sections?: Array<Section>;
 
   public lastUpdated;
   public timeStamp;
@@ -382,18 +716,66 @@ export class ProjectReport {
   public broadcasted?;
   public broadcastedCount?;
 
+  static restoreData(data: any): void {
+    data.id = (data.id) ? data.id : null;
+    data.name = (data.name) ? data.name : null;
+    data.url = (data.url) ? data.url : null;
+    data.icon = (data.icon) ? data.icon : null;
+    data.badge = (data.badge) ? data.badge : null;
+    data.link = (data.link) ? data.link : null;
+    data.shared = (data.shared) ? data.shared : false;
+
+    data.project_id = (data.project_id) ? data.project_id : null;
+    data.report_version = (data.report_version) ? data.report_version : null;
+    data.status = (data.status) ? data.status : null;
+
+    data.description = (data.description) ? data.description : null;
+
+    data.publishedAt = (data.publishedAt) ? data.publishedAt : null;
+
+    data.sections = (data.sections) ? data.sections : [];
+
+    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
+    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
+    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
+    data.views = (data.views) ? data.views : 0;
+    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+
+    data.draft = (data.draft) ? data.draft : true;
+    data.deleted = (data.deleted) ? data.deleted : false;
+    data.keywords = (data.keywords) ? data.keywords : null;
+
+    data.user_id = (data.user_id) ? data.user_id : null;
+    data.userName = (data.userName) ? data.userName : null;
+    data.userImage = (data.userImage) ? data.userImage : null;
+
+    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
+    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
+    data.favored = (data.favored) ? data.favored : false;
+    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
+    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
+    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+  }
+
 }
 
 export class Approval  {
   public id?;
+  public name: string;
+  public url?: string;
+  public icon?;
+  public badge?;
+  public link?: string;
+  public shared: boolean = false;
+
   public project_id?;
 
   public approvalDate;
   public approver;
   public approverName;
 
-  public sections?: Array<Section>;
   public publishedAt;
+  public sections?: Array<Section>;
 
   public lastUpdated;
   public timeStamp;
@@ -415,5 +797,46 @@ export class Approval  {
   public favoredCount?;
   public broadcasted?;
   public broadcastedCount?;
+
+  static restoreData(data: any): void {
+    data.id = (data.id) ? data.id : null;
+    data.name = (data.name) ? data.name : null;
+    data.url = (data.url) ? data.url : null;
+    data.icon = (data.icon) ? data.icon : null;
+    data.badge = (data.badge) ? data.badge : null;
+    data.link = (data.link) ? data.link : null;
+    data.shared = (data.shared) ? data.shared : false;
+
+    data.project_id = (data.project_id) ? data.project_id : null;
+
+    data.approvalDate = (data.approvalDate) ? data.approvalDate : null;
+    data.approver = (data.approver) ? data.approver : null;
+    data.approverName = (data.approverName) ? data.approverName : null;
+
+    data.publishedAt = (data.publishedAt) ? data.publishedAt : null;
+
+    data.sections = (data.sections) ? data.sections : [];
+
+    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
+    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
+    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
+    data.views = (data.views) ? data.views : 0;
+    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+
+    data.draft = (data.draft) ? data.draft : true;
+    data.deleted = (data.deleted) ? data.deleted : false;
+    data.keywords = (data.keywords) ? data.keywords : null;
+
+    data.user_id = (data.user_id) ? data.user_id : null;
+    data.userName = (data.userName) ? data.userName : null;
+    data.userImage = (data.userImage) ? data.userImage : null;
+
+    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
+    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
+    data.favored = (data.favored) ? data.favored : false;
+    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
+    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
+    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+  }
 
 }
