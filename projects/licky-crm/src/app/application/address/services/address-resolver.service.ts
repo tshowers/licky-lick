@@ -27,6 +27,7 @@ export class AddressResolverService {
       .pipe(
         map(address => {
           if (address) {
+            Address.restoreData(address);
             this.incrementViewCount(address, id1, id2);
             return (address.id == id2) ? address : of(this.getNew(id1));
           } else {

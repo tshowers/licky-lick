@@ -80,11 +80,11 @@ export class TopicEditComponent extends LickAppPageComponent implements OnInit, 
 
   private redirect(redirectPath): void {
     if (!this.currentUpload) {
-      console.log("No upload", this.currentUpload, redirectPath)
+      // console.log("No upload", this.currentUpload, redirectPath)
       this.router.navigate([redirectPath]);
     }
     else {
-      console.log("Uploading", this.currentUpload, redirectPath)
+      // console.log("Uploading", this.currentUpload, redirectPath)
       let uploadCheck = setInterval(() => {
         if (this.currentUpload.progress >= 100) {
           clearInterval(uploadCheck);

@@ -77,11 +77,12 @@ export class FopEditComponent extends LickAppPageComponent implements OnInit, On
 
   onSubmit(): void {
     (this.fop.id ? this.onUpdate() : this.saveNewFOP());
-    this.router.navigate(['application', 'contacts', this.contact_id, 'form-of-payments']);
   }
 
   onUpdate(): void {
     this.dm.db.updateData(FOPS + "/" + this.contact_id, this.fop.id, this.fop);
+    const redirectPath = '/application/contacts/' + this.contact_id + '/form-of-payments/' + this.fop.id;
+    this.router.navigate([redirectPath]);
   }
 
   onDelete(): void {
@@ -93,6 +94,8 @@ export class FopEditComponent extends LickAppPageComponent implements OnInit, On
   saveNewFOP(): void {
     this.dm.db.writeData(FOPS + "/" + this.contact_id, this.fop).subscribe((key) => {
       this.fop.id = key;
+      const redirectPath = '/application/contacts/' + this.contact_id + '/form-of-payments/' + this.fop.id;
+      this.router.navigate([redirectPath]);
     });
   }
 

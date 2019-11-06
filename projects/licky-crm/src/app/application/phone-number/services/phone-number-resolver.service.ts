@@ -25,7 +25,7 @@ export class PhoneNumberResolverService {
       return this._db.getData(PHONE_NUMBERS + '/' + id1, id2)
         .pipe(map(phoneNumber => {
           if (phoneNumber) {
-            // PhoneNumber.restoreData(phoneNumber);
+            PhoneNumber.restoreData(phoneNumber);
             return (phoneNumber.id == id2) ? phoneNumber : of(this.getNew(id1));
           } else {
             return of(this.getNew(id1));

@@ -64,11 +64,12 @@ export class PhoneNumberEditComponent extends LickAppPageComponent implements On
 
   onSubmit(): void {
     (this.phoneNumber.id ? this.onUpdate() : this.saveNewEmailAddress());
-    this.router.navigate(['application', 'contacts', this.contact_id, 'phone-numbers']);
   }
 
   onUpdate(): void {
     this.dm.db.updateData(PHONE_NUMBERS + "/" + this.contact_id, this.phoneNumber.id, this.phoneNumber);
+    const redirectPath = '/application/contacts/' + this.contact_id + '/phone-numbers/' + this.phoneNumber.id;
+    this.router.navigate([redirectPath]);
   }
 
   onDelete(): void {
@@ -80,6 +81,8 @@ export class PhoneNumberEditComponent extends LickAppPageComponent implements On
   saveNewEmailAddress(): void {
     this.dm.db.writeData(PHONE_NUMBERS + "/" + this.contact_id, this.phoneNumber).subscribe((key) => {
       this.phoneNumber.id = key;
+      const redirectPath = '/application/contacts/' + this.contact_id + '/phone-numbers/' + this.phoneNumber.id;
+      this.router.navigate([redirectPath]);
     });
   }
 

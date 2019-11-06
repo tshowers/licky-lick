@@ -26,6 +26,7 @@ export class FopResolverService {
       return this._db.getData(FOPS + '/' + id1, id2)
         .pipe(map(fop => {
           if (fop) {
+            FOP.restoreData(fop);
             this.incrementViewCount(fop, id1, id2);
             return (fop.id == id2) ? fop : of(this.getNew(id1));
           } else {

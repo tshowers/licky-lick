@@ -26,6 +26,7 @@ export class EmailAddressResolverService {
       return this._db.getData(EMAIL_ADDRESSES + '/' + id1, id2)
         .pipe(map(emailAddress => {
           if (emailAddress) {
+            EmailAddress.restoreData(emailAddress)
             this.incrementViewCount(emailAddress, id1, id2);
             return (emailAddress.id == id2) ? emailAddress : of(this.getNew(id1));
           } else {

@@ -63,11 +63,12 @@ export class EmailAddressEditComponent extends LickAppPageComponent implements O
 
   onSubmit(): void {
     (this.emailAddress.id ? this.onUpdate() : this.saveNewEmailAddress());
-    this.router.navigate(['application', 'contacts', this.contact_id, 'email-addresses']);
   }
 
   onUpdate(): void {
     this.dm.db.updateData(EMAIL_ADDRESSES + "/" + this.contact_id, this.emailAddress.id, this.emailAddress);
+    const redirectPath = '/application/contacts/' + this.contact_id + '/email-addresses/' + this.emailAddress.id;
+    this.router.navigate([redirectPath]);
   }
 
   onDelete(): void {
@@ -79,6 +80,8 @@ export class EmailAddressEditComponent extends LickAppPageComponent implements O
   saveNewEmailAddress(): void {
     this.dm.db.writeData(EMAIL_ADDRESSES + "/" + this.contact_id, this.emailAddress).subscribe((key) => {
       this.emailAddress.id = key;
+      const redirectPath = '/application/contacts/' + this.contact_id + '/email-addresses/' + this.emailAddress.id;
+      this.router.navigate([redirectPath]);
     });
   }
 

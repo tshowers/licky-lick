@@ -25,6 +25,7 @@ export class NoteResolverService {
       return this._db.getData(JUST_TEXTS + '/' + id1, id2)
         .pipe(map(justText => {
           if (justText) {
+            JustText.restoreData(justText);
             this.incrementViewCount(justText, id1, id2);
             return (justText.id == id2) ? justText : of(this.getNew(id1));
           } else {

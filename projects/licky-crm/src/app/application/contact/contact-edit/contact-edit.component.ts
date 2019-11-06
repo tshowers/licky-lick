@@ -73,17 +73,16 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
   onSubmit(): void {
     this.modelCheck();
     (this.contact.id ? this.onUpdate() : this.saveNewContact());
-    this.redirect();
   }
 
-  private redirect(): void {
+  private redirect(redirectPath): void {
     if (!this.currentUpload)
-      this.router.navigate(['application', 'contacts', this.contact.id]);
+    this.router.navigate([redirectPath]);
     else {
       let uploadCheck = setInterval(() => {
         if (this.currentUpload.progress >= 100) {
           clearInterval(uploadCheck);
-          this.router.navigate(['application', 'contacts', this.contact.id]);
+          this.router.navigate([redirectPath]);
         }
       }, 1000)
     }
@@ -106,7 +105,9 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
 
   onUpdate(): void {
     this.dm.db.updateData(CONTACTS, this.contact.id, this.contact);
+    const redirectPath = '/application/contacts/' + this.contact.id;
     this.uploadSingle();
+    this.redirect(redirectPath);
   }
 
   onDelete(): void {
@@ -118,7 +119,9 @@ export class ContactEditComponent extends LickAppPageComponent implements OnInit
   saveNewContact(): void {
     this.dm.db.writeData(CONTACTS, this.contact).subscribe((key) => {
       this.contact.id = key;
+      const redirectPath = '/application/contacts/' + this.contact.id;
       this.uploadSingle();
+      this.redirect(redirectPath);
     });
   }
 

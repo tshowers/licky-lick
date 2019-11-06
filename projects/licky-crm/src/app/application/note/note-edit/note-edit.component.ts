@@ -61,11 +61,12 @@ export class NoteEditComponent extends LickAppPageComponent implements OnInit, O
 
   onSubmit(): void {
     (this.justText.id ? this.onUpdate() : this.saveNewJustText());
-    this.router.navigate(['application', 'contacts', this.contact_id, 'notes']);
   }
 
   onUpdate(): void {
     this.dm.db.updateData(JUST_TEXTS + "/" + this.contact_id, this.justText.id, this.justText);
+    const redirectPath = '/application/contacts/' + this.contact_id + '/notes/' + this.justText.id;
+    this.router.navigate([redirectPath]);
   }
 
   onDelete(): void {
@@ -77,6 +78,8 @@ export class NoteEditComponent extends LickAppPageComponent implements OnInit, O
   saveNewJustText(): void {
     this.dm.db.writeData(JUST_TEXTS + "/" + this.contact_id, this.justText).subscribe((key) => {
       this.justText.id = key;
+      const redirectPath = '/application/contacts/' + this.contact_id + '/notes/' + this.justText.id;
+      this.router.navigate([redirectPath]);
     });
   }
 

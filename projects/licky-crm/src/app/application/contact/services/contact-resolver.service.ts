@@ -23,6 +23,7 @@ export class ContactResolverService {
       return this._db.getData(CONTACTS, id)
         .pipe(map(contact => {
           if (contact) {
+            Contact.restoreData(contact);
             this.incrementViewCount(contact, id);
             return (contact.id == id) ? contact : of(new Contact());
           } else {

@@ -24,10 +24,10 @@
       </div> <!-- .row -->
     </div> <!-- .container -->
 
-    <div class="header-big-image">
+    <div class="header-big-image wow fadeIn">
       <img src="{{imageURL1}}" alt="{{headerText}}">
 
-      <img src="{{imageURL2}}" class="ui" alt="{{headerText}}">
+      <img *ngIf="imageURL2" src="{{imageURL2}}" class="ui" alt="{{headerText}}">
     </div> <!-- .header-image -->
 
   </div> <!-- .container-fluid -->

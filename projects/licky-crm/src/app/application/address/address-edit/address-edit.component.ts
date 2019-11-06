@@ -185,11 +185,12 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
 
   onSubmit(): void {
     (this.address.id ? this.onUpdate() : this.saveNewAddress());
-    this.router.navigate(['application', 'contacts', this.contact_id, 'addresses']);
   }
 
   onUpdate(): void {
     this.dm.db.updateData(ADDRESSES + "/" + this.contact_id, this.address.id, this.address);
+    const redirectPath = '/application/contacts/' + this.contact_id + '/addresses/' + this.address.id;
+    this.router.navigate([redirectPath]);
   }
 
   onDelete(): void {
@@ -201,7 +202,8 @@ export class AddressEditComponent extends LickAppPageComponent implements OnInit
   saveNewAddress(): void {
     this.dm.db.writeData(ADDRESSES + "/" + this.contact_id, this.address).subscribe((key) => {
       this.address.id = key;
-      console.info("ADDRESS AFTER SAVE", this.address, "KEY IS", key)
+      const redirectPath = '/application/contacts/' + this.contact_id + '/addresses/' + this.address.id;
+      this.router.navigate([redirectPath]);
     });
   }
 
