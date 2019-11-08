@@ -11,7 +11,7 @@
                             [emailVerified]="dm.emailVerified"
                             (settingsEvent)="onSettings()"
                             (searchEvent)="onSearch($event)"
-                            (placeholder)="'Find a Topic . . .'"
+                            [placeholder]="'Find a Topic . . .'"
                             (profileEvent)="onViewProfile()"
                             [logoutPage]="'/application/logout'"
                             [loginService]="dm.loginService"></licky-lick-app-widget-menu>

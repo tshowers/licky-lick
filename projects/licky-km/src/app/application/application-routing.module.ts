@@ -7,6 +7,7 @@ import { NotificationModule } from './notification/notification.module';
 import { TopicEditComponent } from './topic-edit/topic-edit.component';
 import { TopicListComponent } from './topic-list/topic-list.component';
 import { TopicViewComponent } from './topic-view/topic-view.component';
+import { TopicFeedComponent } from './topic-feed/topic-feed.component';
 import { TopicDashboardComponent } from './topic-dashboard/topic-dashboard.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { LogoutPageComponent } from './logout-page/logout-page.component';
@@ -21,6 +22,7 @@ import { TopicViewResolverService } from './services/topic-view-resolver.service
 const routes : Routes = [
   { path: 'notification', canLoad: [AuthGuard], children: [ {path: '', loadChildren: './notification/notification.module#NotificationModule'} ]},
   { path: 'topics', component: TopicListComponent, data: { title: 'Topics - Knowledge Management - 16 AHEAD' }},
+  { path: 'topics/feed', component: TopicFeedComponent, data: { title: 'Topic Feed - Knowledge Management - 16 AHEAD' }},
   { path: 'topics/dashboard', component: TopicDashboardComponent, data: { title: 'Topic Dashboard - Knowledge Management - 16 AHEAD' }},
   { path: 'topics/new', resolve: { topic: TopicResolverService }, component: TopicEditComponent, data: { title: 'New Topic - Knowledge Management - 16 AHEAD' }},
   { path: 'topics/:id', resolve: { topic: TopicViewResolverService }, component: TopicViewComponent, data: { title: 'Topic - Knowledge Management - 16 AHEAD' }},

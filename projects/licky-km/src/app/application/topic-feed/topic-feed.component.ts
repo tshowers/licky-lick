@@ -7,11 +7,11 @@ import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { TOPICS } from 'licky-services';
 
 @Component({
-  selector: 'app-topic-list',
-  templateUrl: './topic-list.component.html',
-  styleUrls: ['./topic-list.component.css']
+  selector: 'app-topic-feed',
+  templateUrl: './topic-feed.component.html',
+  styleUrls: ['./topic-feed.component.css']
 })
-export class TopicListComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
+export class TopicFeedComponent  extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
   data$: Observable<any[]>;
 
@@ -30,11 +30,6 @@ export class TopicListComponent extends LickAppPageComponent implements OnInit, 
   private _paramSubscription: Subscription;
 
   searchArgument = '';
-
-  deletedTopics: number = 0;
-  sharedTopics: number = 0;
-  draftTopics: number = 0;
-  uploadTopics: number = 0;
 
   constructor(public dm: DataMediationService, protected renderer2: Renderer2, public router: Router, private _route: ActivatedRoute) {
     super(router, renderer2);
@@ -61,14 +56,23 @@ export class TopicListComponent extends LickAppPageComponent implements OnInit, 
       this._topicSubscription.unsubscribe();
   }
 
+  private setCounts(topics: Topic[]): void {
+    this.dm.sortHelper.sortByLastUpdated(topics);
+    this._topics = topics;
+    this._topicsOriginal = topics;
+    this.totalRecords = topics.length;
+  }
+
+
   private doDataMassage(topics: Topic[]): void {
     this.data$ = Observable.create((observer) => {
       if (this.isSearch()) {
         this.setSearchResult();
         observer.next(this.dm.db.getRecordsToDisplay(1, this.pageSize, this._topics));
       }
-      else
+      else {
         observer.next(this.dm.db.getRecordsToDisplay(1, this.pageSize, topics));
+      }
 
       observer.complete();
     })
@@ -98,17 +102,6 @@ export class TopicListComponent extends LickAppPageComponent implements OnInit, 
     return false;
   }
 
-  private setCounts(topics: Topic[]): void {
-    this.dm.sortHelper.sortByName(topics);
-    this._topics = topics;
-    this._topicsOriginal = topics;
-    this.totalRecords = topics.length;
-    this.deletedTopics = topics.filter((topic) => topic.deleted).length;
-    this.sharedTopics = topics.filter((topic) => topic.shared).length;
-    this.draftTopics = topics.filter((topic) => topic.draft).length;
-    this.uploadTopics = topics.filter((topic) => (topic && topic.url)).length;
-  }
-
   private setTopics(): void {
     this.dm.doTopics();
     this._topicSubscription = this.dm.topics.subscribe((topics: Topic[]) => {
@@ -123,8 +116,8 @@ export class TopicListComponent extends LickAppPageComponent implements OnInit, 
   setBreadCrumb(): void {
     this.crumbs = [
       { name: "dashboard", link: "/application/topics/dashboard", active: false },
-      { name: "topics", link: "/application/topics", active: true },
-      { name: "feed", link: "/application/topics/feed", active: false },
+      { name: "topics", link: "/application/topics", active: false },
+      { name: "feed", link: "/application/topics/feed", active: true },
       { name: "new", link: "/application/topics/new", active: false },
     ]
   }
@@ -145,20 +138,10 @@ export class TopicListComponent extends LickAppPageComponent implements OnInit, 
     })
   }
 
-  onDetail(data): void {
-    console.log(JSON.stringify(data))
+  onPageEvent(data): void {
     this.router.navigate(['application', 'topics',  data.id])
   }
 
-  onEdit(data): void {
-    this.router.navigate(['application', 'topics', data.id, 'edit'])
-  }
-
-  onDelete(data): void {
-    data.deleted = true;
-    this.dm.db.updateData(TOPICS, data.id, data);
-    this.router.navigate(['application', 'topics',  data.id])
-  }
 
   onSearch(value) : void {
     this.router.navigate(['application', 'topics'], {queryParams: { searchArgument: value}})

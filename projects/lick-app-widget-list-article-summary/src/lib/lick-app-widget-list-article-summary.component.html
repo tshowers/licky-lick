@@ -1,0 +1,116 @@
+<div class="card-body">
+  <div class="clearfix">
+    <h5 class="text-theme float-left wow fadeIn">{{headingText}}</h5>
+    <div class="h2">
+      <i class="float-right text-theme"
+         [ngClass]="iconClass"
+         aria-hidden="true"></i>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <ul id="feedList">
+    <div class="list-group-item list-group-item-action"
+         *ngFor="let item of data; let i = index">
+      <div class="d-flex w-100 justify-content-between">
+        <div>
+          <div class="u-img float-left">
+            <img *ngIf="item?.userImage"
+                 src="{{item?.userImage}}"
+                 alt="{{item?.name}}" />
+            <img *ngIf="!item?.userImage"
+                 src="{{defaultImage}}"
+                 alt="{{item?.name}}" />
+            <span *ngIf="item?.userStatus"
+                  [ngClass]="item?.userStatus"></span>
+          </div>
+          <div class="u-text float-left">
+            <div class="u-name">
+              <strong>{{item?.userName}}</strong>
+            </div>
+          </div>
+        </div>
+        <small>{{item?.lastUpdated | date : 'medium'}}</small>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-10">
+            <div class="ta-article">
+              <div class="container d-flex justify-content-start">
+                <div class="row">
+                  <div class="col-3">
+                    <a href="{{item?.url}}"
+                       target="_blank">
+                      <div class="ta-thumbnail"
+                           *ngIf="item?.url">
+                        <img class="rounded"
+                             src="{{item?.url | imageCheck}}"
+                             alt="{{item?.name}}">
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-9">
+
+                      <h4><a (click)="onPageEvent(item)">{{item?.name}}</a>
+                        <a *ngIf="item?.url" href="{{item?.url}}"
+                           target="_blank"><i class="fa fa-paperclip" aria-hidden="true"></i>
+                        </a>
+                      </h4>
+
+                    <div innerHTML={{item?.description}}></div>
+                    <!-- <ul class="list-group list-group-flush small">
+                        <li class="list-group-item"
+                            *ngIf="item?.phrase">
+                          <div class="row">
+                            <div class="col"> <strong class="ta-label">phrase:</strong>
+                            </div>
+                            <div class="col">
+                              <p>{{item?.phrase}}</p>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item"
+                            *ngIf="item?.target">
+                          <div class="row">
+                            <div class="col"> <strong class="ta-label">target:</strong>
+                            </div>
+                            <div class="col">
+                              <p>{{item?.target}}</p>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item"
+                            *ngIf="item?.author">
+                          <div class="row">
+                            <div class="col"> <strong class="ta-label">author:</strong>
+                            </div>
+                            <div class="col">
+                              <p>{{item?.author}}</p>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item"
+                            *ngIf="item?.notes">
+                          <div class="row">
+                            <div class="col"> <strong class="ta-label">notes:</strong>
+                            </div>
+                            <div class="col"
+                                 innerHTML="{{item?.notes}}">
+                            </div>
+                          </div>
+                        </li>
+                      </ul> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ul>
+</div>
+<ngb-pagination [(page)]="currentPage"
+                (pageChange)="onPageChange($event)"
+                [pageSize]="pageSize"
+                [collectionSize]="totalRecords"></ngb-pagination>

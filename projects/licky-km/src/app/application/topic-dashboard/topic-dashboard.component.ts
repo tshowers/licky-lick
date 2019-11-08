@@ -162,6 +162,7 @@ export class TopicDashboardComponent extends LickAppPageComponent implements OnI
     this.crumbs = [
       { name: "dashboard", link: "/application/topics/dashboard", active: true },
       { name: "topics", link: "/application/topics", active: false },
+      { name: "feed", link: "/application/topics/feed", active: false },
       { name: "new", link: "/application/topics/new", active: false },
     ]
   }

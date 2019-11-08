@@ -4,7 +4,7 @@
             <a (click)="onListItem(item)" class="list-group-item list-group-item-action flex-column align-items-start" [ngClass]="{'active' : (i === 0)}" *ngFor="let item of data; let i = index">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1" [ngClass]="{'text-white' : (i === 0)}">{{item?.name}}</h5>
-                    <small [ngClass]="{'text-white' : (i === 0)}">{{item?.lastUpdated | date : 'fullDate'}}</small>
+                    <small [ngClass]="{'text-white' : (i === 0)}">{{item?.lastUpdated | date : 'shortDate'}}</small>
                 </div>
                 <div class="mb-1" [ngClass]="{'text-white' : (i === 0)}" innerHTML={{item?.description}}></div>
                 <small [ngClass]="{'text-white' : (i === 0)}">{{item?.lastUpdatedBy}}</small>
@@ -16,5 +16,5 @@
 </div>
 <!-- end card -->
 <ng-template #noData>
-  <licky-lick-app-widget-no-data></licky-lick-app-widget-no-data>
+  <licky-lick-app-widget-no-data  [newButton]="false"></licky-lick-app-widget-no-data>
 </ng-template>

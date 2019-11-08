@@ -762,6 +762,11 @@ a.btn-primary {
   overflow: hidden;
 }
 
+.ta-article {
+  border-radius: 5px;
+  border: #e1e8ed 1px solid;
+}
+
 .ta-data-list-image img {
   position: relative;
   top: 50%;
@@ -782,6 +787,15 @@ a.btn-primary {
 .ta-neglected-featured {
   height: 500px;
   overflow: hidden;
+}
+.ta-thumbnail {
+  height: 125px;
+  overflow: hidden;
+}
+.ta-thumbnail img {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .ta-neglected-featured img {

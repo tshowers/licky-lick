@@ -19,9 +19,11 @@ import { LickAppWidgetStats13Module} from 'lick-app-widget-stats13';
 import { LickAppWidgetStats15Module} from 'lick-app-widget-stats15';
 import { LickAppWidgetStats9Module} from 'lick-app-widget-stats9';
 import { LickAppWidgetListContentModule} from 'lick-app-widget-list-content';
+import { LickAppWidgetListArticleSummaryModule } from 'lick-app-widget-list-article-summary';
+import { TopicFeedComponent } from './topic-feed/topic-feed.component';
 
 @NgModule({
-  declarations: [TopicEditComponent, TopicListComponent, TopicViewComponent, TopicDashboardComponent, LoginPageComponent, LogoutPageComponent, SignUpPageComponent, ResetPageComponent, UserProfilePageComponent, UserSettingsComponent],
+  declarations: [TopicEditComponent, TopicListComponent, TopicViewComponent, TopicDashboardComponent, LoginPageComponent, LogoutPageComponent, SignUpPageComponent, ResetPageComponent, UserProfilePageComponent, UserSettingsComponent, TopicFeedComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -31,7 +33,8 @@ import { LickAppWidgetListContentModule} from 'lick-app-widget-list-content';
     LickAppWidgetStats9Module,
     LickAppWidgetStats13Module,
     LickAppWidgetStats15Module,
-    LickAppWidgetListContentModule
+    LickAppWidgetListContentModule,
+    LickAppWidgetListArticleSummaryModule
   ]
 })
 export class ApplicationModule { }

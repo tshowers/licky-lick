@@ -696,6 +696,12 @@
       ],
       "lick-app-widget-article/*": [
         "dist/lick-app-widget-article/*"
+      ],
+      "lick-app-widget-list-article-summary": [
+        "dist/lick-app-widget-list-article-summary"
+      ],
+      "lick-app-widget-list-article-summary/*": [
+        "dist/lick-app-widget-list-article-summary/*"
       ]
     }
   }

@@ -65,6 +65,7 @@ export class TopicEditComponent extends LickAppPageComponent implements OnInit, 
     this.crumbs = [
       { name: "dashboard", link: "/application/topics/dashboard", active: false },
       { name: "topics", link: "/application/topics", active: false },
+      { name: "feed", link: "/application/topics/feed", active: false },
       { name: (this.topic.id ? (this.topic.name) : "edit"), link: "/application/topics/new", active: true },
     ]
   }
