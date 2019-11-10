@@ -4989,6 +4989,138 @@
           }
         }
       }
+    },
+    "licky-t-shop": {
+      "root": "projects/licky-t-shop/",
+      "sourceRoot": "projects/licky-t-shop/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/licky-t-shop",
+            "index": "projects/licky-t-shop/src/index.html",
+            "main": "projects/licky-t-shop/src/main.ts",
+            "polyfills": "projects/licky-t-shop/src/polyfills.ts",
+            "tsConfig": "projects/licky-t-shop/tsconfig.app.json",
+            "assets": [
+              "projects/licky-t-shop/src/favicon.ico",
+              "projects/licky-t-shop/src/assets",
+              "projects/licky-t-shop/src/manifest.json"
+            ],
+            "styles": [
+              "projects/licky-t-shop/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/licky-t-shop/src/environments/environment.ts",
+                  "with": "projects/licky-t-shop/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "projects/licky-t-shop/ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "licky-t-shop:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "licky-t-shop:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "licky-t-shop:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/licky-t-shop/src/test.ts",
+            "polyfills": "projects/licky-t-shop/src/polyfills.ts",
+            "tsConfig": "projects/licky-t-shop/tsconfig.spec.json",
+            "karmaConfig": "projects/licky-t-shop/karma.conf.js",
+            "styles": [
+              "projects/licky-t-shop/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/licky-t-shop/src/favicon.ico",
+              "projects/licky-t-shop/src/assets",
+              "projects/licky-t-shop/src/manifest.json"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/licky-t-shop/tsconfig.app.json",
+              "projects/licky-t-shop/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "licky-t-shop-e2e": {
+      "root": "projects/licky-t-shop-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/licky-t-shop-e2e/protractor.conf.js",
+            "devServerTarget": "licky-t-shop:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "licky-t-shop:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/licky-t-shop-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "lick-data"
