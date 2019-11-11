@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 
 import { MarketingRoutingModule } from './marketing-routing.module';
+
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
