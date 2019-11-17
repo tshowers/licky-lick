@@ -46,7 +46,7 @@ import { StoreViewResolverService } from './commerce/stores/services/store-view-
 
 
 const routes : Routes = [
-  { path: '', component: DashboardComponent, data: { title: 'Dashboard - eCommerce - 16 AHEAD' }},
+  { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard - eCommerce - 16 AHEAD' }},
   { path: 'notification', canLoad: [AuthGuard], children: [ {path: '', loadChildren: './notification/notification.module#NotificationModule'} ]},
   { path: 'stores', component: StoreListComponent, data: { title: 'Stores - eCommerce - 16 AHEAD' }},
   { path: 'carts', component: ShoppingCartListComponent, data: { title: 'ShoppingCarts - eCommerce - 16 AHEAD' }},

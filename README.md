@@ -14,8 +14,11 @@ Examples of the libraries can be viewed through the following links.
 
 Actual implementations of the libraries
 
+* [16 AHEAD](https://dev.16ahead.com)
 * [Taliferro](https://www.taliferro.com)
-* [16AHEAD News](https://news-dev.16ahead.com)
+* [News](https://news-dev.16ahead.com)
+* [Knowledge Center](https://km-dev.16ahead.com)
+* [CRM](https://crm-dev.16ahead.com)
 
 ## Summary
 

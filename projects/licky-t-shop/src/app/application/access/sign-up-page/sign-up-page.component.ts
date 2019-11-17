@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LickyLoginService } from 'licky-services';
 
 @Component({
   selector: 'app-sign-up-page',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router, public loginService: LickyLoginService) { }
 
   ngOnInit() {
   }

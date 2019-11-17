@@ -5016,6 +5016,7 @@
               "node_modules/animate.css/animate.min.css",
               "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
               "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
               "projects/styles/intro-style.css",
               "projects/styles/colors/color-1.css",
               "projects/styles/simple-line-icons.css",

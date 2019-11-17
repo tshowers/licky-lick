@@ -22,7 +22,7 @@ export class LickMarketingLightbox1Component implements OnInit {
   }
 
   open(index: number): void {
-    // open lightbox
+    console.log("Opening lightbox", index, JSON.stringify(this.images))
     this._lightbox.open(this.images, index);
   }
 

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { SharedModule } from '../shared/shared.module';
+import { ApplicationRoutingModule } from './application-routing.module';
+
 import { LoginPageComponent } from './access/login-page/login-page.component';
 import { LogoutPageComponent } from './access/logout-page/logout-page.component';
 import { ResetPageComponent } from './access/reset-page/reset-page.component';
@@ -28,9 +30,9 @@ import { ProductBundleListComponent } from './commerce/products/bundles/product-
 import { DashboardComponent } from './commerce/dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [NotFoundComponent, LoginPageComponent, LogoutPageComponent, ResetPageComponent, SignUpPageComponent, ProfileComponent, SettingsComponent, AlertComponent, MessageComponent, TaskComponent, OrderEditComponent, OrderListComponent, OrderViewComponent, ProductEditComponent, ProductViewComponent, ProductListComponent, ShoppingCartEditComponent, ShoppingCartViewComponent, ShoppingCartListComponent, StoreEditComponent, StoreListComponent, StoreViewComponent, ProductBundleEditComponent, ProductBundleViewComponent, ProductBundleListComponent, DashboardComponent],
+  declarations: [LoginPageComponent, LogoutPageComponent, ResetPageComponent, SignUpPageComponent, ProfileComponent, SettingsComponent, AlertComponent, MessageComponent, TaskComponent, OrderEditComponent, OrderListComponent, OrderViewComponent, ProductEditComponent, ProductViewComponent, ProductListComponent, ShoppingCartEditComponent, ShoppingCartViewComponent, ShoppingCartListComponent, StoreEditComponent, StoreListComponent, StoreViewComponent, ProductBundleEditComponent, ProductBundleViewComponent, ProductBundleListComponent, DashboardComponent],
   imports: [
-    CommonModule
+    CommonModule, SharedModule, ApplicationRoutingModule
   ]
 })
 export class ApplicationModule { }

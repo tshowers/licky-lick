@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LickyLoginService } from 'licky-services';
 
 @Component({
   selector: 'app-logout-page',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogoutPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public loginService: LickyLoginService) { }
 
   ngOnInit() {
   }
