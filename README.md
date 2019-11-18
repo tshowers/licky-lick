@@ -138,6 +138,14 @@ This project is an attempt to offer a complete enterprise solution that can be s
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+* npm start
+* npm run tester
+* npm run home
+* npm run news
+* npm run crm
+* npm run km
+* npm run commerce
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
