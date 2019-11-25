@@ -85,6 +85,7 @@ export class LickAppWidgetChatPopupComponent implements OnInit {
     "id": "1002",
     "name": "John Hammon",
     "shared": false,
+    "account": "3983498",
     "lastUpdated": new Date(),
     "timeStamp": new Date(),
     "user_id": Math.floor(Math.random() * 1000).toString(),

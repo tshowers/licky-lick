@@ -84,6 +84,7 @@ export class LickAppWidgetChatComponent implements OnInit {
   @Input() currentUser: User = {
     "id": "1002",
     "name": "John Hammon",
+    "account": "3983498",
     "shared": false,
     "lastUpdated": new Date(),
     "timeStamp": new Date(),

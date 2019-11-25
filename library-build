@@ -1,0 +1,228 @@
+#!/bin/bash
+
+echo Running Library Build of lick-data
+ng build lick-data
+echo Running Library Build of licky-services
+ng build licky-services
+echo Running Library Build of lick-app-page
+ng build lick-app-page
+echo Running Library Build of lick-app-panel
+ng build lick-app-panel
+echo Running Library Build of lick-app-widget-article
+ng build lick-app-widget-article
+echo Running Library Build of lick-app-widget-breadcrumb
+ng build lick-app-widget-breadcrumb
+echo Running Library Build of lick-app-widget-card-deck
+ng build lick-app-widget-card-deck
+echo Running Library Build of lick-app-widget-card-group
+ng build lick-app-widget-card-group
+echo Running Library Build of lick-app-widget-chat
+ng build lick-app-widget-chat
+echo Running Library Build of lick-app-widget-chat-popup
+ng build lick-app-widget-chat-popup
+echo Running Library Build of lick-app-widget-data-footer
+ng build lick-app-widget-data-footer
+echo Running Library Build of lick-app-widget-feed
+ng build lick-app-widget-feed
+echo Running Library Build of lick-app-widget-footer
+ng build lick-app-widget-footer
+echo Running Library Build of lick-app-widget-left-side-menu
+ng build lick-app-widget-left-side-menu
+echo Running Library Build of lick-app-widget-list-article-summary
+ng build lick-app-widget-list-article-summary
+echo Running Library Build of lick-app-widget-list-badges
+ng build lick-app-widget-list-badges
+echo Running Library Build of lick-app-widget-list-content
+ng build lick-app-widget-list-content
+echo Running Library Build of lick-app-widget-list-icons
+ng build lick-app-widget-list-icons
+echo Running Library Build of lick-app-widget-list-links
+ng build lick-app-widget-list-links
+echo Running Library Build of lick-app-widget-list-order
+ng build lick-app-widget-list-order
+echo Running Library Build of lick-app-widget-list-task
+ng build lick-app-widget-list-task
+echo Running Library Build of lick-app-widget-lock-forgot-password
+ng build lick-app-widget-lock-forgot-password
+echo Running Library Build of lick-app-widget-lock-screen
+ng build lick-app-widget-lock-screen
+echo Running Library Build of lick-app-widget-login
+ng build lick-app-widget-login
+echo Running Library Build of lick-app-widget-logout
+ng build lick-app-widget-logout
+echo Running Library Build of lick-app-widget-maintenance
+ng build lick-app-widget-maintenance
+echo Running Library Build of lick-app-widget-menu
+ng build lick-app-widget-menu
+echo Running Library Build of lick-app-widget-message
+ng build lick-app-widget-message
+echo Running Library Build of lick-app-widget-messages
+ng build lick-app-widget-messages
+echo Running Library Build of lick-app-widget-no-data
+ng build lick-app-widget-no-data
+echo Running Library Build of lick-app-widget-not-found
+ng build lick-app-widget-not-found
+echo Running Library Build of lick-app-widget-notification-alert
+ng build lick-app-widget-notification-alert
+echo Running Library Build of lick-app-widget-notification-message
+ng build lick-app-widget-notification-message
+echo Running Library Build of lick-app-widget-notification-task
+ng build lick-app-widget-notification-task
+echo Running Library Build of lick-app-widget-post1
+ng build lick-app-widget-post1
+echo Running Library Build of lick-app-widget-post2
+ng build lick-app-widget-post2
+echo Running Library Build of lick-app-widget-post3
+ng build lick-app-widget-post3
+echo Running Library Build of lick-app-widget-post4
+ng build lick-app-widget-post4
+echo Running Library Build of lick-app-widget-post5
+ng build lick-app-widget-post5
+echo Running Library Build of lick-app-widget-profile
+ng build lick-app-widget-profile
+echo Running Library Build of lick-app-widget-right-side-menu
+ng build lick-app-widget-right-side-menu
+echo Running Library Build of lick-app-widget-signup
+ng build lick-app-widget-signup
+echo Running Library Build of lick-app-widget-spinner
+ng build lick-app-widget-spinner
+echo Running Library Build of lick-app-widget-stats1
+ng build lick-app-widget-stats1
+echo Running Library Build of lick-app-widget-stats2
+ng build lick-app-widget-stats2
+echo Running Library Build of lick-app-widget-stats3
+ng build lick-app-widget-stats3
+echo Running Library Build of lick-app-widget-stats4
+ng build lick-app-widget-stats4
+echo Running Library Build of lick-app-widget-stats5
+ng build lick-app-widget-stats5
+echo Running Library Build of lick-app-widget-stats6
+ng build lick-app-widget-stats6
+echo Running Library Build of lick-app-widget-stats7
+ng build lick-app-widget-stats7
+echo Running Library Build of lick-app-widget-stats8
+ng build lick-app-widget-stats8
+echo Running Library Build of lick-app-widget-stats9
+ng build lick-app-widget-stats9
+echo Running Library Build of lick-app-widget-stats10
+ng build lick-app-widget-stats10
+echo Running Library Build of lick-app-widget-stats11
+ng build lick-app-widget-stats11
+echo Running Library Build of lick-app-widget-stats12
+ng build lick-app-widget-stats12
+echo Running Library Build of lick-app-widget-stats13
+ng build lick-app-widget-stats13
+echo Running Library Build of lick-app-widget-stats14
+ng build lick-app-widget-stats14
+echo Running Library Build of lick-app-widget-stats15
+ng build lick-app-widget-stats15
+echo Running Library Build of lick-app-widget-stats16
+ng build lick-app-widget-stats16
+echo Running Library Build of lick-app-widget-stats17
+ng build lick-app-widget-stats17
+echo Running Library Build of lick-app-widget-table-data
+ng build lick-app-widget-table-data
+echo Running Library Build of lick-app-widget-totals
+ng build lick-app-widget-totals
+echo Running Library Build of lick-app-widget-under-construction
+ng build lick-app-widget-under-construction
+echo Running Library Build of lick-app-widget-weather
+ng build lick-app-widget-weather
+echo Running Library Build of lick-marketing-about-product1
+ng build lick-marketing-about-product1
+echo Running Library Build of lick-marketing-about-product2
+ng build lick-marketing-about-product2
+echo Running Library Build of lick-marketing-about-product3
+ng build lick-marketing-about-product3
+echo Running Library Build of lick-marketing-about-product4
+ng build lick-marketing-about-product4
+echo Running Library Build of lick-marketing-about-product5
+ng build lick-marketing-about-product5
+echo Running Library Build of lick-marketing-about-product6
+ng build lick-marketing-about-product6
+echo Running Library Build of lick-marketing-about-product7
+ng build lick-marketing-about-product7
+echo Running Library Build of lick-marketing-carousel
+ng build lick-marketing-carousel
+echo Running Library Build of lick-marketing-contact-us1
+ng build lick-marketing-contact-us1
+echo Running Library Build of lick-marketing-faq1
+ng build lick-marketing-faq1
+echo Running Library Build of lick-marketing-faq2
+ng build lick-marketing-faq2
+echo Running Library Build of lick-marketing-faq3
+ng build lick-marketing-faq3
+echo Running Library Build of lick-marketing-features1
+ng build lick-marketing-features1
+echo Running Library Build of lick-marketing-features2
+ng build lick-marketing-features2
+echo Running Library Build of lick-marketing-features3
+ng build lick-marketing-features3
+echo Running Library Build of lick-marketing-features4
+ng build lick-marketing-features4
+echo Running Library Build of lick-marketing-features5
+ng build lick-marketing-features5
+echo Running Library Build of lick-marketing-footer1
+ng build lick-marketing-footer1
+echo Running Library Build of lick-marketing-footer2
+ng build lick-marketing-footer2
+echo Running Library Build of lick-marketing-header1
+ng build lick-marketing-header1
+echo Running Library Build of lick-marketing-header2
+ng build lick-marketing-header2
+echo Running Library Build of lick-marketing-header3
+ng build lick-marketing-header3
+echo Running Library Build of lick-marketing-header4
+ng build lick-marketing-header4
+echo Running Library Build of lick-marketing-header5
+ng build lick-marketing-header5
+echo Running Library Build of lick-marketing-how-to1
+ng build lick-marketing-how-to1
+echo Running Library Build of lick-marketing-integration1
+ng build lick-marketing-integration1
+echo Running Library Build of lick-marketing-integration2
+ng build lick-marketing-integration2
+echo Running Library Build of lick-marketing-latest-post1
+ng build lick-marketing-latest-post1
+echo Running Library Build of lick-marketing-latest-post2
+ng build lick-marketing-latest-post2
+echo Running Library Build of lick-marketing-lightbox1
+ng build lick-marketing-lightbox1
+echo Running Library Build of lick-marketing-menu
+ng build lick-marketing-menu
+echo Running Library Build of lick-marketing-newsletter1
+ng build lick-marketing-newsletter1
+echo Running Library Build of lick-marketing-parallax1
+ng build lick-marketing-parallax1
+echo Running Library Build of lick-marketing-prices1
+ng build lick-marketing-prices1
+echo Running Library Build of lick-marketing-prices2
+ng build lick-marketing-prices2
+echo Running Library Build of lick-marketing-reviews1
+ng build lick-marketing-reviews1
+echo Running Library Build of lick-marketing-reviews2
+ng build lick-marketing-reviews2
+echo Running Library Build of lick-marketing-reviews3
+ng build lick-marketing-reviews3
+echo Running Library Build of lick-marketing-security
+ng build lick-marketing-security
+echo Running Library Build of lick-marketing-simple-header
+ng build lick-marketing-simple-header
+echo Running Library Build of lick-marketing-simple-page
+ng build lick-marketing-simple-page
+echo Running Library Build of lick-marketing-team1
+ng build lick-marketing-team1
+echo Running Library Build of lick-marketing-team2
+ng build lick-marketing-team2
+echo Running Library Build of lick-marketing-team3
+ng build lick-marketing-team3
+echo Running Library Build of lick-marketing-try-it1
+ng build lick-marketing-try-it1
+echo Running Library Build of lick-marketing-try-it2
+ng build lick-marketing-try-it2
+echo Running Library Build of lick-marketing-try-it3
+ng build lick-marketing-try-it3
+echo Running Library Build of lick-marketing-video1
+ng build lick-marketing-video1
+echo Running Library Build of lick-marketing-video2
+ng build lick-marketing-video2

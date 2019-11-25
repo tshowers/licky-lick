@@ -138,7 +138,10 @@ This project is an attempt to offer a complete enterprise solution that can be s
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+Run 'ng run library-build' to build all libraries prior to running any of the standalone applications.
+
 * npm start
+* npm run library-build
 * npm run tester
 * npm run home
 * npm run news
