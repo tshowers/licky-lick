@@ -22,14 +22,15 @@ Actual implementations of the libraries
 
 ## Summary
 
-The goal is to make a business run smoothly and efficiently. Consider how information is processed and used throughout an organization. The software should enhance a company, not weigh it down and make it react sluggishly or not at all.
+Currently, communication with software is one-way. You click, tap, enter information, and the software waits for your next action. I believe we are long overdue for a conversational approach with all software. Just like two people talking, with a give and take, we should all be interacting with the software.  Once we click, tap, or enter information, the software should analyze this action and respond with something meaningful or just an acknowledgment that the software understands our response.
 
-Business challenges are usually: lack of vision, infrastructure, and a transparent management system. Using the software presented here helps create a view, build the necessary infrastructure, and operate a management system that keeps a pulse of business activity.
+Besides, with data spread out among various software platforms and applications, how can anyone honestly know what's going on in a company? Email in one app, products, and services in another, documents spread out, it's a wonder how any organization performs.
 
 ## Vision
 
 * Eliminate App Fatigue
-* Familiar look and feel to process
+* Make interacting with software more conversational
+* Familiar look and feel throughout a workflow
 * Pro-active data analysis and suggestion
 * Find instead of search
 
