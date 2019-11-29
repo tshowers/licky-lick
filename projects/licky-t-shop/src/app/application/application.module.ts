@@ -3,6 +3,28 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { ApplicationRoutingModule } from './application-routing.module';
 
+import { LickAppWidgetMenuModule } from 'lick-app-widget-menu';
+import { LickAppWidgetLeftSideMenuModule } from 'lick-app-widget-left-side-menu';
+import { LickAppWidgetBreadcrumbModule } from 'lick-app-widget-breadcrumb';
+import { LickAppWidgetChatPopupModule } from 'lick-app-widget-chat-popup';
+import { LickAppWidgetRightSideMenuModule } from 'lick-app-widget-right-side-menu';
+import { LickAppWidgetFooterModule } from 'lick-app-widget-footer';
+import { LickAppWidgetStats1Module } from 'lick-app-widget-stats1';
+import { LickAppWidgetStats4Module } from 'lick-app-widget-stats4';
+import { LickAppWidgetStats7Module } from 'lick-app-widget-stats7';
+import { LickAppWidgetStats8Module } from 'lick-app-widget-stats8';
+import { LickAppWidgetStats9Module } from 'lick-app-widget-stats9';
+import { LickAppWidgetStats11Module } from 'lick-app-widget-stats11';
+import { LickAppWidgetStats12Module } from 'lick-app-widget-stats12';
+import { LickAppWidgetStats13Module } from 'lick-app-widget-stats13';
+import { LickAppWidgetStats14Module } from 'lick-app-widget-stats14';
+import { LickAppWidgetStats15Module } from 'lick-app-widget-stats15';
+import { LickAppWidgetStats16Module } from 'lick-app-widget-stats16';
+import { LickAppWidgetListContentModule } from 'lick-app-widget-list-content';
+import { LickAppWidgetListArticleSummaryModule } from 'lick-app-widget-list-article-summary';
+import { LickAppWidgetTableDataModule } from 'lick-app-widget-table-data';
+
+
 import { LoginPageComponent } from './access/login-page/login-page.component';
 import { LogoutPageComponent } from './access/logout-page/logout-page.component';
 import { ResetPageComponent } from './access/reset-page/reset-page.component';
@@ -32,7 +54,29 @@ import { DashboardComponent } from './commerce/dashboard/dashboard.component';
 @NgModule({
   declarations: [LoginPageComponent, LogoutPageComponent, ResetPageComponent, SignUpPageComponent, ProfileComponent, SettingsComponent, AlertComponent, MessageComponent, TaskComponent, OrderEditComponent, OrderListComponent, OrderViewComponent, ProductEditComponent, ProductViewComponent, ProductListComponent, ShoppingCartEditComponent, ShoppingCartViewComponent, ShoppingCartListComponent, StoreEditComponent, StoreListComponent, StoreViewComponent, ProductBundleEditComponent, ProductBundleViewComponent, ProductBundleListComponent, DashboardComponent],
   imports: [
-    CommonModule, SharedModule, ApplicationRoutingModule
+    CommonModule,
+    SharedModule,
+    ApplicationRoutingModule,
+    LickAppWidgetMenuModule,
+    LickAppWidgetLeftSideMenuModule,
+    LickAppWidgetBreadcrumbModule,
+    LickAppWidgetChatPopupModule,
+    LickAppWidgetRightSideMenuModule,
+    LickAppWidgetFooterModule,
+    LickAppWidgetStats1Module,
+    LickAppWidgetStats4Module,
+    LickAppWidgetStats7Module,
+    LickAppWidgetStats8Module,
+    LickAppWidgetStats9Module,
+    LickAppWidgetStats11Module,
+    LickAppWidgetStats12Module,
+    LickAppWidgetStats13Module,
+    LickAppWidgetStats14Module,
+    LickAppWidgetStats15Module,
+    LickAppWidgetStats16Module,
+    LickAppWidgetListContentModule,
+    LickAppWidgetListArticleSummaryModule,
+    LickAppWidgetTableDataModule
   ]
 })
 export class ApplicationModule { }

@@ -19,6 +19,7 @@ import { LickAppWidgetProfileModule} from 'lick-app-widget-profile';
 import { LickAppWidgetLeftSideMenuModule } from 'lick-app-widget-left-side-menu';
 import { LickAppWidgetRightSideMenuModule } from 'lick-app-widget-right-side-menu';
 import { LickAppWidgetUnderConstructionModule } from 'lick-app-widget-under-construction';
+import { LickMarketingFaq2Module } from 'lick-marketing-faq2';
 
 import { environment } from '../../environments/environment';
 
@@ -48,7 +49,8 @@ import { NavComponent } from './nav/nav/nav.component';
     LickAppWidgetProfileModule,
     LickAppWidgetLeftSideMenuModule,
     LickAppWidgetRightSideMenuModule,
-    LickAppWidgetUnderConstructionModule
+    LickAppWidgetUnderConstructionModule,
+    LickMarketingFaq2Module
   ],
   exports: [
     AutoFocusDirective,
@@ -70,7 +72,8 @@ import { NavComponent } from './nav/nav/nav.component';
     LickAppWidgetProfileModule,
     LickAppWidgetLeftSideMenuModule,
     LickAppWidgetRightSideMenuModule,
-    LickAppWidgetUnderConstructionModule
+    LickAppWidgetUnderConstructionModule,
+    LickMarketingFaq2Module
   ]
 })
 export class SharedModule { }
