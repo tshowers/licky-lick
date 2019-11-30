@@ -89,6 +89,107 @@ export class DataMediationService implements OnDestroy {
     this.waitForUserSet();
   }
 
+  public doProducts(store_id: string): void {
+    this._productSubscription = this.db.getDataCollection(PRODUCTS + "/" + store_id )
+      .subscribe((productData: Product[]) => {
+        if (productData) {
+          this._products = this.getProductListToArray(productData);
+          this.products.next(this._products);
+        }
+      });
+  }
+
+  public getProductListToArray(data: any): any[] {
+    let list: any[] = [];
+    for (let item in data) {
+      this.doProductFixUp(data, item);
+      list.push(data[item]);
+    }
+    return list;
+  }
+
+  private doProductFixUp(data, item): void {
+    data[item].id = item;
+    if (data[item].name)
+      data[item].name = data[item].name;
+  }
+
+
+  public doProductBundles(store_id: string): void {
+    this._productBundleSubscription = this.db.getDataCollection(PRODUCT_BUNDLES + "/" + store_id )
+      .subscribe((productBundleData: ProductBundle[]) => {
+        if (productBundleData) {
+          this._productBundles = this.getProductBundleListToArray(productBundleData);
+          this.productBundles.next(this._productBundles);
+        }
+      });
+  }
+
+  public getProductBundleListToArray(data: any): any[] {
+    let list: any[] = [];
+    for (let item in data) {
+      this.doProductBundleFixUp(data, item);
+      list.push(data[item]);
+    }
+    return list;
+  }
+
+  private doProductBundleFixUp(data, item): void {
+    data[item].id = item;
+    if (data[item].name)
+      data[item].name = data[item].name;
+  }
+
+  public doOrders(store_id: string): void {
+    this._orderSubscription = this.db.getDataCollection(ORDERS + "/" + store_id )
+      .subscribe((orderData: Order[]) => {
+        if (orderData) {
+          this._orders = this.getOrderListToArray(orderData);
+          this.orders.next(this._orders);
+        }
+      });
+  }
+
+  public getOrderListToArray(data: any): any[] {
+    let list: any[] = [];
+    for (let item in data) {
+      this.doOrderFixUp(data, item);
+      list.push(data[item]);
+    }
+    return list;
+  }
+
+  private doOrderFixUp(data, item): void {
+    data[item].id = item;
+    if (data[item].name)
+      data[item].name = data[item].name;
+  }
+
+  public doShoppingCarts(store_id: string): void {
+    this._shoppingCartSubscription = this.db.getDataCollection(SHOPPING_CARTS + "/" + store_id )
+      .subscribe((shoppingCartData: ShoppingCart[]) => {
+        if (shoppingCartData) {
+          this._shoppingCarts = this.getShoppingCartListToArray(shoppingCartData);
+          this.shoppingCarts.next(this._shoppingCarts);
+        }
+      });
+  }
+
+  public getShoppingCartListToArray(data: any): any[] {
+    let list: any[] = [];
+    for (let item in data) {
+      this.dShoppingCartFixUp(data, item);
+      list.push(data[item]);
+    }
+    return list;
+  }
+
+  private dShoppingCartFixUp(data, item): void {
+    data[item].id = item;
+    if (data[item].name)
+      data[item].name = data[item].name;
+  }
+
   public doStore(id: string) : void {
     this.db.getData(STORES, id).subscribe((data) => {
       this.store.next(data);
