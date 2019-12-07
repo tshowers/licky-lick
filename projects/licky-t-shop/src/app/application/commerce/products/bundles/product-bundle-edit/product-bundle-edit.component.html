@@ -1,3 +1,133 @@
-<p>
-  product-bundle-edit works!
-</p>
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            [placeholder]="'Find a Product Bundle . . .'"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+          <app-context-nav [contact]="store"
+                           [context]="'productBundle'"></app-context-nav>
+          <div class="container">
+            <div class="card">
+              <div class="card-body">
+
+                <form #dataForm="ngForm" class="form-group">
+                  <div class="container-fluid"> <br>
+                    <div *ngIf="currentUpload">
+                      <div class="progress" *ngIf="currentUpload?.progress < 100">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }">Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete</div>
+                      </div>
+                    </div>
+                    <ngb-tabset type="pills" #t="ngbTabset">
+                      <ngb-tab title="Attributes" id="nameTab">
+                        <ng-template ngbTabContent>
+                          <div class="form-group"> <label for="name">Title</label> <input [(ngModel)]="productBundle.name" #productBundleName="ngModel" id="name" name="name" placeholder="Product Bundle Title" type="text" class="form-control form-control-lg ta-input-element" required autofocus>
+                            <div [hidden]="productBundleName.valid || productBundleName.pristine"
+                              class="alert alert-danger"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Title required </div>
+                          </div>
+                          <div class="form-group"> <label for="productBundleText">Description</label>
+                            <div *ngIf="FROALA" [froalaEditor] [(froalaModel)]="productBundle.description"></div>
+                            <textarea *ngIf="!FROALA" name="productBundleText" [(ngModel)]="productBundle.description" id="productBundleText" name="productBundleText" placeholder="Product Bundle Description"
+                              cols="30" rows="10" class="form-control form-control-lg ta-input-element" required></textarea>
+                          </div>
+                          <div class="form-group"> <label for="productBundlePrice">Price</label> <input [(ngModel)]="productBundle.price" id="productBundlePrice" name="productBundlePrice" placeholder="Price" type="number" class="form-control form-control-lg input-element" placeholder="x.xx"></div>
+                          <div class="form-group"><label for="productBundleHourlyRate">Hourly Price</label> <input [(ngModel)]="productBundle.hourlyRate" id="productBundleHourlyRate" name="productBundleHourlyRate" type="checkbox" class="form-control form-control-lg input-element"></div>
+                          <div class="form-group">
+                          <label>Status</label>&nbsp; <i [ngClass]="toggleClass" aria-hidden="true" [ngStyle]="{'color': (productBundle.activated) ? '#008000' : 'inherit' }" style="cursor: pointer;" (click)="toggleActivated()"></i> </div>
+                          <div class="form-group" *ngIf="productBundle.id">
+                            <img *ngIf="productBundle?.url" src="{{productBundle?.url}}" alt="productBundle?.url" class="img-fluid mx-auto d-block img-thumbnail">
+                          </div>
+                          <div class="form-group">
+                            <div class="form-group"><small>For best results ensure image is 1920 x 1080</small> <br>
+                              <label for="selectedFiles"><span *ngIf="productBundle.id">Replace </span> Image</label>
+                              <input class="form-control form-control-lg ta-input-element" type="file" id="selectedFiles" name="selectedFiles" (change)="detectFiles($event)" accept=".jpg, .jpeg, .png, .gif"> </div>
+                          </div>
+                          <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
+                            <input [(ngModel)]="productBundle.draft" id="dataDraft" name="dataDraft" type="checkbox">
+                            <label for="dataDraft" title="Draft indicates the record is not finished and should not be made public">Private</label>
+                          </div>
+                          <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
+                            <input [(ngModel)]="productBundle.deleted" id="dataDeleted" name="dataDeleted" type="checkbox">
+                            <label for="dataDeleted" title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted</label>
+                          </div>
+                          <div class="form-group"><label for="dataKeywords">Keywords</label> <input [(ngModel)]="productBundle.keywords" id="dataKeywords" name="dataKeywords" type="text" class="form-control form-control-lg ta-input-element" placeholder="Enter keywords seperated by commas"></div>
+                        </ng-template>
+                      </ngb-tab>
+                      <ngb-tab title="Products" [disabled]="!dataForm.form.valid">
+                        <ng-template ngbTabContent>
+                          <div class="form-group"> <label for="productsInBundle">Products Selection</label>
+                            <select [(ngModel)]="product.id" name="productsInBundle" id="productsInBundle" class='form-control form-control-lg ta-input-element'>
+                                <option value=""></option>
+                                <option *ngFor="let p of products" value="{{p.id}}">{{p.name}}</option>
+                              </select> </div>
+                          <div style="cursor:pointer" (click)="newProductForBundle()" [hidden]="!product.id"> <i class="fa fa-plus-circle text-theme fa-lg ta-add"></i> Click to Add to Bundle </div>
+                          <div *ngIf="productBundle.products.length > 0">
+                            <div class="list-group">
+                              <div class="list-group-item list-group-item-action">
+                                <div class="row">
+                                  <div class="col"></div>
+                                  <div class="col">Name</div>
+                                  <div class="col">Description</div>
+                                  <div class="col">Image</div>
+                                </div>
+                              </div>
+                              <div class="list-group-item" *ngFor="let pd of productBundle.products; let i = index">
+                                <div class="row">
+                                  <div class="col"> <i class="fa fa-times fa-lg ta-delete" (click)="removeProductInBundle(i)"></i> </div>
+                                  <div class="col"> {{pd?.name}}    </div>
+                                  <div class="col"><div innerHTML={{pd?.description}}></div></div>
+                                  <div class="col"> <img src="{{pd?.url}}" alt="{{pd?.name}}" class="ta-list-image"> </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </ng-template>
+                      </ngb-tab>
+                    </ngb-tabset>
+                    <div class="row">
+                      <div class="col text-center">
+                        <button class="btn btn-primary btn-lg btn-round" (click)="onSubmit();t.select('nameTab')" type="submit" [disabled]="!dataForm.form.valid"  title="Submit to database">Save
+                            <i class="fa fa-cloud" aria-hidden="true"></i>
+                          </button> <button *ngIf="canDelete" class="btn btn-damger btn-lg" (click)="onDelete();dataForm.reset();t.select('nameTab')" [disabled]="!productBundle.id">Delete
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                          </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+
+
+              </div>
+            </div>
+          </div>
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Product Bundle Edit'"
+                                         [descriptionText]="'This page displays a list of topics entered into the system.'"
+                                         [header1]="'Find'"
+                                         [description1]="'To find a specific topic, use the search box at the top of the screen.'"
+                                         [header2]="'Actions'"
+                                         [description2]="'You have the choice to edit, view or mark a topic for deletion - if your edit privileges allow.'"
+                                         [header3]="'Deleted'"
+                                         [description3]="'Deleted topics display as faint text.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

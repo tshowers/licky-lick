@@ -36,6 +36,7 @@ export class Upload {
   public topic_id?;
   public store_id?;
   public offer_id?;
+  public payment_id?;
   public progress?: number;
 
   public publishedAt;

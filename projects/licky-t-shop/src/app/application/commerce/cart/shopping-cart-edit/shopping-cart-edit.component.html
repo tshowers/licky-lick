@@ -1,3 +1,38 @@
-<p>
-  shopping-cart-edit works!
-</p>
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            [placeholder]="'Find a Product . . .'"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Store List'"
+                                         [descriptionText]="'This page displays a list of topics entered into the system.'"
+                                         [header1]="'Find'"
+                                         [description1]="'To find a specific topic, use the search box at the top of the screen.'"
+                                         [header2]="'Actions'"
+                                         [description2]="'You have the choice to edit, view or mark a topic for deletion - if your edit privileges allow.'"
+                                         [header3]="'Deleted'"
+                                         [description3]="'Deleted topics display as faint text.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

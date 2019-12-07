@@ -20,6 +20,15 @@ import { ProductBundleEditComponent } from './commerce/products/bundles/product-
 import { ProductBundleViewComponent } from './commerce/products/bundles/product-bundle-view/product-bundle-view.component';
 import { ProductBundleListComponent } from './commerce/products/bundles/product-bundle-list/product-bundle-list.component';
 import { DashboardComponent } from './commerce/dashboard/dashboard.component';
+import { CatalogEditComponent } from './commerce/catalog/catalog-edit/catalog-edit.component';
+import { CatalogListComponent } from './commerce/catalog/catalog-list/catalog-list.component';
+import { CatalogViewComponent } from './commerce/catalog/catalog-view/catalog-view.component';
+import { PaymentListComponent } from './commerce/payment/payment-list/payment-list.component';
+import { PaymentViewComponent } from './commerce/payment/payment-view/payment-view.component';
+import { PaymentEditComponent } from './commerce/payment/payment-edit/payment-edit.component';
+import { OfferEditComponent } from './commerce/offer/offer-edit/offer-edit.component';
+import { OfferListComponent } from './commerce/offer/offer-list/offer-list.component';
+import { OfferViewComponent } from './commerce/offer/offer-view/offer-view.component';
 
 
 import { LoginPageComponent } from './access/login-page/login-page.component';
@@ -44,12 +53,21 @@ import { ProductBundleViewResolverService } from './commerce/products/services/p
 import { StoreResolverService } from './commerce/stores/services/store-resolver.service';
 import { StoreViewResolverService } from './commerce/stores/services/store-view-resolver.service';
 
+import { CatalogResolverService } from './commerce/catalog/services/catalog-resolver.service';
+import { CatalogViewResolverService } from './commerce/catalog/services/catalog-view-resolver.service';
+
+import { OfferResolverService } from './commerce/offer/services/offer-resolver.service';
+import { OfferViewResolverService } from './commerce/offer/services/offer-view-resolver.service';
+
+import { PaymentResolverService } from './commerce/payment/services/payment-resolver.service';
+import { PaymentViewResolverService } from './commerce/payment/services/payment-view-resolver.service';
+
+
 
 const routes : Routes = [
   { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard - eCommerce - 16 AHEAD' }},
   { path: 'notification', canLoad: [AuthGuard], children: [ {path: '', loadChildren: './notification/notification.module#NotificationModule'} ]},
   { path: 'stores', component: StoreListComponent, data: { title: 'Stores - eCommerce - 16 AHEAD' }},
-  { path: 'carts', component: ShoppingCartListComponent, data: { title: 'ShoppingCarts - eCommerce - 16 AHEAD' }},
 
   { path: 'profile', component: ProfileComponent, data: { title: 'Profile - eCommerce - 16 AHEAD' }},
   { path: 'settings', component: SettingsComponent, data: { title: 'Settings - eCommerce - 16 AHEAD' }},
@@ -58,29 +76,42 @@ const routes : Routes = [
   { path: 'reset', component: ResetPageComponent, data: { title: 'Password Reset - eCommerce - 16 AHEAD' }},
   { path: 'logout', component: LogoutPageComponent, data: { title: 'You Are Logged Out - eCommerce - 16 AHEAD' }},
 
-  { path: 'stores/new', resolve: { topic: StoreResolverService }, component: StoreEditComponent, data: { title: 'New Store - eCommerce - 16 AHEAD' }},
-  { path: 'carts/new', resolve: { topic: ShoppingCartResolverService }, component: ShoppingCartEditComponent, data: { title: 'New ShoppingCart - eCommerce - 16 AHEAD' }},
-  { path: 'stores/:id', resolve: { topic: StoreViewResolverService }, component: StoreViewComponent, data: { title: 'Store - eCommerce - 16 AHEAD' }},
-  { path: 'carts/:id', resolve: { topic: ShoppingCartViewResolverService }, component: ShoppingCartViewComponent, data: { title: 'ShoppingCart - eCommerce - 16 AHEAD' }},
+  { path: 'stores/new', resolve: { store: StoreResolverService }, component: StoreEditComponent, data: { title: 'New Store - eCommerce - 16 AHEAD' }},
 
-  { path: 'stores/:id/edit', resolve: { topic: StoreResolverService }, component: StoreEditComponent, data: { title: 'Edit Store - eCommerce - 16 AHEAD' }},
-  { path: 'carts/:id/edit', resolve: { topic: ShoppingCartResolverService }, component: ShoppingCartEditComponent, data: { title: 'Edit ShoppingCart - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id', resolve: { store: StoreViewResolverService }, component: StoreViewComponent, data: { title: 'Store - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/edit', resolve: { store: StoreResolverService }, component: StoreEditComponent, data: { title: 'Edit Store - eCommerce - 16 AHEAD' }},
 
   { path: 'stores/:id/orders', component: OrderListComponent, data: { title: 'Orders - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/payments', component: PaymentListComponent, data: { title: 'Payments - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/offers', component: OfferListComponent, data: { title: 'Offers - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/catalogs', component: CatalogListComponent, data: { title: 'Catalogs - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/shopping-carts', component: ShoppingCartListComponent, data: { title: 'Shopping Cart - eCommerce - 16 AHEAD' }},
   { path: 'stores/:id/products', component: ProductListComponent, data: { title: 'Products - eCommerce - 16 AHEAD' }},
   { path: 'stores/:id/product-bundles', component: ProductBundleListComponent, data: { title: 'ProductBundles - eCommerce - 16 AHEAD' }},
 
-  { path: 'stores/:id/orders/new', resolve: { topic: OrderResolverService }, component: OrderEditComponent, data: { title: 'New Order - eCommerce - 16 AHEAD' }},
-  { path: 'stores/:id/products/new', resolve: { topic: ProductResolverService }, component: ProductEditComponent, data: { title: 'New Product - eCommerce - 16 AHEAD' }},
-  { path: 'stores/:id/product-bundles/new', resolve: { topic: ProductBundleResolverService }, component: ProductBundleEditComponent, data: { title: 'New ProductBundle - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/orders/new', resolve: { order: OrderResolverService }, component: OrderEditComponent, data: { title: 'New Order - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/catalogs/new', resolve: { catalog: CatalogResolverService }, component: CatalogEditComponent, data: { title: 'New Catalog - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/offers/new', resolve: { offer: OfferResolverService }, component: OfferEditComponent, data: { title: 'New Offer - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/payments/new', resolve: { payment: PaymentResolverService }, component: PaymentEditComponent, data: { title: 'New Payment - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/shopping-carts/new', resolve: { shoppingCart: ShoppingCartResolverService }, component: ShoppingCartEditComponent, data: { title: 'Shopping Cart - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/products/new', resolve: { product: ProductResolverService }, component: ProductEditComponent, data: { title: 'New Product - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/product-bundles/new', resolve: { productBundle: ProductBundleResolverService }, component: ProductBundleEditComponent, data: { title: 'New ProductBundle - eCommerce - 16 AHEAD' }},
 
-  { path: 'stores/:id/orders/:id2', resolve: { topic: OrderViewResolverService }, component: OrderViewComponent, data: { title: 'Order - eCommerce - 16 AHEAD' }},
-  { path: 'stores/:id/products/:id2', resolve: { topic: ProductViewResolverService }, component: ProductViewComponent, data: { title: 'Product - eCommerce - 16 AHEAD' }},
-  { path: 'stores/:id/product-bundles/:id2', resolve: { topic: ProductBundleViewResolverService }, component: ProductBundleViewComponent, data: { title: 'ProductBundle - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/orders/:id2', resolve: { order: OrderViewResolverService }, component: OrderViewComponent, data: { title: 'Order - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/catalogs/:id2', resolve: { catalog: CatalogViewResolverService }, component: CatalogViewComponent, data: { title: 'Catalog - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/offers/:id2', resolve: { offer: OfferViewResolverService }, component: OfferViewComponent, data: { title: 'Offer - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/payments/:id2', resolve: { payment: PaymentViewResolverService }, component: PaymentViewComponent, data: { title: 'Payment - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/shopping-carts/:id2', resolve: { shoppingCart: ShoppingCartViewResolverService }, component: ShoppingCartViewComponent, data: { title: 'Shopping Cart - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/products/:id2', resolve: { product: ProductViewResolverService }, component: ProductViewComponent, data: { title: 'Product - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/product-bundles/:id2', resolve: { productBundle: ProductBundleViewResolverService }, component: ProductBundleViewComponent, data: { title: 'ProductBundle - eCommerce - 16 AHEAD' }},
 
-  { path: 'stores/:id/orders/:id2/edit', resolve: { topic: OrderResolverService }, component: OrderEditComponent, data: { title: 'Edit Order - eCommerce - 16 AHEAD' }},
-  { path: 'stores/:id/products/:id2/edit', resolve: { topic: ProductResolverService }, component: ProductEditComponent, data: { title: 'Edit Product - eCommerce - 16 AHEAD' }},
-  { path: 'stores/:id/product-bundles/:id2/edit', resolve: { topic: ProductBundleResolverService }, component: ProductBundleEditComponent, data: { title: 'Edit ProductBundle - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/orders/:id2/edit', resolve: { order: OrderResolverService }, component: OrderEditComponent, data: { title: 'Edit Order - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/catalogs/:id2/edit', resolve: { catalog: CatalogResolverService }, component: CatalogEditComponent, data: { title: 'Edit Catalog - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/offers/:id2/edit', resolve: { offer: OfferResolverService }, component: OfferEditComponent, data: { title: 'Edit Offer - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/payments/:id2/edit', resolve: { payment: PaymentResolverService }, component: PaymentEditComponent, data: { title: 'Edit Payment - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/shopping-carts/:id2/edit', resolve: { shoppingCart: ShoppingCartResolverService }, component: ShoppingCartEditComponent, data: { title: 'Edit Shopping Cart - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/products/:id2/edit', resolve: { product: ProductResolverService }, component: ProductEditComponent, data: { title: 'Edit Product - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/product-bundles/:id2/edit', resolve: { productBundl: ProductBundleResolverService }, component: ProductBundleEditComponent, data: { title: 'Edit ProductBundle - eCommerce - 16 AHEAD' }},
 
 ]
 

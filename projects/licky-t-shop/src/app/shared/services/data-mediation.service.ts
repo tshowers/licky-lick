@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { SortHelperService, NewsService, FirebaseDataService, LickyLoginService, STORES, RECEIPTS, INVOICES, SHOPPING_CARTS, PRODUCTS, ORDERS, PRODUCT_BUNDLES } from 'licky-services';
+import { SortHelperService, NewsService, FirebaseDataService, LickyLoginService, STORES, RECEIPTS, INVOICES, SHOPPING_CARTS, PRODUCTS, CATALOGS, PAYMENTS, OFFERS, ORDERS, PRODUCT_BUNDLES } from 'licky-services';
 import { Subscription, Observable, BehaviorSubject, Subject } from 'rxjs';
-import { Store, Product, ProductBundle, Order, Invoice, Receipt, ShoppingCart, User } from 'lick-data';
+import { Store, Product, Catalog, Payment, Offer, ProductBundle, Order, Invoice, Receipt, ShoppingCart, User } from 'lick-data';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +29,21 @@ export class DataMediationService implements OnDestroy {
   public products = new BehaviorSubject<Product[]>(null);
   private _products: Product[];
   private _productSubscription: Subscription;
+
+  public catalog = new Subject<Catalog>();
+  public catalogs = new BehaviorSubject<Catalog[]>(null);
+  private _catalogs: Catalog[];
+  private _catalogSubscription: Subscription;
+
+  public payment = new Subject<Payment>();
+  public payments = new BehaviorSubject<Payment[]>(null);
+  private _payments: Payment[];
+  private _paymentSubscription: Subscription;
+
+  public offer = new Subject<Offer>();
+  public offers = new BehaviorSubject<Offer[]>(null);
+  private _offers: Offer[];
+  private _offerSubscription: Subscription;
 
   public productBundle = new Subject<ProductBundle>();
   public productBundles = new BehaviorSubject<ProductBundle[]>(null);
@@ -69,6 +84,12 @@ export class DataMediationService implements OnDestroy {
       this._storeSubscription.unsubscribe();
     if (this._productSubscription)
       this._productSubscription.unsubscribe();
+    if (this._catalogSubscription)
+      this._catalogSubscription.unsubscribe();
+    if (this._paymentSubscription)
+      this._paymentSubscription.unsubscribe();
+    if (this._offerSubscription)
+      this._offerSubscription.unsubscribe();
     if (this._productBundleSubscription)
       this._productBundleSubscription.unsubscribe();
     if (this._invoiceSubscription)
@@ -90,7 +111,7 @@ export class DataMediationService implements OnDestroy {
   }
 
   public doProducts(store_id: string): void {
-    this._productSubscription = this.db.getDataCollection(PRODUCTS + "/" + store_id )
+    this._productSubscription = this.db.getDataCollection(PRODUCTS + "/" + store_id)
       .subscribe((productData: Product[]) => {
         if (productData) {
           this._products = this.getProductListToArray(productData);
@@ -114,9 +135,84 @@ export class DataMediationService implements OnDestroy {
       data[item].name = data[item].name;
   }
 
+  public doCatalogs(store_id: string): void {
+    this._catalogSubscription = this.db.getDataCollection(CATALOGS + "/" + store_id)
+      .subscribe((catalogData: Catalog[]) => {
+        if (catalogData) {
+          this._catalogs = this.getCatalogListToArray(catalogData);
+          this.catalogs.next(this._catalogs);
+        }
+      });
+  }
+
+  public getCatalogListToArray(data: any): any[] {
+    let list: any[] = [];
+    for (let item in data) {
+      this.doCatalogFixUp(data, item);
+      list.push(data[item]);
+    }
+    return list;
+  }
+
+  private doCatalogFixUp(data, item): void {
+    data[item].id = item;
+    if (data[item].name)
+      data[item].name = data[item].name;
+  }
+
+  public doPayments(store_id: string): void {
+    this._paymentSubscription = this.db.getDataCollection(PAYMENTS + "/" + store_id)
+      .subscribe((paymentData: Payment[]) => {
+        if (paymentData) {
+          this._payments = this.getPaymentListToArray(paymentData);
+          this.payments.next(this._payments);
+        }
+      });
+  }
+
+  public getPaymentListToArray(data: any): any[] {
+    let list: any[] = [];
+    for (let item in data) {
+      this.doPaymentFixUp(data, item);
+      list.push(data[item]);
+    }
+    return list;
+  }
+
+  private doPaymentFixUp(data, item): void {
+    data[item].id = item;
+    if (data[item].name)
+      data[item].name = data[item].name;
+  }
+
+  public doOffers(store_id: string): void {
+    this._offerSubscription = this.db.getDataCollection(OFFERS + "/" + store_id)
+      .subscribe((offerData: Offer[]) => {
+        if (offerData) {
+          this._offers = this.getOfferListToArray(offerData);
+          this.offers.next(this._offers);
+        }
+      });
+  }
+
+  public getOfferListToArray(data: any): any[] {
+    let list: any[] = [];
+    for (let item in data) {
+      this.doOfferFixUp(data, item);
+      list.push(data[item]);
+    }
+    return list;
+  }
+
+  private doOfferFixUp(data, item): void {
+    data[item].id = item;
+    if (data[item].name)
+      data[item].name = data[item].name;
+  }
+
 
   public doProductBundles(store_id: string): void {
-    this._productBundleSubscription = this.db.getDataCollection(PRODUCT_BUNDLES + "/" + store_id )
+    this._productBundleSubscription = this.db.getDataCollection(PRODUCT_BUNDLES + "/" + store_id)
       .subscribe((productBundleData: ProductBundle[]) => {
         if (productBundleData) {
           this._productBundles = this.getProductBundleListToArray(productBundleData);
@@ -141,7 +237,7 @@ export class DataMediationService implements OnDestroy {
   }
 
   public doOrders(store_id: string): void {
-    this._orderSubscription = this.db.getDataCollection(ORDERS + "/" + store_id )
+    this._orderSubscription = this.db.getDataCollection(ORDERS + "/" + store_id)
       .subscribe((orderData: Order[]) => {
         if (orderData) {
           this._orders = this.getOrderListToArray(orderData);
@@ -166,7 +262,7 @@ export class DataMediationService implements OnDestroy {
   }
 
   public doShoppingCarts(store_id: string): void {
-    this._shoppingCartSubscription = this.db.getDataCollection(SHOPPING_CARTS + "/" + store_id )
+    this._shoppingCartSubscription = this.db.getDataCollection(SHOPPING_CARTS + "/" + store_id)
       .subscribe((shoppingCartData: ShoppingCart[]) => {
         if (shoppingCartData) {
           this._shoppingCarts = this.getShoppingCartListToArray(shoppingCartData);
@@ -190,43 +286,61 @@ export class DataMediationService implements OnDestroy {
       data[item].name = data[item].name;
   }
 
-  public doStore(id: string) : void {
+  public doStore(id: string): void {
     this.db.getData(STORES, id).subscribe((data) => {
       this.store.next(data);
     })
   }
 
-  public doOrder(id: string) : void {
+  public doOrder(id: string): void {
     this.db.getData(ORDERS, id).subscribe((data) => {
       this.order.next(data);
     })
   }
 
-  public doProduct(id: string) : void {
+  public doProduct(id: string): void {
     this.db.getData(PRODUCTS, id).subscribe((data) => {
       this.product.next(data);
     })
   }
 
-  public doProductBundle(id: string) : void {
+  public doCatalog(id: string): void {
+    this.db.getData(CATALOGS, id).subscribe((data) => {
+      this.catalog.next(data);
+    })
+  }
+
+  public doPayment(id: string): void {
+    this.db.getData(PAYMENTS, id).subscribe((data) => {
+      this.payment.next(data);
+    })
+  }
+
+  public doOffer(id: string): void {
+    this.db.getData(OFFERS, id).subscribe((data) => {
+      this.offer.next(data);
+    })
+  }
+
+  public doProductBundle(id: string): void {
     this.db.getData(PRODUCT_BUNDLES, id).subscribe((data) => {
       this.productBundle.next(data);
     })
   }
 
-  public doInvoice(id: string) : void {
+  public doInvoice(id: string): void {
     this.db.getData(INVOICES, id).subscribe((data) => {
       this.invoice.next(data);
     })
   }
 
-  public doReceipt(id: string) : void {
+  public doReceipt(id: string): void {
     this.db.getData(RECEIPTS, id).subscribe((data) => {
       this.receipt.next(data);
     })
   }
 
-  public doShoppingCart(id: string) : void {
+  public doShoppingCart(id: string): void {
     this.db.getData(SHOPPING_CARTS, id).subscribe((data) => {
       this.shoppingCart.next(data);
     })
@@ -241,12 +355,6 @@ export class DataMediationService implements OnDestroy {
     if (this.loginService.getUser()) {
       clearInterval(this.setupTimer);
       this.setStores();
-      this.setShoppingCarts();
-      this.setProducts();
-      this.setProductBundles();
-      this.setInvoices();
-      this.setOrders();
-      this.setReceipts();
     }
   }
 
@@ -260,65 +368,97 @@ export class DataMediationService implements OnDestroy {
       });
   }
 
-  private setProducts(): void {
-    this._storeSubscription = this.db.getDataCollection(PRODUCTS)
-      .subscribe((data: Product[]) => {
-        if (data) {
-          this._products = this.db.getListToArray(data);
-          this.products.next(this._products);
-        }
-      });
-  }
-
-  private setProductBundles(): void {
-    this._storeSubscription = this.db.getDataCollection(PRODUCT_BUNDLES)
-      .subscribe((data: ProductBundle[]) => {
-        if (data) {
-          this._productBundles = this.db.getListToArray(data);
-          this.productBundles.next(this._productBundles);
-        }
-      });
-  }
-
-  private setInvoices(): void {
-    this._storeSubscription = this.db.getDataCollection(INVOICES)
-      .subscribe((data: Invoice[]) => {
-        if (data) {
-          this._invoices = this.db.getListToArray(data);
-          this.invoices.next(this._invoices);
-        }
-      });
-  }
-
-  private setOrders(): void {
-    this._storeSubscription = this.db.getDataCollection(ORDERS)
-      .subscribe((data: Order[]) => {
-        if (data) {
-          this._orders = this.db.getListToArray(data);
-          this.orders.next(this._orders);
-        }
-      });
-  }
-
-  private setReceipts(): void {
-    this._storeSubscription = this.db.getDataCollection(RECEIPTS)
-      .subscribe((data: Receipt[]) => {
-        if (data) {
-          this._receipts = this.db.getListToArray(data);
-          this.receipts.next(this._receipts);
-        }
-      });
-  }
-
-  private setShoppingCarts(): void {
-    this._storeSubscription = this.db.getDataCollection(SHOPPING_CARTS)
-      .subscribe((data: ShoppingCart[]) => {
-        if (data) {
-          this._shoppingCarts = this.db.getListToArray(data);
-          this.shoppingCarts.next(this._shoppingCarts);
-        }
-      });
-  }
+  // private setProducts(): void {
+  //   this._productSubscription = this.db.getDataCollection(PRODUCTS)
+  //     .subscribe((data: Product[]) => {
+  //       if (data) {
+  //         this._products = this.db.getListToArray(data);
+  //         this.products.next(this._products);
+  //       }
+  //     });
+  // }
+  //
+  // private setCatalogs(): void {
+  //   this._catalogSubscription = this.db.getDataCollection(CATALOGS)
+  //     .subscribe((data: Catalog[]) => {
+  //       if (data) {
+  //         this._catalogs = this.db.getListToArray(data);
+  //         this.catalogs.next(this._catalogs);
+  //       }
+  //     });
+  // }
+  //
+  // private setPayments(): void {
+  //   this._paymentSubscription = this.db.getDataCollection(PAYMENTS)
+  //     .subscribe((data: Payment[]) => {
+  //       if (data) {
+  //         this._payments = this.db.getListToArray(data);
+  //         this.payments.next(this._payments);
+  //       }
+  //     });
+  // }
+  //
+  // private setOffers(): void {
+  //   this._offerSubscription = this.db.getDataCollection(OFFERS)
+  //     .subscribe((data: Offer[]) => {
+  //       if (data) {
+  //         this._offers = this.db.getListToArray(data);
+  //         this.offers.next(this._offers);
+  //       }
+  //     });
+  // }
+  //
+  //
+  //
+  // private setProductBundles(): void {
+  //   this._productBundleSubscription = this.db.getDataCollection(PRODUCT_BUNDLES)
+  //     .subscribe((data: ProductBundle[]) => {
+  //       if (data) {
+  //         this._productBundles = this.db.getListToArray(data);
+  //         this.productBundles.next(this._productBundles);
+  //       }
+  //     });
+  // }
+  //
+  // private setInvoices(): void {
+  //   this._invoiceSubscription = this.db.getDataCollection(INVOICES)
+  //     .subscribe((data: Invoice[]) => {
+  //       if (data) {
+  //         this._invoices = this.db.getListToArray(data);
+  //         this.invoices.next(this._invoices);
+  //       }
+  //     });
+  // }
+  //
+  // private setOrders(): void {
+  //   this._orderSubscription = this.db.getDataCollection(ORDERS)
+  //     .subscribe((data: Order[]) => {
+  //       if (data) {
+  //         this._orders = this.db.getListToArray(data);
+  //         this.orders.next(this._orders);
+  //       }
+  //     });
+  // }
+  //
+  // private setReceipts(): void {
+  //   this._receiptSubscription = this.db.getDataCollection(RECEIPTS)
+  //     .subscribe((data: Receipt[]) => {
+  //       if (data) {
+  //         this._receipts = this.db.getListToArray(data);
+  //         this.receipts.next(this._receipts);
+  //       }
+  //     });
+  // }
+  //
+  // private setShoppingCarts(): void {
+  //   this._shoppingCartSubscription = this.db.getDataCollection(SHOPPING_CARTS)
+  //     .subscribe((data: ShoppingCart[]) => {
+  //       if (data) {
+  //         this._shoppingCarts = this.db.getListToArray(data);
+  //         this.shoppingCarts.next(this._shoppingCarts);
+  //       }
+  //     });
+  // }
 
   private setFirebaseUser(): void {
     this._firebaseUserSubscription = this.loginService.firebaseUser.subscribe((firebaseUser) => {

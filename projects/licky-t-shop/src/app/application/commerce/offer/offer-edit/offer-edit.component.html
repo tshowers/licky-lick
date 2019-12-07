@@ -1,0 +1,134 @@
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            [placeholder]="'Find a Offer . . .'"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+          <app-context-nav [contact]="store"
+                           [context]="'offer'"></app-context-nav>
+          <div class="container">
+            <div class="card">
+              <div class="card-body">
+
+                <form #dataForm="ngForm" class="form-group">
+                  <!-- Content -->
+                  <div class="container-fluid"> <br>
+                    <div *ngIf="currentUpload">
+                      <div class="progress" *ngIf="currentUpload?.progress < 100">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }">Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete</div>
+                      </div>
+                    </div>
+                    <ngb-tabset type="pills" #t="ngbTabset">
+                      <ngb-tab title="Attributes" id="attributesTab">
+                        <ng-template ngbTabContent>
+                          <div class="form-group"> <label for="offerName">Name</label> <input [(ngModel)]="offer.name" #offerName="ngModel" id="offerName" name="offerName" placeholder="Name of Offer" type="text" class="form-control form-control-lg ta-input-element" required autofocus>
+                            <div [hidden]="offerName.valid || offerName.pristine" class="alert alert-danger"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Offer name required </div>
+                          </div>
+                          <div class="form-group"> <label for="product_id">Product</label> <select [(ngModel)]="offer.product_id" name="product_id" id="product_id" class="form-control form-control-lg ta-input-element" required>
+                                <option value=""></option>
+                                <option *ngFor="let product of products" value="{{product.id}}">{{product.name}}</option>
+                              </select> </div>
+                          <div class="form-group"> <label for="category">Category</label> <select [(ngModel)]="offer.category" name="category" id="category" class="form-control form-control-lg ta-input-element" required>
+                                <option value=""></option>
+                                <option *ngFor="let category of offerCategories" value="{{category.name}}">{{category.name}}</option>
+                              </select> </div>
+                          <div class="form-group"> <label for="offerTypes">Type</label> <select [(ngModel)]="offer.type" name="offerTypes" id="offerTypes" class="form-control form-control-lg ta-input-element" required>
+                                <option value=""></option>
+                                <option *ngFor="let offerType of offerTypes" value="{{offerType.name}}">{{offerType.name}}</option>
+                              </select> </div>
+                          <div class="form-group"> <label for="offerTitle">Title</label> <input [(ngModel)]="offer.title" #offerTitle="ngModel" id="offerTitle" name="offerTitle" placeholder="Offer Title" type="text" class="form-control form-control-lg ta-input-element" required>
+                            <div [hidden]="offerTitle.valid || offerTitle.pristine" class="alert alert-danger"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Offer title required </div>
+                          </div>
+                          <div class="form-group"> <label for="shortDescription">Description</label>
+                            <div *ngIf="FROALA" [froalaEditor] [(froalaModel)]="offer.description"></div>
+                          </div>
+                          <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
+                            <input [(ngModel)]="offer.draft" id="dataDraft" name="dataDraft" type="checkbox" class="checkbox">
+                            <label for="dataDraft" title="Draft indicates the record is not finished and should not be made public">Private</label>
+                          </div>
+                          <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
+                            <input [(ngModel)]="offer.deleted" id="dataDeleted" name="dataDeleted" type="checkbox" class="checkbox">
+                            <label for="dataDeleted" title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted</label>
+                          </div>
+                          <div class="form-group"><label for="dataKeywords">Keywords</label> <input [(ngModel)]="offer.keywords" id="dataKeywords" name="dataKeywords" type="text" class="form-control form-control-lg ta-input-element" placeholder="Enter keywords seperated by commas"></div>
+                        </ng-template>
+                      </ngb-tab>
+                      <ngb-tab title="Meta" [disabled]="!dataForm.form.valid">
+                        <ng-template ngbTabContent>
+                          <div class="form-group"> <label for="longDescription">Long Description</label>
+                            <div *ngIf="FROALA" [froalaEditor] [(froalaModel)]="offer.longDescription"></div>
+                            <textarea *ngIf="!FROALA" name="longDescription" [(ngModel)]="offer.longDescription" #longDescription="ngModel" id="longDescription" name="longDescription" placeholder="Long Description" cols="30" rows="10"
+                              class="form-control form-control-lg ta-input-element"></textarea>
+                            </div>
+                          <div class="form-group"> <label for="expirationDate">Expiration Date</label>
+                            <div class="input-group"> <input [(ngModel)]="offer.expirationDate" id="expirationDate" name="expirationDate" type="text" class="form-control form-control-lg ta-input-element" placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker">
+                              <div class="input-group-addon" (click)="d.toggle()"> <img src="assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" /> </div>
+                            </div>
+                          </div>
+                        </ng-template>
+                      </ngb-tab>
+                      <ngb-tab title="Presentation" [disabled]="!dataForm.form.valid">
+                        <ng-template ngbTabContent>
+                          <div class="form-group"> <label for="targetURI">Target URI</label> <input [(ngModel)]="offer.targetURI" #targetURI="ngModel" id="targetURI" name="targetURI" placeholder="Target URI" type="text" class="form-control form-control-lg ta-input-element"> </div>
+                          <div class="form-group"> <label for="providerTag">Provider Tag</label> <input [(ngModel)]="offer.providerTag" #providerTag="ngModel" id="providerTag" name="providerTag" placeholder="Provider Tag" type="text" class="form-control form-control-lg ta-input-element"> </div>
+                          <div class="form-group"> <label for="placement">Placement</label> <input [(ngModel)]="offer.placement" #placement="ngModel" id="placement" name="placement" placeholder="Top, Bottom, Left, Right" type="text" class="form-control form-control-lg ta-input-element"> </div>
+                          <div class="form-group"> <label for="presentationMethod">Presentation Method</label> <input [(ngModel)]="offer.presentationMethod" #presentationMethod="ngModel" id="presentationMethod" name="presentationMethod" placeholder="Presentation Method" type="text" class="form-control form-control-lg ta-input-element"> </div>
+                          <div class="form-group"> <label for="offerAttributes">Attributes</label> <input [(ngModel)]="offer.attributes" #offerAttributes="ngModel" id="offerAttributes" name="offerAttributes" placeholder="Offer Attributes seperated by commas" type="text" class="form-control form-control-lg ta-input-element"> </div>
+                        </ng-template>
+                      </ngb-tab>
+                      <ngb-tab title="Images" [disabled]="!dataForm.form.valid">
+                        <ng-template ngbTabContent>
+                          <div class="form-group" *ngIf="offer.id"> <img *ngIf="offer?.url" src="{{offer?.url}}" alt="offer?.url" class="img-fluid mx-auto d-block img-thumbnail"> </div>
+                          <div class="form-group">
+                            <small>For best results ensure image is 1920 x 1080</small> <br> <label for="selectedFiles"><span *ngIf="offer.id">Replace </span> Image</label> <input class="form-control form-control-lg ta-input-element" type="file" id="selectedFiles" name="selectedFiles" (change)="detectFiles($event)" accept=".jpg, .jpeg, .png, .gif"> </div>
+
+                        </ng-template>
+                      </ngb-tab>
+                    </ngb-tabset>
+                    <div class="row">
+                      <div class="col text-center"> <button class="btn btn-primary btn-lg btn-round" (click)="onSubmit();t.select('attributesTab')" type="submit" [disabled]="!dataForm.form.valid" title="Submit to database">Save
+                            <i class="fa fa-cloud" aria-hidden="true"></i>
+                          </button>
+                          <button *ngIf="canDelete" class="btn btn-damger btn-lg" (click)="onDelete();dataForm.reset();t.select('attributesTab')" [disabled]="!offer.id">Delete
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                          </button> </div>
+                    </div>
+                  </div>
+                </form>
+
+
+              </div>
+            </div>
+          </div>
+
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Offer Edit'"
+                                         [descriptionText]="'This page displays a list of offers entered into the system.'"
+                                         [header1]="'Find'"
+                                         [description1]="'To find a specific offer, use the search box at the top of the screen.'"
+                                         [header2]="'Actions'"
+                                         [description2]="'You have the choice to edit, view or mark a offer for deletion - if your edit privileges allow.'"
+                                         [header3]="'Deleted'"
+                                         [description3]="'Deleted offers display as faint text.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

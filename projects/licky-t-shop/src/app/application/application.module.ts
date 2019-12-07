@@ -50,9 +50,18 @@ import { ProductBundleEditComponent } from './commerce/products/bundles/product-
 import { ProductBundleViewComponent } from './commerce/products/bundles/product-bundle-view/product-bundle-view.component';
 import { ProductBundleListComponent } from './commerce/products/bundles/product-bundle-list/product-bundle-list.component';
 import { DashboardComponent } from './commerce/dashboard/dashboard.component';
+import { CatalogEditComponent } from './commerce/catalog/catalog-edit/catalog-edit.component';
+import { CatalogListComponent } from './commerce/catalog/catalog-list/catalog-list.component';
+import { CatalogViewComponent } from './commerce/catalog/catalog-view/catalog-view.component';
+import { PaymentListComponent } from './commerce/payment/payment-list/payment-list.component';
+import { PaymentViewComponent } from './commerce/payment/payment-view/payment-view.component';
+import { PaymentEditComponent } from './commerce/payment/payment-edit/payment-edit.component';
+import { OfferEditComponent } from './commerce/offer/offer-edit/offer-edit.component';
+import { OfferListComponent } from './commerce/offer/offer-list/offer-list.component';
+import { OfferViewComponent } from './commerce/offer/offer-view/offer-view.component';
 
 @NgModule({
-  declarations: [LoginPageComponent, LogoutPageComponent, ResetPageComponent, SignUpPageComponent, ProfileComponent, SettingsComponent, AlertComponent, MessageComponent, TaskComponent, OrderEditComponent, OrderListComponent, OrderViewComponent, ProductEditComponent, ProductViewComponent, ProductListComponent, ShoppingCartEditComponent, ShoppingCartViewComponent, ShoppingCartListComponent, StoreEditComponent, StoreListComponent, StoreViewComponent, ProductBundleEditComponent, ProductBundleViewComponent, ProductBundleListComponent, DashboardComponent],
+  declarations: [LoginPageComponent, LogoutPageComponent, ResetPageComponent, SignUpPageComponent, ProfileComponent, SettingsComponent, AlertComponent, MessageComponent, TaskComponent, OrderEditComponent, OrderListComponent, OrderViewComponent, ProductEditComponent, ProductViewComponent, ProductListComponent, ShoppingCartEditComponent, ShoppingCartViewComponent, ShoppingCartListComponent, StoreEditComponent, StoreListComponent, StoreViewComponent, ProductBundleEditComponent, ProductBundleViewComponent, ProductBundleListComponent, DashboardComponent, CatalogEditComponent, CatalogListComponent, CatalogViewComponent, PaymentListComponent, PaymentViewComponent, PaymentEditComponent, OfferEditComponent, OfferListComponent, OfferViewComponent],
   imports: [
     CommonModule,
     SharedModule,

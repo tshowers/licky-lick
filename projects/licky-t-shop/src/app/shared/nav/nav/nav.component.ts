@@ -45,10 +45,6 @@ export class NavComponent implements OnInit, OnDestroy {
       "name": "Stores",
     },
     {
-      "link": "/application/carts",
-      "name": "Shopping Carts",
-    },
-    {
       "link": "/application/logout",
       "name": "Log Out"
     },

@@ -27,9 +27,10 @@ export const firebaseConfig = environment.firebaseConfig;
 
 import { AutoFocusDirective } from './directives/auto-focus.directive';
 import { NavComponent } from './nav/nav/nav.component';
+import { ContextNavComponent } from './nav/context-nav/context-nav.component';
 
 @NgModule({
-  declarations: [AutoFocusDirective, NavComponent],
+  declarations: [AutoFocusDirective, NavComponent, ContextNavComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -73,7 +74,8 @@ import { NavComponent } from './nav/nav/nav.component';
     LickAppWidgetLeftSideMenuModule,
     LickAppWidgetRightSideMenuModule,
     LickAppWidgetUnderConstructionModule,
-    LickMarketingFaq2Module
+    LickMarketingFaq2Module,
+    ContextNavComponent
   ]
 })
 export class SharedModule { }

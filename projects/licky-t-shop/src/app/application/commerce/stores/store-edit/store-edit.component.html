@@ -1,3 +1,101 @@
-<p>
-  store-edit works!
-</p>
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            [placeholder]="'Find a Product . . .'"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+          <div class="container">
+            <div class="card">
+              <div class="card-body">
+                <form #dataForm="ngForm" class="form-group">
+                  <div class="container-fluid">
+                    <div *ngIf="currentUpload">
+                      <div class="progress" *ngIf="currentUpload?.progress < 100">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }">Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete</div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input [(ngModel)]="store.name" #name="ngModel" id="name" name="name" placeholder="Store Name" type="text" class="form-control form-control-lg ta-input-element" required autofocus>
+                      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Name required
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="description">Description</label>
+                      <textarea name="description" [(ngModel)]="store.description" #description="ngModel" id="description" name="description" placeholder="Store description" cols="30" rows="10" class="form-control form-control-lg ta-input-element" required></textarea>
+                      <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
+                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Description required
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="stripeKey">Stripe Key</label>
+                      <input [(ngModel)]="store.stripeKey" #name="ngModel" id="stripeKey" name="stripeKey" placeholder="Stripe Key" type="password" class="form-control form-control-lg ta-input-element" required>
+                    </div>
+                    <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
+                      <input [(ngModel)]="store.draft" id="dataDraft" name="dataDraft" type="checkbox">
+                      <label for="dataDraft" title="Draft indicates the record is not finished and should not be made public">Private</label>
+                    </div>
+                    <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
+                      <input [(ngModel)]="store.deleted" id="dataDeleted" name="dataDeleted" type="checkbox">
+                      <label for="dataDeleted" title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted</label>
+                    </div>
+                    <div class="form-group"><label for="dataKeywords">Keywords</label> <input [(ngModel)]="store.keywords" id="dataKeywords" name="dataKeywords" type="text" class="form-control form-control-lg ta-input-element" placeholder="Enter keywords seperated by commas"></div>
+                    <div class="form-group" *ngIf="store?.id">
+                      <img *ngIf="store?.url" src="{{store?.url}}" alt="store?.url" class="img-fluid mx-auto d-block img-thumbnail">
+                    </div>
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label for="selectedFiles"><span *ngIf="store?.id">Replace </span> Logo</label>
+                        <input class="form-control form-control-lg ta-input-element" type="file" id="selectedFiles" name="selectedFiles" (change)="detectFiles($event)" accept=".jpg, .jpeg, .png, .gif">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col text-center">
+                        <button class="btn btn-primary btn-lg btn-round" (click)="onSubmit()" type="submit" [disabled]="!dataForm.form.valid"  title="Submit to database">Save
+                            <i class="fa fa-cloud" aria-hidden="true"></i>
+                          </button>
+
+
+                          <button *ngIf="canDelete" class="btn btn-danger btn-lg btn-round" (click)="onDelete();dataForm.reset()" [disabled]="!store.id">Delete
+                              <i class="fa fa-times" aria-hidden="true"></i>
+                            </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Store List'"
+                                         [descriptionText]="'This page displays a list of topics entered into the system.'"
+                                         [header1]="'Find'"
+                                         [description1]="'To find a specific topic, use the search box at the top of the screen.'"
+                                         [header2]="'Actions'"
+                                         [description2]="'You have the choice to edit, view or mark a topic for deletion - if your edit privileges allow.'"
+                                         [header3]="'Deleted'"
+                                         [description3]="'Deleted topics display as faint text.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

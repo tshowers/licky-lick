@@ -1,0 +1,316 @@
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            [placeholder]="'Find a Payment . . .'"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+          <app-context-nav [contact]="store"
+                           [context]="'payment'"></app-context-nav>
+          <div class="container">
+            <div class="card">
+              <div class="card-body">
+
+
+                <form #dataForm="ngForm" class="form-group">
+                  <!-- Data Collection -->
+                  <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="paymentStatus">Status</label>
+                          <select [(ngModel)]="payment.status" name="paymentStatus" id="paymentStatus" class="form-control input-lg input-element" required>
+                            <option value=""></option>
+                            <option *ngFor="let s of status" value="{{s.name}}">{{s.name}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="fop">Form of Payment</label>
+                          <select [(ngModel)]="payment.fopType" name="fop" id="fop" class="form-control input-lg input-element" (change)="onFOP()" required>
+                            <option value=""></option>
+                            <option *ngFor="let f of fopTypes" value="{{f.name}}">{{f.name}}</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row" [hidden]="!creditCard">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="authorizationAmount">Authorization Amount</label>
+                          <input [(ngModel)]="payment.authorizationAmount" #authorizationAmount="ngModel" id="authorizationAmount" name="authorizationAmount" placeholder="x,xxx.xx" type="text" class="form-control input-lg input-element" pattern="^\d+(?:,\d{3})*\.\d{2}$"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="requestAmout">Request Amount</label>
+                          <input [(ngModel)]="payment.requestAmout" #requestAmout="ngModel" id="requestAmout" name="requestAmout" placeholder="x,xxx.xx" type="text" class="form-control input-lg input-element" pattern="^\d+(?:,\d{3})*\.\d{2}$"></div>
+                      </div>
+                    </div>
+                    <div class="row" [hidden]="!creditCard">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="confirmationNumber">Confirmation Number</label>
+                          <input [(ngModel)]="payment.confirmationNumber" #confirmationNumber="ngModel" id="confirmationNumber" name="confirmationNumber" placeholder="Confirmation Number" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="processingTime">Processing Time</label>
+                          <input [(ngModel)]="payment.processingTime" #processingTime="ngModel" id="processingTime" name="processingTime" placeholder="Processing Time" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="paymentDate">Date</label>
+                          <div class="input-group">
+                            <input [(ngModel)]="payment.date" #paymentrDate="ngModel" id="paymentDate" name="paymentDate" placeholder="yyyy-mm-dd" type="text" class="form-control input-lg ta-input-element" ngbDatepicker #e="ngbDatepicker" required>
+                            <div class="input-group-addon" (click)="e.toggle()"><img src="assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col" [hidden]="!creditCard">
+                        <div class="form-group">
+                          <label for="paymentMethodCode">Payment Method Code</label><input [(ngModel)]="payment.paymentMethodCode" #paymentMethodCode="ngModel" id="paymentMethodCode" name="paymentMethodCode" placeholder="Payment Method Code" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                    </div>
+                    <div class="row" [hidden]="!creditCard">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="creditIndicator">Credit Indicator</label><input [(ngModel)]="payment.paymentLine.creditIndicator" #creditIndicator="ngModel" id="creditIndicator" name="creditIndicator" type="checkbox" class="form-control input-lg input-element"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="allocationTypeCode">Allocation Type Code</label><input [(ngModel)]="payment.paymentLine.allocationTypeCode" #allocationTypeCode="ngModel" id="allocationTypeCode" name="allocationTypeCode" placeholder="Allocation Type Code" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                    </div>
+                    <div class="row" [hidden]="!creditCard">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="allocationAmount">Allocation Amount</label><input [(ngModel)]="payment.paymentLine.allocationAmount" #allocationAmount="ngModel" id="allocationAmount" name="allocationAmount" placeholder="x,xxx.xx" type="text" class="form-control input-lg input-element" pattern="^\d+(?:,\d{3})*\.\d{2}$"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="paymentLineDescription">Description</label>
+                          <input [(ngModel)]="payment.paymentLine.description" #paymentLineDescription="ngModel" id="paymentLineDescription" name="paymentLineDescription" placeholder="Description" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                    </div>
+                    <div class="row" [hidden]="!bankAccount">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="financialAccountNumber">Account Number</label><input
+                            [(ngModel)]="payment.paymentLine.financialAccountNumber"
+                            #financialAccountNumber="ngModel"
+                            id="financialAccountNumber"
+                            name="financialAccountNumber"
+                            placeholder="Financial Account Number"
+                            type="text"
+                            class="form-control input-lg input-element"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="fromAccountNumber">Account Number</label><input [(ngModel)]="payment.fromBankAccount.accountNumber" #fromAccountNumber="ngModel" id="fromAccountNumber" name="fromAccountNumber" placeholder="Account Number" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                    </div>
+                    <div class="row" [hidden]="!bankAccount">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="fromBankName">Bank Name</label><input [(ngModel)]="payment.fromBankAccount.bankName" #fromBankName="ngModel" id="fromBankName" name="fromBankName" placeholder="Bank Name" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="routingNumber">Routing Number</label>
+                          <input [(ngModel)]="payment.fromBankAccount.routingNumber" #routingNumber="ngModel" id="routingNumber" name="routingNumber" placeholder="Routing Number" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                    </div>
+                    <div class="row" [hidden]="!bankAccount">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="accountHolderName">Account Holder Name</label><input [(ngModel)]="payment.check.accountHolderName" #accountHolderName="ngModel" id="accountHolderName" name="accountHolderName" placeholder="Acount Holder Name" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="checkBankName">Bank Name</label><input [(ngModel)]="payment.check.bankName" #checkBankName="ngModel" id="checkBankName" name="checkBankName" placeholder="Bank Name" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                    </div>
+                    <div class="row" [hidden]="!bankAccount">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="checkAccountNumber">Account Number</label>
+                          <input [(ngModel)]="payment.check.accountNumber" #checkAccountNumber="ngModel" id="checkAccountNumber" name="checkAccountNumber" placeholder="Account Number" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="checkRoutingNumber">Routing Number</label>
+                          <input [(ngModel)]="payment.check.routingNumber" #checkRoutingNumber="ngModel" id="checkRoutingNumber" name="checkRoutingNumber" placeholder="Routing Number" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                    </div>
+                    <div class="row" [hidden]="!bankAccount">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="checkNumber">Check Number</label>
+                          <input [(ngModel)]="payment.check.checkNumber" #checkNumber="ngModel" id="checkNumber" name="checkNumber" placeholder="Check Number" type="text" class="form-control input-lg input-element" pattern="[0-9]+"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="approvalCode">Approval Code</label>
+                          <input [(ngModel)]="payment.approvalCode" #approvalCode="ngModel" id="approvalCode" name="approvalCode" placeholder="Approval Code" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="traceNumber">Trace Number</label>
+                          <input [(ngModel)]="payment.creditCardPayment.traceNumber" #traceNumber="ngModel" id="traceNumber" name="traceNumber" placeholder="Trace Number" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                      <div class="col" [hidden]="!creditCard">
+                        <div class="form-group">
+                          <label for="cardType">Card Type</label>
+                          <select [(ngModel)]="payment.creditCardPayment.cardType" name="cardType" id="cardType" class="form-control input-lg input-element">
+                            <option value=""></option>
+                            <option *ngFor="let c of ccTypes" value="{{c.name}}">{{c.name}}</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row" [hidden]="!creditCard">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="cardHolderName">Name on Card</label>
+                          <input [(ngModel)]="payment.creditCardPayment.cardHolderName" #cardHolderName="ngModel" id="cardHolderName" name="cardHolderName" placeholder="Name on the Card" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="expirationMonthYear">Expires</label>
+                          <input [(ngModel)]="payment.creditCardPayment.expirationMonthYear" #expirationMonthYear="ngModel" id="expirationMonthYear" name="expirationMonthYear" placeholder="MM/YYYY" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                    </div>
+                    <div class="row" [hidden]="!creditCard">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="merchantId">Merchant ID</label>
+                          <input [(ngModel)]="payment.merchantId" #merchantId="ngModel" id="merchantId" name="merchantId" placeholder="Merchant ID" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="paymentChannelCode">Payment Channel Code</label>
+                          <input [(ngModel)]="payment.paymentChannelCode" #paymentChannelCode="ngModel" id="paymentChannelCode" name="paymentChannelCode" placeholder="Payment Channel" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="paymentSource">Payment Source</label>
+                          <input [(ngModel)]="payment.paymentSource" #paymentSource="ngModel" id="paymentSource" name="paymentSource" placeholder="Payment Source" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="paymentSchedulingType">Schedule Type</label>
+                          <input [(ngModel)]="payment.paymentSchedulingType" #paymentSchedulingType="ngModel" id="paymentSchedulingType" name="paymentSchedulingType" placeholder="Payment Schedule Type" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="transactionType">Transaction Type</label>
+                          <input [(ngModel)]="payment.transactionType" #transactionType="ngModel" id="transactionType" name="transactionType" placeholder="Transaction Type" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="paymentAmount">Amount</label>
+                          <input [(ngModel)]="payment.amount" #paymentAmount="ngModel" id="paymentAmount" name="paymentAmount" placeholder="x,xxx.xx" type="text" class="form-control input-lg input-element" pattern="^\d+(?:,\d{3})*\.\d{2}$"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="reversalIndicator">Reversal Indicator</label>
+                          <input [(ngModel)]="payment.reversalIndicator" #reversalIndicator="ngModel" id="reversalIndicator" name="reversalIndicator" type="checkbox" class="form-control input-lg input-element"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="authorizationChannel">Authorization Channel</label>
+                          <input [(ngModel)]="payment.authorizationChannel" #authorizationChannel="ngModel" id="authorizationChannel" name="authorizationChannel" placeholder="Authorization Channel" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="pointOfSaleReceiptNumber">Point of Sale Receipt Number</label>
+                          <input [(ngModel)]="payment.pointOfSaleReceiptNumber" #pointOfSaleReceiptNumber="ngModel" id="pointOfSaleReceiptNumber" name="pointOfSaleReceiptNumber" placeholder="Receipt Number" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="manualPaymentIndicator">Manual Payment</label>
+                          <input [(ngModel)]="payment.manualPaymentIndicator" #manualPaymentIndicator="ngModel" id="manualPaymentIndicator" name="manualPaymentIndicator" type="checkbox" class="form-control input-lg input-element"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="paymentAttachmentTypeCode">Type Code</label>
+                          <input [(ngModel)]="payment.paymentAttachment.typeCode" #paymentAttachmentTypeCode="ngModel" id="paymentAttachmentTypeCode" name="paymentAttachmentTypeCode" placeholder="Attachment Type Code" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="paymentAttachmentName"></label>
+                          <input [(ngModel)]="payment.paymentAttachment.name" #paymentAttachmentName="ngModel" id="paymentAttachmentName" name="paymentAttachmentName" placeholder="Attachment Name" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="paymentAttachmentTitle">Attachment Title</label>
+                          <input [(ngModel)]="payment.paymentAttachment.title" #paymentAttachmentTitle="ngModel" id="paymentAttachmentTitle" name="paymentAttachmentTitle" placeholder="Attachment Title" type="text" class="form-control input-lg input-element"></div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="paymentAttachmentURI">URI</label>
+                          <input [(ngModel)]="payment.paymentAttachment.URI" #paymentAttachmentURI="ngModel" id="paymentAttachmentURI" name="paymentAttachmentURI" placeholder="Include http://" type="text" class="form-control input-lg input-element" pattern="https?://.+"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="paymentAttachmentDescription">Description</label>
+                          <textarea [(ngModel)]="payment.paymentAttachment.description" name="paymentAttachmentDescription" id="paymentAttachmentDescription" cols="30" rows="10" class="form-control input-lg input-element"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Payment Edit'"
+                                         [descriptionText]="'This page displays a list of payments entered into the system.'"
+                                         [header1]="'Find'"
+                                         [description1]="'To find a specific payment, use the search box at the top of the screen.'"
+                                         [header2]="'Actions'"
+                                         [description2]="'You have the choice to edit, view or mark a payment for deletion - if your edit privileges allow.'"
+                                         [header3]="'Deleted'"
+                                         [description3]="'Deleted payments display as faint text.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

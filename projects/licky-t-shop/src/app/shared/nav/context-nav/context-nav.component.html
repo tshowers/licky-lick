@@ -1,0 +1,38 @@
+<ul class="nav nav-pills nav-fill" *ngIf="store && store.id">
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active' : (context === 'order')}"
+       routerLink="/application/stores/{{store.id}}/orders"><i
+         class="fa fa-address-book-o"
+         aria-hidden="true"></i> Orders</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"  [ngClass]="{'active' : (context === 'catalog')}"
+       routerLink="/application/stores/{{store.id}}/catalogs"><i
+         class="fa fa-at"
+         aria-hidden="true"></i> Catalogs</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active' : (context === 'offer')}"
+       routerLink="/application/stores/{{store.id}}/offers"><i
+         class="fa fa-credit-card"
+         aria-hidden="true"></i> Offers</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"  [ngClass]="{'active' : (context === 'payment')}"
+       routerLink="/application/stores/{{store.id}}/payments"><i class="fa fa-sticky-note-o"
+         aria-hidden="true"></i> Payments</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active' : (context === 'product')}"
+       routerLink="/application/stores/{{store.id}}/products"><i
+         class="fa fa-phone"
+         aria-hidden="true"></i> Products</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'active' : (context === 'productBundle')}"
+       routerLink="/application/stores/{{store.id}}/product-bundles"><i
+         class="fa fa-phone"
+         aria-hidden="true"></i> Bundles</a>
+  </li>
+</ul>
+<hr>

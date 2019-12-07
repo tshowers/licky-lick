@@ -1,3 +1,88 @@
-<p>
-  order-edit works!
-</p>
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            [placeholder]="'Find a Order . . .'"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+          <app-context-nav [contact]="store"
+                           [context]="'order'"></app-context-nav>
+          <div class="container">
+            <div class="card">
+              <div class="card-body">
+
+                <form #dataForm="ngForm" class="form-group">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="orderStatus">Status</label>
+                          <select [(ngModel)]="order.status" name="orderStatus" id="orderStatus" class="form-control input-lg ta-input-element" required>
+                            <option value=""></option>
+                            <option *ngFor="let st of status" value="{{st.name}}">{{st.name}}</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                        <label>Amount</label><br>
+                        {{cartTotal  | currency:'USD':true }}
+                        <input [(ngModel)]="order.amount" #orderAmount="ngModel" id="orderAmount" name="orderAmount" placeholder="Order Amount" type="number" class="form-control input-lg input-element" [disabled]="!_userService.canDelete">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                        <label>Tax</label><br>
+                        {{cartTaxTotal | currency:'USD':true}}
+                        <input [(ngModel)]="order.tax" #orderTax="ngModel" id="orderTax" name="orderTax" type="number" class="form-control input-lg input-element" [disabled]="!_userService.canDelete">
+                        </div>
+                      </div>
+                    </div>
+                    <div *ngIf="order.products">
+                      <div *ngIf="order.products.length > 0">
+                        <div class="row">
+                          <div class="col">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+
+
+              </div>
+            </div>
+          </div>
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Order Edit'"
+                                         [descriptionText]="'This page displays a list of topics entered into the system.'"
+                                         [header1]="'Find'"
+                                         [description1]="'To find a specific topic, use the search box at the top of the screen.'"
+                                         [header2]="'Actions'"
+                                         [description2]="'You have the choice to edit, view or mark a topic for deletion - if your edit privileges allow.'"
+                                         [header3]="'Deleted'"
+                                         [description3]="'Deleted topics display as faint text.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>
