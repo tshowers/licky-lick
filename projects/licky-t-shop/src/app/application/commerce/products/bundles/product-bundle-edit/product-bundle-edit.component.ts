@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './product-bundle-edit.component.html',
   styleUrls: ['./product-bundle-edit.component.css']
 })
-export class ProductBundleBundleEditComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
+export class ProductBundleEditComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
   productBundle: ProductBundle = new ProductBundle();
 

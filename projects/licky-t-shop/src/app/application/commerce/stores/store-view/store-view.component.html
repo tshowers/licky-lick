@@ -1,3 +1,94 @@
-<p>
-  store-view works!
-</p>
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            [placeholder]="'Find a Product . . .'"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+
+
+          <div>
+            <app-carousel *ngIf="carousel && carousel?.length > 0" [carousel]="carousel"></app-carousel>
+            <div class="row">
+              <div class="col">
+                <h1>{{store?.name}}</h1>
+                <div innerHTML={{store?.description}}></div>
+              </div>
+              <div class="col">
+                <div class="col text-right" *ngIf="store.url"><img class="ih-item circle effect1" src="{{store?.url}}" alt="{{store?.name}}"></div>
+              </div>
+            </div>
+            <hr>
+            <div class="ta-marketing" *ngIf="featureText.length > 0">
+              <div class="row">
+                <div class="col" *ngFor="let f of featureText">
+                  <div class="row">
+                    <div class="col">
+                      <h2>{{f?.name}}</h2> </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div innerHTML={{f?.text}}></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+            </div>
+            <div *ngIf="offers && (offers.length > 0)">
+              <h2>Featured</h2>
+              <div class="row">
+                <div class="col" *ngFor="let o of offers">
+                  <div class="card" style="width: 20rem;"> <img *ngIf="o?.url" class="card-img-top" src="{{o?.url}}" alt="{{o?.name}}">
+                    <div class="card-body">
+                      <h4 class="card-title">{{o?.title}}</h4>
+                      <div innerHTML={{o?.description}}></div> <a *ngIf="o.targetURI" routerLink="{{o.targetURI}}" class="btn btn-primary">Learn more</a> <a *ngIf="!o.targetURI" routerLink="/app/stores/{{o.store_id}}/catalogs/{{o.catalog_id}}/offers/{{o.id}}" [queryParams]="{category: o.category}" class="btn btn-primary">Offer Details</a>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-center">
+                <button *ngIf="canEdit" class="btn btn-primary btn-lg btn-round" (click)="onEdit()">Edit
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              </button> <button *ngIf="canDelete" class="btn btn-danger btn-lg btn-round" (click)="onDelete()">Delete
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </button>
+              </div>
+            </div>
+          </div>
+
+
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Product List'"
+                                         [descriptionText]="'This page displays a list of topics entered into the system.'"
+                                         [header1]="'Find'"
+                                         [description1]="'To find a specific topic, use the search box at the top of the screen.'"
+                                         [header2]="'Actions'"
+                                         [description2]="'You have the choice to edit, view or mark a topic for deletion - if your edit privileges allow.'"
+                                         [header3]="'Deleted'"
+                                         [description3]="'Deleted topics display as faint text.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

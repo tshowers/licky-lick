@@ -1,3 +1,76 @@
-<p>
-  product-bundle-view works!
-</p>
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            [placeholder]="'Find a Product . . .'"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+          <app-context-nav [store]="store" [context]="'productBundle'"></app-context-nav>
+
+
+          <div class="d-flex justify-content-center">
+            <div class="card" style="width: 30rem;"> <img *ngIf="productBundle?.url" class="card-img-top" src="{{productBundle?.url}}" alt="{{productBundle?.name}}"
+                style="height: 220px">
+              <div class="card-header">
+                <h4 class="card-title">{{productBundle?.name}}</h4> </div>
+              <div class="card-body">
+                <p class="card-subtitle mb-2 text-muted"> <span *ngIf="productBundle.activated">Active: Yes</span> <span *ngIf="!productBundle.activated">Active: No</span></p>
+                <div innerHTML={{productBundle?.description}}></div>
+                <p class="card-text">Catalog: <br> {{catalog?.name}}</p>
+                <p class="card-text">Store: <br> {{store?.name}}</p>
+                <div class="list-group" *ngIf="productBundle.products.length > 0">
+                  <div class="list-group-item list-group-item-action" *ngFor="let p of productBundle.products">
+                    <div class="row">
+                      <div class="col"> <strong>{{p?.name }}</strong> </div>
+                      <div class="col"> {{ p.price | currency:'USD':'symbol' }} <span *ngIf="p?.hourlyRate"> per hour</span></div>
+                      <div class="col"> <img src="{{p?.url}}" alt="{{p?.name}}" class="ta-store-list-image"> </div>
+                    </div>
+                  </div>
+                </div>
+                <app-social *ngIf="canRead" [data]="productBundle" [path]="'/app/stores/' + store?.id + '/catalogs/' + catalog?.id + '/product-bundles/'"
+                  [iconClass]="'fa fa-object-group'"></app-social>
+                <div class="row">
+                  <div class="col text-center"> <button *ngIf="canEdit" class="btn btn-primary btn-lg btn-round" (click)="onEdit()">Edit
+                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </button> <button *ngIf="canDelete" class="btn btn-danger btn-lg btn-round"
+                      (click)="onDelete()">Delete
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    </button> </div>
+                </div>
+                <app-data-footer *ngIf="canDelete" [data]="productBundle"></app-data-footer>
+              </div>
+            </div>
+          </div>
+
+
+
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Product List'"
+                                         [descriptionText]="'This page displays a list of topics entered into the system.'"
+                                         [header1]="'Find'"
+                                         [description1]="'To find a specific topic, use the search box at the top of the screen.'"
+                                         [header2]="'Actions'"
+                                         [description2]="'You have the choice to edit, view or mark a topic for deletion - if your edit privileges allow.'"
+                                         [header3]="'Deleted'"
+                                         [description3]="'Deleted topics display as faint text.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

@@ -19,7 +19,7 @@
   <main class="main">
     <div class="container-fluid">
           <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
-          <app-context-nav [contact]="contact" [context]="'phone'"></app-context-nav>
+          <app-context-nav [store]="store" [context]="'payment'"></app-context-nav>
           <licky-lick-app-widget-table-data [data]="data$ | async"
                                             (newItemEvent)="onNewItem()"
                                             (detailEvent)="onDetail($event)"

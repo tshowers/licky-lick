@@ -1,3 +1,138 @@
-<p>
-  order-view works!
-</p>
+<licky-lick-app-widget-menu [router]="router"
+                            [db]="dm.db"
+                            [photoURL]="dm.photoURL"
+                            [displayName]="dm.displayName"
+                            [messageLink]="'/application/notification/messages'"
+                            [alertLink]="'/application/notification/alerts'"
+                            [taskLink]="'/application/notification/tasks'"
+                            [emailAddress]="dm.emailAddress"
+                            [loggedIn]="dm.loggedIn"
+                            [userName]="dm.userName"
+                            [emailVerified]="dm.emailVerified"
+                            (settingsEvent)="onSettings()"
+                            [placeholder]="'Find a Product . . .'"
+                            (searchEvent)="onSearch($event)"
+                            (profileEvent)="onViewProfile()"
+                            [logoutPage]="'/application/logout'"
+                            [loginService]="dm.loginService"></licky-lick-app-widget-menu>
+<div class="app-body">
+  <licky-lick-app-widget-left-side-menu [newsService]="dm.newsService"></licky-lick-app-widget-left-side-menu>
+  <main class="main">
+    <div class="container-fluid">
+          <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+          <app-context-nav [store]="store" [context]="'order'"></app-context-nav>
+
+
+          <div [ngClass]="{'col-12 col-xl-6 col-lg-6 col-md-7 col-sm-12 order-xl-last order-lg-last order-md-last order-first' : messageFeed, 'col-11 order-lg-last order-first' : messageFeed, 'col-11' : !messageFeed }">
+            <div class="list-group list-group-flush">
+              <div class="list-group-item">
+                <div class="row ta-row">
+                  <div class="col"><span class="ta-label">order id</span> </div>
+                  <div class="col"><small>{{order.id}}</small> </div>
+                </div>
+              </div>
+              <div class="list-group-item" *ngIf="order.orderDate">
+                <div class="row ta-row">
+                  <div class="col"><span class="ta-label">date</span> </div>
+                  <div class="col">{{order?.orderDate | date}}</div>
+                </div>
+              </div>
+              <div class="list-group-item" *ngIf="order.status">
+                <div class="row ta-row">
+                  <div class="col"><span class="ta-label">status</span> </div>
+                  <div class="col">{{order?.status}}</div>
+                </div>
+              </div>
+              <div class="list-group-item" *ngIf="order.store_id">
+                <div class="row ta-row">
+                  <div class="col"><span class="ta-label">store</span> </div>
+                  <div class="col"><a routerLink="/app/stores/{{order.store_id}}"><small>{{order?.store_id}}</small> </a></div>
+                </div>
+              </div>
+              <div class="list-group-item" *ngIf="order.contact_id">
+                <div class="row ta-row">
+                  <div class="col"><span class="ta-label">contact</span> </div>
+                  <div class="col"><a routerLink="/app/contacts/{{order.contact_id}}"><small>{{order?.contact_id}}</small></a></div>
+                </div>
+              </div>
+              <div class="list-group-item" *ngIf="order.fop_id && authService.userService.canDelete">
+                <div class="row ta-row" *ngIf="order.address_id">
+                  <div class="col"><span class="ta-label">address</span> </div>
+                  <div class="col"><a routerLink="/app/contacts/{{order.contact_id}}/addresses/{{order.address_id}}"><small>{{order?.address_id}}</small> </a></div>
+                </div>
+              </div>
+              <div class="list-group-item">
+                <div class="row ta-row">
+                  <div class="col"><span class="ta-label">form of Payment</span> </div>
+                  <div class="col"><a routerLink="/app/contacts/{{order.contact_id}}/fops/{{order.fop_id}}"><small>{{order?.fop_id}}</small></a></div>
+                </div>
+              </div>
+              <div class="list-group-item" *ngIf="order.shopping_cart_id">
+                <div class="row ta-row">
+                  <div class="col"><span class="ta-label">cart</span> </div>
+                  <div class="col"><small>{{order?.shopping_cart_id}}</small> </div>
+                </div>
+              </div>
+              <div class="list-group-item" *ngIf="order.catalog_id">
+                <div class="row ta-row">
+                  <div class="col"><span class="ta-label">catalog</span> </div>
+                  <div class="col"><a routerLink="/app/stores/{{order.store_id}}/catalogs/{{order.catalog_id}}"><small>{{order?.catalog_id}}</small></a></div>
+                </div>
+              </div>
+              <div class="list-group-item">
+                <div class="row ta-row">
+                  <div class="col"><span class="ta-label">order amount</span> </div>
+                  <div class="col"><span class="badge badge-pill badge-theme ta-large">{{order?.amount | currency:'USD':'symbol'}}</span></div>
+                </div>
+              </div>
+              <div class="list-group-item">
+                <div class="row ta-row">
+                  <div class="col"><span class="ta-label">tax</span> </div>
+                  <div class="col"><span class="badge badge-pill badge-theme ta-large">{{order?.tax | currency:'USD':'symbol'}}</span></div>
+                </div>
+              </div>
+              <div class="list-group-item">
+                <ul class="list-group" *ngIf="order.orderLine.length > 0">
+                  <li class="list-group-item" *ngFor="let p of order.orderLine">
+                    <div class="row">
+                      <div class="col"><img src="{{p?.product.url}}" alt="{{p?.product.name}}" height="100" class="img-thumbnail"></div>
+                      <div class="col">{{p?.quantity}} <strong>{{p?.product.name}}</strong><small>
+                          <div innerHTML={{p?.product.description}}></div>
+                          <div innerHTML={{p?.product.longDescripton}}></div>
+                        </small> </div>
+                      <div class="col" *ngIf="!p.product.onSale"><span class="badge badge-pill badge-theme">{{p?.product.price | currency:'USD':'symbol' }}</span></div>
+                      <div class="col" *ngIf="p.product.onSale"><span class="badge badge-pill badge-theme">{{p?.product.salePrice | currency:'USD':'symbol' }}</span></div>
+                      <div class="col">{{p?.product.category}}</div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <app-social *ngIf="canRead" [data]="order" [path]="'/app/stores/orders/'" [iconClass]="'fa fa-cart-plus'"></app-social>
+
+              <div class="row" *ngIf="canDelete">
+                <div class="col text-center">
+                  <button class="btn btn-danger btn-lg btn-round" (click)="onDelete()">Delete
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <app-data-footer *ngIf="canDelete" [data]="order"></app-data-footer>
+            </div>
+          </div>
+
+
+    </div>
+    <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
+    <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
+  </main>
+  <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
+                                         [helpHeaderText]="'Product List'"
+                                         [descriptionText]="'This page displays a list of topics entered into the system.'"
+                                         [header1]="'Find'"
+                                         [description1]="'To find a specific topic, use the search box at the top of the screen.'"
+                                         [header2]="'Actions'"
+                                         [description2]="'You have the choice to edit, view or mark a topic for deletion - if your edit privileges allow.'"
+                                         [header3]="'Deleted'"
+                                         [description3]="'Deleted topics display as faint text.'"></licky-lick-app-widget-right-side-menu>
+</div>
+<licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>
