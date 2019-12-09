@@ -22,8 +22,6 @@
           <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
 
 
-          <div>
-            <app-carousel *ngIf="carousel && carousel?.length > 0" [carousel]="carousel"></app-carousel>
             <div class="row">
               <div class="col">
                 <h1>{{store?.name}}</h1>
@@ -74,7 +72,6 @@
               </button>
               </div>
             </div>
-          </div>
 
 
     </div>

@@ -38,12 +38,10 @@
                       <div [hidden]="productName.valid || productName.pristine" class="alert alert-danger"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Product name required </div>
                     </div>
                     <div class="form-group"> <label for="productDescription">Description</label>
-                      <div *ngIf="FROALA" [froalaEditor] [(froalaModel)]="product.description"></div>
-                      <input *ngIf="!FROALA" [(ngModel)]="product.description" #productDescription="ngModel" id="productDescription" name="productDescription" placeholder="Product Description" type="text" class="form-control form-control-lg input-element">
+                      <input [(ngModel)]="product.description" #productDescription="ngModel" id="productDescription" name="productDescription" placeholder="Product Description" type="text" class="form-control form-control-lg input-element">
                     </div>
                     <div class="form-group"> <label for="longDescription">Long Description</label>
-                      <div *ngIf="FROALA" [froalaEditor] [(froalaModel)]="product.longDescription"></div>
-                      <textarea *ngIf="!FROALA" [(ngModel)]="product.longDescription" id="longDescription" name="longDescription" placeholder="Long Description" cols="30" rows="10" class="form-control form-control-lg input-element"></textarea>
+                      <textarea [(ngModel)]="product.longDescription" id="longDescription" name="longDescription" placeholder="Long Description" cols="30" rows="10" class="form-control form-control-lg input-element"></textarea>
                     </div>
                     <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
                       <input [(ngModel)]="product.draft" id="dataDraft" name="dataDraft" type="checkbox" class="checkbox">

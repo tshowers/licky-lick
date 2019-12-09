@@ -35,7 +35,7 @@
                                          [iconClass4]="'fa fa-trash-o'"
                                          [count4]="deletedStores"
                                          [countText4]="'Deleted'"
-                                         [newItemLink]="'application/topics/new'"
+                                         [newItemLink]="'application/stores/new'"
                                          [router]="router"></licky-lick-app-widget-stats15>
           <licky-lick-app-widget-table-data [data]="data$ | async"
                                             (newItemEvent)="onNewItem()"
@@ -54,12 +54,12 @@
   </main>
   <licky-lick-app-widget-right-side-menu [panelHeaderText]="'Help'"
                                          [helpHeaderText]="'Store List'"
-                                         [descriptionText]="'This page displays a list of topics entered into the system.'"
+                                         [descriptionText]="'This page displays a list of stores entered into the system.'"
                                          [header1]="'Find'"
                                          [description1]="'To find a specific topic, use the search box at the top of the screen.'"
                                          [header2]="'Actions'"
                                          [description2]="'You have the choice to edit, view or mark a topic for deletion - if your edit privileges allow.'"
                                          [header3]="'Deleted'"
-                                         [description3]="'Deleted topics display as faint text.'"></licky-lick-app-widget-right-side-menu>
+                                         [description3]="'Deleted stores display as faint text.'"></licky-lick-app-widget-right-side-menu>
 </div>
 <licky-lick-app-widget-footer [buttonLink]="null"></licky-lick-app-widget-footer>

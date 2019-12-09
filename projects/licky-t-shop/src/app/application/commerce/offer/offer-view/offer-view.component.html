@@ -90,7 +90,6 @@
                 </ul>
                 <a *ngIf="offer?.targetURI" routerLink="offer?.targetURI" class="btn btn-primary">Learn More</a>
               </div>
-              <app-social *ngIf="canRead" [data]="offer" [path]="'/app/stores/' + store?.id + '/catalogs/' + catalog?.id + '/offers/'" [iconClass]="'fa fa-cubes'"></app-social>
               <div class="row">
                 <div class="col text-center">
                   <button *ngIf="canEdit" class="btn btn-primary btn-lg btn-round" (click)="onEdit()">Edit
@@ -101,7 +100,6 @@
                   </button>
                 </div>
               </div>
-              <app-data-footer *ngIf="canDelete" [data]="offer"></app-data-footer>
             </div>
           </div>
 

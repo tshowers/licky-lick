@@ -92,7 +92,6 @@
                           <div class="col"> <small>{{product?.catalog_id}}</small> </div>
                         </div>
                       </div>
-                      <app-social *ngIf="canRead" [data]="product" [path]="'/app/stores/' + store?.id + '/products/'" [iconClass]="'fa fa-tags'"></app-social>
                       <div class="row">
                         <div class="col text-center">
                           <button *ngIf="canEdit" class="btn btn-primary btn-lg btn-round" (click)="onEdit()">Edit
@@ -102,7 +101,6 @@
                             </button>
                         </div>
                       </div>
-                      <app-data-footer *ngIf="canDelete" [data]="product"></app-data-footer>
                     </div>
                   </div>
                 </div>

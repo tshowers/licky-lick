@@ -42,8 +42,6 @@
                     </div>
                   </div>
                 </div>
-                <app-social *ngIf="canRead" [data]="productBundle" [path]="'/app/stores/' + store?.id + '/catalogs/' + catalog?.id + '/product-bundles/'"
-                  [iconClass]="'fa fa-object-group'"></app-social>
                 <div class="row">
                   <div class="col text-center"> <button *ngIf="canEdit" class="btn btn-primary btn-lg btn-round" (click)="onEdit()">Edit
                       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -52,7 +50,6 @@
                       <i class="fa fa-times" aria-hidden="true"></i>
                     </button> </div>
                 </div>
-                <app-data-footer *ngIf="canDelete" [data]="productBundle"></app-data-footer>
               </div>
             </div>
           </div>

@@ -106,8 +106,6 @@
                   </li>
                 </ul>
               </div>
-              <app-social *ngIf="canRead" [data]="order" [path]="'/app/stores/orders/'" [iconClass]="'fa fa-cart-plus'"></app-social>
-
               <div class="row" *ngIf="canDelete">
                 <div class="col text-center">
                   <button class="btn btn-danger btn-lg btn-round" (click)="onDelete()">Delete
