@@ -141,6 +141,7 @@ export class PaymentListComponent extends LickAppPageComponent implements OnInit
   setBreadCrumb(): void {
     this.crumbs = [
       { name: "dashboard", link: "/application/dashboard", active: false },
+      { name: this.store.name, link: "/application/stores/" + this.store_id, active: false },
       { name: "payments", link: "/application/stores/" + this.store_id + "/payments", active: true },
       { name: "new", link: "/application/stores/" + this.store_id + "/payments/new", active: false },
     ]
@@ -151,7 +152,7 @@ export class PaymentListComponent extends LickAppPageComponent implements OnInit
   }
 
   onNewItem() : void {
-    this.router.navigate(['application', 'payments', 'new']);
+    this.router.navigate(['application', 'stores', this.store_id, 'payments', 'new']);
   }
 
   newPage(value: number): void {
@@ -164,21 +165,21 @@ export class PaymentListComponent extends LickAppPageComponent implements OnInit
 
   onDetail(data): void {
     console.log(JSON.stringify(data))
-    this.router.navigate(['application', 'payments',  data.id])
+    this.router.navigate(['application', 'stores', this.store_id, 'payments',  data.id])
   }
 
   onEdit(data): void {
-    this.router.navigate(['application', 'payments', data.id, 'edit'])
+    this.router.navigate(['application', 'stores', this.store_id, 'payments', data.id, 'edit'])
   }
 
   onDelete(data): void {
     data.deleted = true;
     this.dm.db.updateData(PAYMENTS, data.id, data);
-    this.router.navigate(['application', 'payments',  data.id])
+    this.router.navigate(['application', 'stores', this.store_id, 'payments',  data.id])
   }
 
   onSearch(value) : void {
-    this.router.navigate(['application', 'payments'], {queryParams: { searchArgument: value}})
+    this.router.navigate(['application', 'stores', this.store_id, 'payments'], {queryParams: { searchArgument: value}})
   }
 
   get diagnostic() {

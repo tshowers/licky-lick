@@ -110,7 +110,7 @@ export class ProductBundleViewComponent extends LickAppPageComponent implements 
   onDelete() {
     this.productBundle.deleted = true;
     this.dm.db.updateData(PRODUCT_BUNDLES, this.productBundle.id, this.productBundle);
-    this.router.navigate(['application', 'product-bundles']);
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles']);
   }
 
   onSearch(value): void {

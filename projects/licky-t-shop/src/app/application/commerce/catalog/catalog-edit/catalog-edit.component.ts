@@ -174,7 +174,7 @@ export class CatalogEditComponent extends LickAppPageComponent implements OnInit
   }
 
   onSearch(value) : void {
-    this.router.navigate(['application', 'stores'], {queryParams: { searchArgument: value}})
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs'], {queryParams: { searchArgument: value}})
   }
 
   modelCheck() {

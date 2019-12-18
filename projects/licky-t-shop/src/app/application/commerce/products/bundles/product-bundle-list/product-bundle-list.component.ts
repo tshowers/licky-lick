@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { DataMediationService } from '../../../../../shared/services/data-mediation.service';
 import { Observable, Subscription } from 'rxjs';
 import { Router, Params, ActivatedRoute } from '@angular/router';
-import { ProductBundle, Store } from 'lick-data';
+import { ProductBundle, Catalog, Store } from 'lick-data';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { PRODUCT_BUNDLES } from 'licky-services';
 
@@ -16,6 +16,10 @@ export class ProductBundleListComponent extends LickAppPageComponent implements 
   store_id;
 
   store: Store;
+
+  catalog_id;
+
+  catalog: Catalog;
 
   data$: Observable<any[]>;
 
@@ -60,9 +64,11 @@ export class ProductBundleListComponent extends LickAppPageComponent implements 
   private setStoreContext(): void {
     if (this._route.snapshot.params['id']) {
       this.store_id = this._route.snapshot.params['id'];
+      this.catalog_id = this._route.snapshot.params['id2'];
       this._paramSubscription = this._route.params.subscribe(
         (params: Params) => {
           this.store_id = this._route.snapshot.params['id'];
+          this.catalog_id = this._route.snapshot.params['id2'];
         });
       this.setStore();
       this.setProductBundles();
@@ -73,6 +79,14 @@ export class ProductBundleListComponent extends LickAppPageComponent implements 
     this.dm.doStore(this.store_id);
     this.dm.store.subscribe((store) => {
       this.store = store;
+      this.setCatalog();
+    })
+  }
+
+  private setCatalog(): void {
+    this.dm.doCatalog(this.catalog_id);
+    this.dm.catalog.subscribe((catalog) => {
+      this.catalog = catalog;
       this.setBreadCrumb();
     })
   }
@@ -142,8 +156,10 @@ export class ProductBundleListComponent extends LickAppPageComponent implements 
   setBreadCrumb(): void {
     this.crumbs = [
       { name: "dashboard", link: "/application/dashboard", active: false },
-      { name: "productBundles", link: "/application/stores/" + this.store_id + "/product-bundles", active: true },
-      { name: "new", link: "/application/product-bundle/new", active: false },
+      { name: this.store.name, link: "/application/stores/" + this.store_id, active: false },
+      { name: this.catalog.name, link: "/application/stores/" + this.store_id + "/catalogs/" + this.catalog_id, active: false },
+      { name: "product bundles", link: "/application/stores/" + this.store_id + "/catalogs/" + this.catalog_id + "/product-bundles", active: false },
+      { name: "new", link: "/application/stores/" + this.store_id + "/catalogs/" + this.catalog_id + "/product-bundle/new", active: false },
     ]
   }
 
@@ -152,7 +168,7 @@ export class ProductBundleListComponent extends LickAppPageComponent implements 
   }
 
   onNewItem() : void {
-    this.router.navigate(['application', 'productBundles', 'new']);
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'productBundles', 'new']);
   }
 
   newPage(value: number): void {
@@ -165,21 +181,21 @@ export class ProductBundleListComponent extends LickAppPageComponent implements 
 
   onDetail(data): void {
     console.log(JSON.stringify(data))
-    this.router.navigate(['application', 'productBundles',  data.id])
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'productBundles',  data.id])
   }
 
   onEdit(data): void {
-    this.router.navigate(['application', 'productBundles', data.id, 'edit'])
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'productBundles', data.id, 'edit'])
   }
 
   onDelete(data): void {
     data.deleted = true;
     this.dm.db.updateData(PRODUCT_BUNDLES, data.id, data);
-    this.router.navigate(['application', 'productBundles',  data.id])
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'productBundles',  data.id])
   }
 
   onSearch(value) : void {
-    this.router.navigate(['application', 'productBundles'], {queryParams: { searchArgument: value}})
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'productBundles'], {queryParams: { searchArgument: value}})
   }
 
   get diagnostic() {

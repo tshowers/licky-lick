@@ -141,7 +141,9 @@ export class OrderListComponent extends LickAppPageComponent implements OnInit, 
   setBreadCrumb(): void {
     this.crumbs = [
       { name: "dashboard", link: "/application/dashboard", active: false },
+      { name: this.store.name, link: "/application/stores/" + this.store_id, active: false },
       { name: "orders", link: "/application/stores/" + this.store_id + "/orders", active: true },
+      { name: "new", link: "/application/stores/" + this.store_id + "/orders/new", active: false },
     ]
   }
 
@@ -150,7 +152,7 @@ export class OrderListComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onNewItem() : void {
-    this.router.navigate(['application', 'orders', 'new']);
+    this.router.navigate(['application', 'stores', this.store_id, 'orders', 'new']);
   }
 
   newPage(value: number): void {
@@ -163,21 +165,21 @@ export class OrderListComponent extends LickAppPageComponent implements OnInit, 
 
   onDetail(data): void {
     console.log(JSON.stringify(data))
-    this.router.navigate(['application', 'orders',  data.id])
+    this.router.navigate(['application', 'stores', this.store_id, 'orders',  data.id])
   }
 
   onEdit(data): void {
-    this.router.navigate(['application', 'orders', data.id, 'edit'])
+    this.router.navigate(['application', 'stores', this.store_id, 'orders', data.id, 'edit'])
   }
 
   onDelete(data): void {
     data.deleted = true;
     this.dm.db.updateData(ORDERS, data.id, data);
-    this.router.navigate(['application', 'orders',  data.id])
+    this.router.navigate(['application', 'stores', this.store_id, 'orders',  data.id])
   }
 
   onSearch(value) : void {
-    this.router.navigate(['application', 'orders'], {queryParams: { searchArgument: value}})
+    this.router.navigate(['application', 'stores', this.store_id, 'orders'], {queryParams: { searchArgument: value}})
   }
 
   get diagnostic() {

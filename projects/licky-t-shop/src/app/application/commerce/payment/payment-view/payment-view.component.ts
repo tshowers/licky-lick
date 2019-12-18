@@ -83,7 +83,7 @@ export class PaymentViewComponent extends LickAppPageComponent implements OnInit
   onDelete() {
     this.payment.deleted = true;
     this.dm.db.updateData(PAYMENTS, this.payment.id, this.payment);
-    this.router.navigate(['application', 'payments']);
+    this.router.navigate(['application', 'stores', this.store_id, 'payments']);
   }
 
   onSearch(value): void {

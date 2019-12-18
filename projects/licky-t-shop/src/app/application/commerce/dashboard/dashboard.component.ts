@@ -19,11 +19,11 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
   faqHeading1 = "Getting Started";
   faqDescription1 = "The application layout should be pretty familiar to you with some slight modifications. At the top is the application menu where you can always navigate back to the home page by clicking the 16AHEAD logo. The left hamburger icon reveals a left side information panel, while the right hamburger icon reveals page help.";
   faqHeading2 = "How to Setup";
-  faqDescription2 = "You start gaining value by entering products. You do this by clicking the word New above.";
+  faqDescription2 = "First, you must create a store by clicking the new button above. Once you have a store created, you need to organize your products into catalogs. After the store is created, think about how you want to organize your products.";
   faqHeading3 = "How to Use";
-  faqDescription3 = "Once you enter a product, you will see your list of all products where you can page through, edit, view, or mark for deletion.";
+  faqDescription3 = "Create catalogs to store products (catalogs group similar products). Next, add individual products and select the appropriate catalog. Finally, you can create product bundles (products sold together).";
   faqHeading4 = "The Secret Sause";
-  faqDescription4 = "The magic happens in monitoring the products and customers in various systems such as your calendar, e-commerce, or the news. 16AHEAD will offer suggestions on products and customers you should review and why.";
+  faqDescription4 = "The magic happens in monitoring the products and customers in various systems such as your calendar, CRM system, or the news. 16AHEAD will offer suggestions on products and customers you should review and why.";
 
   constructor(public dm: DataMediationService, protected renderer2: Renderer2, public router: Router) {
     super(router, renderer2);
@@ -38,6 +38,7 @@ export class DashboardComponent extends LickAppPageComponent implements OnInit, 
     this.crumbs = [
       { name: "dashboard", link: "/application/dashboard", active: true },
       { name: "stores", link: "/application/stores", active: false },
+      { name: "new", link: "/application/stores/new", active: false },
     ]
   }
 

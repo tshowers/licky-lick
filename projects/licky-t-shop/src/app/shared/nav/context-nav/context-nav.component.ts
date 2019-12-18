@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ContextNavComponent implements OnInit {
 
   @Input() store;
+  @Input() catalog;
   @Input() context;
 
   constructor() { }

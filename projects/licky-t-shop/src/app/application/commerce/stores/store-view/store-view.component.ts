@@ -62,6 +62,11 @@ export class StoreViewComponent extends LickAppPageComponent implements OnInit, 
     this.router.navigate(['application', 'stores', this.store.id, 'edit'], { queryParams: { allowEdit: '1' }, fragment: 'top' });
   }
 
+  onCatalog() {
+    this.router.navigate(['application', 'stores', this.store.id, 'catalogs' ])
+  }
+
+
   onDelete() {
     this.store.deleted = true;
     this.dm.db.updateData(STORES, this.store.id, this.store);

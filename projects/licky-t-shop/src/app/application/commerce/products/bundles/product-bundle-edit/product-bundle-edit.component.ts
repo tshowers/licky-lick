@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, Renderer2 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { ProductBundle, Store, Dropdown, Upload, Section } from 'lick-data';
+import { ProductBundle, Store, Catalog, Dropdown, Upload, Section } from 'lick-data';
 import { UploadService, DropdownService, TypeFindService, PRODUCT_BUNDLES } from 'licky-services';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { DataMediationService } from '../../../../../shared/services/data-mediation.service';
@@ -28,6 +28,10 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
   store_id;
 
   store: Store;
+
+  catalog_id;
+
+  catalog: Catalog;
 
   @ViewChild('dataForm') private frm: NgForm;
 
@@ -95,7 +99,7 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
   saveNewProductBundle(): void {
     this.dm.db.writeData(PRODUCT_BUNDLES + "/" + this.store_id, this.productBundle).subscribe((key) => {
       this.productBundle.id = key;
-      const redirectPath = '/application/stores/' + this.store_id + '/product-bundles/' + this.productBundle.id;
+      const redirectPath = '/application/stores/' + this.store_id + '/catalogs/' + this.catalog_id + '/product-bundles/' + this.productBundle.id;
       this.uploadSingle();
       this.redirect(redirectPath);
     });
@@ -139,19 +143,21 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
   setBreadCrumb(): void {
     this.crumbs = [
       { name: "dashboard", link: "/application/stores/dashboard", active: false },
-      { name: "stores", link: "/application/stores", active: false },
-      { name: this.store.name, link: "/application/stores/" + this.store.id, active: false },
-      { name: "product bundles", link: "/application/stores/" + this.store_id + "/product-bundles", active: false },
-      { name: "new", link: "/application/stores/" + this.store_id + "/product-bundles/new", active: true },
+      { name: this.store.name, link: "/application/stores/" + this.store_id, active: false },
+      { name: this.catalog.name, link: "/application/stores/" + this.store_id + "/catalogs/" + this.catalog_id, active: false },
+      { name: "product bundles", link: "/application/stores/" + this.store_id + "/catalogs/" + this.catalog_id + "/product-bundles", active: false },
+      { name: "new", link: "/application/stores/" + this.store_id + "/catalogs/" + this.catalog_id + "/product-bundles/new", active: true },
     ]
   }
 
   private setStoreContext(): void {
     if (this._route.snapshot.params['id']) {
       this.store_id = this._route.snapshot.params['id'];
+      this.catalog_id = this._route.snapshot.params['id2'];
       this._paramSubscription = this._route.params.subscribe(
         (params: Params) => {
           this.store_id = this._route.snapshot.params['id'];
+          this.catalog_id = this._route.snapshot.params['id2'];
         });
       this.setStore();
     }
@@ -161,6 +167,14 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
     this.dm.doStore(this.store_id);
     this.dm.store.subscribe((store) => {
       this.store = store;
+      this.setCatalog();
+    })
+  }
+
+  private setCatalog(): void {
+    this.dm.doCatalog(this.catalog_id);
+    this.dm.catalog.subscribe((catalog) => {
+      this.catalog = catalog;
       this.setBreadCrumb();
     })
   }
@@ -174,7 +188,7 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
   }
 
   onSearch(value) : void {
-    this.router.navigate(['application', 'stores'], {queryParams: { searchArgument: value}})
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles'], {queryParams: { searchArgument: value}})
   }
 
   modelCheck() {

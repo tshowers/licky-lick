@@ -21,55 +21,54 @@
     <div class="container-fluid">
           <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
 
-
-            <div class="row">
-              <div class="col">
-                <h1>{{store?.name}}</h1>
-                <div innerHTML={{store?.description}}></div>
-              </div>
-              <div class="col">
-                <div class="col text-right" *ngIf="store.url"><img class="ih-item circle effect1" src="{{store?.url}}" alt="{{store?.name}}"></div>
-              </div>
-            </div>
-            <hr>
-            <div class="ta-marketing" *ngIf="featureText.length > 0">
+            <div class="container">
               <div class="row">
-                <div class="col" *ngFor="let f of featureText">
-                  <div class="row">
-                    <div class="col">
-                      <h2>{{f?.name}}</h2> </div>
+                <div class="col">
+                  <h1>{{store?.name}}</h1>
+                  <div innerHTML={{store?.description}}></div>
+                </div>
+                <div class="col">
+                  <div class="col text-right" *ngIf="store.url"><img class="ih-item circle effect1" src="{{store?.url}}" alt="{{store?.name}}"></div>
+                </div>
+              </div>
+              <hr>
+              <div class="container-fluid" *ngIf="store.sections && store.sections.length">
+                <div class="row ta-marketing" *ngFor="let s of store.sections">
+                  <div class="col">
+                        <h2>{{s?.name}}</h2>
+                        <div innerHTML={{s?.description}}></div>
+                        <p>&nbsp;</p>
                   </div>
-                  <div class="row">
-                    <div class="col">
-                      <div innerHTML={{f?.text}}></div>
+                </div>
+              </div>
+
+                <hr>
+              <div *ngIf="offers && (offers.length > 0)">
+                <h2>Featured</h2>
+                <div class="row">
+                  <div class="col" *ngFor="let o of offers">
+                    <div class="card" style="width: 20rem;"> <img *ngIf="o?.url" class="card-img-top" src="{{o?.url}}" alt="{{o?.name}}">
+                      <div class="card-body">
+                        <h4 class="card-title">{{o?.title}}</h4>
+                        <div innerHTML={{o?.description}}></div> <a *ngIf="o.targetURI" routerLink="{{o.targetURI}}" class="btn btn-primary">Learn more</a> <a *ngIf="!o.targetURI" routerLink="/app/stores/{{o.store_id}}/catalogs/{{o.catalog_id}}/offers/{{o.id}}" [queryParams]="{category: o.category}" class="btn btn-primary">Offer Details</a>
+                        <br>
+
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <br>
-            </div>
-            <div *ngIf="offers && (offers.length > 0)">
-              <h2>Featured</h2>
               <div class="row">
-                <div class="col" *ngFor="let o of offers">
-                  <div class="card" style="width: 20rem;"> <img *ngIf="o?.url" class="card-img-top" src="{{o?.url}}" alt="{{o?.name}}">
-                    <div class="card-body">
-                      <h4 class="card-title">{{o?.title}}</h4>
-                      <div innerHTML={{o?.description}}></div> <a *ngIf="o.targetURI" routerLink="{{o.targetURI}}" class="btn btn-primary">Learn more</a> <a *ngIf="!o.targetURI" routerLink="/app/stores/{{o.store_id}}/catalogs/{{o.catalog_id}}/offers/{{o.id}}" [queryParams]="{category: o.category}" class="btn btn-primary">Offer Details</a>
-
-
-                    </div>
-                  </div>
+                <div class="col text-center">
+                  <button class="btn btn-primary btn-lg btn-round" (click)="onCatalog()">Browse Catalogs
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+                </button>
+                  <button *ngIf="canEdit" class="btn btn-primary btn-lg btn-round" (click)="onEdit()">Edit
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </button> <button *ngIf="canDelete" class="btn btn-danger btn-lg btn-round" (click)="onDelete()">Delete
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
                 </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col text-center">
-                <button *ngIf="canEdit" class="btn btn-primary btn-lg btn-round" (click)="onEdit()">Edit
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-              </button> <button *ngIf="canDelete" class="btn btn-danger btn-lg btn-round" (click)="onDelete()">Delete
-                <i class="fa fa-times" aria-hidden="true"></i>
-              </button>
               </div>
             </div>
 

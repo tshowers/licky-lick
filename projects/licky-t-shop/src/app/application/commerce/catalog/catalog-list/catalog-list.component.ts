@@ -153,7 +153,7 @@ export class CatalogListComponent extends LickAppPageComponent implements OnInit
   }
 
   onNewItem() : void {
-    this.router.navigate(['application', 'catalogs', 'new']);
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', 'new']);
   }
 
   newPage(value: number): void {
@@ -166,21 +166,21 @@ export class CatalogListComponent extends LickAppPageComponent implements OnInit
 
   onDetail(data): void {
     console.log(JSON.stringify(data))
-    this.router.navigate(['application', 'catalogs',  data.id])
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs',  data.id])
   }
 
   onEdit(data): void {
-    this.router.navigate(['application', 'catalogs', data.id, 'edit'])
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', data.id, 'edit'])
   }
 
   onDelete(data): void {
     data.deleted = true;
     this.dm.db.updateData(CATALOGS, data.id, data);
-    this.router.navigate(['application', 'catalogs',  data.id])
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs',  data.id])
   }
 
   onSearch(value) : void {
-    this.router.navigate(['application', 'catalogs'], {queryParams: { searchArgument: value}})
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs'], {queryParams: { searchArgument: value}})
   }
 
   get diagnostic() {

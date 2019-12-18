@@ -83,12 +83,12 @@ export class OrderViewComponent extends LickAppPageComponent implements OnInit, 
   onDelete() {
     this.order.deleted = true;
     this.dm.db.updateData(ORDERS, this.order.id, this.order);
-    this.router.navigate(['application', 'orders']);
+    this.router.navigate(['application', 'stores', this.store_id, 'orders']);
   }
 
   onSearch(value): void {
     console.log("ONSEARCH", value);
-    this.router.navigate(['application', 'stores', this.store_id, 'orders'], { queryParams: { searchArgument: value } })
+    this.router.navigate(['application', 'stores', this.store_id, 'stores', this.store_id, 'orders'], { queryParams: { searchArgument: value } })
   }
 
   get diagnostic() {
