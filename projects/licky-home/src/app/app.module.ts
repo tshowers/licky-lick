@@ -18,6 +18,7 @@ import { LickMarketingFaq2Module } from 'lick-marketing-faq2';
 import { LickMarketingParallax1Module } from 'lick-marketing-parallax1';
 import { LickMarketingAboutProduct4Module} from 'lick-marketing-about-product4';
 import { LickMarketingAboutProduct5Module} from 'lick-marketing-about-product5';
+import { LickMarketingAboutProduct6Module} from 'lick-marketing-about-product6';
 import { LickMarketingHowTo1Module } from 'lick-marketing-how-to1';
 import { LickMarketingTryIt2Module } from 'lick-marketing-try-it2';
 import { LickMarketingLightbox1Module } from 'lick-marketing-lightbox1';
@@ -82,6 +83,7 @@ export const firebaseConfig = environment.firebaseConfig;
     LickMarketingFaq2Module,
     LickMarketingAboutProduct5Module,
     LickMarketingAboutProduct4Module,
+    LickMarketingAboutProduct6Module,
     LickMarketingHowTo1Module,
     LickMarketingTryIt2Module,
     LickMarketingLightbox1Module,
