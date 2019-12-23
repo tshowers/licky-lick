@@ -85,7 +85,7 @@ export class OfferListComponent extends LickAppPageComponent implements OnInit, 
   }
 
   private setCatalog(): void {
-    this.dm.doCatalog(this.catalog_id);
+    this.dm.doCatalog(this.store_id, this.catalog_id);
     this.dm.catalog.subscribe((catalog) => {
       this.catalog = catalog;
       this.setBreadCrumb();
@@ -141,7 +141,7 @@ export class OfferListComponent extends LickAppPageComponent implements OnInit, 
   }
 
   private setOffers(): void {
-    this.dm.doStores();
+    this.dm.doOffers(this.store_id);
     this._offerSubscription = this.dm.offers.subscribe((offers: Offer[]) => {
       if (offers) {
         this.totalRecords = offers.length;

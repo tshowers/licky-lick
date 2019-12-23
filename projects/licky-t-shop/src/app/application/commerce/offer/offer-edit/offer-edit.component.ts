@@ -126,7 +126,7 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
       if (file) {
         this.currentUpload = new Upload(file);
         this.currentUpload.offer_id = this.offer.id;
-        this._uploadService.pushFileToStorage(this.currentUpload, OFFERS, '/application/stores/' + this.store_id, this.offer, this.dm.db);
+        this._uploadService.pushFileToStorage(this.currentUpload, OFFERS  + "/" + this.store_id, '/application/stores/' + this.store_id, this.offer, this.dm.db);
       }
     }
   }
@@ -172,7 +172,7 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
   }
 
   private setCatalog(): void {
-    this.dm.doCatalog(this.catalog_id);
+    this.dm.doCatalog(this.store_id, this.catalog_id);
     this.dm.catalog.subscribe((catalog) => {
       this.catalog = catalog;
       this.setBreadCrumb();
@@ -198,17 +198,17 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
   }
 
   newSection(): void {
-    this.store.sections.push(this.section);
+    this.offer.sections.push(this.section);
     this.section = new Section();
   }
 
   editSection(at: number): void {
-    this.section = this.store.sections[at];
+    this.section = this.offer.sections[at];
     this.removeSection(at);
   }
 
   removeSection(at: number): void {
-    this.store.sections.splice(at, 1);
+    this.offer.sections.splice(at, 1);
   }
 
 

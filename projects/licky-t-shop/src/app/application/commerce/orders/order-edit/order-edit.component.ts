@@ -41,6 +41,8 @@ export class OrderEditComponent extends LickAppPageComponent implements OnInit, 
 
   section: Section = new Section();
 
+  canDelete: boolean = true;
+
   constructor(public dm: DataMediationService,
     protected renderer2: Renderer2,
     public router: Router,
@@ -122,7 +124,7 @@ export class OrderEditComponent extends LickAppPageComponent implements OnInit, 
       if (file) {
         this.currentUpload = new Upload(file);
         this.currentUpload.order_id = this.order.id;
-        this._uploadService.pushFileToStorage(this.currentUpload, ORDERS, '/application/stores/' + this.store_id, this.order, this.dm.db);
+        this._uploadService.pushFileToStorage(this.currentUpload, ORDERS  + "/" + this.store_id, '/application/stores/' + this.store_id, this.order, this.dm.db);
       }
     }
   }
@@ -183,17 +185,17 @@ export class OrderEditComponent extends LickAppPageComponent implements OnInit, 
   }
 
   newSection(): void {
-    this.store.sections.push(this.section);
+    this.order.sections.push(this.section);
     this.section = new Section();
   }
 
   editSection(at: number): void {
-    this.section = this.store.sections[at];
+    this.section = this.order.sections[at];
     this.removeSection(at);
   }
 
   removeSection(at: number): void {
-    this.store.sections.splice(at, 1);
+    this.order.sections.splice(at, 1);
   }
 
 

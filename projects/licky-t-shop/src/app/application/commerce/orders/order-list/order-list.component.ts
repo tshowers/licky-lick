@@ -126,7 +126,7 @@ export class OrderListComponent extends LickAppPageComponent implements OnInit, 
   }
 
   private setOrders(): void {
-    this.dm.doStores();
+    this.dm.doOrders(this.store_id);
     this._orderSubscription = this.dm.orders.subscribe((orders: Order[]) => {
       if (orders) {
         this.totalRecords = orders.length;

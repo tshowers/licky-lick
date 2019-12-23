@@ -126,7 +126,7 @@ export class PaymentListComponent extends LickAppPageComponent implements OnInit
   }
 
   private setPayments(): void {
-    this.dm.doStores();
+    this.dm.doPayments(this.store_id);
     this._paymentSubscription = this.dm.payments.subscribe((payments: Payment[]) => {
       if (payments) {
         this.totalRecords = payments.length;

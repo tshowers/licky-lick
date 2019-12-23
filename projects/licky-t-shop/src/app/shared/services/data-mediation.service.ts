@@ -292,50 +292,50 @@ export class DataMediationService implements OnDestroy {
     })
   }
 
-  public doOrder(id: string): void {
-    this.db.getData(ORDERS, id).subscribe((data) => {
+  public doOrder(store_id: string, id: string): void {
+    this.db.getData(ORDERS + "/" + store_id, id).subscribe((data) => {
       this.order.next(data);
     })
   }
 
-  public doProduct(id: string): void {
-    this.db.getData(PRODUCTS, id).subscribe((data) => {
+  public doProduct(store_id: string, id: string): void {
+    this.db.getData(PRODUCTS + "/" + store_id, id).subscribe((data) => {
       this.product.next(data);
     })
   }
 
-  public doCatalog(id: string): void {
-    this.db.getData(CATALOGS, id).subscribe((data) => {
+  public doCatalog(store_id: string, id: string): void {
+    this.db.getData(CATALOGS + "/" + store_id, id).subscribe((data) => {
       this.catalog.next(data);
     })
   }
 
-  public doPayment(id: string): void {
-    this.db.getData(PAYMENTS, id).subscribe((data) => {
+  public doPayment(store_id: string, id: string): void {
+    this.db.getData(PAYMENTS + "/" + store_id, id).subscribe((data) => {
       this.payment.next(data);
     })
   }
 
-  public doOffer(id: string): void {
-    this.db.getData(OFFERS, id).subscribe((data) => {
+  public doOffer(store_id: string, id: string): void {
+    this.db.getData(OFFERS + "/" + store_id, id).subscribe((data) => {
       this.offer.next(data);
     })
   }
 
-  public doProductBundle(id: string): void {
-    this.db.getData(PRODUCT_BUNDLES, id).subscribe((data) => {
+  public doProductBundle(store_id: string, id: string): void {
+    this.db.getData(PRODUCT_BUNDLES + "/" + store_id, id).subscribe((data) => {
       this.productBundle.next(data);
     })
   }
 
-  public doInvoice(id: string): void {
-    this.db.getData(INVOICES, id).subscribe((data) => {
+  public doInvoice(store_id: string, id: string): void {
+    this.db.getData(INVOICES + "/" + store_id, id).subscribe((data) => {
       this.invoice.next(data);
     })
   }
 
-  public doReceipt(id: string): void {
-    this.db.getData(RECEIPTS, id).subscribe((data) => {
+  public doReceipt(store_id: string, id: string): void {
+    this.db.getData(RECEIPTS + "/" + store_id, id).subscribe((data) => {
       this.receipt.next(data);
     })
   }

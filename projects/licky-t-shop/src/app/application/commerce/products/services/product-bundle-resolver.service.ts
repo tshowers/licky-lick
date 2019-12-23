@@ -31,9 +31,9 @@ export class ProductBundleResolverService {
           if (productBundle) {
             ProductBundle.restoreData(productBundle);
             this.incrementViewCount(productBundle, id1, id2);
-            return (productBundle.id == id2) ? productBundle : of(this.getNew(id1));
+            return (productBundle.id == id2) ? productBundle : this.getNew(id1);
           } else {
-            return of(this.getNew(id1));
+            return this.getNew(id1);
           }
         })
       )
@@ -45,6 +45,7 @@ export class ProductBundleResolverService {
 
   getNew(store_id: string): ProductBundle {
     let data = new ProductBundle();
+    ProductBundle.restoreData(data);
     data.store_id = store_id
     data.draft = true;
     return data;

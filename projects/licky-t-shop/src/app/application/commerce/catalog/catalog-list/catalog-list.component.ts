@@ -128,7 +128,7 @@ export class CatalogListComponent extends LickAppPageComponent implements OnInit
   }
 
   private setCatalogs(): void {
-    this.dm.doStores();
+    this.dm.doCatalogs(this.store_id);
     this._catalogSubscription = this.dm.catalogs.subscribe((catalogs: Catalog[]) => {
       if (catalogs) {
         this.totalRecords = catalogs.length;

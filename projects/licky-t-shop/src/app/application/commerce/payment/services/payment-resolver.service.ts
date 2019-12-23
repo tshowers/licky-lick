@@ -31,9 +31,9 @@ export class PaymentResolverService {
           if (payment) {
             Payment.restoreData(payment);
             this.incrementViewCount(payment, id1, id2);
-            return (payment.id == id2) ? payment : of(this.getNew(id1));
+            return (payment.id == id2) ? payment : this.getNew(id1);
           } else {
-            return of(this.getNew(id1));
+            return this.getNew(id1);
           }
         })
       )
@@ -45,8 +45,9 @@ export class PaymentResolverService {
 
   getNew(store_id: string): Payment {
     let data = new Payment();
-    data.store_id = store_id
-    data.draft = true;
+    Payment.restoreData(data);
+    data.store_id = store_id;
+    console.log("Returning >> new Payment", JSON.stringify(data) );
     return data;
   }
 

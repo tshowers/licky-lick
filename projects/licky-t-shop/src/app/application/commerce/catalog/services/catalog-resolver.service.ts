@@ -31,9 +31,9 @@ export class CatalogResolverService {
           if (catalog) {
             Catalog.restoreData(catalog);
             this.incrementViewCount(catalog, id1, id2);
-            return (catalog.id == id2) ? catalog : of(this.getNew(id1));
+            return (catalog.id == id2) ? catalog : (this.getNew(id1));
           } else {
-            return of(this.getNew(id1));
+            return this.getNew(id1);
           }
         })
       )

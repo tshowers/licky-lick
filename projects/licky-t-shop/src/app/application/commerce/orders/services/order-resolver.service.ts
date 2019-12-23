@@ -31,9 +31,9 @@ export class OrderResolverService {
           if (order) {
             Order.restoreData(order);
             this.incrementViewCount(order, id1, id2);
-            return (order.id == id2) ? order : of(this.getNew(id1));
+            return (order.id == id2) ? order : this.getNew(id1);
           } else {
-            return of(this.getNew(id1));
+            return this.getNew(id1);
           }
         })
       )

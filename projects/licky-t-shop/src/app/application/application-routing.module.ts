@@ -107,16 +107,16 @@ const routes : Routes = [
 
   { path: 'stores/:id/catalogs/:id2/offers/new', resolve: { offer: OfferResolverService }, component: OfferEditComponent, data: { title: 'New Offer - eCommerce - 16 AHEAD' }},
   { path: 'stores/:id/catalogs/:id2/products/new', resolve: { product: ProductResolverService }, component: ProductEditComponent, data: { title: 'New Product - eCommerce - 16 AHEAD' }},
-  { path: 'stores/:id/catalogs/:id2/product-bundles/new', resolve: { productBundl: ProductBundleResolverService }, component: ProductBundleEditComponent, data: { title: 'New ProductBundle - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/catalogs/:id2/product-bundles/new', resolve: { productBundle: ProductBundleResolverService }, component: ProductBundleEditComponent, data: { title: 'New ProductBundle - eCommerce - 16 AHEAD' }},
 
   { path: 'stores/:id/catalogs/:id2/offers/:id3', resolve: { offer: OfferViewResolverService }, component: OfferViewComponent, data: { title: 'Offer - eCommerce - 16 AHEAD' }},
   { path: 'stores/:id/catalogs/:id2/products/:id3', resolve: { product: ProductViewResolverService }, component: ProductViewComponent, data: { title: 'Product - eCommerce - 16 AHEAD' }},
-  { path: 'stores/:id/catalogs/:id2/product-bundles/:id3', resolve: { productBundl: ProductBundleViewResolverService }, component: ProductBundleViewComponent, data: { title: 'ProductBundle - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/catalogs/:id2/product-bundles/:id3', resolve: { productBundle: ProductBundleViewResolverService }, component: ProductBundleViewComponent, data: { title: 'ProductBundle - eCommerce - 16 AHEAD' }},
 
 
   { path: 'stores/:id/catalogs/:id2/offers/:id3/edit', resolve: { offer: OfferResolverService }, component: OfferEditComponent, data: { title: 'Edit Offer - eCommerce - 16 AHEAD' }},
   { path: 'stores/:id/catalogs/:id2/products/:id3/edit', resolve: { product: ProductResolverService }, component: ProductEditComponent, data: { title: 'Edit Product - eCommerce - 16 AHEAD' }},
-  { path: 'stores/:id/catalogs/:id2/product-bundles/:id3/edit', resolve: { productBundl: ProductBundleResolverService }, component: ProductBundleEditComponent, data: { title: 'Edit ProductBundle - eCommerce - 16 AHEAD' }},
+  { path: 'stores/:id/catalogs/:id2/product-bundles/:id3/edit', resolve: { productBundle: ProductBundleResolverService }, component: ProductBundleEditComponent, data: { title: 'Edit ProductBundle - eCommerce - 16 AHEAD' }},
 
 ]
 

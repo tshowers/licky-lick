@@ -31,9 +31,9 @@ export class OfferResolverService {
           if (offer) {
             Offer.restoreData(offer);
             this.incrementViewCount(offer, id1, id2);
-            return (offer.id == id2) ? offer : of(this.getNew(id1));
+            return (offer.id == id2) ? offer : this.getNew(id1);
           } else {
-            return of(this.getNew(id1));
+            return this.getNew(id1);
           }
         })
       )

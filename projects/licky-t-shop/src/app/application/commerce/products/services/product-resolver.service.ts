@@ -31,21 +31,23 @@ export class ProductResolverService {
           if (product) {
             Product.restoreData(product);
             this.incrementViewCount(product, id1, id2);
-            return (product.id == id2) ? product : of(this.getNew(id1));
+            return (product.id == id2) ? product : (this.getNew(id1, id2));
           } else {
-            return of(this.getNew(id1));
+            return this.getNew(id1, id2);
           }
         })
       )
     } else {
-      return of(this.getNew(id1));
+      let y = this.getNew(id1, id2);
+      return of(y);
     }
 
   }
 
-  getNew(store_id: string): Product {
+  getNew(store_id: string, catalog_id: string): Product {
     let data = new Product();
-    data.store_id = store_id
+    data.store_id = store_id;
+    data.catalog_id = catalog_id;
     data.draft = true;
     return data;
   }

@@ -122,7 +122,7 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
       if (file) {
         this.currentUpload = new Upload(file);
         this.currentUpload.payment_id = this.payment.id;
-        this._uploadService.pushFileToStorage(this.currentUpload, PAYMENTS, '/application/stores/' + this.store_id, this.payment, this.dm.db);
+        this._uploadService.pushFileToStorage(this.currentUpload, PAYMENTS + "/" + this.store_id, '/application/stores/' + this.store_id, this.payment, this.dm.db);
       }
     }
   }
@@ -183,17 +183,17 @@ export class PaymentEditComponent extends LickAppPageComponent implements OnInit
   }
 
   newSection(): void {
-    this.store.sections.push(this.section);
+    this.payment.sections.push(this.section);
     this.section = new Section();
   }
 
   editSection(at: number): void {
-    this.section = this.store.sections[at];
+    this.section = this.payment.sections[at];
     this.removeSection(at);
   }
 
   removeSection(at: number): void {
-    this.store.sections.splice(at, 1);
+    this.payment.sections.splice(at, 1);
   }
 
 

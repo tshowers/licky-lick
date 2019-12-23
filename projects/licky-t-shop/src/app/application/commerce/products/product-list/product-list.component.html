@@ -20,7 +20,7 @@
   <main class="main">
     <div class="container-fluid">
           <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
-          <app-context-nav [store]="store" [context]="'product'"></app-context-nav>
+          <app-context-nav [store]="store" [catalog]="catalog" [context]="'product'"></app-context-nav>
           <licky-lick-app-widget-stats15 *ngIf="(data$ | async)?.length > 0"
             [total]="totalRecords"
             [headingText]="'Products'"
@@ -36,7 +36,7 @@
                                          [iconClass4]="'fa fa-trash-o'"
                                          [count4]="deletedProducts"
                                          [countText4]="'Deleted'"
-                                         [newItemLink]="'application/topics/new'"
+                                         [newItemLink]="newItemLink"
                                          [router]="router"></licky-lick-app-widget-stats15>
           <licky-lick-app-widget-table-data [data]="data$ | async"
                                             (newItemEvent)="onNewItem()"

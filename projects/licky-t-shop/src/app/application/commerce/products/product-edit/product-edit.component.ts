@@ -16,7 +16,7 @@ export class ProductEditComponent extends LickAppPageComponent implements OnInit
 
   product: Product = new Product();
 
-  productTypes: Dropdown[];
+  categories: Dropdown[];
 
   private _paramSubscription: Subscription;
 
@@ -59,6 +59,7 @@ export class ProductEditComponent extends LickAppPageComponent implements OnInit
     this.initializeDropdowns();
     this._route.data
       .subscribe((data: { product: Product }) => {
+        console.log(">>>>>>>", JSON.stringify( data), "*******", JSON.stringify(data.product))
         if (data.product) {
           this.product = data.product;
           this.store_id = this.product.store_id
@@ -78,7 +79,9 @@ export class ProductEditComponent extends LickAppPageComponent implements OnInit
   }
 
   onSubmit(): void {
+    console.log("MODAL CHECK", JSON.stringify(this.product))
     this.modelCheck();
+    console.log("PRODUCT ON SUBMIT", JSON.stringify(this.product));
     (this.product.id ? this.onUpdate() : this.saveNewProduct());
   }
 
@@ -125,7 +128,7 @@ export class ProductEditComponent extends LickAppPageComponent implements OnInit
       if (file) {
         this.currentUpload = new Upload(file);
         this.currentUpload.product_id = this.product.id;
-        this._uploadService.pushFileToStorage(this.currentUpload, PRODUCTS, '/application/stores/' + this.store_id, this.product, this.dm.db);
+        this._uploadService.pushFileToStorage(this.currentUpload, PRODUCTS + "/" + this.store_id, '/application/stores/' + this.store_id, this.product, this.dm.db);
       }
     }
   }
@@ -172,7 +175,7 @@ export class ProductEditComponent extends LickAppPageComponent implements OnInit
   }
 
   private setCatalog(): void {
-    this.dm.doCatalog(this.catalog_id);
+    this.dm.doCatalog(this.store_id, this.catalog_id);
     this.dm.catalog.subscribe((catalog) => {
       this.catalog = catalog;
       this.setBreadCrumb();
@@ -180,7 +183,7 @@ export class ProductEditComponent extends LickAppPageComponent implements OnInit
   }
 
   private initializeDropdowns(): void {
-    this.productTypes = this._dropdownService.getEmailTypes();
+    this.categories = this._dropdownService.getCategories();
   }
 
   onBreadCrumb(link): void {
@@ -197,17 +200,17 @@ export class ProductEditComponent extends LickAppPageComponent implements OnInit
   }
 
   newSection(): void {
-    this.store.sections.push(this.section);
+    this.product.sections.push(this.section);
     this.section = new Section();
   }
 
   editSection(at: number): void {
-    this.section = this.store.sections[at];
+    this.section = this.product.sections[at];
     this.removeSection(at);
   }
 
   removeSection(at: number): void {
-    this.store.sections.splice(at, 1);
+    this.product.sections.splice(at, 1);
   }
 
 

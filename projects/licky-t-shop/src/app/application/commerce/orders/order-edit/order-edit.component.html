@@ -44,14 +44,14 @@
                         <div class="form-group">
                         <label>Amount</label><br>
                         {{cartTotal  | currency:'USD':true }}
-                        <input [(ngModel)]="order.amount" #orderAmount="ngModel" id="orderAmount" name="orderAmount" placeholder="Order Amount" type="number" class="form-control input-lg input-element" [disabled]="!_userService.canDelete">
+                        <input [(ngModel)]="order.amount" #orderAmount="ngModel" id="orderAmount" name="orderAmount" placeholder="Order Amount" type="number" class="form-control input-lg input-element" [disabled]="canDelete">
                         </div>
                       </div>
                       <div class="col">
                         <div class="form-group">
                         <label>Tax</label><br>
                         {{cartTaxTotal | currency:'USD':true}}
-                        <input [(ngModel)]="order.tax" #orderTax="ngModel" id="orderTax" name="orderTax" type="number" class="form-control input-lg input-element" [disabled]="!_userService.canDelete">
+                        <input [(ngModel)]="order.tax" #orderTax="ngModel" id="orderTax" name="orderTax" type="number" class="form-control input-lg input-element" [disabled]="canDelete">
                         </div>
                       </div>
                     </div>

@@ -89,7 +89,7 @@
                           <label for="paymentMethodCode">Payment Method Code</label><input [(ngModel)]="payment.paymentMethodCode" #paymentMethodCode="ngModel" id="paymentMethodCode" name="paymentMethodCode" placeholder="Payment Method Code" type="text" class="form-control input-lg input-element"></div>
                       </div>
                     </div>
-                    <div class="row" [hidden]="!creditCard">
+                    <div class="row" [hidden]="!creditCard" *ngIf="(payment && paymentLine)">
                       <div class="col">
                         <div class="form-group">
                           <label for="creditIndicator">Credit Indicator</label><input [(ngModel)]="payment.paymentLine.creditIndicator" #creditIndicator="ngModel" id="creditIndicator" name="creditIndicator" type="checkbox" class="form-control input-lg input-element"></div>
@@ -99,7 +99,7 @@
                           <label for="allocationTypeCode">Allocation Type Code</label><input [(ngModel)]="payment.paymentLine.allocationTypeCode" #allocationTypeCode="ngModel" id="allocationTypeCode" name="allocationTypeCode" placeholder="Allocation Type Code" type="text" class="form-control input-lg input-element"></div>
                       </div>
                     </div>
-                    <div class="row" [hidden]="!creditCard">
+                    <div class="row" [hidden]="!creditCard" *ngIf="(payment && paymentLine)">
                       <div class="col">
                         <div class="form-group">
                           <label for="allocationAmount">Allocation Amount</label><input [(ngModel)]="payment.paymentLine.allocationAmount" #allocationAmount="ngModel" id="allocationAmount" name="allocationAmount" placeholder="x,xxx.xx" type="text" class="form-control input-lg input-element" pattern="^\d+(?:,\d{3})*\.\d{2}$"></div>
@@ -110,7 +110,7 @@
                           <input [(ngModel)]="payment.paymentLine.description" #paymentLineDescription="ngModel" id="paymentLineDescription" name="paymentLineDescription" placeholder="Description" type="text" class="form-control input-lg input-element"></div>
                       </div>
                     </div>
-                    <div class="row" [hidden]="!bankAccount">
+                    <div class="row" [hidden]="!bankAccount"  *ngIf="(payment && paymentLine)">
                       <div class="col">
                         <div class="form-group">
                           <label for="financialAccountNumber">Account Number</label><input

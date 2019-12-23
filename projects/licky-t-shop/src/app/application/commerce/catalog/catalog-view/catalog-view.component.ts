@@ -68,6 +68,7 @@ export class CatalogViewComponent extends LickAppPageComponent implements OnInit
     this.dm.doStore(this.store_id);
     this.dm.store.subscribe((store) => {
       this.store = store;
+      this.setBreadCrumb();
     })
   }
 

@@ -172,7 +172,7 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
   }
 
   private setCatalog(): void {
-    this.dm.doCatalog(this.catalog_id);
+    this.dm.doCatalog(this.store_id, this.catalog_id);
     this.dm.catalog.subscribe((catalog) => {
       this.catalog = catalog;
       this.setBreadCrumb();
@@ -197,17 +197,17 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
   }
 
   newSection(): void {
-    this.store.sections.push(this.section);
+    this.productBundle.sections.push(this.section);
     this.section = new Section();
   }
 
   editSection(at: number): void {
-    this.section = this.store.sections[at];
+    this.section = this.productBundle.sections[at];
     this.removeSection(at);
   }
 
   removeSection(at: number): void {
-    this.store.sections.splice(at, 1);
+    this.productBundle.sections.splice(at, 1);
   }
 
 

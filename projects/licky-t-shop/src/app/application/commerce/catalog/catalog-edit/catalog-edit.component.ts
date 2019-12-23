@@ -60,6 +60,7 @@ export class CatalogEditComponent extends LickAppPageComponent implements OnInit
           this.catalog = data.catalog;
           this.store_id = this.catalog.store_id
           this.setStoreContext();
+          console.log(">>>>>>>", JSON.stringify( this.catalog))
         }
       });
   }
@@ -122,7 +123,7 @@ export class CatalogEditComponent extends LickAppPageComponent implements OnInit
       if (file) {
         this.currentUpload = new Upload(file);
         this.currentUpload.catalog_id = this.catalog.id;
-        this._uploadService.pushFileToStorage(this.currentUpload, CATALOGS, '/application/stores/' + this.store_id, this.catalog, this.dm.db);
+        this._uploadService.pushFileToStorage(this.currentUpload, CATALOGS + '/' + this.store_id, '/application/stores/' + this.store_id, this.catalog, this.dm.db);
       }
     }
   }
@@ -183,17 +184,17 @@ export class CatalogEditComponent extends LickAppPageComponent implements OnInit
   }
 
   newSection(): void {
-    this.store.sections.push(this.section);
+    this.catalog.sections.push(this.section);
     this.section = new Section();
   }
 
   editSection(at: number): void {
-    this.section = this.store.sections[at];
+    this.section = this.catalog.sections[at];
     this.removeSection(at);
   }
 
   removeSection(at: number): void {
-    this.store.sections.splice(at, 1);
+    this.catalog.sections.splice(at, 1);
   }
 
 

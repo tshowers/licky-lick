@@ -20,7 +20,7 @@
   <main class="main">
     <div class="container-fluid">
           <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
-          <app-context-nav [store]="store" [context]="'productBundle'"></app-context-nav>
+          <app-context-nav [store]="store" [catalog]="catalog" [context]="'productBundle'"></app-context-nav>
           <licky-lick-app-widget-stats15 *ngIf="(data$ | async)?.length > 0"
             [total]="totalRecords"
             [headingText]="'Product Bundles'"

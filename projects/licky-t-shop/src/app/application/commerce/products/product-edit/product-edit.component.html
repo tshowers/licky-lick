@@ -20,7 +20,7 @@
   <main class="main">
     <div class="container-fluid">
           <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
-          <app-context-nav [store]="store"
+          <app-context-nav [store]="store" [catalog]="catalog"
                            [context]="'product'"></app-context-nav>
           <div class="container">
             <div class="card">
@@ -56,7 +56,7 @@
                     <div class="form-group"> <small>For best results ensure image is 1920 x 1080</small> <br><label for="selectedFiles"><span *ngIf="product.id">Replace </span> Image</label> <input class="form-control form-control-lg ta-input-element" type="file" id="selectedFiles" name="selectedFiles" (change)="detectFiles($event)" accept=".jpg, .jpeg, .png, .gif"> </div>
                     <div class="form-group"> <label for="category">Category</label> <select [(ngModel)]="product.category" name="category" id="category" class="form-control form-control-lg input-element">
                           <option value=""></option>
-                          <option *ngFor="let c of productCategory" value="{{c.name}}">{{c.name}}</option>
+                          <option *ngFor="let c of categories" value="{{c.name}}">{{c.name}}</option>
                         </select> </div>
                     <div class="form-group"> <label for="orderQuantity">Order Quantity</label> <input [(ngModel)]="product.orderQuantity" #orderQuantity="ngModel" id="orderQuantity" name="orderQuantity" placeholder="How many can be ordered" type="text" class="form-control form-control-lg input-element"> </div>
                     <div class="form-group"> <label for="sku">SKU</label> <input [(ngModel)]="product.sku" #sku="ngModel" id="sku" name="sku" placeholder="SKU" type="text" class="form-control form-control-lg input-element"></div>

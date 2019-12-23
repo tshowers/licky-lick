@@ -39,10 +39,13 @@ export class ProductListComponent extends LickAppPageComponent implements OnInit
 
   searchArgument = '';
 
+
   deletedProducts: number = 0;
   sharedProducts: number = 0;
   draftProducts: number = 0;
   uploadProducts: number = 0;
+
+  newItemLink = 'application/stores/' + this.store_id + '/catalogs/' + this.catalog_id + '/products/new';
 
   constructor(public dm: DataMediationService, protected renderer2: Renderer2, public router: Router, private _route: ActivatedRoute) {
     super(router, renderer2);
@@ -84,7 +87,7 @@ export class ProductListComponent extends LickAppPageComponent implements OnInit
   }
 
   private setCatalog(): void {
-    this.dm.doCatalog(this.catalog_id);
+    this.dm.doCatalog(this.store_id, this.catalog_id);
     this.dm.catalog.subscribe((catalog) => {
       this.catalog = catalog;
       this.setBreadCrumb();
@@ -141,7 +144,7 @@ export class ProductListComponent extends LickAppPageComponent implements OnInit
   }
 
   private setProducts(): void {
-    this.dm.doStores();
+    this.dm.doProducts(this.store_id);
     this._productSubscription = this.dm.products.subscribe((products: Product[]) => {
       if (products) {
         this.totalRecords = products.length;
