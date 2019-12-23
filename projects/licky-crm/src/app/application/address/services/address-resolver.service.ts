@@ -29,9 +29,9 @@ export class AddressResolverService {
           if (address) {
             Address.restoreData(address);
             this.incrementViewCount(address, id1, id2);
-            return (address.id == id2) ? address : of(this.getNew(id1));
+            return (address.id == id2) ? address : this.getNew(id1);
           } else {
-            return of(this.getNew(id1));
+            return this.getNew(id1);
           }
         })
       )

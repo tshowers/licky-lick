@@ -28,9 +28,9 @@ export class FopResolverService {
           if (fop) {
             FOP.restoreData(fop);
             this.incrementViewCount(fop, id1, id2);
-            return (fop.id == id2) ? fop : of(this.getNew(id1));
+            return (fop.id == id2) ? fop : this.getNew(id1);
           } else {
-            return of(this.getNew(id1));
+            return this.getNew(id1);
           }
         }))
     } else {

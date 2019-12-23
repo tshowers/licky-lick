@@ -28,9 +28,9 @@ export class EmailAddressResolverService {
           if (emailAddress) {
             EmailAddress.restoreData(emailAddress)
             this.incrementViewCount(emailAddress, id1, id2);
-            return (emailAddress.id == id2) ? emailAddress : of(this.getNew(id1));
+            return (emailAddress.id == id2) ? emailAddress : this.getNew(id1);
           } else {
-            return of(this.getNew(id1));
+            return this.getNew(id1);
           }
         }))
     } else {

@@ -23,9 +23,9 @@ export class TopicResolverService {
           if (topic) {
             Topic.restoreData(topic);
             this.incrementViewCount(topic, id);
-            return (topic.id == id) ? topic : of(new Topic());
+            return (topic.id == id) ? topic : new Topic();
           } else {
-            return of(this.getTopicObject());
+            return this.getTopicObject();
           }
         }))
     } else {

@@ -25,9 +25,9 @@ export class ContactResolverService {
           if (contact) {
             Contact.restoreData(contact);
             this.incrementViewCount(contact, id);
-            return (contact.id == id) ? contact : of(new Contact());
+            return (contact.id == id) ? contact : new Contact();
           } else {
-            return of(this.getContactObject(user, employee));
+            return this.getContactObject(user, employee);
           }
         }))
     } else {

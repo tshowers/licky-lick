@@ -26,9 +26,9 @@ export class PhoneNumberResolverService {
         .pipe(map(phoneNumber => {
           if (phoneNumber) {
             PhoneNumber.restoreData(phoneNumber);
-            return (phoneNumber.id == id2) ? phoneNumber : of(this.getNew(id1));
+            return (phoneNumber.id == id2) ? phoneNumber : this.getNew(id1);
           } else {
-            return of(this.getNew(id1));
+            return this.getNew(id1);
           }
         }))
     } else {
