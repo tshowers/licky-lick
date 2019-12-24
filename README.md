@@ -26,12 +26,21 @@ Currently, communication with software is one-way. You click, tap, enter informa
 
 Besides, with data spread out among various software platforms and applications, how can anyone honestly know what's going on in a company? Email in one app, products, and services in another, documents spread out, it's a wonder how any organization performs.
 
+As advanced as computers are today, it is very disappointing that they are used merely for either information storage or information retrieval. I would have thought by now that software would have advanced to be more conversational. Where if I add data, post a link, or request a website, that is just the beginning of the dialog with the computer. Imagine if we talked to each other, the way we interact with computers. I tell you something; you store it your memory, but do not return a response other than OK,  submitted, or tell me a list of a thousand things based on a keyword?
+
+I believe computers should be providing continuous feedback like a real-world conversation. And most importantly, using the power it posses to provide meaningful responses and information. Adding a contact, or selling a product through my website should be the beginning of a dialog. The action of clicking submit is an indicator that I want to talk about the information I either requested or entered.
+
+Intelligent services are a set of software agents responding to the context of your submit click — a continuous dialog between you and the computer.
+
+The product roadmap is to develop a News, CRM, Communication, Project Management, e-Commerce, and Knowledge Management integrated suite of applications.  Implement intelligent services into each, then focus on the need for Finding instead of Searching.
+
 ## Vision
 
 * Eliminate App Fatigue
 * Make interacting with software more conversational
 * Familiar look and feel throughout a workflow
 * Pro-active data analysis and suggestion
+* Innovative User experience
 * Find instead of search
 
 ## Challenges of current software
