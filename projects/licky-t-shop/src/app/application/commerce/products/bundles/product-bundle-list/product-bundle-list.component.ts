@@ -189,8 +189,7 @@ export class ProductBundleListComponent extends LickAppPageComponent implements 
   }
 
   onDelete(data): void {
-    data.deleted = true;
-    this.dm.db.updateData(PRODUCT_BUNDLES, data.id, data);
+    this.dm.db.setDeleted(PRODUCT_BUNDLES + "/" + this.store_id, data.id, data);
     this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'productBundles',  data.id])
   }
 

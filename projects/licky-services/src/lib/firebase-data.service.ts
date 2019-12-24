@@ -106,6 +106,10 @@ export class FirebaseDataService {
     this._db = firebase.database();
   }
 
+  setDeleted(path: string, key: any, data: any): void {
+    data.deleted = true;
+    this.updateData(path, key, data);
+  }
 
   updateData(path: string, key: any, data: any): void {
     path = this.getAugmentedPath(path);
@@ -172,11 +176,6 @@ export class FirebaseDataService {
   }
 
 
-  setDeleted(path: string, data: any): void {
-    path = this.getAugmentedPath(path);
-    data.deleted = true;
-    this.updateData(path, data.id, data);
-  }
 
   getDataCollection(path): Observable<any> {
     path = this.getAugmentedPath(path);

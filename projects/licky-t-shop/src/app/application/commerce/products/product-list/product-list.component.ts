@@ -90,6 +90,8 @@ export class ProductListComponent extends LickAppPageComponent implements OnInit
     this.dm.doCatalog(this.store_id, this.catalog_id);
     this.dm.catalog.subscribe((catalog) => {
       this.catalog = catalog;
+      // console.log("Just before setting setBreadCrumb", JSON.stringify(catalog))
+      if (catalog)
       this.setBreadCrumb();
     })
   }
@@ -183,7 +185,6 @@ export class ProductListComponent extends LickAppPageComponent implements OnInit
   }
 
   onDetail(data): void {
-    console.log(JSON.stringify(data))
     this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'products',  data.id])
   }
 
@@ -192,8 +193,7 @@ export class ProductListComponent extends LickAppPageComponent implements OnInit
   }
 
   onDelete(data): void {
-    data.deleted = true;
-    this.dm.db.updateData(PRODUCTS, data.id, data);
+    this.dm.db.setDeleted(PRODUCTS + "/" + this.store_id, data.id, data);
     this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'products',  data.id])
   }
 

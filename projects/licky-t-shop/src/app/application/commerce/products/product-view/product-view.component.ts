@@ -108,8 +108,7 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
   }
 
   onDelete() {
-    this.product.deleted = true;
-    this.dm.db.updateData(PRODUCTS, this.product.id, this.product);
+    this.dm.db.setDeleted(PRODUCTS + "/" + this.store_id, this.product.id, this.product);
     this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'products']);
   }
 

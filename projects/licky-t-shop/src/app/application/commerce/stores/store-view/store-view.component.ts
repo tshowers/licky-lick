@@ -68,8 +68,7 @@ export class StoreViewComponent extends LickAppPageComponent implements OnInit, 
 
 
   onDelete() {
-    this.store.deleted = true;
-    this.dm.db.updateData(STORES, this.store.id, this.store);
+    this.dm.db.setDeleted(STORES, this.store.id, this.store);
     this.router.navigate(['application', 'stores']);
   }
 

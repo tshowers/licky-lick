@@ -82,8 +82,7 @@ export class CatalogViewComponent extends LickAppPageComponent implements OnInit
   }
 
   onDelete() {
-    this.catalog.deleted = true;
-    this.dm.db.updateData(CATALOGS, this.catalog.id, this.catalog);
+    this.dm.db.setDeleted(CATALOGS + "/" + this.store_id, this.catalog.id, this.catalog);
     this.router.navigate(['application', 'catalogs']);
   }
 

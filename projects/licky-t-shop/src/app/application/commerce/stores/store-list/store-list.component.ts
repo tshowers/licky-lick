@@ -145,7 +145,6 @@ export class StoreListComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onDetail(data): void {
-    console.log(JSON.stringify(data))
     this.router.navigate(['application', 'stores',  data.id])
   }
 
@@ -154,8 +153,7 @@ export class StoreListComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onDelete(data): void {
-    data.deleted = true;
-    this.dm.db.updateData(STORES, data.id, data);
+    this.dm.db.setDeleted(STORES, data.id, data);
     this.router.navigate(['application', 'stores',  data.id])
   }
 

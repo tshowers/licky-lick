@@ -81,8 +81,7 @@ export class OrderViewComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onDelete() {
-    this.order.deleted = true;
-    this.dm.db.updateData(ORDERS, this.order.id, this.order);
+    this.dm.db.setDeleted(ORDERS + "/" + this.store_id, this.order.id, this.order);
     this.router.navigate(['application', 'stores', this.store_id, 'orders']);
   }
 

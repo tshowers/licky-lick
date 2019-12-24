@@ -59,7 +59,6 @@ export class ProductEditComponent extends LickAppPageComponent implements OnInit
     this.initializeDropdowns();
     this._route.data
       .subscribe((data: { product: Product }) => {
-        console.log(">>>>>>>", JSON.stringify( data), "*******", JSON.stringify(data.product))
         if (data.product) {
           this.product = data.product;
           this.store_id = this.product.store_id
@@ -79,15 +78,13 @@ export class ProductEditComponent extends LickAppPageComponent implements OnInit
   }
 
   onSubmit(): void {
-    console.log("MODAL CHECK", JSON.stringify(this.product))
     this.modelCheck();
-    console.log("PRODUCT ON SUBMIT", JSON.stringify(this.product));
     (this.product.id ? this.onUpdate() : this.saveNewProduct());
   }
 
   onUpdate(): void {
     this.dm.db.updateData(PRODUCTS + "/" + this.store_id, this.product.id, this.product);
-    const redirectPath = '/application/stores/' + this.store_id + '/products/' + this.product.id;
+    const redirectPath = '/application/stores/' + this.store_id + '/catalogs/' + this.catalog_id + '/products/' + this.product.id;
     this.uploadSingle();
     this.redirect(redirectPath);
   }
@@ -101,7 +98,7 @@ export class ProductEditComponent extends LickAppPageComponent implements OnInit
   saveNewProduct(): void {
     this.dm.db.writeData(PRODUCTS + "/" + this.store_id, this.product).subscribe((key) => {
       this.product.id = key;
-      const redirectPath = '/application/stores/' + this.store_id + '/products/' + this.product.id;
+      const redirectPath = '/application/stores/' + this.store_id + '/catalogs/' + this.catalog_id + '/products/' + this.product.id;
       this.uploadSingle();
       this.redirect(redirectPath);
     });
@@ -109,12 +106,14 @@ export class ProductEditComponent extends LickAppPageComponent implements OnInit
 
   private redirect(redirectPath): void {
     if (!this.currentUpload) {
+      console.log("1", redirectPath)
       this.router.navigate([redirectPath]);
     }
     else {
       let uploadCheck = setInterval(() => {
         if (this.currentUpload.progress >= 100) {
           clearInterval(uploadCheck);
+          console.log("2", redirectPath)
           this.router.navigate([redirectPath]);
         }
       }, 1000)
@@ -178,6 +177,7 @@ export class ProductEditComponent extends LickAppPageComponent implements OnInit
     this.dm.doCatalog(this.store_id, this.catalog_id);
     this.dm.catalog.subscribe((catalog) => {
       this.catalog = catalog;
+      if (catalog)
       this.setBreadCrumb();
     })
   }

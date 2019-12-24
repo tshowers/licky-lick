@@ -17,15 +17,16 @@ export class ProductBundleViewResolverService {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ProductBundle> {
     const id1 = route.paramMap.get('id');
     const id2 = route.paramMap.get('id2');
+    const id3 = route.paramMap.get('id3');
 
-    return this._db.getData(PRODUCT_BUNDLES + '/' + id1, id2)
+    return this._db.getData(PRODUCT_BUNDLES + '/' + id1, id3)
     .pipe(map(productBundle => {
       if (productBundle) {
-        this.incrementViewCount(productBundle, id1, id2);
-        return (productBundle.id == id2) ? productBundle : null;
+        this.incrementViewCount(productBundle, id1, id3);
+        return (productBundle.id == id3) ? productBundle : null;
       } else {
-        if (id1)
-          this.router.navigate(['application', 'stores', id1, 'product-bundles']);
+        if (id1 && id2)
+          this.router.navigate(['application', 'stores', id1, 'catalogs', id2, 'product-bundles']);
         else
           this.router.navigate(['application', 'stores']);
         return null;
@@ -37,9 +38,9 @@ export class ProductBundleViewResolverService {
     //TODO
   }
 
-  private incrementViewCount(productBundle: ProductBundle, id1, id2) : void {
+  private incrementViewCount(productBundle: ProductBundle, id1, id3) : void {
     if (productBundle) {
-      productBundle.id = id2;
+      productBundle.id = id3;
       if (productBundle.views && !isNaN(productBundle.views)) {
         productBundle.views++;
       } else {
@@ -47,7 +48,7 @@ export class ProductBundleViewResolverService {
         productBundle.views++;
       }
       productBundle.lastViewed = new Date().getTime();
-      this._db.updateData(PRODUCT_BUNDLES + '/' + id1, id2, productBundle);
+      this._db.updateData(PRODUCT_BUNDLES + '/' + id1, id3, productBundle);
     }
   }
 }

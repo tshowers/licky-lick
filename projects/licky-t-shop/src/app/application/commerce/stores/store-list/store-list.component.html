@@ -35,7 +35,7 @@
                                          [iconClass4]="'fa fa-trash-o'"
                                          [count4]="deletedStores"
                                          [countText4]="'Deleted'"
-                                         [newItemLink]="'application/stores/new'"
+                                         (newItemEvent)="onNewItem()"
                                          [router]="router"></licky-lick-app-widget-stats15>
           <licky-lick-app-widget-table-data [data]="data$ | async"
                                             (newItemEvent)="onNewItem()"

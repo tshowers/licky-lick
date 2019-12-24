@@ -85,7 +85,7 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
 
   onUpdate(): void {
     this.dm.db.updateData(PRODUCT_BUNDLES + "/" + this.store_id, this.productBundle.id, this.productBundle);
-    const redirectPath = '/application/stores/' + this.store_id + '/product-bundles/' + this.productBundle.id;
+    const redirectPath = '/application/stores/' + this.store_id + '/catalogs/' + this.catalog_id + '/product-bundles/' + this.productBundle.id;
     this.uploadSingle();
     this.redirect(redirectPath);
   }

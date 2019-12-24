@@ -108,8 +108,7 @@ export class OfferViewComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onDelete() {
-    this.offer.deleted = true;
-    this.dm.db.updateData(OFFERS, this.offer.id, this.offer);
+    this.dm.db.setDeleted(OFFERS + "/" + this.store_id, this.offer.id, this.offer);
     this.router.navigate(['application', 'stores', this.store_id, 'offers']);
   }
 

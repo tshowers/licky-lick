@@ -143,6 +143,7 @@ export class CatalogListComponent extends LickAppPageComponent implements OnInit
   setBreadCrumb(): void {
     this.crumbs = [
       { name: "dashboard", link: "/application/dashboard", active: false },
+      { name: this.store.name, link: "/application/stores/" + this.store_id, active: false },
       { name: "catalogs", link: "/application/stores/" + this.store_id + "/catalogs", active: true },
       { name: "new", link: "/application/stores/" + this.store_id + "/catalogs/new", active: false },
     ]
@@ -165,7 +166,6 @@ export class CatalogListComponent extends LickAppPageComponent implements OnInit
   }
 
   onDetail(data): void {
-    console.log(JSON.stringify(data))
     this.router.navigate(['application', 'stores', this.store_id, 'catalogs',  data.id])
   }
 
@@ -174,8 +174,7 @@ export class CatalogListComponent extends LickAppPageComponent implements OnInit
   }
 
   onDelete(data): void {
-    data.deleted = true;
-    this.dm.db.updateData(CATALOGS, data.id, data);
+    this.dm.db.setDeleted(CATALOGS + "/" + this.store_id, data.id, data);
     this.router.navigate(['application', 'stores', this.store_id, 'catalogs',  data.id])
   }
 

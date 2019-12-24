@@ -99,7 +99,7 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
   saveNewOffer(): void {
     this.dm.db.writeData(OFFERS + "/" + this.store_id, this.offer).subscribe((key) => {
       this.offer.id = key;
-      const redirectPath = '/application/stores/' + this.store_id + '/offers/' + this.offer.id;
+      const redirectPath = '/application/stores/' + this.store_id + '/catalogs/' + this.catalog_id + '/offers/' + this.offer.id;
       this.uploadSingle();
       this.redirect(redirectPath);
     });

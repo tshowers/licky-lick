@@ -137,6 +137,11 @@ export class ContactListComponent extends LickAppPageComponent implements OnInit
     this.router.navigate(['application', 'contacts', data.id, 'edit'])
   }
 
+  onNewItem() : void {
+    this.router.navigate(['application', 'contacts', 'new']);
+  }
+
+
   onDelete(data): void {
     data.deleted = true;
     this.dm.db.updateData(CONTACTS, data.id, data);

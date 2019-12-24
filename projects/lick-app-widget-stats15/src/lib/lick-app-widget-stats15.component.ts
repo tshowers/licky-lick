@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -29,6 +29,7 @@ export class LickAppWidgetStats15Component implements OnInit {
   @Input() count4 = Math.floor(Math.random() * 1000);
   @Input() countText4 = "Ongoing";
   @Input() router: Router;
+  @Output() newItemEvent = new EventEmitter();
 
   constructor() { }
 
@@ -37,6 +38,10 @@ export class LickAppWidgetStats15Component implements OnInit {
 
   newItem(): void {
     this.router.navigate([this.newItemLink]);
+  }
+
+  onNewItemEvent() : void {
+    this.newItemEvent.emit();
   }
 
 }

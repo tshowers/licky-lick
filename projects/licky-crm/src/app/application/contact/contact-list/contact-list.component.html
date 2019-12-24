@@ -36,7 +36,7 @@
                                          [iconClass4]="'fa fa-trash-o'"
                                          [count4]="deletedContacts"
                                          [countText4]="'Deleted'"
-                                         [newItemLink]="'application/contacts/new'"
+                                         (newItemEvent)="onNewItem()"
                                          [router]="router"></licky-lick-app-widget-stats15>
           <licky-lick-app-widget-table-data [data]="contacts$ | async"
                                             (detailEvent)="onDetail($event)"
