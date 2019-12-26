@@ -91,6 +91,14 @@ export class DropdownService {
 
   }
 
+  getDataToDropdown(data: any[]) : Dropdown[] {
+    let dropDown: Dropdown[] = [];
+    data.forEach((item) => {
+      dropDown.push(new Dropdown(item.id, item.name));
+    })
+    return dropDown;
+  }
+
   getSettings(): Dropdown[] {
     return SETTINGS_NAMES.map((item) => {return new Dropdown(IdGeneratorService.generateUUID(), item)}).sort((a, b) => { if (a.name > b.name) return 1; if (a.name < b.name) return -1 });
   }

@@ -41,6 +41,7 @@ export class OfferViewResolverService {
   private incrementViewCount(offer: Offer, id1, id3) : void {
     if (offer) {
       offer.id = id3;
+      offer.expirationDate = this.setExpirationDate(offer);
       if (offer.views && !isNaN(offer.views)) {
         offer.views++;
       } else {
@@ -50,5 +51,12 @@ export class OfferViewResolverService {
       offer.lastViewed = new Date().getTime();
       this._db.updateData(OFFERS + '/' + id1, id3, offer);
     }
+  }
+
+  private setExpirationDate(offer: Offer) : Date {
+    if (offer.expirationDate && offer.expirationDate.day) {
+      offer.expirationDate = new Date(offer.expirationDate.year, (offer.expirationDate.month - 1), offer.expirationDate.day).getTime();
+    }
+    return offer.expirationDate;
   }
 }

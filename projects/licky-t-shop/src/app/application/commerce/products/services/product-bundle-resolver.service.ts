@@ -32,7 +32,7 @@ export class ProductBundleResolverService {
           if (productBundle) {
             ProductBundle.restoreData(productBundle);
             this.incrementViewCount(productBundle, id1, id3);
-            return (productBundle.id == id2) ? productBundle : this.getNew(id1, id2);
+            return (productBundle.id == id3) ? productBundle : this.getNew(id1, id2);
           } else {
             return this.getNew(id1, id2);
           }

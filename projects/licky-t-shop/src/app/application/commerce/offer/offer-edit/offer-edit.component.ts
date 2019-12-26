@@ -19,6 +19,10 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
 
   offerTypes: Dropdown[];
 
+  products: Dropdown[];
+
+  offerCategories: Dropdown[];
+
   private _paramSubscription: Subscription;
 
   private _offerSubscription: Subscription;
@@ -57,13 +61,14 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
 
   ngOnInit() {
     super.ngOnInit();
-    this.initializeDropdowns();
     this._route.data
       .subscribe((data: { offer: Offer }) => {
         if (data.offer) {
           this.offer = data.offer;
-          this.store_id = this.offer.store_id
+          this.store_id = this.offer.store_id;
+          this.setVisualDate();
           this.setStoreContext();
+          this.initializeDropdowns();
         }
       });
   }
@@ -76,6 +81,14 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
       this._storeSubscription.unsubscribe();
     if (this._offerSubscription)
       this._offerSubscription.unsubscribe();
+  }
+
+  setVisualDate() : void {
+    if (this.offer.expirationDate) {
+      let ngBootstrapDate = new Date(this.offer.expirationDate);
+      this.offer.expirationDate = ({ year: ngBootstrapDate.getFullYear(), month: (ngBootstrapDate.getMonth() + 1), day: ngBootstrapDate.getDate() })
+    }
+
   }
 
   onSubmit(): void {
@@ -126,7 +139,7 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
       if (file) {
         this.currentUpload = new Upload(file);
         this.currentUpload.offer_id = this.offer.id;
-        this._uploadService.pushFileToStorage(this.currentUpload, OFFERS  + "/" + this.store_id, '/application/stores/' + this.store_id, this.offer, this.dm.db);
+        this._uploadService.pushFileToStorage(this.currentUpload, OFFERS + "/" + this.store_id, '/application/stores/' + this.store_id, this.offer, this.dm.db);
       }
     }
   }
@@ -146,7 +159,7 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
       { name: this.store.name, link: "/application/stores/" + this.store_id, active: false },
       { name: this.catalog.name, link: "/application/stores/" + this.store_id + "/catalogs/" + this.catalog_id, active: false },
       { name: "offers", link: "/application/stores/" + this.store_id + "/catalogs/" + this.catalog_id + "/offers", active: false },
-      { name: "new", link: "/application/stores/" + this.store_id+ "/catalogs/" + this.catalog_id + "/offers/new", active: true },
+      { name: "new", link: "/application/stores/" + this.store_id + "/catalogs/" + this.catalog_id + "/offers/new", active: true },
     ]
   }
 
@@ -181,15 +194,26 @@ export class OfferEditComponent extends LickAppPageComponent implements OnInit, 
 
 
   private initializeDropdowns(): void {
-    this.offerTypes = this._dropdownService.getEmailTypes();
+    this.doProducts();
+    this.offerTypes = this._dropdownService.getOfferTypes();
+    this.offerCategories = this._dropdownService.getCategories();
+  }
+
+  private doProducts(): void {
+    this.dm.doProducts(this.store_id);
+    this.dm.products.subscribe((products) => {
+      console.log(products);
+      if (products)
+        this.products = this._dropdownService.getDataToDropdown(products);
+    })
   }
 
   onBreadCrumb(link): void {
     this.router.navigate([link]);
   }
 
-  onSearch(value) : void {
-    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'offers'], {queryParams: { searchArgument: value}})
+  onSearch(value): void {
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'offers'], { queryParams: { searchArgument: value } })
   }
 
   modelCheck() {

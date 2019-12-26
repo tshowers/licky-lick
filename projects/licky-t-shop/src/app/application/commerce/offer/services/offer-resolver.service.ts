@@ -32,7 +32,7 @@ export class OfferResolverService {
           if (offer) {
             Offer.restoreData(offer);
             this.incrementViewCount(offer, id1, id3);
-            return (offer.id == id2) ? offer : this.getNew(id1, id2);
+            return (offer.id == id3) ? offer : this.getNew(id1, id2);
           } else {
             return this.getNew(id1, id2);
           }

@@ -32,7 +32,7 @@ export class ProductResolverService {
           if (product) {
             Product.restoreData(product);
             this.incrementViewCount(product, id1, id3);
-            return (product.id == id2) ? product : (this.getNew(id1, id2));
+            return (product.id == id3) ? product : (this.getNew(id1, id2));
           } else {
             return this.getNew(id1, id2);
           }

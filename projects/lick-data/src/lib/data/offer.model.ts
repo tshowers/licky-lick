@@ -17,6 +17,7 @@ export class Offer {
   public type?: string;
   public description?: string;
   public longDescription?: string;
+  public expirationDate?;
   public providerTag?: string;
   public placement?: string;
   public presentationMethod?: string;
