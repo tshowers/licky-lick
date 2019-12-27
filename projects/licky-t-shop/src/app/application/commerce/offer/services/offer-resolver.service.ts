@@ -25,7 +25,7 @@ export class OfferResolverService {
   }
 
   getOffer(id1, id2, id3) : Observable<Offer> {
-    if (id2) {
+    if (id3) {
       return this._db.getData(OFFERS + '/' + id1, id3)
       .pipe(
         map(offer => {

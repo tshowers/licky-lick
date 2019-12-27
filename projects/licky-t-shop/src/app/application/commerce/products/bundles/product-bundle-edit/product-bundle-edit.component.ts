@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, Renderer2 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { ProductBundle, Store, Catalog, Dropdown, Upload, Section } from 'lick-data';
+import { ProductBundle, Store, Catalog, Product, Dropdown, Upload, Section } from 'lick-data';
 import { UploadService, DropdownService, TypeFindService, PRODUCT_BUNDLES } from 'licky-services';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { DataMediationService } from '../../../../../shared/services/data-mediation.service';
@@ -17,13 +17,13 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
 
   productBundle: ProductBundle = new ProductBundle();
 
-  productTypes: Dropdown[];
-
   private _paramSubscription: Subscription;
 
   private _productBundleSubscription: Subscription;
 
   private _storeSubscription: Subscription;
+  private _productSubscription: Subscription;
+  private _catalogSubscription: Subscription;
 
   store_id;
 
@@ -45,6 +45,12 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
 
   section: Section = new Section();
 
+  toggleClass;
+  products: Product[] = [];
+  product: Product;
+
+  switchTester: boolean = true;
+
   constructor(public dm: DataMediationService,
     protected renderer2: Renderer2,
     public router: Router,
@@ -57,13 +63,14 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
 
   ngOnInit() {
     super.ngOnInit();
-    this.initializeDropdowns();
     this._route.data
       .subscribe((data: { productBundle: ProductBundle }) => {
         if (data.productBundle) {
           this.productBundle = data.productBundle;
           this.store_id = this.productBundle.store_id
+          this.initializeDropdowns();
           this.setStoreContext();
+          this.setToggleClass();
         }
       });
   }
@@ -74,6 +81,10 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
       this._paramSubscription.unsubscribe();
     if (this._storeSubscription)
       this._storeSubscription.unsubscribe();
+    if (this._productSubscription)
+      this._productSubscription.unsubscribe();
+    if (this._catalogSubscription)
+      this._catalogSubscription.unsubscribe();
     if (this._productBundleSubscription)
       this._productBundleSubscription.unsubscribe();
   }
@@ -135,8 +146,42 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
     this.selectedFiles = event.target.files;
   }
 
+  toggleActivated(): void {
+    this.productBundle.activated = (!this.productBundle.activated);
+    this.setToggleClass();
+  }
+
+  setToggleClass(): void {
+    this.toggleClass = (this.productBundle.activated) ? "fa fa-toggle-on fa-2x" : "fa fa-toggle-off fa-2x";
+  }
+
+  editProductInBundle(at: number): void {
+    this.product = this.productBundle.products[at];
+    this.removeProductInBundle(at);
+  }
+
+  removeProductInBundle(at: number): void {
+    this.productBundle.products.splice(at, 1);
+  }
+
   onBrandNew(): void {
     this.productBundle = new ProductBundle();
+  }
+
+  newProductForBundle(): void {
+    const bundleProduct = this.getProduct(this.product);
+    // console.log("Pushing", this.product, JSON.stringify( bundleProduct));
+    if (!this.isProductAlreadyThere(bundleProduct.id))
+      this.productBundle.products.push(bundleProduct);
+  }
+
+  private getProduct(id): Product {
+    return this.products.find(product => product.id == id);
+  }
+
+  private isProductAlreadyThere(id): boolean {
+    let p = this.productBundle.products.find(product => product.id == id);
+    return p ? true : false;
   }
 
 
@@ -165,7 +210,7 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
 
   private setStore(): void {
     this.dm.doStore(this.store_id);
-    this.dm.store.subscribe((store) => {
+    this._storeSubscription = this.dm.store.subscribe((store) => {
       this.store = store;
       this.setCatalog();
     })
@@ -173,22 +218,27 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
 
   private setCatalog(): void {
     this.dm.doCatalog(this.store_id, this.catalog_id);
-    this.dm.catalog.subscribe((catalog) => {
+    this._catalogSubscription = this.dm.catalog.subscribe((catalog) => {
       this.catalog = catalog;
       this.setBreadCrumb();
     })
   }
 
   private initializeDropdowns(): void {
-    this.productTypes = this._dropdownService.getEmailTypes();
+    this.dm.doProducts(this.store_id);
+    this._productSubscription = this.dm.products.subscribe((products) => {
+      if (products) {
+        this.products = products;
+      }
+    })
   }
 
   onBreadCrumb(link): void {
     this.router.navigate([link]);
   }
 
-  onSearch(value) : void {
-    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles'], {queryParams: { searchArgument: value}})
+  onSearch(value): void {
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles'], { queryParams: { searchArgument: value } })
   }
 
   modelCheck() {
@@ -212,7 +262,8 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
 
 
   get diagnostic() {
-    return JSON.stringify(this.productBundle, null, 2)
+    return
+    JSON.stringify(this.productBundle, null, 2)
       + ", store_id=" + this.store_id
       + ", STORE=" + JSON.stringify(this.store, null, 2)
   }

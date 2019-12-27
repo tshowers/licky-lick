@@ -25,7 +25,7 @@ export class ProductBundleResolverService {
   }
 
   getProductBundle(id1, id2, id3) : Observable<ProductBundle> {
-    if (id2) {
+    if (id3) {
       return this._db.getData(PRODUCT_BUNDLES + '/' + id1, id3)
       .pipe(
         map(productBundle => {

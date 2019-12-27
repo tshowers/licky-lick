@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
+import { UiSwitchModule } from 'ngx-ui-switch';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LickAppPageModule } from 'lick-app-page';
@@ -38,6 +39,7 @@ import { ContextNavComponent } from './nav/context-nav/context-nav.component';
     RouterModule,
     AgmCoreModule.forRoot({ apiKey: environment.googleMapsKey, libraries:["places"]}),
     NgbModule,
+    UiSwitchModule,
     LickAppPageModule,
     LickDataModule,
     LickAppWidgetMenuModule,
@@ -61,6 +63,7 @@ import { ContextNavComponent } from './nav/context-nav/context-nav.component';
     AgmCoreModule,
     HttpClientModule,
     NgbModule,
+    UiSwitchModule,
     LickAppPageModule,
     LickDataModule,
     LickAppWidgetMenuModule,

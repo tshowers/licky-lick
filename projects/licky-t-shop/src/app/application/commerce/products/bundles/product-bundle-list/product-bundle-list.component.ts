@@ -168,7 +168,7 @@ export class ProductBundleListComponent extends LickAppPageComponent implements 
   }
 
   onNewItem() : void {
-    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'productBundles', 'new']);
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles', 'new']);
   }
 
   newPage(value: number): void {
@@ -181,20 +181,20 @@ export class ProductBundleListComponent extends LickAppPageComponent implements 
 
   onDetail(data): void {
     console.log(JSON.stringify(data))
-    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'productBundles',  data.id])
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles',  data.id])
   }
 
   onEdit(data): void {
-    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'productBundles', data.id, 'edit'])
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles', data.id, 'edit'])
   }
 
   onDelete(data): void {
     this.dm.db.setDeleted(PRODUCT_BUNDLES + "/" + this.store_id, data.id, data);
-    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'productBundles',  data.id])
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles',  data.id])
   }
 
   onSearch(value) : void {
-    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'productBundles'], {queryParams: { searchArgument: value}})
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'product-bundles'], {queryParams: { searchArgument: value}})
   }
 
   get diagnostic() {

@@ -25,7 +25,7 @@ export class ProductResolverService {
   }
 
   getProduct(id1, id2, id3) : Observable<Product> {
-    if (id2) {
+    if (id3) {
       return this._db.getData(PRODUCTS + '/' + id1, id3)
       .pipe(
         map(product => {

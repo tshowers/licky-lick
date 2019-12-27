@@ -45,9 +45,12 @@
                               cols="30" rows="10" class="form-control form-control-lg ta-input-element" required></textarea>
                           </div>
                           <div class="form-group"> <label for="productBundlePrice">Price</label> <input [(ngModel)]="productBundle.price" id="productBundlePrice" name="productBundlePrice" placeholder="Price" type="number" class="form-control form-control-lg input-element" placeholder="x.xx"></div>
-                          <div class="form-group"><label for="productBundleHourlyRate">Hourly Price</label> <input [(ngModel)]="productBundle.hourlyRate" id="productBundleHourlyRate" name="productBundleHourlyRate" type="checkbox" class="form-control form-control-lg input-element"></div>
+                          <div class="form-group"><label for="productBundleHourlyRate">Hourly Price</label> <input [(ngModel)]="productBundle.hourlyRate" id="productBundleHourlyRate" name="productBundleHourlyRate" type="number" class="form-control form-control-lg input-element"></div>
                           <div class="form-group">
-                          <label>Status</label>&nbsp; <i [ngClass]="toggleClass" aria-hidden="true" [ngStyle]="{'color': (productBundle.activated) ? '#008000' : 'inherit' }" style="cursor: pointer;" (click)="toggleActivated()"></i> </div>
+                          <label>Status</label><br>
+                          <ui-switch [(ngModel)]="productBundle.activated" id="activated" name="activated"></ui-switch>
+
+                        </div>
                           <div class="form-group" *ngIf="productBundle.id">
                             <img *ngIf="productBundle?.url" src="{{productBundle?.url}}" alt="productBundle?.url" class="img-fluid mx-auto d-block img-thumbnail">
                           </div>
@@ -56,13 +59,21 @@
                               <label for="selectedFiles"><span *ngIf="productBundle.id">Replace </span> Image</label>
                               <input class="form-control form-control-lg ta-input-element" type="file" id="selectedFiles" name="selectedFiles" (change)="detectFiles($event)" accept=".jpg, .jpeg, .png, .gif"> </div>
                           </div>
-                          <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
-                            <input [(ngModel)]="productBundle.draft" id="dataDraft" name="dataDraft" type="checkbox">
-                            <label for="dataDraft" title="Draft indicates the record is not finished and should not be made public">Private</label>
+
+
+
+
+                          <div class="form-group">
+                            <!-- <input [(ngModel)]="productBundle.draft" data-size="normal" id="dataDraft" name="dataDraft" type="checkbox"> -->
+                            <label for="dataDraft" title="Draft indicates the record is not finished and should not be made public">Private </label><br>
+                            <ui-switch [(ngModel)]="productBundle.draft" id="dataDraft" name="dataDraft"></ui-switch>
+
                           </div>
-                          <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
-                            <input [(ngModel)]="productBundle.deleted" id="dataDeleted" name="dataDeleted" type="checkbox">
-                            <label for="dataDeleted" title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted</label>
+                          <div class="form-group">
+                            <!-- <input [(ngModel)]="productBundle.deleted" id="dataDeleted" name="dataDeleted" type="checkbox"> -->
+                            <label for="dataDeleted" title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted </label><br>
+                            <ui-switch [(ngModel)]="productBundle.deleted" id="dataDeleted" name="dataDeleted"></ui-switch>
+
                           </div>
                           <div class="form-group"><label for="dataKeywords">Keywords</label> <input [(ngModel)]="productBundle.keywords" id="dataKeywords" name="dataKeywords" type="text" class="form-control form-control-lg ta-input-element" placeholder="Enter keywords seperated by commas"></div>
                         </ng-template>
@@ -70,11 +81,11 @@
                       <ngb-tab title="Products" [disabled]="!dataForm.form.valid">
                         <ng-template ngbTabContent>
                           <div class="form-group"> <label for="productsInBundle">Products Selection</label>
-                            <select [(ngModel)]="product.id" name="productsInBundle" id="productsInBundle" class='form-control form-control-lg ta-input-element'>
+                            <select [(ngModel)]="product" name="productsInBundle" id="productsInBundle" class='form-control form-control-lg ta-input-element'>
                                 <option value=""></option>
                                 <option *ngFor="let p of products" value="{{p.id}}">{{p.name}}</option>
                               </select> </div>
-                          <div style="cursor:pointer" (click)="newProductForBundle()" [hidden]="!product.id"> <i class="fa fa-plus-circle text-theme fa-lg ta-add"></i> Click to Add to Bundle </div>
+                          <div style="cursor:pointer" (click)="newProductForBundle()" *ngIf="product"> <i class="fa fa-plus-circle text-theme fa-lg ta-add"></i> Click to Add to Bundle </div>
                           <div *ngIf="productBundle.products.length > 0">
                             <div class="list-group">
                               <div class="list-group-item list-group-item-action">

@@ -21,7 +21,6 @@ export class StoreListComponent extends LickAppPageComponent implements OnInit, 
 
   pageSize = 5;
 
-  totalRecords = 0;
 
   private _searchArgumentSubscription: Subscription;
 
@@ -31,6 +30,7 @@ export class StoreListComponent extends LickAppPageComponent implements OnInit, 
 
   searchArgument = '';
 
+  totalRecords = 0;
   deletedStores: number = 0;
   sharedStores: number = 0;
   draftStores: number = 0;
