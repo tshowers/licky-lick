@@ -41,43 +41,43 @@ export class Review  {
   public broadcastedCount?;
 
   static restoreData(data: any): void {
-    data.id = (data.id) ? data.id : null;
-    data.name = (data.name) ? data.name : null;
-    data.url = (data.url) ? data.url : null;
-    data.icon = (data.icon) ? data.icon : null;
-    data.badge = (data.badge) ? data.badge : null;
-    data.link = (data.link) ? data.link : null;
-    data.shared = (data.shared) ? data.shared : false;
+    data.id = data.hasOwnProperty('id') ? data.id : null;
+    data.name = data.hasOwnProperty('name') ? data.name : null;
+    data.url = data.hasOwnProperty('url') ? data.url : null;
+    data.icon = data.hasOwnProperty('icon') ? data.icon : null;
+    data.badge = data.hasOwnProperty('badge') ? data.badge : null;
+    data.link = data.hasOwnProperty('link') ? data.link : null;
+    data.shared = data.hasOwnProperty('shared') ? data.shared : false;
 
-    data.stars = (data.id) ? data.id : [];
-    data.description = (data.description) ? data.description : null;
-    data.company = (data.company) ? data.company : null;
+    data.stars = data.hasOwnProperty('id') ? data.id : [];
+    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.company = data.hasOwnProperty('company') ? data.company : null;
 
-    data.profession = (data.profession) ? data.profession : null;
-    data.publishedAt = (data.publishedAt) ? data.publishedAt : null;
+    data.profession = data.hasOwnProperty('profession') ? data.profession : null;
+    data.publishedAt = data.hasOwnProperty('publishedAt') ? data.publishedAt : null;
 
-    data.sections = (data.sections) ? data.sections : [];
+    data.sections = data.hasOwnProperty('sections') ? data.sections : [];
 
-    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
-    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
-    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
-    data.views = (data.views) ? data.views : 0;
-    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+    data.lastUpdated = data.hasOwnProperty('lastUpdated') ? data.lastUpdated : null;
+    data.timeStamp = data.hasOwnProperty('timeStamp') ? data.timeStamp : null;
+    data.lastUpdatedBy = data.hasOwnProperty('lastUpdatedBy') ? data.lastUpdatedBy : null;
+    data.views = data.hasOwnProperty('views') ? data.views : 0;
+    data.lastViewed = data.hasOwnProperty('lastViewed') ? data.lastViewed : null;
 
-    data.draft = (data.draft) ? data.draft : true;
-    data.deleted = (data.deleted) ? data.deleted : false;
-    data.keywords = (data.keywords) ? data.keywords : null;
+    data.draft = data.hasOwnProperty('draft') ? data.draft : true;
+    data.deleted = data.hasOwnProperty('deleted') ? data.deleted : false;
+    data.keywords = data.hasOwnProperty('keywords') ? data.keywords : null;
 
-    data.user_id = (data.user_id) ? data.user_id : null;
-    data.userName = (data.userName) ? data.userName : null;
-    data.userImage = (data.userImage) ? data.userImage : null;
+    data.user_id = data.hasOwnProperty('user_id') ? data.user_id : null;
+    data.userName = data.hasOwnProperty('userName') ? data.userName : null;
+    data.userImage = data.hasOwnProperty('userImage') ? data.userImage : null;
 
-    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
-    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
-    data.favored = (data.favored) ? data.favored : false;
-    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
-    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
-    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+    data.bookmarked = data.hasOwnProperty('bookmarked') ? data.bookmarked : false;
+    data.bookmarkedCount = data.hasOwnProperty('bookmarkedCount') ? data.bookmarkedCount : 0;
+    data.favored = data.hasOwnProperty('favored') ? data.favored : false;
+    data.favoredCount = data.hasOwnProperty('favoredCount') ? data.favoredCount : 0;
+    data.broadcasted = data.hasOwnProperty('broadcasted') ? data.broadcasted : false;
+    data.broadcastedCount = data.hasOwnProperty('broadcastedCount') ? data.broadcastedCount : 0;
   }
 
 

@@ -49,8 +49,6 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
   products: Product[] = [];
   product: Product;
 
-  switchTester: boolean = true;
-
   constructor(public dm: DataMediationService,
     protected renderer2: Renderer2,
     public router: Router,
@@ -67,6 +65,7 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
       .subscribe((data: { productBundle: ProductBundle }) => {
         if (data.productBundle) {
           this.productBundle = data.productBundle;
+          console.log("Bundle passed", JSON.stringify(this.productBundle))
           this.store_id = this.productBundle.store_id
           this.initializeDropdowns();
           this.setStoreContext();
@@ -91,6 +90,7 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
 
   onSubmit(): void {
     this.modelCheck();
+    console.log("SAVING", JSON.stringify(this.productBundle));
     (this.productBundle.id ? this.onUpdate() : this.saveNewProductBundle());
   }
 
@@ -137,7 +137,8 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
       if (file) {
         this.currentUpload = new Upload(file);
         this.currentUpload.product_bundle_id = this.productBundle.id;
-        this._uploadService.pushFileToStorage(this.currentUpload, PRODUCT_BUNDLES, '/application/stores/' + this.store_id, this.productBundle, this.dm.db);
+        this._uploadService.pushFileToStorage(this.currentUpload, PRODUCT_BUNDLES + "/" + this.store_id, '/application/stores/' + this.store_id, this.productBundle, this.dm.db);
+        console.log("UPLOADED", JSON.stringify(this.productBundle));
       }
     }
   }
@@ -262,8 +263,7 @@ export class ProductBundleEditComponent extends LickAppPageComponent implements 
 
 
   get diagnostic() {
-    return
-    JSON.stringify(this.productBundle, null, 2)
+    return JSON.stringify(this.productBundle, null, 2)
       + ", store_id=" + this.store_id
       + ", STORE=" + JSON.stringify(this.store, null, 2)
   }

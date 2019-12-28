@@ -144,6 +144,7 @@ export class FirebaseDataService {
 
   writeData(path: string, data: any): Observable<any> {
     path = this.getAugmentedPath(path);
+    console.log("Writing to " + path)
     this.setNewDataValues(data);
     return Observable.create((observer) => {
       this._db.ref(path).push(data, (error) => {
@@ -151,6 +152,7 @@ export class FirebaseDataService {
         if (error)
           this.databaseError.next(error.message);
       }).then((snap) => {
+        console.log("Key", snap);
         if (snap)
           observer.next(snap.key);
         else

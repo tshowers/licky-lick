@@ -61,6 +61,7 @@ export class UploadService {
         upload.ref = uploadRef;
         storageRef.child(storeLocation).getDownloadURL().then((url) => {
           upload.url = url;
+          console.info("Calling saveFilePointer");
           this.saveFilePointer(true, upload, fn, db);
           data.url = upload.url;
           db.updateData(dataPath, data.id, data);
@@ -75,6 +76,7 @@ export class UploadService {
   }
 
   private saveFileData(upload: Upload, db: FirebaseDataService) {
+    console.info("saveFileData", JSON.stringify(upload));
     db.writeData(DOCUMENTS, upload);
   }
 

@@ -85,81 +85,81 @@ export class User {
   public broadcastedCount?;
 
   static restoreData(data: any): void {
-    data.id = (data.id) ? data.id : null;
-    data.name = (data.name) ? data.name : null;
-    data.url = (data.url) ? data.url : null;
-    data.icon = (data.icon) ? data.icon : null;
-    data.badge = (data.badge) ? data.badge : null;
-    data.link = (data.link) ? data.link : null;
-    data.shared = (data.shared) ? data.shared : false;
+    data.id = data.hasOwnProperty('id') ? data.id : null;
+    data.name = data.hasOwnProperty('name') ? data.name : null;
+    data.url = data.hasOwnProperty('url') ? data.url : null;
+    data.icon = data.hasOwnProperty('icon') ? data.icon : null;
+    data.badge = data.hasOwnProperty('badge') ? data.badge : null;
+    data.link = data.hasOwnProperty('link') ? data.link : null;
+    data.shared = data.hasOwnProperty('shared') ? data.shared : false;
 
-    data.account = (data.account) ? data.account : null;
+    data.account = data.hasOwnProperty('account') ? data.account : null;
 
-    data.customer_id = (data.customer_id) ? data.customer_id : null;
-    data.status = (data.status) ? data.status : null;
-    data.emailProvider = (data.emailProvider) ? data.emailProvider : null;
-    data.email = (data.email) ? data.email : null;
-    data.helpNeeded = (data.helpNeeded) ? data.helpNeeded : false;
-    data.openView = (data.openView) ? data.openView : false;
-    data.newsSources = (data.newsSources) ? data.newsSources : [];
+    data.customer_id = data.hasOwnProperty('customer_id') ? data.customer_id : null;
+    data.status = data.hasOwnProperty('status') ? data.status : null;
+    data.emailProvider = data.hasOwnProperty('emailProvider') ? data.emailProvider : null;
+    data.email = data.hasOwnProperty('email') ? data.email : null;
+    data.helpNeeded = data.hasOwnProperty('helpNeeded') ? data.helpNeeded : false;
+    data.openView = data.hasOwnProperty('openView') ? data.openView : false;
+    data.newsSources = data.hasOwnProperty('newsSources') ? data.newsSources : [];
 
-    data.contact_id = (data.contact_id) ? data.contact_id : null;
-    data.contact = (data.contact) ? data.contact : null;
-    data.address_id = (data.address_id) ? data.address_id : null;
-    data.addresses = (data.addresses) ? data.addresses : [];
-    data.phone_number_id = (data.phone_number_id) ? data.phone_number_id : null;
-    data.phoneNumbers = (data.phoneNumbers) ? data.phoneNumbers : [];
-    data.fop_id = (data.fop_id) ? data.fop_id : null;
-    data.fop = (data.fop) ? data.fop : [];
-    data.email_address_id = (data.email_address_id) ? data.email_address_id : null;
-    data.emailAddresses = (data.emailAddresses) ? data.emailAddresses : [];
-    data.shopping_cart_id = (data.shopping_cart_id) ? data.shopping_cart_id : null;
-    data.shoppingCart = (data.shoppingCart) ? data.shoppingCart : null;
+    data.contact_id = data.hasOwnProperty('contact_id') ? data.contact_id : null;
+    data.contact = data.hasOwnProperty('contact') ? data.contact : null;
+    data.address_id = data.hasOwnProperty('address_id') ? data.address_id : null;
+    data.addresses = data.hasOwnProperty('addresses') ? data.addresses : [];
+    data.phone_number_id = data.hasOwnProperty('phone_number_id') ? data.phone_number_id : null;
+    data.phoneNumbers = data.hasOwnProperty('phoneNumbers') ? data.phoneNumbers : [];
+    data.fop_id = data.hasOwnProperty('fop_id') ? data.fop_id : null;
+    data.fop = data.hasOwnProperty('fop') ? data.fop : [];
+    data.email_address_id = data.hasOwnProperty('email_address_id') ? data.email_address_id : null;
+    data.emailAddresses = data.hasOwnProperty('emailAddresses') ? data.emailAddresses : [];
+    data.shopping_cart_id = data.hasOwnProperty('shopping_cart_id') ? data.shopping_cart_id : null;
+    data.shoppingCart = data.hasOwnProperty('shoppingCart') ? data.shoppingCart : null;
 
-    data.messagesLastCheckedDate = (data.messagesLastCheckedDate) ? data.messagesLastCheckedDate : null;
-    data.tasksLastCheckedDate = (data.tasksLastCheckedDate) ? data.tasksLastCheckedDate : null;
-    data.alertsLastCheckedDate = (data.alertsLastCheckedDate) ? data.alertsLastCheckedDate : null;
+    data.messagesLastCheckedDate = data.hasOwnProperty('messagesLastCheckedDate') ? data.messagesLastCheckedDate : null;
+    data.tasksLastCheckedDate = data.hasOwnProperty('tasksLastCheckedDate') ? data.tasksLastCheckedDate : null;
+    data.alertsLastCheckedDate = data.hasOwnProperty('alertsLastCheckedDate') ? data.alertsLastCheckedDate : null;
 
-    data.introContactImport = (data.introContactImport) ? data.introContactImport : false;
-    data.introCalendarImport = (data.introCalendarImport) ? data.introCalendarImport : false;
-    data.welcomeMessageCount = (data.welcomeMessageCount) ? data.welcomeMessageCount : 0;
+    data.introContactImport = data.hasOwnProperty('introContactImport') ? data.introContactImport : false;
+    data.introCalendarImport = data.hasOwnProperty('introCalendarImport') ? data.introCalendarImport : false;
+    data.welcomeMessageCount = data.hasOwnProperty('welcomeMessageCount') ? data.welcomeMessageCount : 0;
 
-    data.workflow = (data.workflow) ? data.workflow : [];
-    data.appActions = (data.appActions) ? data.appActions : [];
-    data.groups = (data.groups) ? data.groups : [];
+    data.workflow = data.hasOwnProperty('workflow') ? data.workflow : [];
+    data.appActions = data.hasOwnProperty('appActions') ? data.appActions : [];
+    data.groups = data.hasOwnProperty('groups') ? data.groups : [];
 
-    data.currentStep = (data.currentStep) ? data.currentStep : 0;
-    data.currentStepName = (data.currentStepName) ? data.currentStepName : null;
-    data.roles = (data.roles) ? data.roles : [];
-    data.role = (data.role) ? data.role : null;
+    data.currentStep = data.hasOwnProperty('currentStep') ? data.currentStep : 0;
+    data.currentStepName = data.hasOwnProperty('currentStepName') ? data.currentStepName : null;
+    data.roles = data.hasOwnProperty('roles') ? data.roles : [];
+    data.role = data.hasOwnProperty('role') ? data.role : null;
 
-    data.amount = (data.amount) ? data.amount : 0;
-    data.measure = (data.measure) ? data.measure : null;
-    data.moduleAccess = (data.moduleAccess) ? data.moduleAccess : null;
-    data.referral = (data.referral) ? data.referral : null;
+    data.amount = data.hasOwnProperty('amount') ? data.amount : 0;
+    data.measure = data.hasOwnProperty('measure') ? data.measure : null;
+    data.moduleAccess = data.hasOwnProperty('moduleAccess') ? data.moduleAccess : null;
+    data.referral = data.hasOwnProperty('referral') ? data.referral : null;
 
-    data.sections = (data.sections) ? data.sections : [];
+    data.sections = data.hasOwnProperty('sections') ? data.sections : [];
 
-    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
-    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
-    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
-    data.views = (data.views) ? data.views : 0;
-    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+    data.lastUpdated = data.hasOwnProperty('lastUpdated') ? data.lastUpdated : null;
+    data.timeStamp = data.hasOwnProperty('timeStamp') ? data.timeStamp : null;
+    data.lastUpdatedBy = data.hasOwnProperty('lastUpdatedBy') ? data.lastUpdatedBy : null;
+    data.views = data.hasOwnProperty('views') ? data.views : 0;
+    data.lastViewed = data.hasOwnProperty('lastViewed') ? data.lastViewed : null;
 
-    data.draft = (data.draft) ? data.draft : true;
-    data.deleted = (data.deleted) ? data.deleted : false;
-    data.keywords = (data.keywords) ? data.keywords : null;
+    data.draft = data.hasOwnProperty('draft') ? data.draft : true;
+    data.deleted = data.hasOwnProperty('deleted') ? data.deleted : false;
+    data.keywords = data.hasOwnProperty('keywords') ? data.keywords : null;
 
-    data.user_id = (data.user_id) ? data.user_id : null;
-    data.userName = (data.userName) ? data.userName : null;
-    data.userImage = (data.userImage) ? data.userImage : null;
+    data.user_id = data.hasOwnProperty('user_id') ? data.user_id : null;
+    data.userName = data.hasOwnProperty('userName') ? data.userName : null;
+    data.userImage = data.hasOwnProperty('userImage') ? data.userImage : null;
 
-    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
-    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
-    data.favored = (data.favored) ? data.favored : false;
-    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
-    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
-    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+    data.bookmarked = data.hasOwnProperty('bookmarked') ? data.bookmarked : false;
+    data.bookmarkedCount = data.hasOwnProperty('bookmarkedCount') ? data.bookmarkedCount : 0;
+    data.favored = data.hasOwnProperty('favored') ? data.favored : false;
+    data.favoredCount = data.hasOwnProperty('favoredCount') ? data.favoredCount : 0;
+    data.broadcasted = data.hasOwnProperty('broadcasted') ? data.broadcasted : false;
+    data.broadcastedCount = data.hasOwnProperty('broadcastedCount') ? data.broadcastedCount : 0;
   }
 
 
@@ -223,40 +223,40 @@ export class Favorite {
   public userImage?;
 
   static restoreData(data: any): void {
-    data.id = (data.id) ? data.id : null;
-    data.name = (data.name) ? data.name : null;
-    data.url = (data.url) ? data.url : null;
-    data.icon = (data.icon) ? data.icon : null;
-    data.badge = (data.badge) ? data.badge : null;
-    data.link = (data.link) ? data.link : null;
-    data.shared = (data.shared) ? data.shared : false;
+    data.id = data.hasOwnProperty('id') ? data.id : null;
+    data.name = data.hasOwnProperty('name') ? data.name : null;
+    data.url = data.hasOwnProperty('url') ? data.url : null;
+    data.icon = data.hasOwnProperty('icon') ? data.icon : null;
+    data.badge = data.hasOwnProperty('badge') ? data.badge : null;
+    data.link = data.hasOwnProperty('link') ? data.link : null;
+    data.shared = data.hasOwnProperty('shared') ? data.shared : false;
 
-    data.dataModel_id = (data.dataModel_id) ? data.dataModel_id : null;
+    data.dataModel_id = data.hasOwnProperty('dataModel_id') ? data.dataModel_id : null;
 
-    data.publishedAt = (data.publishedAt) ? data.publishedAt : null;
+    data.publishedAt = data.hasOwnProperty('publishedAt') ? data.publishedAt : null;
 
-    data.sections = (data.sections) ? data.sections : [];
+    data.sections = data.hasOwnProperty('sections') ? data.sections : [];
 
-    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
-    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
-    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
-    data.views = (data.views) ? data.views : 0;
-    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+    data.lastUpdated = data.hasOwnProperty('lastUpdated') ? data.lastUpdated : null;
+    data.timeStamp = data.hasOwnProperty('timeStamp') ? data.timeStamp : null;
+    data.lastUpdatedBy = data.hasOwnProperty('lastUpdatedBy') ? data.lastUpdatedBy : null;
+    data.views = data.hasOwnProperty('views') ? data.views : 0;
+    data.lastViewed = data.hasOwnProperty('lastViewed') ? data.lastViewed : null;
 
-    data.draft = (data.draft) ? data.draft : true;
-    data.deleted = (data.deleted) ? data.deleted : false;
-    data.keywords = (data.keywords) ? data.keywords : null;
+    data.draft = data.hasOwnProperty('draft') ? data.draft : true;
+    data.deleted = data.hasOwnProperty('deleted') ? data.deleted : false;
+    data.keywords = data.hasOwnProperty('keywords') ? data.keywords : null;
 
-    data.user_id = (data.user_id) ? data.user_id : null;
-    data.userName = (data.userName) ? data.userName : null;
-    data.userImage = (data.userImage) ? data.userImage : null;
+    data.user_id = data.hasOwnProperty('user_id') ? data.user_id : null;
+    data.userName = data.hasOwnProperty('userName') ? data.userName : null;
+    data.userImage = data.hasOwnProperty('userImage') ? data.userImage : null;
 
-    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
-    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
-    data.favored = (data.favored) ? data.favored : false;
-    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
-    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
-    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+    data.bookmarked = data.hasOwnProperty('bookmarked') ? data.bookmarked : false;
+    data.bookmarkedCount = data.hasOwnProperty('bookmarkedCount') ? data.bookmarkedCount : 0;
+    data.favored = data.hasOwnProperty('favored') ? data.favored : false;
+    data.favoredCount = data.hasOwnProperty('favoredCount') ? data.favoredCount : 0;
+    data.broadcasted = data.hasOwnProperty('broadcasted') ? data.broadcasted : false;
+    data.broadcastedCount = data.hasOwnProperty('broadcastedCount') ? data.broadcastedCount : 0;
   }
 
 
@@ -291,40 +291,40 @@ export class Bookmark {
   public userImage?;
 
   static restoreData(data: any): void {
-    data.id = (data.id) ? data.id : null;
-    data.name = (data.name) ? data.name : null;
-    data.url = (data.url) ? data.url : null;
-    data.icon = (data.icon) ? data.icon : null;
-    data.badge = (data.badge) ? data.badge : null;
-    data.link = (data.link) ? data.link : null;
-    data.shared = (data.shared) ? data.shared : false;
+    data.id = data.hasOwnProperty('id') ? data.id : null;
+    data.name = data.hasOwnProperty('name') ? data.name : null;
+    data.url = data.hasOwnProperty('url') ? data.url : null;
+    data.icon = data.hasOwnProperty('icon') ? data.icon : null;
+    data.badge = data.hasOwnProperty('badge') ? data.badge : null;
+    data.link = data.hasOwnProperty('link') ? data.link : null;
+    data.shared = data.hasOwnProperty('shared') ? data.shared : false;
 
-    data.dataModel_id = (data.dataModel_id) ? data.dataModel_id : null;
+    data.dataModel_id = data.hasOwnProperty('dataModel_id') ? data.dataModel_id : null;
 
-    data.publishedAt = (data.publishedAt) ? data.publishedAt : null;
+    data.publishedAt = data.hasOwnProperty('publishedAt') ? data.publishedAt : null;
 
-    data.sections = (data.sections) ? data.sections : [];
+    data.sections = data.hasOwnProperty('sections') ? data.sections : [];
 
-    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
-    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
-    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
-    data.views = (data.views) ? data.views : 0;
-    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+    data.lastUpdated = data.hasOwnProperty('lastUpdated') ? data.lastUpdated : null;
+    data.timeStamp = data.hasOwnProperty('timeStamp') ? data.timeStamp : null;
+    data.lastUpdatedBy = data.hasOwnProperty('lastUpdatedBy') ? data.lastUpdatedBy : null;
+    data.views = data.hasOwnProperty('views') ? data.views : 0;
+    data.lastViewed = data.hasOwnProperty('lastViewed') ? data.lastViewed : null;
 
-    data.draft = (data.draft) ? data.draft : true;
-    data.deleted = (data.deleted) ? data.deleted : false;
-    data.keywords = (data.keywords) ? data.keywords : null;
+    data.draft = data.hasOwnProperty('draft') ? data.draft : true;
+    data.deleted = data.hasOwnProperty('deleted') ? data.deleted : false;
+    data.keywords = data.hasOwnProperty('keywords') ? data.keywords : null;
 
-    data.user_id = (data.user_id) ? data.user_id : null;
-    data.userName = (data.userName) ? data.userName : null;
-    data.userImage = (data.userImage) ? data.userImage : null;
+    data.user_id = data.hasOwnProperty('user_id') ? data.user_id : null;
+    data.userName = data.hasOwnProperty('userName') ? data.userName : null;
+    data.userImage = data.hasOwnProperty('userImage') ? data.userImage : null;
 
-    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
-    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
-    data.favored = (data.favored) ? data.favored : false;
-    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
-    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
-    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+    data.bookmarked = data.hasOwnProperty('bookmarked') ? data.bookmarked : false;
+    data.bookmarkedCount = data.hasOwnProperty('bookmarkedCount') ? data.bookmarkedCount : 0;
+    data.favored = data.hasOwnProperty('favored') ? data.favored : false;
+    data.favoredCount = data.hasOwnProperty('favoredCount') ? data.favoredCount : 0;
+    data.broadcasted = data.hasOwnProperty('broadcasted') ? data.broadcasted : false;
+    data.broadcastedCount = data.hasOwnProperty('broadcastedCount') ? data.broadcastedCount : 0;
   }
 
 }

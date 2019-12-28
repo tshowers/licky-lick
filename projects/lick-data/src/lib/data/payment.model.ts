@@ -56,66 +56,66 @@ export class Payment {
   public broadcastedCount?;
 
   static restoreData(data: any): void {
-    data.id = (data.id) ? data.id : null;
-    data.name = (data.name) ? data.name : null;
-    data.url = (data.url) ? data.url : null;
-    data.icon = (data.icon) ? data.icon : null;
-    data.badge = (data.badge) ? data.badge : null;
-    data.link = (data.link) ? data.link : null;
-    data.shared = (data.shared) ? data.shared : false;
+    data.id = data.hasOwnProperty('id') ? data.id : null;
+    data.name = data.hasOwnProperty('name') ? data.name : null;
+    data.url = data.hasOwnProperty('url') ? data.url : null;
+    data.icon = data.hasOwnProperty('icon') ? data.icon : null;
+    data.badge = data.hasOwnProperty('badge') ? data.badge : null;
+    data.link = data.hasOwnProperty('link') ? data.link : null;
+    data.shared = data.hasOwnProperty('shared') ? data.shared : false;
 
-    data.contact_id = (data.contact_id) ? data.contact_id : null;
-    data.company_id = (data.company_id) ? data.company_id : null;
-    data.catalog_id = (data.catalog_id) ? data.catalog_id : null;
-    data.store_id = (data.store_id) ? data.store_id : null;
-    data.status = (data.status) ? data.status : null;
-    data.authorizationAmount = (data.authorizationAmount) ? data.authorizationAmount : null;
-    data.requestAmout = (data.requestAmout) ? data.requestAmout : null;
-    data.confirmationNumber = (data.confirmationNumber) ? data.confirmationNumber : null;
-    data.processingTime = (data.processingTime) ? data.processingTime : null;
-    data.date = (data.date) ? data.date : null;
-    data.paymentMethodCode = (data.paymentMethodCode) ? data.paymentMethodCode : null;
-    data.paymentLine = (data.paymentLine) ? data.paymentLine : new PaymentLine();
-    data.paymentAttachment = (data.paymentAttachment) ? data.paymentAttachment : new PaymentAttachment();
-    data.fromBankAccount = (data.fromBankAccount) ? data.fromBankAccount : new FromBankAccount();
-    data.check = (data.check) ? data.check : new Check();
-    data.paypal = (data.paypal) ? data.paypal : new Paypal();
-    data.approvalCode = (data.approvalCode) ? data.approvalCode : null;
-    data.creditCardPayment = (data.creditCardPayment) ? data.creditCardPayment : new CardPayment();
-    data.merchantId = (data.merchantId) ? data.merchantId : null;
-    data.paymentChannelCode = (data.paymentChannelCode) ? data.paymentChannelCode : null;
-    data.paymentSource = (data.paymentSource) ? data.paymentSource : null;
-    data.paymentSchedulingType = (data.paymentSchedulingType) ? data.paymentSchedulingType : null;
-    data.transactionType = (data.transactionType) ? data.transactionType : null;
-    data.fopType = (data.fopType) ? data.fopType : null;
-    data.amount = (data.amount) ? data.amount : 0;
-    data.reversalIndicator = (data.reversalIndicator) ? data.reversalIndicator : false;
-    data.authorizationChannel = (data.authorizationChannel) ? data.authorizationChannel : null;
-    data.pointOfSaleReceiptNumber = (data.pointOfSaleReceiptNumber) ? data.pointOfSaleReceiptNumber : null;
-    data.manualPaymentIndicator = (data.manualPaymentIndicator) ? data.manualPaymentIndicator : false;
+    data.contact_id = data.hasOwnProperty('contact_id') ? data.contact_id : null;
+    data.company_id = data.hasOwnProperty('company_id') ? data.company_id : null;
+    data.catalog_id = data.hasOwnProperty('catalog_id') ? data.catalog_id : null;
+    data.store_id = data.hasOwnProperty('store_id') ? data.store_id : null;
+    data.status = data.hasOwnProperty('status') ? data.status : null;
+    data.authorizationAmount = data.hasOwnProperty('authorizationAmount') ? data.authorizationAmount : null;
+    data.requestAmout = data.hasOwnProperty('requestAmout') ? data.requestAmout : null;
+    data.confirmationNumber = data.hasOwnProperty('confirmationNumber') ? data.confirmationNumber : null;
+    data.processingTime = data.hasOwnProperty('processingTime') ? data.processingTime : null;
+    data.date = data.hasOwnProperty('date') ? data.date : null;
+    data.paymentMethodCode = data.hasOwnProperty('paymentMethodCode') ? data.paymentMethodCode : null;
+    data.paymentLine = data.hasOwnProperty('paymentLine') ? data.paymentLine : new PaymentLine();
+    data.paymentAttachment = data.hasOwnProperty('paymentAttachment') ? data.paymentAttachment : new PaymentAttachment();
+    data.fromBankAccount = data.hasOwnProperty('fromBankAccount') ? data.fromBankAccount : new FromBankAccount();
+    data.check = data.hasOwnProperty('check') ? data.check : new Check();
+    data.paypal = data.hasOwnProperty('paypal') ? data.paypal : new Paypal();
+    data.approvalCode = data.hasOwnProperty('approvalCode') ? data.approvalCode : null;
+    data.creditCardPayment = data.hasOwnProperty('creditCardPayment') ? data.creditCardPayment : new CardPayment();
+    data.merchantId = data.hasOwnProperty('merchantId') ? data.merchantId : null;
+    data.paymentChannelCode = data.hasOwnProperty('paymentChannelCode') ? data.paymentChannelCode : null;
+    data.paymentSource = data.hasOwnProperty('paymentSource') ? data.paymentSource : null;
+    data.paymentSchedulingType = data.hasOwnProperty('paymentSchedulingType') ? data.paymentSchedulingType : null;
+    data.transactionType = data.hasOwnProperty('transactionType') ? data.transactionType : null;
+    data.fopType = data.hasOwnProperty('fopType') ? data.fopType : null;
+    data.amount = data.hasOwnProperty('amount') ? data.amount : 0;
+    data.reversalIndicator = data.hasOwnProperty('reversalIndicator') ? data.reversalIndicator : false;
+    data.authorizationChannel = data.hasOwnProperty('authorizationChannel') ? data.authorizationChannel : null;
+    data.pointOfSaleReceiptNumber = data.hasOwnProperty('pointOfSaleReceiptNumber') ? data.pointOfSaleReceiptNumber : null;
+    data.manualPaymentIndicator = data.hasOwnProperty('manualPaymentIndicator') ? data.manualPaymentIndicator : false;
 
-    data.sections = (data.sections) ? data.sections : [];
+    data.sections = data.hasOwnProperty('sections') ? data.sections : [];
 
-    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
-    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
-    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
-    data.views = (data.views) ? data.views : 0;
-    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+    data.lastUpdated = data.hasOwnProperty('lastUpdated') ? data.lastUpdated : null;
+    data.timeStamp = data.hasOwnProperty('timeStamp') ? data.timeStamp : null;
+    data.lastUpdatedBy = data.hasOwnProperty('lastUpdatedBy') ? data.lastUpdatedBy : null;
+    data.views = data.hasOwnProperty('views') ? data.views : 0;
+    data.lastViewed = data.hasOwnProperty('lastViewed') ? data.lastViewed : null;
 
-    data.draft = (data.draft) ? data.draft : true;
-    data.deleted = (data.deleted) ? data.deleted : false;
-    data.keywords = (data.keywords) ? data.keywords : null;
+    data.draft = data.hasOwnProperty('draft') ? data.draft : true;
+    data.deleted = data.hasOwnProperty('deleted') ? data.deleted : false;
+    data.keywords = data.hasOwnProperty('keywords') ? data.keywords : null;
 
-    data.user_id = (data.user_id) ? data.user_id : null;
-    data.userName = (data.userName) ? data.userName : null;
-    data.userImage = (data.userImage) ? data.userImage : null;
+    data.user_id = data.hasOwnProperty('user_id') ? data.user_id : null;
+    data.userName = data.hasOwnProperty('userName') ? data.userName : null;
+    data.userImage = data.hasOwnProperty('userImage') ? data.userImage : null;
 
-    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
-    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
-    data.favored = (data.favored) ? data.favored : false;
-    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
-    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
-    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+    data.bookmarked = data.hasOwnProperty('bookmarked') ? data.bookmarked : false;
+    data.bookmarkedCount = data.hasOwnProperty('bookmarkedCount') ? data.bookmarkedCount : 0;
+    data.favored = data.hasOwnProperty('favored') ? data.favored : false;
+    data.favoredCount = data.hasOwnProperty('favoredCount') ? data.favoredCount : 0;
+    data.broadcasted = data.hasOwnProperty('broadcasted') ? data.broadcasted : false;
+    data.broadcastedCount = data.hasOwnProperty('broadcastedCount') ? data.broadcastedCount : 0;
   }
 
 }

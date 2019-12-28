@@ -49,7 +49,6 @@ export class ProductBundleResolverService {
     ProductBundle.restoreData(data);
     data.store_id = store_id
     data.catalog_id = catalog_id;
-    data.draft = true;
     return data;
   }
 

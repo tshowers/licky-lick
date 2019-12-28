@@ -65,68 +65,68 @@ export class Event {
   public broadcastedCount?;
 
   static restoreData(data: any): void {
-    data.id = (data.id) ? data.id : null;
-    data.name = (data.name) ? data.name : null;
-    data.url = (data.url) ? data.url : null;
-    data.icon = (data.icon) ? data.icon : null;
-    data.badge = (data.badge) ? data.badge : null;
-    data.link = (data.link) ? data.link : null;
-    data.shared = (data.shared) ? data.shared : false;
+    data.id = data.hasOwnProperty('id') ? data.id : null;
+    data.name = data.hasOwnProperty('name') ? data.name : null;
+    data.url = data.hasOwnProperty('url') ? data.url : null;
+    data.icon = data.hasOwnProperty('icon') ? data.icon : null;
+    data.badge = data.hasOwnProperty('badge') ? data.badge : null;
+    data.link = data.hasOwnProperty('link') ? data.link : null;
+    data.shared = data.hasOwnProperty('shared') ? data.shared : false;
 
-    data.schedule_id = (data.schedule_id) ? data.schedule_id : null;
-    data.project_id = (data.project_id) ? data.project_id : null;
-    data.title = (data.title) ? data.title : null;
+    data.schedule_id = data.hasOwnProperty('schedule_id') ? data.schedule_id : null;
+    data.project_id = data.hasOwnProperty('project_id') ? data.project_id : null;
+    data.title = data.hasOwnProperty('title') ? data.title : null;
 
-    data.eventType = (data.eventType) ? data.eventType : null;
-    data.startDate = (data.startDate) ? data.startDate : null;
-    data.endDate = (data.endDate) ? data.endDate : null;
-    data.color = (data.color) ? data.color : null;
-    data.actions = (data.actions) ? data.actions : null;
-    data.allDay = (data.allDay) ? data.allDay : false;
-    data.cssClass = (data.cssClass) ? data.cssClass : null;
-    data.resizable = (data.resizable) ? data.resizable : null;
-    data.draggable = (data.draggable) ? data.draggable : false;
-    data.meta = (data.meta) ? data.meta : null;
-    data.startTime = (data.startTime) ? data.startTime : null;
-    data.endTime = (data.endTime) ? data.endTime : null;
-    data.contacts = (data.contacts) ? data.contacts : [];
-    data.attendees = (data.attendees) ? data.attendees : [];
+    data.eventType = data.hasOwnProperty('eventType') ? data.eventType : null;
+    data.startDate = data.hasOwnProperty('startDate') ? data.startDate : null;
+    data.endDate = data.hasOwnProperty('endDate') ? data.endDate : null;
+    data.color = data.hasOwnProperty('color') ? data.color : null;
+    data.actions = data.hasOwnProperty('actions') ? data.actions : null;
+    data.allDay = data.hasOwnProperty('allDay') ? data.allDay : false;
+    data.cssClass = data.hasOwnProperty('cssClass') ? data.cssClass : null;
+    data.resizable = data.hasOwnProperty('resizable') ? data.resizable : null;
+    data.draggable = data.hasOwnProperty('draggable') ? data.draggable : false;
+    data.meta = data.hasOwnProperty('meta') ? data.meta : null;
+    data.startTime = data.hasOwnProperty('startTime') ? data.startTime : null;
+    data.endTime = data.hasOwnProperty('endTime') ? data.endTime : null;
+    data.contacts = data.hasOwnProperty('contacts') ? data.contacts : [];
+    data.attendees = data.hasOwnProperty('attendees') ? data.attendees : [];
 
-    data.status = (data.status) ? data.status : null;
-    data.location = (data.location) ? data.location : null;
-    data.latitude = (data.latitude) ? data.latitude : null;
-    data.longitude = (data.longitude) ? data.longitude : null;
-    data.requiredStaffing = (data.requiredStaffing) ? data.requiredStaffing : 0;
-    data.confirmed = (data.confirmed) ? data.confirmed : false;
-    data.availableSpaces = (data.availableSpaces) ? data.availableSpaces : 0;
-    data.costPerPerson = (data.costPerPerson) ? data.costPerPerson : 0;
-    data.description = (data.description) ? data.description : null;
-    data.recurrence = (data.recurrence) ? data.recurrence : null;
+    data.status = data.hasOwnProperty('status') ? data.status : null;
+    data.location = data.hasOwnProperty('location') ? data.location : null;
+    data.latitude = data.hasOwnProperty('latitude') ? data.latitude : null;
+    data.longitude = data.hasOwnProperty('longitude') ? data.longitude : null;
+    data.requiredStaffing = data.hasOwnProperty('requiredStaffing') ? data.requiredStaffing : 0;
+    data.confirmed = data.hasOwnProperty('confirmed') ? data.confirmed : false;
+    data.availableSpaces = data.hasOwnProperty('availableSpaces') ? data.availableSpaces : 0;
+    data.costPerPerson = data.hasOwnProperty('costPerPerson') ? data.costPerPerson : 0;
+    data.description = data.hasOwnProperty('description') ? data.description : null;
+    data.recurrence = data.hasOwnProperty('recurrence') ? data.recurrence : null;
 
-    data.publishedAt = (data.publishedAt) ? data.publishedAt : null;
+    data.publishedAt = data.hasOwnProperty('publishedAt') ? data.publishedAt : null;
 
-    data.sections = (data.sections) ? data.sections : [];
+    data.sections = data.hasOwnProperty('sections') ? data.sections : [];
 
-    data.lastUpdated = (data.lastUpdated) ? data.lastUpdated : null;
-    data.timeStamp = (data.timeStamp) ? data.timeStamp : null;
-    data.lastUpdatedBy = (data.lastUpdatedBy) ? data.lastUpdatedBy : null;
-    data.views = (data.views) ? data.views : 0;
-    data.lastViewed = (data.lastViewed) ? data.lastViewed : null;
+    data.lastUpdated = data.hasOwnProperty('lastUpdated') ? data.lastUpdated : null;
+    data.timeStamp = data.hasOwnProperty('timeStamp') ? data.timeStamp : null;
+    data.lastUpdatedBy = data.hasOwnProperty('lastUpdatedBy') ? data.lastUpdatedBy : null;
+    data.views = data.hasOwnProperty('views') ? data.views : 0;
+    data.lastViewed = data.hasOwnProperty('lastViewed') ? data.lastViewed : null;
 
-    data.draft = (data.draft) ? data.draft : true;
-    data.deleted = (data.deleted) ? data.deleted : false;
-    data.keywords = (data.keywords) ? data.keywords : null;
+    data.draft = data.hasOwnProperty('draft') ? data.draft : true;
+    data.deleted = data.hasOwnProperty('deleted') ? data.deleted : false;
+    data.keywords = data.hasOwnProperty('keywords') ? data.keywords : null;
 
-    data.user_id = (data.user_id) ? data.user_id : null;
-    data.userName = (data.userName) ? data.userName : null;
-    data.userImage = (data.userImage) ? data.userImage : null;
+    data.user_id = data.hasOwnProperty('user_id') ? data.user_id : null;
+    data.userName = data.hasOwnProperty('userName') ? data.userName : null;
+    data.userImage = data.hasOwnProperty('userImage') ? data.userImage : null;
 
-    data.bookmarked = (data.bookmarked) ? data.bookmarked : false;
-    data.bookmarkedCount = (data.bookmarkedCount) ? data.bookmarkedCount : 0;
-    data.favored = (data.favored) ? data.favored : false;
-    data.favoredCount = (data.favoredCount) ? data.favoredCount : 0;
-    data.broadcasted = (data.broadcasted) ? data.broadcasted : false;
-    data.broadcastedCount = (data.broadcastedCount) ? data.broadcastedCount : 0;
+    data.bookmarked = data.hasOwnProperty('bookmarked') ? data.bookmarked : false;
+    data.bookmarkedCount = data.hasOwnProperty('bookmarkedCount') ? data.bookmarkedCount : 0;
+    data.favored = data.hasOwnProperty('favored') ? data.favored : false;
+    data.favoredCount = data.hasOwnProperty('favoredCount') ? data.favoredCount : 0;
+    data.broadcasted = data.hasOwnProperty('broadcasted') ? data.broadcasted : false;
+    data.broadcastedCount = data.hasOwnProperty('broadcastedCount') ? data.broadcastedCount : 0;
   }
 }
 

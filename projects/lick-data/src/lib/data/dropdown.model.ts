@@ -5,9 +5,9 @@ export class Dropdown {
   constructor(public id: string, public name: string, public link?: string) { }
 
   static restoreData(data: any) {
-    data.id = (data.id) ? data.id : null;
-    data.name = (data.name) ? data.name : null;
-    data.link = (data.link) ? data.link : null;
+    data.id = data.hasOwnProperty('id') ? data.id : null;
+    data.name = data.hasOwnProperty('name') ? data.name : null;
+    data.link = data.hasOwnProperty('link') ? data.link : null;
   }
 }
 

@@ -49,12 +49,12 @@
                       <input [(ngModel)]="store.stripeKey" #name="ngModel" id="stripeKey" name="stripeKey" placeholder="Stripe Key" type="password" class="form-control form-control-lg ta-input-element" required>
                     </div>
                     <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
-                      <input [(ngModel)]="store.draft" id="dataDraft" name="dataDraft" type="checkbox">
-                      <label for="dataDraft" title="Draft indicates the record is not finished and should not be made public">Private</label>
+                      <label for="dataDraft" title="Draft indicates the record is not finished and should not be made public">Draft</label>
+                      <br><ui-switch [(ngModel)]="store.draft" id="dataDraft" name="dataDraft"></ui-switch>
                     </div>
                     <div class="checkbox abc-checkbox abc-checkbox-success abc-checkbox-circle">
-                      <input [(ngModel)]="store.deleted" id="dataDeleted" name="dataDeleted" type="checkbox">
                       <label for="dataDeleted" title="Checking deleted marks the record as deleted, but does not remove the record from the database">Deleted</label>
+                      <br><ui-switch [(ngModel)]="store.deleted" id="dataDeleted" name="dataDeleted"></ui-switch>
                     </div>
                     <div class="form-group"><label for="dataKeywords">Keywords</label> <input [(ngModel)]="store.keywords" id="dataKeywords" name="dataKeywords" type="text" class="form-control form-control-lg ta-input-element" placeholder="Enter keywords seperated by commas"></div>
                     <div class="form-group" *ngIf="store?.id">
@@ -67,7 +67,7 @@
                       </div>
                     </div>
 
-
+                    <!-- User Defined section -->
                     <h3>Sections</h3>
                     <div class="form-group">
                       <label for="sectionName">Section Name</label>
@@ -97,7 +97,7 @@
                         </li>
                       </ul>
                     </div>
-
+                    <!-- End User Defined section -->
 
                     <div class="row">
                       <div class="col text-center">
