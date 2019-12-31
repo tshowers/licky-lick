@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card-columns">
+        <div class="card wow fadeInUp"
+             *ngFor="let item of data">
+          <img *ngIf="item?.url"
+               class="card-img-top"
+               src="{{item?.url}}"
+               alt="{{item?.name}}">
+          <div class="card-body">
+            <h5 class="card-title"
+                *ngIf="item?.name">{{item?.name}}</h5>
+            <div *ngIf="item?.description"
+                 class="card-text"
+                 innerHTML="{{item?.description}}"></div>
+            <p *ngIf="item?.author"
+               class="card-text">By: {{item?.author}}</p>
+            <p *ngIf="item?.price"
+               class="card-text">Price: {{item?.price | currency}}</p>
+            <p *ngIf="item?.onSale"
+               class="card-text"><i class="fa fa-tag"
+                 aria-hidden="true"></i></p>
+            <p *ngIf="item?.salePrice"
+               class="card-text">Sale Price: {{item?.salePrice | currency}}</p>
+            <p *ngIf="item?.expirationDate"
+               class="card-text">Expires: {{item?.expirationDate | date}}</p>
+            <licky-lick-app-widget-data-footer [data]="item"></licky-lick-app-widget-data-footer>
+            <button *ngIf="canEdit"
+                    class="btn btn-primary btn-round"
+                    (click)="onEdit(data)">Edit <i class="fa fa-pencil-square-o"
+                 aria-hidden="true"></i>
+            </button>
+            <button *ngIf="canDelete"
+                    class="btn btn-danger btn-round"
+                    (click)="onDelete(data)">Delete <i class="fa fa-times"
+                 aria-hidden="true"></i>
+            </button>
+            <button *ngIf="canBuy"
+                    class="btn btn-primary btn-round"
+                    (click)="onBuy(data)">View<i class="fa fa-eye"
+                 aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ngb-pagination [(page)]="currentPage"
+                      (pageChange)="onPageChange($event)"
+                      [pageSize]="pageSize"
+                      [collectionSize]="totalRecords"></ngb-pagination>
+
+    </div>
+  </div>
+
+</div>

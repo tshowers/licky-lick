@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product, Review, Carousel } from 'lick-data';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -7,16 +8,11 @@ import { Product, Review, Carousel } from 'lick-data';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-  lightbox_headerText = "Quilts"
-  lightbox_descriptionText = "Below are the quilt images we currently offer. Select your favorite and have it placed on a t-shirt or coffee cup."
-  prices2_headingText = "Most Popular";
-  prices2_descriptionText = "NedRa Bonds is an activist who happens to create beautiful quilts from mixed media. You can now purchase a t-shirt with images of NedRa's work.";
-  prices2_actionText = "Buy Now";
-  video1_headingText = "NedRa Bonds Interview";
-  video1_descriptionText = "NedRa provides background and explanation of her quilt designs.";
+  video1_headingText = "Featured ";
+  video1_descriptionText = " NedRa provides background and explanation of her quilt designs.";
   video1_videoURL = "https://www.youtube.com/embed/eaL5L_dNTjA";
   video1_imageURL = "assets/images/nedra-video-splash.jpg";
-  features1_headingText = "About NedRa Bonds";
+  features1_headingText = "About The Artist Market";
   features1_descriptionText = "NedRa is known for her Quindaro Quilt, detailing the history of the  Quindaro neighborhood and its role as part of the National Underground Railroad System of Historic Trails. In her work as a community activist and educator, Bonds advocates for legislation teaches workshops and attends the United Nations conferences."
   features1_featureHeading1 = "Community"
   features1_featureDescription1 = "Born and raised in the Quindaro neighborhood of Kansas City Kansas, and is a practicing artist and retired teacher.";
@@ -29,7 +25,7 @@ export class HomePageComponent implements OnInit {
   features1_featureIcon3 = "icon-picture";
   faq1_headingText = "Frequently Asked Questions";
   faq1_descriptionText = "Below are the most frequently asked questions regarding the order process. If you have an additional problem, you can reach us via the contact page.";
-  faq1_faqHeading1 = "What type of material is the t-shirt?";
+  faq1_faqHeading1 = "What type of products are available?";
   faq1_faqDescription1 = "All t-shirts are 100% cotton.";
   faq1_faqHeading2 = "I have a problem with my order, who do I contact?";
   faq1_faqDescription2 = "You may contact us via the contact page, login, select your order, then click resolution. Or you can call and speak to a live person at the number listed below.";
@@ -47,17 +43,17 @@ export class HomePageComponent implements OnInit {
   carousel: Carousel[] = [
     {
       "id" :  Math.floor(Math.random() * 1000).toString(),
-      "name" : "Merchandise",
+      "name" : "Welcome To The Artist Market",
       "step" : 1,
       "textFont" : "Verdana",
-      "headingTextColor" : "#000000",
-      "textColor" : "#000000",
+      "headingTextColor" : "#ffffff",
+      "textColor" : "#ffffff",
       "textBackgroundColor" : null,
-      "textPosition" : "Left Bottom",
-      "description" : "Your choice of merchandise. Select image and have us print on select merchandise. ",
-      "url" : "assets/images/t-shirt1.jpeg",
-      "link" : "/",
-      "linkText" : "Buy Now",
+      "textPosition" : "Right Bottom",
+      "description" : "Buy merchandise from renowned artists such as NedRa Bonds",
+      "url" : "assets/images/home1.jpg",
+      "link" : "/application/stores",
+      "linkText" : "Shop Now",
       "lastUpdatedBy" : "System",
       "lastUpdated" : new Date(),
       "draft" : false,
@@ -74,17 +70,17 @@ export class HomePageComponent implements OnInit {
     },
     {
       "id" :  Math.floor(Math.random() * 1000).toString(),
-      "name" : "Sizes",
+      "name" : "Friendly Customer Service",
       "step" : 2,
       "textFont" : "Verdana",
-      "headingTextColor" : "#000000",
-      "textColor" : "#000000",
+      "headingTextColor" : "#ffffff",
+      "textColor" : "#ffffff",
       "textBackgroundColor" : null,
-      "textPosition" : "Left Bottom",
-      "description" : "Your choice of sizes.",
-      "url" : "assets/images/t-shirt5.jpeg",
-      "link" : "/",
-      "linkText" : "Buy Now",
+      "textPosition" : "Center",
+      "description" : "We will make every effort to ensure your shopping experience is a pleasurable hastle free one.",
+      "url" : "assets/images/home2.jpg",
+      "link" : "/application/stores",
+      "linkText" : "Shop Now",
       "lastUpdatedBy" : "System",
       "lastUpdated" : new Date(),
       "draft" : false,
@@ -101,17 +97,17 @@ export class HomePageComponent implements OnInit {
     },
     {
       "id" :  Math.floor(Math.random() * 1000).toString(),
-      "name" : "Quilts",
+      "name" : "Shopping Made Simple",
       "step" : 3,
       "textFont" : "Verdana",
-      "headingTextColor" : "#000000",
-      "textColor" : "#000000",
+      "headingTextColor" : "#ffffff",
+      "textColor" : "#ffffff",
       "textBackgroundColor" : null,
-      "textPosition" : "Left Bottom",
-      "description" : "Select from a variety of quilt images from Kansas City quilt artist NedRa Bonds on your choice of merchandise.",
-      "url" : "assets/images/t-shirt3.jpeg",
+      "textPosition" : "Center",
+      "description" : "We have take a different approach to online shopping. Tell us what you think.",
+      "url" : "assets/images/home3.jpg",
       "link" : "/",
-      "linkText" : "Buy Now",
+      "linkText" : "Shop Now",
       "lastUpdatedBy" : "System",
       "lastUpdated" : new Date(),
       "draft" : false,
@@ -333,13 +329,17 @@ export class HomePageComponent implements OnInit {
       "company": { "name": "Taliferro IT Consulting" }
     },
   ];
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
   }
 
   onPrices(item) : void {
 
+  }
+
+  onShopNow(link) : void {
+    this.router.navigate([link]);
   }
 
 }

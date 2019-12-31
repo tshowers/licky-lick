@@ -1,0 +1,48 @@
+<div class="container d-flex justify-content-center">
+<div class="card mx-auto d-block ta-max-view">
+  <img *ngIf="!data.url" class="card-img-top img-reponsive" src="{{NO_PHOTO}}" alt="No Photo Available">
+  <img *ngIf="data.url" class="card-img-top img-reponsive" src="{{data?.url}}" alt="{{data?.name}}">
+  <div class="card-header">
+    <h4 class="my-0 font-weight-normal">
+      {{ data?.name }}
+    </h4>
+  </div>
+  <div class="card-body">
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col"> <strong class="ta-label">Description :</strong> </div>
+          <div class="col">
+            <p class="card-text">{{data?.description}}</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <ul class="list-group list-group-flush" *ngIf="details">
+      <li class="list-group-item" *ngFor="let f of fields">
+        <div class="row">
+          <div class="col"> <strong class="ta-label">{{f.key}} :</strong> </div>
+          <div class="col">
+            <p class="card-text">{{f?.value}}</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+
+    <licky-lick-app-widget-data-footer [data]="data"></licky-lick-app-widget-data-footer>
+
+    <button *ngIf="canEdit" class="btn btn-primary btn-lg btn-round" (click)="onEdit(data)">Edit
+      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    </button>
+    <button *ngIf="canDelete" class="btn btn-danger btn-round btn-lg" (click)="onDelete(data)">Delete
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+    <button *ngIf="canBuy" class="btn btn-primary btn-round btn-lg" (click)="onBuy(data)">Buy
+      <i class="fa fa-cart-plus" aria-hidden="true"></i>
+    </button>
+
+  </div>
+</div>
+</div>

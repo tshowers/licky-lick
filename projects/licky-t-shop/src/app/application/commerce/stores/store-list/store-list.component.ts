@@ -21,6 +21,7 @@ export class StoreListComponent extends LickAppPageComponent implements OnInit, 
 
   pageSize = 5;
 
+  isList = true;
 
   private _searchArgumentSubscription: Subscription;
 

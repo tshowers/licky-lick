@@ -16,12 +16,14 @@ import { LickAppWidgetChatPopupModule } from 'lick-app-widget-chat-popup';
 import { LickAppWidgetFooterModule } from 'lick-app-widget-footer';
 import { LickAppWidgetBreadcrumbModule } from 'lick-app-widget-breadcrumb';
 import { LickAppWidgetDataFooterModule } from 'lick-app-widget-data-footer';
-import { LickAppWidgetProfileModule} from 'lick-app-widget-profile';
+import { LickAppWidgetProfileModule } from 'lick-app-widget-profile';
 import { LickAppWidgetLeftSideMenuModule } from 'lick-app-widget-left-side-menu';
 import { LickAppWidgetRightSideMenuModule } from 'lick-app-widget-right-side-menu';
 import { LickAppWidgetUnderConstructionModule } from 'lick-app-widget-under-construction';
 import { LickMarketingFaq2Module } from 'lick-marketing-faq2';
-
+import { LickAppWidgetItemView1Module } from 'lick-app-widget-item-view1';
+import { LickAppWidgetCardColumnModule } from 'lick-app-widget-card-column';
+import { LickAppWidgetCardDeckModule} from 'lick-app-widget-card-deck';
 import { environment } from '../../environments/environment';
 
 export const firebaseConfig = environment.firebaseConfig;
@@ -37,7 +39,7 @@ import { ContextNavComponent } from './nav/context-nav/context-nav.component';
     FormsModule,
     HttpClientModule,
     RouterModule,
-    AgmCoreModule.forRoot({ apiKey: environment.googleMapsKey, libraries:["places"]}),
+    AgmCoreModule.forRoot({ apiKey: environment.googleMapsKey, libraries: ["places"] }),
     NgbModule,
     UiSwitchModule,
     LickAppPageModule,
@@ -53,7 +55,10 @@ import { ContextNavComponent } from './nav/context-nav/context-nav.component';
     LickAppWidgetLeftSideMenuModule,
     LickAppWidgetRightSideMenuModule,
     LickAppWidgetUnderConstructionModule,
-    LickMarketingFaq2Module
+    LickMarketingFaq2Module,
+    LickAppWidgetItemView1Module,
+    LickAppWidgetCardDeckModule,
+    LickAppWidgetCardColumnModule
   ],
   exports: [
     AutoFocusDirective,
@@ -78,6 +83,9 @@ import { ContextNavComponent } from './nav/context-nav/context-nav.component';
     LickAppWidgetRightSideMenuModule,
     LickAppWidgetUnderConstructionModule,
     LickMarketingFaq2Module,
+    LickAppWidgetItemView1Module,
+    LickAppWidgetCardColumnModule,
+    LickAppWidgetCardDeckModule,
     ContextNavComponent
   ]
 })

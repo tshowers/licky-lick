@@ -1,10 +1,11 @@
-<owl-carousel #owlElement *ngIf="isRadialBackground"
+<owl-carousel #owlElement
+              *ngIf="isRadialBackground"
               [options]="carouselOptions"
               [carouselClasses]="['owl-theme', 'sliding']">
   <div class="item ta-carousel-owl"
        *ngFor="let c of carousel;let i = index"
        [ngStyle]="{'background': 'radial-gradient(rgba(' + rgba1_red + ', ' + rgba1_green + ', ' + rgba1_blue + ', 0.5), rgba(' + rgba2_red +', ' + rgba2_green + ', ' + rgba2_blue +', 1.0)), url(' + c?.url + ') no-repeat center center scroll', 'background-size': 'cover'}">
-   <div [ngClass]="{'ta-no-position' : (!c.textPosition),
+    <div [ngClass]="{'ta-no-position' : (!c.textPosition),
                     'ta-left-top' : (c.textPosition == 'Left Top'),
                     'ta-left-middle' : (c.textPosition == 'Left'),
                     'ta-left-bottom' : (c.textPosition == 'Left Bottom'),
@@ -14,25 +15,28 @@
                     'ta-right-top' : (c.textPosition == 'Right Top'),
                     'ta-right-middle' : (c.textPosition == 'Right'),
                     'ta-right-bottom' : (c.textPosition == 'Right Bottom') }">
-      <h4 [ngStyle]="{'color': c.headingTextColor ? c.headingTextColor : defaultColor, 'font-family': c.textFont ? c.textFont : defaultFont}">{{c?.name}} </h4>
+      <h4 [ngStyle]="{'color': c.headingTextColor ? c.headingTextColor : defaultColor, 'font-family': c.textFont ? c.textFont : defaultFont}">{{c?.name}}
+      </h4>
       <div *ngIf="c.description"
            [ngStyle]="{'color': c.textColor ? c.textColor : defaultColor, 'font-family': c.textFont ? c.textFont : defaultFont, 'background-color' : c.textBackgroundColor, 'max-width': defaultMaxWidth, 'font-weight': defaultFontWeight, 'padding': defaultPadding, 'border-radius': defaultBorderRadius}"
            innerHTML={{c?.description}}>
       </div>
       <span *ngIf="c?.link">
-        <a class="btn btn-primary" (click)="onPageEvent(c)" role="button">{{c?.linkText}}</a>
+        <a class="btn btn-primary"
+           (click)="onPageEvent(c.link)"
+           role="button">{{c?.linkText}}</a>
       </span>
     </div>
   </div>
 </owl-carousel>
-
-<owl-carousel #owlElement *ngIf="!isRadialBackground"
+<owl-carousel #owlElement
+              *ngIf="!isRadialBackground"
               [options]="carouselOptions"
               [carouselClasses]="['owl-theme', 'sliding']">
   <div class="item ta-carousel-owl"
        *ngFor="let c of carousel;let i = index"
        [ngStyle]="{'background': 'url(' + c?.url + ') no-repeat center center scroll', 'background-size': 'cover'}">
-   <div [ngClass]="{'ta-no-position' : (!c.textPosition),
+    <div [ngClass]="{'ta-no-position' : (!c.textPosition),
                     'ta-left-top' : (c.textPosition == 'Left Top'),
                     'ta-left-middle' : (c.textPosition == 'Left'),
                     'ta-left-bottom' : (c.textPosition == 'Left Bottom'),
@@ -42,13 +46,16 @@
                     'ta-right-top' : (c.textPosition == 'Right Top'),
                     'ta-right-middle' : (c.textPosition == 'Right'),
                     'ta-right-bottom' : (c.textPosition == 'Right Bottom') }">
-      <h4 [ngStyle]="{'color': c.headingTextColor ? c.headingTextColor : defaultColor, 'font-family': c.textFont ? c.textFont : defaultFont}">{{c?.name}} </h4>
+      <h4 [ngStyle]="{'color': c.headingTextColor ? c.headingTextColor : defaultColor, 'font-family': c.textFont ? c.textFont : defaultFont}">{{c?.name}}
+      </h4>
       <div *ngIf="c.description"
            [ngStyle]="{'color': c.textColor ? c.textColor : defaultColor, 'font-family': c.textFont ? c.textFont : defaultFont, 'background-color' : c.textBackgroundColor, 'max-width': defaultMaxWidth, 'font-weight': defaultFontWeight, 'padding': defaultPadding, 'border-radius': defaultBorderRadius}"
            innerHTML={{c?.description}}>
       </div>
       <span *ngIf="c?.link">
-        <a class="btn btn-primary" (click)="onPageEvent(c.link)" role="button">{{c?.linkText}}</a>
+        <a class="btn btn-primary"
+           (click)="onPageEvent(c.link)"
+           role="button">{{c?.linkText}}</a>
       </span>
     </div>
   </div>

@@ -4,7 +4,8 @@
           class="site-header">
     <app-nav></app-nav>
     <licky-lick-marketing-carousel [carousel]="carousel"
-                                   (pageEvent)="onCarouselClick($event)"></licky-lick-marketing-carousel>
+                                   [isRadialBackground]="true"
+                                   (pageEvent)="onShopNow($event)"></licky-lick-marketing-carousel>
   </header>
 </div>
 <div id="content"
@@ -13,32 +14,24 @@
        class="content-area">
     <main id="main"
           class="site-main">
-      <licky-lick-marketing-lightbox1 [headerText]="lightbox_headerText"
-                                      [descriptionText]="lightbox_descriptionText"
-                                      [images]="images"></licky-lick-marketing-lightbox1>
-      <licky-lick-marketing-prices2 [headingText]="prices2_headingText"
-                                    [descriptionText]="prices2_descriptionText"
-                                    [products]="prices2_products"
-                                    [actionText]="prices2_actionText"
-                                    (pageEvent)="onPrices($event)"></licky-lick-marketing-prices2>
-                                    <licky-lick-marketing-features1 [headingText]="features1_headingText"
-                                                                    [descriptionText]="features1_descriptionText"
-                                                                    [featureHeading1]="features1_featureHeading1"
-                                                                    [featureDescription1]="features1_featureDescription1"
-                                                                    [featureIcon1]="features1_featureIcon1"
-                                                                    [featureHeading2]="features1_featureHeading2"
-                                                                    [featureDescription2]="features1_featureDescription2"
-                                                                    [featureIcon2]="features1_featureIcon2"
-                                                                    [featureHeading3]="features1_featureHeading3"
-                                                                    [featureDescription3]="features1_featureDescription3"
-                                                                    [featureIcon3]="features1_featureIcon3"></licky-lick-marketing-features1>
+      <licky-lick-marketing-features1 [headingText]="features1_headingText"
+                                      [descriptionText]="features1_descriptionText"
+                                      [featureHeading1]="features1_featureHeading1"
+                                      [featureDescription1]="features1_featureDescription1"
+                                      [featureIcon1]="features1_featureIcon1"
+                                      [featureHeading2]="features1_featureHeading2"
+                                      [featureDescription2]="features1_featureDescription2"
+                                      [featureIcon2]="features1_featureIcon2"
+                                      [featureHeading3]="features1_featureHeading3"
+                                      [featureDescription3]="features1_featureDescription3"
+                                      [featureIcon3]="features1_featureIcon3"></licky-lick-marketing-features1>
       <licky-lick-marketing-video1 [headingText]="video1_headingText"
                                    [descriptionText]="video1_descriptionText"
                                    [videoURL]="video1_videoURL"
                                    [imageURL]="video1_imageURL"></licky-lick-marketing-video1>
-                                   <licky-lick-marketing-reviews2 [headingText]="reviews2_headingText"
-                                                                  [descriptionText]="reviews2_descriptionText"
-                                                                  [reviews]="reviews"></licky-lick-marketing-reviews2>
+      <licky-lick-marketing-reviews2 [headingText]="reviews2_headingText"
+                                     [descriptionText]="reviews2_descriptionText"
+                                     [reviews]="reviews"></licky-lick-marketing-reviews2>
       <licky-lick-marketing-faq1 [headingText]="faq1_headingText"
                                  [descriptionText]="faq1_descriptionText"
                                  [faqHeading1]="faq1_faqHeading1"

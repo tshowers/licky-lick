@@ -5154,6 +5154,76 @@
           }
         }
       }
+    },
+    "lick-app-widget-item-view1": {
+      "root": "projects/lick-app-widget-item-view1",
+      "sourceRoot": "projects/lick-app-widget-item-view1/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-item-view1/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-item-view1/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-item-view1/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-item-view1/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-item-view1/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-item-view1/tsconfig.lib.json",
+              "projects/lick-app-widget-item-view1/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-card-column": {
+      "root": "projects/lick-app-widget-card-column",
+      "sourceRoot": "projects/lick-app-widget-card-column/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-card-column/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-card-column/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-card-column/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-card-column/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-card-column/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-card-column/tsconfig.lib.json",
+              "projects/lick-app-widget-card-column/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "lick-data"

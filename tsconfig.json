@@ -702,6 +702,18 @@
       ],
       "lick-app-widget-list-article-summary/*": [
         "dist/lick-app-widget-list-article-summary/*"
+      ],
+      "lick-app-widget-item-view1": [
+        "dist/lick-app-widget-item-view1"
+      ],
+      "lick-app-widget-item-view1/*": [
+        "dist/lick-app-widget-item-view1/*"
+      ],
+      "lick-app-widget-card-column": [
+        "dist/lick-app-widget-card-column"
+      ],
+      "lick-app-widget-card-column/*": [
+        "dist/lick-app-widget-card-column/*"
       ]
     }
   }
