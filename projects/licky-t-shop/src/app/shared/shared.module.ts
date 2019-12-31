@@ -21,9 +21,13 @@ import { LickAppWidgetLeftSideMenuModule } from 'lick-app-widget-left-side-menu'
 import { LickAppWidgetRightSideMenuModule } from 'lick-app-widget-right-side-menu';
 import { LickAppWidgetUnderConstructionModule } from 'lick-app-widget-under-construction';
 import { LickMarketingFaq2Module } from 'lick-marketing-faq2';
+import { LickMarketingAboutProduct5Module } from 'lick-marketing-about-product5';
+import { LickMarketingAboutProduct6Module } from 'lick-marketing-about-product6';
+import { LickMarketingAboutProduct7Module } from 'lick-marketing-about-product7';
 import { LickAppWidgetItemView1Module } from 'lick-app-widget-item-view1';
+import { LickMarketingPrices2Module } from 'lick-marketing-prices2';
 import { LickAppWidgetCardColumnModule } from 'lick-app-widget-card-column';
-import { LickAppWidgetCardDeckModule} from 'lick-app-widget-card-deck';
+import { LickAppWidgetCardDeckModule } from 'lick-app-widget-card-deck';
 import { environment } from '../../environments/environment';
 
 export const firebaseConfig = environment.firebaseConfig;
@@ -58,6 +62,10 @@ import { ContextNavComponent } from './nav/context-nav/context-nav.component';
     LickMarketingFaq2Module,
     LickAppWidgetItemView1Module,
     LickAppWidgetCardDeckModule,
+    LickMarketingAboutProduct5Module,
+    LickMarketingAboutProduct6Module,
+    LickMarketingAboutProduct7Module,
+    LickMarketingPrices2Module,
     LickAppWidgetCardColumnModule
   ],
   exports: [
@@ -86,6 +94,10 @@ import { ContextNavComponent } from './nav/context-nav/context-nav.component';
     LickAppWidgetItemView1Module,
     LickAppWidgetCardColumnModule,
     LickAppWidgetCardDeckModule,
+    LickMarketingAboutProduct5Module,
+    LickMarketingAboutProduct6Module,
+    LickMarketingAboutProduct7Module,
+    LickMarketingPrices2Module,
     ContextNavComponent
   ]
 })

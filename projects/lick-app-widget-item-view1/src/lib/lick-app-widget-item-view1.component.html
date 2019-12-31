@@ -39,8 +39,8 @@
     <button *ngIf="canDelete" class="btn btn-danger btn-round btn-lg" (click)="onDelete(data)">Delete
       <i class="fa fa-times" aria-hidden="true"></i>
     </button>
-    <button *ngIf="canBuy" class="btn btn-primary btn-round btn-lg" (click)="onBuy(data)">Buy
-      <i class="fa fa-cart-plus" aria-hidden="true"></i>
+    <button *ngIf="customButton" class="btn btn-success btn-round btn-lg" (click)="onCustom(data)">{{customButtonText}}
+      <i class="fa" [ngClass]="customButtonIcon"  aria-hidden="true"></i>
     </button>
 
   </div>

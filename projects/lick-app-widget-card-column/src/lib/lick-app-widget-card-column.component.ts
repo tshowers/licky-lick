@@ -170,7 +170,7 @@ export class LickAppWidgetCardColumnComponent implements OnInit {
 
   @Output() editEvent = new EventEmitter();
   @Output() deleteEvent = new EventEmitter();
-  @Output() buyEvent = new EventEmitter();
+  @Output() detailEvent = new EventEmitter();
 
   currentPage: number = 1;
   @Input() pageSize: number = 20;
@@ -183,8 +183,8 @@ export class LickAppWidgetCardColumnComponent implements OnInit {
   ngOnInit() {
   }
 
-  onBuy(item): void {
-    this.buyEvent.emit(item);
+  onDetail(item): void {
+    this.detailEvent.emit(item);
   }
 
   onEdit(item): void {

@@ -10,14 +10,16 @@ export class LickAppWidgetItemView1Component implements OnInit {
   @Input() data: any;
   @Input() canEdit: boolean = true;
   @Input() canDelete: boolean = true;
-  @Input() canBuy: boolean = true;
+  @Input() customButton: boolean = true;
   @Input() details: boolean = true;
+  @Input() customButtonText;
+  @Input() customButtonIcon = "fa-cart-plus";
 
   fields = [];
 
   @Output() editEvent = new EventEmitter();
   @Output() deleteEvent = new EventEmitter();
-  @Output() buyEvent = new EventEmitter();
+  @Output() customEvent = new EventEmitter();
 
   NO_PHOTO = "assets/images/noPhoto.jpg";
 
@@ -56,8 +58,8 @@ export class LickAppWidgetItemView1Component implements OnInit {
     })
   }
 
-  onBuy(item): void {
-    this.buyEvent.emit(item);
+  onCustom(item): void {
+    this.customEvent.emit(item);
   }
 
   onEdit(item): void {

@@ -82,7 +82,6 @@ export class LickAppWidgetTableDataComponent implements OnInit {
   }
 
   onNewItem() {
-    // console.log("LickAppWidgetTableDataComponent onNewItem")
     this.newItemEvent.emit();
   }
 

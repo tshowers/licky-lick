@@ -22,9 +22,15 @@
       <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"
                                         (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
       <licky-lick-app-widget-item-view1 [data]="store"
-                                        [canBuy]="false"
+                                        [customButton]="true"
+                                        [customButtonText]="'Browse My Catalogs'"
+                                        [customButtonIcon]="'fa-eye'"
+                                        (customEvent)="onCatalog()"
                                         (editEvent)="onEdit()"
                                         (deleteEvent)="onDelete()"></licky-lick-app-widget-item-view1>
+                                        <licky-lick-marketing-about-product5></licky-lick-marketing-about-product5>
+      <licky-lick-marketing-about-product7></licky-lick-marketing-about-product7>
+      <licky-lick-marketing-prices2></licky-lick-marketing-prices2>
     </div>
     <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
     <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
