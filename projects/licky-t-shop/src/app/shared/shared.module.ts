@@ -24,6 +24,7 @@ import { LickMarketingFaq2Module } from 'lick-marketing-faq2';
 import { LickMarketingAboutProduct5Module } from 'lick-marketing-about-product5';
 import { LickMarketingAboutProduct6Module } from 'lick-marketing-about-product6';
 import { LickMarketingAboutProduct7Module } from 'lick-marketing-about-product7';
+import { LickMarketingLightbox1Module } from 'lick-marketing-lightbox1';
 import { LickAppWidgetItemView1Module } from 'lick-app-widget-item-view1';
 import { LickMarketingPrices2Module } from 'lick-marketing-prices2';
 import { LickAppWidgetCardColumnModule } from 'lick-app-widget-card-column';
@@ -65,6 +66,7 @@ import { ContextNavComponent } from './nav/context-nav/context-nav.component';
     LickMarketingAboutProduct5Module,
     LickMarketingAboutProduct6Module,
     LickMarketingAboutProduct7Module,
+    LickMarketingLightbox1Module,
     LickMarketingPrices2Module,
     LickAppWidgetCardColumnModule
   ],
@@ -97,6 +99,7 @@ import { ContextNavComponent } from './nav/context-nav/context-nav.component';
     LickMarketingAboutProduct5Module,
     LickMarketingAboutProduct6Module,
     LickMarketingAboutProduct7Module,
+    LickMarketingLightbox1Module,
     LickMarketingPrices2Module,
     ContextNavComponent
   ]

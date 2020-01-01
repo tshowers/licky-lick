@@ -4,8 +4,8 @@
   <div class="container">
     <div class="row">
 
-      <h2 class="wow fadeInUp">{{headerText}}</h2>
-      <div class="block-desc wow fadeInUp">
+      <h2 class="wow fadeInUp" *ngIf="headerText">{{headerText}}</h2>
+      <div class="block-desc wow fadeInUp" *ngIf="descriptionText">
         <p>{{descriptionText}}</p>
       </div>
 

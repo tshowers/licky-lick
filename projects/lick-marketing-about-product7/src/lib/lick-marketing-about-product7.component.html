@@ -10,6 +10,12 @@
         <h2 class="wow fadeInUp">{{headingText}}</h2>
         <p class="wow fadeInUp">{{descriptionText}}</p>
         <span class="wow fadeInUp">{{instructionText}}</span>
+        <button *ngIf="customButtonText1" class="btn btn-primary btn-round btn-lg" (click)="onCustom1()">{{customButtonText1}}
+          <i class="fa" [ngClass]="customButtonIcon1"  aria-hidden="true"></i>
+        </button>
+        <button *ngIf="customButtonText2" class="btn btn-success btn-round btn-lg" (click)="onCustom2()">{{customButtonText2}}
+          <i class="fa" [ngClass]="customButtonIcon2"  aria-hidden="true"></i>
+        </button>
 
 
       </div>

@@ -11,7 +11,6 @@ import { LickMarketingVideo1Module } from 'lick-marketing-video1';
 import { LickMarketingFeatures1Module } from 'lick-marketing-features1';
 import { LickMarketingAboutProduct7Module } from 'lick-marketing-about-product7';
 import { LickMarketingReviews2Module } from 'lick-marketing-reviews2';
-import { LickMarketingLightbox1Module } from 'lick-marketing-lightbox1';
 import { LickMarketingFooter2Module} from 'lick-marketing-footer2';
 
 import { HomePageComponent } from './home-page/home-page.component';
@@ -31,7 +30,6 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
     LickMarketingFeatures1Module,
     LickMarketingAboutProduct7Module,
     LickMarketingReviews2Module,
-    LickMarketingLightbox1Module,
     LickMarketingCarouselModule,
     LickMarketingFooter2Module
   ]

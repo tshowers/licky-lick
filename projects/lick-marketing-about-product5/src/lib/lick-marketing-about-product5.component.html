@@ -25,6 +25,14 @@
         <h2 class="wow fadeInUp">{{headingText}} <span *ngIf="badgeText" class="badge badge-primary">{{badgeText}}</span></h2>
         <p class="wow fadeInUp">{{descriptionText}}</p>
         <a *ngIf="buttonLink" routerLink="{{buttonLink}}" class="button button-full wow fadeIn" title="button">{{buttonText}}</a>
+
+        <button *ngIf="customButtonText1" class="btn btn-primary btn-round btn-lg" (click)="onCustom1()">{{customButtonText1}}
+          <i class="fa" [ngClass]="customButtonIcon1"  aria-hidden="true"></i>
+        </button>
+        <button *ngIf="customButtonText2" class="btn btn-success btn-round btn-lg" (click)="onCustom2()">{{customButtonText2}}
+          <i class="fa" [ngClass]="customButtonIcon2"  aria-hidden="true"></i>
+        </button>
+
       </div>
 
     </div> <!-- .row -->

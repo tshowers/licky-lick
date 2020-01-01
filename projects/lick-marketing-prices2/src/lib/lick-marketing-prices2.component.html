@@ -10,6 +10,9 @@
       <!-- Price box 1 -->
       <div class="col-md-4 price wow fadeInUp" *ngFor="let product of products; let i = index">
         <div class="no-border-box">
+          <div class="ta-image-box text-center" *ngIf="product?.url">
+            <img src="{{product?.url}}" alt="{{product?.name}}">
+          </div>
           <h3>{{product?.name}}</h3>
 
           <h4>{{product?.price | currency}}</h4>
@@ -19,7 +22,7 @@
             <li *ngFor="let feature of product.features">{{feature}}</li>
           </ul>
 
-          <a (click)="onPageEvent(product.url)" class="button button-full text-white">{{actionText}}</a>
+          <a (click)="onPageEvent(product)" class="button button-full text-white">{{actionText}}</a>
 
         </div>
       </div> <!-- .price -->

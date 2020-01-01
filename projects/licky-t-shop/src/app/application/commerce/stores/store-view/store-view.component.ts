@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Store, Offer } from 'lick-data';
+import { Store, Offer, Product } from 'lick-data';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { STORES } from 'licky-services';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
@@ -26,7 +26,18 @@ export class StoreViewComponent extends LickAppPageComponent implements OnInit, 
 
   offers: Offer[];
 
+  products: Product[];
+
   private _offersSubscription : Subscription;
+
+  private _productSubscription : Subscription;
+
+  offer1: Offer;
+
+  offer2: Offer;
+
+  images = [];
+
 
   constructor(public dm: DataMediationService, protected renderer2: Renderer2,
     public router: Router,
@@ -43,6 +54,7 @@ export class StoreViewComponent extends LickAppPageComponent implements OnInit, 
         this.setBreadCrumb();
         this.searchArgument = this.store.name;
         this.setOffers();
+        this.setProducts();
       });
   }
 
@@ -76,11 +88,53 @@ export class StoreViewComponent extends LickAppPageComponent implements OnInit, 
     this.router.navigate(['application', 'stores', this.store.id, 'catalogs' ])
   }
 
+  onOffer1() : void {
+    this.router.navigate(['application', 'stores', this.store.id, 'catalogs', this.offer1.catalog_id, 'offers', this.offer1.id]);
+  }
+
+  onOffer2() : void {
+    this.router.navigate(['application', 'stores', this.store.id, 'catalogs', this.offer1.catalog_id, 'offers', this.offer2.id]);
+  }
+
   setOffers() {
       this.dm.doOffers(this.store.id);
       this._offersSubscription = this.dm.offers.subscribe((offers) => {
+        this.setPageOffers(offers);
         this.offers = offers;
       })
+  }
+
+  setProducts() {
+      this.dm.doProducts(this.store.id);
+      this._productSubscription = this.dm.products.subscribe((products) => {
+        this.setLightBoxImages(products);
+        this.products = products;
+      })
+  }
+
+  private setLightBoxImages(products: Product[]) : void {
+    for (let i = 0; i < products.length; i++) {
+        this.images.push({src : products[i].url, caption: products[i].name, thumb: products[i].url});
+        if (i >4)
+          break;
+    }
+  }
+
+  private setPageOffers(offers: Offer[]) : void {
+    const today = new Date().getTime()
+    for (let i = 0; i < offers.length; i++) {
+      console.log("Comparing", today, offers[i].expirationDate)
+        if (offers[i].expirationDate < today) {
+            if (!this.offer1)
+              this.offer1 = offers[i];
+            else if (!this.offer2) {
+              this.offer2 = offers[i];
+              break;
+            }
+
+        }
+    }
+
   }
 
   onDelete() {

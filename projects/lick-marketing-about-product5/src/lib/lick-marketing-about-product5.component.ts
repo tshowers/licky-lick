@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'licky-lick-marketing-about-product5',
@@ -17,10 +17,27 @@ export class LickMarketingAboutProduct5Component implements OnInit {
   @Input() buttonText = "Read More";
   @Input() buttonLink = "/";
 
+  @Input() customButtonText1;
+  @Input() customButtonIcon1 = "fa-cart-plus";
+  @Output() customEvent1 = new EventEmitter();
+
+  @Input() customButtonText2;
+  @Input() customButtonIcon2 = "fa-cart-plus";
+  @Output() customEvent2 = new EventEmitter();
+
 
   constructor() { }
 
   ngOnInit() {
   }
+
+  onCustom1(): void {
+    this.customEvent1.emit();
+  }
+
+  onCustom2(): void {
+    this.customEvent2.emit();
+  }
+
 
 }
