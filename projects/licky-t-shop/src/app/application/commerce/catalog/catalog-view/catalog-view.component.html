@@ -20,8 +20,18 @@
     <div class="container-fluid">
           <licky-lick-app-widget-breadcrumb [crumbs]="crumbs" (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
           <app-context-nav [store]="store" [catalog]="catalog" [context]="'catalog'"></app-context-nav>
+          <licky-lick-app-widget-item-view1
+            [data]="catalog"
+            [details]="false"
+            (editEvent)="onEdit()"
+            (deleteEvent)="onDelete()"
+            (customEvent)="onProducts()"
+            [customButton]="true"
+            [customButtonText]="'Browse Products in this Catalog'"
+            [customButtonIcon]="'fa-eye'"
+          ></licky-lick-app-widget-item-view1>
 
-          <div>
+          <!-- <div>
             <div class="carousel-inner" *ngIf="catalog?.url">
               <div class="ta-store-header"> <img src="{{catalog?.url}}" alt="{{catalog?.name}}"> </div>
             </div>
@@ -97,8 +107,7 @@
                 </div>
               </div>
             </div>
-            <!-- Diagnostic message -->
-          </div>
+          </div> -->
 
 
 

@@ -10,18 +10,20 @@
       <!-- Price box 1 -->
       <div class="col-md-4 price wow fadeInUp" *ngFor="let product of products; let i = index">
         <div class="no-border-box">
-          <div class="ta-image-box text-center" *ngIf="product?.url">
+          <!-- <div class="ta-image-box text-center" *ngIf="product?.url">
             <img src="{{product?.url}}" alt="{{product?.name}}">
-          </div>
+          </div> -->
           <h3>{{product?.name}}</h3>
 
-          <h4>{{product?.price | currency}}</h4>
-          <p class="time">per {{product?.orderQuantity}} {{product?.orderQuantityMeasure}}</p>
+          <h4 *ngIf="!product?.onSale">{{product?.price | currency}}</h4>
+          <h4 *ngIf="product?.onSale">{{product?.salePrice | currency}} <i class="fa fa-tag" aria-hidden="true"></i></h4>
+          <p class="time" *ngIf="product?.orderQuantity && product?.orderQuantityMeasure">per {{product?.orderQuantity}} {{product?.orderQuantityMeasure}}</p>
 
           <ul *ngIf="product.features">
             <li *ngFor="let feature of product.features">{{feature}}</li>
           </ul>
-
+          <div *ngIf="product?.description" innerHTML="{{product?.description}}"></div>
+          <p>&nbsp;</p>
           <a (click)="onPageEvent(product)" class="button button-full text-white">{{actionText}}</a>
 
         </div>

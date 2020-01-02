@@ -28,15 +28,17 @@ export class StoreViewComponent extends LickAppPageComponent implements OnInit, 
 
   products: Product[];
 
-  private _offersSubscription : Subscription;
+  private _offersSubscription: Subscription;
 
-  private _productSubscription : Subscription;
+  private _productSubscription: Subscription;
 
   offer1: Offer;
 
   offer2: Offer;
 
   images = [];
+
+  DEFAULT_SMALL = "assets/images/default-small.png";
 
 
   constructor(public dm: DataMediationService, protected renderer2: Renderer2,
@@ -85,54 +87,70 @@ export class StoreViewComponent extends LickAppPageComponent implements OnInit, 
   }
 
   onCatalog() {
-    this.router.navigate(['application', 'stores', this.store.id, 'catalogs' ])
+    this.router.navigate(['application', 'stores', this.store.id, 'catalogs'])
   }
 
-  onOffer1() : void {
+  onOffer1(): void {
     this.router.navigate(['application', 'stores', this.store.id, 'catalogs', this.offer1.catalog_id, 'offers', this.offer1.id]);
   }
 
-  onOffer2() : void {
+  onOffer2(): void {
     this.router.navigate(['application', 'stores', this.store.id, 'catalogs', this.offer1.catalog_id, 'offers', this.offer2.id]);
   }
 
+  onProduct(item) : void {
+    this.router.navigate(['application', 'stores', this.store.id, 'catalogs', this.offer1.catalog_id, 'products', item.id]);
+  }
+
+
   setOffers() {
-      this.dm.doOffers(this.store.id);
-      this._offersSubscription = this.dm.offers.subscribe((offers) => {
+    this.dm.doOffers(this.store.id);
+    this._offersSubscription = this.dm.offers.subscribe((offers) => {
+      if (offers) {
         this.setPageOffers(offers);
         this.offers = offers;
-      })
+      }
+    })
   }
 
   setProducts() {
-      this.dm.doProducts(this.store.id);
-      this._productSubscription = this.dm.products.subscribe((products) => {
-        this.setLightBoxImages(products);
-        this.products = products;
-      })
+    this.dm.doProducts(this.store.id);
+    this._productSubscription = this.dm.products.subscribe((products) => {
+      if (products) {
+        // let p = products.filter((product) => {
+        //   return (product && product.url)
+        // });
+        // console.log("Products", JSON.stringify(p));
+        // this.products = p;
+        this.products = products.slice(0,3);
+        this.setLightBoxImages(this.products);
+      }
+    })
   }
 
-  private setLightBoxImages(products: Product[]) : void {
+  private setLightBoxImages(products: Product[]): void {
     for (let i = 0; i < products.length; i++) {
-        this.images.push({src : products[i].url, caption: products[i].name, thumb: products[i].url});
-        if (i >4)
-          break;
+      if (products[i].url)
+        this.images.push({ src: products[i].url, caption: products[i].name, thumb: (products[i].icon ? products[i].icon : this.DEFAULT_SMALL) });
+      if (i > 4)
+        break;
     }
   }
 
-  private setPageOffers(offers: Offer[]) : void {
+  private setPageOffers(offers: Offer[]): void {
+
     const today = new Date().getTime()
     for (let i = 0; i < offers.length; i++) {
       console.log("Comparing", today, offers[i].expirationDate)
-        if (offers[i].expirationDate < today) {
-            if (!this.offer1)
-              this.offer1 = offers[i];
-            else if (!this.offer2) {
-              this.offer2 = offers[i];
-              break;
-            }
-
+      if (offers[i].expirationDate < today) {
+        if (!this.offer1 && offers[i].url)
+          this.offer1 = offers[i];
+        else if (!this.offer2 && offers[i].url) {
+          this.offer2 = offers[i];
+          break;
         }
+
+      }
     }
 
   }
@@ -147,7 +165,7 @@ export class StoreViewComponent extends LickAppPageComponent implements OnInit, 
     this.router.navigate(['application', 'stores'], { queryParams: { searchArgument: value } })
   }
 
-  onBuy() : void {
+  onBuy(): void {
     console.log("Buy Click");
   }
 

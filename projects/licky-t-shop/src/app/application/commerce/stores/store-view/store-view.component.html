@@ -31,43 +31,33 @@
                                            [customButtonText2]="'Browse My Catalogs'"
                                            [customButtonIcon2]="'fa-eye'"
                                            (customEvent2)="onCatalog()"></licky-lick-marketing-about-product7>
-      <!-- <licky-lick-app-widget-item-view1 [data]="store"
-                                        [customButton]="true"
-                                        [customButtonText]="'Browse My Catalogs'"
-                                        [customButtonIcon]="'fa-eye'"
-                                        (customEvent)="onCatalog()"
-                                        (editEvent)="onEdit()"
-                                        (deleteEvent)="onDelete()"></licky-lick-app-widget-item-view1> -->
       <licky-lick-marketing-about-product5 *ngIf="offer1"
                                            [imageURL]="offer1?.url"
                                            [iconFeature]="'icon-tag'"
                                            [featureText]="'Featured Offer'"
                                            [headingText]="offer1?.name"
-                                           [descriptionText]="offer1?.description"
+                                           [descriptionText]="offer1?.longDescription"
                                            [buttonText]="null"
                                            [buttonLink]="null"
                                            [customButtonText1]="'Learn More'"
                                            [customButtonIcon1]="'fa-eye'"
                                            (customEvent1)="onOffer1()"></licky-lick-marketing-about-product5>
-      <licky-lick-marketing-lightbox1
-        [headerText]="store?.name + ' Work'"
-        [descriptionText]="null"
-        [images]="images"
-      ></licky-lick-marketing-lightbox1>
+      <licky-lick-marketing-prices2 [headingText]="'Featured Products'"
+                                    [descriptionText]="'Below are some of the items you can have NedRa\'s collection of quilt images placed. Click the View Details button to learn more about the item.'"
+                                    [actionText]="'View Details'"
+                                    (pageEvent)="onProduct($event)"
+                                    [products]="products"></licky-lick-marketing-prices2>
       <licky-lick-marketing-about-product7 *ngIf="offer2"
                                            [imageURL]="offer2?.url"
                                            [headingText]="offer2?.name"
-                                           [descriptionText]="offer2?.description"
+                                           [descriptionText]="offer2?.longDescription"
                                            [instructionText]="offer2?.keywords"
                                            [customButtonText1]="'Learn More'"
                                            [customButtonIcon1]="'fa-eye'"
                                            (customEvent1)="onOffer2()"></licky-lick-marketing-about-product7>
-      <licky-lick-marketing-prices2
-        [headingText]="'Featured Products'"
-        [descriptionText]="''"
-        [actionText]="'Add To Cart'"
-        [products]="products"
-      ></licky-lick-marketing-prices2>
+      <licky-lick-marketing-lightbox1 [headerText]="store?.name + ' Work'"
+                                      [descriptionText]="'Click on an image below to activate a lightbox. Upon clicking a translucent background is revealed which is used lay images upon to be seen with a higher contrast.'"
+                                      [images]="images"></licky-lick-marketing-lightbox1>
     </div>
     <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
     <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>

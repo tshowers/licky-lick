@@ -221,6 +221,7 @@ export class LickMarketingPrices2Component implements OnInit {
   ngOnInit() {
   }
 
+
   onPageEvent(item) : void {
     this.pageEvent.emit(item);
   }

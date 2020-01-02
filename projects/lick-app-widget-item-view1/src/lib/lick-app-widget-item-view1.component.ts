@@ -10,7 +10,7 @@ export class LickAppWidgetItemView1Component implements OnInit {
   @Input() data: any;
   @Input() canEdit: boolean = true;
   @Input() canDelete: boolean = true;
-  @Input() customButton: boolean = true;
+  @Input() customButton: boolean = false;
   @Input() details: boolean = true;
   @Input() customButtonText;
   @Input() customButtonIcon = "fa-cart-plus";
@@ -40,6 +40,9 @@ export class LickAppWidgetItemView1Component implements OnInit {
         (e != 'broadcasted') &&
         (e != 'broadcastedCount') &&
         (e != 'draft') &&
+        (e != 'onSale') &&
+        (e != 'subscription') &&
+        (e != 'discontinued') &&
         (e != 'deleted') &&
         (e != 'lastUpdated') &&
         (e != 'timeStamp') &&

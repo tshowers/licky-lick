@@ -91,7 +91,7 @@ export class OfferViewComponent extends LickAppPageComponent implements OnInit, 
 
   private setCatalog(): void {
     this.dm.doCatalog(this.store_id, this.catalog_id);
-    this.dm.store.subscribe((catalog) => {
+    this.dm.catalog.subscribe((catalog) => {
       this.catalog = catalog;
       this.setBreadCrumb();
     })

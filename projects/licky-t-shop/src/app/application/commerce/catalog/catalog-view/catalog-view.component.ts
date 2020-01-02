@@ -86,6 +86,10 @@ export class CatalogViewComponent extends LickAppPageComponent implements OnInit
     this.router.navigate(['application', 'catalogs']);
   }
 
+  onProducts() {
+    this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog.id, 'products']);
+  }
+
   onSearch(value): void {
     console.log("ONSEARCH", value);
     this.router.navigate(['application', 'stores', this.store_id, 'catalogs'], { queryParams: { searchArgument: value } })
