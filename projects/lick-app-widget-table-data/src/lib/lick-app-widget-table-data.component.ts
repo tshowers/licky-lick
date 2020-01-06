@@ -75,6 +75,7 @@ export class LickAppWidgetTableDataComponent implements OnInit {
   @Input() pageSize: number = 20;
   @Input() totalRecords: number = 0;
 
+  isList = true;
 
   constructor() { }
 

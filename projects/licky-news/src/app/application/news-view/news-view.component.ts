@@ -130,11 +130,12 @@ export class NewsViewComponent implements OnInit, OnDestroy {
   }
 
   private setUser(): void {
-    this._user = this._loginService.getUser();
     this._userSubscription = this._loginService.userChanged.subscribe((user: User) => {
-      this._user = user;
-      this.boxes.length = 0;
-      this.setUserNewsSources();
+      if (user) {
+        this._user = user;
+        this.boxes.length = 0;
+        this.setUserNewsSources();
+      }
     })
   }
 

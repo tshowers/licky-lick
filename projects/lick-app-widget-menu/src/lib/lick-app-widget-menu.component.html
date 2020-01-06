@@ -55,18 +55,26 @@
   </div>
   <!-- end navbar-search -->
   <ul class="nav navbar-nav ">
-    <licky-lick-app-widget-notification-alert [loginService]="loginService"
+    <licky-lick-app-widget-notification-alert *ngIf="isAlertNotification"
+                                              [loginService]="loginService"
                                               [db]="db"
                                               [alertLink]="alertLink"
                                               [router]="router"></licky-lick-app-widget-notification-alert>
-    <licky-lick-app-widget-notification-message [loginService]="loginService"
+    <licky-lick-app-widget-notification-message *ngIf="isMessageNotification"
+                                                [loginService]="loginService"
                                                 [messageLink]="messageLink"
                                                 [db]="db"
                                                 [router]="router"></licky-lick-app-widget-notification-message>
-    <licky-lick-app-widget-notification-task [loginService]="loginService"
+    <licky-lick-app-widget-notification-task *ngIf="isTaskNotification"
+                                             [loginService]="loginService"
                                              [db]="db"
                                              [taskLink]="taskLink"
                                              [router]="router"></licky-lick-app-widget-notification-task>
+    <licky-lick-app-widget-notification-cart *ngIf="isCart"
+                                             [db]="db"
+                                             [loginService]="loginService"
+                                             [router]="router"
+                                             [cartLink]="cartLink"></licky-lick-app-widget-notification-cart>
     <li class="nav-item dropdown">
       <a class="btn btn-round btn-theme btn-sm"
          data-toggle="dropdown"
@@ -120,10 +128,14 @@
   </ul>
   <div class="hamburger hamburger--arrowalt-r navbar-toggler aside-menu-toggler"
        (click)="toggleRightSidebar()">
-       <div class="ta-hamburger-box" title="Click here to get information about the current screen.">
-         <i class="fa fa-question" aria-hidden="true" *ngIf="!rightSidebar"></i>
-         <i class="fa fa-minus" aria-hidden="true" *ngIf="rightSidebar"></i>
-
-       </div>
+    <div class="ta-hamburger-box"
+         title="Click here to get information about the current screen.">
+      <i class="fa fa-question"
+         aria-hidden="true"
+         *ngIf="!rightSidebar"></i>
+      <i class="fa fa-minus"
+         aria-hidden="true"
+         *ngIf="rightSidebar"></i>
+    </div>
   </div>
 </header>

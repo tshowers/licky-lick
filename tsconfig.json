@@ -714,6 +714,18 @@
       ],
       "lick-app-widget-card-column/*": [
         "dist/lick-app-widget-card-column/*"
+      ],
+      "lick-app-widget-notification-cart": [
+        "dist/lick-app-widget-notification-cart"
+      ],
+      "lick-app-widget-notification-cart/*": [
+        "dist/lick-app-widget-notification-cart/*"
+      ],
+      "lick-app-widget-shopping-cart": [
+        "dist/lick-app-widget-shopping-cart"
+      ],
+      "lick-app-widget-shopping-cart/*": [
+        "dist/lick-app-widget-shopping-cart/*"
       ]
     }
   }

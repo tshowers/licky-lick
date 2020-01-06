@@ -5,6 +5,11 @@
                             [messageLink]="'/application/notification/messages'"
                             [alertLink]="'/application/notification/alerts'"
                             [taskLink]="'/application/notification/tasks'"
+                            [cartLink]="'/application/shopping-carts'"
+                            [isCart]="true"
+                            [isAlertNotification]="false"
+                            [isMessageNotification]="false"
+                            [isTaskNotification]="false"
                             [emailAddress]="dm.emailAddress"
                             [loggedIn]="dm.loggedIn"
                             [userName]="dm.userName"
@@ -38,7 +43,7 @@
                                      [countText4]="'Deleted'"
                                      (newItemEvent)="onNewItem()"
                                      [router]="router"></licky-lick-app-widget-stats15>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-6  text-right">
           <i class="fa fa-table text-primary"
              aria-hidden="true"></i>
@@ -48,16 +53,16 @@
           <ui-switch [(ngModel)]="isList"
                      size="small"></ui-switch>
         </div>
-      </div>
-      <licky-lick-app-widget-card-column *ngIf="!isList"
+      </div> -->
+      <!-- <licky-lick-app-widget-card-column
                                          [data]="data$ | async"
                                          [pageSize]="pageSize"
                                          [totalRecords]="totalRecords"
                                          (detailEvent)="onDetail($event)"
                                          (deleteEvent)="onDelete($event)"
                                          (editEvent)="onEdit($event)"
-                                         (currentPageEvent)="newPage($event)"></licky-lick-app-widget-card-column>
-      <licky-lick-app-widget-table-data *ngIf="isList"
+                                         (currentPageEvent)="newPage($event)"></licky-lick-app-widget-card-column> -->
+      <licky-lick-app-widget-table-data
                                         [data]="data$ | async"
                                         (newItemEvent)="onNewItem()"
                                         (detailEvent)="onDetail($event)"

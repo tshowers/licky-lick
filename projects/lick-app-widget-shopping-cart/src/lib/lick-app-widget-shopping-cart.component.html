@@ -1,0 +1,55 @@
+<div class="list-group" *ngIf="shoppingCart.orderLine">
+  <div class="list-group-item list-group-item-action" *ngIf="shoppingCart.orderLine.length; else noItems">
+    <div class="row ta-header-row">
+      <div class="col text-center"></div>
+      <div class="col">Item</div>
+      <div class="col d-none d-md-block">Description</div>
+      <div class="col d-none d-md-block">Quantity</div>
+      <div class="col text-right d-none d-md-block">Price</div>
+    </div>
+  </div>
+  <div class="data-results">
+    <div class="list-group-item" *ngFor="let item of shoppingCart.orderLine; let i = index">
+      <div class="row">
+        <div class="col text-center"> <button type="button" class="btn btn-success btn-sm" (click)="onDetail(item)"><i class="fa fa-search" title="View"></i> View</button>
+          <button type="button" class="btn btn-danger btn-sm" (click)="onDelete(item)"><i class="fa fa-trash-o" title="Delete"></i> Delete</button>
+        </div>
+        <div class="col"><strong>{{ item?.product.name }}</strong> <br><img *ngIf="item?.product.url" class="ta-list-image" src="{{item?.product.url}}" alt="{{item?.product.name}}"> </div>
+        <div class="col d-none d-md-block">
+          <div innerHTML={{item?.product.description}}></div>
+        </div>
+        <div class="col d-none d-md-block">
+          <form #dataForm="ngForm" class="form-group"> <select name="productQuantity" id="productQuantity" [(ngModel)]="item.quantity" class="form-control form-control-lg ta-input-element" (change)="updateQuantity(item)">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+          </select> </form>
+        </div>
+        <div class="col text-right d-none d-md-block"> <span *ngIf="!item?.product.onSale" class="badge badge-pill badge-theme ta-large">{{ (item?.product.price * item?.quantity) | currency:'USD':'symbol' }} <span *ngIf="item?.product.hourlyRate"> <br><small>per hour</small> </span></span> <span *ngIf="item?.product.onSale" class="badge badge-pill badge-success ta-large">{{ item?.product.salePrice | currency:'USD':'symbol' }} <span *ngIf="item?.product.hourlyRate"> <br><small>per hour</small> </span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noItems>
+    <div class="container">
+      <p align="center" class="alert alert-warning" role="alert"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Your shopping cart is empty.</p>
+    </div>
+  </ng-template>
+</div>

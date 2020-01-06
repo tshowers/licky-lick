@@ -19,6 +19,7 @@ export class LickAppWidgetNotificationAlertComponent implements OnInit, AfterVie
   @Input() alertLink;
   alertsChecked: boolean = false;
   public user: User;
+  notificationSubscription: Subscription;
 
   constructor(private _sortHelperService: SortHelperService, private _cd: ChangeDetectorRef) { }
 
@@ -35,6 +36,11 @@ export class LickAppWidgetNotificationAlertComponent implements OnInit, AfterVie
 
   }
 
+  ngOnDestroy() {
+    if (this.notificationSubscription)
+      this.notificationSubscription.unsubscribe();
+  }
+
   ngAfterViewInit() {
     this._cd.detectChanges();
   }
@@ -47,7 +53,7 @@ export class LickAppWidgetNotificationAlertComponent implements OnInit, AfterVie
   }
 
   private toggleIndicator() {
-    this.alerts$.subscribe((alerts) => {
+    this.notificationSubscription = this.alerts$.subscribe((alerts) => {
       this.setUpIndicator(alerts)
     })
   }

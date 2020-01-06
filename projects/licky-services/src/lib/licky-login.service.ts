@@ -20,10 +20,10 @@ export class LickyLoginService {
   public errorMessage = new Subject<any>();
   public processMessage = new Subject<any>();
   public usersChanged = new Subject<User[]>();
-  public userChanged = new Subject<User>();
+  public userChanged = new BehaviorSubject<User>(null);
   public firebaseUser = new BehaviorSubject<firebase.User>(null);
   private _firebaseUser: firebase.User;
-  private _user: User;
+  private _user: User ;
   private _users: any;
   private _loggedIn: boolean = false;
   public redirectUrl;

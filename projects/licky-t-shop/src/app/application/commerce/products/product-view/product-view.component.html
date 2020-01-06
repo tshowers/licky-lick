@@ -5,6 +5,11 @@
                             [messageLink]="'/application/notification/messages'"
                             [alertLink]="'/application/notification/alerts'"
                             [taskLink]="'/application/notification/tasks'"
+                            [cartLink]="'/application/shopping-carts'"
+                            [isCart]="true"
+                            [isAlertNotification]="false"
+                            [isMessageNotification]="false"
+                            [isTaskNotification]="false"
                             [emailAddress]="dm.emailAddress"
                             [loggedIn]="dm.loggedIn"
                             [userName]="dm.userName"
@@ -119,7 +124,7 @@
                       </h1>
                       <h4 class="card-title">{{product?.name}}</h4>
                       <div innerHTML={{product?.longDescription}}></div>
-                      <button [disabled]="product?.discontinued" class="btn btn-lg btn-block btn-outline-primary" (click)="onAddToCart()"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span *ngIf="!product?.discontinued">Add to Cart</span><span *ngIf="product?.discontinued">Item Discontinued</span></button> 
+                      <button [disabled]="product?.discontinued" class="btn btn-lg btn-block btn-outline-primary" (click)="onAddToCart()"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span *ngIf="!product?.discontinued">Add to Cart</span><span *ngIf="product?.discontinued">Item Discontinued</span></button>
 
                     </div>
                   </div>

@@ -30,10 +30,16 @@ export class LickAppWidgetMenuComponent implements OnInit {
   @Input() messageLink;
   @Input() alertLink;
   @Input() taskLink;
+  @Input() cartLink;
   searchArgument = '';
 
   leftSidebar: boolean = true;
   rightSidebar: boolean = false;
+  @Input() isAlertNotification: boolean = true;
+  @Input() isMessageNotification: boolean = true;
+  @Input() isTaskNotification: boolean = true;
+  @Input() isCart: boolean = true;
+
   searchDisplay = '';
   cancelDisplay = 'none';
   @Input() defaultPhoto = "/assets/images/default-user.png"

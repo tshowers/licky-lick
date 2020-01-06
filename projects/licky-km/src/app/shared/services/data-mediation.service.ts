@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { SortHelperService, NewsService, FirebaseDataService, LickyLoginService, TOPICS  } from 'licky-services';
+import { SortHelperService, NewsService, FirebaseDataService, LickyLoginService, TOPICS } from 'licky-services';
 import { map } from 'rxjs/operators';
 import { Subscription, Observable, BehaviorSubject, Subject } from 'rxjs';
 import { Topic, User } from 'lick-data';
@@ -47,15 +47,15 @@ export class DataMediationService implements OnDestroy {
   }
 
 
-  public doTopic(id: string) : void {
+  public doTopic(id: string): void {
     this.db.getData(TOPICS, id).subscribe((topic) => {
       this.topic.next(topic);
     })
   }
 
   public getTopic(id: string): Topic {
-    return  (this._topics) ?
-    this._topics.find(topic => topic.id == id) : null
+    return (this._topics) ?
+      this._topics.find(topic => topic.id == id) : null
 
   }
 
@@ -95,9 +95,9 @@ export class DataMediationService implements OnDestroy {
   }
 
   private setUser(): void {
-    this.user = this.loginService.getUser();
     this._userSubscription = this.loginService.userChanged.subscribe((user) => {
-      this.user = user;
+      if (user)
+        this.user = user;
     })
   }
 

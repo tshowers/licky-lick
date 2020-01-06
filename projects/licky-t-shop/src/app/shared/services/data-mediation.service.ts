@@ -470,9 +470,9 @@ export class DataMediationService implements OnDestroy {
   }
 
   private setUser(): void {
-    this.user = this.loginService.getUser();
     this._userSubscription = this.loginService.userChanged.subscribe((user) => {
-      this.user = user;
+      if (user)
+        this.user = user;
     })
   }
 

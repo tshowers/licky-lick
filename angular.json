@@ -5224,6 +5224,76 @@
           }
         }
       }
+    },
+    "lick-app-widget-notification-cart": {
+      "root": "projects/lick-app-widget-notification-cart",
+      "sourceRoot": "projects/lick-app-widget-notification-cart/src",
+      "projectType": "library",
+      "prefix": "licky",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-notification-cart/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-notification-cart/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-notification-cart/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-notification-cart/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-notification-cart/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-notification-cart/tsconfig.lib.json",
+              "projects/lick-app-widget-notification-cart/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "lick-app-widget-shopping-cart": {
+      "root": "projects/lick-app-widget-shopping-cart",
+      "sourceRoot": "projects/lick-app-widget-shopping-cart/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lick-app-widget-shopping-cart/tsconfig.lib.json",
+            "project": "projects/lick-app-widget-shopping-cart/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lick-app-widget-shopping-cart/src/test.ts",
+            "tsConfig": "projects/lick-app-widget-shopping-cart/tsconfig.spec.json",
+            "karmaConfig": "projects/lick-app-widget-shopping-cart/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lick-app-widget-shopping-cart/tsconfig.lib.json",
+              "projects/lick-app-widget-shopping-cart/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "lick-data"

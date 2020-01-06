@@ -173,6 +173,7 @@ export class LickAppWidgetCardColumnComponent implements OnInit {
   @Output() detailEvent = new EventEmitter();
 
   currentPage: number = 1;
+  @Input() pagination: boolean = true;
   @Input() pageSize: number = 20;
   @Input() totalRecords: number = 0;
   @Output() currentPageEvent = new EventEmitter();

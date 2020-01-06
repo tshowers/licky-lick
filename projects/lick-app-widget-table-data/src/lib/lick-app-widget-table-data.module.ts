@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LickDataModule } from 'lick-data';
 import { LickAppWidgetNoDataModule } from 'lick-app-widget-no-data';
+import { UiSwitchModule } from 'ngx-ui-switch';
+import { LickAppWidgetCardColumnModule } from 'lick-app-widget-card-column';
 
 import { LickAppWidgetTableDataComponent } from './lick-app-widget-table-data.component';
 
@@ -14,7 +16,9 @@ import { LickAppWidgetTableDataComponent } from './lick-app-widget-table-data.co
     RouterModule,
     LickDataModule,
     NgbModule,
-    LickAppWidgetNoDataModule
+    UiSwitchModule,
+    LickAppWidgetNoDataModule,
+    LickAppWidgetCardColumnModule
   ],
   exports: [LickAppWidgetTableDataComponent]
 })

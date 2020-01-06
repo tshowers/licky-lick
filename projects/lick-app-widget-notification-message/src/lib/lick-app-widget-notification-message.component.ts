@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './lick-app-widget-notification-message.component.html',
   styles: []
 })
-export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterViewInit {
+export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   messages$: Observable<Message[]>;
   private _userContact: Contact;
@@ -25,6 +25,7 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterV
   @Input() loginService: LickyLoginService;
   @Input() db: FirebaseDataService;
   @Input() messageLink;
+  notificationSubscription: Subscription;
 
   constructor(private _sortHelperService: SortHelperService, private _cd: ChangeDetectorRef) { }
 
@@ -46,6 +47,8 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterV
   }
 
   ngOnDestroy() {
+    if (this.notificationSubscription)
+      this.notificationSubscription.unsubscribe();
     if (this.messageSubscription)
       this.messageSubscription.unsubscribe();
 
@@ -59,7 +62,7 @@ export class LickAppWidgetNotificationMessageComponent implements OnInit, AfterV
   }
 
   private toggleIndicator() {
-    this.messages$.subscribe((messages) => {
+    this.notificationSubscription = this.messages$.subscribe((messages) => {
       this.setUpIndicator(messages)
     })
   }

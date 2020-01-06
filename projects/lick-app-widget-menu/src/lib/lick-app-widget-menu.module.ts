@@ -7,6 +7,7 @@ import { LickyServicesModule } from 'licky-services';
 import { LickAppWidgetNotificationAlertModule } from 'lick-app-widget-notification-alert';
 import { LickAppWidgetNotificationMessageModule } from 'lick-app-widget-notification-message';
 import { LickAppWidgetNotificationTaskModule } from 'lick-app-widget-notification-task';
+import { LickAppWidgetNotificationCartModule } from 'lick-app-widget-notification-cart';
 import { LickAppWidgetMenuComponent } from './lick-app-widget-menu.component';
 
 @NgModule({
@@ -19,7 +20,8 @@ import { LickAppWidgetMenuComponent } from './lick-app-widget-menu.component';
     FormsModule,
     LickAppWidgetNotificationAlertModule,
     LickAppWidgetNotificationMessageModule,
-    LickAppWidgetNotificationTaskModule
+    LickAppWidgetNotificationTaskModule,
+    LickAppWidgetNotificationCartModule
   ],
   exports: [LickAppWidgetMenuComponent]
 })

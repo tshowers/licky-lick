@@ -1,6 +1,35 @@
+<div class="row">
+  <div class="col-6  text-right">
+    <i class="fa fa-table text-primary"
+       aria-hidden="true"></i>
+    <i class="text-theme">Toggle between table and column view</i>
+  </div>
+  <div class="col-6">
+    <ui-switch [(ngModel)]="isList"
+               size="small"></ui-switch>
+  </div>
+</div>
+
+
+
+
+
+
+
 <div class="col-md-12"
      *ngIf="data && (data.length > 0); else noData">
-  <div class="card">
+
+     <licky-lick-app-widget-card-column *ngIf="!isList"
+                                        [data]="data"
+                                        [pagination]="false"
+                                        (detailEvent)="onDetail($event)"
+                                        (deleteEvent)="onDelete($event)"
+                                        (editEvent)="onEdit($event)"
+                                        ></licky-lick-app-widget-card-column>
+
+
+
+  <div class="card" *ngIf="isList">
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-striped">

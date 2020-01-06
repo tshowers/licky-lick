@@ -43,10 +43,10 @@ export class NewsProfileComponent implements OnInit, OnDestroy {
     // this.router.navigate(['about', 'message']);
   }
 
-  private setUser() : void {
-    this.user = this._lickyLoginService.getUser();
+  private setUser(): void {
     this._userSubscription = this._lickyLoginService.userChanged.subscribe((user) => {
-      this.user = user;
+      if (user)
+        this.user = user;
     })
 
   }

@@ -41,6 +41,7 @@ export class User {
   public messagesLastCheckedDate?;
   public tasksLastCheckedDate?;
   public alertsLastCheckedDate?;
+  public cartLastCheckedDate?;
 
   public introContactImport?: boolean = false;
   public introCalendarImport?: boolean = false;

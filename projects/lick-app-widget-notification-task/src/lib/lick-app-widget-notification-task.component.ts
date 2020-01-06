@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './lick-app-widget-notification-task.component.html',
   styles: []
 })
-export class LickAppWidgetNotificationTaskComponent implements OnInit, AfterViewInit {
+export class LickAppWidgetNotificationTaskComponent implements OnInit, AfterViewInit, OnDestroy {
 
   tasks$: Observable<Task[]>;
   @Input() db: FirebaseDataService;
@@ -20,6 +20,7 @@ export class LickAppWidgetNotificationTaskComponent implements OnInit, AfterView
   private _user: User;
   tasksChecked: boolean = false;
   userSubscription: Subscription;
+  notificationSubscription: Subscription;
 
   constructor(private _sortHelperService: SortHelperService, private _cd: ChangeDetectorRef) { }
 
@@ -42,6 +43,7 @@ export class LickAppWidgetNotificationTaskComponent implements OnInit, AfterView
 
   }
 
+
   ngAfterViewInit() {
     // it must be last line
     this._cd.detectChanges();
@@ -50,6 +52,8 @@ export class LickAppWidgetNotificationTaskComponent implements OnInit, AfterView
   ngOnDestroy() {
     if (this.userSubscription)
       this.userSubscription.unsubscribe();
+    if (this.notificationSubscription)
+      this.notificationSubscription.unsubscribe();
   }
 
   checkingTasks(): void {
@@ -68,7 +72,7 @@ export class LickAppWidgetNotificationTaskComponent implements OnInit, AfterView
   }
 
   private toggleIndicator() {
-    this.tasks$.subscribe((tasks) => {
+    this.notificationSubscription = this.tasks$.subscribe((tasks) => {
       this.setUpIndicator(tasks)
     })
   }

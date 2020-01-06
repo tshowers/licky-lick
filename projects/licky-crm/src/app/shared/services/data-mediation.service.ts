@@ -153,11 +153,11 @@ export class DataMediationService implements OnDestroy {
   private doNoteFixUp(data, item): void {
     data[item].id = item;
     if (data[item].name)
-      data[item].name = data[item].name.slice(0,25);
+      data[item].name = data[item].name.slice(0, 25);
   }
 
   public doAddresses(contact_id: string): void {
-    this._addressSubscription = this.db.getDataCollection(ADDRESSES + "/" + contact_id )
+    this._addressSubscription = this.db.getDataCollection(ADDRESSES + "/" + contact_id)
       .subscribe((addressData: Address[]) => {
         if (addressData) {
           this._addresses = this.getAddressListToArray(addressData);
@@ -167,7 +167,7 @@ export class DataMediationService implements OnDestroy {
   }
 
   public doEmailAddresses(contact_id: string): void {
-    this._emailAddressSubscription = this.db.getDataCollection(EMAIL_ADDRESSES + "/" + contact_id )
+    this._emailAddressSubscription = this.db.getDataCollection(EMAIL_ADDRESSES + "/" + contact_id)
       .subscribe((data: EmailAddress[]) => {
         if (data) {
           this._emailAddresses = this.getEmailAddressListToArray(data);
@@ -177,7 +177,7 @@ export class DataMediationService implements OnDestroy {
   }
 
   public doFops(contact_id: string): void {
-    this._fopSubscription = this.db.getDataCollection(FOPS + "/" + contact_id )
+    this._fopSubscription = this.db.getDataCollection(FOPS + "/" + contact_id)
       .subscribe((data: FOP[]) => {
         if (data) {
           this._fops = this.getFOPListToArray(data);
@@ -188,7 +188,7 @@ export class DataMediationService implements OnDestroy {
   }
 
   public doNotes(contact_id: string): void {
-    this._noteSubscription = this.db.getDataCollection(JUST_TEXTS + "/" + contact_id )
+    this._noteSubscription = this.db.getDataCollection(JUST_TEXTS + "/" + contact_id)
       .subscribe((data: JustText[]) => {
         if (data) {
           this._notes = this.getNoteListToArray(data);
@@ -199,7 +199,7 @@ export class DataMediationService implements OnDestroy {
   }
 
   public doPhoneNumbers(contact_id: string): void {
-    this._phoneNumberSubscription = this.db.getDataCollection(PHONE_NUMBERS + "/" + contact_id )
+    this._phoneNumberSubscription = this.db.getDataCollection(PHONE_NUMBERS + "/" + contact_id)
       .subscribe((data: PhoneNumber[]) => {
         if (data) {
           this._phoneNumbers = this.getPhoneNumberListToArray(data);
@@ -209,15 +209,15 @@ export class DataMediationService implements OnDestroy {
       });
   }
 
-  public doContact(id: string) : void {
+  public doContact(id: string): void {
     this.db.getData(CONTACTS, id).subscribe((contact) => {
       this.contact.next(contact);
     })
   }
 
   public getContact(id: string): Contact {
-    return  (this._contacts) ?
-    this._contacts.find(contact => contact.id == id) : null
+    return (this._contacts) ?
+      this._contacts.find(contact => contact.id == id) : null
 
   }
 
@@ -257,9 +257,9 @@ export class DataMediationService implements OnDestroy {
   }
 
   private setUser(): void {
-    this.user = this.loginService.getUser();
     this._userSubscription = this.loginService.userChanged.subscribe((user) => {
-      this.user = user;
+      if (user)
+        this.user = user;
     })
   }
 
