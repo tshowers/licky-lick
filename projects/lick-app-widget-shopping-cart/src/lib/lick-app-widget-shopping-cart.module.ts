@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LickDataModule } from 'lick-data';
-import { LickAppWidgetNoDataModule } from 'lick-app-widget-no-data';
 import { UiSwitchModule } from 'ngx-ui-switch';
 import { LickAppWidgetShoppingCartComponent } from './lick-app-widget-shopping-cart.component';
 
@@ -15,8 +14,6 @@ import { LickAppWidgetShoppingCartComponent } from './lick-app-widget-shopping-c
     LickDataModule,
     NgbModule,
     UiSwitchModule,
-    LickAppWidgetNoDataModule,
-    LickAppWidgetCardColumnModule
   ],
   exports: [LickAppWidgetShoppingCartComponent]
 })

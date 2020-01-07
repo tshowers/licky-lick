@@ -1,5 +1,5 @@
-<div class="list-group" *ngIf="shoppingCart.orderLine">
-  <div class="list-group-item list-group-item-action" *ngIf="shoppingCart.orderLine.length; else noItems">
+<div class="list-group" *ngIf="(data && data.orderLine && data.orderLine.length); else noItems">
+  <div class="list-group-item list-group-item-action">
     <div class="row ta-header-row">
       <div class="col text-center"></div>
       <div class="col">Item</div>
@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="data-results">
-    <div class="list-group-item" *ngFor="let item of shoppingCart.orderLine; let i = index">
+    <div class="list-group-item" *ngFor="let item of data.orderLine; let i = index">
       <div class="row">
         <div class="col text-center"> <button type="button" class="btn btn-success btn-sm" (click)="onDetail(item)"><i class="fa fa-search" title="View"></i> View</button>
           <button type="button" class="btn btn-danger btn-sm" (click)="onDelete(item)"><i class="fa fa-trash-o" title="Delete"></i> Delete</button>
@@ -47,9 +47,9 @@
       </div>
     </div>
   </div>
-  <ng-template #noItems>
-    <div class="container">
-      <p align="center" class="alert alert-warning" role="alert"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Your shopping cart is empty.</p>
-    </div>
-  </ng-template>
 </div>
+<ng-template #noItems>
+  <div class="container">
+    <p align="center" class="alert alert-warning" role="alert"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Your shopping cart is empty.</p>
+  </div>
+</ng-template>

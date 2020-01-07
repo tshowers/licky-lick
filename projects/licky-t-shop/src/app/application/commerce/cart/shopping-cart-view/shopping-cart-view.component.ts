@@ -14,15 +14,13 @@ import { SHOPPING_CARTS } from 'licky-services';
 })
 export class ShoppingCartViewComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
-  data$: Observable<any[]>;
-
   private _products: Product[];
 
   private _productsOriginal;
 
   pageSize = 5;
 
-  private _shoppingCart: ShoppingCart;
+  shoppingCart: ShoppingCart;
 
   private _searchArgumentSubscription: Subscription;
 
@@ -46,7 +44,7 @@ export class ShoppingCartViewComponent extends LickAppPageComponent implements O
     super.ngOnInit();
     this._route.data
     .subscribe((data: { shoppingCart: ShoppingCart}) => {
-      this._shoppingCart = data.shoppingCart;
+      this.shoppingCart = data.shoppingCart;
       this.setBreadCrumb();
 
     })

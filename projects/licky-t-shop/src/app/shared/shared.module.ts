@@ -29,6 +29,7 @@ import { LickAppWidgetItemView1Module } from 'lick-app-widget-item-view1';
 import { LickMarketingPrices2Module } from 'lick-marketing-prices2';
 import { LickAppWidgetCardColumnModule } from 'lick-app-widget-card-column';
 import { LickAppWidgetCardDeckModule } from 'lick-app-widget-card-deck';
+import { LickAppWidgetShoppingCartModule } from 'lick-app-widget-shopping-cart';
 import { environment } from '../../environments/environment';
 
 export const firebaseConfig = environment.firebaseConfig;
@@ -68,6 +69,7 @@ import { ContextNavComponent } from './nav/context-nav/context-nav.component';
     LickMarketingAboutProduct7Module,
     LickMarketingLightbox1Module,
     LickMarketingPrices2Module,
+    LickAppWidgetShoppingCartModule,
     LickAppWidgetCardColumnModule
   ],
   exports: [
@@ -101,6 +103,7 @@ import { ContextNavComponent } from './nav/context-nav/context-nav.component';
     LickMarketingAboutProduct7Module,
     LickMarketingLightbox1Module,
     LickMarketingPrices2Module,
+    LickAppWidgetShoppingCartModule,
     ContextNavComponent
   ]
 })

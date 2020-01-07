@@ -24,7 +24,6 @@ import { LickAppWidgetListContentModule } from 'lick-app-widget-list-content';
 import { LickAppWidgetListArticleSummaryModule } from 'lick-app-widget-list-article-summary';
 import { LickAppWidgetTableDataModule } from 'lick-app-widget-table-data';
 
-
 import { LoginPageComponent } from './access/login-page/login-page.component';
 import { LogoutPageComponent } from './access/logout-page/logout-page.component';
 import { ResetPageComponent } from './access/reset-page/reset-page.component';

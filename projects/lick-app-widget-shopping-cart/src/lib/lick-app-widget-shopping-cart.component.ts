@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import {ShoppingCart} from 'lick-data';
 
 @Component({
   selector: 'licky-lick-app-widget-shopping-cart',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 })
 export class LickAppWidgetShoppingCartComponent implements OnInit {
 
-  @Input() data: any[];
+  @Input() data: ShoppingCart;
   @Input() headingText = "licky-lick-app-widget-shopping-cart";
 
   @Output() detailEvent = new EventEmitter();
@@ -23,6 +24,7 @@ export class LickAppWidgetShoppingCartComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("SHOPPING CART RECEIVED", JSON.stringify(this.data))
   }
 
   onDetail(item): void {

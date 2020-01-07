@@ -26,7 +26,7 @@ export class ShoppingCartViewResolverService {
           if (shoppingCart)
             return shoppingCart;
           else
-            return of(this.getNew());
+            return this.getNew();
         })
       )
   }

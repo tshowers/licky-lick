@@ -26,6 +26,10 @@
     <div class="container-fluid">
       <licky-lick-app-widget-breadcrumb [crumbs]="crumbs"
                                         (pageEvent)="onBreadCrumb($event)"></licky-lick-app-widget-breadcrumb>
+      <licky-lick-app-widget-shopping-cart
+        [data]="shoppingCart"
+        [headingText]="'Shopping Cart'"
+      ></licky-lick-app-widget-shopping-cart>
     </div>
     <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>
     <licky-lick-app-widget-chat-popup></licky-lick-app-widget-chat-popup>
