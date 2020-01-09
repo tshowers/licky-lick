@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy, Renderer2, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Crumb } from 'lick-app-widget-breadcrumb';
-import { Subscription } from 'rxjs';
-import { User } from 'lick-data';
 
 @Component({
   selector: 'licky-lick-app-page',
@@ -16,7 +14,6 @@ export class LickAppPageComponent implements OnInit, OnDestroy {
 
   public crumbs: Crumb[] = [];
   public pageTitle: string = "Default Title";
-
 
   @Input() diagnostics;
 

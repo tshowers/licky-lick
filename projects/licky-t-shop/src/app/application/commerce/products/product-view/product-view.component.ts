@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { Product, Store, Catalog } from 'lick-data';
+import { Product, Store, Catalog, ShoppingCart } from 'lick-data';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
 import { PRODUCTS } from 'licky-services';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
@@ -15,6 +15,8 @@ import { Subscription } from 'rxjs';
 export class ProductViewComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
   product: Product;
+
+  quantity: number = 1;
 
   canEdit = true;
 
@@ -48,6 +50,7 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
         this.store_id = this.product.store_id
         this.setCatalogContext();
         this.searchArgument = this.product.name;
+        this.addToProductViewHistory();
       });
   }
 
@@ -97,8 +100,6 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
     })
   }
 
-
-
   onBreadCrumb(link): void {
     this.router.navigate([link]);
   }
@@ -117,8 +118,71 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
     this.router.navigate(['application', 'stores', this.store_id, 'catalogs', this.catalog_id, 'products'], { queryParams: { searchArgument: value } })
   }
 
+  onAddToCart(): void {
+    if (this.dm.user) {
+      console.log("USER", JSON.stringify(this.dm.user))
+      this.checkShoppingCart();
+    } else {
+      console.log("NO USER FOUND")
+      this.showSignIn()
+    }
+  }
+
+  private addToProductViewHistory(): void {
+    if (this.dm.user && this.dm.user.shoppingCart) {
+      console.log("Shopping Cart Found for addToProductViewHistory")
+      if (!this.isProductOnTop)
+        this.dm.user.shoppingCart.productViewHistory.push(this.product);
+    } else {
+      console.log("Shopping Cart NOT Found for addToProductViewHistory so create one");
+      const shoppingCart = new ShoppingCart();
+      this.dm.user.shoppingCart = shoppingCart;
+    }
+  }
+
+  private isProductOnTop(): boolean {
+    const productOnTop = this.dm.user.shoppingCart.productViewHistory.slice(0, 1);
+
+    if (productOnTop) {
+      console.log("Checking Product on Top", JSON.stringify(productOnTop), JSON.stringify(this.product))
+      return productOnTop[0].id = this.product.id
+    }
+    return false;
+  }
+
+  private showSignIn(): void {
+    this.router.navigate(['application', 'login'], { queryParams: { productID: this.product.id, quantity: this.quantity } });
+  }
+
+  private checkShoppingCart(): void {
+    if (this.dm.user.shoppingCart) {
+      console.info("SHOPPING CART FOUND")
+      this.checkOrderLine();
+    } else {
+      console.info("NO SHOPPING CART FOUND")
+      const shoppingCart = new ShoppingCart();
+      this.dm.user.shoppingCart = shoppingCart;
+      this.checkOrderLine();
+    }
+  }
+
+  private checkOrderLine(): void {
+    if (this.dm.user.shoppingCart.orderLine) {
+      this.addProductToCart();
+    }
+    else {
+      this.dm.user.shoppingCart.orderLine = [];
+      this.addProductToCart();
+    }
+  }
+
+  private addProductToCart(): void {
+    this.dm.user.shoppingCart.orderLine.push({ "quantity": this.quantity, "product": this.product })
+    console.info("USER RECORD IS NOW", JSON.stringify(this.dm.user))
+  }
+
   get diagnostic() {
-    return JSON.stringify(this.product, null, 2)
+    return JSON.stringify(this.product, null, 2) + " ******** " + JSON.stringify(this.dm.user, null, 2)
   }
 
 }
