@@ -25,9 +25,9 @@ export class StoreResolverService {
           if (store) {
             Store.restoreData(store);
             this.incrementViewCount(store, id);
-            return (store.id == id) ? store : of(new Store());
+            return (store.id == id) ? store : (new Store());
           } else {
-            return of(this.getStoreObject());
+            return (this.getStoreObject());
           }
         }))
     } else {

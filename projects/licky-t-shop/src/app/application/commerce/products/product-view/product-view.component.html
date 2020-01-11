@@ -38,82 +38,6 @@
                     (editEvent)="onEdit()"
                     (deleteEvent)="onDelete()"
                   ></licky-lick-app-widget-item-view1>
-                  <!-- <div class="ta-work-back">
-                    <div class="text-center" *ngIf="product?.url"> <img src="{{product?.url}}" alt="{{product?.name}}" class="rounded" style="max-width: 600px" /> </div>
-                    <div>
-                      <h4>{{product?.name}}</h4>
-                      <div innerHTML={{product?.description}}></div>
-                      <div>
-                        <div class="row">
-                          <div class="col" *ngIf="product?.manufacturer">{{product?.manufacturer}}</div>
-                          <div class="col" *ngIf="product?.author">{{product?.author}}</div>
-                        </div>
-                        <div class="row">
-                          <div class="col ta-label">category</div>
-                          <div class="col">{{product?.category}}</div>
-                          <div class="col ta-label">discontinued</div>
-                          <div class="col">{{product?.discontinued}}</div>
-                        </div>
-                        <div class="row">
-                          <div class="col ta-label">lead time</div>
-                          <div class="col">{{product?.leadTime}}</div>
-                          <div class="col ta-label">order quantity</div>
-                          <div class="col">{{product?.orderQuantity}}</div>
-                        </div>
-                        <div class="row">
-                          <div class="col ta-label">price</div>
-                          <div class="col">{{product?.price | currency:'USD':'symbol'}} <span *ngIf="product?.hourlyRate"> <small>per hour</small></span></div>
-                          <div class="col ta-label">subscription</div>
-                          <div class="col"></div>
-                        </div>
-                        <div class="row">
-                          <div class="col ta-label">sale price</div>
-                          <div class="col">{{product?.salePrice | currency:'USD':'symbol'}} <span *ngIf="product?.hourlyRate"> <small>per hour</small></span></div>
-                          <div class="col ta-label">on Sale</div>
-                          <div class="col">{{product?.onSale}}</div>
-                        </div>
-                        <div class="row" *ngIf="canEdit">
-                          <div class="col ta-label">sku</div>
-                          <div class="col">{{product?.sku}}</div>
-                          <div class="col ta-label">re-order level</div>
-                          <div class="col">{{product?.reOrderLevel}}</div>
-                        </div>
-                        <div class="row">
-                          <div class="col ta-label">weight</div>
-                          <div class="col">{{product?.weight}}</div>
-                          <div class="col ta-label">height</div>
-                          <div class="col">{{product?.height}}</div>
-                        </div>
-                        <div class="row">
-                          <div class="col ta-label">width</div>
-                          <div class="col">{{product?.width}}</div>
-                          <div class="col ta-label">length</div>
-                          <div class="col">{{product?.length}}</div>
-                        </div>
-                        <div class="row" *ngIf="canEdit">
-                          <div class="col ta-label">units on order</div>
-                          <div class="col">{{product?.unitsOnOrder}}</div>
-                          <div class="col ta-label">units in stock</div>
-                          <div class="col">{{product?.unitsInStock}}</div>
-                        </div>
-                        <div class="row" *ngIf="canEdit">
-                          <div class="col ta-label">id</div>
-                          <div class="col"> <small>{{product?.id}}</small> </div>
-                          <div class="col ta-label">catalog</div>
-                          <div class="col"> <small>{{product?.catalog_id}}</small> </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col text-center">
-                          <button *ngIf="canEdit" class="btn btn-primary btn-lg btn-round" (click)="onEdit()">Edit
-                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                            </button> <button *ngIf="canDelete" class="btn btn-danger btn-lg btn-round" (click)="onDelete()">Delete
-                              <i class="fa fa-times" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
                 </div>
                 <div class="col">
                   <div class="card" style="width: 20rem;">
@@ -123,9 +47,9 @@
                         <span *ngIf="product.onSale" class="badge badge-pill badge-success ta-large">{{product?.salePrice | currency:'USD':'symbol'}} <span *ngIf="product.hourlyRate"> <br><small>per hour</small></span></span>
                       </h1>
                       <h4 class="card-title">{{product?.name}}</h4>
+                      <input [(ngModel)]="quantity" id="quantity" name="quantity" type="number" class="form-control form-control-lg input-element" style="max-width: 100px;"><br>
                       <div innerHTML={{product?.longDescription}}></div>
                       <button [disabled]="product?.discontinued" class="btn btn-lg btn-block btn-outline-primary" (click)="onAddToCart()"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span *ngIf="!product?.discontinued">Add to Cart</span><span *ngIf="product?.discontinued">Item Discontinued</span></button>
-
                     </div>
                   </div>
                 </div>

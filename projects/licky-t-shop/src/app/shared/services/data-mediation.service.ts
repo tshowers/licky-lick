@@ -10,6 +10,7 @@ export class DataMediationService implements OnDestroy {
 
   public user: User;
 
+
   public firebaseUser;
 
   public photoURL;
@@ -261,30 +262,30 @@ export class DataMediationService implements OnDestroy {
       data[item].name = data[item].name;
   }
 
-  public doShoppingCarts(store_id: string): void {
-    this._shoppingCartSubscription = this.db.getDataCollection(SHOPPING_CARTS + "/" + store_id)
-      .subscribe((shoppingCartData: ShoppingCart[]) => {
-        if (shoppingCartData) {
-          this._shoppingCarts = this.getShoppingCartListToArray(shoppingCartData);
-          this.shoppingCarts.next(this._shoppingCarts);
-        }
-      });
-  }
-
-  public getShoppingCartListToArray(data: any): any[] {
-    let list: any[] = [];
-    for (let item in data) {
-      this.dShoppingCartFixUp(data, item);
-      list.push(data[item]);
-    }
-    return list;
-  }
-
-  private dShoppingCartFixUp(data, item): void {
-    data[item].id = item;
-    if (data[item].name)
-      data[item].name = data[item].name;
-  }
+  // public doShoppingCarts(store_id: string): void {
+  //   this._shoppingCartSubscription = this.db.getDataCollection(SHOPPING_CARTS)
+  //     .subscribe((shoppingCartData: ShoppingCart[]) => {
+  //       if (shoppingCartData) {
+  //         this._shoppingCarts = this.getShoppingCartListToArray(shoppingCartData);
+  //         this.shoppingCarts.next(this._shoppingCarts);
+  //       }
+  //     });
+  // }
+  //
+  // public getShoppingCartListToArray(data: any): any[] {
+  //   let list: any[] = [];
+  //   for (let item in data) {
+  //     this.dShoppingCartFixUp(data, item);
+  //     list.push(data[item]);
+  //   }
+  //   return list;
+  // }
+  //
+  // private dShoppingCartFixUp(data, item): void {
+  //   data[item].id = item;
+  //   if (data[item].name)
+  //     data[item].name = data[item].name;
+  // }
 
   public doStore(id: string): void {
     this.db.getData(STORES, id).subscribe((data) => {
@@ -340,8 +341,8 @@ export class DataMediationService implements OnDestroy {
     })
   }
 
-  public doShoppingCart(id: string): void {
-    this.db.getData(SHOPPING_CARTS, id).subscribe((data) => {
+  public doShoppingCart(): void {
+    this.db.getData(SHOPPING_CARTS, this.user.id).subscribe((data) => {
       this.shoppingCart.next(data);
     })
   }
@@ -459,6 +460,11 @@ export class DataMediationService implements OnDestroy {
   //       }
   //     });
   // }
+
+  public updateUser() : void {
+    this.loginService.setUser(this.user);
+    this.loginService.update();
+  }
 
   private setFirebaseUser(): void {
     this._firebaseUserSubscription = this.loginService.firebaseUser.subscribe((firebaseUser) => {

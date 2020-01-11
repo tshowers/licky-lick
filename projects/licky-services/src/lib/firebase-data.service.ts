@@ -123,7 +123,7 @@ export class FirebaseDataService {
 
   getData(path: string, id: string): Observable<any> {
     path = this.getAugmentedPath(path);
-
+    console.log("GETTING DATA FOR PATH", path)
     return new Observable((observer) => {
 
       this._db.ref(path + '/' + id).once('value').then(

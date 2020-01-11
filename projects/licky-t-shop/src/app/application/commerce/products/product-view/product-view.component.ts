@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Product, Store, Catalog, ShoppingCart } from 'lick-data';
 import { LickAppPageComponent, LickAppBehavior } from 'lick-app-page';
-import { PRODUCTS } from 'licky-services';
+import { PRODUCTS, SHOPPING_CARTS } from 'licky-services';
 import { DataMediationService } from '../../../../shared/services/data-mediation.service';
 import { Subscription } from 'rxjs';
 
@@ -15,6 +15,8 @@ import { Subscription } from 'rxjs';
 export class ProductViewComponent extends LickAppPageComponent implements OnInit, OnDestroy, LickAppBehavior {
 
   product: Product;
+
+  shoppingCart: ShoppingCart;
 
   quantity: number = 1;
 
@@ -82,6 +84,7 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
         });
       this.setStore();
       this.setCatalog();
+      this.setShoppingCart();
     }
   }
 
@@ -97,6 +100,13 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
     this.dm.catalog.subscribe((catalog) => {
       this.catalog = catalog;
       this.setBreadCrumb();
+    })
+  }
+
+  private setShoppingCart(): void {
+    this.dm.doShoppingCart();
+    this.dm.shoppingCart.subscribe((shoppingCart) => {
+      this.shoppingCart = shoppingCart;
     })
   }
 
@@ -120,28 +130,27 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
 
   onAddToCart(): void {
     if (this.dm.user) {
-      console.log("USER", JSON.stringify(this.dm.user))
       this.checkShoppingCart();
     } else {
-      console.log("NO USER FOUND")
-      this.showSignIn()
+      this.showSignUpPage();
     }
+  }
+
+  private showSignUpPage(): void {
+    this.router.navigate(['application', 'sign-up']);
   }
 
   private addToProductViewHistory(): void {
-    if (this.dm.user && this.dm.user.shoppingCart) {
-      console.log("Shopping Cart Found for addToProductViewHistory")
-      if (!this.isProductOnTop)
-        this.dm.user.shoppingCart.productViewHistory.push(this.product);
-    } else {
+    if (!this.shoppingCart) {
       console.log("Shopping Cart NOT Found for addToProductViewHistory so create one");
-      const shoppingCart = new ShoppingCart();
-      this.dm.user.shoppingCart = shoppingCart;
+      this.shoppingCart = new ShoppingCart();
     }
+    if (!this.isProductOnTop)
+      this.shoppingCart.productViewHistory.push(this.product);
   }
 
   private isProductOnTop(): boolean {
-    const productOnTop = this.dm.user.shoppingCart.productViewHistory.slice(0, 1);
+    const productOnTop = this.shoppingCart.productViewHistory.slice(0, 1);
 
     if (productOnTop) {
       console.log("Checking Product on Top", JSON.stringify(productOnTop), JSON.stringify(this.product))
@@ -150,35 +159,38 @@ export class ProductViewComponent extends LickAppPageComponent implements OnInit
     return false;
   }
 
-  private showSignIn(): void {
-    this.router.navigate(['application', 'login'], { queryParams: { productID: this.product.id, quantity: this.quantity } });
-  }
-
   private checkShoppingCart(): void {
-    if (this.dm.user.shoppingCart) {
-      console.info("SHOPPING CART FOUND")
-      this.checkOrderLine();
-    } else {
+    if (!this.shoppingCart) {
       console.info("NO SHOPPING CART FOUND")
-      const shoppingCart = new ShoppingCart();
-      this.dm.user.shoppingCart = shoppingCart;
-      this.checkOrderLine();
+      this.shoppingCart = new ShoppingCart();
     }
+    this.checkOrderLine();
   }
 
   private checkOrderLine(): void {
-    if (this.dm.user.shoppingCart.orderLine) {
-      this.addProductToCart();
+    if (!this.shoppingCart.orderLine) {
+      console.info("NO ORDER LINE IN CART FOUND")
+      this.shoppingCart.orderLine = [];
     }
-    else {
-      this.dm.user.shoppingCart.orderLine = [];
-      this.addProductToCart();
-    }
+    this.addProductToCart();
   }
 
   private addProductToCart(): void {
-    this.dm.user.shoppingCart.orderLine.push({ "quantity": this.quantity, "product": this.product })
-    console.info("USER RECORD IS NOW", JSON.stringify(this.dm.user))
+    this.shoppingCart.orderLine.push({ "quantity": this.quantity, "product": this.product })
+    this.saveShoppingCart();
+  }
+
+  private saveShoppingCart(): void {
+    this.dm.db.writeData(SHOPPING_CARTS, this.shoppingCart).subscribe((key) => {
+      this.updateUser(key);
+      this.router.navigate(['application', 'shopping-carts', key]);
+    })
+  }
+
+  private updateUser(key): void {
+    console.info("CART SAVED KEY and Cart", key, JSON.stringify(this.shoppingCart));
+    this.dm.user.shopping_cart_id = key;
+    this.dm.updateUser();
   }
 
   get diagnostic() {

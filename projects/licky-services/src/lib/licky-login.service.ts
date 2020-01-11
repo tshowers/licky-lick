@@ -90,6 +90,10 @@ export class LickyLoginService {
     return (this._loggedIn);
   }
 
+  public setUser(user: User) : void {
+    this._user = user;
+  }
+
   public setAway(): void {
     if (this._user) {
       this._user.status = 'away';
@@ -283,6 +287,8 @@ export class LickyLoginService {
     this._fds.setUser(this._user);
     this.userChanged.next(this._user);
   }
+
+
 
   public update(): void {
     if (!this._user) return;

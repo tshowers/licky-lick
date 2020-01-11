@@ -15,14 +15,14 @@ export class ShoppingCartViewResolverService {
 
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ShoppingCart> {
-    console.info("USER", JSON.stringify(this._lickyLoginService.getUser()));
     return this.getShoppingCart(this._lickyLoginService.getUser())
   }
 
   getShoppingCart(user: User): Observable<ShoppingCart> {
-    return this._db.getData(SHOPPING_CARTS, user.id)
+    return this._db.getData(SHOPPING_CARTS, user.shopping_cart_id)
       .pipe(
         map(shoppingCart => {
+          console.info("shoppingCart", JSON.stringify(shoppingCart));
           if (shoppingCart)
             return shoppingCart;
           else
