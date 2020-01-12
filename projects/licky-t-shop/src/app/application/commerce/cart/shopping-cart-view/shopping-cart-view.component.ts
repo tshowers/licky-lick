@@ -44,6 +44,7 @@ export class ShoppingCartViewComponent extends LickAppPageComponent implements O
     super.ngOnInit();
     this._route.data
     .subscribe((data: { shoppingCart: ShoppingCart}) => {
+      console.log(JSON.stringify(data));
       this.shoppingCart = data.shoppingCart;
       this.setBreadCrumb();
 
@@ -69,9 +70,11 @@ export class ShoppingCartViewComponent extends LickAppPageComponent implements O
   }
 
   onEdit(data): void {
+    this.router.navigate(['application', 'stores', data.store_id, 'catalogs', data.catalog_id, 'products',  data.id])
   }
 
-  onDelete(data): void {
+  onDelete(at): void {
+    this.shoppingCart.orderLine.splice(at,1);
   }
 
   onDetail(data): void {

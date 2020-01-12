@@ -19,16 +19,18 @@ export class ShoppingCartViewResolverService {
   }
 
   getShoppingCart(user: User): Observable<ShoppingCart> {
-    return this._db.getData(SHOPPING_CARTS, user.shopping_cart_id)
-      .pipe(
-        map(shoppingCart => {
-          console.info("shoppingCart", JSON.stringify(shoppingCart));
-          if (shoppingCart)
-            return shoppingCart;
-          else
-            return this.getNew();
-        })
-      )
+    if (user && user.shopping_cart_id)
+      return this._db.getData(SHOPPING_CARTS, user.shopping_cart_id)
+        .pipe(
+          map(shoppingCart => {
+            console.info("shoppingCart", JSON.stringify(shoppingCart));
+            if (shoppingCart)
+              return shoppingCart;
+            else
+              return this.getNew();
+          })
+        )
+    else return of(this.getNew())
   }
 
 

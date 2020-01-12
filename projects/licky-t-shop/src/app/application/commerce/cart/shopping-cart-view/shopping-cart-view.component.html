@@ -29,6 +29,8 @@
       <licky-lick-app-widget-shopping-cart
         [data]="shoppingCart"
         [headingText]="'Shopping Cart'"
+        (deleteEvent)="onDelete($event)"
+        (detailEvent)="onDetail($event)"
       ></licky-lick-app-widget-shopping-cart>
     </div>
     <licky-lick-app-page [diagnostics]="diagnostic"></licky-lick-app-page>

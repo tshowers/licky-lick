@@ -262,30 +262,6 @@ export class DataMediationService implements OnDestroy {
       data[item].name = data[item].name;
   }
 
-  // public doShoppingCarts(store_id: string): void {
-  //   this._shoppingCartSubscription = this.db.getDataCollection(SHOPPING_CARTS)
-  //     .subscribe((shoppingCartData: ShoppingCart[]) => {
-  //       if (shoppingCartData) {
-  //         this._shoppingCarts = this.getShoppingCartListToArray(shoppingCartData);
-  //         this.shoppingCarts.next(this._shoppingCarts);
-  //       }
-  //     });
-  // }
-  //
-  // public getShoppingCartListToArray(data: any): any[] {
-  //   let list: any[] = [];
-  //   for (let item in data) {
-  //     this.dShoppingCartFixUp(data, item);
-  //     list.push(data[item]);
-  //   }
-  //   return list;
-  // }
-  //
-  // private dShoppingCartFixUp(data, item): void {
-  //   data[item].id = item;
-  //   if (data[item].name)
-  //     data[item].name = data[item].name;
-  // }
 
   public doStore(id: string): void {
     this.db.getData(STORES, id).subscribe((data) => {
@@ -369,97 +345,6 @@ export class DataMediationService implements OnDestroy {
       });
   }
 
-  // private setProducts(): void {
-  //   this._productSubscription = this.db.getDataCollection(PRODUCTS)
-  //     .subscribe((data: Product[]) => {
-  //       if (data) {
-  //         this._products = this.db.getListToArray(data);
-  //         this.products.next(this._products);
-  //       }
-  //     });
-  // }
-  //
-  // private setCatalogs(): void {
-  //   this._catalogSubscription = this.db.getDataCollection(CATALOGS)
-  //     .subscribe((data: Catalog[]) => {
-  //       if (data) {
-  //         this._catalogs = this.db.getListToArray(data);
-  //         this.catalogs.next(this._catalogs);
-  //       }
-  //     });
-  // }
-  //
-  // private setPayments(): void {
-  //   this._paymentSubscription = this.db.getDataCollection(PAYMENTS)
-  //     .subscribe((data: Payment[]) => {
-  //       if (data) {
-  //         this._payments = this.db.getListToArray(data);
-  //         this.payments.next(this._payments);
-  //       }
-  //     });
-  // }
-  //
-  // private setOffers(): void {
-  //   this._offerSubscription = this.db.getDataCollection(OFFERS)
-  //     .subscribe((data: Offer[]) => {
-  //       if (data) {
-  //         this._offers = this.db.getListToArray(data);
-  //         this.offers.next(this._offers);
-  //       }
-  //     });
-  // }
-  //
-  //
-  //
-  // private setProductBundles(): void {
-  //   this._productBundleSubscription = this.db.getDataCollection(PRODUCT_BUNDLES)
-  //     .subscribe((data: ProductBundle[]) => {
-  //       if (data) {
-  //         this._productBundles = this.db.getListToArray(data);
-  //         this.productBundles.next(this._productBundles);
-  //       }
-  //     });
-  // }
-  //
-  // private setInvoices(): void {
-  //   this._invoiceSubscription = this.db.getDataCollection(INVOICES)
-  //     .subscribe((data: Invoice[]) => {
-  //       if (data) {
-  //         this._invoices = this.db.getListToArray(data);
-  //         this.invoices.next(this._invoices);
-  //       }
-  //     });
-  // }
-  //
-  // private setOrders(): void {
-  //   this._orderSubscription = this.db.getDataCollection(ORDERS)
-  //     .subscribe((data: Order[]) => {
-  //       if (data) {
-  //         this._orders = this.db.getListToArray(data);
-  //         this.orders.next(this._orders);
-  //       }
-  //     });
-  // }
-  //
-  // private setReceipts(): void {
-  //   this._receiptSubscription = this.db.getDataCollection(RECEIPTS)
-  //     .subscribe((data: Receipt[]) => {
-  //       if (data) {
-  //         this._receipts = this.db.getListToArray(data);
-  //         this.receipts.next(this._receipts);
-  //       }
-  //     });
-  // }
-  //
-  // private setShoppingCarts(): void {
-  //   this._shoppingCartSubscription = this.db.getDataCollection(SHOPPING_CARTS)
-  //     .subscribe((data: ShoppingCart[]) => {
-  //       if (data) {
-  //         this._shoppingCarts = this.db.getListToArray(data);
-  //         this.shoppingCarts.next(this._shoppingCarts);
-  //       }
-  //     });
-  // }
 
   public updateUser() : void {
     this.loginService.setUser(this.user);

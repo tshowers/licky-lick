@@ -32,9 +32,9 @@ export class LickAppWidgetShoppingCartComponent implements OnInit {
     this.detailEvent.emit(item);
   }
 
-  onDelete(item): void {
-    console.log("onDelete", JSON.stringify(item))
-    this.deleteEvent.emit(item);
+  onDelete(at): void {
+    console.log("onDelete", JSON.stringify(at))
+    this.deleteEvent.emit(at);
   }
 
   updateQuantity(item): void {

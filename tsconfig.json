@@ -726,6 +726,12 @@
       ],
       "lick-app-widget-shopping-cart/*": [
         "dist/lick-app-widget-shopping-cart/*"
+      ],
+      "lick-app-widget-loader1": [
+        "dist/lick-app-widget-loader1"
+      ],
+      "lick-app-widget-loader1/*": [
+        "dist/lick-app-widget-loader1/*"
       ]
     }
   }

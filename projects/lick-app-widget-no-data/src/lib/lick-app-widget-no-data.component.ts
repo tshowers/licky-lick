@@ -9,6 +9,7 @@ export class LickAppWidgetNoDataComponent implements OnInit {
 
   @Output() newItemEvent = new EventEmitter();
   @Input() newButton: boolean = true;
+  isLoading = true;
 
   constructor() { }
 
@@ -18,6 +19,12 @@ export class LickAppWidgetNoDataComponent implements OnInit {
   onNewItem() {
     // console.log("LickAppWidgetNoDataComponent onNewItem")
     this.newItemEvent.emit();
+  }
+
+  onLoadingData() : void {
+    setTimeout(() => {
+      this.isLoading = false, 1500
+    })
   }
 
 }

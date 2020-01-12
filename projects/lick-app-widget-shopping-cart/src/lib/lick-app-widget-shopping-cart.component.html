@@ -12,14 +12,14 @@
     <div class="list-group-item" *ngFor="let item of data.orderLine; let i = index">
       <div class="row">
         <div class="col text-center"> <button type="button" class="btn btn-success btn-sm" (click)="onDetail(item)"><i class="fa fa-search" title="View"></i> View</button>
-          <button type="button" class="btn btn-danger btn-sm" (click)="onDelete(item)"><i class="fa fa-trash-o" title="Delete"></i> Delete</button>
+          <button type="button" class="btn btn-danger btn-sm" (click)="onDelete(i)"><i class="fa fa-trash-o" title="Delete"></i> Delete</button>
         </div>
-        <div class="col"><strong>{{ item?.product.name }}</strong> <br><img *ngIf="item?.product.url" class="ta-list-image" src="{{item?.product.url}}" alt="{{item?.product.name}}"> </div>
+        <div class="col"><strong>{{ item?.product.name }}</strong> <br><img *ngIf="item?.product.url" class="ta-list-image img-thumbnail" src="{{item?.product.url}}" alt="{{item?.product.name}}"> </div>
         <div class="col d-none d-md-block">
           <div innerHTML={{item?.product.description}}></div>
         </div>
         <div class="col d-none d-md-block">
-          <form #dataForm="ngForm" class="form-group"> <select name="productQuantity" id="productQuantity" [(ngModel)]="item.quantity" class="form-control form-control-lg ta-input-element" (change)="updateQuantity(item)">
+          <form #dataForm="ngForm" class="form-group"> <select name="productQuantity" id="productQuantity" [(ngModel)]="item.quantity" class="form-control form-control-lg ta-input-element" style="max-width: 50px" (change)="updateQuantity(item)">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>

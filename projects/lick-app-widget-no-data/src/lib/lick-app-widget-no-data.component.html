@@ -1,24 +1,14 @@
-<!-- <div class="card">
-  <div class="card-body">
-    <div class="row">
-      <div class="col wow fadeInUp">
-        <i class="fa fa-exclamation-circle"
-           aria-hidden="true"></i> No <ng-content></ng-content> data found!
-      </div>
-      <div *ngIf="newButton" class="col text-right wow fadeIn">
-        <button class="btn btn-dark"
-                (click)="onNewItem()">New Item</button>
-      </div>
-    </div>
+<section class="container-server-errors"
+         *ngIf="!isLoading">
+  <div class="server-errors pages-card">
+    <div class="status-text-1">No Content</div>
+    <div class="status-error text-theme hertbit">2 0 4</div>
+    <div class="text-center status-text-2 text-dark">No information was found
+      for your request.</div>
+    <div class="text-center"> <a (click)="onNewItem()"
+         class="btn btn-theme btn-lg login-btn text-white"><span *ngIf="newButton">New
+          Item</span><span *ngIf="!newButton">Continue</span> </a></div>
   </div>
-</div> -->
-
-        <section class="container-server-errors">
-          <div class="server-errors pages-card">
-            <div class="status-text-1">No Content</div>
-            <div class="status-error text-theme hertbit">2 0 4</div>
-            <div class="text-center status-text-2 text-dark">No information was found for your request.</div>
-            <div class="text-center"> <a (click)="onNewItem()" class="btn btn-theme btn-lg login-btn text-white"><span *ngIf="newButton">New Item</span><span *ngIf="!newButton">Continue</span> </a></div>
-          </div>
-          <!-- end server-error pages -->
-        </section>
+  <!-- end server-error pages -->
+</section>
+<lib-lick-app-widget-loader1 *ngIf="isLoading"></lib-lick-app-widget-loader1>
