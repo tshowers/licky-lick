@@ -23,7 +23,7 @@ export class ShoppingCartViewResolverService {
       return this._db.getData(SHOPPING_CARTS, user.shopping_cart_id)
         .pipe(
           map(shoppingCart => {
-            console.info("shoppingCart", JSON.stringify(shoppingCart));
+            // console.info("shoppingCart", JSON.stringify(shoppingCart));
             if (shoppingCart)
               return shoppingCart;
             else

@@ -142,6 +142,27 @@ export class FirebaseDataService {
     })
   }
 
+  getDataReference(path: string, id: string): Observable<any> {
+    path = this.getAugmentedPath(path);
+    console.log("GETTING REFERENCE DATA FOR PATH", path)
+    return new Observable((observer) => {
+
+      this._db.ref(path + '/' + id).on('value').then(
+        (snapshot) => {
+
+          let value = snapshot.val();
+
+          observer.next(value)
+          observer.complete()
+        }
+      ),
+        (error) => {
+          if (error)
+            this.databaseError.next(error);
+        }
+    })
+  }
+
   writeData(path: string, data: any): Observable<any> {
     path = this.getAugmentedPath(path);
     console.log("Writing to " + path)

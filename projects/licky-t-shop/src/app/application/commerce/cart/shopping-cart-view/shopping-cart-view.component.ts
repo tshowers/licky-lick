@@ -69,20 +69,21 @@ export class ShoppingCartViewComponent extends LickAppPageComponent implements O
     this.router.navigate([link]);
   }
 
-  onEdit(data): void {
-    this.router.navigate(['application', 'stores', data.store_id, 'catalogs', data.catalog_id, 'products',  data.id])
-  }
-
   onDelete(at): void {
     this.shoppingCart.orderLine.splice(at,1);
   }
 
   onDetail(data): void {
+    this.router.navigate(['application', 'stores', data.product.store_id, 'catalogs', data.product.catalog_id, 'products',  data.product.id])
   }
 
   onSearch(value) : void {
     this.router.navigate(['application', 'stores'], {queryParams: { searchArgument: value}})
   }
 
+  get diagnostic() {
+    return JSON.stringify(this._products, null, 2)
+      + ", shoppingCart=" + this.shoppingCart
+  }
 
 }

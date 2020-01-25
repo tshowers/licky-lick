@@ -29,9 +29,13 @@ export class LickAppWidgetNotificationCartComponent implements OnInit, OnDestroy
     this.userSubscription = this.loginService.userChanged.subscribe((user) => {
       if (user)
         this.user = user;
+        this.setShoppingCart();
     })
 
-    this.db.getData(SHOPPING_CARTS, this.user.id).subscribe((shoppingCart) => {
+  }
+
+  setShoppingCart() : void {
+    this.db.getData(SHOPPING_CARTS, this.user.shopping_cart_id).subscribe((shoppingCart) => {
       if (shoppingCart) {
         this.shoppingCart = shoppingCart;
         this.products$ = this.getProductsInCart();
